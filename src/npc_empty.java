@@ -11,3 +11,5 @@ public class npc_empty extends NPC {
     }
 
 }
+
+// Isaac Test Comment
