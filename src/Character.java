@@ -318,9 +318,9 @@ public class Character extends Statblock {
 
         setMaxInventorySize(50);
 
-        Sword rusty = new Sword("Rusty Sword", 1, 0, 0, 0, 0);
+        item_Sword rusty = new item_Sword("Rusty Sword", 1, 0, 0, 0, 0);
         addItemToInventory(rusty);
-        Potion pot = new Potion();
+        item_Potion pot = new item_Potion();
         addItemToInventory(pot);
         addItemToInventory(pot);
         addItemToInventory(pot);
@@ -344,13 +344,13 @@ public class Character extends Statblock {
         setEnergy(0);
         setMaxNumAbilities(20);
 
-        temp[0] = new BasicAttack();
-        temp[1] = new Slash();
-        temp[2] = new Spark();
-        temp[3] = new DualStrike();
-        temp[4] = new BladeDance();
-        temp[5] = new Armageddon();
-        temp[6] = new Smash();
+        temp[0] = new ability_BasicAttack();
+        temp[1] = new ability_Slash();
+        temp[2] = new ability_Spark();
+        temp[3] = new ability_DualStrike();
+        temp[4] = new ability_BladeDance();
+        temp[5] = new ability_Armageddon();
+        temp[6] = new ability_Smash();
         temp[7]= new Heal();
         this.setAbilities(temp);
         setNumOfAbilities();
