@@ -988,7 +988,7 @@ public class Combat extends extraFunctions{
             playerImage[i] = subImage(charSpriteSheet,0 + (52 * i), 144,52,72);
         }
 
-        enemyImage = subImage(charSpriteSheet,0,72,56,72);
+        enemyImage = loadImage("600px-Alpha_Wolf.png");//subImage(charSpriteSheet,0,72,56,72);
 
 
 
