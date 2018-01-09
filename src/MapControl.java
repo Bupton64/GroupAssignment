@@ -354,9 +354,19 @@ public class MapControl extends extraFunctions {
     //////////////////////////////////
 
     boolean npcConvo;
+    int currentNpcInteraction;
+
+    public boolean isNpcConvo() {
+        return npcConvo;
+    }
+
+    public void setNpcConvo(boolean npcConvo) {
+        this.npcConvo = npcConvo;
+    }
 
     public void initNPC(){
         npcConvo = false;
+        currentNpcInteraction = -1;
     }
 
     public boolean npcCheck(Character player, NPC other){
@@ -370,15 +380,22 @@ public class MapControl extends extraFunctions {
 
     public void updateNPC(Character playerMan) {
         for(int i = 0; i < numOfNpc; i++){
-            npcCheck(playerMan,mapNpcs[i]);
+
+            npcConvo = npcCheck(playerMan,mapNpcs[i]);
+            if(npcConvo){
+                currentNpcInteraction = i;
+                break;
+            }
+
         }
+
 
 
 
     }
 
     public void drawNPCInteraction(Graphics2D g){
-
+        mapNpcs[currentNpcInteraction].drawConvo(g);
 
     }
 
