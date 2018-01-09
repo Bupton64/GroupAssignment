@@ -16,7 +16,7 @@ public class forest_B6 extends extraFunctions {
         switch (direction) {
             case 0:
                 //do nothing
-                return true;
+                break;
             case 1:
                 //going up
                 player.setCurrentMapLocation(4);

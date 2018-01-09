@@ -14,8 +14,7 @@ public class forest_A5 extends extraFunctions {
         switch (direction) {
             case 0:
                 //do nothing
-                flicker = false;
-                return true;
+                break;
             case 1:
                 //going up
                 player.setCurrentMapLocation(0);

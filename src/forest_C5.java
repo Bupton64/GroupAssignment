@@ -13,7 +13,7 @@ public class forest_C5 extends extraFunctions {
         switch (direction) {
             case 0:
                 //do nothing
-                return true;
+                break;
             case 1:
                 player.setCurrentMapLocation(8);
                 flicker = false;

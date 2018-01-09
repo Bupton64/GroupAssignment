@@ -28,7 +28,7 @@ public class MapControl extends extraFunctions {
 
     enum Level {Forest, Plains}; //< enum to hold what level the game is on
 
-    Level levelController = Level.Plains;  //< Change from desert to yours to get your map running
+    Level levelController = Level.Forest;  //< Change from desert to yours to get your map running
 
     extraFunctions currentMap; //< Holds current map data
     NPC[] mapNpcs; //< Objects to hold NPC data

@@ -12,13 +12,14 @@ public class forest_C4 extends extraFunctions {
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }
+
     @Override
     public boolean updateMapMovement(Collision collisionPoints, Character player) {
         direction = collisionPoints.edgeCheck(player);
         switch (direction) {
             case 0:
                 //do nothing
-                return true;
+                break;
             case 1:
                 player.setCurrentMapLocation(7);
                 flicker = false;

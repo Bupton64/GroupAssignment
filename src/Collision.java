@@ -79,8 +79,6 @@ public class Collision  {
             lockUp = false;
         }
         if(CollidableObjects[posX][posY]){
-//            playerMan.setMapPosX(playerMan.getMapPosX() + 2);
-//            playerMan.setMapPosY(playerMan.getMapPosY() + 2);
             if(playerMovement.getDirection() == CharacterMovement.Direction.right){
                 playerMan.setMapPosX(playerMan.getMapPosX() - 2);
                 lockUp = true;

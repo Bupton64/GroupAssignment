@@ -14,7 +14,7 @@ public class forest_D8 extends extraFunctions {
         switch (direction) {
             case 0:
                 //do nothing
-                return true;
+                break;
             case 1:
                 player.setCurrentMapLocation(18);
                 flicker = false;
