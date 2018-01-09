@@ -343,7 +343,7 @@ public class Statblock{
     }
 
 
-    public void takeDamage(int damage){
+    public int takeDamage(int damage){
         double reduced=(defense+defenseBonus)/2;
         if(reduced>damage/2){
             reduced=damage/2;
@@ -353,6 +353,7 @@ public class Statblock{
         if(this.currentHP<=0){
             this.isAlive=false;
         }
+        return damage;
     }
 
     public void addEnergy(int energy){
