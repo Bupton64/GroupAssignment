@@ -142,6 +142,10 @@ public class MapControl extends extraFunctions {
                         break;
                     case 21:
                         currentMap = new plains_E9();
+                        mapNpcs[0] = new npc_plains_E9_byBridge();
+                        mapNpcs[1] = new npc_plains_E9_byFence();
+                        mapNpcs[2] = new npc_plains_E9_byField();
+                        numOfNpc = 3;
                         break;
                     case 22:
                         currentMap = new plains_E10();
