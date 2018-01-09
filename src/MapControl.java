@@ -168,10 +168,14 @@ public class MapControl extends extraFunctions {
                     case 28:
                         currentMap = new plains_F8();
                         mapNpcs[0] = new npc_plains_f8_oldman();
-                        numOfNpc = 1;
+                        mapNpcs[1] = new npc_plains_f8_byLog();
+                        numOfNpc = 2;
                         break;
                     case 29:
                         currentMap = new plains_F9();
+                        mapNpcs[0] = new npc_plains_F9_byBottomHouse();
+                        mapNpcs[1] = new npc_plains_F9_byPath();
+                        numOfNpc = 2;
                         break;
                     case 30:
                         currentMap = new plains_F10();
