@@ -1,5 +1,9 @@
 public class monster_Witch extends Monster {
 
+    public monster_Witch() {
+        this.init();
+    }
+
     public void init() {
         Ability[] temp;
         temp = new Ability[4];
@@ -23,6 +27,7 @@ public class monster_Witch extends Monster {
         setUpAbilityNumberI(temp, 0, "Freezing Ray", 5, 1, 1, 1, 1, true, -1, "", true, Ability.AbilityType.damage);
         setUpAbilityNumberI(temp, 1, "Snowblast", 0, 2, 2, 0, 2, true, 2, "", true, Ability.AbilityType.damage);
         setUpAbilityNumberI(temp, 2, "Ice Storm", 0, 4, 0, 0, 4, true, 5, "", true, Ability.AbilityType.damage);
+        this.setAbilities(temp);
     }
 
     public Ability moveChoice(){
