@@ -2,11 +2,13 @@ import java.awt.*;
 import java.math.*;
 import java.util.Arrays;
 /* Parent class for all character objects */
-public class Statblock{
+public class Statblock extends extraFunctions{
     // Members
 
     private String name; //< Name of the object
     private Image sprite; //< The associated sprite
+    private int spriteHeight; //< The height of the sprite png
+    private int spriteWidth; //< The width of the sprite png
     private int attack; //< Influences hit chance and damage
     private int defense; //< Influences damage resistance
     private int strength; //< Influences damage (more so than attack)
@@ -36,6 +38,22 @@ public class Statblock{
 
     // Getters and Setters
 
+
+    public int getSpriteHeight() {
+        return spriteHeight;
+    }
+
+    public void setSpriteHeight(int spriteHeight) {
+        this.spriteHeight = spriteHeight;
+    }
+
+    public int getSpriteWidth() {
+        return spriteWidth;
+    }
+
+    public void setSpriteWidth(int spriteWidth) {
+        this.spriteWidth = spriteWidth;
+    }
 
     public void setNumOfAbilities(int numOfAbilities) {
         this.numOfAbilities = numOfAbilities;

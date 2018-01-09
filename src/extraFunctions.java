@@ -77,7 +77,6 @@ public abstract class extraFunctions {
         g.setFont(new Font(font, Font.PLAIN, size));
         g.drawString(s, (int)x, (int)y);
     }
-
     // This function draws bold text on the screen at (x,y)
     // with Font (font,size)
     public void drawBoldText(double x, double y, String s, String font, int size, Graphics2D g) {
