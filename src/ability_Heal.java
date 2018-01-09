@@ -1,5 +1,5 @@
-public class Heal extends Ability {
-    public Heal() {
+public class ability_Heal extends Ability {
+    public ability_Heal() {
         this.setName("Heal");
         this.setSpeed(0);
         this.setAttack(0);
