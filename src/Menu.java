@@ -7,10 +7,10 @@ public class Menu extends extraFunctions {
 
     Character playerMan= new Character();
     private boolean pause = false;
-    private int cursorPositionY = 440;
-    private boolean invMenu = false;
-    private boolean equMenu = false;
-    private boolean chaMenu = true;
+    public int cursorPositionY = 440;
+    public boolean invMenu = false;
+    public boolean equMenu = false;
+    public boolean chaMenu = true;
     public void initMenu(){
         chaMenu = true;
         cursorPositionY = 440;
@@ -44,12 +44,12 @@ public class Menu extends extraFunctions {
             clearBackground(800, 600,g);
             changeColor(black,g);
             drawBoldText(100, 100, "Add Inventory here",g);
-            drawBoldText(3, 580, "BACK [BACK_SPACE]", "New Roman Times", 15,g);
+            drawBoldText(3, 580, "BACK [ESC]", "New Roman Times", 15,g);
         }else if(equMenu){
             clearBackground(800, 600,g);
             changeColor(black, g);
             drawBoldText(100, 100, "Add Equipment here",g);
-            drawBoldText(3, 580, "BACK [BACK_SPACE]", "New Roman Times", 15,g);
+            drawBoldText(3, 580, "BACK [ESC]", "New Roman Times", 15,g);
 
 
         }
@@ -58,20 +58,13 @@ public class Menu extends extraFunctions {
     }
 
     public void keyPressed(KeyEvent e) {
-
-        if((e.getKeyCode() == KeyEvent.VK_BACK_SPACE)||(e.getKeyCode() == KeyEvent.VK_ESCAPE)&&chaMenu == true){
-            chaMenu = true;
-        }
-
+        
         if((e.getKeyCode() == KeyEvent.VK_DOWN)&&cursorPositionY<510){
             cursorPositionY+=30;
 
         }
         if((e.getKeyCode() == KeyEvent.VK_UP)&&cursorPositionY>450){
             cursorPositionY-=30;
-
-        }
-        if((e.getKeyCode() == KeyEvent.VK_ENTER)&&cursorPositionY==440){
 
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&cursorPositionY==530){

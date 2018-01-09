@@ -119,10 +119,18 @@ public class AdventureMode extends GameEngine {
             menuMode.keyPressed(e);
         }
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            menuCheck = !menuCheck;
-            menuMode.initMenu();
-            state = GameState.MenuMode;
+            if(menuMode.chaMenu) {
+                menuCheck = !menuCheck;
+                menuMode.initMenu();
+                state = GameState.MenuMode;
+            }else{
+                menuMode.chaMenu = true;
+            }
         }
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(state == GameState.MenuMode)&&menuMode.cursorPositionY == 440 ){
+            menuCheck = !menuCheck;
+        }
+
 
     }
 
