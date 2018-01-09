@@ -99,6 +99,7 @@ public class plains_F9 extends  extraFunctions {
         for(int i = 1;i <= 27;i++){
             collisionPoints.addSmallCollisionPoint(i,9,flicker);
         }
+        collisionPoints.addSmallCollisionPoint(25,16,flicker);
 
         // big house left
         collisionPoints.addBoxCollision(0,28,17,15,flicker);
