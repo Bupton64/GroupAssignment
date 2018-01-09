@@ -6,12 +6,12 @@ public class npc_plains_E8_byLake extends  NPC {
 
     npc_plains_E8_byLake( ){
         setName("Sam On");
-        spriteSheet = loadImage("chara1.png");
+        spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,208,288,56,72);
         setHeight(70);
         setWidth(50);
         setMapLocation(20);
-        setMapPos(200,200);
+        setMapPos(700,480);
         setHostile(false);
     }
 
