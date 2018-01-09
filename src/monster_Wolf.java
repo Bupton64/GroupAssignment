@@ -27,6 +27,11 @@ public class monster_Wolf extends Monster {
         setName("Wolf");
         setEnergy(0);
 
+        Image sprite = loadImage("monster_Wolf.png");
+        setSprite(sprite);
+        setSpriteWidth(713);
+        setSpriteHeight(740);
+
         setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage);
         temp[1]= new ability_monster_roar();
         setUpAbilityNumberI(temp, 2, "Rend", 3, 4, 0, 0, 4, true, 4, "", true, Ability.AbilityType.damage);
