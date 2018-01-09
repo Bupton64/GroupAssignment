@@ -35,6 +35,10 @@ public class plains_E9 extends  extraFunctions {
                 return true;
             case 3:
                 // going right
+                if(player.getMapPosY() > 400){
+                    player.setMapPosY(500);
+                    player.setMapPosX(20);
+                }
                 player.setCurrentMapLocation(29);
                 flicker = false;
                 return true;
@@ -61,23 +65,14 @@ public class plains_E9 extends  extraFunctions {
 
 
         //Right small house
-        for (int i = 19;i < 31; i++){
-            collisionPoints.addSmallCollisionPoint(i,20,flicker);
-        }
-        for (int i = 5;i < 20; i++){
-            collisionPoints.addSmallCollisionPoint(19,i,flicker);
-        }
-        for (int i = 5;i < 20; i++){
-            collisionPoints.addSmallCollisionPoint(31,i,flicker);
-        }
+        collisionPoints.addBoxCollision(19,5,12,15,flicker);
+
+        collisionPoints.addBoxCollision(24,1,3,4,flicker);
 
         collisionPoints.addSmallCollisionPoint(15,19,flicker);
         collisionPoints.addSmallCollisionPoint(21,4,flicker);
         collisionPoints.addSmallCollisionPoint(22,3,flicker);
         collisionPoints.addSmallCollisionPoint(23,2,flicker);
-        collisionPoints.addSmallCollisionPoint(24,2,flicker);
-        collisionPoints.addSmallCollisionPoint(25,2,flicker);
-        collisionPoints.addSmallCollisionPoint(26,2,flicker);
         collisionPoints.addSmallCollisionPoint(27,2,flicker);
         collisionPoints.addSmallCollisionPoint(28,3,flicker);
         collisionPoints.addSmallCollisionPoint(29,4,flicker);
@@ -87,38 +82,20 @@ public class plains_E9 extends  extraFunctions {
         collisionPoints.addSmallCollisionPoint(58,29,flicker);
         collisionPoints.addSmallCollisionPoint(58,30,flicker);
         //left small house
-        for (int i = 4;i < 16; i++){
-            collisionPoints.addSmallCollisionPoint(i,20,flicker);
-        }
 
-        for (int i = 5;i < 20; i++){
-            collisionPoints.addSmallCollisionPoint(16,i,flicker);
-        }
-        for (int i = 5;i < 20; i++){
-            collisionPoints.addSmallCollisionPoint(4,i,flicker);
-        }
+        collisionPoints.addBoxCollision(4,5,12,15,flicker);
+        collisionPoints.addBoxCollision(9,1,3,4,flicker);
         collisionPoints.addSmallCollisionPoint(6,4,flicker);
         collisionPoints.addSmallCollisionPoint(7,3,flicker);
         collisionPoints.addSmallCollisionPoint(8,2,flicker);
-        collisionPoints.addSmallCollisionPoint(9,2,flicker);
-        collisionPoints.addSmallCollisionPoint(10,2,flicker);
-        collisionPoints.addSmallCollisionPoint(11,2,flicker);
         collisionPoints.addSmallCollisionPoint(12,2,flicker);
         collisionPoints.addSmallCollisionPoint(13,3,flicker);
         collisionPoints.addSmallCollisionPoint(14,4,flicker);
         collisionPoints.addSmallCollisionPoint(15,5,flicker);
 
         //big house
+        collisionPoints.addBoxCollision(59,29,20,14,flicker);
 
-        for(int i = 30; i < 43;i++){
-            collisionPoints.addSmallCollisionPoint(59,i,flicker);
-        }
-        for(int i = 30; i < 43;i++){
-            collisionPoints.addSmallCollisionPoint(76,i,flicker);
-        }
-        for(int i = 59; i < 76;i++){
-            collisionPoints.addSmallCollisionPoint(i,43,flicker);
-        }
 
 
         //pier
