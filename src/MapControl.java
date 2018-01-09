@@ -341,11 +341,34 @@ public class MapControl extends extraFunctions {
     ///
     //////////////////////////////////
 
-    public void setupNPC(int mapLocation) {
+    boolean npcConvo;
+
+    public void initNPC(){
+        npcConvo = false;
+    }
+
+    public boolean npcCheck(Character player, NPC other){
+        if(player.getMapPosX() >= other.getMapPosX() -20 && player.getMapPosX() <= other.getMapPosX() + 20){
+            if(player.getMapPosY() >= other.getMapPosY() -20 && player.getMapPosY() <= other.getMapPosY() + 20){
+                return true;
+            }
+        }
+            return false;
+    }
+
+    public void updateNPC(Character playerMan) {
+        for(int i = 0; i < numOfNpc; i++){
+            npcCheck(playerMan,mapNpcs[i]);
+        }
+
+
 
     }
 
+    public void drawNPCInteraction(Graphics2D g){
 
+
+    }
 
 }
 

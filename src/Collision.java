@@ -131,6 +131,11 @@ public class Collision  {
         return 0;
     }
 
+
+
+
+
+
     int row;
     int col;
     public void addCollisionPoint( int block,boolean flicker){
