@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class monster_Wolf extends Monster {
 
     public monster_Wolf() {
