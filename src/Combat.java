@@ -384,7 +384,7 @@ public class Combat extends extraFunctions{
     }
 
     public void castAttack(){
-
+            lastAbility.use(player);
             playerDamage = lastAbility.getLastDamage();
             playerDamage = enemy.takeDamage((int)playerDamage);
             castBasicAttack = false;
@@ -393,7 +393,6 @@ public class Combat extends extraFunctions{
     }
 
     public void castBuffSpell(){
-
         lastAbility.use(player);
         playerDamage = lastAbility.getLastDamage();
         castBuff = false;
@@ -416,8 +415,7 @@ public class Combat extends extraFunctions{
                 playerAttackActive = true;
                 if(castBasicAttack) {
                     castAttack();
-                }
-                if(castBuff){
+                }else if(castBuff){
                     castBuffSpell();
                 }
                 if(useItem){
@@ -1178,8 +1176,13 @@ public class Combat extends extraFunctions{
                 menuOption = 1;
             }else {
                 if (player.getEnergy() >= playerAbilities[menuOption].getEnergyCost()) {
-                    lastAbility = playerAbilities[menuOption].use(player);
-                    castBasicAttack = true;
+                    lastAbility = playerAbilities[menuOption];
+                    if(lastAbility.getType() == Ability.AbilityType.damage){
+                        castBasicAttack = true;
+                    }else if( lastAbility.getType() == Ability.AbilityType.buff){
+                        castBuff = true;
+                    }
+
                     menuOption = 0;
                     state = CombatState.playerAttack;
                 }
@@ -1208,7 +1211,7 @@ public class Combat extends extraFunctions{
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(menuOption == 0){
                 state = CombatState.playerTurn;
-                menuOption = 1;
+                menuOption = 2;
             }else {
 
                     lastItemUsed = playerInventory[menuOption-1];
