@@ -42,7 +42,7 @@ public class MapControl extends extraFunctions {
 
 
             for(int i = 0; i < numOfNpc; i++) {
-                drawImage(mapNpcs[0].sprite, mapNpcs[0].getMapPosX(), mapNpcs[0].getMapPosY(), mapNpcs[0].getWidth(), mapNpcs[0].getHeight(), g);
+                drawImage(mapNpcs[i].sprite, mapNpcs[i].getMapPosX(), mapNpcs[i].getMapPosY(), mapNpcs[i].getWidth(), mapNpcs[i].getHeight(), g);
             }
 
 
@@ -60,16 +60,21 @@ public class MapControl extends extraFunctions {
         }
 
         if (swapMap) {
-            for(int i = 0; i < 10;i++){
-                mapNpcs[i] =  new npc_empty();
-            }
-            numOfNpc = 0;
+
             if (!firstMap) {
                 currentMap.setUpCollision(collisionDetector);
-
+                for(int i = 0; i < numOfNpc; i++) {
+                    mapNpcs[i].setUpCollision(collisionDetector, currentMap);
+                }
             }
+
+            for(int i = 0; i < numOfNpc;i++){
+                mapNpcs[i] =  new npc_empty();
+            }
+
             swapMap = false;
             firstMap = false;
+            numOfNpc = 0;
             if (levelController == Level.Plains) {
                 switch ((int) playerMan.getCurrentMapLocation()) {
                     case 0:
@@ -131,7 +136,9 @@ public class MapControl extends extraFunctions {
                         break;
                     case 20:
                         currentMap = new plains_E8();
-
+                        mapNpcs[0] = new npc_plains_E8_byHouse();
+                        mapNpcs[1] = new npc_plains_E8_byLake();
+                        numOfNpc = 2;
                         break;
                     case 21:
                         currentMap = new plains_E9();
@@ -327,7 +334,9 @@ public class MapControl extends extraFunctions {
 
             }
         }
-        setupNPC((int) playerMan.getCurrentMapLocation());
+        for(int i = 0; i < numOfNpc; i++) {
+            mapNpcs[i].setUpCollision(collisionDetector, currentMap);
+        }
         currentMap.setUpCollision(collisionDetector);
     }
     ///////////////////////////////////
@@ -336,17 +345,34 @@ public class MapControl extends extraFunctions {
     ///
     //////////////////////////////////
 
-    public void setupNPC(int mapLocation) {
-        int npcCount = 0;
-        if (levelController == Level.Plains) {
+    boolean npcConvo;
 
-
-        }else if (levelController == Level.Forest){
-
-        }
+    public void initNPC(){
+        npcConvo = false;
     }
 
+    public boolean npcCheck(Character player, NPC other){
+        if(player.getMapPosX() >= other.getMapPosX() -20 && player.getMapPosX() <= other.getMapPosX() + 20){
+            if(player.getMapPosY() >= other.getMapPosY() -20 && player.getMapPosY() <= other.getMapPosY() + 20){
+                return true;
+            }
+        }
+            return false;
+    }
 
+    public void updateNPC(Character playerMan) {
+        for(int i = 0; i < numOfNpc; i++){
+            npcCheck(playerMan,mapNpcs[i]);
+        }
+
+
+
+    }
+
+    public void drawNPCInteraction(Graphics2D g){
+
+
+    }
 
 }
 

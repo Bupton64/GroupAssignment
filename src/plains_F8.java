@@ -6,7 +6,7 @@ public class plains_F8 extends  extraFunctions {
 
 
     int direction;
-    boolean flicker;
+
 
 
     plains_F8() {
@@ -68,21 +68,12 @@ public class plains_F8 extends  extraFunctions {
 
 
         //House
-        for(int i = 35; i < 49;i++){
-            collisionPoints.addSmallCollisionPoint(52,i,flicker);
-            collisionPoints.addSmallCollisionPoint(69,i,flicker);
-        }
-
-        for(int i = 52; i < 69;i++){
-            collisionPoints.addSmallCollisionPoint(i,49,flicker);
-            collisionPoints.addSmallCollisionPoint(i,34,flicker);
-        }
+        collisionPoints.addBoxCollision(52,34,16,15,flicker);
+        collisionPoints.addBoxCollision(58,31,4,3,flicker);
         for(int i = 56; i < 64;i++){
             collisionPoints.addSmallCollisionPoint(i,32,flicker);
         }
-        for(int i = 58; i < 62;i++){
-            collisionPoints.addSmallCollisionPoint(i,31,flicker);
-        }
+
         collisionPoints.addSmallCollisionPoint(55,33,flicker);
         collisionPoints.addSmallCollisionPoint(56,33,flicker);
         collisionPoints.addSmallCollisionPoint(65,33,flicker);
@@ -208,14 +199,11 @@ public class plains_F8 extends  extraFunctions {
         collisionPoints.addSmallCollisionPoint(38,34,flicker);
 
         //Tree Fallen
-        for(int i = 60; i <= 67; i++) {
-            collisionPoints.addSmallCollisionPoint(i, 8, flicker);
-            collisionPoints.addSmallCollisionPoint(i, 5, flicker);
-        }
-        collisionPoints.addSmallCollisionPoint(67,6,flicker);
-        collisionPoints.addSmallCollisionPoint(67,7,flicker);
-        collisionPoints.addSmallCollisionPoint(59,6,flicker);
-        collisionPoints.addSmallCollisionPoint(59,7,flicker);
+
+        collisionPoints.addBoxCollision(59,5,7,3,flicker);
+
+
+//
 
     }
 

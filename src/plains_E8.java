@@ -5,13 +5,7 @@ public class plains_E8 extends  extraFunctions {
 
 
 
-    //<Array to hold all foliage sprites
-    Image map;
-
-
-
     int direction;
-    boolean flicker;
 
 
 
@@ -68,14 +62,9 @@ public class plains_E8 extends  extraFunctions {
     @Override
     public void setUpCollision(Collision collisionPoints){
 
-        for(int i = 2; i < 16;i++){
-            collisionPoints.addSmallCollisionPoint(2,i,flicker);
-            collisionPoints.addSmallCollisionPoint(36,i,flicker);
-        }
-        for(int i = 3; i < 36;i++){
-            collisionPoints.addSmallCollisionPoint(i,16,flicker);
-            collisionPoints.addSmallCollisionPoint(i,1,flicker);
-        }
+        collisionPoints.addBoxCollision(2,2,34,15,flicker);
+        collisionPoints.addSmallCollisionPoint(5,1,flicker);
+        collisionPoints.addSmallCollisionPoint(33,1,flicker);
 
 
         //lake

@@ -16,7 +16,7 @@ import javax.sound.sampled.*;
 public abstract class extraFunctions {
 
     Image backgroundImage;
-
+    boolean flicker;
 
     public boolean updateMapMovement(Collision collisionPoints, Character player){
         return false;
@@ -25,7 +25,9 @@ public abstract class extraFunctions {
 
     }
 
-
+    public boolean isFlicker() {
+        return flicker;
+    }
 
     // My Definition of some colors
     Color black = Color.BLACK;

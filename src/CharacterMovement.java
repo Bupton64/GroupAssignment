@@ -28,6 +28,27 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
     boolean up;
     boolean down;
 
+    boolean lockRight;
+    boolean lockLeft;
+    boolean lockUp;
+    boolean lockDown;
+
+
+    public void setLockRight(boolean lockRight) {
+        this.lockRight = lockRight;
+    }
+
+    public void setLockLeft(boolean lockLeft) {
+        this.lockLeft = lockLeft;
+    }
+
+    public void setLockUp(boolean lockUp) {
+        this.lockUp = lockUp;
+    }
+
+    public void setLockDown(boolean lockDown) {
+        this.lockDown = lockDown;
+    }
 
     Image charSpriteSheet;
     Image[] playerMoveRight;
@@ -48,6 +69,13 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
    }
 
     public void initCharMovement(){
+
+
+        lockRight = false;
+        lockLeft = false;
+        lockUp = false;
+        lockDown = false;
+
         charSpriteSheet = loadImage("charspritesheet.png");
         directionFacing = Direction.right;
         playerMan.setMapPosX(250);
@@ -75,13 +103,13 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
     }
 
-    public void updateCharMovement(double dt, Collision collisionDetector ,boolean[] createCombat, Character playerMan){
+    public void updateCharMovement(double dt,boolean[] createCombat, Character playerMan){
         dx = playerMan.getMapPosX();
         dy = playerMan.getMapPosY();
 
 
-        if (right && !collisionDetector.getLockRight()) {
-
+        if (right && !lockRight ) {
+            directionFacing = Direction.right;
             dx += 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
@@ -90,8 +118,8 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosX(dx);
         }
-        if (left && !collisionDetector.getLockLeft()) {
-
+        if (left && !lockLeft) {
+            directionFacing = Direction.left;
             dx -= 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
@@ -100,12 +128,9 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosX(dx);
         }
-        if (up && !collisionDetector.getLockUp()) {
-
-
-                dy -= 5;
-
-
+        if (up && !lockUp) {
+            directionFacing = Direction.up;
+            dy -= 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
                 monsterDelay++;
@@ -113,16 +138,17 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosY(dy);
         }
-        if (down && !collisionDetector.getLockDown()) {
-
-                dy += 5;
+        if (down && !lockDown) {
+            directionFacing = Direction.down;
+            dy += 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
                 monsterDelay++;
                 walkTimer -= walkDuration;
             }
+            playerMan.setMapPosY(dy);
         }
-        playerMan.setMapPosY(dy);
+
         if(monsterDelay > 6){
            if(Math.random() * 20 > 18) {
                checkCombat(playerMan, createCombat);
@@ -203,18 +229,15 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
 
     public void keyPressed (KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT ){
             right = true;
-            directionFacing = Direction.right;
-        }else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+        }else if(e.getKeyCode() == KeyEvent.VK_LEFT ){
             left = true;
-            directionFacing = Direction.left;
-        }else if(e.getKeyCode() == KeyEvent.VK_UP){
+        }else if(e.getKeyCode() == KeyEvent.VK_UP ){
             up = true;
-            directionFacing = Direction.up;
-        }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+        }else if(e.getKeyCode() == KeyEvent.VK_DOWN ){
             down = true;
-            directionFacing = Direction.down;
+
         }
         if(e.getKeyCode() == KeyEvent.VK_ALT ){
             down = false;

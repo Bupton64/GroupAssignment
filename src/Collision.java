@@ -12,38 +12,12 @@ public class Collision  {
     int posX;
     int posY;
 
-    boolean[] lockRight;
-    boolean[] lockLeft;
-    boolean[] lockUp;
-    boolean[] lockDown;
 
-    public boolean getLockRight() {
-        return lockRight[0];
-    }
-
-    public boolean getLockLeft() {
-        return lockLeft[0];
-    }
-
-    public boolean getLockUp() {
-        return lockUp[0];
-    }
-
-    public boolean getLockDown() {
-        return lockDown[0];
-    }
 
     public void initCollision(){
 
-        lockRight = new boolean[1];
-        lockLeft = new boolean[1];
-        lockDown = new boolean[1];
-        lockUp = new boolean[1];
 
-        lockRight[0] = false;
-        lockLeft[0] = false;
-        lockUp[0] = false;
-        lockDown[0] = false;
+
         posX = 4;
         posY = 4;
         CollidableObjects  = new boolean[80][60];
@@ -62,55 +36,53 @@ public class Collision  {
         posX = (int)playerMan.getMapPosX() / 10;
         posY = (int)playerMan.getMapPosY() / 10;
         if(CollidableObjects[posX+1][posY]){
-            lockRight[0] = true;
+            playerMovement.setLockRight(true);
         }else{
-            lockRight[0] = false;
+            playerMovement.setLockRight(false);
         }
         if(CollidableObjects[posX-1][posY]){
-            lockLeft[0] = true;
+            playerMovement.setLockLeft(true);
         }else{
-            lockLeft[0] = false;
+            playerMovement.setLockLeft(false);
         }
         if(CollidableObjects[posX][posY+1]){
-            lockDown[0] = true;
+            playerMovement.setLockDown(true);
         }else{
-            lockDown[0] = false;
+            playerMovement.setLockDown(false);
         }
         if(CollidableObjects[posX][posY-1]){
-            lockUp[0] = true;
+            playerMovement.setLockUp(true);
         }else{
-            lockUp[0] = false;
+            playerMovement.setLockUp(false);
         }
         if(CollidableObjects[posX][posY]){
-//            playerMan.setMapPosX(playerMan.getMapPosX() + 2);
-//            playerMan.setMapPosY(playerMan.getMapPosY() + 2);
             if(playerMovement.getDirection() == CharacterMovement.Direction.right){
                 playerMan.setMapPosX(playerMan.getMapPosX() - 2);
-                lockUp[0] = true;
-                lockDown[0] = true;
-                lockLeft[0] = true;
-                lockRight[0] = true;
+                playerMovement.setLockRight(true);
+                playerMovement.setLockLeft(true);
+                playerMovement.setLockUp(true);
+                playerMovement.setLockDown(true);
             }
             if(playerMovement.getDirection() == CharacterMovement.Direction.left){
                 playerMan.setMapPosX(playerMan.getMapPosX() + 2);
-                lockUp[0] = true;
-                lockDown[0] = true;
-                lockLeft[0] = true;
-                lockRight[0] = true;
+                playerMovement.setLockRight(true);
+                playerMovement.setLockLeft(true);
+                playerMovement.setLockUp(true);
+                playerMovement.setLockDown(true);
             }
             if(playerMovement.getDirection() == CharacterMovement.Direction.up){
-                playerMan.setMapPosX(playerMan.getMapPosY() + 2);
-                lockUp[0] = true;
-                lockDown[0] = true;
-                lockLeft[0] = true;
-                lockRight[0] = true;
+                playerMan.setMapPosY(playerMan.getMapPosY() + 2);
+                playerMovement.setLockRight(true);
+                playerMovement.setLockLeft(true);
+                playerMovement.setLockUp(true);
+                playerMovement.setLockDown(true);
             }
-            if(playerMovement.getDirection() == CharacterMovement.Direction.up){
-                playerMan.setMapPosX(playerMan.getMapPosY() - 2);
-                lockUp[0] = true;
-                lockDown[0] = true;
-                lockLeft[0] = true;
-                lockRight[0] = true;
+            if(playerMovement.getDirection() == CharacterMovement.Direction.down){
+                playerMan.setMapPosY(playerMan.getMapPosY() - 2);
+                playerMovement.setLockRight(true);
+                playerMovement.setLockLeft(true);
+                playerMovement.setLockUp(true);
+                playerMovement.setLockDown(true);
             }
         }
     }
@@ -124,17 +96,22 @@ public class Collision  {
             player.setMapPosY(10);
             return 2;
         }
-        if(player.getMapPosX() >= 790){
+        if(player.getMapPosX() >= 770){
             player.setMapPosX(20);
             return 3;
 
         }
         if(player.getMapPosX() <= 10){
-            player.setMapPosX(780);
+            player.setMapPosX(760);
             return 4;
         }
         return 0;
     }
+
+
+
+
+
 
     int row;
     int col;

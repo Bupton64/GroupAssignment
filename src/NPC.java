@@ -72,6 +72,21 @@ public class NPC extends extraFunctions{
         return hostile;
     }
 
+    public void setUpCollision(Collision collisionDetector, extraFunctions map){
 
+    }
+
+    public void npcAction(){
+
+
+    }
+
+    public void drawConvo(Graphics2D g){
+
+        changeColor(black, g);
+        drawSolidRectangle(100,400,600,150,g);
+        changeColor(Color.white,g);
+        drawRectangle(100,400,600,150,10,g);
+    }
 
 }

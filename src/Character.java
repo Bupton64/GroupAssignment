@@ -340,7 +340,7 @@ public class Character extends Statblock {
         setMaxHP(40);
         setLevel(1);
         setAlive(true);
-        setName("HeroCunt");
+        setName("Zarxas");
         setEnergy(0);
         setMaxNumAbilities(20);
 
@@ -416,6 +416,7 @@ public class Character extends Statblock {
         setLuck(getLuck() +  (int)(Math.random()*2));
         setMaxHP(getMaxHP() + (int)(Math.random()*11));
         unlockAbility();
+        setCurrentHP(this.getMaxHP());
     }
 
     public boolean checkLevelUp(){

@@ -6,7 +6,6 @@ public class plains_G8 extends  extraFunctions {
 
 
     int direction;
-    boolean flicker;
 
 
     plains_G8() {
