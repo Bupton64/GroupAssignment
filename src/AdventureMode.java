@@ -11,18 +11,17 @@ public class AdventureMode extends GameEngine {
     }
 
 
-    // Menu stuff
-    Menu menuMode;
 
 
-     boolean menuCheck = false;
+
+
 
     //////////////////////////////////
     ///
     /// Game
     ///
     /////////////////////////////////
-
+    Menu menuController;
     MapControl mapController;
     Character playerMan;
     CharacterMovement playerMovement;
@@ -30,16 +29,22 @@ public class AdventureMode extends GameEngine {
     Combat combatMode;
 
     boolean[] createCombat;
+    boolean menuCheck;
 
 
     public void init() {
         setWindowSize(800, 600);
         playerMan = new Character();
+        playerMovement = new CharacterMovement(playerMan);
 
         collisionDetector = new Collision();
-        playerMovement = new CharacterMovement(playerMan);
         mapController = new MapControl();
-        menuMode = new Menu();
+
+
+        menuController = new Menu();
+        menuCheck = false;
+        
+
         createCombat = new boolean[1];
         createCombat[0] = false;
 
@@ -84,8 +89,8 @@ public class AdventureMode extends GameEngine {
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
         } else if (state == GameState.CombatMode) {
             combatMode.paintComponent(mGraphics); //< Draw Combat
-        } else if (state == GameState.MenuMode) {
-            menuMode.drawMenu(mGraphics);
+        } else if (state == GameState.OverworldMenu) {
+            menuController.drawMenu(mGraphics);
 
         }
 
@@ -105,7 +110,7 @@ public class AdventureMode extends GameEngine {
     ///
     ////////////////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, MenuMode}
+    enum GameState {TravelMode, CombatMode, OverworldMenu, MainMenu}
 
     GameState state = GameState.TravelMode;
 
@@ -116,19 +121,19 @@ public class AdventureMode extends GameEngine {
         if (state == GameState.CombatMode) {
             combatMode.keyPressed(e);
         }
-        if(state == GameState.MenuMode){
-            menuMode.keyPressed(e);
+        if(state == GameState.OverworldMenu){
+            menuController.keyPressed(e);
         }
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            if(menuMode.chaMenu) {
+            if(menuController.chaMenu) {
                 menuCheck = !menuCheck;
-                menuMode.initMenu();
-                state = GameState.MenuMode;
+                menuController.initMenu();
+                state = GameState.OverworldMenu;
             }else{
-                menuMode.chaMenu = true;
+                menuController.chaMenu = true;
             }
         }
-        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(state == GameState.MenuMode)&&menuMode.cursorPositionY == 440 ){
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(state == GameState.OverworldMenu)&&menuController.cursorPositionY == 440 ){
             menuCheck = !menuCheck;
         }
 
@@ -145,7 +150,7 @@ public class AdventureMode extends GameEngine {
             playerMovement.keyReleased(e);
             combatMode.keyReleased(e);
         }
-        if(state == GameState.MenuMode){
+        if(state == GameState.OverworldMenu){
             playerMovement.keyReleased(e);
             
         }
