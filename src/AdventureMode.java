@@ -10,28 +10,15 @@ public class AdventureMode extends GameEngine {
         createGame( new AdventureMode(),30);
     }
 
-    //////////////////////////////////
-    ///
-    /// Collision
-    ///
-    /////////////////////////////////
 
 
 
 
-    Collision collisionDetector;
 
-    boolean[] lockRight;
-    boolean[] lockLeft;
-    boolean[] lockUp;
-    boolean[] lockDown;
+// Menu stuff
 
-    public void initLocks(){
-        lockRight = new boolean[1];
-        lockLeft = new boolean[1];
-        lockDown = new boolean[1];
-        lockUp = new boolean[1];
-    }
+
+
     private boolean pause = false;
     private int cursorPosistionY = 440;
     private boolean invMenu = false;
@@ -50,9 +37,11 @@ public class AdventureMode extends GameEngine {
     MapControl mapController;
     Character playerMan;
     CharacterMovement playerMovement;
+    Collision collisionDetector;
     Combat combatMode;
 
     boolean[] createCombat;
+
 
 
     public void init(){
@@ -65,9 +54,8 @@ public class AdventureMode extends GameEngine {
         createCombat = new boolean[1];
         createCombat[0] = false;
 
-        initLocks(); //< For Movement
         playerMovement.initCharMovement();
-        collisionDetector.initCollision(lockRight,lockLeft,lockUp,lockDown);
+        collisionDetector.initCollision();
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
     }
 
@@ -88,8 +76,8 @@ public class AdventureMode extends GameEngine {
             }
             if (state == GameState.TravelMode) {
                 mapController.updateMap(playerMan, collisionDetector);
-                collisionDetector.updateCollision(playerMan, lockRight, lockLeft, lockUp, lockDown, playerMovement);
-                playerMovement.updateCharMovement(dt, lockRight[0], lockLeft[0], lockUp[0], lockDown[0], createCombat, playerMan);
+                collisionDetector.updateCollision(playerMan, playerMovement);
+                playerMovement.updateCharMovement(dt, collisionDetector, createCombat, playerMan);
             } else if (state == GameState.CombatMode) {
                 combatMode.update(dt);
 
@@ -172,9 +160,7 @@ public class AdventureMode extends GameEngine {
             playerMovement.keyPressed(e);
         }
         if(state == GameState.CombatMode){
-
             combatMode.keyPressed(e);
-
         }
 
 

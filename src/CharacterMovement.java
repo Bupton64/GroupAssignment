@@ -75,12 +75,12 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
     }
 
-    public void updateCharMovement(double dt, boolean lockRight, boolean lockLeft, boolean lockUp, boolean lockDown,boolean[] createCombat, Character playerMan){
+    public void updateCharMovement(double dt, Collision collisionDetector ,boolean[] createCombat, Character playerMan){
         dx = playerMan.getMapPosX();
         dy = playerMan.getMapPosY();
 
 
-        if (right && !lockRight) {
+        if (right && !collisionDetector.getLockRight()) {
 
             dx += 5;
             walkTimer += dt;
@@ -90,7 +90,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosX(dx);
         }
-        if (left && !lockLeft) {
+        if (left && !collisionDetector.getLockLeft()) {
 
             dx -= 5;
             walkTimer += dt;
@@ -100,7 +100,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosX(dx);
         }
-        if (up && !lockUp) {
+        if (up && !collisionDetector.getLockUp()) {
 
 
                 dy -= 5;
@@ -113,7 +113,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosY(dy);
         }
-        if (down && !lockDown) {
+        if (down && !collisionDetector.getLockDown()) {
 
                 dy += 5;
             walkTimer += dt;

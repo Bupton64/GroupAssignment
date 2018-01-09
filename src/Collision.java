@@ -12,7 +12,33 @@ public class Collision  {
     int posX;
     int posY;
 
-    public void initCollision(boolean[] lockRight, boolean[] lockLeft, boolean[] lockUp, boolean[] lockDown){
+    boolean[] lockRight;
+    boolean[] lockLeft;
+    boolean[] lockUp;
+    boolean[] lockDown;
+
+    public boolean getLockRight() {
+        return lockRight[0];
+    }
+
+    public boolean getLockLeft() {
+        return lockLeft[0];
+    }
+
+    public boolean getLockUp() {
+        return lockUp[0];
+    }
+
+    public boolean getLockDown() {
+        return lockDown[0];
+    }
+
+    public void initCollision(){
+
+        lockRight = new boolean[1];
+        lockLeft = new boolean[1];
+        lockDown = new boolean[1];
+        lockUp = new boolean[1];
 
         lockRight[0] = false;
         lockLeft[0] = false;
@@ -31,7 +57,7 @@ public class Collision  {
 
     }
 
-    public void updateCollision(Character playerMan, boolean[] lockRight, boolean[] lockLeft,boolean[] lockUp ,boolean[] lockDown,CharacterMovement playerMovement) {
+    public void updateCollision(Character playerMan,CharacterMovement playerMovement) {
 
         posX = (int)playerMan.getMapPosX() / 10;
         posY = (int)playerMan.getMapPosY() / 10;
