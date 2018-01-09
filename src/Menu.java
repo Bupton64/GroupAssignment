@@ -16,7 +16,7 @@ public class Menu extends extraFunctions {
         if(chaMenu) {
             clearBackground(800, 600,g);
             changeColor(black,g);
-            // drawBoldText(100, 100, Integer.toString(cursorPosistionY));
+            //drawBoldText(100, 100, Integer.toString(cursorPositionY));
             drawBoldText(650, 450, "RESUME", "New Roman Times", 20, g);
             drawBoldText(650, 480, "INVENTORY", "New Roman Times", 20, g);
             drawBoldText(650, 510, "EQUIPMENT", "New Roman Times", 20, g);

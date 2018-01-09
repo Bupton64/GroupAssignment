@@ -351,11 +351,11 @@ public class Character extends Statblock {
         temp[4] = new ability_BladeDance();
         temp[5] = new ability_Armageddon();
         temp[6] = new ability_Smash();
-<<<<<<< HEAD
+
         //temp[7]= new Heal();
-=======
+
         temp[7]= new ability_Heal();
->>>>>>> 4c018c752cc9412eda620318e572a443ae5e4123
+
         this.setAbilities(temp);
         setNumOfAbilities();
         sortAbilities();
