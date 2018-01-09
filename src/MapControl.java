@@ -42,7 +42,7 @@ public class MapControl extends extraFunctions {
 
 
             for(int i = 0; i < numOfNpc; i++) {
-                drawImage(mapNpcs[0].sprite, mapNpcs[0].getMapPosX(), mapNpcs[0].getMapPosY(), mapNpcs[0].getWidth(), mapNpcs[0].getHeight(), g);
+                drawImage(mapNpcs[i].sprite, mapNpcs[i].getMapPosX(), mapNpcs[i].getMapPosY(), mapNpcs[i].getWidth(), mapNpcs[i].getHeight(), g);
             }
 
 
