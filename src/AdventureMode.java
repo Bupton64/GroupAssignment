@@ -15,7 +15,7 @@ public class AdventureMode extends GameEngine {
     Menu menuMode;
 
 
-    private boolean menuCheck = false;
+     boolean menuCheck = false;
 
     //////////////////////////////////
     ///
@@ -35,6 +35,7 @@ public class AdventureMode extends GameEngine {
     public void init() {
         setWindowSize(800, 600);
         playerMan = new Character();
+
         collisionDetector = new Collision();
         playerMovement = new CharacterMovement(playerMan);
         mapController = new MapControl();

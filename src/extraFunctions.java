@@ -46,6 +46,11 @@ public abstract class extraFunctions {
         g.clearRect(0, 0, width, height);
     }
 
+    public void changeBackgroundColor(Color c, Graphics2D g) {
+        // Set background colour
+        g.setBackground(c);
+    }
+
     // Changes the drawing Color to the color c
     public void changeColor(Color c,Graphics g) {
         // Set colour
