@@ -58,7 +58,7 @@ public class Menu extends extraFunctions {
     }
 
     public void keyPressed(KeyEvent e) {
-        
+
         if((e.getKeyCode() == KeyEvent.VK_DOWN)&&cursorPositionY<510){
             cursorPositionY+=30;
 

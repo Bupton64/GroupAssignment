@@ -143,7 +143,10 @@ public class AdventureMode extends GameEngine {
         if (state == GameState.CombatMode) {
             playerMovement.keyReleased(e);
             combatMode.keyReleased(e);
-
+        }
+        if(state == GameState.MenuMode){
+            playerMovement.keyReleased(e);
+            
         }
 
 
