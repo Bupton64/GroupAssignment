@@ -40,12 +40,12 @@ public class Menu extends extraFunctions {
             clearBackground(800, 600,g);
             changeColor(black,g);
             drawBoldText(100, 100, "Add Inventory here",g);
-            drawBoldText(3, 580, "BACK [ESC]", "New Roman Times", 15,g);
+            drawBoldText(3, 580, "BACK [BACK_SPACE]", "New Roman Times", 15,g);
         }else if(equMenu){
             clearBackground(800, 600,g);
             changeColor(black, g);
             drawBoldText(100, 100, "Add Equipment here",g);
-            drawBoldText(3, 580, "BACK [ESC]", "New Roman Times", 15,g);
+            drawBoldText(3, 580, "BACK [BACK_SPACE]", "New Roman Times", 15,g);
 
 
         }
@@ -55,33 +55,30 @@ public class Menu extends extraFunctions {
 
     public void keyPressed(KeyEvent e) {
 
-        if(e.getKeyCode() == KeyEvent.VK_ESCAPE&&chaMenu == true){
+        if((e.getKeyCode() == KeyEvent.VK_BACK_SPACE)||(e.getKeyCode() == KeyEvent.VK_ESCAPE)&&chaMenu == true){
             chaMenu = true;
         }
-        if(e.getKeyCode() == KeyEvent.VK_ESCAPE&&chaMenu == false){
-            chaMenu = true;
-        }
-        if(pause&&(e.getKeyCode() == KeyEvent.VK_DOWN)&&cursorPositionY<510){
+
+        if((e.getKeyCode() == KeyEvent.VK_DOWN)&&cursorPositionY<510){
             cursorPositionY+=30;
 
         }
-        if(pause&&(e.getKeyCode() == KeyEvent.VK_UP)&&cursorPositionY>450){
+        if((e.getKeyCode() == KeyEvent.VK_UP)&&cursorPositionY>450){
             cursorPositionY-=30;
 
         }
-        if(pause&&(e.getKeyCode() == KeyEvent.VK_ENTER)&&cursorPositionY==440){
-            pause = !pause;
+        if((e.getKeyCode() == KeyEvent.VK_ENTER)&&cursorPositionY==440){
 
         }
-        if(pause&&(e.getKeyCode() == KeyEvent.VK_ENTER)&&cursorPositionY==530){
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&cursorPositionY==530){
             System.exit(23);
         }
-        if(pause&&(e.getKeyCode() == KeyEvent.VK_ENTER)&&cursorPositionY==470){
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&cursorPositionY==470){
             invMenu = true;
             equMenu = false;
             chaMenu = false;
         }
-        if(pause&&(e.getKeyCode() == KeyEvent.VK_ENTER)&&cursorPositionY==500){
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&cursorPositionY==500){
             equMenu = true;
             invMenu = false;
             chaMenu = false;
