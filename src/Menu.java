@@ -11,6 +11,10 @@ public class Menu extends extraFunctions {
     private boolean invMenu = false;
     private boolean equMenu = false;
     private boolean chaMenu = true;
+    public void initMenu(){
+        chaMenu = true;
+        cursorPositionY = 440;
+    }
 
     public void drawMenu(Graphics2D g) {
         if(chaMenu) {

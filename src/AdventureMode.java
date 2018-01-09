@@ -120,6 +120,7 @@ public class AdventureMode extends GameEngine {
         }
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             menuCheck = !menuCheck;
+            menuMode.initMenu();
             state = GameState.MenuMode;
         }
 
