@@ -882,6 +882,8 @@ public class Combat extends extraFunctions{
     double walkTimer;
     double walkDuration;
 
+    int currentGold;
+
     public void initLootScreen(){
         right = false;
 
@@ -891,6 +893,8 @@ public class Combat extends extraFunctions{
 
         walkTimer = 0;
         walkDuration = 0.16;
+
+        currentGold = player.getGpTotal();
     }
 
 
@@ -932,7 +936,7 @@ public class Combat extends extraFunctions{
             changeColor(purple,g);
             drawBoldText(570,210,"+" + enemy.getXPGain() + " EXP","Times New Roman", 20,g);
             changeColor(yellow,g);
-            drawBoldText(570,190,"+" + enemy.randomGold() + " GOLD","Times New Roman",20,g);
+            drawBoldText(570,190,"+" + (player.getGpTotal() - currentGold) + " GOLD","Times New Roman",20,g);
 
         }
         if(right){
