@@ -60,19 +60,21 @@ public class MapControl extends extraFunctions {
         }
 
         if (swapMap) {
-            for(int i = 0; i < numOfNpc;i++){
-                mapNpcs[i] =  new npc_empty();
-            }
-            numOfNpc = 0;
+
             if (!firstMap) {
+                currentMap.setUpCollision(collisionDetector);
                 for(int i = 0; i < numOfNpc; i++) {
                     mapNpcs[i].setUpCollision(collisionDetector, currentMap);
                 }
-                currentMap.setUpCollision(collisionDetector);
-
             }
+
+            for(int i = 0; i < numOfNpc;i++){
+                mapNpcs[i] =  new npc_empty();
+            }
+
             swapMap = false;
             firstMap = false;
+            numOfNpc = 0;
             if (levelController == Level.Plains) {
                 switch ((int) playerMan.getCurrentMapLocation()) {
                     case 0:
