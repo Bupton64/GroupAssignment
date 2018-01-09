@@ -6,7 +6,6 @@ public class plains_F12 extends  extraFunctions {
 
 
     int direction;
-    boolean flicker;
 
 
     plains_F12() {

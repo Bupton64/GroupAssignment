@@ -65,6 +65,9 @@ public class MapControl extends extraFunctions {
             }
             numOfNpc = 0;
             if (!firstMap) {
+                for(int i = 0; i < numOfNpc; i++) {
+                    mapNpcs[i].setUpCollision(collisionDetector, currentMap);
+                }
                 currentMap.setUpCollision(collisionDetector);
 
             }
@@ -327,7 +330,9 @@ public class MapControl extends extraFunctions {
 
             }
         }
-        setupNPC((int) playerMan.getCurrentMapLocation());
+        for(int i = 0; i < numOfNpc; i++) {
+            mapNpcs[i].setUpCollision(collisionDetector, currentMap);
+        }
         currentMap.setUpCollision(collisionDetector);
     }
     ///////////////////////////////////
@@ -337,13 +342,7 @@ public class MapControl extends extraFunctions {
     //////////////////////////////////
 
     public void setupNPC(int mapLocation) {
-        int npcCount = 0;
-        if (levelController == Level.Plains) {
 
-
-        }else if (levelController == Level.Forest){
-
-        }
     }
 
 

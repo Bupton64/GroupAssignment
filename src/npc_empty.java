@@ -10,6 +10,15 @@ public class npc_empty extends NPC {
 
     }
 
+    @Override
+    public void setUpCollision(Collision collisionDetector,extraFunctions map){
+
+    }
+
+    @Override
+    public void npcAction(){
+
+    }
 }
 
 // Isaac Test Comment

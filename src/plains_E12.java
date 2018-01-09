@@ -6,8 +6,6 @@ public class plains_E12 extends  extraFunctions {
 
 
     int direction;
-    boolean flicker;
-
 
     plains_E12() {
         backgroundImage= loadImage("plains_path_vert3.png");

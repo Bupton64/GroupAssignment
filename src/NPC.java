@@ -72,6 +72,14 @@ public class NPC extends extraFunctions{
         return hostile;
     }
 
+    public void setUpCollision(Collision collisionDetector, extraFunctions map){
+
+    }
+
+    public void npcAction(){
+
+    }
+
 
 
 }

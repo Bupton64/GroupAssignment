@@ -5,13 +5,7 @@ public class plains_E8 extends  extraFunctions {
 
 
 
-    //<Array to hold all foliage sprites
-    Image map;
-
-
-
     int direction;
-    boolean flicker;
 
 
 
