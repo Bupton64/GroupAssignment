@@ -43,7 +43,7 @@ public class AdventureMode extends GameEngine {
 
         menuController = new Menu();
         menuCheck = false;
-        
+
 
         createCombat = new boolean[1];
         createCombat[0] = false;
