@@ -28,7 +28,7 @@ public class MapControl extends extraFunctions {
 
     enum Level {Forest, Plains}; //< enum to hold what level the game is on
 
-    Level levelController = Level.Forest;  //< Change from desert to yours to get your map running
+    Level levelController = Level.Plains;  //< Change from desert to yours to get your map running
 
     extraFunctions currentMap; //< Holds current map data
     NPC[] mapNpcs; //< Objects to hold NPC data
@@ -60,7 +60,7 @@ public class MapControl extends extraFunctions {
         }
 
         if (swapMap) {
-            for(int i = 0; i < 10;i++){
+            for(int i = 0; i < numOfNpc;i++){
                 mapNpcs[i] =  new npc_empty();
             }
             numOfNpc = 0;

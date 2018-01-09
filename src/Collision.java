@@ -119,13 +119,13 @@ public class Collision  {
             player.setMapPosY(10);
             return 2;
         }
-        if(player.getMapPosX() >= 790){
+        if(player.getMapPosX() >= 770){
             player.setMapPosX(20);
             return 3;
 
         }
         if(player.getMapPosX() <= 10){
-            player.setMapPosX(780);
+            player.setMapPosX(760);
             return 4;
         }
         return 0;
