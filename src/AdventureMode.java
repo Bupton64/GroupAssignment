@@ -130,7 +130,7 @@ public class AdventureMode extends GameEngine {
         if (state == GameState.CombatMode) {
             combatMode.keyPressed(e);
         }
-        
+
 
 
         if(state == GameState.OverWorldMenu){

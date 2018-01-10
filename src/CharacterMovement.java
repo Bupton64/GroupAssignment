@@ -77,9 +77,9 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
         lockDown = false;
 
         charSpriteSheet = loadImage("charspritesheet.png");
-        directionFacing = Direction.right;
+        directionFacing = Direction.down;
         playerMan.setMapPosX(250);
-        playerMan.setMapPosY(250);
+        playerMan.setMapPosY(210);
         playerMoveRight = new Image[3];
         playerMoveLeft = new Image[3];
         playerMoveDown = new Image[3];
