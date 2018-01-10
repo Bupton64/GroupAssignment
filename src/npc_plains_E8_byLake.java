@@ -27,7 +27,8 @@ public class npc_plains_E8_byLake extends  NPC {
 
     public void drawConvo(Graphics2D g, String playerName){
         super.drawConvo(g,playerName);
-        drawText(110,450,"Whats up kid, want to buy some PHPSTORM", "Times New Roman",20,g);
+        drawText(110,450,"Man, that Wizard up North is an interesting fellow... I just hope he's", "Times New Roman",20,g);
+        drawText(110,475,"watching over us.", "Times New Roman",20,g);
     }
 
 

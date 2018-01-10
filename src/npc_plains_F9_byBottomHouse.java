@@ -27,7 +27,7 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
     public void drawConvo(Graphics2D g, String playerName){
         super.drawConvo(g,playerName);
-        drawText(110,450,"Huh... you found me.... woopty dooo....", "Times New Roman",20,g);
+        drawText(110,450,"Huh... you found me... woopty dooo...", "Times New Roman",20,g);
     }
 
 
