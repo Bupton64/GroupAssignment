@@ -953,6 +953,50 @@ public class Combat extends extraFunctions{
 
     /////////////////////////////////////////
     ///
+    ///  Finding an Opponent
+    ///
+    ////////////////////////////////////////
+
+    double roll;
+
+    public void randomMonster(){
+
+        roll = Math.random() * 10;
+
+        switch(player.getLevel()){
+            case 1:
+                enemy = new monster_Goblin();
+                break;
+            case 2:
+                if(roll > 5){
+                    enemy = new monster_Goblin();
+                }else{
+                    enemy = new monster_Wolf();
+                }
+                break;
+            case 3:
+                if(roll > 8){
+                    enemy = new monster_Goblin();
+                }else if(roll > 4){
+                    enemy = new monster_Wolf();
+                }else{
+                    enemy = new monster_Witch();
+                }
+                break;
+            default :
+                enemy = new monster_Witch();
+        }
+
+
+
+
+
+
+    }
+
+
+    /////////////////////////////////////////
+    ///
     ///  Game
     ///
     ////////////////////////////////////////
@@ -970,7 +1014,7 @@ public class Combat extends extraFunctions{
         playerImage = new Image[3];
         player.setCombatPosX(150);
         player.setCombatPosY(200);
-        enemy = new monster_Goblin();
+        randomMonster();
         enemy.setCombatPosX(600);
         enemy.setCombatPosY(200);
         player.resetBonuses();
