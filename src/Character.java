@@ -14,7 +14,7 @@ public class Character extends Statblock {
     private int maxInventorySize; //< Maximum size of the players inventory.
     private double currentMapLocation; //< Determines what map number the player is currently on
     private Level currentLevel; //< Determines what level the player is on
-    private boolean combatActive;
+    private boolean combatActive; //< Determins whether the character is in combat.
 
     public int getInventorySize(){
         int count=0;
@@ -313,6 +313,8 @@ public class Character extends Statblock {
 
     public void init(){
 
+        // Memory initialisation
+
         Ability [] temp = new Ability[20];
         for(int i=0; i<20; i++){
             temp[i] = new Ability();
@@ -329,14 +331,38 @@ public class Character extends Statblock {
 
         setMaxInventorySize(50);
 
-        item_Sword rusty = new item_Sword("Rusty Sword", 1, 0, 0, 0, 0);
+        //< Set up starting Inventory
+
+        item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon);
         addItemToInventory(rusty);
+        equipItem(rusty);
+
+        item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head);
+        addItemToInventory(ragged);
+        equipItem(ragged);
+
+        item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand);
+        addItemToInventory(buckler);
+        equipItem(buckler);
+
+        item_Equipment clothShoes = new item_Equipment("Cloth Shoes", 0, 0, 0, 0, 0, Item.Slot.feet);
+        addItemToInventory(clothShoes);
+        equipItem(clothShoes);
+
+        item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 0, 0, Item.Slot.chest);
+        addItemToInventory(leatherJack);
+        equipItem(leatherJack);
+
+        item_Equipment ironSword = new item_Equipment("Iron Sword", 2, 0, 0, 0, 0, Item.Slot.weapon);
+        addItemToInventory(ironSword);
+
+
         item_Potion pot = new item_Potion();
         addItemToInventory(pot);
         addItemToInventory(pot);
         addItemToInventory(pot);
-        equipItem(rusty);
-        System.out.println();
+
+        //< Set up initial Stats
 
         combatActive = false;
         setAttack(5);
@@ -353,8 +379,10 @@ public class Character extends Statblock {
         setAlive(true);
         setName("Zarxas");
         setEnergy(0);
-        setMaxNumAbilities(20);
 
+        //< Set up the ability list (Needs all abilities, check unlockAbility to make sure character gains access)
+
+        setMaxNumAbilities(20);
         temp[0] = new ability_BasicAttack();
         temp[1] = new ability_Slash();
         temp[2] = new ability_Spark();
@@ -364,15 +392,18 @@ public class Character extends Statblock {
         temp[6] = new ability_Smash();
         temp[7] = new ability_Heal();
         temp[8] = new ability_IronSkin();
-
         this.setAbilities(temp);
         setNumOfAbilities();
         sortAbilities();
+
+        //< Load the characters combat sprite
 
         Image sprite = loadImage("combatCharacter.png");
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);
+
+        // Test Functions
         //setXPTotal(110000); //< TESTERS
         //checkLevelUp(); //< Tester
     }
