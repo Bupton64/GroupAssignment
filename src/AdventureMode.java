@@ -77,24 +77,29 @@ public class AdventureMode extends GameEngine {
 
     @Override
     public void paintComponent() {
-        clearBackground(800, 600);
-        changeBackgroundColor(white);
+
         if (state == GameState.TravelMode) {
+            clearBackground(800, 600);
+            changeBackgroundColor(white);
             mapController.drawMap(mGraphics); //< Draw the Map
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
         } else if (state == GameState.CombatMode) {
+            clearBackground(800, 600);
+            changeBackgroundColor(white);
             combatMode.paintComponent(mGraphics); //< Draw Combat
         } else if (state == GameState.MenuMode) {
+            clearBackground(800, 600);
+            changeBackgroundColor(blue);
             menuMode.drawMenu(mGraphics);
 
         }
 
 
         //Debug Lines Remove on your version
-        changeColor(white);
-        drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
-        drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
-        drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
+       //changeColor(white);
+        //drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
+        //drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
+        //drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
 
 
     }
