@@ -1,5 +1,7 @@
 public class Credits {
     // http://www.freepngimg.com/fantasy
-    // Monster art owned by Paizo Publishing
-    // Character combat sprite and portrait art by Intelligent Studios and Nintendo
+
+    //Goblin art from Luminous Arc
+
+    //www.spriters-resource.com
 }

@@ -4,8 +4,8 @@ public class Character extends Statblock {
 
     enum Level {desert, plains, forest, cave, space}
 
-    private int XPTotal; //< Contains the characters current XP total //< Will be moved to Character class
-    private int XPToNextLevel; //< Contains the characters required XPTotal for next level //< Will be moved to character class
+    private int XPTotal; //< Contains the characters current XP total
+    private int XPToNextLevel; //< Contains the characters required XPTotal for next level
     private int gpTotal; //< The characters gold total
     private double mapPosX; //< Characters map position X
     private double mapPosY; //< Characters map position Y
@@ -364,7 +364,7 @@ public class Character extends Statblock {
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);
-        //setXPTotal(10500); //< TESTERS
+        //setXPTotal(110000); //< TESTERS
         //checkLevelUp(); //< Tester
     }
 
