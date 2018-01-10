@@ -20,10 +20,19 @@ public class Menu extends extraFunctions {
     Image characterSprite = loadImage("face.png");
     Image arrow = loadImage("arrowhead.png");
     private boolean pause = false;
-    public int cursorPositionY = 440;
-    public boolean invMenu = false;
-    public boolean equMenu = false;
-    public boolean chaMenu = true;
+    private int cursorPositionY = 440;
+    private boolean invMenu = false;
+    private boolean equMenu = false;
+    private boolean chaMenu = true;
+
+    public boolean isChaMenu() {
+        return chaMenu;
+    }
+
+    public int getCursorPositionY() {
+        return cursorPositionY;
+    }
+
     public void initMenu(){
         chaMenu = true;
         cursorPositionY = 440;
@@ -138,6 +147,8 @@ public class Menu extends extraFunctions {
     }
 
     public void keyPressed(KeyEvent e) {
+
+
       if(chaMenu) {
           if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 510) {
               cursorPositionY += 30;
@@ -167,6 +178,12 @@ public class Menu extends extraFunctions {
       }
 
 
+    }
+
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE && !chaMenu) {
+            chaMenu = true;
+        }
     }
 
 }

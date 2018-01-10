@@ -145,18 +145,11 @@ public class AdventureMode extends GameEngine {
 
         if(state == GameState.OverWorldMenu){
             MenuController.keyPressed(e);
-
-
-
-            if(e.getKeyCode() == KeyEvent.VK_SPACE &&MenuController.cursorPositionY == 440 ){
+            if(e.getKeyCode() == KeyEvent.VK_SPACE && MenuController.getCursorPositionY() == 440 ){
                 stateChanger = 1;
             }
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                if(MenuController.chaMenu) {
-                    stateChanger = 1;
-                }else{
-                    MenuController.chaMenu = true;
-                }
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE && MenuController.isChaMenu()) {
+                stateChanger = 1;
             }
         }
 
@@ -181,6 +174,7 @@ public class AdventureMode extends GameEngine {
         }
         if(state == GameState.OverWorldMenu){
             playerMovement.keyReleased(e);
+            MenuController.keyReleased(e);
             
         }
 

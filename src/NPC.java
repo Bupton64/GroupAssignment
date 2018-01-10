@@ -81,6 +81,12 @@ public class NPC extends extraFunctions{
 
     }
 
+
+
+
+
+
+
     public void drawConvo(Graphics2D g){
 
         changeColor(black, g);
