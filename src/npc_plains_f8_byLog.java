@@ -25,7 +25,10 @@ public class npc_plains_f8_byLog extends  NPC {
 
     }
 
-
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
+        drawText(110,425,"Hey did you hear i got a new job in gold class!", "Times New Roman",20,g);
+    }
 
 
 

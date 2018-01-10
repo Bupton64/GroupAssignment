@@ -30,8 +30,11 @@ public class AdventureMode extends GameEngine {
     Collision collisionDetector;
     Combat combatMode;
 
+    boolean test;
 
     public void init() {
+        test = false;
+
         setWindowSize(800, 600);
         playerMan = new Character();
         playerMovement = new CharacterMovement(playerMan);
@@ -44,6 +47,7 @@ public class AdventureMode extends GameEngine {
 
         playerMovement.initCharMovement();
         collisionDetector.initCollision();
+        mapController.initNPC();
 
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
@@ -75,6 +79,9 @@ public class AdventureMode extends GameEngine {
 
 
            if (state == GameState.TravelMode) {
+
+               test = mapController.updateNPC(playerMan);
+
                mapController.updateMap(playerMan, collisionDetector);
                collisionDetector.updateCollision(playerMan, playerMovement);
               stateChanger = playerMovement.updateCharMovement(dt, playerMan);
@@ -91,8 +98,12 @@ public class AdventureMode extends GameEngine {
         clearBackground(800, 600);
         changeBackgroundColor(white);
         if (state == GameState.TravelMode) {
+
             mapController.drawMap(mGraphics); //< Draw the Map
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
+            if(test){
+                mapController.drawNPCInteraction(mGraphics);
+            }
         } else if (state == GameState.CombatMode) {
             combatMode.paintComponent(mGraphics); //< Draw Combat
         } else if (state == GameState.OverWorldMenu) {

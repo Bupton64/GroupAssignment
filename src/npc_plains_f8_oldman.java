@@ -25,6 +25,12 @@ public class npc_plains_f8_oldman extends  NPC {
 
     }
 
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
+        drawText(110,425,"Hello Dear, nice to meet you!", "Times New Roman",20,g);
+    }
+
+
 
 
 

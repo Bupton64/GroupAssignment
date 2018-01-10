@@ -25,7 +25,10 @@ public class npc_plains_E9_byBridge extends  NPC {
 
     }
 
-
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
+        drawText(110,425,"Yala 420 Blaze it fgt", "Times New Roman",20,g);
+    }
 
 
 

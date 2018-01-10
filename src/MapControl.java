@@ -378,20 +378,17 @@ public class MapControl extends extraFunctions {
             return false;
     }
 
-    public void updateNPC(Character playerMan) {
+    public boolean updateNPC(Character playerMan) {
         for(int i = 0; i < numOfNpc; i++){
-
-            npcConvo = npcCheck(playerMan,mapNpcs[i]);
-            if(npcConvo){
+            if(npcConvo = npcCheck(playerMan,mapNpcs[i])){
                 currentNpcInteraction = i;
-                break;
+                return true;
+            }else{
+                currentNpcInteraction = -1;
             }
 
         }
-
-
-
-
+        return false;
     }
 
     public void drawNPCInteraction(Graphics2D g){

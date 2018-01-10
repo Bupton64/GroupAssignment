@@ -25,7 +25,10 @@ public class npc_plains_F9_byPath extends  NPC {
 
     }
 
-
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
+        drawText(110,425,"I've been weeping for 10 minites.... If only I ate her ass", "Times New Roman",20,g);
+    }
 
 
 
