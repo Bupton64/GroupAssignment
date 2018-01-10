@@ -36,7 +36,7 @@ abstract public class Monster extends Statblock {
 
     // Methods
     public int randomGold(){
-        int gold= (int)Math.random()*(goldMax-goldMin);
+        int gold= (int)(Math.random()*(goldMax-goldMin)) + goldMin;
         gold+=goldMin;
         return gold;
     }

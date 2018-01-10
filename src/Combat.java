@@ -933,9 +933,9 @@ public class Combat extends extraFunctions{
         }else{
             drawImage(chestOpenImage,630,220,130,130,g);
             changeColor(purple,g);
-            drawBoldText(570,210,"+" + (player.getGpTotal() - currentGold) + " EXP","Times New Roman", 20,g);
+            drawBoldText(570,210,"+" + enemy.getXPGain() + " EXP","Times New Roman", 20,g);
             changeColor(yellow,g);
-            drawBoldText(570,190,"+" + enemy.randomGold() + " GOLD","Times New Roman",20,g);
+            drawBoldText(570,190,"+" + (player.getGpTotal() - currentGold) + " GOLD","Times New Roman",20,g);
 
         }
         if(right){
