@@ -59,10 +59,20 @@ public class Menu extends extraFunctions {
             drawBoldText(3, 60, player1.getName(), "Felix Titling", 40,g );
             changeColor(red, g);
             drawBoldText(3, 85,"HP    "+ Integer.toString((int)player1.getCurrentHP()), "Felix Titling", 20,g );
+
+            drawSolidRectangle(110, 72, 100 / player1.getMaxHP() * player1.getCurrentHP(), 9,g);
+            changeColor(white, g);
+            drawRectangle(110, 72, 100 , 9,1, g);
+
             changeColor(green, g);
             drawBoldText(3, 105, "EXP   "+ player1.getXPTotal(), "Felix Titling", 20,g);
-            changeColor(yellow,g);
+            drawSolidRectangle(105+((player1.getXPToNextLevel()/100)), 92,  ((float)(player1.getXPTotal())/(float)(player1.getXPToNextLevel()))*100, 9,g);
+            changeColor(white, g);
+            drawRectangle(105+((player1.getXPToNextLevel()/100)), 92,  100, 9, 1, g);
+            changeColor(cyan,g);
             drawBoldText(3, 125, "LVL   "+ player1.getLevel(), "Felix Titling", 20,g);
+            changeColor(yellow, g);
+            drawBoldText(3, 145, "GD   "+player1.getGpTotal() , "Felix Titling", 20,g);
 
             changeColor(white, g);
             drawBoldText(640, 50, "ATTACK :    "+ player1.getAttack(),"Felix Titling", 17,g );
@@ -87,8 +97,8 @@ public class Menu extends extraFunctions {
 
             drawBoldText(3, 480, "Inventory : " + player1.getInventorySize() +"/"+ player1.getMaxInventorySize(), "Felix Titling", 15, g );
             for(int i = 0; i<player1.getInventorySize(); i++){
-               drawBoldText(3, 50, player1.getInventory()[i].getName(), "Felix Titling", 20, g  );
-               drawBoldText(100, 50," X " +player1.getInventory()[i].getCounter(), "Felix Titling", 20, g );
+               drawBoldText(3, 50+(i*30), player1.getInventory()[i].getName(), "Felix Titling", 20, g  );
+               drawBoldText(100, 50+(i*30)," X " +player1.getInventory()[i].getCounter(), "Felix Titling", 20, g );
             }
 
 
