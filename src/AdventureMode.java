@@ -42,7 +42,7 @@ public class AdventureMode extends GameEngine {
         collisionDetector = new Collision();
         mapController = new MapControl();
 
-        MenuController = new Menu();
+        MenuController = new Menu(playerMan);
         MenuController.initMenu();
 
         playerMovement.initCharMovement();
@@ -108,6 +108,7 @@ public class AdventureMode extends GameEngine {
             combatMode.paintComponent(mGraphics); //< Draw Combat
         } else if (state == GameState.OverWorldMenu) {
             changeBackgroundColor(blue);
+            MenuController.player1 = this.playerMan;
             MenuController.drawMenu(mGraphics);
 
         }
