@@ -25,6 +25,11 @@ public class npc_plains_D8 extends  NPC {
 
     }
 
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
+        drawText(110,450,"I dont even like computer games....", "Times New Roman",20,g);
+    }
+
 
 
 
