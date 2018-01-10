@@ -1,6 +1,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.String;
 
 
 public class Menu extends extraFunctions {
@@ -56,10 +57,10 @@ public class Menu extends extraFunctions {
 
             changeColor(white, g);
             drawBoldText(640, 50, "ATTACK :    "+ player1.getAttack(),"Felix Titling", 17,g );
-            drawBoldText(640, 80, "DEFENCE :   "+ player1.getAttack(),"Felix Titling", 17,g );
-            drawBoldText(640, 110, "STRENGTH : "+ player1.getAttack(),"Felix Titling", 17,g );
-            drawBoldText(640, 140, "SPEED :        "+ player1.getAttack(),"Felix Titling", 17,g );
-            drawBoldText(640, 170, "LUCK :        "+ player1.getAttack(),"Felix Titling", 17,g );
+            drawBoldText(640, 80, "DEFENCE :   "+ player1.getDefense(),"Felix Titling", 17,g );
+            drawBoldText(640, 110, "STRENGTH : "+ player1.getStrength(),"Felix Titling", 17,g );
+            drawBoldText(640, 140, "SPEED :        "+ player1.getSpeed(),"Felix Titling", 17,g );
+            drawBoldText(640, 170, "LUCK :        "+ player1.getLuck(),"Felix Titling", 17,g );
 
             changeColor(white,g);
             drawBoldText(3, 240, "TO NEXT LEVEL : ", "Felix Titling", 15,g);
@@ -74,10 +75,13 @@ public class Menu extends extraFunctions {
             clearBackground(800, 600,g);
             drawImage(background2, 0, 0, g);
             changeColor(white,g);
+
             drawBoldText(3, 480, "Inventory : " + player1.getInventorySize() +"/"+ player1.getMaxInventorySize(), "Felix Titling", 15, g );
             for(int i = 0; i<player1.getInventorySize(); i++){
-              //  drawBoldText(3, 100)
+               drawBoldText(3, 50, player1.getInventory()[i].getName(), "Felix Titling", 20, g  );
+               drawBoldText(100, 50," X " +player1.getInventory()[i].getCounter(), "Felix Titling", 20, g );
             }
+
 
 
 
@@ -89,6 +93,43 @@ public class Menu extends extraFunctions {
             changeColor(white, g);
             drawBoldText(500, 40, "EQUIPMENT","Felix Titling", 40, g);
             drawBoldText(3, 580, "BACK [ESC]", "Felix Titling", 15,g);
+
+            drawBoldText(3, 50, "HEAD :", "Felix Titling", 15,g);
+            drawBoldText(3, 100, "WEAPON :", "Felix Titling", 15,g);
+            drawBoldText(3, 150, "OFFHAND :", "Felix Titling", 15,g);
+            drawBoldText(3, 200, "CHEST :", "Felix Titling", 15,g);
+            drawBoldText(3, 300, "FEET :", "Felix Titling", 15,g);
+            drawBoldText(3, 350, "ACCESSORY :", "Felix Titling", 15,g);
+            drawBoldText(3, 400, "BAG :", "Felix Titling", 15,g);
+
+
+
+            for(int i = 0; i< player1.getEquipmentSize(); i++){
+
+                if(player1.getEquippedItems()[i].getSlot() == Item.Slot.head) {
+                    drawBoldText(100, 50, player1.getEquippedItems()[i].getName(), "Felix Titling", 15, g);
+                }
+                if(player1.getEquippedItems()[i].getSlot() == Item.Slot.weapon) {
+                    drawBoldText(100, 100, player1.getEquippedItems()[i].getName(), "Felix Titling", 15, g);
+                }
+                if(player1.getEquippedItems()[i].getSlot() == Item.Slot.offhand) {
+                    drawBoldText(100, 150, player1.getEquippedItems()[i].getName(), "Felix Titling", 15, g);
+                }
+                if(player1.getEquippedItems()[i].getSlot() == Item.Slot.chest) {
+                    drawBoldText(100, 200, player1.getEquippedItems()[i].getName(), "Felix Titling", 15, g);
+                }
+                if(player1.getEquippedItems()[i].getSlot() == Item.Slot.feet) {
+                    drawBoldText(100, 300, player1.getEquippedItems()[i].getName(), "Felix Titling", 15, g);
+                }
+                if(player1.getEquippedItems()[i].getSlot() == Item.Slot.accessory) {
+                    drawBoldText(100, 350, player1.getEquippedItems()[i].getName(), "Felix Titling", 15, g);
+                }
+                if(player1.getEquippedItems()[i].getSlot() == Item.Slot.bag) {
+                    drawBoldText(100, 400, player1.getEquippedItems()[i].getName(), "Felix Titling", 15, g);
+                }
+
+            }
+            drawBoldText(3, 480, "Equipped : "+player1.getEquipmentSize()+ " / 6", "Felix Titling", 15, g );
 
 
         }

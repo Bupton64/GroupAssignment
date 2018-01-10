@@ -25,6 +25,15 @@ public class Character extends Statblock {
         }
         return count;
     }
+    public int getEquipmentSize(){
+        int count = 0;
+        for(int i = 0; i<6; i++){
+            if( equippedItems[i].getSlot() != null){
+                count++;
+            }
+        }
+        return  count;
+    }
 
     public void setCombatActive(boolean active){
         this.combatActive = active;
