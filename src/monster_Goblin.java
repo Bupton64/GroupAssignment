@@ -29,8 +29,8 @@ public class monster_Goblin extends Monster {
 
         Image sprite = loadImage("monster_Goblin.png");
         setSprite(sprite);
-        setSpriteWidth(618);
-        setSpriteHeight(1000);
+        setSpriteWidth(200);
+        setSpriteHeight(200);
 
         setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage);
         setUpAbilityNumberI(temp, 1, "Slash", 1, 1, -1, 0, 0, false, 1, "", true, Ability.AbilityType.damage);
