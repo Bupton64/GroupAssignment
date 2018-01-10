@@ -26,7 +26,7 @@ public class npc_plains_F9_byPath extends  NPC {
     }
 
     public void drawConvo(Graphics2D g, String playerName){
-        super.drawConvo(g);
+        super.drawConvo(g,playerName);
         drawText(110,450,"I've been weeping for 10 minites.... If only I ate her ass", "Times New Roman",20,g);
     }
 

@@ -25,8 +25,8 @@ public class npc_plains_G7 extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, ){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, String playerMan){
+        super.drawConvo(g,playerMan);
         drawText(110,450,"I'm Batman...", "Times New Roman",20,g);
     }
 
