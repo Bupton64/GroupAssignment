@@ -22,7 +22,6 @@ public class ability_IronSkin extends Ability {
         setLastStatus(null);
         setLastStatusDuration(0);
         setLastDamage(amountToIncrease);
-        System.out.println(user.getDefenseBonus());
         return this;
 
     }
