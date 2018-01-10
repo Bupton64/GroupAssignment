@@ -35,6 +35,8 @@ public abstract class extraFunctions {
     Color pink = Color.PINK;
     Color red = Color.RED;
     Color purple = new Color(128, 0, 128);
+    Color cyan = new Color(0, 200, 250);
+    Color grey = new Color(100, 100, 100);
     Color blue = Color.BLUE;
     Color green = Color.GREEN;
     Color yellow = Color.YELLOW;
