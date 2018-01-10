@@ -30,7 +30,6 @@ public class AdventureMode extends GameEngine {
     Collision collisionDetector;
     Combat combatMode;
 
-    boolean menuCheck;
 
     public void init() {
         setWindowSize(800, 600);
@@ -41,7 +40,7 @@ public class AdventureMode extends GameEngine {
         mapController = new MapControl();
 
         MenuController = new Menu();
-        menuCheck = false;
+        MenuController.initMenu();
 
         playerMovement.initCharMovement();
         collisionDetector.initCollision();
@@ -72,7 +71,7 @@ public class AdventureMode extends GameEngine {
 
         updateGameState();
 
-       if(menuCheck == false) {
+
 
 
            if (state == GameState.TravelMode) {
@@ -81,10 +80,9 @@ public class AdventureMode extends GameEngine {
               stateChanger = playerMovement.updateCharMovement(dt, playerMan);
            } else if (state == GameState.CombatMode) {
               stateChanger =  combatMode.update(dt);
-           }else if(state == GameState.OverWorldMenu){
+           }else if(state == GameState.OverWorldMenu) {
                //add Update later
            }
-       }
     }
 
 
@@ -124,33 +122,39 @@ public class AdventureMode extends GameEngine {
     public void keyPressed(KeyEvent e) {
         if (state == GameState.TravelMode) {
             playerMovement.keyPressed(e);
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                stateChanger = 3;
+            }
         }
+
         if (state == GameState.CombatMode) {
             combatMode.keyPressed(e);
         }
+        
+
+
         if(state == GameState.OverWorldMenu){
             MenuController.keyPressed(e);
-        }
 
 
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            if(MenuController.chaMenu) {  //whats chaMenu? why is it public?
-                menuCheck = !menuCheck;
-                MenuController.initMenu();
-                if(!menuCheck){
+
+            if(e.getKeyCode() == KeyEvent.VK_SPACE &&MenuController.cursorPositionY == 440 ){
+                stateChanger = 1;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                if(MenuController.chaMenu) {
                     stateChanger = 1;
                 }else{
-                    stateChanger = 3;
+                    MenuController.chaMenu = true;
                 }
-            }else{
-                MenuController.chaMenu = true;
-
             }
         }
-        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(state == GameState.OverWorldMenu)&&MenuController.cursorPositionY == 440 ){
-            stateChanger = 1;
-            menuCheck = !menuCheck;
-        }
+
+
+
+
+
+
 
 
     }
