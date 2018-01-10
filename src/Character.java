@@ -14,7 +14,7 @@ public class Character extends Statblock {
     private int maxInventorySize; //< Maximum size of the players inventory.
     private double currentMapLocation; //< Determines what map number the player is currently on
     private Level currentLevel; //< Determines what level the player is on
-    private boolean combatActive; //< Determins whether the character is in combat.
+    private boolean combatActive; //< Determines whether the character is in combat.
 
     public int getInventorySize(){
         int count=0;
@@ -26,6 +26,7 @@ public class Character extends Statblock {
         return count;
     }
 
+<<<<<<< HEAD
     public int getBagSize(){
         int count=0;
         for(int i=0; i<maxInventorySize; i++){
@@ -49,6 +50,8 @@ public class Character extends Statblock {
         return i;
     }
 
+=======
+>>>>>>> 90404c8dec1b7165ba8c6b4a86f3a67b460b628b
     public int getEquipmentSize(){
         int count = 0;
         for(int i = 0; i<6; i++){
@@ -380,11 +383,19 @@ public class Character extends Statblock {
         item_Equipment ironSword = new item_Equipment("Iron Sword", 2, 0, 0, 0, 0, Item.Slot.weapon);
         addItemToInventory(ironSword);
 
+        item_SpeedPotion speed = new item_SpeedPotion();
+        addItemToInventory(speed);
 
         item_Potion pot = new item_Potion();
         addItemToInventory(pot);
         addItemToInventory(pot);
         addItemToInventory(pot);
+
+        //< Check inventory
+
+        for(int i=0; i<maxInventorySize; i++){
+            System.out.println(inventory[i].getName());
+        }
 
         //< Set up initial Stats
 
