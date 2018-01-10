@@ -353,10 +353,8 @@ public class Character extends Statblock {
         temp[4] = new ability_BladeDance();
         temp[5] = new ability_Armageddon();
         temp[6] = new ability_Smash();
-
-        //temp[7]= new Heal();
-
-        temp[7]= new ability_Heal();
+        temp[7] = new ability_Heal();
+        temp[8] = new ability_IronSkin();
 
         this.setAbilities(temp);
         setNumOfAbilities();
