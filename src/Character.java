@@ -362,8 +362,8 @@ public class Character extends Statblock {
 
         Image sprite = loadImage("combatCharacter.png");
         setSprite(sprite);
-        setSpriteWidth(2188);
-        setSpriteHeight(3168);
+        setSpriteWidth(150);
+        setSpriteHeight(150);
     }
 
     public void unlockAbility(){

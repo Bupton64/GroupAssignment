@@ -33,8 +33,8 @@ public class monster_Witch extends Monster {
 
         Image sprite = loadImage("monster_Witch.png");
         setSprite(sprite);
-        setSpriteWidth(554);
-        setSpriteHeight(636);
+        setSpriteWidth(150);
+        setSpriteHeight(150);
     }
 
     public Ability moveChoice(){
