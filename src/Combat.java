@@ -1004,7 +1004,7 @@ public class Combat extends extraFunctions{
 
 
 
-    public void update(double dt) {
+    public int update(double dt) {
         if(!player.isAlive()){
             state = CombatState.playerDeath;
         }
@@ -1018,6 +1018,10 @@ public class Combat extends extraFunctions{
         updateItemMenu(dt);
         updateLootScreen(dt);
         updateLog(dt);
+        if(!player.getCombatActive()){
+            return 1;
+        }
+        return 0;
     }
 
 

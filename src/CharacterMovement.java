@@ -103,7 +103,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
     }
 
-    public void updateCharMovement(double dt,boolean[] createCombat, Character playerMan){
+    public int updateCharMovement(double dt, Character playerMan){
         dx = playerMan.getMapPosX();
         dy = playerMan.getMapPosY();
 
@@ -150,11 +150,12 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
         }
 
         if(monsterDelay > 6){
+            monsterDelay = 0;
            if(Math.random() * 20 > 18) {
-               checkCombat(playerMan, createCombat);
+             return  checkCombat(playerMan);
            }
-          monsterDelay = 0;
         }
+        return 0;
     }
 
     public void drawCharMovement(Graphics g) {
@@ -194,7 +195,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
     ///
     ////////////////////////////////////////////
 
-    public void checkCombat(Character playerMan,boolean[] createCombat){
+    public int checkCombat(Character playerMan){
         switch((int)playerMan.getCurrentMapLocation()){
             case 21:
                 break;
@@ -204,11 +205,12 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
                 break;
             case 29:
                 break;
-            default:
-                createCombat[0] = true;
+            default :
+
                 playerMan.setCombatActive(true);
-                break;
+                return 2;
         }
+        return 0;
 
     }
 

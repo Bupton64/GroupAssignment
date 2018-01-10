@@ -11,11 +11,6 @@ public class AdventureMode extends GameEngine {
     }
 
 
-    // Menu stuff
-    Menu menuMode;
-
-
-     boolean menuCheck = false;
 
     //////////////////////////////////
     ///
@@ -23,53 +18,71 @@ public class AdventureMode extends GameEngine {
     ///
     /////////////////////////////////
 
+    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu}
+    GameState state = GameState.TravelMode;
+
+    int stateChanger;
+
+    Menu MenuController;
     MapControl mapController;
     Character playerMan;
     CharacterMovement playerMovement;
     Collision collisionDetector;
     Combat combatMode;
 
-    boolean[] createCombat;
-
+    boolean menuCheck;
 
     public void init() {
         setWindowSize(800, 600);
         playerMan = new Character();
+        playerMovement = new CharacterMovement(playerMan);
 
         collisionDetector = new Collision();
-        playerMovement = new CharacterMovement(playerMan);
         mapController = new MapControl();
-        menuMode = new Menu();
-        createCombat = new boolean[1];
-        createCombat[0] = false;
+
+        MenuController = new Menu();
+        menuCheck = false;
 
         playerMovement.initCharMovement();
         collisionDetector.initCollision();
+
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
+        stateChanger = 0;
     }
 
+   public void updateGameState(){
+        if(stateChanger != 0) {
+
+            if(stateChanger == 1){
+                state = GameState.TravelMode;
+            }else if(stateChanger == 2){
+                combatMode = new Combat(playerMan);
+                state = GameState.CombatMode;
+            }else if(stateChanger == 3){
+                state = GameState.OverWorldMenu;
+            }
+
+
+            stateChanger = 0;
+        }
+   }
 
     @Override
     public void update(double dt) {
+
+        updateGameState();
+
        if(menuCheck == false) {
-           if (playerMan.getCombatActive()) {
-               if (createCombat[0]) {
 
-                   combatMode = new Combat(playerMan);
-                   createCombat[0] = false;
-               }
 
-               state = GameState.CombatMode;
-           } else {
-               state = GameState.TravelMode;
-           }
            if (state == GameState.TravelMode) {
                mapController.updateMap(playerMan, collisionDetector);
                collisionDetector.updateCollision(playerMan, playerMovement);
-               playerMovement.updateCharMovement(dt, createCombat, playerMan);
+              stateChanger = playerMovement.updateCharMovement(dt, playerMan);
            } else if (state == GameState.CombatMode) {
-               combatMode.update(dt);
-
+              stateChanger =  combatMode.update(dt);
+           }else if(state == GameState.OverWorldMenu){
+               //add Update later
            }
        }
     }
@@ -77,29 +90,25 @@ public class AdventureMode extends GameEngine {
 
     @Override
     public void paintComponent() {
-
+        clearBackground(800, 600);
+        changeBackgroundColor(white);
         if (state == GameState.TravelMode) {
-            clearBackground(800, 600);
-            changeBackgroundColor(white);
             mapController.drawMap(mGraphics); //< Draw the Map
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
         } else if (state == GameState.CombatMode) {
-            clearBackground(800, 600);
-            changeBackgroundColor(white);
             combatMode.paintComponent(mGraphics); //< Draw Combat
-        } else if (state == GameState.MenuMode) {
-            clearBackground(800, 600);
+        } else if (state == GameState.OverWorldMenu) {
             changeBackgroundColor(blue);
-            menuMode.drawMenu(mGraphics);
+            MenuController.drawMenu(mGraphics);
 
         }
 
 
         //Debug Lines Remove on your version
-       //changeColor(white);
-        //drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
-        //drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
-        //drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
+        changeColor(white);
+        drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
+        drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
+        drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
 
 
     }
@@ -110,9 +119,7 @@ public class AdventureMode extends GameEngine {
     ///
     ////////////////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, MenuMode}
 
-    GameState state = GameState.TravelMode;
 
     public void keyPressed(KeyEvent e) {
         if (state == GameState.TravelMode) {
@@ -121,19 +128,27 @@ public class AdventureMode extends GameEngine {
         if (state == GameState.CombatMode) {
             combatMode.keyPressed(e);
         }
-        if(state == GameState.MenuMode){
-            menuMode.keyPressed(e);
+        if(state == GameState.OverWorldMenu){
+            MenuController.keyPressed(e);
         }
+
+
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            if(menuMode.chaMenu) {
+            if(MenuController.chaMenu) {  //whats chaMenu? why is it public?
                 menuCheck = !menuCheck;
-                menuMode.initMenu();
-                state = GameState.MenuMode;
+                MenuController.initMenu();
+                if(!menuCheck){
+                    stateChanger = 1;
+                }else{
+                    stateChanger = 3;
+                }
             }else{
-                menuMode.chaMenu = true;
+                MenuController.chaMenu = true;
+
             }
         }
-        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(state == GameState.MenuMode)&&menuMode.cursorPositionY == 440 ){
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(state == GameState.OverWorldMenu)&&MenuController.cursorPositionY == 440 ){
+            stateChanger = 1;
             menuCheck = !menuCheck;
         }
 
@@ -150,7 +165,7 @@ public class AdventureMode extends GameEngine {
             playerMovement.keyReleased(e);
             combatMode.keyReleased(e);
         }
-        if(state == GameState.MenuMode){
+        if(state == GameState.OverWorldMenu){
             playerMovement.keyReleased(e);
             
         }
