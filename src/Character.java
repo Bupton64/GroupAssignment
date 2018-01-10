@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Character extends Statblock {
 
     enum Level {desert, plains, forest, cave, space}
@@ -359,6 +361,11 @@ public class Character extends Statblock {
         this.setAbilities(temp);
         setNumOfAbilities();
         sortAbilities();
+
+        Image sprite = loadImage("combatCharacter.png");
+        setSprite(sprite);
+        setSpriteWidth(2188);
+        setSpriteHeight(3168);
     }
 
     public void unlockAbility(){
