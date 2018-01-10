@@ -17,7 +17,7 @@ public class monster_Wolf extends Monster {
         setLuck(0);
         setSpeed(2);
         setStrength(2);
-        setXPGain(125);
+        setXPGain(200);
         setGoldMin(60);
         setGoldMax(80);
         setCurrentHP(20);

@@ -17,7 +17,7 @@ public class monster_Witch extends Monster {
         setLuck(0);
         setSpeed(0);
         setStrength(2);
-        setXPGain(250);
+        setXPGain(400);
         setGoldMin(130);
         setGoldMax(160);
         setCurrentHP(20);
