@@ -41,6 +41,9 @@ abstract public class Monster extends Statblock {
         return gold;
     }
 
+    public void init(){
+
+    }
 
 
 }
