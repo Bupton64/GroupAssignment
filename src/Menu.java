@@ -40,7 +40,7 @@ public class Menu extends extraFunctions {
             drawBoldText(3, 85,"HP    "+ Integer.toString((int)playerMan.getCurrentHP()), "Felix Titling", 20,g );
             changeColor(green, g);
             drawBoldText(3, 105, "EXP   "+ playerMan.getXPTotal(), "Felix Titling", 20,g);
-            changeColor(blue,g);
+            changeColor(yellow,g);
             drawBoldText(3, 125, "LVL   "+ playerMan.getLevel(), "Felix Titling", 20,g);
 
             changeColor(white, g);
