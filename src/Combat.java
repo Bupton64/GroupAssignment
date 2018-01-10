@@ -676,6 +676,8 @@ public class Combat extends extraFunctions{
     }
 
 
+
+
     public void drawItemMenu(Graphics2D g){
         changeColor(Color.gray,g);
         drawRectangle(1,401,797,197,4,g);
@@ -685,7 +687,7 @@ public class Combat extends extraFunctions{
         drawText(530,100,"ToolTip", "Times new roman",30,g);
 
         int j = 1;
-        for(int i = 0;i< player.getInventorySize();i++){
+        for(int i = 0;i< player.getBagSize();i++){
            while(playerInventory[i].getSlot() != Item.Slot.bag){
                 i++;
             }
@@ -1287,7 +1289,7 @@ public class Combat extends extraFunctions{
                 menuOption = 2;
             }else {
 
-                    lastItemUsed = playerInventory[menuOption-1];
+                    lastItemUsed = playerInventory[player.SearchBag(menuOption)];
                     menuOption = 0;
                     useItem = true;
                     displayItem = true;
@@ -1295,7 +1297,7 @@ public class Combat extends extraFunctions{
                 }
             }
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
-            if(menuOption < player.getInventorySize()){
+            if(menuOption < player.getBagSize()){
                 menuOption++;
             }else{
                 menuOption = 0;
@@ -1306,7 +1308,7 @@ public class Combat extends extraFunctions{
             if (menuOption > 0) {
                 menuOption--;
             } else {
-                menuOption = player.getInventorySize();
+                menuOption = player.getBagSize();
             }
 
         }

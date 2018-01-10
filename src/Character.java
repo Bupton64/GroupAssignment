@@ -25,6 +25,30 @@ public class Character extends Statblock {
         }
         return count;
     }
+
+    public int getBagSize(){
+        int count=0;
+        for(int i=0; i<maxInventorySize; i++){
+            if(inventory[i].getSlot() == Item.Slot.bag){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int SearchBag(int index){
+        int i;
+        for(i=0; i<maxInventorySize; i++){
+            if(inventory[i].getSlot() == Item.Slot.bag){
+                index--;
+                if(index == 0){
+                    break;
+                }
+            }
+        }
+        return i;
+    }
+
     public int getEquipmentSize(){
         int count = 0;
         for(int i = 0; i<6; i++){
