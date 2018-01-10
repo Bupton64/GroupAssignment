@@ -27,7 +27,7 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
     public void drawConvo(Graphics2D g){
         super.drawConvo(g);
-        drawText(110,425,"Smell ya later d00d", "Times New Roman",20,g);
+        drawText(110,450,"Smell ya later d00d", "Times New Roman",20,g);
     }
 
 

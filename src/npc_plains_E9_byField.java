@@ -27,7 +27,7 @@ public class npc_plains_E9_byField extends  NPC {
 
     public void drawConvo(Graphics2D g){
         super.drawConvo(g);
-        drawText(110,425,"Who let the dogs out", "Times New Roman",20,g);
+        drawText(110,450,"Who let the dogs out", "Times New Roman",20,g);
     }
 
 

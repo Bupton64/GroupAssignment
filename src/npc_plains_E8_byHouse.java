@@ -27,7 +27,7 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     public void drawConvo(Graphics2D g){
         super.drawConvo(g);
-        drawText(110,425,"Hey there I'm Tim Burr. Hi there I am Tim Burr. HI THERE IM TIM BR", "Times New Roman",20,g);
+        drawText(110,450,"Hey there I'm Tim Burr. Hi there I am Tim Burr. HI THERE IM TIM BR", "Times New Roman",20,g);
     }
 
 

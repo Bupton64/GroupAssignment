@@ -214,6 +214,13 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
     }
 
+    public boolean checkStationary(){
+        if(!right && !left && !up && !down){
+            return true;
+        }
+        return false;
+    }
+
 
 
 

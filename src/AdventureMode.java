@@ -30,17 +30,15 @@ public class AdventureMode extends GameEngine {
     Collision collisionDetector;
     Combat combatMode;
 
-    boolean test;
 
     public void init() {
-        test = false;
 
         setWindowSize(800, 600);
         playerMan = new Character();
         playerMovement = new CharacterMovement(playerMan);
 
         collisionDetector = new Collision();
-        mapController = new MapControl();
+        mapController = new MapControl(playerMan);
 
         MenuController = new Menu(playerMan);
         MenuController.initMenu();
@@ -80,9 +78,9 @@ public class AdventureMode extends GameEngine {
 
            if (state == GameState.TravelMode) {
 
-               test = mapController.updateNPC(playerMan);
+              mapController.updateNPC(playerMovement);
 
-               mapController.updateMap(playerMan, collisionDetector);
+               mapController.updateMap(collisionDetector);
                collisionDetector.updateCollision(playerMan, playerMovement);
               stateChanger = playerMovement.updateCharMovement(dt, playerMan);
            } else if (state == GameState.CombatMode) {
@@ -101,14 +99,13 @@ public class AdventureMode extends GameEngine {
 
             mapController.drawMap(mGraphics); //< Draw the Map
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
-            if(test){
-                mapController.drawNPCInteraction(mGraphics);
-            }
+
+            mapController.drawNPCInteraction(mGraphics);
+
         } else if (state == GameState.CombatMode) {
             combatMode.paintComponent(mGraphics); //< Draw Combat
         } else if (state == GameState.OverWorldMenu) {
             changeBackgroundColor(blue);
-            MenuController.player1 = this.playerMan;
             MenuController.drawMenu(mGraphics);
 
         }
@@ -134,6 +131,7 @@ public class AdventureMode extends GameEngine {
     public void keyPressed(KeyEvent e) {
         if (state == GameState.TravelMode) {
             playerMovement.keyPressed(e);
+            mapController.keyPressed(e);
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 stateChanger = 3;
             }

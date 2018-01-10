@@ -5,7 +5,8 @@ import java.awt.event.*;
 public class MapControl extends extraFunctions {
 
 
-    MapControl() {
+    MapControl(Character playerMan) {
+        this.playerMan = playerMan;
         swapMap = true;
         firstMap = true;
         mapNpcs = new NPC[10];
@@ -34,6 +35,8 @@ public class MapControl extends extraFunctions {
     NPC[] mapNpcs; //< Objects to hold NPC data
     int numOfNpc; //<Number of NPC's loaded into map
 
+    Character playerMan;
+
 
 
     public void drawMap(Graphics g) {
@@ -52,7 +55,7 @@ public class MapControl extends extraFunctions {
 
 
 
-    public void updateMap(Character playerMan, Collision collisionDetector) {
+    public void updateMap(Collision collisionDetector) {
 
         if (!firstMap) {
             swapMap = currentMap.updateMapMovement(collisionDetector, playerMan);
@@ -384,22 +387,36 @@ public class MapControl extends extraFunctions {
             return false;
     }
 
-    public boolean updateNPC(Character playerMan) {
-        for(int i = 0; i < numOfNpc; i++){
-            if(npcConvo = npcCheck(playerMan,mapNpcs[i])){
+    public void checkRangeNPC(Character playerMan) {
+        for(int i = 0; i < numOfNpc; i++) {
+            if (npcCheck(playerMan, mapNpcs[i])) {
                 currentNpcInteraction = i;
-                return true;
-            }else{
-                currentNpcInteraction = -1;
+                npcConvo = true;
+                return;
             }
-
         }
-        return false;
+    }
+
+    public void updateNPC(CharacterMovement movement){
+       if(!movement.checkStationary()){
+           currentNpcInteraction = -1;
+           npcConvo = false;
+       }
     }
 
     public void drawNPCInteraction(Graphics2D g){
-        mapNpcs[currentNpcInteraction].drawConvo(g);
+        if(npcConvo) {
+            mapNpcs[currentNpcInteraction].drawConvo(g);
+        }
+    }
 
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(!npcConvo) {
+                checkRangeNPC(playerMan);
+            }
+
+        }
     }
 
 }
