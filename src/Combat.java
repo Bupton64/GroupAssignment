@@ -965,19 +965,41 @@ public class Combat extends extraFunctions{
 
         switch(player.getLevel()){
             case 1:
-                enemy = new monster_Goblin();
-                break;
-            case 2:
-                if(roll > 5){
+                if(roll > 1) {
                     enemy = new monster_Goblin();
                 }else{
                     enemy = new monster_Wolf();
                 }
                 break;
-            case 3:
-                if(roll > 8){
+            case 2:
+                if(roll > 7){
                     enemy = new monster_Goblin();
-                }else if(roll > 4){
+                }else if(roll > 1){
+                    enemy = new monster_Wolf();
+                }else{
+                    enemy = new monster_Witch();
+                }
+                break;
+            case 3:
+                if(roll > 9){
+                    enemy = new monster_Goblin();
+                }else if(roll > 3){
+                    enemy = new monster_Wolf();
+                }else{
+                    enemy = new monster_Witch();
+                }
+                break;
+            case 4:
+                if(roll > 9){
+                    enemy = new monster_Goblin();
+                }else if(roll > 5){
+                    enemy = new monster_Wolf();
+                }else{
+                    enemy = new monster_Witch();
+                }
+                break;
+            case 5:
+                if(roll > 8){
                     enemy = new monster_Wolf();
                 }else{
                     enemy = new monster_Witch();
