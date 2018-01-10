@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class monster_Witch extends Monster {
 
     public monster_Witch() {
@@ -15,7 +17,7 @@ public class monster_Witch extends Monster {
         setLuck(0);
         setSpeed(0);
         setStrength(2);
-        setXPGain(250);
+        setXPGain(400);
         setGoldMin(130);
         setGoldMax(160);
         setCurrentHP(20);
@@ -28,6 +30,11 @@ public class monster_Witch extends Monster {
         setUpAbilityNumberI(temp, 1, "Snowblast", 0, 2, 2, 0, 2, true, 2, "", true, Ability.AbilityType.damage);
         setUpAbilityNumberI(temp, 2, "Ice Storm", 0, 4, 0, 0, 4, true, 5, "", true, Ability.AbilityType.damage);
         this.setAbilities(temp);
+
+        Image sprite = loadImage("monster_Witch.png");
+        setSprite(sprite);
+        setSpriteWidth(200);
+        setSpriteHeight(200);
     }
 
     public Ability moveChoice(){

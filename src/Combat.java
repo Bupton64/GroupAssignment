@@ -933,9 +933,9 @@ public class Combat extends extraFunctions{
         }else{
             drawImage(chestOpenImage,630,220,130,130,g);
             changeColor(purple,g);
-            drawBoldText(570,210,"+" + (player.getGpTotal() - currentGold) + " EXP","Times New Roman", 20,g);
+            drawBoldText(570,210,"+" + enemy.getXPGain() + " EXP","Times New Roman", 20,g);
             changeColor(yellow,g);
-            drawBoldText(570,190,"+" + enemy.randomGold() + " GOLD","Times New Roman",20,g);
+            drawBoldText(570,190,"+" + (player.getGpTotal() - currentGold) + " GOLD","Times New Roman",20,g);
 
         }
         if(right){
@@ -953,6 +953,72 @@ public class Combat extends extraFunctions{
 
     /////////////////////////////////////////
     ///
+    ///  Finding an Opponent
+    ///
+    ////////////////////////////////////////
+
+    double roll;
+
+    public void randomMonster(){
+
+        roll = Math.random() * 10;
+
+        switch(player.getLevel()){
+            case 1:
+                if(roll > 1) {
+                    enemy = new monster_Goblin();
+                }else{
+                    enemy = new monster_Wolf();
+                }
+                break;
+            case 2:
+                if(roll > 7){
+                    enemy = new monster_Goblin();
+                }else if(roll > 1){
+                    enemy = new monster_Wolf();
+                }else{
+                    enemy = new monster_Witch();
+                }
+                break;
+            case 3:
+                if(roll > 9){
+                    enemy = new monster_Goblin();
+                }else if(roll > 3){
+                    enemy = new monster_Wolf();
+                }else{
+                    enemy = new monster_Witch();
+                }
+                break;
+            case 4:
+                if(roll > 9){
+                    enemy = new monster_Goblin();
+                }else if(roll > 5){
+                    enemy = new monster_Wolf();
+                }else{
+                    enemy = new monster_Witch();
+                }
+                break;
+            case 5:
+                if(roll > 8){
+                    enemy = new monster_Wolf();
+                }else{
+                    enemy = new monster_Witch();
+                }
+                break;
+            default :
+                enemy = new monster_Witch();
+        }
+
+
+
+
+
+
+    }
+
+
+    /////////////////////////////////////////
+    ///
     ///  Game
     ///
     ////////////////////////////////////////
@@ -960,7 +1026,7 @@ public class Combat extends extraFunctions{
     Image charSpriteSheet;
     Image[] playerImage;
 
-    Image enemyImage;
+
     Character player;
     Monster enemy;
 
@@ -970,7 +1036,8 @@ public class Combat extends extraFunctions{
         playerImage = new Image[3];
         player.setCombatPosX(150);
         player.setCombatPosY(200);
-        enemy = new monster_Goblin();
+        randomMonster();
+        enemy.init();
         enemy.setCombatPosX(600);
         enemy.setCombatPosY(200);
         player.resetBonuses();
@@ -989,7 +1056,6 @@ public class Combat extends extraFunctions{
             playerImage[i] = subImage(charSpriteSheet,0 + (52 * i), 144,52,72);
         }
 
-        enemyImage = subImage(charSpriteSheet,0,72,56,72);
 
 
 
@@ -1037,18 +1103,18 @@ public class Combat extends extraFunctions{
 
 
         if(state == CombatState.playerTurn){
-            drawImage(enemyImage,enemy.getCombatPosX(),enemy.getCombatPosY(),112,144,g);
+            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
             DrawPlayerTurn(g);
             drawImage(playerImage[0],player.getCombatPosX(),player.getCombatPosY(),112,144,g);
         }else if(state == CombatState.playerAttack){
-            drawImage(enemyImage,enemy.getCombatPosX(),enemy.getCombatPosY(),112,144,g);
+            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
             drawImage(playerImage[0],player.getCombatPosX(),player.getCombatPosY(),112,144,g);
             drawPlayerNamePlate(g);
             drawEnemyNamePlate(g);
             drawLog(g);
             drawPlayerAttack(g);
         }else if(state == CombatState.enemyTurn){
-            drawImage(enemyImage,enemy.getCombatPosX(),enemy.getCombatPosY(),112,144,g);
+            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
             drawImage(playerImage[0],player.getCombatPosX(),player.getCombatPosY(),112,144,g);
             drawPlayerNamePlate(g);
             drawEnemyNamePlate(g);
@@ -1059,7 +1125,7 @@ public class Combat extends extraFunctions{
         }else if(state == CombatState.itemMenu){
             drawItemMenu(g);
         }else if(state == CombatState.run){
-            drawImage(enemyImage,600,200,112,144,g);
+            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
             drawImage(playerImage[0],player.getCombatPosX(),player.getCombatPosY(),112,144,g);
             drawPlayerNamePlate(g);
             drawEnemyNamePlate(g);
@@ -1070,7 +1136,7 @@ public class Combat extends extraFunctions{
             drawLootScreen(g);
             drawLog(g);
         }else if(state == CombatState.playerDeath){
-            drawImage(enemyImage,600,200,112,144,g);
+            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
             changeColor(white,g);
             drawText(240,200,"GAME OVER!", "Times New Roman",60,g);
             drawLog(g);

@@ -17,7 +17,7 @@ public class monster_Wolf extends Monster {
         setLuck(0);
         setSpeed(2);
         setStrength(2);
-        setXPGain(125);
+        setXPGain(200);
         setGoldMin(60);
         setGoldMax(80);
         setCurrentHP(20);
@@ -26,6 +26,11 @@ public class monster_Wolf extends Monster {
         setAlive(true);
         setName("Wolf");
         setEnergy(0);
+
+        Image sprite = loadImage("monster_Wolf.png");
+        setSprite(sprite);
+        setSpriteWidth(200);
+        setSpriteHeight(200);
 
         setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage);
         temp[1]= new ability_monster_roar();

@@ -25,7 +25,10 @@ public class npc_plains_E8_byLake extends  NPC {
 
     }
 
-
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
+        drawText(110,425,"Whats up kid, want to buy some PHPSTORM", "Times New Roman",20,g);
+    }
 
 
 

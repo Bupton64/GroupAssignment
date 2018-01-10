@@ -25,7 +25,10 @@ public class npc_plains_E9_byFence extends  NPC {
 
     }
 
-
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
+        drawText(110,425,"Hello Darkness my old friend", "Times New Roman",20,g);
+    }
 
 
 
