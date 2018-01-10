@@ -364,6 +364,8 @@ public class Character extends Statblock {
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);
+        //setXPTotal(10500); //< TESTERS
+        //checkLevelUp(); //< Tester
     }
 
     public void unlockAbility(){
