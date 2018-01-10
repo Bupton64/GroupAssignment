@@ -6,6 +6,10 @@ import java.awt.event.*;
 public class Menu extends extraFunctions {
 
     Character playerMan= new Character();
+    Image background;
+    Image character;
+    Image menuSprite = loadImage("menuSprite.png");
+    Image characterSprite = loadImage("face.png");
     private boolean pause = false;
     public int cursorPositionY = 440;
     public boolean invMenu = false;
@@ -14,41 +18,45 @@ public class Menu extends extraFunctions {
     public void initMenu(){
         chaMenu = true;
         cursorPositionY = 440;
+        background = subImage(menuSprite, 0, 0, 800, 600);
+        character = subImage(characterSprite, 0, 0, 144, 144);
+
     }
 
     public void drawMenu(Graphics2D g) {
         if(chaMenu) {
             clearBackground(800, 600, g);
             changeBackgroundColor(black, g);
+            drawImage(background , 0, 0, g);
+            drawImage(character , 429, 97, 144, 144, g);
             changeColor(white,g);
-            drawRectangle(0, 0, 400, 105, g);
-            //drawBoldText(100, 100, Integer.toString(cursorPositionY));
-            drawRectangle(620, 420, 179, 179, g);
-            drawBoldText(650, 450, "RESUME", "New Roman Times", 20, g);
-            drawBoldText(650, 480, "INVENTORY", "New Roman Times", 20, g);
-            drawBoldText(650, 510, "EQUIPMENT", "New Roman Times", 20, g);
-            drawBoldText(650, 540, "EXIT", "New Roman Times", 20,g );
-            drawBoldText(3, 595, "MAP: "+playerMan.getCurrentMapLocation(), "New Roman Times", 15,g );
-            drawBoldText(3, 35, playerMan.getName(), "Impact", 40,g );
+            drawBoldText(650, 450, "RESUME", "Felix Titling", 20, g);
+            drawBoldText(650, 480, "INVENTORY", "Felix Titling", 20, g);
+            drawBoldText(650, 510, "EQUIPMENT", "Felix Titling", 20, g);
+            drawBoldText(650, 540, "EXIT", "Felix Titling", 20,g );
 
-            drawBoldText(3, 60,"HP   "+ Integer.toString((int)playerMan.getCurrentHP()), "New Roman Times", 20,g );
+            drawBoldText(3, 60, playerMan.getName(), "Felix Titling", 40,g );
+            changeColor(red, g);
+            drawBoldText(3, 85,"HP    "+ Integer.toString((int)playerMan.getCurrentHP()), "Felix Titling", 20,g );
+            changeColor(green, g);
+            drawBoldText(3, 105, "EXP   "+ playerMan.getXPTotal(), "Felix Titling", 20,g);
+            changeColor(blue,g);
+            drawBoldText(3, 125, "LVL   "+ playerMan.getLevel(), "Felix Titling", 20,g);
 
-            drawBoldText(3, 80, "XP   "+ playerMan.getXPTotal(), "New Roman Times", 20,g);
-            changeColor(green,g);
-            drawBoldText(3, 100, "LVL "+ playerMan.getCurrentLevel(), "New Roman Times", 20,g);
             changeColor(white, g);
-            drawRectangle(1, 458, 200, 62, g);
-            drawBoldText(3, 450, "ATTACK "+ playerMan.getAttack(),"New Roman Times", 17,g );
-            drawBoldText(3+150, 450, "DEFENCE "+ playerMan.getAttack(),"New Roman Times", 17,g );
-            drawBoldText(3, 450+30, "STRENGTH "+ playerMan.getAttack(),"New Roman Times", 17,g );
-            drawBoldText(3+150, 450+30, "SPEED "+ playerMan.getAttack(),"New Roman Times", 17,g );
-            drawBoldText(3, 450+60, "LUCK "+ playerMan.getAttack(),"New Roman Times", 17,g );
+            drawBoldText(640, 50, "ATTACK :    "+ playerMan.getAttack(),"Felix Titling", 17,g );
+            drawBoldText(640, 80, "DEFENCE :   "+ playerMan.getAttack(),"Felix Titling", 17,g );
+            drawBoldText(640, 110, "STRENGTH : "+ playerMan.getAttack(),"Felix Titling", 17,g );
+            drawBoldText(640, 140, "SPEED :        "+ playerMan.getAttack(),"Felix Titling", 17,g );
+            drawBoldText(640, 170, "LUCK :        "+ playerMan.getAttack(),"Felix Titling", 17,g );
 
-            changeColor(green,g);
-            drawBoldText(3, 575, "YOU NEED "+ playerMan.getXPToNextLevel()+" MORE XP TO LVL UP...", "New Roman Times", 15,g);
+            changeColor(white,g);
+            drawBoldText(3, 240, "TO NEXT LEVEL : ", "Felix Titling", 15,g);
+            changeColor(green, g);
+            drawBoldText(140, 240, playerMan.getXPToNextLevel()+" EXP", "Felix Titling", 15, g);
 
 
-            changeColor(yellow,g);
+            changeColor(red,g);
             drawSolidCircle(640, cursorPositionY, 5,g);
         }else if(invMenu){
             clearBackground(800, 600,g);
