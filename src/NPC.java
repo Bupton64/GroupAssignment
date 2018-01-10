@@ -87,7 +87,7 @@ public class NPC extends extraFunctions{
 
 
 
-    public void drawConvo(Graphics2D g){
+    public void drawConvo(Graphics2D g,String playerName){
 
         changeColor(black, g);
         drawSolidRectangle(100,400,600,150,g);
