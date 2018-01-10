@@ -112,6 +112,8 @@ public class MapControl extends extraFunctions {
                         break;
                     case 12:
                         currentMap = new plains_D8();
+                        mapNpcs[0] = new npc_plains_D8();
+                        numOfNpc = 1;
                         break;
                     case 13:
                         currentMap = new plains_D9();
@@ -152,6 +154,8 @@ public class MapControl extends extraFunctions {
                         break;
                     case 23:
                         currentMap = new plains_E11();
+                        mapNpcs[0] = new npc_plains_E11();
+                        numOfNpc = 1;
                         break;
                     case 24:
                         currentMap = new plains_E12();
@@ -188,6 +192,8 @@ public class MapControl extends extraFunctions {
                         break;
                     case 33:
                         currentMap = new plains_G7();
+                        mapNpcs[0] = new npc_plains_G7();
+                        numOfNpc = 1;
                         break;
                     case 34:
                         currentMap = new plains_G8();

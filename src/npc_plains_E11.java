@@ -2,16 +2,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class npc_plains_f8_byLog extends  NPC {
+public class npc_plains_E11 extends  NPC {
 
-    npc_plains_f8_byLog( ){
-        setName("Link");
-        spriteSheet = loadImage("chara3.png");
-        sprite = subImage(spriteSheet,520,0,56,72);
+    npc_plains_E11( ){
+        setName("Francis");
+        spriteSheet = loadImage("chara4.png");
+        sprite = subImage(spriteSheet,52,288,56,72);
         setHeight(70);
         setWidth(50);
-        setMapLocation(28);
-        setMapPos(650,85);
+        setMapLocation(23);
+        setMapPos(400,400);
         setHostile(false);
     }
 
