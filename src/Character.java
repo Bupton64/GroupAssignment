@@ -26,7 +26,6 @@ public class Character extends Statblock {
         return count;
     }
 
-<<<<<<< HEAD
     public int getBagSize(){
         int count=0;
         for(int i=0; i<maxInventorySize; i++){
@@ -50,8 +49,7 @@ public class Character extends Statblock {
         return i;
     }
 
-=======
->>>>>>> 90404c8dec1b7165ba8c6b4a86f3a67b460b628b
+
     public int getEquipmentSize(){
         int count = 0;
         for(int i = 0; i<6; i++){
