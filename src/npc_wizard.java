@@ -28,6 +28,7 @@ public class npc_wizard extends  NPC {
 
     int questNum = 1; //<1 is pre-quest, 2 is before the quest has ended and 3 is end of first quest
                       //<First quest is to kill 5 monsters
+                      //<4 is for after
 
 
     public void drawConvo(Graphics2D g, String playerName){
@@ -48,6 +49,10 @@ public class npc_wizard extends  NPC {
             drawText(110,475,"need you to venture out west, you can follow the path if you please, and find ", "Times New Roman",20,g);
             drawText(110,475,"Camrath. Camrath will be able to craft you a powerful sword, the sword alone", "Times New Roman",20,g);
             drawText(110,475,"won't be enough but it's a start. Come and talk to me after you get it.", "Times New Roman",20,g);
+        }
+        if(questNum == 4){
+            drawText(110,450,"That's quite the sword! You must use it wisely and well. Train with it, ", "Times New Roman",20,g);
+            drawText(110,475,"get to know it and let it know you. ", "Times New Roman",20,g);
         }
     }
 
