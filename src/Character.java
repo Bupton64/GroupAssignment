@@ -268,8 +268,8 @@ public class Character extends Statblock {
 
     public void removeFromInventory(Item item){
         for(int i=0; i<maxInventorySize; i++){
-            if(inventory[i]==item){
-                inventory[i]=new Item();
+            if(inventory[i] == item){
+                inventory[i] = new Item();
                 return;
             }
         }
