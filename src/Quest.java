@@ -38,7 +38,7 @@ public class Quest {
     /*
      * Will draw progress e.g. how many monsters have been killed
      */
-    drawQuestTracker(){
+    public void drawQuestTracker(){
 
     }
 }
