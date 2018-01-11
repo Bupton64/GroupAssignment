@@ -13,15 +13,14 @@ public class npc_plains_f8_oldman extends  NPC {
         setMapLocation(28);
         setMapPos(200,200);
         setHostile(false);
+
         setMoveTimer(0);
         setMoveDuration(10);
         locationOne = 300;
         locationTwo = 200;
-        movedirection = 1;
+        moveDirection = 1;
     }
-    double locationOne;
-    double locationTwo;
-    int movedirection;
+
 
     @Override
     public void setUpCollision(Collision collisionDetector,extraFunctions map){
@@ -34,17 +33,17 @@ public class npc_plains_f8_oldman extends  NPC {
 
             if(getMoveTimer() > getMoveDuration()){
                 collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
-                if(movedirection == 1) {
+                if(moveDirection == 1) {
                     setMapPos(getMapPosX(), getMapPosY() + (20 * dt));
                     if (getMapPosY() > locationOne) {
                         setMoveTimer(0);
-                        movedirection = 2;
+                        moveDirection = 2;
                     }
                 }else{
                     setMapPos(getMapPosX(), getMapPosY() - (20 * dt));
                     if (getMapPosY() < locationTwo) {
                         setMoveTimer(0);
-                        movedirection =1;
+                        moveDirection =1;
                     }
                 }
                 collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);

@@ -24,6 +24,44 @@ public class NPC extends extraFunctions{
     double moveTimer;
     double moveDuration;
 
+    double locationOne;
+    double locationTwo;
+
+    int moveDirection;
+
+
+    public Image getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(Image sprite) {
+        this.sprite = sprite;
+    }
+
+    public double getLocationOne() {
+        return locationOne;
+    }
+
+    public void setLocationOne(double locationOne) {
+        this.locationOne = locationOne;
+    }
+
+    public double getLocationTwo() {
+        return locationTwo;
+    }
+
+    public void setLocationTwo(double locationTwo) {
+        this.locationTwo = locationTwo;
+    }
+
+    public int getMoveDirection() {
+        return moveDirection;
+    }
+
+    public void setMoveDirection(int moveDirection) {
+        this.moveDirection = moveDirection;
+    }
+
     public double getMoveTimer() {
         return moveTimer;
     }

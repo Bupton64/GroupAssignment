@@ -13,6 +13,13 @@ public class npc_plains_E8_byHouse extends  NPC {
         setMapLocation(20);
         setMapPos(80,180);
         setHostile(false);
+
+        moveTimer = 0;
+        moveDuration = 0.1;
+
+        locationOne = 260;
+        locationTwo = 80;
+        moveDirection = 1;
     }
 
     @Override
@@ -21,7 +28,26 @@ public class npc_plains_E8_byHouse extends  NPC {
     }
 
     @Override
-    public void npcAction(double dt, Collision collisionDetector){
+    public void npcAction(double dt,Collision collisionDetector){
+        setMoveTimer(getMoveTimer() + dt);
+
+        if(getMoveTimer() > getMoveDuration()){
+            collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
+            if(moveDirection == 1) {
+                setMapPos(getMapPosX() + (60 * dt), getMapPosY());
+                if (getMapPosX() > locationOne) {
+                    setMoveTimer(0);
+                    moveDirection = 2;
+                }
+            }else{
+                setMapPos(getMapPosX() - (60 * dt), getMapPosY());
+                if (getMapPosX() < locationTwo) {
+                    setMoveTimer(0);
+                    moveDirection =1;
+                }
+            }
+            collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
+        }
 
     }
 
