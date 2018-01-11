@@ -83,15 +83,15 @@ public class Menu extends extraFunctions {
 
             changeColor(white, g);
             drawBoldText(605, 50, "ATTACK : ", "Felix Titling", 17,g );
-            drawBoldText(725, 50, Integer.toString(player1.getAttack()),"Felix Titling", 17,g );
+            drawBoldText(725, 50, Integer.toString(player1.getAttack()+player1.getEquipAttackBonus()),"Felix Titling", 17,g );
             drawBoldText(605, 80, "DEFENCE : ","Felix Titling", 17,g );
-            drawBoldText(725, 80,Integer.toString( player1.getDefense()),"Felix Titling", 17,g );
+            drawBoldText(725, 80,Integer.toString( player1.getDefense()+player1.getEquipDefenseBonus()),"Felix Titling", 17,g );
             drawBoldText(605, 110, "STRENGTH : ","Felix Titling", 17,g );
-            drawBoldText(725, 110,Integer.toString( player1.getStrength()),"Felix Titling", 17,g );
+            drawBoldText(725, 110,Integer.toString( player1.getStrength()+player1.getEquipStrengthBonus()),"Felix Titling", 17,g );
             drawBoldText(605, 140, "SPEED : ","Felix Titling", 17,g );
-            drawBoldText(725, 140,Integer.toString( player1.getSpeed()),"Felix Titling", 17,g );
+            drawBoldText(725, 140,Integer.toString( player1.getSpeed()+player1.getEquipSpeedBonus()),"Felix Titling", 17,g );
             drawBoldText(605, 170, "LUCK : ","Felix Titling", 17,g );
-            drawBoldText(725, 170,Integer.toString( player1.getLuck()),"Felix Titling", 17,g );
+            drawBoldText(725, 170,Integer.toString( player1.getLuck()+player1.getEquipLuckBonus()),"Felix Titling", 17,g );
             changeColor(yellow, g);
             if(player1.getLuckBonus()>0) {
                 drawBoldText(740, 170, " + " + Integer.toString(player1.getLuckBonus()), "Felix Titling", 17, g);
