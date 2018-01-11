@@ -27,6 +27,7 @@ public class Menu extends extraFunctions {
     private boolean invMenu = false;
     private boolean equMenu = false;
     private boolean chaMenu = true;
+    private boolean Using = true;
     private int index = 0;
 
     public boolean isChaMenu() {
@@ -81,11 +82,31 @@ public class Menu extends extraFunctions {
             drawBoldText(3, 145, "GOLD  "+player1.getGpTotal() , "Felix Titling", 15,g);
 
             changeColor(white, g);
-            drawBoldText(640, 50, "ATTACK :    "+ player1.getAttack(),"Felix Titling", 17,g );
-            drawBoldText(640, 80, "DEFENCE :   "+ player1.getDefense(),"Felix Titling", 17,g );
-            drawBoldText(640, 110, "STRENGTH : "+ player1.getStrength(),"Felix Titling", 17,g );
-            drawBoldText(640, 140, "SPEED :        "+ player1.getSpeed(),"Felix Titling", 17,g );
-            drawBoldText(640, 170, "LUCK :        "+ player1.getLuck(),"Felix Titling", 17,g );
+            drawBoldText(605, 50, "ATTACK : ", "Felix Titling", 17,g );
+            drawBoldText(725, 50, Integer.toString(player1.getAttack()),"Felix Titling", 17,g );
+            if(player1.getAttackBonus()>0) {
+                drawBoldText(740, 50, " + " + Integer.toString(player1.getAttackBonus()), "Felix Titling", 17, g);
+            }
+            drawBoldText(605, 80, "DEFENCE : ","Felix Titling", 17,g );
+            drawBoldText(725, 80,Integer.toString( player1.getDefense()),"Felix Titling", 17,g );
+            if(player1.getDefenseBonus()>0) {
+                drawBoldText(740, 80, " + " + Integer.toString(player1.getDefenseBonus()), "Felix Titling", 17, g);
+            }
+            drawBoldText(605, 110, "STRENGTH : ","Felix Titling", 17,g );
+            drawBoldText(725, 110,Integer.toString( player1.getStrength()),"Felix Titling", 17,g );
+            if(player1.getStrengthBonus()>0) {
+                drawBoldText(740, 110, " + " + Integer.toString(player1.getStrengthBonus()), "Felix Titling", 17, g);
+            }
+            drawBoldText(605, 140, "SPEED : ","Felix Titling", 17,g );
+            drawBoldText(725, 140,Integer.toString( player1.getSpeed()),"Felix Titling", 17,g );
+            if(player1.getSpeedBonus()>0) {
+                drawBoldText(740, 140, " + " + Integer.toString(player1.getSpeedBonus()), "Felix Titling", 17, g);
+            }
+            drawBoldText(605, 170, "LUCK : ","Felix Titling", 17,g );
+            drawBoldText(725, 170,Integer.toString( player1.getLuck()),"Felix Titling", 17,g );
+            if(player1.getLuckBonus()>0) {
+                drawBoldText(740, 170, " + " + Integer.toString(player1.getLuckBonus()), "Felix Titling", 17, g);
+            }
 
             changeColor(white,g);
             drawBoldText(3, 240, "TO NEXT LEVEL : ", "Felix Titling", 15,g);
@@ -120,6 +141,11 @@ public class Menu extends extraFunctions {
             if(index>=player1.getInventorySize()){
                 index--;
             }
+//            if(Using){
+//                changeColor(white, g);
+//                drawSolidRectangle(100, 100, 200, 200, g);
+//                drawBoldText(125, 125 "Using"+ player1.getInventory()[index]);
+//            }
 
             drawBoldText(180, 560, player1.getInventory()[index].getName(), "Felix Titling", 20, g);
             if(player1.getInventory()[index].getCounter() != 0) {
@@ -136,13 +162,15 @@ public class Menu extends extraFunctions {
             changeColor(white, g);
             drawBoldText(500, 40, "EQUIPMENT","Felix Titling", 40, g);
             drawBoldText(3, 580, "BACK [ESC]", "Felix Titling", 15,g);
-
-            drawBoldText(3, 50, "HEAD :", "Felix Titling", 15,g);
-            drawBoldText(3, 100, "WEAPON :", "Felix Titling", 15,g);
+            changeColor(green, g);
+            drawBoldText(3, 40, "EQUIPPED", "Felix Titling", 20,g );
+            changeColor(white, g);
+            drawBoldText(3, 100, "HEAD :", "Felix Titling", 15,g);
+            drawBoldText(3, 125, "WEAPON :", "Felix Titling", 15,g);
             drawBoldText(3, 150, "OFFHAND :", "Felix Titling", 15,g);
-            drawBoldText(3, 200, "CHEST :", "Felix Titling", 15,g);
-            drawBoldText(215, 50, "FEET :", "Felix Titling", 15,g);
-            drawBoldText(215, 100, "ACCESSORY :", "Felix Titling", 15,g);
+            drawBoldText(3, 175, "CHEST :", "Felix Titling", 15,g);
+            drawBoldText(3, 200, "FEET :", "Felix Titling", 15,g);
+            drawBoldText(3, 225, "ACCESSORY :", "Felix Titling", 15,g);
             boolean h = false;
             boolean w = false;
             boolean o = false;
@@ -156,57 +184,65 @@ public class Menu extends extraFunctions {
 
                 if(player1.getEquippedItems()[i].getSlot() == Item.Slot.head) {
                     h = true;
-                    drawBoldText(100, 50, player1.getEquippedItems()[i].getName(), "Felix Titling", 10, g);
+                    drawBoldText(150, 100, player1.getEquippedItems()[i].getName(), "Felix Titling", 12, g);
                 }
                 if(player1.getEquippedItems()[i].getSlot() == Item.Slot.weapon) {
                     w = true;
-                    drawBoldText(100, 100, player1.getEquippedItems()[i].getName(), "Felix Titling", 10, g);
+                    drawBoldText(150, 125, player1.getEquippedItems()[i].getName(), "Felix Titling", 12, g);
                 }
                 if(player1.getEquippedItems()[i].getSlot() == Item.Slot.offhand) {
                     o = true;
-                    drawBoldText(100, 150, player1.getEquippedItems()[i].getName(), "Felix Titling", 10, g);
+                    drawBoldText(150, 150, player1.getEquippedItems()[i].getName(), "Felix Titling", 12, g);
                 }
                 if(player1.getEquippedItems()[i].getSlot() == Item.Slot.chest) {
                     c = true;
-                    drawBoldText(100, 200, player1.getEquippedItems()[i].getName(), "Felix Titling", 10, g);
+                    drawBoldText(150, 175, player1.getEquippedItems()[i].getName(), "Felix Titling", 12, g);
                 }
                 if(player1.getEquippedItems()[i].getSlot() == Item.Slot.feet) {
                     f = true;
-                    drawBoldText(320, 50, player1.getEquippedItems()[i].getName(), "Felix Titling", 10, g);
+                    drawBoldText(150, 200, player1.getEquippedItems()[i].getName(), "Felix Titling", 12, g);
                 }
                 if(player1.getEquippedItems()[i].getSlot() == Item.Slot.accessory) {
                     a = true;
-                    drawBoldText(220, 100, player1.getEquippedItems()[i].getName(), "Felix Titling", 10, g);
+                    drawBoldText(150, 225, player1.getEquippedItems()[i].getName(), "Felix Titling", 12, g);
                 }
 
 
             }
             changeColor(red, g);
             if(h == false){
-                drawBoldText(100, 50, "    None", "Felix Titling", 15, g);
+                drawBoldText(150, 100, "None", "Felix Titling", 15, g);
             }
             if(w == false){
-                drawBoldText(100, 100, "    None", "Felix Titling", 15, g);
+                drawBoldText(150, 125, "None", "Felix Titling", 15, g);
             }
             if(o == false){
-                drawBoldText(100, 150, "    None", "Felix Titling", 15, g);
+                drawBoldText(150, 150, "None", "Felix Titling", 15, g);
             }
             if(c == false){
-                drawBoldText(100, 200, "    None", "Felix Titling", 15, g);
+                drawBoldText(150, 175, "None", "Felix Titling", 15, g);
             }
             if(f == false){
-                drawBoldText(320, 50, "    None", "Felix Titling", 15, g);
+                drawBoldText(150, 200, "None", "Felix Titling", 15, g);
             }
             if(a == false){
-                drawBoldText(320, 100, "    None", "Felix Titling", 15, g);
+                drawBoldText(150, 225, "None", "Felix Titling", 15, g);
             }
 
 
 
 
 
+            changeColor(white, g);
+            drawBoldText(295, 235, "EQUIPPED : "+player1.getEquipmentSize()+ " / 6", "Felix Titling", 15, g );
             changeColor(green, g);
-            drawBoldText(295, 235, "Equipped : "+player1.getEquipmentSize()+ " / 6", "Felix Titling", 15, g );
+            drawBoldText(3, 285, "UNEQUIPPED:","Felix Titling", 20, g);
+            changeColor(white, g);
+            for(int i =0; i<player1.getInventorySize(); i++){
+                if((player1.getInventory()[i].getName() != "Potion")&&(player1.getInventory()[i].getName() != "Speed Potion")){
+                    drawBoldText(3, 310+(35*i), player1.getInventory()[i].getName(), "Felix Titling", 15, g );
+                }
+            }
 
 
         }
@@ -252,6 +288,7 @@ public class Menu extends extraFunctions {
           }
           if(e.getKeyCode() == KeyEvent.VK_SPACE){
               if(player1.getInventory()[index].getName() == "Potion"){
+                  Using = true;
                   player1.getInventory()[index].use(player1);
               }
               if((player1.getInventory()[index].getName() == "Rusty Sword")||(player1.getInventory()[index].getName() == "Iron Sword")){
