@@ -16,7 +16,7 @@ public class npc_empty extends NPC {
     }
 
     @Override
-    public void npcAction(double dt){
+    public void npcAction(double dt,Collision collision){
 
     }
 }

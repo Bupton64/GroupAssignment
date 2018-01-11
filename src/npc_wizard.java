@@ -24,23 +24,23 @@ public class npc_wizard extends  NPC {
     public void npcAction(double dt, Collision collisionDetector){
 
     }
-
-    public enum MainQuest {
-        1, 2, 3, 4, 5
-    }
-
-    int questNum = 1;
-
-    public void speech(Graphics2D g, String playerMan){
-        switch(questNum){
-            case 1:
-                public void drawConvo(Graphics2D g, String playerMan){
-                super.drawConvo(g,playerMan);
-                drawText(110,450,"Start of quest", "Times New Roman",20,g);
-                questNum = 2;
-            }
-        }
-    }
+//
+//    public enum MainQuest {
+//        1, 2, 3, 4, 5
+//    };
+//
+//    int questNum = 1;
+//
+//    public void speech(Graphics2D g, String playerMan){
+//        switch(questNum){
+//            case 1:
+//                public void drawConvo(Graphics2D g, String playerMan){
+//                super.drawConvo(g,playerMan);
+//                drawText(110,450,"Start of quest", "Times New Roman",20,g);
+//                questNum = 2;
+//            }
+//        }
+//    }
 
 
 
