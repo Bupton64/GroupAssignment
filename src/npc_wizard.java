@@ -21,15 +21,28 @@ public class npc_wizard extends  NPC {
     }
 
     @Override
-    public void npcAction(double dt){
+    public void npcAction(double dt, Collision collisionDetector){
 
     }
 
-    public void drawConvo(Graphics2D g, String playerMan){
-        super.drawConvo(g,playerMan);
-        drawText(110,450,"If i'm honest i'm a bit lost. There's so many monsters around here,", "Times New Roman",20,g);
-        drawText(110,475,"thankfully I have these potions to save me!", "Times New Roman",20,g);
+    public enum MainQuest {
+        1, 2, 3, 4, 5
     }
+
+    int questNum = 1;
+
+    public void speech(Graphics2D g, String playerMan){
+        switch(questNum){
+            case 1:
+                public void drawConvo(Graphics2D g, String playerMan){
+                super.drawConvo(g,playerMan);
+                drawText(110,450,"Start of quest", "Times New Roman",20,g);
+                questNum = 2;
+            }
+        }
+    }
+
+
 
 
 
