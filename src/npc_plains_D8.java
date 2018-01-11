@@ -21,7 +21,7 @@ public class npc_plains_D8 extends  NPC {
     }
 
     @Override
-    public void npcAction(){
+    public void npcAction(double dt){
 
     }
 
