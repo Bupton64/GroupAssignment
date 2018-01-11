@@ -275,7 +275,7 @@ public class Character extends Statblock {
         for(int i=0; i<maxInventorySize; i++){
             if(inventory[i] == item){
                 inventory[i] = new Item();
-                return;
+                break;
             }
         }
         sortInventory();
