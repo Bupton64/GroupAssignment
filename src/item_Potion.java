@@ -7,6 +7,7 @@ public class item_Potion extends Item {
         this.setCounter(1);
         this.setName("Potion");
         this.setTooltip("A small brew of magical healing herbs");
+        this.setUseableOustideCombat(true);
     }
 
     @Override

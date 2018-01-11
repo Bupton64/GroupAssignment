@@ -14,6 +14,15 @@ public class Item {
     private Slot slot;
     private boolean isEquippable;
     private boolean isEquipped;
+    private boolean isUseableOustideCombat;
+
+    public boolean isUseableOustideCombat() {
+        return isUseableOustideCombat;
+    }
+
+    public void setUseableOustideCombat(boolean useableOustideCombat) {
+        isUseableOustideCombat = useableOustideCombat;
+    }
 
     public String getTooltip() {
         return tooltip;

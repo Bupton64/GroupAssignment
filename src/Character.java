@@ -358,27 +358,27 @@ public class Character extends Statblock {
 
         //< Set up starting Inventory
 
-        item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon);
+        item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword");
         addItemToInventory(rusty);
         equipItem(rusty);
 
-        item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head);
+        item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather");
         addItemToInventory(ragged);
         equipItem(ragged);
 
-        item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand);
+        item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand, "A small buckler that straps to the arm");
         addItemToInventory(buckler);
         equipItem(buckler);
 
-        item_Equipment clothShoes = new item_Equipment("Cloth Shoes", 0, 0, 0, 0, 0, Item.Slot.feet);
+        item_Equipment clothShoes = new item_Equipment("Cloth Shoes", 0, 0, 0, 0, 0, Item.Slot.feet, "A comfy pair of wraps");
         addItemToInventory(clothShoes);
         equipItem(clothShoes);
 
-        item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 0, 0, Item.Slot.chest);
+        item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 0, 0, Item.Slot.chest, "A sturdy chest piece");
         addItemToInventory(leatherJack);
         equipItem(leatherJack);
 
-        item_Equipment ironSword = new item_Equipment("Iron Sword", 2, 0, 0, 0, 0, Item.Slot.weapon);
+        item_Equipment ironSword = new item_Equipment("Iron Sword", 2, 0, 0, 0, 0, Item.Slot.weapon, "A well forged sword");
         addItemToInventory(ironSword);
 
         item_SpeedPotion speed = new item_SpeedPotion();

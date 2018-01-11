@@ -1,5 +1,5 @@
 public class item_Equipment extends Item {
-    public item_Equipment(String name, int attack, int defense, int luck, int speed, int strength, Slot slot){
+    public item_Equipment(String name, int attack, int defense, int luck, int speed, int strength, Slot slot, String tooltip){
         this.setName(name);
         this.setAttack(attack);
         this.setDefense(defense);
@@ -7,7 +7,9 @@ public class item_Equipment extends Item {
         this.setSpeed(speed);
         this.setStrength(strength);
         this.setSlot(slot);
-        setEquippable(true);
-        setEquipped(false);
+        this.setTooltip(tooltip);
+        this.setEquippable(true);
+        this.setEquipped(false);
+        this.setUseableOustideCombat(false);
     }
 }
