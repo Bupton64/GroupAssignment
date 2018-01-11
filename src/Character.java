@@ -523,6 +523,7 @@ public class Character extends Statblock {
     public boolean winBattle(Monster enemy){
         XPTotal+=enemy.getXPGain();
         gpTotal+=enemy.randomGold();
+        resetBonuses();
         if(checkLevelUp()){
             return true;
         } else {
