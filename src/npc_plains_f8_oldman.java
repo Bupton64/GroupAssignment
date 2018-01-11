@@ -15,23 +15,39 @@ public class npc_plains_f8_oldman extends  NPC {
         setHostile(false);
         setMoveTimer(0);
         setMoveDuration(10);
-        moveAmount = 300;
+        locationOne = 300;
+        locationTwo = 200;
+        movedirection = 1;
     }
-    double moveAmount;
+    double locationOne;
+    double locationTwo;
+    int movedirection;
+
     @Override
     public void setUpCollision(Collision collisionDetector,extraFunctions map){
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
 
-    public void npcAction(double dt){
+    public void npcAction(double dt,Collision collisionDetector){
             setMoveTimer(getMoveTimer() + dt);
 
             if(getMoveTimer() > getMoveDuration()){
-                setMapPos(getMapPosX(),getMapPosY() + (2 * dt));
-                if(getMapPosY() > moveAmount){
-                    setMoveTimer(0);
+                collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
+                if(movedirection == 1) {
+                    setMapPos(getMapPosX(), getMapPosY() + (20 * dt));
+                    if (getMapPosY() > locationOne) {
+                        setMoveTimer(0);
+                        movedirection = 2;
+                    }
+                }else{
+                    setMapPos(getMapPosX(), getMapPosY() - (20 * dt));
+                    if (getMapPosY() < locationTwo) {
+                        setMoveTimer(0);
+                        movedirection =1;
+                    }
                 }
+                collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
             }
 
     }

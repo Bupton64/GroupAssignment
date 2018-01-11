@@ -2,6 +2,12 @@ import java.awt.*;
 
 public class Character extends Statblock {
 
+    public int questNum = 1;    //<Keeps track of what section of the quest the player is currently on.
+
+    public int getQuestNum() {
+        return questNum;
+    }
+
     enum Level {desert, plains, forest, cave, space}
 
     private int XPTotal; //< Contains the characters current XP total

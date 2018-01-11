@@ -99,7 +99,7 @@ public class NPC extends extraFunctions{
 
     }
 
-    public void npcAction(double dt){
+    public void npcAction(double dt,Collision collisionDetector){
 
 
     }

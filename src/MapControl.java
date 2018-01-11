@@ -401,13 +401,13 @@ public class MapControl extends extraFunctions {
         }
     }
 
-    public void updateNPC(double dt,CharacterMovement movement){
+    public void updateNPC(double dt,CharacterMovement movement,Collision collisionDetector){
         if(!movement.checkStationary()){
             currentNpcInteraction = -1;
             npcConvo = false;
         }
         for(int i = 0; i < numOfNpc;i++){
-            mapNpcs[i].npcAction(dt);
+            mapNpcs[i].npcAction(dt, collisionDetector);
         }
     }
 
