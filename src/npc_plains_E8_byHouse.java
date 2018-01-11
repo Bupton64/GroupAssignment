@@ -15,11 +15,18 @@ public class npc_plains_E8_byHouse extends  NPC {
         setHostile(false);
 
         moveTimer = 0;
-        moveDuration = 0.1;
+        moveDelay = 0.1;
 
-        locationOne = 260;
-        locationTwo = 80;
-        moveDirection = 1;
+        location = new double[2];
+        setLocation(0,260);
+        setLocation(1,80);
+        currentLocation= 1;
+    }
+
+    @Override
+    public void loadImages(){
+        super.loadImages();
+        //Load Images here
     }
 
     @Override
@@ -31,19 +38,19 @@ public class npc_plains_E8_byHouse extends  NPC {
     public void npcAction(double dt,Collision collisionDetector){
         setMoveTimer(getMoveTimer() + dt);
 
-        if(getMoveTimer() > getMoveDuration()){
+        if(getMoveTimer() > getMoveDelay()){
             collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
-            if(moveDirection == 1) {
+            if(currentLocation == 1) {
                 setMapPos(getMapPosX() + (60 * dt), getMapPosY());
-                if (getMapPosX() > locationOne) {
+                if (getMapPosX() > getLocation(0)) {
                     setMoveTimer(0);
-                    moveDirection = 2;
+                    currentLocation= 0;
                 }
             }else{
                 setMapPos(getMapPosX() - (60 * dt), getMapPosY());
-                if (getMapPosX() < locationTwo) {
+                if (getMapPosX() < getLocation(1)) {
                     setMoveTimer(0);
-                    moveDirection =1;
+                    currentLocation = 1;
                 }
             }
             collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);

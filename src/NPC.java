@@ -7,8 +7,8 @@ public class NPC extends extraFunctions{
 
     Image[] spriteUp; //< 3 per
     Image[] spriteDown;
-    Image[] sprightRight;
-    Image[] getSpriteDown;
+    Image[] spriteRight;
+    Image[] spriteLeft;
     Image spriteSheet;
 
     private double mapPosX; //<  NPC's map position X
@@ -22,12 +22,11 @@ public class NPC extends extraFunctions{
     private double width;
 
     double moveTimer;
-    double moveDuration;
+    double moveDelay;
 
-    double locationOne;
-    double locationTwo;
+    double[] location;
 
-    int moveDirection;
+    int currentLocation;
 
 
     public Image getSprite() {
@@ -38,28 +37,21 @@ public class NPC extends extraFunctions{
         this.sprite = sprite;
     }
 
-    public double getLocationOne() {
-        return locationOne;
+    public double getLocation(int index) {
+        return location[index];
     }
 
-    public void setLocationOne(double locationOne) {
-        this.locationOne = locationOne;
+    public void setLocation(int index,double location) {
+        this.location[index] = location;
     }
 
-    public double getLocationTwo() {
-        return locationTwo;
+
+    public int getCurrentLocation() {
+        return currentLocation;
     }
 
-    public void setLocationTwo(double locationTwo) {
-        this.locationTwo = locationTwo;
-    }
-
-    public int getMoveDirection() {
-        return moveDirection;
-    }
-
-    public void setMoveDirection(int moveDirection) {
-        this.moveDirection = moveDirection;
+    public void setCurrentLocation(int moveDirection) {
+        this.currentLocation = moveDirection;
     }
 
     public double getMoveTimer() {
@@ -70,12 +62,12 @@ public class NPC extends extraFunctions{
         this.moveTimer = moveTimer;
     }
 
-    public double getMoveDuration() {
-        return moveDuration;
+    public double getMoveDelay() {
+        return moveDelay;
     }
 
-    public void setMoveDuration(double moveDuration) {
-        this.moveDuration = moveDuration;
+    public void setMoveDelay(double moveDelay) {
+        this.moveDelay = moveDelay;
     }
 
     public double getHeight() {
@@ -143,13 +135,17 @@ public class NPC extends extraFunctions{
     }
 
 
-
+    public void loadImages(){
+        spriteLeft = new Image[3];
+        spriteRight = new Image[3];
+        spriteUp = new Image[3];
+        spriteDown = new Image[3];
+    }
 
 
 
 
     public void drawConvo(Graphics2D g,String playerName){
-
         changeColor(black, g);
         drawSolidRectangle(100,400,600,150,g);
         changeColor(Color.white,g);
