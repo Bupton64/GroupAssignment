@@ -13,15 +13,26 @@ public class npc_plains_f8_oldman extends  NPC {
         setMapLocation(28);
         setMapPos(200,200);
         setHostile(false);
+        setMoveTimer(0);
+        setMoveDuration(10);
+        moveAmount = 300;
     }
-
+    double moveAmount;
     @Override
     public void setUpCollision(Collision collisionDetector,extraFunctions map){
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
-    @Override
-    public void npcAction(){
+
+    public void npcAction(double dt){
+            setMoveTimer(getMoveTimer() + dt);
+
+            if(getMoveTimer() > getMoveDuration()){
+                setMapPos(getMapPosX(),getMapPosY() + (2 * dt));
+                if(getMapPosY() > moveAmount){
+                    setMoveTimer(0);
+                }
+            }
 
     }
 
@@ -38,3 +49,7 @@ public class npc_plains_f8_oldman extends  NPC {
 
 
 }
+
+
+
+

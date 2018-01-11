@@ -78,7 +78,7 @@ public class AdventureMode extends GameEngine {
 
            if (state == GameState.TravelMode) {
 
-              mapController.updateNPC(playerMovement);
+              mapController.updateNPC(dt,playerMovement);
 
                mapController.updateMap(collisionDetector);
                collisionDetector.updateCollision(playerMan, playerMovement);

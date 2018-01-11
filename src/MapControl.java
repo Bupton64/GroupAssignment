@@ -399,11 +399,14 @@ public class MapControl extends extraFunctions {
         }
     }
 
-    public void updateNPC(CharacterMovement movement){
-       if(!movement.checkStationary()){
-           currentNpcInteraction = -1;
-           npcConvo = false;
-       }
+    public void updateNPC(double dt,CharacterMovement movement){
+        if(!movement.checkStationary()){
+            currentNpcInteraction = -1;
+            npcConvo = false;
+        }
+        for(int i = 0; i < numOfNpc;i++){
+            mapNpcs[i].npcAction(dt);
+        }
     }
 
     public void drawNPCInteraction(Graphics2D g){

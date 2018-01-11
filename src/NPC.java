@@ -3,7 +3,12 @@ import java.awt.*;
 public class NPC extends extraFunctions{
 
     private String name; //< Name of the object
-    Image sprite; //< The associated sprite
+    Image sprite; //< The associated
+
+    Image[] spriteUp; //< 3 per
+    Image[] spriteDown;
+    Image[] sprightRight;
+    Image[] getSpriteDown;
     Image spriteSheet;
 
     private double mapPosX; //<  NPC's map position X
@@ -16,6 +21,24 @@ public class NPC extends extraFunctions{
     private double height;
     private double width;
 
+    double moveTimer;
+    double moveDuration;
+
+    public double getMoveTimer() {
+        return moveTimer;
+    }
+
+    public void setMoveTimer(double moveTimer) {
+        this.moveTimer = moveTimer;
+    }
+
+    public double getMoveDuration() {
+        return moveDuration;
+    }
+
+    public void setMoveDuration(double moveDuration) {
+        this.moveDuration = moveDuration;
+    }
 
     public double getHeight() {
         return height;
@@ -76,7 +99,7 @@ public class NPC extends extraFunctions{
 
     }
 
-    public void npcAction(){
+    public void npcAction(double dt){
 
 
     }

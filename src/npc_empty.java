@@ -16,9 +16,8 @@ public class npc_empty extends NPC {
     }
 
     @Override
-    public void npcAction(){
+    public void npcAction(double dt){
 
     }
 }
-
 // Isaac Test Comment
