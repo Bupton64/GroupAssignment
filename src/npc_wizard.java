@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class npc_wizard extends  NPC {
 
     npc_wizard( ){
-        setName("THE GREAT WIZARD OF THE NORTH... TIM");
+        setName("Tim the Great");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setHeight(70);
@@ -26,18 +26,28 @@ public class npc_wizard extends  NPC {
     }
 
 
-    int questNum = 1;
+    int questNum = 1; //<1 is pre-quest, 2 is before the quest has ended and 3 is end of first quest
+                      //<First quest is to kill 5 monsters
 
 
-
-    public void drawConvo(Graphics2D g, String playerMan){
-        super.drawConvo(g,playerMan);
+    public void drawConvo(Graphics2D g, String playerName){
+        super.drawConvo(g,playerName);
         if(questNum == 1) {
-            drawText(110, 450, "Start of quest", "Times New Roman", 20, g);
-            questNum = 2;
+            drawText(110, 450, "Ah, " + playerName + " you made it! I'm surprised, but you've got a long way", "Times New Roman", 20, g);
+            drawText(110, 475, "to go before you're ready to take on Jacruler... I need some help from you", "Times New Roman", 20, g);
+            drawText(110, 500, "before we begin. There has been a lot of monsters around these parts of ", "Times New Roman", 20, g);
+            drawText(110, 525, "late, would you please clear this area so we can get to work?", "Times New Roman", 20, g);
+
+
         }
-        if(questNum == 2){    
-            drawText(110,450,"Next", "Times New Roman",20,g);
+        if(questNum == 2){
+            drawText(110,450,"You still haven't cleared the area", "Times New Roman",20,g);
+        }
+        if(questNum == 3){
+            drawText(110,450,"Fantastic work! Looks like you've learnt a few new abilities as well! I'll", "Times New Roman",20,g);
+            drawText(110,475,"need you to venture out west, you can follow the path if you please, and find ", "Times New Roman",20,g);
+            drawText(110,475,"Camrath. Camrath will be able to craft you a powerful sword, the sword alone", "Times New Roman",20,g);
+            drawText(110,475,"won't be enough but it's a start. Come and talk to me after you get it.", "Times New Roman",20,g);
         }
     }
 

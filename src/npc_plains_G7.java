@@ -1,16 +1,16 @@
 import java.awt.*;
 import java.awt.event.*;
 
-
+//MOVED TO H9
 public class npc_plains_G7 extends  NPC {
 
     npc_plains_G7( ){
-        setName("Timothy");
+        setName("Camrath");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setHeight(70);
         setWidth(50);
-        setMapLocation(33);
+        setMapLocation(39);
         setMapPos(400,300);
         setHostile(false);
     }
