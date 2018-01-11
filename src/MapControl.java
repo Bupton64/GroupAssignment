@@ -216,7 +216,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 39:
                         currentMap = new plains_H9();
-                        mapNpcs[0] = new npc_plains_G7();
+                        mapNpcs[0] = new npc_plains_H9();
                         numOfNpc = 1;
                         break;
                     case 40:

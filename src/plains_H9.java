@@ -9,7 +9,7 @@ public class plains_H9 extends  extraFunctions {
 
 
     plains_H9() {
-        backgroundImage= loadImage("plains_path_horiz2.png");
+        backgroundImage= loadImage("plains_H9.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }
@@ -62,7 +62,7 @@ public class plains_H9 extends  extraFunctions {
     ///////////////////////////////////////////////////////////
     @Override
     public void setUpCollision(Collision collisionPoints){
-
+//        collisionPoints.addBoxCollision(53,7,11,14,flicker);
 
     }
 
