@@ -49,7 +49,6 @@ public class Character extends Statblock {
         return i;
     }
 
-
     public int getEquipmentSize(){
         int count = 0;
         for(int i = 0; i<6; i++){
@@ -507,7 +506,7 @@ public class Character extends Statblock {
         if(XPToNextLevel<=XPTotal){
             levelUp();
             XPTotal-=XPToNextLevel;
-            XPToNextLevel=getLevel()*getLevel()*500;
+            XPToNextLevel=getLevel()*getLevel()*150;
             checkLevelUp();
             return true;
         } else {
