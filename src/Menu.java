@@ -84,28 +84,29 @@ public class Menu extends extraFunctions {
             changeColor(white, g);
             drawBoldText(605, 50, "ATTACK : ", "Felix Titling", 17,g );
             drawBoldText(725, 50, Integer.toString(player1.getAttack()),"Felix Titling", 17,g );
-            if(player1.getAttackBonus()>0) {
-                drawBoldText(740, 50, " + " + Integer.toString(player1.getAttackBonus()), "Felix Titling", 17, g);
-            }
             drawBoldText(605, 80, "DEFENCE : ","Felix Titling", 17,g );
             drawBoldText(725, 80,Integer.toString( player1.getDefense()),"Felix Titling", 17,g );
-            if(player1.getDefenseBonus()>0) {
-                drawBoldText(740, 80, " + " + Integer.toString(player1.getDefenseBonus()), "Felix Titling", 17, g);
-            }
             drawBoldText(605, 110, "STRENGTH : ","Felix Titling", 17,g );
             drawBoldText(725, 110,Integer.toString( player1.getStrength()),"Felix Titling", 17,g );
-            if(player1.getStrengthBonus()>0) {
-                drawBoldText(740, 110, " + " + Integer.toString(player1.getStrengthBonus()), "Felix Titling", 17, g);
-            }
             drawBoldText(605, 140, "SPEED : ","Felix Titling", 17,g );
             drawBoldText(725, 140,Integer.toString( player1.getSpeed()),"Felix Titling", 17,g );
+            drawBoldText(605, 170, "LUCK : ","Felix Titling", 17,g );
+            drawBoldText(725, 170,Integer.toString( player1.getLuck()),"Felix Titling", 17,g );
+            changeColor(yellow, g);
+            if(player1.getLuckBonus()>0) {
+                drawBoldText(740, 170, " + " + Integer.toString(player1.getLuckBonus()), "Felix Titling", 17, g);
+            }
             if(player1.getSpeedBonus()>0) {
                 drawBoldText(740, 140, " + " + Integer.toString(player1.getSpeedBonus()), "Felix Titling", 17, g);
             }
-            drawBoldText(605, 170, "LUCK : ","Felix Titling", 17,g );
-            drawBoldText(725, 170,Integer.toString( player1.getLuck()),"Felix Titling", 17,g );
-            if(player1.getLuckBonus()>0) {
-                drawBoldText(740, 170, " + " + Integer.toString(player1.getLuckBonus()), "Felix Titling", 17, g);
+            if(player1.getStrengthBonus()>0) {
+                drawBoldText(740, 110, " + " + Integer.toString(player1.getStrengthBonus()), "Felix Titling", 17, g);
+            }
+            if(player1.getAttackBonus()>0) {
+                drawBoldText(740, 50, " + " + Integer.toString(player1.getAttackBonus()), "Felix Titling", 17, g);
+            }
+            if(player1.getDefenseBonus()>0) {
+                drawBoldText(740, 80, " + " + Integer.toString(player1.getDefenseBonus()), "Felix Titling", 17, g);
             }
 
             changeColor(white,g);
@@ -141,11 +142,7 @@ public class Menu extends extraFunctions {
             if(index>=player1.getInventorySize()){
                 index--;
             }
-//            if(Using){
-//                changeColor(white, g);
-//                drawSolidRectangle(100, 100, 200, 200, g);
-//                drawBoldText(125, 125 "Using"+ player1.getInventory()[index]);
-//            }
+
 
             drawBoldText(180, 560, player1.getInventory()[index].getName(), "Felix Titling", 20, g);
             if(player1.getInventory()[index].getCounter() != 0) {
@@ -244,8 +241,46 @@ public class Menu extends extraFunctions {
                 }
             }
 
+            changeColor(white, g);
+            drawSolidRectangle(515, 150, 220, 300, g);
+            changeColor(yellow, g);
+            //if((player1.getInventory()[index].getName() != "Potion")&&(player1.getInventory()[index].getName() != "Speed Potion")){
+                drawBoldText(520, 140, player1.getInventory()[index].getName(), "Felix Titling", 15, g );
+                changeColor(purple, g);
+                drawBoldText(520, 175, "INFO:", "Felix Titling", 25, g  );
+                changeColor(black, g);
+                drawBoldText(520, 200 , player1.getInventory()[index].getSlot().name()+" ITEM", "Felix Titling", 15, g);
+                changeColor(cyan, g);
+                drawBoldText(520, 225, player1.getInventory()[index].getTooltip()+ " .", "Felix Titling", 12, g  );
+                changeColor(black, g);
+                drawBoldText(520, 260, "STATS:", "Felix Titling", 25, g );
+                changeColor(blue, g);
+                drawBoldText(705, 290, Integer.toString(player1.getInventory()[index].getAttack()) , "Felix Titling", 18, g  );
+                drawBoldText(705, 290+30, Integer.toString(player1.getInventory()[index].getDefense()) , "Felix Titling", 18, g  );
+                drawBoldText(705, 290+60, Integer.toString(player1.getInventory()[index].getStrength()) , "Felix Titling", 18, g  );
+                drawBoldText(705, 290+90, Integer.toString(player1.getInventory()[index].getSpeed()) , "Felix Titling", 18, g  );
+                drawBoldText(705, 290+120, Integer.toString(player1.getInventory()[index].getLuck()) , "Felix Titling", 18, g  );
+                changeColor(red, g);
+                drawBoldText(520, 290, "ATK" , "Felix Titling", 18, g  );
+                drawBoldText(520, 290+30,"DEF"  , "Felix Titling", 18, g  );
+                drawBoldText(520, 290+60, "STR" , "Felix Titling", 18, g  );
+                drawBoldText(520, 290+90, "SPD" , "Felix Titling", 18, g  );
+                drawBoldText(520, 290+120,"LUK"  , "Felix Titling", 18, g  );
+
+
+
+          //  }
+            changeColor(grey, g);
+            drawBoldText(520, 445, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g  );
+            if(index>0){
+                drawImage(leftArrow, 460, 150, g);
+            }
+            if(index<player1.getInventorySize()-1){
+                drawImage(rightArrow, 460+290, 150, g);
+            }
 
         }
+
 
 
     }
@@ -292,6 +327,7 @@ public class Menu extends extraFunctions {
                   player1.getInventory()[index].use(player1);
               }
               if((player1.getInventory()[index].getName() == "Rusty Sword")||(player1.getInventory()[index].getName() == "Iron Sword")){
+
                   equMenu = true;
                   invMenu = false;
 
@@ -299,6 +335,19 @@ public class Menu extends extraFunctions {
           }
 
       }else{
+          if((e.getKeyCode() == KeyEvent.VK_LEFT)){
+              if(index>0){
+                  index--;
+              }
+          }
+          if((e.getKeyCode() == KeyEvent.VK_RIGHT)&&(player1.getInventory()[index].getName() != "Potion")&&(player1.getInventory()[index].getName() != "Speed Potion")){
+              if(index<player1.getInventorySize()-1){
+                  index++;
+              }
+          }
+          if(e.getKeyCode() == KeyEvent.VK_SPACE){
+              player1.equipItem(player1.getInventory()[index]);
+          }
 
       }
 
