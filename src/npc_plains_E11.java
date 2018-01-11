@@ -27,7 +27,8 @@ public class npc_plains_E11 extends  NPC {
 
     public void drawConvo(Graphics2D g, String playerName){
         super.drawConvo(g,playerName);
-        drawText(110,450,"Hey there I'm Tim Burr. Hi there I am Tim Burr. HI THERE IM TIM BR", "Times New Roman",20,g);
+        drawText(110,450,"Be careful venturing below... anyone who's gone up against such strength...", "Times New Roman",20,g);
+        drawText(110,475,"well let's just say it never ended well...", "Times New Roman",20,g);
     }
 
 

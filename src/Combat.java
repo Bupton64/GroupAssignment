@@ -685,24 +685,29 @@ public class Combat extends extraFunctions{
 
         drawText(100,100,"ITEMS", "Times new roman",30,g);
         drawText(530,100,"ToolTip", "Times new roman",30,g);
+        if(player.getBagSize() > 0) {
+            int j = 1;
+            for (int i = 0; i < player.getInventorySize(); i++) {
+                while (playerInventory[i].getSlot() != Item.Slot.bag) {
+                    i++;
+                }
+                changeColor(Color.darkGray, g);
+                changeColor(Color.gray, g);
+                drawText(110, 150 + 40 * (j - 1), playerInventory[i].getName(), "Times new Roman", 20, g);
+                drawText(250, 150 + 40 * (j - 1), "x" + Integer.toString(playerInventory[i].getCounter()), "Times New Roman", 20, g);
 
-        int j = 1;
-        for(int i = 0;i< player.getBagSize();i++){
-           while(playerInventory[i].getSlot() != Item.Slot.bag){
-                i++;
+
+                if (menuOption == j) {
+                    drawText(430, 140, playerInventory[i % (8 * currentPageNum)].getTooltip(), "Times New Roman", 20, g);
+                }
+
+                if (j == player.getBagSize()) {
+                    break;
+                } else {
+                    j++;
+                }
+
             }
-            changeColor(Color.darkGray,g);
-            changeColor(Color.gray,g);
-            drawText(110,150 + 40 * (j-1),playerInventory[i].getName(),"Times new Roman",20,g);
-            drawText(190,150 + 40 * (j-1),"x" +Integer.toString(playerInventory[i].getCounter()),"Times New Roman",20,g);
-
-
-            if(menuOption == j){
-                drawText(430,140,playerInventory[i % (8 * currentPageNum)].getTooltip(),"Times New Roman",20,g);
-            }
-
-            j++;
-
         }
 
 

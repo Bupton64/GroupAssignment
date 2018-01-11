@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class npc_plains_F9_byPath extends  NPC {
 
     npc_plains_F9_byPath( ){
-        setName("Callum");
+        setName("Gerald");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,364,0,56,72);
         setHeight(70);
@@ -27,7 +27,8 @@ public class npc_plains_F9_byPath extends  NPC {
 
     public void drawConvo(Graphics2D g, String playerName){
         super.drawConvo(g,playerName);
-        drawText(110,450,"I've been weeping for 10 minites.... If only I ate her ass", "Times New Roman",20,g);
+        drawText(110,450,"If you follow this path upwards, you'll find the Wizards hut... why do you", "Times New Roman",20,g);
+        drawText(110,475,"want to find it again?", "Times New Roman",20,g);
     }
 
 

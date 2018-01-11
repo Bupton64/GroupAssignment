@@ -27,7 +27,7 @@ public class npc_plains_D8 extends  NPC {
 
     public void drawConvo(Graphics2D g, String playerName){
         super.drawConvo(g,playerName);
-        drawText(110,450,"I dont even like computer games....", "Times New Roman",20,g);
+        drawText(110,450,"It's looking good so far lads, definately A+ worthy!", "Times New Roman",20,g);
     }
 
 
