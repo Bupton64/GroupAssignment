@@ -16,7 +16,7 @@ public class npc_empty extends NPC {
     }
 
 
-    public void npcAction(double dt,Collision collision,Quest currentQuest){
+    public void npcAction(double dt, Character player){
 
     }
 }

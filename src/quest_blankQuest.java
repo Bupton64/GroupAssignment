@@ -9,6 +9,7 @@ public class quest_blankQuest extends Quest {
 
     quest_blankQuest(){
         setState(questState.completedQuest);
+        setQuestName("empty");
 
     }
 

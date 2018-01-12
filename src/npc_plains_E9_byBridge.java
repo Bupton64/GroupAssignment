@@ -25,9 +25,9 @@ public class npc_plains_E9_byBridge extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, String playerName,Quest currentQuest){
-        super.drawConvo(g,playerName, currentQuest);
-        drawText(110,450,"You must be " + playerName + " right? I'm so sorry to hear what happened to your", "Times New Roman",20,g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
+        drawText(110,450,"You must be " + player.getName() + " right? I'm so sorry to hear what happened to your", "Times New Roman",20,g);
         drawText(110,475,"town. Hopefully the Wizard in the North will be able to help you!", "Times New Roman",20,g);
     }
 

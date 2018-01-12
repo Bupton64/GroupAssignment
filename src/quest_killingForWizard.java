@@ -8,6 +8,7 @@ public class quest_killingForWizard extends Quest {
     private int toBeKilled;
 
     quest_killingForWizard(){
+        setQuestName("killingForWizard");
         killCount = 0;
         toBeKilled = 5;
         setReward(100);
