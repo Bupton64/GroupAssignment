@@ -148,7 +148,7 @@ public class NPC extends extraFunctions{
 
 
 
-    public void drawConvo(Graphics2D g,String playerName){
+    public void drawConvo(Graphics2D g,String playerName,Quest currentQuest){
         changeColor(black, g);
         drawSolidRectangle(100,400,600,150,g);
         changeColor(Color.white,g);

@@ -8,7 +8,7 @@ public class Character extends Statblock {
         return questNum;
     }
 
-    enum Level {desert, plains, forest, cave, space}
+
 
     private int XPTotal; //< Contains the characters current XP total
     private int XPToNextLevel; //< Contains the characters required XPTotal for next level
@@ -19,8 +19,9 @@ public class Character extends Statblock {
     private Item [] equippedItems; //< The characters currently equipped items.
     private int maxInventorySize; //< Maximum size of the players inventory.
     private double currentMapLocation; //< Determines what map number the player is currently on
-    private Level currentLevel; //< Determines what level the player is on
     private boolean combatActive; //< Determines whether the character is in combat.
+
+
 
     public int getInventorySize(){
         int count=0;
@@ -97,13 +98,6 @@ public class Character extends Statblock {
         this.currentMapLocation = currentMapPos;
     }
 
-    public Level getCurrentLevel() {
-        return currentLevel;
-    }
-
-    public void setCurrentLevel(Level currentLevel) {
-        this.currentLevel = currentLevel;
-    }
 
     public void sortInventory(){
         Item swapper;
@@ -343,6 +337,9 @@ public class Character extends Statblock {
 
     public void init(){
 
+        //Quest Init - Zane
+        currentQuest = new quest_killingForWizard();
+
         // Memory initialisation
 
         Ability [] temp = new Ability[20];
@@ -532,5 +529,10 @@ public class Character extends Statblock {
 
     }
 
+    private Quest currentQuest;
+
+    public Quest getCurrentQuest(){
+        return currentQuest;
+    }
 
 }

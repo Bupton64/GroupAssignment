@@ -58,8 +58,8 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, String playerName){
-        super.drawConvo(g,playerName);
+    public void drawConvo(Graphics2D g, String playerName,Quest currentQuest){
+        super.drawConvo(g,playerName, currentQuest);
         drawText(110,450,"MY NAME'S NOT THAT FUNNY OK!? ", "Times New Roman",20,g);
     }
 

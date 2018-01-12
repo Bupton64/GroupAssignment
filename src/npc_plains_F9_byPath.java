@@ -25,8 +25,8 @@ public class npc_plains_F9_byPath extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, String playerName){
-        super.drawConvo(g,playerName);
+    public void drawConvo(Graphics2D g, String playerName, Quest currentQuest){
+        super.drawConvo(g,playerName, currentQuest);
         drawText(110,450,"If you follow this path upwards, you'll find the Wizards hut... why do you", "Times New Roman",20,g);
         drawText(110,475,"want to find it again?", "Times New Roman",20,g);
     }

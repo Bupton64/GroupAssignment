@@ -3,6 +3,9 @@ import java.awt.*;
 public class Quest extends extraFunctions {
     //Members
 
+    enum questState{preQuest, inQuest, completedQuest}
+    questState state = questState.preQuest;
+
     private String questName; //<Name of the quest
     private int reward; //<How much is rewarded for completing each quest
     private int stage; //<What part of the quest the player is on
@@ -29,6 +32,16 @@ public class Quest extends extraFunctions {
 
     public void setStage(int stage) {
         this.stage = stage;
+    }
+
+
+
+    public questState getState() {
+        return state;
+    }
+
+    public void setState(questState state) {
+        this.state = state;
     }
     /*
      * Adds the reward to the players GP balance

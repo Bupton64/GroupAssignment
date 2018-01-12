@@ -25,8 +25,8 @@ public class npc_plains_D8 extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, String playerName){
-        super.drawConvo(g,playerName);
+    public void drawConvo(Graphics2D g, String playerName, Quest currentQuest){
+        super.drawConvo(g,playerName, currentQuest);
         drawText(110,450,"It's looking good so far lads, definitely A+ worthy!", "Times New Roman",20,g);
     }
 

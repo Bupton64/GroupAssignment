@@ -30,6 +30,8 @@ public class AdventureMode extends GameEngine {
     Collision collisionDetector;
     Combat combatMode;
 
+    Quest questInProgress;
+
 
     public void init() {
 
@@ -49,6 +51,8 @@ public class AdventureMode extends GameEngine {
 
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
+
+        questInProgress = playerMan.getCurrentQuest();
     }
 
    public void updateGameState(){

@@ -28,8 +28,8 @@ public class npc_plains_H9 extends  NPC {
     int questNum = 1;   //<1 when he hasn't brought the sword, 2 after he brought it
                         //<3 is after the initial quest and players will be able to buy various weapons from him
 
-    public void drawConvo(Graphics2D g, String playerName){
-        super.drawConvo(g,playerName);
+    public void drawConvo(Graphics2D g, String playerName, Quest currentQuest){
+        super.drawConvo(g,playerName,currentQuest);
         if(questNum == 1) {
             drawText(110, 450, "I knew it was only a matter of time before you came looking for help.", "Times New Roman", 20, g);
             drawText(110, 475, "Let me guess, you want a new sword? hmmmmm it'll cost you, I don't give", "Times New Roman", 20, g);

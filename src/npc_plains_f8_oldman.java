@@ -59,8 +59,8 @@ public class npc_plains_f8_oldman extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, String playerName){
-        super.drawConvo(g,playerName);
+    public void drawConvo(Graphics2D g, String playerName, Quest currentQuest){
+        super.drawConvo(g,playerName, currentQuest);
         drawText(110,450,"I'm Julian, the oldest NPC... uh I mean villager in this Town.", "Times New Roman",20,g);
     }
 

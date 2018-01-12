@@ -33,9 +33,9 @@ public class npc_wizard extends  NPC {
                       //<4 is for after
 
 
-    public void drawConvo(Graphics2D g, String playerName, int stage){
-        super.drawConvo(g,playerName);
-        if(stage == 1) {
+    public void drawConvo(Graphics2D g, String playerName, Quest currentQuest){
+        super.drawConvo(g,playerName,currentQuest);
+        if(currentQuest.getState() == Quest.questState.preQuest) {
             drawText(110, 450, "Ah, " + playerName + " you made it! I'm surprised, but you've got a long way", "Times New Roman", 20, g);
             drawText(110, 475, "to go before you're ready to take on Jacruler... I need some help from you", "Times New Roman", 20, g);
             drawText(110, 500, "before we begin. There has been a lot of monsters around these parts of ", "Times New Roman", 20, g);
@@ -43,19 +43,19 @@ public class npc_wizard extends  NPC {
 
 
         }
-        if(stage == 2){
+        if(currentQuest.getState() == Quest.questState.inQuest){
             drawText(110,450,"You still haven't cleared the area", "Times New Roman",20,g);
         }
-        if(stage == 3){
+        if(currentQuest.getState() == Quest.questState.completedQuest){
             drawText(110,450,"Fantastic work! Looks like you've learnt a few new abilities as well! I'll", "Times New Roman",20,g);
             drawText(110,475,"need you to venture out west, you can follow the path if you please, and find ", "Times New Roman",20,g);
             drawText(110,475,"Camrath. Camrath will be able to craft you a powerful sword, the sword alone", "Times New Roman",20,g);
             drawText(110,475,"won't be enough but it's a start. Come and talk to me after you get it.", "Times New Roman",20,g);
         }
-        if(stage == 4){
-            drawText(110,450,"That's quite the sword! You must use it wisely and well. Train with it, ", "Times New Roman",20,g);
-            drawText(110,475,"get to know it and let it know you. ", "Times New Roman",20,g);
-        }
+//        if(currentQuest.getState() == Quest.questState.preQuest){
+//            drawText(110,450,"That's quite the sword! You must use it wisely and well. Train with it, ", "Times New Roman",20,g);
+//            drawText(110,475,"get to know it and let it know you. ", "Times New Roman",20,g);
+//        }
     }
 
 
