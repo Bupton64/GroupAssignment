@@ -28,6 +28,9 @@ public class NPC extends extraFunctions{
 
     int currentLocation;
 
+    enum Direction {up,down,left,right};
+    Direction directionFacing;
+
 
     public Image getSprite() {
         return sprite;
