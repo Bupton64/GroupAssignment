@@ -427,6 +427,7 @@ public class Character extends Statblock {
         temp[6] = new ability_Smash();
         temp[7] = new ability_Heal();
         temp[8] = new ability_IronSkin();
+        temp[9] = new ability_Berserk();
         this.setAbilities(temp);
         setNumOfAbilities();
         sortAbilities();
@@ -439,7 +440,7 @@ public class Character extends Statblock {
         setSpriteHeight(150);
 
         // Test Functions
-        //setXPTotal(110000); //< TESTERS
+        //setXPTotal(9000); //< TESTERS
         //checkLevelUp(); //< Tester
     }
 
@@ -464,6 +465,11 @@ public class Character extends Statblock {
         if(getLevel()==3){
             for(int i=0; i<getMaxNumAbilities(); i++){
                 if(temp[i].getName()=="Blade Dance"){
+                    temp[i].setActive(true);
+                }
+            }
+            for(int i=0; i<getMaxNumAbilities(); i++){
+                if(temp[i].getName()=="Berserk"){
                     temp[i].setActive(true);
                 }
             }
