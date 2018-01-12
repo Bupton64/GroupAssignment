@@ -338,7 +338,7 @@ public class Character extends Statblock {
     public void init(){
 
         //Quest Init - Zane
-        currentQuest = new quest_killingForWizard();
+        currentQuest = new quest_blankQuest();
 
         // Memory initialisation
 
