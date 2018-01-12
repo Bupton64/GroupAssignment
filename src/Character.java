@@ -531,6 +531,32 @@ public class Character extends Statblock {
 
     private Quest currentQuest;
 
+    enum QuestState {QuestZero,QuestOne,QuestTwo}
+    QuestState questState = QuestState.QuestZero;
+
+    public QuestState getQuestState() {
+        return questState;
+    }
+
+    public void setQuestState(QuestState questState) {
+        this.questState = questState;
+    }
+
+    public void changeQuest(int swapTo){
+        switch(swapTo){
+            case 1:
+                questState = QuestState.QuestOne;
+                currentQuest = new quest_killingForWizard();
+                break;
+            case 2:
+                questState = QuestState.QuestTwo;
+                break;
+        }
+
+
+    }
+
+
     public Quest getCurrentQuest(){
         return currentQuest;
     }
