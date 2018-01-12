@@ -62,7 +62,22 @@ public class plains_H9 extends  extraFunctions {
     ///////////////////////////////////////////////////////////
     @Override
     public void setUpCollision(Collision collisionPoints){
-//        collisionPoints.addBoxCollision(53,7,11,14,flicker);
+        //Furnace
+        collisionPoints.addBoxCollision(40,5,8,7,flicker);
+        collisionPoints.addBoxCollision(42,1,4,3,flicker);
+
+        //Table
+        collisionPoints.addBoxCollision(35,11,5,6,flicker);
+
+        //House
+        collisionPoints.addBoxCollision(50,7,11,14,flicker);
+        collisionPoints.addBoxCollision(50,5,10,1,flicker);
+        collisionPoints.addBoxCollision(51,3,9,1,flicker);
+        collisionPoints.addBoxCollision(52,3,7,1,flicker);
+        collisionPoints.addBoxCollision(53,2,5,1,flicker);
+        collisionPoints.addBoxCollision(54,1,3,1,flicker);
+        collisionPoints.addBoxCollision(55,2,1,1,flicker);
+        collisionPoints.addSmallCollisionPoint(49,19,flicker);
 
     }
 
