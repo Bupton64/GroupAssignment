@@ -568,4 +568,7 @@ public class Character extends Statblock {
         return currentQuest;
     }
 
+    public void setTheState(Quest.questState newState){
+        currentQuest.setState(newState);
+    }
 }
