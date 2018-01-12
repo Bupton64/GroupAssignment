@@ -19,12 +19,14 @@ public class quest_killingForWizard extends Quest {
 
 
     public void drawQuest(Graphics2D g){
-        changeColor(white, g);
-        drawText(510, 30, "Monsters killed: " + killCount + "/5", "Arial", 30, g);
+        if(getState() == questState.inQuest) {
+            changeColor(blue, g);
+            drawText(510, 30, "Monsters killed: " + killCount + "/5", "Arial", 30, g);
+        }
     }
 
-    public void updateQuest(Monster mon, Character playerMan){
-        if(playerMan.getCurrentMapLocation() == 17) {
+    public void updateQuest(Monster mon, double mapLocation){
+        if(mapLocation == 17) {
             killCount++;
         }
         if(killCount == 5){

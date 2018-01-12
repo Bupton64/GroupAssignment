@@ -55,7 +55,7 @@ public class Quest extends extraFunctions {
 
     }
 
-    public void updateQuest(Monster mon, Character playerMan){
+    public void updateQuest(Monster mon, double mapLocation){
 
 
     }
