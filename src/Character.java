@@ -440,8 +440,8 @@ public class Character extends Statblock {
         setSpriteHeight(150);
 
         // Test Functions
-        //setXPTotal(9000); //< TESTERS
-        //checkLevelUp(); //< Tester
+        setXPTotal(500); //< TESTERS
+        checkLevelUp(); //< Tester
     }
 
     public void unlockAbility(){
