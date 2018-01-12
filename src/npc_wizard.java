@@ -63,9 +63,9 @@ public class npc_wizard extends  NPC {
             if (player.getCurrentQuest().getState() == Quest.questState.completedQuest) {
 
                 drawText(110, 450, "Fantastic work! Looks like you've learnt a few new abilities as well! I'll", "Times New Roman", 20, g);
-                drawText(110, 475, "need you to venture out west, you can follow the path if you please, and find ", "Times New Roman", 20, g);
-                drawText(110, 500, "Camrath. Camrath will be able to craft you a powerful sword, the sword alone", "Times New Roman", 20, g);
-                drawText(110, 525, "won't be enough but it's a start. Come and talk to me after you get it.", "Times New Roman", 20, g);
+                drawText(110, 475, "need you to venture out west, you can follow the path if you please, and  ", "Times New Roman", 20, g);
+                drawText(110, 500, "find Camrath. Camrath will be able to craft you a sword, the sword ", "Times New Roman", 20, g);
+                drawText(110, 525, "alone won't be enough but it's a start. Come and talk to me after you get it.", "Times New Roman", 20, g);
             }
         }else{
             player.changeQuest(1);
@@ -78,12 +78,10 @@ public class npc_wizard extends  NPC {
 
 
 
-    public void keyTyped(KeyEvent e) {
-        //if(!questAccept) {
-            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                questAccept = true;
-            }
-        //}
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            questAccept = true;
+        }
     }
 
 
