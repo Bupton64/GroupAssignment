@@ -34,7 +34,7 @@ public class npc_plains_H9 extends  NPC {
             drawText(110, 450, "I knew it was only a matter of time before you came looking for help.", "Times New Roman", 20, g);
             drawText(110, 475, "Let me guess, you want a new sword? hmmmmm it'll cost you, I don't give", "Times New Roman", 20, g);
             drawText(110, 500, "a damn if it's the 'end of the world' I need to put food on the table.", "Times New Roman", 20, g);
-            drawText(110, 525, "$500 and i'll make you one.", "Times New Roman", 20, g);
+            drawText(110, 525, "500GP and i'll make you one.", "Times New Roman", 20, g);
         }
         if(questNum == 2){
             drawText(110, 450, "This sword is made out of the purest crystal in the land, unbreakable,", "Times New Roman", 20, g);
