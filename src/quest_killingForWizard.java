@@ -8,11 +8,12 @@ public class quest_killingForWizard extends Quest {
     private int toBeKilled;
 
     quest_killingForWizard(){
+        setQuestName("killingForWizard");
         killCount = 0;
         toBeKilled = 5;
         setReward(100);
         setStage(0);
-
+        state = questState.preQuest;
     }
 
 
@@ -31,6 +32,8 @@ public class quest_killingForWizard extends Quest {
         }
 
     }
+
+
 
 
 }

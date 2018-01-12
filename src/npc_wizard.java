@@ -40,7 +40,9 @@ public class npc_wizard extends  NPC {
             drawText(110, 475, "to go before you're ready to take on Jacruler... I need some help from you", "Times New Roman", 20, g);
             drawText(110, 500, "before we begin. There has been a lot of monsters around these parts of ", "Times New Roman", 20, g);
             drawText(110, 525, "late, would you please clear this area so we can get to work?", "Times New Roman", 20, g);
-
+//            if(currentQuest.getQuestName() != "killingForWizard"){
+//                playerMan.changQuest(1);
+//            }
 
         }
         if(currentQuest.getState() == Quest.questState.inQuest){
