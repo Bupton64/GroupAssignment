@@ -1,9 +1,11 @@
-public class Quest {
+import java.awt.*;
+
+public class Quest extends extraFunctions {
     //Members
 
     private String questName; //<Name of the quest
     private int reward; //<How much is rewarded for completing each quest
-    int stage; //<What part of the quest the player is on
+    private int stage; //<What part of the quest the player is on
 
     public String getQuestName() {
         return questName;
@@ -35,10 +37,8 @@ public class Quest {
         int temp = playerMan.getGpTotal() + reward;
         playerMan.setGpTotal(temp);
     }
-    /*
-     * Will draw progress e.g. how many monsters have been killed
-     */
-    public void drawQuestTracker(){
 
+    public void drawSuccess(Graphics2D g){
+        drawBoldText(350, 300, "QUEST COMPLETE!", g);
     }
 }
