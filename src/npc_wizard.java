@@ -35,6 +35,7 @@ public class npc_wizard extends  NPC {
                       //<4 is for after
 
 
+
     public void drawConvo(Graphics2D g, Character player){
         super.drawConvo(g,player);
         if(player.getCurrentQuest().getQuestName() == "killingForWizard") {

@@ -13,7 +13,7 @@ public class quest_killingForWizard extends Quest {
         toBeKilled = 5;
         setReward(100);
         setStage(0);
-
+        state = questState.preQuest;
     }
 
 
@@ -32,6 +32,8 @@ public class quest_killingForWizard extends Quest {
         }
 
     }
+
+
 
 
 }
