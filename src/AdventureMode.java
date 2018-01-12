@@ -102,9 +102,12 @@ public class AdventureMode extends GameEngine {
         if (state == GameState.TravelMode) {
 
             mapController.drawMap(mGraphics); //< Draw the Map
+
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
 
             mapController.drawNPCInteraction(mGraphics);
+            questInProgress.drawQuest(mGraphics);
+
 
         } else if (state == GameState.CombatMode) {
             combatMode.paintComponent(mGraphics); //< Draw Combat

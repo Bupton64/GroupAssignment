@@ -51,7 +51,12 @@ public class Quest extends extraFunctions {
         playerMan.setGpTotal(temp);
     }
 
-    public void drawSuccess(Graphics2D g){
-        drawBoldText(350, 300, "QUEST COMPLETE!", g);
+    public void drawQuest(Graphics2D g){
+
+    }
+
+    public void updateQuest(Monster mon, Character playerMan){
+
+
     }
 }
