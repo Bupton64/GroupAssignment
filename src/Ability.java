@@ -225,7 +225,7 @@ public class Ability {
     public int attackLoop(Statblock user) {
         int damage = 0;
         if (makeAttack(user)) {
-            damage = this.dealDamage();
+            damage = this.dealDamage(user);
             return damage;
         } else {
             return damage;
@@ -238,7 +238,7 @@ public class Ability {
             return true;
         }
         double hitChance=10+attack+attackBonus+speed+speedBonus;
-        double successCounter=Math.random()*user.getLevel()*5;
+        double successCounter=Math.random()*user.getLevel()*10;
         if (hitChance>successCounter){
             lastHit=true;
             return true;
@@ -248,10 +248,14 @@ public class Ability {
         }
     }
 
-    public int dealDamage(){
-        int damage=(attack+attackBonus)/2;
-        damage+=(strength+strengthBonus)+Math.random()*5;
-        int critChance= getLuck()+luckBonus+(int)(Math.random()*50);
+    public int dealDamage(Statblock user){
+        int damage =(attack+attackBonus)/2;
+        damage += (strength+strengthBonus)+(Math.random()*15)+15;
+        System.out.println("Ability Damage: " + damage);
+        if(user.getLevel()>1) {
+            damage *= (user.getLevel() / 2);
+        }
+        int critChance = getLuck()+luckBonus+(int)(Math.random()*50);
         if(isMagic){
             lastCrit=false;
             return damage;
