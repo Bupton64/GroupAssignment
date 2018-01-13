@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_E9_byFence extends  NPC {
 
-    npc_plains_E9_byFence( ){
+    npc_plains_E9_byFence(Character playerMan){
         setName("Talon");
         spriteSheet = loadImage("chara4.png");
         sprite = subImage(spriteSheet,52,0,56,72);
@@ -25,8 +25,8 @@ public class npc_plains_E9_byFence extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"He's bound to come to our town... if only there was someone to protect us!", "Times New Roman",20,g);
     }
 

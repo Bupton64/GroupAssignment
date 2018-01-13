@@ -4,7 +4,9 @@ import java.awt.event.*;
 
 public class npc_plains_E9_byBridge extends  NPC {
 
-    npc_plains_E9_byBridge( ){
+    Character player;
+
+    npc_plains_E9_byBridge(Character playerMan){
         setName("Sally");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,364,144,56,72);
@@ -13,6 +15,7 @@ public class npc_plains_E9_byBridge extends  NPC {
         setMapLocation(21);
         setMapPos(475,200);
         setHostile(false);
+        this.player = playerMan;
     }
 
     @Override
@@ -25,8 +28,8 @@ public class npc_plains_E9_byBridge extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"You must be " + player.getName() + " right? I'm so sorry to hear what happened to your", "Times New Roman",20,g);
         drawText(110,475,"town. Hopefully the Wizard in the North will be able to help you!", "Times New Roman",20,g);
     }

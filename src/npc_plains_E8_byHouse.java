@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_E8_byHouse extends  NPC {
 
-    npc_plains_E8_byHouse( ){
+    npc_plains_E8_byHouse(Character playerMan){
         setName("Tim Burr");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
@@ -58,8 +58,8 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"MY NAME'S NOT THAT FUNNY OK!? ", "Times New Roman",20,g);
     }
 

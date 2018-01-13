@@ -4,7 +4,9 @@ import java.awt.event.*;
 //BLACKSMITH
 public class npc_plains_H9 extends  NPC {
 
-    npc_plains_H9( ){
+    Character player;
+
+    npc_plains_H9(Character playerMan){
         setName("Camrath");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,52,288,56,72);
@@ -13,6 +15,7 @@ public class npc_plains_H9 extends  NPC {
         setMapLocation(39);
         setMapPos(500,250);
         setHostile(false);
+        this.player = playerMan;
     }
 
     @Override
@@ -28,8 +31,8 @@ public class npc_plains_H9 extends  NPC {
     int questNum = 1;   //<1 when he hasn't brought the sword, 2 after he brought it
                         //<3 is after the initial quest and players will be able to buy various weapons from him
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g,player );
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         if(player.getCurrentQuest().getQuestName() == "talkToBlacksmith") {
             if (player.getCurrentQuest().getState() == Quest.questState.inQuest) {
                 changeColor(black, g);

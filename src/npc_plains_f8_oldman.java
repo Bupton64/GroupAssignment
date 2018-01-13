@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_f8_oldman extends  NPC {
 
-    npc_plains_f8_oldman( ){
+    npc_plains_f8_oldman(Character playerMan){
         setName("Julian");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,364,288,56,72);
@@ -59,8 +59,8 @@ public class npc_plains_f8_oldman extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"I'm Julian, the oldest NPC... uh I mean villager in this Town.", "Times New Roman",20,g);
     }
 

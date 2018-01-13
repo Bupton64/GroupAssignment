@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_E9_signBottom extends  NPC {
 
-    npc_E9_signBottom( ){
+    npc_E9_signBottom(Character playerMan){
         setName("Town Sign");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);
@@ -25,8 +25,8 @@ public class npc_E9_signBottom extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"Welcome to Hurnville, a safe haven for all.", "Times New Roman",20,g);
     }
 

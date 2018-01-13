@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_D8 extends  NPC {
 
-    npc_plains_D8( ){
+    npc_plains_D8(Character playerMan){
         setName("Andrew");
         spriteSheet = loadImage("chara4.png");
         sprite = subImage(spriteSheet,520,288,56,72);
@@ -25,8 +25,8 @@ public class npc_plains_D8 extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"It's looking good so far lads, definitely A+ worthy!", "Times New Roman",20,g);
     }
 

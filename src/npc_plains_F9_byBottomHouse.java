@@ -4,7 +4,9 @@ import java.awt.event.*;
 
 public class npc_plains_F9_byBottomHouse extends  NPC {
 
-    npc_plains_F9_byBottomHouse( ){
+
+
+    npc_plains_F9_byBottomHouse(Character playerMan){
         setName("Tyran");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,520,288,56,72);

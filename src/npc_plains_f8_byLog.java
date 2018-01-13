@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_f8_byLog extends  NPC {
 
-    npc_plains_f8_byLog( ){
+    npc_plains_f8_byLog(Character playerMan){
         setName("Link");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,520,0,56,72);
@@ -25,8 +25,8 @@ public class npc_plains_f8_byLog extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"What do you want? Can't you see i'm busy!?", "Times New Roman",20,g);
     }
 
