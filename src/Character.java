@@ -97,7 +97,7 @@ public class Character extends Statblock {
     public void setCurrentMapLocation(double currentMapPos) {
         this.currentMapLocation = currentMapPos;
     }
-    
+
     public void sortInventory(){
         Item swapper;
         for(int i=0; i < maxInventorySize; i++){
@@ -353,6 +353,37 @@ public class Character extends Statblock {
 
         //< Check inventory
         /*
+        for(int i=0; i<maxInventorySize; i++){
+            System.out.println(inventory[i].getName());
+        }
+        int index=0;
+        for(int i=0; i<maxInventorySize; i++){
+            if(inventory[i].getName()=="Rusty Sword"){
+                index=i;
+                break;
+            }
+        }
+        equipItem(inventory[index]);
+        for(int i=0; i<maxInventorySize; i++){
+            if(inventory[i].getName()=="Iron Sword"){
+                index=i;
+                break;
+            }
+        }
+        equipItem(inventory[index]);
+        System.out.println();
+        for(int i=0; i<maxInventorySize; i++){
+            System.out.println(inventory[i].getName());
+        }
+
+        for(int i=0; i<maxInventorySize; i++){
+            if(inventory[i].getName()=="Rusty Sword") {
+                index = i;
+                break;
+            }
+        }
+        equipItem(inventory[index]);
+        System.out.println();
         for(int i=0; i<maxInventorySize; i++){
             System.out.println(inventory[i].getName());
         }
