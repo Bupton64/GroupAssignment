@@ -27,6 +27,21 @@ public class npc_plains_E8_byHouse extends  NPC {
     public void loadImages(){
         super.loadImages();
         //Load Images here
+        spriteDown[0] = subImage(spriteSheet,0,288,56,72);
+        spriteDown[1] = subImage(spriteSheet,52,288,56,72);
+        spriteDown[2] = subImage(spriteSheet,104,288,56,72);
+
+        spriteUp[0] = subImage(spriteSheet,0,522,56,72);
+        spriteUp[1] = subImage(spriteSheet,52,522,56,72);
+        spriteUp[2] = subImage(spriteSheet,104,522,56,72);
+
+        spriteLeft[0] = subImage(spriteSheet,312,366,56,72);
+        spriteLeft[1] = subImage(spriteSheet,364,366,56,72);
+        spriteLeft[2] = subImage(spriteSheet,416,366,56,72);
+
+        spriteRight[0] = subImage(spriteSheet,312,444,56,72);
+        spriteRight[1] = subImage(spriteSheet,364,444,56,72);
+        spriteRight[2] = subImage(spriteSheet,416,444,56,72);
     }
 
     @Override
