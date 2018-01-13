@@ -5,9 +5,8 @@ import java.awt.event.*;
 public class npc_wizard extends  NPC {
 
     boolean questAccept;
-    Character player;
 
-    npc_wizard(Character playerMan){
+    npc_wizard(){
         setName("Tim the Great");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
@@ -17,7 +16,6 @@ public class npc_wizard extends  NPC {
         setMapPos(400,250);
         setHostile(false);
         questAccept = false;
-        this.player = playerMan;
     }
 
     @Override

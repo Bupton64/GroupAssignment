@@ -4,9 +4,9 @@ import java.awt.event.*;
 
 public class npc_plains_E9_byBridge extends  NPC {
 
-    Character player;
 
-    npc_plains_E9_byBridge(Character playerMan){
+
+    npc_plains_E9_byBridge(){
         setName("Sally");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,364,144,56,72);
@@ -15,7 +15,6 @@ public class npc_plains_E9_byBridge extends  NPC {
         setMapLocation(21);
         setMapPos(475,200);
         setHostile(false);
-        this.player = playerMan;
     }
 
     @Override

@@ -4,9 +4,9 @@ import java.awt.event.*;
 //MOVED TO H9
 public class npc_plains_G7 extends  NPC {
 
-    Character player;
 
-    npc_plains_G7(Character playerMan){
+
+    npc_plains_G7(){
         setName("Camrath");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,52,288,56,72);
@@ -15,7 +15,6 @@ public class npc_plains_G7 extends  NPC {
         setMapLocation(39);
         setMapPos(400,300);
         setHostile(false);
-        this.player = playerMan;
     }
 
     @Override
