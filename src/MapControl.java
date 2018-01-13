@@ -132,7 +132,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 17:
                         currentMap = new plains_E5();
-                        mapNpcs[0] = new npc_wizard(playerMan);
+                        mapNpcs[0] = new npc_wizard();
                         numOfNpc = 1;
                         break;
                     case 18:
@@ -151,7 +151,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 21:
                         currentMap = new plains_E9();
-                        mapNpcs[0] = new npc_plains_E9_byBridge(playerMan);
+                        mapNpcs[0] = new npc_plains_E9_byBridge();
                         mapNpcs[1] = new npc_plains_E9_byFence();
                         mapNpcs[2] = new npc_plains_E9_byField();
                         mapNpcs[3] = new npc_E9_signBottom();
@@ -201,7 +201,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 33:
                         currentMap = new plains_G7();
-                        mapNpcs[0] = new npc_plains_G7(playerMan);
+                        mapNpcs[0] = new npc_plains_G7();
                         break;
                     case 34:
                         currentMap = new plains_G8();
@@ -220,7 +220,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 39:
                         currentMap = new plains_H9();
-                        mapNpcs[0] = new npc_plains_H9(playerMan);
+                        mapNpcs[0] = new npc_plains_H9();
                         numOfNpc = 1;
                         break;
                     case 40:
@@ -418,7 +418,7 @@ public class MapControl extends extraFunctions {
 
     public void drawNPCInteraction(Graphics2D g){
         if(npcConvo) {
-            mapNpcs[currentNpcInteraction].drawConvo(g);
+            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan);
         }
     }
 
