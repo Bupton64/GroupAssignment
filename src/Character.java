@@ -556,6 +556,7 @@ public class Character extends Statblock {
     public boolean checkLevelUp(){
         if(XPToNextLevel<=XPTotal){
             levelUp();
+            // Comment tomake a dud commit, making sure I didn't break everything
             XPTotal-=XPToNextLevel;
             XPToNextLevel=getLevel()*getLevel()*150;
             checkLevelUp();
