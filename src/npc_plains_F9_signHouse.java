@@ -4,7 +4,8 @@ import java.awt.event.*;
 
 public class npc_plains_F9_signHouse extends  NPC {
 
-    npc_plains_F9_signHouse( ){
+
+    npc_plains_F9_signHouse(Character playerMan){
         setName("Supermarket");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);
@@ -25,8 +26,8 @@ public class npc_plains_F9_signHouse extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"Closed.", "Times New Roman",20,g);
     }
 

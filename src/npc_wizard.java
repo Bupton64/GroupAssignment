@@ -5,8 +5,9 @@ import java.awt.event.*;
 public class npc_wizard extends  NPC {
 
     boolean questAccept;
+    Character player;
 
-    npc_wizard( ){
+    npc_wizard(Character playerMan){
         setName("Tim the Great");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
@@ -16,7 +17,7 @@ public class npc_wizard extends  NPC {
         setMapPos(400,250);
         setHostile(false);
         questAccept = false;
-
+        this.player = playerMan;
     }
 
     @Override
@@ -36,8 +37,8 @@ public class npc_wizard extends  NPC {
 
 
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g,player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         if(player.getCurrentQuest().getQuestName() == "killingForWizard") {
             if (player.getCurrentQuest().getState() == Quest.questState.preQuest) {
                 changeColor(black, g);
@@ -98,7 +99,9 @@ public class npc_wizard extends  NPC {
         }
 //
     }
-
+//    public void updateConvo(Character playerMan){
+//
+//    }
 
 
     public void keyPressed(KeyEvent e) {

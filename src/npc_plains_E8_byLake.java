@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_E8_byLake extends  NPC {
 
-    npc_plains_E8_byLake( ){
+    npc_plains_E8_byLake(Character playerMan){
         setName("Sam On");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,208,288,56,72);
@@ -25,8 +25,8 @@ public class npc_plains_E8_byLake extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"Man, that Wizard up North is an interesting fellow... I just hope he's", "Times New Roman",20,g);
         drawText(110,475,"watching over us.", "Times New Roman",20,g);
     }
