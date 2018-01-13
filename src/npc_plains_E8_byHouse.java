@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class npc_plains_E8_byHouse extends  NPC {
 
     npc_plains_E8_byHouse(){
-        setName("Tim Burr");
+        setName("Alyx");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setHeight(70);
@@ -27,6 +27,21 @@ public class npc_plains_E8_byHouse extends  NPC {
     public void loadImages(){
         super.loadImages();
         //Load Images here
+        spriteDown[0] = subImage(spriteSheet,0,288,56,72);
+        spriteDown[1] = subImage(spriteSheet,52,288,56,72);
+        spriteDown[2] = subImage(spriteSheet,104,288,56,72);
+
+        spriteUp[0] = subImage(spriteSheet,0,522,56,72);
+        spriteUp[1] = subImage(spriteSheet,52,522,56,72);
+        spriteUp[2] = subImage(spriteSheet,104,522,56,72);
+
+        spriteLeft[0] = subImage(spriteSheet,312,366,56,72);
+        spriteLeft[1] = subImage(spriteSheet,364,366,56,72);
+        spriteLeft[2] = subImage(spriteSheet,416,366,56,72);
+
+        spriteRight[0] = subImage(spriteSheet,312,444,56,72);
+        spriteRight[1] = subImage(spriteSheet,364,444,56,72);
+        spriteRight[2] = subImage(spriteSheet,416,444,56,72);
     }
 
     @Override
@@ -60,7 +75,8 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     public void drawConvo(Graphics2D g, Character player){
         super.drawConvo(g, player);
-        drawText(110,450,"MY NAME'S NOT THAT FUNNY OK!? ", "Times New Roman",20,g);
+        drawText(110,450,"My business is ruined! I can't get any new supplies from the city", "Times New Roman",20,g);
+        drawText(110,475,"now that Sevar has boxed us in!", "Times New Roman",20,g);
     }
 
 

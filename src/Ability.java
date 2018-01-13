@@ -251,7 +251,6 @@ public class Ability {
     public int dealDamage(Statblock user){
         int damage =(attack+attackBonus)/2;
         damage += (strength+strengthBonus)+(Math.random()*15)+15;
-        System.out.println("Ability Damage: " + damage);
         if(user.getLevel()>1) {
             damage *= (user.getLevel() / 2);
         }

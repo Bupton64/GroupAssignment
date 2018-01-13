@@ -27,7 +27,21 @@ public class npc_plains_f8_oldman extends  NPC {
     @Override
     public void loadImages(){
         super.loadImages();
-        //Load Images here
+        spriteDown[0] = subImage(spriteSheet,312,288,56,72);
+        spriteDown[1] = subImage(spriteSheet,364,288,56,72);
+        spriteDown[2] = subImage(spriteSheet,416,288,56,72);
+
+        spriteUp[0] = subImage(spriteSheet,312,522,56,72);
+        spriteUp[1] = subImage(spriteSheet,364,522,56,72);
+        spriteUp[2] = subImage(spriteSheet,416,522,56,72);
+
+        spriteLeft[0] = subImage(spriteSheet,312,366,56,72);
+        spriteLeft[1] = subImage(spriteSheet,364,366,56,72);
+        spriteLeft[2] = subImage(spriteSheet,416,366,56,72);
+
+        spriteRight[0] = subImage(spriteSheet,312,444,56,72);
+        spriteRight[1] = subImage(spriteSheet,364,444,56,72);
+        spriteRight[2] = subImage(spriteSheet,416,444,56,72);
     }
 
     @Override

@@ -7,7 +7,7 @@ public class npc_wizard extends  NPC {
     boolean questAccept;
 
     npc_wizard(){
-        setName("Tim the Great");
+        setName("Sevar");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setHeight(70);
