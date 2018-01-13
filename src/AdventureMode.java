@@ -113,7 +113,10 @@ public class AdventureMode extends GameEngine {
             combatMode.paintComponent(mGraphics); //< Draw Combat
         } else if (state == GameState.OverWorldMenu) {
             changeBackgroundColor(blue);
-            MenuController.drawMenu(mGraphics);
+            MenuController.drawChaMenu(mGraphics);
+            MenuController.drawInvMenu(mGraphics);
+            MenuController.drawEquMenu(mGraphics);
+
 
         }
 
@@ -158,6 +161,7 @@ public class AdventureMode extends GameEngine {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE && MenuController.isChaMenu()) {
                 stateChanger = 1;
             }
+
         }
 
 
