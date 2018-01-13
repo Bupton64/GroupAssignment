@@ -8,8 +8,7 @@ public class quest_talkToBlacksmith extends Quest {
 
     quest_talkToBlacksmith(){
         setQuestName("talkToBlacksmith");
-        setReward(100);
-        state = questState.preQuest;
+        state = questState.inQuest;
         displayReward = true;
         displayTimer = 0;
         displayDuration = 5;
@@ -25,7 +24,7 @@ public class quest_talkToBlacksmith extends Quest {
 
     public void drawQuest(Graphics2D g){
         if(getState() == questState.inQuest) {
-            changeColor(blue, g);
+            changeColor(red, g);
             drawText(450, 30, "Go talk to the blacksmith in the East", "Arial", 30, g);
         }
         if(displayReward){

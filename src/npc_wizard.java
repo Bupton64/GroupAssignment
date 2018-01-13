@@ -39,7 +39,7 @@ public class npc_wizard extends  NPC {
         switch (questStage){
             case 1:
                 return 1;
-            case 2:
+            case 3:
                 return 2;
             default:
                 return 0;
@@ -121,7 +121,7 @@ public class npc_wizard extends  NPC {
                     questStage = 1;
                     break;
                 case 2:
-                    questStage = 2;
+                    questStage = 3;
                     break;
             }
 

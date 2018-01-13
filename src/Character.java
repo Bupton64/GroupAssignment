@@ -579,28 +579,23 @@ public class Character extends Statblock {
 
     }
 
+    /////////////////////////////////
+    ///
+    ///  Quest Tool Bar
+    ///
+    ////////////////////////////////
+
     private Quest currentQuest;
 
-    enum QuestState {QuestZero,QuestOne,QuestTwo}
-    QuestState questState = QuestState.QuestZero;
 
-    public QuestState getQuestState() {
-        return questState;
-    }
-
-    public void setQuestState(QuestState questState) {
-        this.questState = questState;
-    }
 
     public void changeQuest(int swapTo){
         switch(swapTo){
             case 1:
-                questState = QuestState.QuestOne;
                 currentQuest.setState(Quest.questState.inQuest);
                 break;
             case 2:
                 currentQuest.giveReward(this);
-                questState = QuestState.QuestTwo;
                 currentQuest = new quest_talkToBlacksmith();
                 break;
         }
@@ -617,9 +612,6 @@ public class Character extends Statblock {
         return currentQuest;
     }
 
-    public void setTheState(Quest.questState newState){
-        currentQuest.setState(newState);
-    }
 
     public Quest.questState getCurrentQuestState(){
         return currentQuest.getState();

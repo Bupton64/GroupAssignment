@@ -62,9 +62,6 @@ public class Quest extends extraFunctions {
 
     }
 
-    public void updateTalkQuest(){
-
-    }
 
     public void updateKillQuest(Monster mon, double mapLocation){
 

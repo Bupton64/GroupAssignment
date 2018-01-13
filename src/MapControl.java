@@ -372,7 +372,7 @@ public class MapControl extends extraFunctions {
     //////////////////////////////////
 
     boolean npcConvo;
-    int updateQuest;
+    int updateQuestState;
     int currentNpcInteraction;
     boolean checkQuestChange;
 
@@ -386,7 +386,7 @@ public class MapControl extends extraFunctions {
 
     public void initNPC(){
         checkQuestChange = false;
-        updateQuest = 0;
+        updateQuestState = 0;
         npcConvo = false;
         currentNpcInteraction = -1;
     }
@@ -419,17 +419,22 @@ public class MapControl extends extraFunctions {
             mapNpcs[i].npcAction(dt, collisionDetector);
         }
 
-        if (checkQuestChange) {
-                updateQuest = mapNpcs[currentNpcInteraction].updateConvo();
-                if(updateQuest != 0){
-                    playerMan.changeQuest(updateQuest);
-                    updateQuest = 0;
-                    playerMan.updateQuestReward(dt);
-                }
-                checkQuestChange = false;
+    }
+
+
+    public void updateQuest(double dt){
+        //Quest Check
+        if (checkQuestChange && currentNpcInteraction != -1) {
+            updateQuestState = mapNpcs[currentNpcInteraction].updateConvo();
+            if(updateQuestState != 0){
+                playerMan.changeQuest(updateQuestState);
+                updateQuestState = 0;
+                playerMan.updateQuestReward(dt);
+
+
+            }
+            checkQuestChange = false;
         }
-
-
     }
 
 
