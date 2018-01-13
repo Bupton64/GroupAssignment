@@ -11,5 +11,6 @@ public class ability_Spark extends Ability{
         this.setToolTip("A small burst of magical energy");
         this.setActive(false);
         this.setType(AbilityType.damage);
+        this.setDisplayString(null);
     }
 }

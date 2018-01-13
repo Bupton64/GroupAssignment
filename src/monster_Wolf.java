@@ -32,9 +32,9 @@ public class monster_Wolf extends Monster {
         setSpriteWidth(120);
         setSpriteHeight(120);
 
-        setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage);
+        setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage, "");
         temp[1]= new ability_monster_roar();
-        setUpAbilityNumberI(temp, 2, "Rend", 3, 4, 0, 0, 4, false, 4, "", true, Ability.AbilityType.damage);
+        setUpAbilityNumberI(temp, 2, "Rend", 3, 4, 0, 0, 4, false, 4, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
     }
 

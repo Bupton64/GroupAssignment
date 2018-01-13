@@ -11,6 +11,7 @@ public class ability_Berserk extends Ability {
         this.setToolTip("Harm yourself to gain strength");
         this.setActive(false);
         this.setType(AbilityType.buff);
+        this.setDisplayString("Your power grows with your recklessness!");
     }
 
     public Ability use(Statblock user){

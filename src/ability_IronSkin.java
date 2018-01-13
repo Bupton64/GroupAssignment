@@ -11,6 +11,7 @@ public class ability_IronSkin extends Ability {
         this.setToolTip("Harden your skin to resist blows");
         this.setActive(true);
         this.setType(AbilityType.buff);
+        this.setDisplayString("Your skin grows tougher!");
     }
 
     @Override

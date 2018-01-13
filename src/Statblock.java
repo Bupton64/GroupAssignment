@@ -298,7 +298,7 @@ public class Statblock extends extraFunctions{
 
     // Methods
 
-    public void setUpAbilityNumberI(Ability [] abilities, int i, String name, int speed, int attack, int defense, int luck, int strength, boolean isMagic, int energy, String tooltip, boolean active, Ability.AbilityType type){
+    public void setUpAbilityNumberI(Ability [] abilities, int i, String name, int speed, int attack, int defense, int luck, int strength, boolean isMagic, int energy, String tooltip, boolean active, Ability.AbilityType type, String displayString){
         abilities[i].setName(name);
         abilities[i].setSpeed(speed);
         abilities[i].setAttack(attack);
@@ -310,6 +310,7 @@ public class Statblock extends extraFunctions{
         abilities[i].setToolTip(tooltip);
         abilities[i].setActive(active);
         abilities[i].setType(type);
+        abilities[i].setDisplayString(displayString);
     }
 
     public void sortAbilities(){

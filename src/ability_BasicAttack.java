@@ -8,8 +8,9 @@ public class ability_BasicAttack extends Ability{
         this.setStrength(0);
         this.setMagic(false);
         this.setEnergyCost(-1);
-        this.setToolTip("Basic Attack");
+        this.setToolTip("Attack");
         this.setActive(true);
         this.setType(AbilityType.damage);
+        this.setDisplayString(null);
     }
 }

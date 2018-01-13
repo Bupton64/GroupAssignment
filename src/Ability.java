@@ -14,6 +14,7 @@ public class Ability {
     private AbilityType type;
 
     // Variables
+    private String displayString;
     private String name;
     private String toolTip;
     private int attackBonus;
@@ -31,6 +32,13 @@ public class Ability {
 
     // Getters and setters
 
+    public String getDisplayString() {
+        return displayString;
+    }
+
+    public void setDisplayString(String displayString) {
+        this.displayString = displayString;
+    }
 
     public AbilityType getType() {
         return type;

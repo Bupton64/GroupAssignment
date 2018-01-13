@@ -10,6 +10,7 @@ public class ability_monster_roar extends Ability {
         this.setEnergyCost(2);
         this.setActive(false);
         this.setType(AbilityType.buff);
+        this.setDisplayString("The wolf is emboldened by its courage!");
     }
 
     @Override

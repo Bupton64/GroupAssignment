@@ -33,9 +33,9 @@ public class monster_Goblin extends Monster {
         setSpriteWidth(120);
         setSpriteHeight(142);
 
-        setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage);
-        setUpAbilityNumberI(temp, 1, "Slash", 1, 1, -1, 0, 0, false, 1, "", true, Ability.AbilityType.damage);
-        setUpAbilityNumberI(temp, 2, "Firestrike", 1, 1, 0, 0, 4, true, 3, "", true, Ability.AbilityType.damage);
+        setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 1, "Slash", 1, 1, -1, 0, 0, false, 1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 2, "Firestrike", 1, 1, 0, 0, 4, true, 3, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
     }
 

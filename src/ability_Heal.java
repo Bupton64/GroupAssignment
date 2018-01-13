@@ -26,6 +26,7 @@ public class ability_Heal extends Ability {
         setLastStatus(null);
         setLastStatusDuration(0);
         setLastDamage(amountToHeal);
+        setDisplayString("You heal for " + amountToHeal + " health!");
         return this;
     }
 

@@ -11,5 +11,6 @@ public class ability_DualStrike extends Ability{
         this.setToolTip("A devastating combination move");
         this.setActive(false);
         this.setType(AbilityType.damage);
+        this.setDisplayString(null);
     }
 }
