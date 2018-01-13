@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class npc_plains_E8_byHouse extends  NPC {
 
     npc_plains_E8_byHouse(){
-        setName("Tim Burr");
+        setName("Alyx");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setHeight(70);
@@ -75,7 +75,8 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     public void drawConvo(Graphics2D g, Character player){
         super.drawConvo(g, player);
-        drawText(110,450,"MY NAME'S NOT THAT FUNNY OK!? ", "Times New Roman",20,g);
+        drawText(110,450,"My business is ruined! I can't get any new supplies from the city", "Times New Roman",20,g);
+        drawText(110,475,"now that Sevar has boxed us in!", "Times New Roman",20,g);
     }
 
 
