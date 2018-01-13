@@ -1223,7 +1223,7 @@ public class Combat extends extraFunctions{
             if(menuOption == 0){
                 //attackl
 
-                lastAbility = playerAbilities[0].use(player);
+                lastAbility = playerAbilities[0];
                 if(lastAbility.getType() == Ability.AbilityType.damage){
                     castBasicAttack = true;
                 }else if(lastAbility.getType() == Ability.AbilityType.buff){
