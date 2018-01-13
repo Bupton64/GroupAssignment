@@ -145,14 +145,17 @@ public class MapControl extends extraFunctions {
                         currentMap = new plains_E8();
                         mapNpcs[0] = new npc_plains_E8_byHouse();
                         mapNpcs[1] = new npc_plains_E8_byLake();
-                        numOfNpc = 2;
+                        mapNpcs[2] = new npc_plains_E8_signTop();
+                        mapNpcs[3] = new npc_plains_E8_signGrave();
+                        numOfNpc = 4;
                         break;
                     case 21:
                         currentMap = new plains_E9();
                         mapNpcs[0] = new npc_plains_E9_byBridge();
                         mapNpcs[1] = new npc_plains_E9_byFence();
                         mapNpcs[2] = new npc_plains_E9_byField();
-                        numOfNpc = 3;
+                        mapNpcs[3] = new npc_E9_signBottom();
+                        numOfNpc = 4;
                         break;
                     case 22:
                         currentMap = new plains_E10();
@@ -184,7 +187,8 @@ public class MapControl extends extraFunctions {
                         currentMap = new plains_F9();
                         mapNpcs[0] = new npc_plains_F9_byBottomHouse();
                         mapNpcs[1] = new npc_plains_F9_byPath();
-                        numOfNpc = 2;
+                        mapNpcs[2] = new npc_plains_F9_signHouse();
+                        numOfNpc = 3;
                         break;
                     case 30:
                         currentMap = new plains_F10();
