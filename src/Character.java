@@ -376,7 +376,9 @@ public class Character extends Statblock {
         item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword");
         addItemToInventory(rusty);
 
-
+        item_Equipment chicken = new item_Equipment("Chicken Leg", 1, 0, 0, 0, 0, Item.Slot.weapon, "The good stuff.");
+        addItemToInventory(chicken);
+        
         item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather");
         addItemToInventory(ragged);
         equipItem(ragged);
