@@ -30,7 +30,7 @@ public class npc_wizard extends  NPC {
     }
 
 
-    int questNum = 1; //<1 is pre-quest, 2 is before the quest has ended and 3 is end of first quest
+                      //<1 is pre-quest, 2 is before the quest has ended and 3 is end of first quest
                       //<First quest is to kill 5 monsters
                       //<4 is for after
 
@@ -61,19 +61,42 @@ public class npc_wizard extends  NPC {
                 drawText(110, 450, "You still haven't cleared the area", "Times New Roman", 20, g);
             }
             if (player.getCurrentQuest().getState() == Quest.questState.completedQuest) {
+                changeColor(black, g);
+                drawSolidRectangle(400,345,300,50,g);
+                changeColor(Color.white,g);
+                drawRectangle(400,345,300,50,10,g);
+                drawText(425, 375, "Press 'Space' to accept quest", "Arial", 20, g);
+
 
                 drawText(110, 450, "Fantastic work! Looks like you've learnt a few new abilities as well! I'll", "Times New Roman", 20, g);
-                drawText(110, 475, "need you to venture out west, you can follow the path if you please, and  ", "Times New Roman", 20, g);
+                drawText(110, 475, "need you to venture out East, you can follow the path if you please, and  ", "Times New Roman", 20, g);
                 drawText(110, 500, "find Camrath. Camrath will be able to craft you a sword, the sword ", "Times New Roman", 20, g);
                 drawText(110, 525, "alone won't be enough but it's a start. Come and talk to me after you get it.", "Times New Roman", 20, g);
+                //Implement when the push space to accept quest works
+                //player.changeQuest(3);
             }
-        }else{
+        } else if(player.getCurrentQuest().getQuestName() == "talkToBlacksmith") {
+            if(player.getCurrentQuest().getState() == Quest.questState.inQuest){
+                drawText(110,450,"Have you spoken to Camrath yet? you'll find him in the East", "Times New Roman",20,g);
+            }
+            if(player.getCurrentQuest().getState() == Quest.questState.completedQuest){
+                changeColor(black, g);
+                drawSolidRectangle(400,345,300,50,g);
+                changeColor(Color.white,g);
+                drawRectangle(400,345,300,50,10,g);
+                drawText(425, 375, "Press 'Space' to accept quest", "Arial", 20, g);
+
+
+                drawText(110,450,"That's quite the sword! You must use it wisely and well. Train with it, ", "Times New Roman",20,g);
+                drawText(110,475,"get to know it and let it know you. There is something else you can do", "Times New Roman",20,g);
+                drawText(110,500,"however... COMPLETE STORY HERE", "Times New Roman",20,g);
+                //Implement when the push space to accept quest works
+                //player.changeQuest(3);
+            }
+        } else{
             player.changeQuest(1);
         }
-//        if(currentQuest.getState() == Quest.questState.preQuest){
-//            drawText(110,450,"That's quite the sword! You must use it wisely and well. Train with it, ", "Times New Roman",20,g);
-//            drawText(110,475,"get to know it and let it know you. ", "Times New Roman",20,g);
-//        }
+//
     }
 
 
