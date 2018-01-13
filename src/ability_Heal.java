@@ -15,8 +15,8 @@ public class ability_Heal extends Ability {
 
     @Override
     public Ability use(Statblock user){
-        int amountToHeal= user.getLevel()*(int)(Math.random()*25);
-        amountToHeal+=20;
+        int amountToHeal= user.getLevel()*(int)(Math.random()*5);
+        amountToHeal+=7;
         user.setCurrentHP(user.getCurrentHP()+ amountToHeal);
         if(user.getCurrentHP()>user.getMaxHP()){
             user.setCurrentHP(user.getMaxHP());
