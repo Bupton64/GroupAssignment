@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_E8_byHouse extends  NPC {
 
-    npc_plains_E8_byHouse(Character playerMan){
+    npc_plains_E8_byHouse(){
         setName("Tim Burr");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);

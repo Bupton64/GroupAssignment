@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_D8 extends  NPC {
 
-    npc_plains_D8(Character playerMan){
+    npc_plains_D8(){
         setName("Andrew");
         spriteSheet = loadImage("chara4.png");
         sprite = subImage(spriteSheet,520,288,56,72);

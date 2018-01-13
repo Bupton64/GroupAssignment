@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_f8_byLog extends  NPC {
 
-    npc_plains_f8_byLog(Character playerMan){
+    npc_plains_f8_byLog(){
         setName("Link");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,520,0,56,72);

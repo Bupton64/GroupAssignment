@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_f8_oldman extends  NPC {
 
-    npc_plains_f8_oldman(Character playerMan){
+    npc_plains_f8_oldman(){
         setName("Julian");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,364,288,56,72);

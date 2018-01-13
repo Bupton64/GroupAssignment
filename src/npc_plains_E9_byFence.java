@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_E9_byFence extends  NPC {
 
-    npc_plains_E9_byFence(Character playerMan){
+    npc_plains_E9_byFence(){
         setName("Talon");
         spriteSheet = loadImage("chara4.png");
         sprite = subImage(spriteSheet,52,0,56,72);

@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_E9_byField extends  NPC {
 
-    npc_plains_E9_byField(Character PlayerMan){
+    npc_plains_E9_byField(){
         setName("Bilbo");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,52,288,56,72);

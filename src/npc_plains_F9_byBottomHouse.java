@@ -6,7 +6,7 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
 
 
-    npc_plains_F9_byBottomHouse(Character playerMan){
+    npc_plains_F9_byBottomHouse(){
         setName("Tyran");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,520,288,56,72);
@@ -27,8 +27,8 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g){
+        super.drawConvo(g);
         drawText(110,450,"Huh... you found me... woopty dooo...", "Times New Roman",20,g);
     }
 

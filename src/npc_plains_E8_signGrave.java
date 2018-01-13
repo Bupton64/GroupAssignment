@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_E8_signGrave extends  NPC {
 
-    npc_plains_E8_signGrave(Character playerMan){
+    npc_plains_E8_signGrave(){
         setName("Gurnville Graveyard");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);

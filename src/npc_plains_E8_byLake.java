@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_plains_E8_byLake extends  NPC {
 
-    npc_plains_E8_byLake(Character playerMan){
+    npc_plains_E8_byLake(){
         setName("Sam On");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,208,288,56,72);

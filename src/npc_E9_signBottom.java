@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_E9_signBottom extends  NPC {
 
-    npc_E9_signBottom(Character playerMan){
+    npc_E9_signBottom(){
         setName("Town Sign");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);
