@@ -25,8 +25,8 @@ public class npc_plains_D8 extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
         drawText(110,450,"It's looking good so far lads, definitely A+ worthy!", "Times New Roman",20,g);
     }
 

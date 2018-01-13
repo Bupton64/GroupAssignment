@@ -37,8 +37,8 @@ public class npc_wizard extends  NPC {
 
 
 
-    public void drawConvo(Graphics2D g){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
         if(player.getCurrentQuest().getQuestName() == "killingForWizard") {
             if (player.getCurrentQuest().getState() == Quest.questState.preQuest) {
                 changeColor(black, g);

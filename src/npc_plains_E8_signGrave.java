@@ -25,8 +25,8 @@ public class npc_plains_E8_signGrave extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
         drawText(110,450,"Here lies all lines of cut code. ", "Times New Roman",20,g);
     }
 

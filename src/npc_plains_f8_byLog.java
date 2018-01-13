@@ -25,8 +25,8 @@ public class npc_plains_f8_byLog extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
         drawText(110,450,"What do you want? Can't you see i'm busy!?", "Times New Roman",20,g);
     }
 

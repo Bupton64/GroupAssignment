@@ -31,8 +31,8 @@ public class npc_plains_H9 extends  NPC {
     int questNum = 1;   //<1 when he hasn't brought the sword, 2 after he brought it
                         //<3 is after the initial quest and players will be able to buy various weapons from him
 
-    public void drawConvo(Graphics2D g){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
         if(player.getCurrentQuest().getQuestName() == "talkToBlacksmith") {
             if (player.getCurrentQuest().getState() == Quest.questState.inQuest) {
                 changeColor(black, g);

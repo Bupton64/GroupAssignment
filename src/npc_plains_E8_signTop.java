@@ -25,8 +25,8 @@ public class npc_plains_E8_signTop extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
         drawText(110,450,"You are now leaving Hurnville. This path leads to the great ones", "Times New Roman",20,g);
         drawText(110,475,"residence. ", "Times New Roman",20,g);
     }

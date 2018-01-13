@@ -26,8 +26,8 @@ public class npc_plains_F9_signHouse extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
         drawText(110,450,"Closed.", "Times New Roman",20,g);
     }
 

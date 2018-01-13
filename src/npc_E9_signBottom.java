@@ -25,8 +25,8 @@ public class npc_E9_signBottom extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g){
-        super.drawConvo(g);
+    public void drawConvo(Graphics2D g, Character player){
+        super.drawConvo(g, player);
         drawText(110,450,"Welcome to Hurnville, a safe haven for all.", "Times New Roman",20,g);
     }
 
