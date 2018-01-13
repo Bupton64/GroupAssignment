@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+
 public class npc_empty extends NPC {
 
     npc_empty(){
@@ -19,5 +21,6 @@ public class npc_empty extends NPC {
     public void npcAction(double dt, Character player){
 
     }
+
 }
 // Isaac Test Comment

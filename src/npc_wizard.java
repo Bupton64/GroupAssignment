@@ -4,7 +4,9 @@ import java.awt.event.*;
 
 public class npc_wizard extends  NPC {
 
-    boolean questAccept;
+    boolean questAccepted;
+    int questStage;
+
 
     npc_wizard(){
         setName("Sevar");
@@ -15,7 +17,8 @@ public class npc_wizard extends  NPC {
         setMapLocation(17);
         setMapPos(400,250);
         setHostile(false);
-        questAccept = false;
+        questAccepted = false;
+        questStage = 0;
     }
 
     @Override
@@ -32,13 +35,26 @@ public class npc_wizard extends  NPC {
                       //<1 is pre-quest, 2 is before the quest has ended and 3 is end of first quest
                       //<First quest is to kill 5 monsters
                       //<4 is for after
+    public int updateConvo(){
+        switch (questStage){
+            case 1:
+                return 1;
+            case 2:
+                return 2;
+            default:
+                return 0;
+
+        }
+
+    }
 
 
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
-        if(player.getCurrentQuest().getQuestName() == "killingForWizard") {
-            if (player.getCurrentQuest().getState() == Quest.questState.preQuest) {
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
+        super.drawConvo(g, playerName,currentState, questName);
+        if(questName == "killingForWizard") {
+            if (currentState == Quest.questState.preQuest) {
+                questStage = 0;
                 changeColor(black, g);
                 drawSolidRectangle(400,345,300,50,g);
                 changeColor(Color.white,g);
@@ -47,19 +63,18 @@ public class npc_wizard extends  NPC {
 
 
 
-                drawText(110, 450, "Ah, " + player.getName() + " you made it! I'm surprised, but you've got a long way", "Times New Roman", 20, g);
+                drawText(110, 450, "Ah, " + playerName+ " you made it! I'm surprised, but you've got a long way", "Times New Roman", 20, g);
                 drawText(110, 475, "to go before you're ready to take on Jacruler... I need some help from you", "Times New Roman", 20, g);
                 drawText(110, 500, "before we begin. There has been a lot of monsters around these parts of ", "Times New Roman", 20, g);
                 drawText(110, 525, "late, would you please clear this area so we can get to work?", "Times New Roman", 20, g);
-                if(questAccept){
-                    player.setTheState(Quest.questState.inQuest);
-                }
+
 
             }
-            if (player.getCurrentQuest().getState() == Quest.questState.inQuest) {
+            if (currentState == Quest.questState.inQuest) {
                 drawText(110, 450, "You still haven't cleared the area", "Times New Roman", 20, g);
             }
-            if (player.getCurrentQuest().getState() == Quest.questState.completedQuest) {
+            if (currentState == Quest.questState.completedQuest) {
+                questStage = 2;
                 changeColor(black, g);
                 drawSolidRectangle(400,345,300,50,g);
                 changeColor(Color.white,g);
@@ -74,11 +89,11 @@ public class npc_wizard extends  NPC {
                 //Implement when the push space to accept quest works
                 //player.changeQuest(3);
             }
-        } else if(player.getCurrentQuest().getQuestName() == "talkToBlacksmith") {
-            if(player.getCurrentQuest().getState() == Quest.questState.inQuest){
+        } else if(questName == "talkToBlacksmith") {
+            if(currentState == Quest.questState.inQuest){
                 drawText(110,450,"Have you spoken to Camrath yet? you'll find him in the East", "Times New Roman",20,g);
             }
-            if(player.getCurrentQuest().getState() == Quest.questState.completedQuest){
+            if(currentState == Quest.questState.completedQuest){
                 changeColor(black, g);
                 drawSolidRectangle(400,345,300,50,g);
                 changeColor(Color.white,g);
@@ -92,20 +107,26 @@ public class npc_wizard extends  NPC {
                 //Implement when the push space to accept quest works
                 //player.changeQuest(3);
             }
-        } else{
-            player.changeQuest(1);
         }
 //
     }
-//    public void updateConvo(Character playerMan){
-//
-//    }
 
 
-    public void keyPressed(KeyEvent e) {
+
+    public boolean keyPressed(KeyEvent e) {
+
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            questAccept = true;
+            switch (questStage){
+                case 0:
+                    questStage = 1;
+                    break;
+                case 2:
+                    questStage = 2;
+                    break;
+            }
+
         }
+        return false;
     }
 
 

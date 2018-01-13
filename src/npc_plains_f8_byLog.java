@@ -25,8 +25,8 @@ public class npc_plains_f8_byLog extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
+        super.drawConvo(g, playerName,currentState, questName);
         drawText(110,450,"Can't you see I'm busy!? Camrath sent me to fetch wood!", "Times New Roman",20,g);
     }
 

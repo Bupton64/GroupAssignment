@@ -11,26 +11,38 @@ public class quest_killingForWizard extends Quest {
         setQuestName("killingForWizard");
         killCount = 0;
         toBeKilled = 5;
-        setReward(100);
-        setStage(0);
         state = questState.preQuest;
+    }
+
+    public void giveReward(Character playerMan){
+        playerMan.setXPTotal(playerMan.getXPTotal() + 500);
+        playerMan.checkLevelUp();
     }
 
 
 
     public void drawQuest(Graphics2D g){
         if(getState() == questState.inQuest) {
-            changeColor(blue, g);
+            changeColor(red, g);
             drawText(510, 30, "Monsters killed: " + killCount + "/5", "Arial", 30, g);
+        }
+
+    }
+
+    public void updateTalkQuest(){
+        if(state == questState.preQuest){
+            state = questState.inQuest;
         }
     }
 
-    public void updateQuest(Monster mon, double mapLocation){
-        if(mapLocation == 17) {
-            killCount++;
-        }
-        if(killCount == 5){
-            setState(questState.completedQuest);
+    public void updateKillQuest(Monster mon, double mapLocation){
+        if(state == questState.inQuest) {
+            if (mapLocation == 17) {
+                killCount++;
+            }
+            if (killCount == 5) {
+                setState(questState.completedQuest);
+            }
         }
 
     }

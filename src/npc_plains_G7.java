@@ -27,8 +27,8 @@ public class npc_plains_G7 extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
+        super.drawConvo(g, playerName,currentState, questName);
         drawText(110,450,"If i'm honest i'm a bit lost. There's so many monsters around here,", "Times New Roman",20,g);
         drawText(110,475,"thankfully I have these potions to save me!", "Times New Roman",20,g);
     }

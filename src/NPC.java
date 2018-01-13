@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class NPC extends extraFunctions{
 
@@ -20,6 +21,8 @@ public class NPC extends extraFunctions{
 
     private double height;
     private double width;
+
+
 
     double moveTimer;
     double moveDelay;
@@ -146,15 +149,22 @@ public class NPC extends extraFunctions{
     }
 
 
+     public int updateConvo(){
+        return 0;
+     }
 
 
-
-    public void drawConvo(Graphics2D g,Character player){
+    public void drawConvo(Graphics2D g,String playerName, Quest.questState  state, String questName){
         changeColor(black, g);
         drawSolidRectangle(100,400,600,150,g);
         changeColor(Color.white,g);
         drawRectangle(100,400,600,150,10,g);
         drawText( 110,425,getName() + ": ","Times New Roman",20,g);
+    }
+
+
+    public boolean keyPressed(KeyEvent e){
+        return false;
     }
 
 }

@@ -334,7 +334,7 @@ public class Character extends Statblock {
 
     public void init(){
         //Quest Init - Zane
-        currentQuest = new quest_blankQuest();
+        currentQuest = new quest_killingForWizard();
 
         // Memory initialisation
 
@@ -569,7 +569,7 @@ public class Character extends Statblock {
     public boolean winBattle(Monster enemy){
         XPTotal+=enemy.getXPGain();
         gpTotal+=enemy.randomGold();
-        currentQuest.updateQuest(enemy,currentMapLocation);
+        currentQuest.updateKillQuest(enemy,currentMapLocation);
         resetBonuses();
         if(checkLevelUp()){
             return true;
@@ -596,14 +596,20 @@ public class Character extends Statblock {
         switch(swapTo){
             case 1:
                 questState = QuestState.QuestOne;
-                currentQuest = new quest_killingForWizard();
+                currentQuest.setState(Quest.questState.inQuest);
                 break;
             case 2:
+                currentQuest.giveReward(this);
                 questState = QuestState.QuestTwo;
+                currentQuest = new quest_talkToBlacksmith();
                 break;
         }
 
 
+    }
+
+    public void updateQuestReward(double dt){
+        currentQuest.updateRewardDisplay(dt);
     }
 
 
@@ -613,5 +619,13 @@ public class Character extends Statblock {
 
     public void setTheState(Quest.questState newState){
         currentQuest.setState(newState);
+    }
+
+    public Quest.questState getCurrentQuestState(){
+        return currentQuest.getState();
+    }
+
+    public String getCurrentQuestName(){
+        return currentQuest.getQuestName();
     }
 }

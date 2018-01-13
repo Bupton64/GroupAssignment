@@ -30,10 +30,10 @@ public class npc_plains_H9 extends  NPC {
     int questNum = 1;   //<1 when he hasn't brought the sword, 2 after he brought it
                         //<3 is after the initial quest and players will be able to buy various weapons from him
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
-        if(player.getCurrentQuest().getQuestName() == "talkToBlacksmith") {
-            if (player.getCurrentQuest().getState() == Quest.questState.inQuest) {
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
+        super.drawConvo(g, playerName,currentState, questName);
+        if(questName == "talkToBlacksmith") {
+            if (currentState == Quest.questState.inQuest) {
                 changeColor(black, g);
                 drawSolidRectangle(400,345,300,50,g);
                 changeColor(Color.white,g);
@@ -45,10 +45,10 @@ public class npc_plains_H9 extends  NPC {
                 drawText(110, 500, "a damn if it's the 'end of the world' I need to put food on the table.", "Times New Roman", 20, g);
                 drawText(110, 525, "500GP and i'll make you one.", "Times New Roman", 20, g);
             }
-            if(player.getCurrentQuest().getState() == Quest.questState.completedQuest){
+            if(currentState == Quest.questState.completedQuest){
                 drawText(110, 450, "This sword is made out of the purest crystal in the land, unbreakable,", "Times New Roman", 20, g);
                 drawText(110, 475, "unmatchable, unbeatable. If there's any weapon that stands a chance", "Times New Roman", 20, g);
-                drawText(110, 500, "of banishing Jacruler this is it. good luck " + player.getName() + " You'll", "Times New Roman", 20, g);
+                drawText(110, 500, "of banishing Jacruler this is it. good luck " + playerName + " You'll", "Times New Roman", 20, g);
                 drawText(110, 525, "need it.", "Times New Roman", 20, g);
             }
         } else{

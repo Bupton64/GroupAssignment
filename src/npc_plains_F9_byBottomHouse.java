@@ -27,8 +27,8 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, Character player){
-        super.drawConvo(g, player);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
+        super.drawConvo(g, playerName,currentState, questName);
         drawText(110,450,"Therox's witches have been driving packs of wolves at the town. The ", "Times New Roman",20,g);
         drawText(110,475,"militia can't handle it, they've already lost two good men!", "Times New Roman",20,g);
     }

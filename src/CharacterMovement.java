@@ -205,6 +205,12 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
                 break;
             case 29:
                 break;
+            case 17:
+                if(playerMan.getCurrentQuestName() != "killingForWizard"){
+                    break;
+                }
+                playerMan.setCombatActive(true);
+                return 2;
             default :
 
                 playerMan.setCombatActive(true);

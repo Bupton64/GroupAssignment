@@ -8,7 +8,9 @@ public class Quest extends extraFunctions {
 
     private String questName; //<Name of the quest
     private int reward; //<How much is rewarded for completing each quest
-    private int stage; //<What part of the quest the player is on
+
+    int displayTimer;
+    int displayDuration;
 
     public String getQuestName() {
         return questName;
@@ -18,9 +20,6 @@ public class Quest extends extraFunctions {
         return reward;
     }
 
-    public int getStage() {
-        return stage;
-    }
 
     public void setQuestName(String questName) {
         this.questName = questName;
@@ -30,9 +29,7 @@ public class Quest extends extraFunctions {
         this.reward = reward;
     }
 
-    public void setStage(int stage) {
-        this.stage = stage;
-    }
+
 
 
 
@@ -47,16 +44,32 @@ public class Quest extends extraFunctions {
      * Adds the reward to the players GP balance
      */
     public void giveReward(Character playerMan){
-        int temp = playerMan.getGpTotal() + reward;
-        playerMan.setGpTotal(temp);
+
     }
 
     public void drawQuest(Graphics2D g){
 
     }
 
-    public void updateQuest(Monster mon, double mapLocation){
+
+
+    public boolean updateRewardDisplay(double dt){
+        displayTimer += dt;
+        if(displayTimer > displayDuration){
+            return false;
+        }
+        return true;
+
+    }
+
+    public void updateTalkQuest(){
+
+    }
+
+    public void updateKillQuest(Monster mon, double mapLocation){
 
 
     }
+
+
 }

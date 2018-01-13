@@ -372,7 +372,9 @@ public class MapControl extends extraFunctions {
     //////////////////////////////////
 
     boolean npcConvo;
+    int updateQuest;
     int currentNpcInteraction;
+    boolean checkQuestChange;
 
     public boolean isNpcConvo() {
         return npcConvo;
@@ -383,6 +385,8 @@ public class MapControl extends extraFunctions {
     }
 
     public void initNPC(){
+        checkQuestChange = false;
+        updateQuest = 0;
         npcConvo = false;
         currentNpcInteraction = -1;
     }
@@ -414,21 +418,42 @@ public class MapControl extends extraFunctions {
         for(int i = 0; i < numOfNpc;i++){
             mapNpcs[i].npcAction(dt, collisionDetector);
         }
+
+        if (checkQuestChange) {
+                updateQuest = mapNpcs[currentNpcInteraction].updateConvo();
+                if(updateQuest != 0){
+                    playerMan.changeQuest(updateQuest);
+                    updateQuest = 0;
+                    playerMan.updateQuestReward(dt);
+                }
+                checkQuestChange = false;
+        }
+
+
     }
+
+
 
     public void drawNPCInteraction(Graphics2D g){
         if(npcConvo) {
-            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan);
+            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName());
         }
     }
+
+
 
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(!npcConvo) {
                 checkRangeNPC(playerMan);
+            }else{
+                npcConvo =  mapNpcs[currentNpcInteraction].keyPressed(e);
+                checkQuestChange = true;
+
             }
 
         }
+
     }
 
 }
