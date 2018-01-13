@@ -13,15 +13,15 @@ public class monster_Goblin extends Monster {
             temp[i]=new Ability();
         }
         setAttack(3);
-        setDefense(0);
+        setDefense(3);
         setLuck(3);
         setSpeed(3);
         setStrength(3);
         setXPGain(100);
         setGoldMin(40);
         setGoldMax(70);
-        setCurrentHP(15);
-        setMaxHP(15);
+        setCurrentHP(45);
+        setMaxHP(45);
         setLevel(1);
         setAlive(true);
         setName("Goblin");
