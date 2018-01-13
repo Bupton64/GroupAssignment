@@ -15,7 +15,7 @@ public class ability_IronSkin extends Ability {
 
     @Override
     public Ability use(Statblock user){
-        int amountToIncrease = 1 + (int)(Math.random()*2);
+        int amountToIncrease = 1 + (int)(Math.random()*7);
         user.setDefenseBonus(user.getDefenseBonus()+amountToIncrease);
         setLastHit(true);
         setLastCrit(false);

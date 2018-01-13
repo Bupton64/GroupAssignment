@@ -362,11 +362,18 @@ public class Statblock extends extraFunctions{
 
 
     public int takeDamage(int damage){
-        double reduced=(defense+defenseBonus)/2;
-        if(reduced>damage/2){
-            reduced=damage/2;
+        System.out.println("Taking Damage: "+damage);
+        double reduced = (defenseBonus+equipDefenseBonus)/2.0;
+        System.out.println("Reduced via stats: " + reduced);
+        double percentageReduction = reduced/100;
+        if(percentageReduction>0.50){
+            percentageReduction=0.50;
         }
+        System.out.println("Percentage of reduction: "+percentageReduction);
+        reduced=percentageReduction*damage;
+        System.out.println("Reduced damage: " +reduced);
         damage-=reduced;
+        System.out.println("Final Damage: "+damage);
         this.currentHP -= damage; //< Remove damage from health
         if(this.currentHP<=0){
             this.isAlive=false;

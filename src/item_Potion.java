@@ -1,7 +1,7 @@
 public class item_Potion extends Item {
 
     public item_Potion(){
-        this.setNumericValue(15);
+        this.setNumericValue(45);
         this.setEquippable(false);
         this.setSlot(Slot.bag);
         this.setCounter(1);

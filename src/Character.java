@@ -417,8 +417,8 @@ public class Character extends Statblock {
         setXPTotal(0);
         setXPToNextLevel(500);
         setGpTotal(50);
-        setCurrentHP(40);
-        setMaxHP(40);
+        setCurrentHP(120);
+        setMaxHP(120);
         setLevel(1);
         setAlive(true);
         setName("Zarxas");
@@ -517,7 +517,7 @@ public class Character extends Statblock {
         setStrength(getStrength() + (int)(Math.random()*2));
         setSpeed(getSpeed() + (int)(Math.random()*3));
         setLuck(getLuck() +  (int)(Math.random()*2));
-        setMaxHP(getMaxHP() + (int)(Math.random()*11));
+        setMaxHP((getMaxHP() + (int)(Math.random()*11))+35);
         unlockAbility();
         setCurrentHP(this.getMaxHP());
     }
