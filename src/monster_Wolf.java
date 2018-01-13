@@ -39,6 +39,12 @@ public class monster_Wolf extends Monster {
     }
 
     @Override
+    public Item dropLoot(){
+        Item newItem = new Item();
+        return newItem;
+    }
+
+    @Override
     public Ability moveChoice() {
         int num=(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();

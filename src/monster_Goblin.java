@@ -20,7 +20,7 @@ public class monster_Goblin extends Monster {
         setXPGain(100);
         setGoldMin(40);
         setGoldMax(70);
-        setCurrentHP(1);
+        setCurrentHP(45);
         setMaxHP(45);
         setLevel(1);
         setAlive(true);
@@ -77,5 +77,17 @@ public class monster_Goblin extends Monster {
                 return abilities[0].use(this);
             }
         }
+    }
+
+    @Override
+    public Item dropLoot(){
+        Item reward;
+        int random = (int)(Math.random()*100);
+        if(random>90){
+            reward = new item_Potion();
+        } else{
+            reward = new Item();
+        }
+        return reward;
     }
 }

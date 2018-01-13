@@ -33,6 +33,7 @@ abstract public class Monster extends Statblock {
     }
 
     abstract public Ability moveChoice();
+    abstract public Item dropLoot();
 
     // Methods
     public int randomGold(){

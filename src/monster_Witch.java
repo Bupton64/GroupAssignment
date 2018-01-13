@@ -37,6 +37,12 @@ public class monster_Witch extends Monster {
         setSpriteHeight(200);
     }
 
+    @Override
+    public Item dropLoot(){
+        Item newItem = new Item();
+        return newItem;
+    }
+
     public Ability moveChoice(){
         int num=(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
