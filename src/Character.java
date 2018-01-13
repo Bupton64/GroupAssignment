@@ -98,7 +98,6 @@ public class Character extends Statblock {
         this.currentMapLocation = currentMapPos;
     }
 
-
     public void sortInventory(){
         Item swapper;
         for(int i=0; i < maxInventorySize; i++){
@@ -163,7 +162,6 @@ public class Character extends Statblock {
     public Character() {
         this.init();
     }
-
 
     public int findItemIndex(Item newItem){
         assert(alreadyHoldsItem(newItem));
@@ -275,7 +273,6 @@ public class Character extends Statblock {
         sortInventory();
     }
 
-
     public void checkGear(){
         int head=0;
         int feet=0;
@@ -336,17 +333,11 @@ public class Character extends Statblock {
     }
 
     public void init(){
-
         //Quest Init - Zane
         currentQuest = new quest_blankQuest();
 
         // Memory initialisation
 
-        Ability [] temp = new Ability[20];
-        for(int i=0; i<20; i++){
-            temp[i] = new Ability();
-            temp[i].setActive(false);
-        }
         inventory = new Item [100];
         for(int i=0; i<100; i++){
             inventory[i] = new Item();
@@ -356,13 +347,66 @@ public class Character extends Statblock {
             equippedItems[i] = new Item();
         }
 
-        setMaxInventorySize(50);
-
         //< Set up starting Inventory
+        setMaxInventorySize(50);
+        initInventory();
 
+        //< Check inventory
+        /*
+        for(int i=0; i<maxInventorySize; i++){
+            System.out.println(inventory[i].getName());
+        }
+        int index=0;
+        for(int i=0; i<maxInventorySize; i++){
+            if(inventory[i].getName()=="Rusty Sword"){
+                index=i;
+                break;
+            }
+        }
+        equipItem(inventory[index]);
+        for(int i=0; i<maxInventorySize; i++){
+            if(inventory[i].getName()=="Iron Sword"){
+                index=i;
+                break;
+            }
+        }
+        equipItem(inventory[index]);
+        System.out.println();
+        for(int i=0; i<maxInventorySize; i++){
+            System.out.println(inventory[i].getName());
+        }
+
+        for(int i=0; i<maxInventorySize; i++){
+            if(inventory[i].getName()=="Rusty Sword") {
+                index = i;
+                break;
+            }
+        }
+        equipItem(inventory[index]);
+        System.out.println();
+        for(int i=0; i<maxInventorySize; i++){
+            System.out.println(inventory[i].getName());
+        }
+        */
+
+        //< Set up initial Stats
+        initStats();
+
+        //< Set up the ability list (Needs all abilities, check unlockAbility to make sure character gains access)
+        initAbilities();
+
+        //< Load the characters combat sprite
+        initImage();
+
+        // Test Functions
+        //setXPTotal(500); //< TESTERS
+        //checkLevelUp(); //< Tester
+    }
+
+    public void initInventory(){
         item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword");
         addItemToInventory(rusty);
-        equipItem(rusty);
+
 
         item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather");
         addItemToInventory(ragged);
@@ -390,15 +434,9 @@ public class Character extends Statblock {
         addItemToInventory(pot);
         addItemToInventory(pot);
         addItemToInventory(pot);
+    }
 
-        //< Check inventory
-        /*
-        for(int i=0; i<maxInventorySize; i++){
-            System.out.println(inventory[i].getName());
-        }
-        */
-        //< Set up initial Stats
-
+    public void initStats(){
         combatActive = false;
         setAttack(5);
         setDefense(3);
@@ -414,8 +452,14 @@ public class Character extends Statblock {
         setAlive(true);
         setName("Zarxas");
         setEnergy(0);
+    }
 
-        //< Set up the ability list (Needs all abilities, check unlockAbility to make sure character gains access)
+    public void initAbilities(){
+        Ability [] temp = new Ability[20];
+        for(int i=0; i<20; i++){
+            temp[i] = new Ability();
+            temp[i].setActive(false);
+        }
 
         setMaxNumAbilities(20);
         temp[0] = new ability_BasicAttack();
@@ -431,17 +475,13 @@ public class Character extends Statblock {
         this.setAbilities(temp);
         setNumOfAbilities();
         sortAbilities();
+    }
 
-        //< Load the characters combat sprite
-
+    public void initImage(){
         Image sprite = loadImage("combatCharacter.png");
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);
-
-        // Test Functions
-        //setXPTotal(500); //< TESTERS
-        //checkLevelUp(); //< Tester
     }
 
     public void unlockAbility(){
@@ -568,4 +608,7 @@ public class Character extends Statblock {
         return currentQuest;
     }
 
+    public void setTheState(Quest.questState newState){
+        currentQuest.setState(newState);
+    }
 }

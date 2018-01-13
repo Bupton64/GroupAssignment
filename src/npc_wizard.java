@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class npc_wizard extends  NPC {
 
-    boolean spokenTo = false;
+    boolean questAccept;
 
     npc_wizard( ){
         setName("Tim the Great");
@@ -15,7 +15,7 @@ public class npc_wizard extends  NPC {
         setMapLocation(17);
         setMapPos(400,250);
         setHostile(false);
-
+        questAccept = false;
 
     }
 
@@ -40,11 +40,21 @@ public class npc_wizard extends  NPC {
         super.drawConvo(g,player);
         if(player.getCurrentQuest().getQuestName() == "killingForWizard") {
             if (player.getCurrentQuest().getState() == Quest.questState.preQuest) {
+                changeColor(black, g);
+                drawSolidRectangle(400,345,300,50,g);
+                changeColor(Color.white,g);
+                drawRectangle(400,345,300,50,10,g);
+                drawText(425, 375, "Press 'Space' to accept quest", "Arial", 20, g);
+
+
+
                 drawText(110, 450, "Ah, " + player.getName() + " you made it! I'm surprised, but you've got a long way", "Times New Roman", 20, g);
                 drawText(110, 475, "to go before you're ready to take on Jacruler... I need some help from you", "Times New Roman", 20, g);
                 drawText(110, 500, "before we begin. There has been a lot of monsters around these parts of ", "Times New Roman", 20, g);
                 drawText(110, 525, "late, would you please clear this area so we can get to work?", "Times New Roman", 20, g);
-
+                if(questAccept){
+                    player.setTheState(Quest.questState.inQuest);
+                }
 
             }
             if (player.getCurrentQuest().getState() == Quest.questState.inQuest) {
@@ -68,7 +78,13 @@ public class npc_wizard extends  NPC {
 
 
 
-
+    public void keyTyped(KeyEvent e) {
+        //if(!questAccept) {
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                questAccept = true;
+            }
+        //}
+    }
 
 
 
