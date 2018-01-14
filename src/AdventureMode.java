@@ -24,6 +24,7 @@ public class AdventureMode extends GameEngine {
     int stateChanger;
 
     Menu MenuController;
+    StartScreen StartController;
     MapControl mapController;
     Character playerMan;
     CharacterMovement playerMovement;
@@ -44,12 +45,16 @@ public class AdventureMode extends GameEngine {
         MenuController = new Menu(playerMan);
         MenuController.initMenu();
 
+        StartController = new StartScreen();
+
         playerMovement.initCharMovement();
         collisionDetector.initCollision();
         mapController.initNPC();
 
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
+        state = GameState.MainMenu;
+        StartController.initStart();
 
     }
 
@@ -63,6 +68,8 @@ public class AdventureMode extends GameEngine {
                 state = GameState.CombatMode;
             }else if(stateChanger == 3){
                 state = GameState.OverWorldMenu;
+            }else if(stateChanger == 4){
+                state = GameState.MainMenu;
             }
 
 
@@ -119,6 +126,9 @@ public class AdventureMode extends GameEngine {
             MenuController.drawEquMenu(mGraphics);
 
 
+        }else if(state == GameState.MainMenu){
+            StartController.changeBackgroundColor(black, mGraphics);
+            StartController.drawStartScreen(mGraphics);
         }
 
 
@@ -162,6 +172,14 @@ public class AdventureMode extends GameEngine {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE && MenuController.isChaMenu()) {
                 stateChanger = 1;
             }
+
+        }
+        if (state == GameState.MainMenu){
+            StartController.keyPressed(e);
+            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 100)){
+                stateChanger = 1;
+            }
+
 
         }
 
