@@ -488,8 +488,12 @@ public class Combat extends extraFunctions{
                         drawText(70, 500, "Your " + lastAbility.getName() + " misses " + enemy.getName(), textFont, 20,g);
                     }
                 } else if (lastAbility.getType() == Ability.AbilityType.buff) {
-                    playerTurnLog = player.getName() + " cast " + lastAbility.getName() + " for " + (int) playerDamage;
-                    drawText(150, 500, "You " + lastAbility.getName() + " for " + (int) playerDamage, textFont, 20,g);
+                    if(lastAbility.getName() == "Heal") {
+                        playerTurnLog = player.getName() + " cast " + lastAbility.getName() + " for " + (int) playerDamage;
+                    }else{
+                        playerTurnLog = player.getName() + " cast " + lastAbility.getName();
+                    }
+                    drawText(150, 500, lastAbility.getDisplayString(), textFont, 20,g);
                 }
 
             }
