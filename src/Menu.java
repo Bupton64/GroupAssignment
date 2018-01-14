@@ -12,6 +12,7 @@ public class Menu extends extraFunctions {
     Image background1;
     Image background2;
     Image background3;
+    Image statBackground;
     Image marker;
     Image character;
     Image leftArrow;
@@ -22,6 +23,7 @@ public class Menu extends extraFunctions {
     Image characterSprite = loadImage("face.png");
     Image arrow1 = loadImage("arrowhead.png");
     Image arrow2 = loadImage("arrowhead.png");
+    Image paper = loadImage("paper.png");
     private boolean pause = false;
     private int cursorPositionY = 440;
     private boolean invMenu = false;
@@ -92,6 +94,7 @@ public class Menu extends extraFunctions {
         background1 = subImage(menuSprite, 0, 0, 800, 600);
         background2 = subImage(inventorySprite, 0, 0, 800, 600);
         background3 = subImage(equipmentSprite, 0, 0, 800, 600);
+        statBackground = subImage(paper, 0, 0, 768, 1028);
         character = subImage(characterSprite, 0, 0, 144, 144);
         marker = subImage(arrow1, 291, 100, 45, 40);
         rightArrow = subImage(arrow1, 291, 100, 45, 40);
@@ -185,6 +188,7 @@ public class Menu extends extraFunctions {
             drawBoldText(500, 570, "INVENTORY", "Felix Titling", 40, g);
             drawBoldText(3, 580, "BACK [ESC]", "Felix Titling", 15, g);
         }
+
     }
 
 
@@ -197,7 +201,10 @@ public class Menu extends extraFunctions {
 
     public void drawEquMenu(Graphics2D g) {
         if (equMenu) {
-
+            if(player1.getInventory()[index].isEquippable() == false){
+                index = checkLeftEquippable();
+                index = checkRightEquippable();
+            }
                 clearBackground(800, 600, g);
                 drawImage(background3, 0, 0, g);
                 changeColor(white, g);
@@ -283,8 +290,10 @@ public class Menu extends extraFunctions {
 
                 changeColor(white, g);
                 changeColor(white, g);
-                drawSolidRectangle(515, 300, 220, 220, g);
-                drawSolidRectangle(515, 60, 220, 210, g);
+               // drawSolidRectangle(515, 300, 220, 220, g);
+                drawImage(statBackground, 500, 290, 250, 265, g);
+               // drawSolidRectangle(500, 45, 220, 210, g);
+                drawImage(statBackground, 500, 40, 250, 250, g);
 
 
                 if (player1.getInventory()[index].isEquippable()) {
@@ -359,32 +368,32 @@ public class Menu extends extraFunctions {
                 }
 
 
-                changeColor(yellow, g);
-                drawBoldText(520, 290, player1.getInventory()[index].getName(), "Felix Titling", 15, g);
+                changeColor(purple, g);
+                drawBoldText(520, 325, player1.getInventory()[index].getName(), "Felix Titling", 15, g);
 //                changeColor(purple, g);
 //                drawBoldText(520, 175, "INFO:", "Felix Titling", 25, g  );
+                changeColor(blue, g);
+                drawBoldText(520, 340, player1.getInventory()[index].getSlot().name() + " ITEM", "Felix Titling", 12, g);
                 changeColor(black, g);
-                drawBoldText(520, 325, player1.getInventory()[index].getSlot().name() + " ITEM", "Felix Titling", 15, g);
-                changeColor(cyan, g);
-                drawBoldText(520, 350, player1.getInventory()[index].getTooltip() + " .", "Felix Titling", 12, g);
+                drawBoldText(520, 365, player1.getInventory()[index].getTooltip() + " .", "Felix Titling", 12, g);
 //                changeColor(black, g);
 //                drawBoldText(520, 360, "STATS:", "Felix Titling", 25, g );
-                changeColor(blue, g);
-                drawBoldText(705, 375, Integer.toString(player1.getInventory()[index].getAttack()), "Felix Titling", 15, g);
-                drawBoldText(705, 375 + 30, Integer.toString(player1.getInventory()[index].getDefense()), "Felix Titling", 15, g);
-                drawBoldText(705, 375 + 60, Integer.toString(player1.getInventory()[index].getStrength()), "Felix Titling", 15, g);
-                drawBoldText(705, 375 + 90, Integer.toString(player1.getInventory()[index].getSpeed()), "Felix Titling", 15, g);
-                drawBoldText(705, 375 + 120, Integer.toString(player1.getInventory()[index].getLuck()), "Felix Titling", 15, g);
                 changeColor(red, g);
-                drawBoldText(520, 375, "ATK", "Felix Titling", 15, g);
-                drawBoldText(520, 375 + 30, "DEF", "Felix Titling", 15, g);
-                drawBoldText(520, 375 + 60, "STR", "Felix Titling", 15, g);
-                drawBoldText(520, 375 + 90, "SPD", "Felix Titling", 15, g);
-                drawBoldText(520, 375 + 120, "LUK", "Felix Titling", 15, g);
+                drawBoldText(705, 385, Integer.toString(player1.getInventory()[index].getAttack()), "Felix Titling", 15, g);
+                drawBoldText(705, 385 + 30, Integer.toString(player1.getInventory()[index].getDefense()), "Felix Titling", 15, g);
+                drawBoldText(705, 385 + 60, Integer.toString(player1.getInventory()[index].getStrength()), "Felix Titling", 15, g);
+                drawBoldText(705, 385 + 90, Integer.toString(player1.getInventory()[index].getSpeed()), "Felix Titling", 15, g);
+                drawBoldText(705, 385 + 120, Integer.toString(player1.getInventory()[index].getLuck()), "Felix Titling", 15, g);
+                changeColor(red, g);
+                drawBoldText(520, 385, "ATK", "Felix Titling", 15, g);
+                drawBoldText(520, 385 + 30, "DEF", "Felix Titling", 15, g);
+                drawBoldText(520, 385 + 60, "STR", "Felix Titling", 15, g);
+                drawBoldText(520, 385 + 90, "SPD", "Felix Titling", 15, g);
+                drawBoldText(520, 385 + 120, "LUK", "Felix Titling", 15, g);
 
 
                 changeColor(grey, g);
-                drawBoldText(520, 515, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g);
+                drawBoldText(520, 535, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g);
                 if (equippableSize()>1) {
                     drawImage(leftArrow, 460, 265, g);
                     drawImage(rightArrow, 460 + 290, 265, g);
@@ -439,7 +448,7 @@ public class Menu extends extraFunctions {
               if(player1.getInventory()[index].getName() == "Potion"){
                   player1.getInventory()[index].use(player1);
               }
-              if((player1.getInventory()[index].getName() == "Rusty Sword")||(player1.getInventory()[index].getName() == "Iron Sword")){
+              if(player1.getInventory()[index].isEquippable() == true){
                   equMenu = true;
                   invMenu = false;
 
