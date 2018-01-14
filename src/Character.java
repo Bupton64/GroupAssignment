@@ -166,7 +166,7 @@ public class Character extends Statblock {
     public int findItemIndex(Item newItem){
         assert(alreadyHoldsItem(newItem));
         for(int i=0; i<maxInventorySize; i++){
-            if(inventory[i]==newItem){
+            if(inventory[i].getName()==newItem.getName()){
                 return i;
             }
         }
@@ -175,7 +175,7 @@ public class Character extends Statblock {
 
     public boolean alreadyHoldsItem(Item newItem){
         for(int i=0; i<maxInventorySize; i++){
-            if(inventory[i]==newItem){
+            if(inventory[i].getName()==newItem.getName()){
                 return true;
             }
         }
@@ -183,14 +183,18 @@ public class Character extends Statblock {
     }
 
     public void addItemToInventory(Item newItem){
-        if(alreadyHoldsItem(newItem)){
-            int index=findItemIndex(newItem);
-            inventory[index].setCounter(inventory[index].getCounter()+1);
-            return;
+        if(newItem.getSlot() == Item.Slot.bag) {
+            if (alreadyHoldsItem(newItem)) {
+                int index = findItemIndex(newItem);
+                inventory[index].setCounter(inventory[index].getCounter() + 1);
+                sortInventory();
+                return;
+            }
         }
         for(int i=0; i<maxInventorySize; i++) {
             if (inventory[i].getSlot() == null) {
                 inventory[i] = newItem;
+                sortInventory();
                 return;
             }
         }
