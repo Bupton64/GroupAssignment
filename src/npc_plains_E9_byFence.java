@@ -21,7 +21,7 @@ public class npc_plains_E9_byFence extends  NPC {
     }
 
     @Override
-    public void npcAction(double dt, Collision collisionDetector){
+    public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
 

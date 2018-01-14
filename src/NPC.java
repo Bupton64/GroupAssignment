@@ -134,7 +134,7 @@ public class NPC extends extraFunctions{
 
     }
 
-    public void npcAction(double dt,Collision collisionDetector){
+    public void updateNpcMovement(double dt,Collision collisionDetector){
 
 
     }
@@ -162,10 +162,7 @@ public class NPC extends extraFunctions{
     double walkTimer;
     double walkDuration ;
 
-    public void updateCharMovement(double dt) {
 
-
-    }
 
     public void drawNpcMovement(Graphics g){
 

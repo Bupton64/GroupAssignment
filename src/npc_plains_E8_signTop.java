@@ -21,7 +21,7 @@ public class npc_plains_E8_signTop extends  NPC {
     }
 
     @Override
-    public void npcAction(double dt, Collision collisionDetector){
+    public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
 

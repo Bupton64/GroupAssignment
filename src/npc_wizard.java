@@ -27,7 +27,7 @@ public class npc_wizard extends  NPC {
     }
 
     @Override
-    public void npcAction(double dt, Collision collisionDetector){
+    public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
 

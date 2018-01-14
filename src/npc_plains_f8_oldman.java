@@ -46,29 +46,9 @@ public class npc_plains_f8_oldman extends  NPC {
     }
 
 
-    public void updateCharMovement(double dt) {
-
-        if (npcUp) {
-            npcDirection = Direction.up;
-
-            walkTimer += dt;
-            if (walkTimer > walkDuration) {
-                walkTimer -= walkDuration;
-            };
-        }
-        if (npcDown) {
-            npcDirection = Direction.down;
-
-            walkTimer += dt;
-            if (walkTimer > walkDuration) {
-
-                walkTimer -= walkDuration;
-            }
-        }
-    }
 
 
-    public void npcAction(double dt,Collision collisionDetector){
+    public void updateNpcMovement(double dt,Collision collisionDetector){
             setMoveTimer(getMoveTimer() + dt);
 
             if(getMoveTimer() > getMoveDelay()){
@@ -76,6 +56,13 @@ public class npc_plains_f8_oldman extends  NPC {
                 if(currentLocation == 1) {
                     setMapPos(getMapPosX(), getMapPosY() + (20 * dt));
                     npcDown = true;
+                        npcDirection = Direction.down;
+
+                        walkTimer += dt;
+                        if (walkTimer > walkDuration) {
+
+                            walkTimer -= walkDuration;
+                        }
                     if (getMapPosY() > getLocation(0)) {
                         npcDown = false;
                         setMoveTimer(0);
@@ -84,6 +71,14 @@ public class npc_plains_f8_oldman extends  NPC {
                 }else{
                     setMapPos(getMapPosX(), getMapPosY() - (20 * dt));
                     npcUp = true;
+
+                        npcDirection = Direction.up;
+
+                        walkTimer += dt;
+                        if (walkTimer > walkDuration) {
+                            walkTimer -= walkDuration;
+                        }
+
                     if (getMapPosY() < getLocation(1)) {
                         npcUp = false;
                         setMoveTimer(0);
@@ -92,7 +87,6 @@ public class npc_plains_f8_oldman extends  NPC {
                 }
                 collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
             }
-
 
 
     }

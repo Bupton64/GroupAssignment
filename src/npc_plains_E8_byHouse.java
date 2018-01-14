@@ -15,11 +15,12 @@ public class npc_plains_E8_byHouse extends  NPC {
         setHostile(false);
 
         moveTimer = 0;
-        moveDelay = 0.1;
+        moveDelay = 0.2;
 
         location = new double[2];
         setLocation(0,260);
         setLocation(1,80);
+        loadImages();
         currentLocation= 1;
     }
 
@@ -27,21 +28,18 @@ public class npc_plains_E8_byHouse extends  NPC {
     public void loadImages(){
         super.loadImages();
         //Load Images here
-        spriteDown[0] = subImage(spriteSheet,0,288,56,72);
-        spriteDown[1] = subImage(spriteSheet,52,288,56,72);
-        spriteDown[2] = subImage(spriteSheet,104,288,56,72);
+        for(int i =0; i < 3;i++){
+            spriteRight[i] = subImage(spriteSheet,0 + (52 * i), 432,52,72);
+        }
+        for(int i =0; i < 3;i++){
+            spriteLeft[i] = subImage(spriteSheet,0 + (52 * i), 360,52,72);
+        }
 
-        spriteUp[0] = subImage(spriteSheet,0,522,56,72);
-        spriteUp[1] = subImage(spriteSheet,52,522,56,72);
-        spriteUp[2] = subImage(spriteSheet,104,522,56,72);
 
-        spriteLeft[0] = subImage(spriteSheet,312,366,56,72);
-        spriteLeft[1] = subImage(spriteSheet,364,366,56,72);
-        spriteLeft[2] = subImage(spriteSheet,416,366,56,72);
+        walkDuration = 0.32;
+        npcDirection = Direction.down;
 
-        spriteRight[0] = subImage(spriteSheet,312,444,56,72);
-        spriteRight[1] = subImage(spriteSheet,364,444,56,72);
-        spriteRight[2] = subImage(spriteSheet,416,444,56,72);
+
     }
 
     @Override
@@ -49,21 +47,41 @@ public class npc_plains_E8_byHouse extends  NPC {
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
+
+
+
+
+
+
     @Override
-    public void npcAction(double dt,Collision collisionDetector){
+    public void updateNpcMovement(double dt,Collision collisionDetector){
         setMoveTimer(getMoveTimer() + dt);
 
         if(getMoveTimer() > getMoveDelay()){
             collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
             if(currentLocation == 1) {
                 setMapPos(getMapPosX() + (60 * dt), getMapPosY());
+                npcRight = true;
+                npcDirection = Direction.right;
+                walkTimer += dt;
+                if (walkTimer > walkDuration) {
+                    walkTimer -= walkDuration;
+                }
                 if (getMapPosX() > getLocation(0)) {
+                    npcRight = false;
                     setMoveTimer(0);
                     currentLocation= 0;
                 }
             }else{
                 setMapPos(getMapPosX() - (60 * dt), getMapPosY());
+                npcLeft = true;
+                npcDirection = Direction.left;
+                walkTimer += dt;
+                if (walkTimer > walkDuration) {
+                    walkTimer -= walkDuration;
+                }
                 if (getMapPosX() < getLocation(1)) {
+                    npcLeft = false;
                     setMoveTimer(0);
                     currentLocation = 1;
                 }
@@ -71,6 +89,19 @@ public class npc_plains_E8_byHouse extends  NPC {
             collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
         }
 
+    }
+
+    public void drawNpcMovement(Graphics g){
+
+        if (npcLeft) {
+            int j = getAnimationFrame(walkTimer, walkDuration, 3);
+            drawImage(spriteLeft[j], getMapPosX(), getMapPosY(), 50, 70,g);
+        } else if (npcRight) {
+            int j = getAnimationFrame(walkTimer, walkDuration, 3);
+            drawImage(spriteRight[j], getMapPosX(), getMapPosY(), 50, 70,g);
+        } else {
+            drawImage(sprite,getMapPosX(),getMapPosY(),50,70,g);
+        }
     }
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){

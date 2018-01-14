@@ -23,7 +23,7 @@ public class npc_plains_H9 extends  NPC {
     }
 
     @Override
-    public void npcAction(double dt, Collision collisionDetector){
+    public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
 

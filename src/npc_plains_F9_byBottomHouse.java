@@ -23,7 +23,7 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
     }
 
     @Override
-    public void npcAction(double dt, Collision collisionDetector){
+    public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
 
