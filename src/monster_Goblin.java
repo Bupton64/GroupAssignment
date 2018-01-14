@@ -83,7 +83,7 @@ public class monster_Goblin extends Monster {
     public Item dropLoot(){
         Item reward;
         int random = (int)(Math.random()*100);
-        if(random>90){
+        if(random>0){
             reward = new item_Potion();
         } else{
             reward = new Item();
