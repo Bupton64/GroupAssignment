@@ -8,11 +8,8 @@ public class npc_plains_E8_signGrave extends  NPC {
         setName("Gurnville Graveyard");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(20);
-        setMapPos(255,470);
-        setHostile(false);
+        setMapPosX(255);
+        setMapPosY(470);
     }
 
     @Override
@@ -24,6 +21,13 @@ public class npc_plains_E8_signGrave extends  NPC {
     public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
+
+
+    /////////////////////////////////////////
+    ///
+    ///  Convo
+    ///
+    //////////////////////////////////////////
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);

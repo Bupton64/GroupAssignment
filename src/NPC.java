@@ -3,77 +3,17 @@ import java.awt.event.KeyEvent;
 
 public class NPC extends extraFunctions{
 
+    NPC(){
+        this.height = 70;
+        this.width = 50;
+    }
+
     private String name; //< Name of the object
-    Image sprite; //< The associated
+    private double mapPosX; //<  NPC map position X
+    private double mapPosY; //< NPC map position Y
+    private double height; //< NPC display height
+    private double width; //< NPC display width
 
-    Image[] spriteUp; //< 3 per
-    Image[] spriteDown;
-    Image[] spriteRight;
-    Image[] spriteLeft;
-    Image spriteSheet;
-
-    private double mapPosX; //<  NPC's map position X
-    private double mapPosY; //< NPC's map position Y
-
-    private int mapLocation; //< Npc's located Map
-
-    private boolean hostile;
-
-    private double height;
-    private double width;
-
-
-
-    double moveTimer;
-    double moveDelay;
-
-    double[] location;
-
-    int currentLocation;
-
-
-
-
-    public Image getSprite() {
-        return sprite;
-    }
-
-    public void setSprite(Image sprite) {
-        this.sprite = sprite;
-    }
-
-    public double getLocation(int index) {
-        return location[index];
-    }
-
-    public void setLocation(int index,double location) {
-        this.location[index] = location;
-    }
-
-
-    public int getCurrentLocation() {
-        return currentLocation;
-    }
-
-    public void setCurrentLocation(int moveDirection) {
-        this.currentLocation = moveDirection;
-    }
-
-    public double getMoveTimer() {
-        return moveTimer;
-    }
-
-    public void setMoveTimer(double moveTimer) {
-        this.moveTimer = moveTimer;
-    }
-
-    public double getMoveDelay() {
-        return moveDelay;
-    }
-
-    public void setMoveDelay(double moveDelay) {
-        this.moveDelay = moveDelay;
-    }
 
     public double getHeight() {
         return height;
@@ -100,19 +40,14 @@ public class NPC extends extraFunctions{
     }
 
 
-
-    public int getMapLocation(){
-        return mapLocation;
+    public void setMapPosX(double mapPosX) {
+        this.mapPosX = mapPosX;
     }
 
-    public void setMapLocation(int location){
-        this.mapLocation = location;
+    public void setMapPosY(double mapPosY) {
+        this.mapPosY = mapPosY;
     }
 
-    public void setMapPos(double posX, double posY){
-        this.mapPosX = posX;
-        this.mapPosY = posY;
-    }
 
     public double getMapPosX(){
         return mapPosX;
@@ -122,31 +57,79 @@ public class NPC extends extraFunctions{
         return mapPosY;
     }
 
-    public void setHostile(boolean side){
-        this.hostile = side;
-    }
 
-    public boolean getHostile(){
-        return hostile;
-    }
+
+    /////////////////////////////////////////
+    ///
+    ///  Collision
+    ///
+    //////////////////////////////////////////
 
     public void setUpCollision(Collision collisionDetector, extraFunctions map){
 
     }
 
-    public void updateNpcMovement(double dt,Collision collisionDetector){
 
 
+    /////////////////////////////////////////
+    ///
+    ///  Movement
+    ///
+    //////////////////////////////////////////
+
+
+    Image spriteSheet; //< Npc SpriteSheet
+    Image sprite; //< npc standard sprite
+
+    Image[] spriteUp; //< Images for Upward Movement
+    Image[] spriteDown; //< Images for Downward Movement
+    Image[] spriteRight; //< Images for Right Movement
+    Image[] spriteLeft; //< Images for Left Movement
+
+    enum Direction {up,down,left,right}; //Can be used for change in direction image
+    Direction npcDirection;
+
+    boolean npcRight,npcLeft, npcUp, npcDown; //< used to decide which directional animation to play
+
+    double walkTimer; //<Timer for Animation
+    double walkDuration; //<Duration between animations
+    double moveTimer; //Timer for When to Move on route
+    double moveDelay; //Duration between Route Traveling
+
+    double[] location; //Locations for Npc travel Route
+    int currentLocation; //Npc Current Location on travel Route
+
+    public double getLocation(int index) {
+        return location[index];
+    }
+
+    public void setLocation(int index,double location) {
+        this.location[index] = location;
     }
 
 
+    public double getMoveTimer() {
+        return moveTimer;
+    }
+
+    public void setMoveTimer(double moveTimer) {
+        this.moveTimer = moveTimer;
+    }
+
+    public double getMoveDelay() {
+        return moveDelay;
+    }
+
+    public void setMoveDelay(double moveDelay) {
+        this.moveDelay = moveDelay;
+    }
+
     public void loadImages(){
-        spriteLeft = new Image[3];
-        spriteRight = new Image[3];
-        spriteUp = new Image[3];
-        spriteDown = new Image[3];
+//        spriteLeft = new Image[3];
+////        spriteRight = new Image[3];
+////        spriteUp = new Image[3];
+////        spriteDown = new Image[3];
         walkTimer = 0;
-        walkDuration = 0.16;
 
         npcDown = false;
         npcUp = false;
@@ -154,21 +137,39 @@ public class NPC extends extraFunctions{
         npcRight = false;
     }
 
-    enum Direction {up,down,left,right};
-    Direction npcDirection;
 
-    boolean npcRight,npcLeft, npcUp, npcDown;
 
-    double walkTimer;
-    double walkDuration ;
 
+
+    public void updateNpcMovement(double dt,Collision collisionDetector){
+    }
 
 
     public void drawNpcMovement(Graphics g){
 
-        drawImage(sprite,mapPosX,mapPosY,50,70,g);
-
+        if (npcLeft) {
+            int j = getAnimationFrame(walkTimer, walkDuration, 3);
+            drawImage(spriteLeft[j], getMapPosX(), getMapPosY(), 50, 70,g);
+        } else if (npcRight) {
+            int j = getAnimationFrame(walkTimer, walkDuration, 3);
+            drawImage(spriteRight[j], getMapPosX(), getMapPosY(), 50, 70,g);
+        }  else if (npcUp) {
+            int j = getAnimationFrame(walkTimer, walkDuration, 3);
+            drawImage(spriteUp[j], getMapPosX(), getMapPosY(), 50, 70,g);
+        }  else if (npcDown) {
+            int j = getAnimationFrame(walkTimer, walkDuration, 3);
+            drawImage(spriteDown[j], getMapPosX(), getMapPosY(), 50, 70,g);
+        } else {
+            drawImage(sprite,getMapPosX(),getMapPosY(),50,70,g);
+        }
     }
+
+    /////////////////////////////////////////
+    ///
+    ///  Convo
+    ///
+    //////////////////////////////////////////
+
 
 
      public int updateConvo(){

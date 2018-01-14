@@ -8,11 +8,8 @@ public class npc_plains_E8_byLake extends  NPC {
         setName("Cyd");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,208,288,56,72);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(20);
-        setMapPos(700,480);
-        setHostile(false);
+        setMapPosX(700);
+        setMapPosY(480);
     }
 
     @Override
@@ -20,10 +17,22 @@ public class npc_plains_E8_byLake extends  NPC {
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
+    /////////////////////////////////////////
+    ///
+    ///  Movement
+    ///
+    //////////////////////////////////////////
+
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
+
+    /////////////////////////////////////////
+    ///
+    ///  Convo
+    ///
+    //////////////////////////////////////////
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);

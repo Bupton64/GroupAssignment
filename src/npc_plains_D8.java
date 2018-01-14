@@ -8,11 +8,8 @@ public class npc_plains_D8 extends  NPC {
         setName("Andrew");
         spriteSheet = loadImage("chara4.png");
         sprite = subImage(spriteSheet,520,288,56,72);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(12);
-        setMapPos(200,200);
-        setHostile(false);
+        setMapPosX(200);
+        setMapPosY(200);
     }
 
     @Override
@@ -20,10 +17,23 @@ public class npc_plains_D8 extends  NPC {
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
+
+    /////////////////////////////////////////
+    ///
+    ///  Movement
+    ///
+    //////////////////////////////////////////
+
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
+
+    /////////////////////////////////////////
+    ///
+    ///  Convo
+    ///
+    //////////////////////////////////////////
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);

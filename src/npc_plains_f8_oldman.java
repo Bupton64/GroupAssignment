@@ -8,21 +8,33 @@ public class npc_plains_f8_oldman extends  NPC {
         setName("Julian");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,364,288,56,72);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(28);
-        setMapPos(200,200);
-        setHostile(false);
+        setMapPosX(200);
+        setMapPosY(200);
 
         setMoveTimer(0);
         setMoveDelay(10);
         location = new double[2];
         setLocation(0,300);
         setLocation(1,200);
+
+        spriteUp = new Image[3];
+        spriteDown = new Image[3];
         loadImages();
         currentLocation =  1;
     }
 
+
+    @Override
+    public void setUpCollision(Collision collisionDetector,extraFunctions map){
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
+    }
+
+
+    //////////////////////////////
+    ///
+    ///    Movement
+    ///
+    //////////////////////////////
 
     @Override
     public void loadImages(){
@@ -40,10 +52,6 @@ public class npc_plains_f8_oldman extends  NPC {
 
     }
 
-    @Override
-    public void setUpCollision(Collision collisionDetector,extraFunctions map){
-        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
-    }
 
 
 
@@ -54,7 +62,7 @@ public class npc_plains_f8_oldman extends  NPC {
             if(getMoveTimer() > getMoveDelay()){
                 collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
                 if(currentLocation == 1) {
-                    setMapPos(getMapPosX(), getMapPosY() + (20 * dt));
+                    setMapPosY(getMapPosY() + (20 * dt));
                     npcDown = true;
                         npcDirection = Direction.down;
 
@@ -69,7 +77,7 @@ public class npc_plains_f8_oldman extends  NPC {
                         currentLocation = 0;
                     }
                 }else{
-                    setMapPos(getMapPosX(), getMapPosY() - (20 * dt));
+                    setMapPosY(getMapPosY() - (20 * dt));
                     npcUp = true;
 
                         npcDirection = Direction.up;
@@ -91,6 +99,13 @@ public class npc_plains_f8_oldman extends  NPC {
 
     }
 
+
+    //////////////////////////////
+    ///
+    ///    Convo
+    ///
+    //////////////////////////////
+
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);
         drawText(110,450,"I'm Julian, the oldest NPC... uh I mean villager in this Town.", "Times New Roman",20,g);
@@ -98,18 +113,6 @@ public class npc_plains_f8_oldman extends  NPC {
 
 
 
-    public void drawNpcMovement(Graphics g){
-
-      if (npcUp) {
-            int j = getAnimationFrame(walkTimer, walkDuration, 3);
-            drawImage(spriteUp[j], getMapPosX(), getMapPosY(), 50, 70,g);
-        } else if (npcDown) {
-            int j = getAnimationFrame(walkTimer, walkDuration, 3);
-            drawImage(spriteDown[j], getMapPosX(), getMapPosY(), 50, 70,g);
-        } else {
-            drawImage(sprite,getMapPosX(),getMapPosY(),50,70,g);
-        }
-    }
 
 
 

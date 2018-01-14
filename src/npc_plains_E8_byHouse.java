@@ -8,11 +8,8 @@ public class npc_plains_E8_byHouse extends  NPC {
         setName("Alyx");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(20);
-        setMapPos(80,180);
-        setHostile(false);
+        setMapPosX(80);
+        setMapPosY(180);
 
         moveTimer = 0;
         moveDelay = 0.2;
@@ -20,9 +17,25 @@ public class npc_plains_E8_byHouse extends  NPC {
         location = new double[2];
         setLocation(0,260);
         setLocation(1,80);
+        spriteLeft = new Image[3];
+        spriteRight = new Image[3];
         loadImages();
+
         currentLocation= 1;
     }
+
+
+    @Override
+    public void setUpCollision(Collision collisionDetector,extraFunctions map){
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
+    }
+
+
+    //////////////////////////////
+    ///
+    ///    Movement
+    ///
+    //////////////////////////////
 
     @Override
     public void loadImages(){
@@ -38,18 +51,7 @@ public class npc_plains_E8_byHouse extends  NPC {
 
         walkDuration = 0.32;
         npcDirection = Direction.down;
-
-
     }
-
-    @Override
-    public void setUpCollision(Collision collisionDetector,extraFunctions map){
-        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
-    }
-
-
-
-
 
 
 
@@ -60,7 +62,7 @@ public class npc_plains_E8_byHouse extends  NPC {
         if(getMoveTimer() > getMoveDelay()){
             collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
             if(currentLocation == 1) {
-                setMapPos(getMapPosX() + (60 * dt), getMapPosY());
+                setMapPosX(getMapPosX() + (60 * dt));
                 npcRight = true;
                 npcDirection = Direction.right;
                 walkTimer += dt;
@@ -73,7 +75,7 @@ public class npc_plains_E8_byHouse extends  NPC {
                     currentLocation= 0;
                 }
             }else{
-                setMapPos(getMapPosX() - (60 * dt), getMapPosY());
+                setMapPosX(getMapPosX() - (60 * dt));
                 npcLeft = true;
                 npcDirection = Direction.left;
                 walkTimer += dt;
@@ -91,18 +93,13 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     }
 
-    public void drawNpcMovement(Graphics g){
 
-        if (npcLeft) {
-            int j = getAnimationFrame(walkTimer, walkDuration, 3);
-            drawImage(spriteLeft[j], getMapPosX(), getMapPosY(), 50, 70,g);
-        } else if (npcRight) {
-            int j = getAnimationFrame(walkTimer, walkDuration, 3);
-            drawImage(spriteRight[j], getMapPosX(), getMapPosY(), 50, 70,g);
-        } else {
-            drawImage(sprite,getMapPosX(),getMapPosY(),50,70,g);
-        }
-    }
+
+    //////////////////////////////
+    ///
+    ///    Convo
+    ///
+    //////////////////////////////
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);

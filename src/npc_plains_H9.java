@@ -10,11 +10,8 @@ public class npc_plains_H9 extends  NPC {
         setName("Camrath");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,52,288,56,72);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(39);
-        setMapPos(500,250);
-        setHostile(false);
+        setMapPosX(500);
+        setMapPosY(250);
     }
 
     @Override
@@ -22,13 +19,23 @@ public class npc_plains_H9 extends  NPC {
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
+
+    /////////////////////////////////////////
+    ///
+    ///  Movement
+    ///
+    //////////////////////////////////////////
+
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
 
-    int questNum = 1;   //<1 when he hasn't brought the sword, 2 after he brought it
-                        //<3 is after the initial quest and players will be able to buy various weapons from him
+    /////////////////////////////////////////
+    ///
+    ///  Convo
+    ///
+    //////////////////////////////////////////
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);

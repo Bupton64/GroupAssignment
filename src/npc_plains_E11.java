@@ -8,11 +8,8 @@ public class npc_plains_E11 extends  NPC {
         setName("Francis");
         spriteSheet = loadImage("chara4.png");
         sprite = subImage(spriteSheet,52,288,56,72);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(23);
-        setMapPos(400,400);
-        setHostile(false);
+        setMapPosX(400);
+        setMapPosY(400);
     }
 
     @Override
@@ -20,10 +17,23 @@ public class npc_plains_E11 extends  NPC {
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
+
+    /////////////////////////////////////////
+    ///
+    ///  Movement
+    ///
+    //////////////////////////////////////////
+
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
+
+    /////////////////////////////////////////
+    ///
+    ///  Convo
+    ///
+    //////////////////////////////////////////
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);

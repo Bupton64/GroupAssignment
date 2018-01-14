@@ -12,11 +12,8 @@ public class npc_wizard extends  NPC {
         setName("Sevar");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(17);
-        setMapPos(400,250);
-        setHostile(false);
+        setMapPosX(400);
+        setMapPosY(250);
         questAccepted = false;
         questStage = 0;
     }
@@ -26,15 +23,27 @@ public class npc_wizard extends  NPC {
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
+    //////////////////////////////
+    ///
+    ///    Movement
+    ///
+    /////////////////////////////////
+
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
 
 
-                      //<1 is pre-quest, 2 is before the quest has ended and 3 is end of first quest
-                      //<First quest is to kill 5 monsters
-                      //<4 is for after
+
+    //////////////////////////////
+    ///
+    ///    Convo
+    ///
+    /////////////////////////////////
+
+
+
     public int updateConvo(){
         switch (questStage){
             case 1:
@@ -110,6 +119,14 @@ public class npc_wizard extends  NPC {
         }
 //
     }
+
+
+
+    //////////////////////////////
+    ///
+    ///    KeyBinds
+    ///
+    //////////////////////////////
 
 
 

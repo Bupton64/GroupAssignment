@@ -8,11 +8,8 @@ public class npc_E9_signBottom extends  NPC {
         setName("Town Sign");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);
-        setHeight(70);
-        setWidth(50);
-        setMapLocation(21);
-        setMapPos(375,495);
-        setHostile(false);
+        setMapPosX(375);
+        setMapPosY(495);
     }
 
     @Override
@@ -24,6 +21,12 @@ public class npc_E9_signBottom extends  NPC {
     public void updateNpcMovement(double dt,Collision collisionDetector){
 
     }
+
+    /////////////////////////////////////////
+    ///
+    ///  Convo
+    ///
+    //////////////////////////////////////////
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);
