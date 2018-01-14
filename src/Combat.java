@@ -887,6 +887,9 @@ public class Combat extends extraFunctions{
     Image chestClosedImage;
     Image chestOpenImage;
 
+    Item reward;
+    boolean collectReward;
+
     boolean right;
     boolean chestOpen;
 
@@ -898,6 +901,7 @@ public class Combat extends extraFunctions{
     public void initLootScreen(){
         currentGold = player.getGpTotal();
         right = false;
+        collectReward = false;
 
         coinImage = loadImage("coin.png");
         chestClosedImage = loadImage("chest1.png");
@@ -924,6 +928,15 @@ public class Combat extends extraFunctions{
             }
         }
 
+        if(collectReward){
+            player.winBattle(enemy);
+            reward = new Item();
+            reward = enemy.dropLoot();
+            if(reward.getName()!=null){
+                player.addItemToInventory(reward);
+            }
+            collectReward = false;
+        }
 
 
     }
@@ -931,9 +944,14 @@ public class Combat extends extraFunctions{
     public void drawLootScreen(Graphics2D g){
         changeColor(black,g);
         if(!chestOpen) {
-            drawText(80, 480, "Victory, Press 'Space' on Chest to collect Reward", "Times New Roman", 18, g);
+            drawText(80, 500, "Victory, Press 'Space' on Chest to collect Reward", "Times New Roman", 18, g);
         }else{
-            drawText(80, 480, "Press 'Space' again to return to the overworld!", "Times New Roman", 18, g);
+            if(reward.getName() == null){
+                drawText(80, 470, "Nothing dropped from " + enemy.getName(), "Times New Roman", 18, g);
+            }else{
+                drawText(80, 470, reward.getName() + " dropped from " + enemy.getName(), "Times New Roman", 18, g);
+            }
+            drawText(80, 500, "Press 'Space' again to return to the overworld!", "Times New Roman", 18, g);
         }
         drawImage(coinImage,640,-10,70,70,g);
         changeColor(white,g);
@@ -1368,14 +1386,9 @@ public class Combat extends extraFunctions{
             right = false;
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(player.getCombatPosX() > 550 & chestOpen == false){
+            if(player.getCombatPosX() > 550 & !chestOpen){
                 chestOpen = true;
-                player.winBattle(enemy);
-                Item reward = new Item();
-                reward = enemy.dropLoot();
-                if(reward.getName()!=null){
-                    player.addItemToInventory(reward);
-                }
+                collectReward = true;
             }
 
         }
