@@ -3,14 +3,21 @@ import java.awt.*;
 public class Quest extends extraFunctions {
     //Members
 
+    Quest(){
+        displayTimer = 0;
+        displayDuration = 5;
+
+
+    }
+
     enum questState{preQuest, inQuest, completedQuest}
     questState state = questState.preQuest;
 
     private String questName; //<Name of the quest
     private int reward; //<How much is rewarded for completing each quest
 
-    int displayTimer;
-    int displayDuration;
+    double displayTimer;
+    double displayDuration;
 
     public String getQuestName() {
         return questName;
@@ -55,12 +62,16 @@ public class Quest extends extraFunctions {
 
     public boolean updateRewardDisplay(double dt){
         displayTimer += dt;
-        if(displayTimer > displayDuration){
-            return false;
+
+
+        if(displayTimer < displayDuration){
+
+            return true;
         }
-        return true;
+        return false;
 
     }
+
 
 
     public void updateKillQuest(Monster mon, double mapLocation){

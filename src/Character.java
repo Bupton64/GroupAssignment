@@ -603,9 +603,10 @@ public class Character extends Statblock {
 
     }
 
-    public void updateQuestReward(double dt){
-        currentQuest.updateRewardDisplay(dt);
+    public boolean updateQuestReward(double dt){
+        return currentQuest.updateRewardDisplay(dt);
     }
+
 
 
     public Quest getCurrentQuest(){

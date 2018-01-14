@@ -30,7 +30,6 @@ public class AdventureMode extends GameEngine {
     Collision collisionDetector;
     Combat combatMode;
 
-    Quest questInProgress;
 
 
     public void init() {
@@ -52,7 +51,6 @@ public class AdventureMode extends GameEngine {
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
 
-        questInProgress = playerMan.getCurrentQuest();
     }
 
    public void updateGameState(){
@@ -84,9 +82,7 @@ public class AdventureMode extends GameEngine {
 
               mapController.updateNPC(dt,playerMovement,collisionDetector);
              mapController.updateQuest(dt);
-             if(questInProgress == null){
-                 questInProgress = playerMan.getCurrentQuest();
-             }
+
 
                mapController.updateMap(collisionDetector);
                collisionDetector.updateCollision(playerMan, playerMovement);
@@ -110,7 +106,8 @@ public class AdventureMode extends GameEngine {
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
 
             mapController.drawNPCInteraction(mGraphics);
-            questInProgress.drawQuest(mGraphics);
+            playerMan.getCurrentQuest().drawQuest(mGraphics);
+           // questInProgress.drawQuest(mGraphics);
 
 
         } else if (state == GameState.CombatMode) {
