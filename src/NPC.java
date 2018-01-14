@@ -65,7 +65,9 @@ public class NPC extends extraFunctions{
     ///
     //////////////////////////////////////////
 
-    public void setUpCollision(Collision collisionDetector, extraFunctions map){
+
+
+    public void setUpCollision(Collision collisionDetector, Map map){
 
     }
 

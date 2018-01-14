@@ -1,11 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 
-public class plains_E12 extends  extraFunctions {
+public class plains_E12 extends  Map {
 
-
-
-    int direction;
 
     plains_E12() {
         backgroundImage= loadImage("plains_path_vert3.png");

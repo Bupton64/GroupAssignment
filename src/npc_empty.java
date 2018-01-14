@@ -13,7 +13,7 @@ public class npc_empty extends NPC {
     }
 
     @Override
-    public void setUpCollision(Collision collisionDetector,extraFunctions map){
+    public void setUpCollision(Collision collisionDetector,Map map){
 
     }
 

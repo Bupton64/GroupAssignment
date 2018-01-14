@@ -31,7 +31,7 @@ public class MapControl extends extraFunctions {
 
     Level levelController = Level.Plains;  //< Change from desert to yours to get your map running
 
-    extraFunctions currentMap; //< Holds current map data
+    Map currentMap; //< Holds current map data
     NPC[] mapNpcs; //< Objects to hold NPC data
     int numOfNpc; //<Number of NPC's loaded into map
 

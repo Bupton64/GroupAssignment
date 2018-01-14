@@ -1,11 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 
-public class plains_F9 extends  extraFunctions {
+public class plains_F9 extends  Map {
 
-
-
-    int direction;
 
 
     plains_F9() {
