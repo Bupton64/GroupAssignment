@@ -319,7 +319,7 @@ public class Combat extends extraFunctions{
 
 
         drawRectangle(20,415,200,80,2,g);
-        drawText(60,460,"Basic Attack",textFont,20,g);
+        drawText(90,460,"Attack",textFont,20,g);
 
         drawRectangle(20,505,200,80,2,g);
         drawText(90,550,"Items",textFont,20,g);

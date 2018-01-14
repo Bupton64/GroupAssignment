@@ -31,8 +31,7 @@ public class NPC extends extraFunctions{
 
     int currentLocation;
 
-    enum Direction {up,down,left,right};
-    Direction directionFacing;
+
 
 
     public Image getSprite() {
@@ -146,6 +145,32 @@ public class NPC extends extraFunctions{
         spriteRight = new Image[3];
         spriteUp = new Image[3];
         spriteDown = new Image[3];
+        walkTimer = 0;
+        walkDuration = 0.16;
+
+        npcDown = false;
+        npcUp = false;
+        npcLeft = false;
+        npcRight = false;
+    }
+
+    enum Direction {up,down,left,right};
+    Direction npcDirection;
+
+    boolean npcRight,npcLeft, npcUp, npcDown;
+
+    double walkTimer;
+    double walkDuration ;
+
+    public void updateCharMovement(double dt) {
+
+
+    }
+
+    public void drawNpcMovement(Graphics g){
+
+        drawImage(sprite,mapPosX,mapPosY,50,70,g);
+
     }
 
 

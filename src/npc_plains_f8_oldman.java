@@ -19,7 +19,7 @@ public class npc_plains_f8_oldman extends  NPC {
         location = new double[2];
         setLocation(0,300);
         setLocation(1,200);
-
+        loadImages();
         currentLocation =  1;
     }
 
@@ -27,26 +27,44 @@ public class npc_plains_f8_oldman extends  NPC {
     @Override
     public void loadImages(){
         super.loadImages();
-        spriteDown[0] = subImage(spriteSheet,312,288,56,72);
-        spriteDown[1] = subImage(spriteSheet,364,288,56,72);
-        spriteDown[2] = subImage(spriteSheet,416,288,56,72);
+        for(int i =0; i < 3;i++){
+            spriteDown[i] = subImage(spriteSheet,312 + (52 * i), 288,52,72);
+        }
+        for(int i =0; i < 3;i++){
+            spriteUp[i] = subImage(spriteSheet,312 + (52 * i), 504,52,72);
+        }
 
-        spriteUp[0] = subImage(spriteSheet,312,522,56,72);
-        spriteUp[1] = subImage(spriteSheet,364,522,56,72);
-        spriteUp[2] = subImage(spriteSheet,416,522,56,72);
 
-        spriteLeft[0] = subImage(spriteSheet,312,366,56,72);
-        spriteLeft[1] = subImage(spriteSheet,364,366,56,72);
-        spriteLeft[2] = subImage(spriteSheet,416,366,56,72);
+        walkDuration = 0.32;
+        npcDirection = Direction.down;
 
-        spriteRight[0] = subImage(spriteSheet,312,444,56,72);
-        spriteRight[1] = subImage(spriteSheet,364,444,56,72);
-        spriteRight[2] = subImage(spriteSheet,416,444,56,72);
     }
 
     @Override
     public void setUpCollision(Collision collisionDetector,extraFunctions map){
         collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
+    }
+
+
+    public void updateCharMovement(double dt) {
+
+        if (npcUp) {
+            npcDirection = Direction.up;
+
+            walkTimer += dt;
+            if (walkTimer > walkDuration) {
+                walkTimer -= walkDuration;
+            };
+        }
+        if (npcDown) {
+            npcDirection = Direction.down;
+
+            walkTimer += dt;
+            if (walkTimer > walkDuration) {
+
+                walkTimer -= walkDuration;
+            }
+        }
     }
 
 
@@ -57,19 +75,25 @@ public class npc_plains_f8_oldman extends  NPC {
                 collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
                 if(currentLocation == 1) {
                     setMapPos(getMapPosX(), getMapPosY() + (20 * dt));
+                    npcDown = true;
                     if (getMapPosY() > getLocation(0)) {
+                        npcDown = false;
                         setMoveTimer(0);
                         currentLocation = 0;
                     }
                 }else{
                     setMapPos(getMapPosX(), getMapPosY() - (20 * dt));
+                    npcUp = true;
                     if (getMapPosY() < getLocation(1)) {
+                        npcUp = false;
                         setMoveTimer(0);
                         currentLocation =1;
                     }
                 }
                 collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
             }
+
+
 
     }
 
@@ -80,7 +104,18 @@ public class npc_plains_f8_oldman extends  NPC {
 
 
 
+    public void drawNpcMovement(Graphics g){
 
+      if (npcUp) {
+            int j = getAnimationFrame(walkTimer, walkDuration, 3);
+            drawImage(spriteUp[j], getMapPosX(), getMapPosY(), 50, 70,g);
+        } else if (npcDown) {
+            int j = getAnimationFrame(walkTimer, walkDuration, 3);
+            drawImage(spriteDown[j], getMapPosX(), getMapPosY(), 50, 70,g);
+        } else {
+            drawImage(sprite,getMapPosX(),getMapPosY(),50,70,g);
+        }
+    }
 
 
 

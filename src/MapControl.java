@@ -43,11 +43,7 @@ public class MapControl extends extraFunctions {
         if (!firstMap) {
             drawImage(currentMap.backgroundImage, 0, 0, 800, 600, g);
 
-
-            for(int i = 0; i < numOfNpc; i++) {
-                drawImage(mapNpcs[i].sprite, mapNpcs[i].getMapPosX(), mapNpcs[i].getMapPosY(), mapNpcs[i].getWidth(), mapNpcs[i].getHeight(), g);
-            }
-
+            drawNPC(g);
 
         }
     }
@@ -393,6 +389,12 @@ public class MapControl extends extraFunctions {
         currentNpcInteraction = -1;
     }
 
+    public void drawNPC(Graphics g){
+        for(int i = 0; i < numOfNpc; i++) {
+            mapNpcs[i].drawNpcMovement(g);
+        }
+    }
+
     public boolean npcCheck(Character player, NPC other){
         if(player.getMapPosX() >= other.getMapPosX() -20 && player.getMapPosX() <= other.getMapPosX() + 20){
             if(player.getMapPosY() >= other.getMapPosY() -20 && player.getMapPosY() <= other.getMapPosY() + 20){
@@ -413,6 +415,11 @@ public class MapControl extends extraFunctions {
     }
 
     public void updateNPC(double dt,CharacterMovement movement,Collision collisionDetector){
+        for(int i = 0; i < numOfNpc; i++) {
+            mapNpcs[i].updateCharMovement(dt);
+        }
+
+
         if(!movement.checkStationary()){
             currentNpcInteraction = -1;
             npcConvo = false;
