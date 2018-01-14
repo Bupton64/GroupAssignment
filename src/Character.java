@@ -183,11 +183,13 @@ public class Character extends Statblock {
     }
 
     public void addItemToInventory(Item newItem){
-        if(alreadyHoldsItem(newItem)){
-            int index=findItemIndex(newItem);
-            inventory[index].setCounter(inventory[index].getCounter()+1);
-            sortInventory();
-            return;
+        if(newItem.getSlot() == Item.Slot.bag) {
+            if (alreadyHoldsItem(newItem)) {
+                int index = findItemIndex(newItem);
+                inventory[index].setCounter(inventory[index].getCounter() + 1);
+                sortInventory();
+                return;
+            }
         }
         for(int i=0; i<maxInventorySize; i++) {
             if (inventory[i].getSlot() == null) {
