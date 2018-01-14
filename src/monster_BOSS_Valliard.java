@@ -24,12 +24,14 @@ public class monster_BOSS_Valliard extends Monster {
         setName("Valliard");
         setEnergy(0);
 
-        Image sprite = loadImage("monster_Wolf.png"); //NEEDS IMAGE
+        Image sprite = loadImage("monster_BOSS_valliard.png"); //NEEDS IMAGE
         setSprite(sprite);
         setSpriteWidth(120);
         setSpriteHeight(120);
 
         // NEEDS ABILITIES
+        setUpAbilityNumberI(temp, 0, "Hand of Judgment", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
+        temp[1] =  new ability_monster_lifeCoil();
 
         this.setAbilities(temp);
     }
