@@ -11,5 +11,6 @@ public class ability_BladeDance extends Ability{
         this.setToolTip("A song of speed, rhythm and grace");
         this.setActive(false);
         this.setType(AbilityType.damage);
+        this.setDisplayString(null);
     }
 }

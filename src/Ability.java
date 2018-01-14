@@ -14,6 +14,7 @@ public class Ability {
     private AbilityType type;
 
     // Variables
+    private String displayString;
     private String name;
     private String toolTip;
     private int attackBonus;
@@ -31,6 +32,13 @@ public class Ability {
 
     // Getters and setters
 
+    public String getDisplayString() {
+        return displayString;
+    }
+
+    public void setDisplayString(String displayString) {
+        this.displayString = displayString;
+    }
 
     public AbilityType getType() {
         return type;
@@ -249,11 +257,9 @@ public class Ability {
     }
 
     public int dealDamage(Statblock user){
-        int damage =(attack+attackBonus)/2;
-        damage += (strength+strengthBonus)+(Math.random()*15)+15;
-        if(user.getLevel()>1) {
-            damage *= (user.getLevel() / 2);
-        }
+        int damage =(attack+attackBonus)*2;
+        damage += (strength+strengthBonus)*4;
+        damage += (int)(Math.random()*20);
         int critChance = getLuck()+luckBonus+(int)(Math.random()*50);
         if(isMagic){
             lastCrit=false;

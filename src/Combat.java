@@ -1367,6 +1367,11 @@ public class Combat extends extraFunctions{
             if(player.getCombatPosX() > 550 & chestOpen == false){
                 chestOpen = true;
                 player.winBattle(enemy);
+                Item reward = new Item();
+                reward = enemy.dropLoot();
+                if(reward.getName()!=null){
+                    player.addItemToInventory(reward);
+                }
             }
 
         }

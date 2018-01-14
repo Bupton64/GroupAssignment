@@ -11,5 +11,6 @@ public class ability_Armageddon extends Ability{
         this.setToolTip("The end of all things");
         this.setActive(false);
         this.setType(AbilityType.damage);
+        this.setDisplayString(null);
     }
 }

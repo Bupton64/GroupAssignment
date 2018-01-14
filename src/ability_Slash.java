@@ -11,5 +11,6 @@ public class ability_Slash extends Ability{
         this.setToolTip("A fierce strike");
         this.setActive(true);
         this.setType(AbilityType.damage);
+        this.setDisplayString(null);
     }
 }

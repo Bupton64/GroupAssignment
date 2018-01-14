@@ -11,5 +11,6 @@ public class ability_Smash extends Ability{
         this.setToolTip("A powerful shockwave gives you the edge over your opponent");
         this.setActive(false);
         this.setType(AbilityType.damage);
+        this.setDisplayString(null);
     }
 }

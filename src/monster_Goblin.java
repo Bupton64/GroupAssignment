@@ -20,7 +20,7 @@ public class monster_Goblin extends Monster {
         setXPGain(100);
         setGoldMin(40);
         setGoldMax(70);
-        setCurrentHP(1);
+        setCurrentHP(45);
         setMaxHP(45);
         setLevel(1);
         setAlive(true);
@@ -33,9 +33,9 @@ public class monster_Goblin extends Monster {
         setSpriteWidth(120);
         setSpriteHeight(142);
 
-        setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage);
-        setUpAbilityNumberI(temp, 1, "Slash", 1, 1, -1, 0, 0, false, 1, "", true, Ability.AbilityType.damage);
-        setUpAbilityNumberI(temp, 2, "Firestrike", 1, 1, 0, 0, 4, true, 3, "", true, Ability.AbilityType.damage);
+        setUpAbilityNumberI(temp, 0, "Bite", 0, 0, 0, 0, 0, false, -1,"", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 1, "Slash", 1, 1, -1, 0, 0, false, 1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 2, "Firestrike", 1, 1, 0, 0, 4, true, 3, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
     }
 
@@ -77,5 +77,17 @@ public class monster_Goblin extends Monster {
                 return abilities[0].use(this);
             }
         }
+    }
+
+    @Override
+    public Item dropLoot(){
+        Item reward;
+        int random = (int)(Math.random()*100);
+        if(random>90){
+            reward = new item_Potion();
+        } else{
+            reward = new Item();
+        }
+        return reward;
     }
 }
