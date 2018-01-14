@@ -27,23 +27,22 @@ public class StartScreen extends extraFunctions {
         changeColor(red, g);
         drawBoldText(300, 100, "New Game", "Felix Titling", 20, g);
         changeColor(grey, g);
-        drawBoldText(300, 100+90, "Load game", "Felix Titling", 20, g);
-        drawBoldText(300, 100+180, "Save game", "Felix Titling", 20, g);
+        drawBoldText(300, 100+60, "Load game", "Felix Titling", 20, g);
         changeColor(red, g);
-        drawBoldText(300, 100+270, "Credits", "Felix Titling", 20, g);
-        drawBoldText(300, 100+360, "Exit", "Felix Titling", 20, g);
+        drawBoldText(300, 100+120, "Credits", "Felix Titling", 20, g);
+        drawBoldText(300, 100+180, "Exit", "Felix Titling", 20, g);
 
     }
     public void keyPressed(KeyEvent e) {
 
 
 
-            if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 460) {
-                cursorPositionY += 90;
+            if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 280) {
+                cursorPositionY += 60;
 
             }
             if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 100) {
-                cursorPositionY -= 90;
+                cursorPositionY -= 60;
 
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 460) {
