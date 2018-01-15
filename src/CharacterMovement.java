@@ -108,7 +108,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
         dy = playerMan.getMapPosY();
 
 
-        if (right && !lockRight ) {
+        if (right && !lockRight && !left) {
             directionFacing = Direction.right;
             dx += 5;
             walkTimer += dt;
@@ -118,7 +118,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosX(dx);
         }
-        if (left && !lockLeft) {
+        if (left && !lockLeft && !right) {
             directionFacing = Direction.left;
             dx -= 5;
             walkTimer += dt;
@@ -128,7 +128,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosX(dx);
         }
-        if (up && !lockUp) {
+        if (up && !lockUp && !down) {
             directionFacing = Direction.up;
             dy -= 5;
             walkTimer += dt;
@@ -138,7 +138,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosY(dy);
         }
-        if (down && !lockDown) {
+        if (down && !lockDown && !up) {
             directionFacing = Direction.down;
             dy += 5;
             walkTimer += dt;
