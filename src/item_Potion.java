@@ -16,6 +16,7 @@ public class item_Potion extends Item {
         if(user.getCurrentHP()>user.getMaxHP()){
             user.setCurrentHP(user.getMaxHP());
         }
+        this.setDisplayString(user.getName() + " healed for " + this.getNumericValue() + " health!");
         super.use(user);
     }
 }

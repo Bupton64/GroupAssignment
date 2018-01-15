@@ -197,7 +197,7 @@ public class Character extends Statblock {
         sortInventory();
     }
 
-    public void equipItem(Item newItem){
+    public void equipItem(Item newItem) {
         if (!newItem.isEquippable()){return;}
         if (newItem.getSlot() == Item.Slot.bag || newItem.getSlot() == null){return;}
         if(!alreadyHoldsItem(newItem)){return;}
@@ -404,6 +404,9 @@ public class Character extends Statblock {
     }
 
     public void initInventory(){
+
+        // Equipment
+
         item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword");
         addItemToInventory(rusty);
 
@@ -429,8 +432,23 @@ public class Character extends Statblock {
         item_Equipment ironSword = new item_Equipment("Iron Sword", 2, 0, 0, 0, 0, Item.Slot.weapon, "A well forged sword");
         addItemToInventory(ironSword);
 
+        // Items
+
         item_SpeedPotion speed = new item_SpeedPotion();
         addItemToInventory(speed);
+
+        item_soulStone soul = new item_soulStone();
+        addItemToInventory(soul);
+
+        item_Eyedrops eye = new item_Eyedrops();
+        addItemToInventory(eye);
+
+        item_Antidote anti = new item_Antidote();
+        addItemToInventory(anti);
+
+        item_HealingSalve salve = new item_HealingSalve();
+        addItemToInventory(salve);
+
 
         item_Potion pot = new item_Potion();
         addItemToInventory(pot);

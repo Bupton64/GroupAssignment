@@ -15,6 +15,15 @@ public class Item {
     private boolean isEquippable;
     private boolean isEquipped;
     private boolean isUseableOustideCombat;
+    private String displayString;
+
+    public String getDisplayString() {
+        return displayString;
+    }
+
+    public void setDisplayString(String displayString) {
+        this.displayString = displayString;
+    }
 
     public boolean isUseableOustideCombat() {
         return isUseableOustideCombat;
@@ -119,6 +128,7 @@ public class Item {
     public void setEquipped(boolean equipped) {
         isEquipped = equipped;
     }
+
 
     public Item(){
         this.setSlot(null);
