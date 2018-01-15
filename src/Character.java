@@ -8,8 +8,6 @@ public class Character extends Statblock {
         return questNum;
     }
 
-
-
     private int XPTotal; //< Contains the characters current XP total
     private int XPToNextLevel; //< Contains the characters required XPTotal for next level
     private int gpTotal; //< The characters gold total
@@ -20,8 +18,6 @@ public class Character extends Statblock {
     private int maxInventorySize; //< Maximum size of the players inventory.
     private double currentMapLocation; //< Determines what map number the player is currently on
     private boolean combatActive; //< Determines whether the character is in combat.
-
-
 
     public int getInventorySize(){
         int count=0;
@@ -568,6 +564,16 @@ public class Character extends Statblock {
         } else {
             return false;
         }
+    }
+
+    public void resetBonuses(){
+        setEnergy(0);
+        setAttackBonus(0);
+        setStrengthBonus(0);
+        setSpeedBonus(0);
+        setLuckBonus(0);
+        setDefenseBonus(0);
+
     }
 
     public boolean winBattle(Monster enemy){

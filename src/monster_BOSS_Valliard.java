@@ -32,6 +32,11 @@ public class monster_BOSS_Valliard extends Monster {
         // NEEDS ABILITIES
         setUpAbilityNumberI(temp, 0, "Hand of Judgment", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
         temp[1] =  new ability_monster_lifeCoil();
+        setUpAbilityNumberI(temp, 2, "Flame Thrust", 4, 2, 2, 2, 4, true, 2, "", true, Ability.AbilityType.damage, "");
+        temp[3] = new ability_Berserk();
+        temp[3].setDisplayString("Valliard's rage overflows!");
+        temp[4] = new ability_BladeDance();
+
 
         this.setAbilities(temp);
     }

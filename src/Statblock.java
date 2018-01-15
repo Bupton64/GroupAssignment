@@ -3,6 +3,9 @@ import java.math.*;
 import java.util.Arrays;
 /* Parent class for all character objects */
 public class Statblock extends extraFunctions{
+
+    enum Status {poison, blind}
+
     // Members
 
     private String name; //< Name of the object
@@ -35,9 +38,27 @@ public class Statblock extends extraFunctions{
     private int equipSpeedBonus; //< Characters bonus to speed from equipped items.
     private int equipLuckBonus; //< Characters bonus to luck from equipped items.
     private int equipStrengthBonus; //< Characters bonus to strength from equipped items.
+    private int lastStatusDuration; //< A counter for how long a characters status duration is effecting them.
+    private Status lastStatusEffect; //< The readable variable which informs what status ailment a player is suffering from
 
     // Getters and Setters
 
+
+    public int getLastStatusDuration() {
+        return lastStatusDuration;
+    }
+
+    public void setLastStatusDuration(int lastStatusDuration) {
+        this.lastStatusDuration = lastStatusDuration;
+    }
+
+    public Status getLastStatusEffect() {
+        return lastStatusEffect;
+    }
+
+    public void setLastStatusEffect(Status lastStatusEffect) {
+        this.lastStatusEffect = lastStatusEffect;
+    }
 
     public int getSpriteHeight() {
         return spriteHeight;
@@ -351,16 +372,6 @@ public class Statblock extends extraFunctions{
         }
         setAbilities(temp);
     }
-
-    public void resetBonuses(){
-        energy = 0;
-        attackBonus=0;
-        strengthBonus=0;
-        speedBonus=0;
-        luckBonus=0;
-        defenseBonus=0;
-    }
-
 
     public int takeDamage(int damage){
         double reduced = (defense+defenseBonus+equipDefenseBonus)/2.0;
