@@ -28,8 +28,8 @@ public class npc_plains_f8_oldman extends  NPC {
     //////////////////////////////
 
     public void initPath(){
-        setMoveTimer(4);
-        setMoveDelay(8);
+        setMoveTimer(2);
+        setMoveDelay(3);
         setMapPosX(200);
         setMapPosY(200);
 
