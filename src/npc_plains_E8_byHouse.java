@@ -11,12 +11,7 @@ public class npc_plains_E8_byHouse extends  NPC {
         setMapPosX(80);
         setMapPosY(180);
 
-        moveTimer = 0;
-        moveDelay = 0.2;
-
-        location = new double[2];
-        setLocation(0,260);
-        setLocation(1,80);
+        initPath();
         spriteLeft = new Image[3];
         spriteRight = new Image[3];
         loadImages();
@@ -36,6 +31,23 @@ public class npc_plains_E8_byHouse extends  NPC {
     ///    Movement
     ///
     //////////////////////////////
+
+    public void initPath() {
+        setMapPosX(80);
+        setMapPosY(180);
+        setMoveTimer(0);
+        setMoveDelay(0.2);
+        numOfLocations = 2;
+        currentLocation= 0;
+
+        Location = new NpcLocation[2];
+        for(int i = 0; i < numOfLocations;i++){
+            Location[i] = new NpcLocation();
+        }
+        Location[0].setUp(0,260,180, "left",180,1,60);
+        Location[1].setUp(1,80,180,"right",180,0,60);
+
+    }
 
     @Override
     public void loadImages(){
@@ -61,33 +73,11 @@ public class npc_plains_E8_byHouse extends  NPC {
 
         if(getMoveTimer() > getMoveDelay()){
             collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
-            if(currentLocation == 1) {
-                setMapPosX(getMapPosX() + (60 * dt));
-                npcRight = true;
-                npcDirection = Direction.right;
-                walkTimer += dt;
-                if (walkTimer > walkDuration) {
-                    walkTimer -= walkDuration;
-                }
-                if (getMapPosX() > getLocation(0)) {
-                    npcRight = false;
-                    setMoveTimer(0);
-                    currentLocation= 0;
-                }
-            }else{
-                setMapPosX(getMapPosX() - (60 * dt));
-                npcLeft = true;
-                npcDirection = Direction.left;
-                walkTimer += dt;
-                if (walkTimer > walkDuration) {
-                    walkTimer -= walkDuration;
-                }
-                if (getMapPosX() < getLocation(1)) {
-                    npcLeft = false;
-                    setMoveTimer(0);
-                    currentLocation = 1;
-                }
+
+            if(startMovement(dt)){
+                currentLocation = Location[currentLocation].getNextLocation();
             }
+
             collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
         }
 

@@ -8,19 +8,10 @@ public class npc_plains_f8_oldman extends  NPC {
         setName("Julian");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,364,288,56,72);
-        setMapPosX(200);
-        setMapPosY(200);
 
-        setMoveTimer(0);
-        setMoveDelay(10);
-        location = new double[2];
-        setLocation(0,300);
-        setLocation(1,200);
 
-        spriteUp = new Image[3];
-        spriteDown = new Image[3];
+        initPath();
         loadImages();
-        currentLocation =  1;
     }
 
 
@@ -36,14 +27,43 @@ public class npc_plains_f8_oldman extends  NPC {
     ///
     //////////////////////////////
 
+    public void initPath(){
+        setMoveTimer(4);
+        setMoveDelay(8);
+        setMapPosX(200);
+        setMapPosY(200);
+
+
+        Location = new NpcLocation[4];
+        currentLocation = 0;
+        numOfLocations = 4;
+        for(int i = 0; i < numOfLocations;i++){
+            Location[i] = new NpcLocation();
+        }
+        Location[0].setUp(0,200,200, "down",100,1,20);
+        Location[1].setUp(1,200,300,"up",100,2,40);
+        Location[2].setUp(2,130,300,"left",70,3,70);
+        Location[3].setUp(3,200,300,"right",70,0,20);
+    }
+
     @Override
     public void loadImages(){
         super.loadImages();
+        spriteUp = new Image[3];
+        spriteDown = new Image[3];
+        spriteLeft = new Image[3];
+        spriteRight = new Image[3];
         for(int i =0; i < 3;i++){
             spriteDown[i] = subImage(spriteSheet,312 + (52 * i), 288,52,72);
         }
         for(int i =0; i < 3;i++){
             spriteUp[i] = subImage(spriteSheet,312 + (52 * i), 504,52,72);
+        }
+        for(int i =0; i < 3;i++){
+            spriteLeft[i] = subImage(spriteSheet,312 + (52 * i), 360,52,72);
+        }
+        for(int i =0; i < 3;i++){
+            spriteRight[i] = subImage(spriteSheet,312 + (52 * i), 432,52,72);
         }
 
 
@@ -61,37 +81,8 @@ public class npc_plains_f8_oldman extends  NPC {
 
             if(getMoveTimer() > getMoveDelay()){
                 collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
-                if(currentLocation == 1) {
-                    setMapPosY(getMapPosY() + (20 * dt));
-                    npcDown = true;
-                        npcDirection = Direction.down;
-
-                        walkTimer += dt;
-                        if (walkTimer > walkDuration) {
-
-                            walkTimer -= walkDuration;
-                        }
-                    if (getMapPosY() > getLocation(0)) {
-                        npcDown = false;
-                        setMoveTimer(0);
-                        currentLocation = 0;
-                    }
-                }else{
-                    setMapPosY(getMapPosY() - (20 * dt));
-                    npcUp = true;
-
-                        npcDirection = Direction.up;
-
-                        walkTimer += dt;
-                        if (walkTimer > walkDuration) {
-                            walkTimer -= walkDuration;
-                        }
-
-                    if (getMapPosY() < getLocation(1)) {
-                        npcUp = false;
-                        setMoveTimer(0);
-                        currentLocation =1;
-                    }
+                if(startMovement(dt)){
+                    currentLocation = Location[currentLocation].getNextLocation();
                 }
                 collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
             }
