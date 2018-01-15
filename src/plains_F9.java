@@ -41,7 +41,7 @@ public class plains_F9 extends  Map {
                 flicker = false;
                 return true;
         }
-        if(player.getMapPosX() < 620 && player.getMapPosX() > 570 && player.getMapPosY() > 200 && player.getMapPosY() < 250){
+        if(player.getMapPosX() < 620 && player.getMapPosX() > 570 && player.getMapPosY() > 200 && player.getMapPosY() < 240){
             player.setCurrentMapLocation(42);
             flicker = false;
             player.setMapPosX(380);

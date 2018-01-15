@@ -25,11 +25,10 @@ public class plains_F9_shop extends  Map {
                 break;
             case 2:
                 //going down
-                if(player.getMapPosX() < 400 && player.getMapPosX() > 350 && player.getMapPosY() > 380 && player.getMapPosY() < 420) {
                     player.setCurrentMapLocation(29);
                     flicker = false;
                     return true;
-                }
+
             case 3:
                 // going right
                 break;
