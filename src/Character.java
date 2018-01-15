@@ -407,11 +407,22 @@ public class Character extends Statblock {
 
         // Equipment
 
-        item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword");
-        addItemToInventory(rusty);
+        // Weapons
 
-        item_Equipment chicken = new item_Equipment("Chicken Leg", 1, 0, 0, 0, 0, Item.Slot.weapon, "The good stuff.");
-        addItemToInventory(chicken);
+        item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword");
+        addItemToInventory(rusty); // T0 Sword
+        equipItem(rusty);
+
+        item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 2, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong");
+        addItemToInventory(bronzeSword); //T1 Sword
+
+        item_Equipment ironSword = new item_Equipment("Iron Sword", 4, 0, 0, 0, 2, Item.Slot.weapon, "A well forged sword");
+        addItemToInventory(ironSword); //T3 Sword
+
+        item_Equipment steelSword = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "A well forged sword");
+        addItemToInventory(steelSword); //T4 Sword
+
+        // Helms
         
         item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather");
         addItemToInventory(ragged);
@@ -429,8 +440,6 @@ public class Character extends Statblock {
         addItemToInventory(leatherJack);
         equipItem(leatherJack);
 
-        item_Equipment ironSword = new item_Equipment("Iron Sword", 2, 0, 0, 0, 0, Item.Slot.weapon, "A well forged sword");
-        addItemToInventory(ironSword);
 
         // Items
 
