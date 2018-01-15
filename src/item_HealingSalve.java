@@ -1,12 +1,12 @@
-public class item_Potion extends Item {
+public class item_HealingSalve extends Item {
 
-    public item_Potion(){
-        this.setNumericValue(45);
+    public item_HealingSalve(){
+        this.setNumericValue(100);
         this.setEquippable(false);
         this.setSlot(Slot.bag);
         this.setCounter(1);
-        this.setName("Potion");
-        this.setTooltip("A small brew of magical healing herbs");
+        this.setName("Healing Salve");
+        this.setTooltip("A magical paste for healing the body.");
         this.setUseableOustideCombat(true);
     }
 
@@ -19,4 +19,5 @@ public class item_Potion extends Item {
         this.setDisplayString(user.getName() + " healed for " + this.getNumericValue() + " health!");
         super.use(user);
     }
+
 }

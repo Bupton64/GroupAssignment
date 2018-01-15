@@ -88,6 +88,13 @@ public class Collision  {
     }
 
     public int edgeCheck(Character player){
+        if(player.getCurrentMapLocation() == 42){
+            if(player.getMapPosY() >= 380){
+                player.setMapPosY(250);
+                player.setMapPosX(590);
+                return 2;
+            }
+        }
         if(player.getMapPosY() < 10){
             player.setMapPosY(545);
             return 1;

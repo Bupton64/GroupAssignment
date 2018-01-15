@@ -8,7 +8,7 @@ public class Ability {
     private boolean lastHit;
     private int lastStatusDuration;
     private boolean lastCrit;
-    private String lastStatus;
+    private Character.Status lastStatus;
     private String lastAttack;
     private boolean isActive;
     private AbilityType type;
@@ -112,11 +112,11 @@ public class Ability {
         this.lastCrit = lastCrit;
     }
 
-    public String getLastStatus() {
+    public Character.Status getLastStatus() {
         return lastStatus;
     }
 
-    public void setLastStatus(String lastStatus) {
+    public void setLastStatus(Character.Status lastStatus) {
         this.lastStatus = lastStatus;
     }
 
@@ -246,6 +246,9 @@ public class Ability {
             return true;
         }
         double hitChance=10+attack+attackBonus+speed+speedBonus;
+        if(user.getLastStatusDuration()>0 && user.getLastStatusEffect() == Statblock.Status.blind){
+            hitChance-=10;
+        }
         double successCounter=Math.random()*user.getLevel()*10;
         if (hitChance>successCounter){
             lastHit=true;

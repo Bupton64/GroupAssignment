@@ -225,6 +225,9 @@ public class MapControl extends extraFunctions {
                     case 41:
                         currentMap = new plains_I9();
                         break;
+                    case 42:
+                        currentMap = new plains_F9_shop();
+                        break;
                 }
             }
         }

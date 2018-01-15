@@ -1,13 +1,13 @@
-public class item_Potion extends Item {
-
-    public item_Potion(){
-        this.setNumericValue(45);
+public class item_AlchemicalFlask extends Item {
+/*
+    public item_AlchemicalFlask(){
+        this.setNumericValue(100);
         this.setEquippable(false);
         this.setSlot(Slot.bag);
         this.setCounter(1);
-        this.setName("Potion");
-        this.setTooltip("A small brew of magical healing herbs");
-        this.setUseableOustideCombat(true);
+        this.setName("Alchemical Flask");
+        this.setTooltip("A violent concoction ready to burst");
+        this.setUseableOustideCombat(false);
     }
 
     @Override
@@ -16,7 +16,7 @@ public class item_Potion extends Item {
         if(user.getCurrentHP()>user.getMaxHP()){
             user.setCurrentHP(user.getMaxHP());
         }
-        this.setDisplayString(user.getName() + " healed for " + this.getNumericValue() + " health!");
         super.use(user);
     }
+*/
 }
