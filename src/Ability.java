@@ -23,6 +23,7 @@ public class Ability {
     private int strengthBonus;
     private int luckBonus;
     private int energyCost;
+    private int damageOverTime;
 
     private int attack;
     private int speed;
@@ -31,6 +32,15 @@ public class Ability {
     private int luck;
 
     // Getters and setters
+
+
+    public int getDamageOverTime() {
+        return damageOverTime;
+    }
+
+    public void setDamageOverTime(int damageOverTime) {
+        this.damageOverTime = damageOverTime;
+    }
 
     public String getDisplayString() {
         return displayString;

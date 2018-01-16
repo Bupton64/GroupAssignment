@@ -15,7 +15,7 @@ public class ability_monster_roar extends Ability {
 
     @Override
     public Ability use(Statblock user){
-        user.setAttack(user.getAttack()+2);
+        user.setStrength(user.getStrength()+2);
         return this;
     }
 }
