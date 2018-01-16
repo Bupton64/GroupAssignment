@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 
 public class npc_wizard extends  NPC {
@@ -44,6 +45,12 @@ public class npc_wizard extends  NPC {
 
 
 
+    public void initDialogue(){
+        java.util.List<Dialogue> listOne = new LinkedList<Dialogue>();
+
+
+    }
+
     public int updateConvo(){
         switch (questStage){
             case 1:
@@ -72,24 +79,24 @@ public class npc_wizard extends  NPC {
 
 
                 //First text bubble
-                drawText(110, 450, "Ahhhh, who are you? I don't recognise you but you don't seem the sort to", "Times New Roman", 20, g);
-                drawText(110, 475, "be working for Therox, that foul cretin! The town is in danger and it's", "Times New Roman", 20, g);
-                drawText(110, 500, "all my fault! ", "Times New Roman", 20, g);
+                drawText(110, 450, "Ahhhh, who are you? I don't recognise you but you don't seem the sort to"+ "\n" + "be working for Therox, that foul cretin! The town is in danger and it's\nall my fault! ", "Times New Roman", 20, g);
+//                drawText(110, 475, "be working for Therox, that foul cretin! The town is in danger and it's", "Times New Roman", 20, g);
+//                drawText(110, 500, "all my fault! ", "Times New Roman", 20, g);
 
-                //Second
-                drawText(110, 450, "Knowing Therox was coming for my collection of spellbooks, I cast a", "Times New Roman", 20, g);
-                drawText(110, 475, "spell to create this forest. It was an old spell, one I had never cast", "Times New Roman", 20, g);
-                drawText(110, 500, "before... I pushed too much power into it... and... well... it grew", "Times New Roman", 20, g);
-                drawText(110, 425, "too large. Now the town lies right between Therox and I.", "Times New Roman", 20, g);
+//                //Second
+//                drawText(110, 450, "Knowing Therox was coming for my collection of spellbooks, I cast a", "Times New Roman", 20, g);
+//                drawText(110, 475, "spell to create this forest. It was an old spell, one I had never cast", "Times New Roman", 20, g);
+//                drawText(110, 500, "before... I pushed too much power into it... and... well... it grew", "Times New Roman", 20, g);
+//                drawText(110, 425, "too large. Now the town lies right between Therox and I.", "Times New Roman", 20, g);
 
-                //Third
-                drawText(110, 450, "His minions have made their way right to my doorstep it seems, and I", "Times New Roman", 20, g);
-                drawText(110, 475, "can hardly work on devising a way to beat Therox with his lackeys nipping", "Times New Roman", 20, g);
-                drawText(110, 500, "at my heels, If you could take up guard duty here in front of my estate,", "Times New Roman", 20, g);
-                drawText(110, 525, "I could begin to get some work done.", "Times New Roman", 20, g);
+//                //Third
+//                drawText(110, 450, "His minions have made their way right to my doorstep it seems, and I", "Times New Roman", 20, g);
+//                drawText(110, 475, "can hardly work on devising a way to beat Therox with his lackeys nipping", "Times New Roman", 20, g);
+//                drawText(110, 500, "at my heels, If you could take up guard duty here in front of my estate,", "Times New Roman", 20, g);
+//                drawText(110, 525, "I could begin to get some work done.", "Times New Roman", 20, g);
 
-                //QUEST
-                drawText(110, 450, "Kill 5 Goblins in front of Sevars' estate.", "Times New Roman", 20, g);
+//                //QUEST
+//                drawText(110, 450, "Kill 5 Goblins in front of Sevars' estate.", "Times New Roman", 20, g);
             }
             if (currentState == Quest.questState.inQuest) {
                 drawText(110, 450, "You still haven't cleared the area", "Times New Roman", 20, g);

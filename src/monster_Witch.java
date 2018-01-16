@@ -29,7 +29,7 @@ public class monster_Witch extends Monster {
         setUpAbilityNumberI(temp, 0, "Freezing Ray", 5, 1, 1, 1, 1, true, -1, "", true, Ability.AbilityType.damage, "");
         setUpAbilityNumberI(temp, 1, "Snowblast", 0, 2, 2, 0, 2, true, 2, "", true, Ability.AbilityType.damage, "");
         setUpAbilityNumberI(temp, 2, "Ice Storm", 0, 4, 0, 0, 4, true, 5, "", true, Ability.AbilityType.damage, "");
-        temp[4] = new ability_monster_blindingLight();
+        temp[3] = new ability_monster_blindingLight();
         this.setAbilities(temp);
 
         Image sprite = loadImage("monster_Witch.png");

@@ -364,6 +364,7 @@ public class MapControl extends extraFunctions {
         }
         currentMap.setUpCollision(collisionDetector);
     }
+
     ///////////////////////////////////
     ///
     /// NPC Controls
