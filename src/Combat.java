@@ -457,8 +457,8 @@ public class Combat extends extraFunctions{
             if(!playerAttackActive){
                 drawText(150, 500, "Using " + lastItemUsed.getName() + "...", textFont, 20,g);
             }else{
-                playerTurnLog = player.getName() + " healed for " + lastItemUsed.getNumericValue() + " with " + lastItemUsed.getName();
-                drawText(120, 500, lastItemUsed.getName() + " healed for " +lastItemUsed.getNumericValue(), textFont, 20,g);
+                playerTurnLog = player.getName() + " used " + lastItemUsed.getName();
+                drawText(120, 500, lastItemUsed.getDisplayString(), textFont, 20,g);
             }
 
         }else{
@@ -488,11 +488,7 @@ public class Combat extends extraFunctions{
                         drawText(70, 500, "Your " + lastAbility.getName() + " misses " + enemy.getName(), textFont, 20,g);
                     }
                 } else if (lastAbility.getType() == Ability.AbilityType.buff) {
-                    if(lastAbility.getName() == "Heal") {
-                        playerTurnLog = player.getName() + " cast " + lastAbility.getName() + " for " + (int) playerDamage;
-                    }else{
-                        playerTurnLog = player.getName() + " cast " + lastAbility.getName();
-                    }
+                    playerTurnLog = player.getName() + " cast " + lastAbility.getName();
                     drawText(150, 500, lastAbility.getDisplayString(), textFont, 20,g);
                 }
 
@@ -860,7 +856,7 @@ public class Combat extends extraFunctions{
                 }else{
                     if(enemyLastAbility.isLastCrit()){
                         enemyTurnLog = enemy.getName() + " crit for " + (int)enemyDamage + " with "+ enemyLastAbility.getName();
-                        drawBoldText(35, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int)enemyDamage + " phys damage", textFont, 20,g);
+                        drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int)enemyDamage + " phys damage", textFont, 20,g);
                     }else{
 
                         drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int)enemyDamage + " phys damage", textFont, 20,g);
