@@ -24,7 +24,17 @@ public abstract class extraFunctions {
     Color red = Color.RED;
     Color purple = new Color(128, 0, 128);
     Color cyan = new Color(0, 200, 250);
-    Color grey = new Color(100, 100, 100);
+
+    Color grey1 = new Color(25, 25, 25);
+    Color grey2 = new Color(50, 50, 50);
+    Color grey3 = new Color(75, 75, 75);
+    Color grey4 = new Color(100, 100, 100);
+    Color grey5 = new Color(150, 150, 150);
+    Color grey6 = new Color(200, 200, 200);
+
+
+
+
     Color blue = Color.BLUE;
     Color green = Color.GREEN;
     Color yellow = Color.YELLOW;
@@ -46,6 +56,7 @@ public abstract class extraFunctions {
         // Set colour
         g.setColor(c);
     }
+
 
     // This function draws text on the screen at (x,y)
     public void drawText(double x, double y, String s,Graphics2D g) {

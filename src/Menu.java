@@ -17,6 +17,7 @@ public class Menu extends extraFunctions {
     Image character;
     Image leftArrow;
     Image rightArrow;
+    Image scrollBackground;
     Image menuSprite = loadImage("menuSprite.png");
     Image inventorySprite = loadImage("inventorySprite.png");
     Image equipmentSprite = loadImage("equipmentSprite.png");
@@ -24,6 +25,7 @@ public class Menu extends extraFunctions {
     Image arrow1 = loadImage("arrowhead.png");
     Image arrow2 = loadImage("arrowhead.png");
     Image paper = loadImage("paper.png");
+    Image paper2 = loadImage("paper2.png");
     private boolean pause = false;
     private int cursorPositionY = 440;
     private boolean invMenu = false;
@@ -95,6 +97,7 @@ public class Menu extends extraFunctions {
         background2 = subImage(inventorySprite, 0, 0, 800, 600);
         background3 = subImage(equipmentSprite, 0, 0, 800, 600);
         statBackground = subImage(paper, 0, 0, 768, 1028);
+        scrollBackground = subImage(paper2, 0, 0, 1028, 768);
         character = subImage(characterSprite, 0, 0, 144, 144);
         marker = subImage(arrow1, 291, 100, 45, 40);
         rightArrow = subImage(arrow1, 291, 100, 45, 40);
@@ -160,13 +163,18 @@ public class Menu extends extraFunctions {
             drawImage(background2, 0, 0, g);
             changeColor(white, g);
             drawBoldText(3, 480, "Inventory : " + player1.getInventorySize() + "/" + player1.getMaxInventorySize(), "Felix Titling", 15, g);
+            int bar =0;
             for (int i = 0; i < player1.getInventorySize(); i++) {
-                drawBoldText(3, 50 + (i * 30), player1.getInventory()[i].getName(), "Felix Titling", 20, g);
+                if(i ==7){
+                    bar = 30;
+                }
+                drawBoldText(3, 50 + (i * 30)+bar, player1.getInventory()[i].getName(), "Felix Titling", 20, g);
                 if (player1.getInventory()[i].getCounter() != 0) {
-                    drawBoldText(730, 50 + (i * 30), " X " + Integer.toString(player1.getInventory()[i].getCounter()), "Felix Titling", 20, g);
+                    drawBoldText(730, 50 + (i * 30)+bar, " X " + Integer.toString(player1.getInventory()[i].getCounter()), "Felix Titling", 20, g);
                 }
             }
-            drawSolidRectangle(175, 530, 250, 45, g);
+           // drawSolidRectangle(175, 530, 250, 45, g);
+            drawImage(scrollBackground, 164, 525, 264, 60, g);
             if (index > 0) {
                 drawImage(leftArrow, 125, 530, g);
             }
@@ -392,7 +400,7 @@ public class Menu extends extraFunctions {
                 drawBoldText(520, 385 + 120, "LUK", "Felix Titling", 15, g);
 
 
-                changeColor(grey, g);
+                changeColor(grey4, g);
                 drawBoldText(520, 535, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g);
                 if (equippableSize()>1) {
                     drawImage(leftArrow, 460, 265, g);

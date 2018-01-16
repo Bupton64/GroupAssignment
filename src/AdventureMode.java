@@ -98,6 +98,9 @@ public class AdventureMode extends GameEngine {
               stateChanger =  combatMode.update(dt);
            }else if(state == GameState.OverWorldMenu) {
                //add Update later
+
+           }else if(state == GameState.MainMenu){
+               StartController.updateTimer(dt);
            }
     }
 
@@ -166,7 +169,7 @@ public class AdventureMode extends GameEngine {
 
         if(state == GameState.OverWorldMenu){
             MenuController.keyPressed(e);
-            if(e.getKeyCode() == KeyEvent.VK_SPACE && MenuController.getCursorPositionY() == 440 ){
+            if(e.getKeyCode() == KeyEvent.VK_SPACE && MenuController.getCursorPositionY() == 440 ) {
                 stateChanger = 1;
             }
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE && MenuController.isChaMenu()) {
@@ -176,7 +179,7 @@ public class AdventureMode extends GameEngine {
         }
         if (state == GameState.MainMenu){
             StartController.keyPressed(e);
-            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 100)){
+            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 150)&& !StartController.startup){
                 stateChanger = 1;
             }
 
