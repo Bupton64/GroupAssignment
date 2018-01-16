@@ -8,14 +8,14 @@ public class ability_monster_roar extends Ability {
         this.setStrength(0);
         this.setMagic(true);
         this.setEnergyCost(2);
-        this.setActive(false);
+        this.setActive(true);
         this.setType(AbilityType.buff);
         this.setDisplayString("The wolf is emboldened by its courage!");
     }
 
     @Override
     public Ability use(Statblock user){
-        user.setAttack(user.getAttack()+2);
+        user.setStrength(user.getStrength()+2);
         return this;
     }
 }
