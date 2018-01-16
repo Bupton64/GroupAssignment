@@ -405,34 +405,65 @@ public class Character extends Statblock {
 
         // Weapons
 
-        item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword");
+        item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword", 10, 0);
         addItemToInventory(rusty); // T0 Sword
         equipItem(rusty);
 
-        item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 2, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong");
+        item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
         addItemToInventory(bronzeSword); //T1 Sword
 
-        item_Equipment ironSword = new item_Equipment("Iron Sword", 4, 0, 0, 0, 2, Item.Slot.weapon, "A well forged sword");
+        item_Equipment stone = new item_Equipment("Stone Axe", 0, 0, 0, 0, 1, Item.Slot.weapon, "Rugged, yet effective", 300, 400);
+        addItemToInventory(stone); //T1 Axe
+
+        item_Equipment monksStaff = new item_Equipment("Monk's Staff", 1, 0, 0, 2, 0, Item.Slot.weapon, "A light wooden staff", 300, 1000);
+        addItemToInventory(monksStaff); //T2 Staff
+
+        item_Equipment rough = new item_Equipment("Rough Axe", 0, 0, 0, 0, 2, Item.Slot.weapon, "A violent edge and little else", 3300, 1200);
+        addItemToInventory(rough); //T2 Axe
+
+        item_Equipment spear = new item_Equipment("Guardsman's Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);
+        addItemToInventory(spear); //T2 Spear
+
+        item_Equipment ironSword = new item_Equipment("Iron Sword", 4, 0, 0, 0, 2, Item.Slot.weapon, "A well forged sword", 600, 2300);
         addItemToInventory(ironSword); //T3 Sword
 
-        item_Equipment steelSword = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "A well forged sword");
+        item_Equipment trickspear = new item_Equipment("Trickster's Spear", 2, 0, 3, 0, 0, Item.Slot.weapon, "Expertly balanced spear", 590, 2250);
+        addItemToInventory(trickspear); //T3 Spear
+
+        item_Equipment acolyte = new item_Equipment("Acolyte's Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
+        addItemToInventory(acolyte); //T3 Staff
+
+        item_Equipment steelSword = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "From the best smith's in Teraan", 1300, 4500);
         addItemToInventory(steelSword); //T4 Sword
+
+        item_Equipment gladiator = new item_Equipment("Gladiator's Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
+        addItemToInventory(gladiator); //T4 Axe
+
+        item_Equipment jester = new item_Equipment("Jester's Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
+        addItemToInventory(jester); //T4 Staff
+
+        item_Equipment emperor = new item_Equipment("Emperor's Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
+        addItemToInventory(emperor); //T4 Spear
+
+        item_Equipment valkyrie = new item_Equipment("Valkyrie", 10, 10, 4, 0, 8, Item.Slot.weapon, "A legend made reality", 0, 0);
+        addItemToInventory(valkyrie); //Endgame Sword
+
 
         // Helms
         
-        item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather");
+        item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather", 10, 0);
         addItemToInventory(ragged);
         equipItem(ragged);
 
-        item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand, "A small buckler that straps to the arm");
+        item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand, "A small buckler that straps to the arm", 10, 0);
         addItemToInventory(buckler);
         equipItem(buckler);
 
-        item_Equipment clothShoes = new item_Equipment("Cloth Shoes", 0, 0, 0, 0, 0, Item.Slot.feet, "A comfy pair of wraps");
+        item_Equipment clothShoes = new item_Equipment("Cloth Shoes", 0, 0, 0, 0, 0, Item.Slot.feet, "A comfy pair of wraps", 10, 0);
         addItemToInventory(clothShoes);
         equipItem(clothShoes);
 
-        item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 0, 0, Item.Slot.chest, "A sturdy chest piece");
+        item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 0, 0, Item.Slot.chest, "A sturdy chest piece", 10, 0);
         addItemToInventory(leatherJack);
         equipItem(leatherJack);
 

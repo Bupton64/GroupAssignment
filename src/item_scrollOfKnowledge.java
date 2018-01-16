@@ -8,6 +8,8 @@ public class item_scrollOfKnowledge extends Item {
         this.setName("Scroll of Knowledge");
         this.setTooltip("Wisdom from the prophets of Artreza");
         this.setUseableOustideCombat(true);
+        this.setSellPrice(50);
+        this.setBuyPrice(200);
     }
 
     @Override

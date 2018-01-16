@@ -8,6 +8,8 @@ public class item_soulStone extends Item {
         this.setName("Soul Stone");
         this.setTooltip("A gemstone containing divine energy");
         this.setUseableOustideCombat(false);
+        this.setSellPrice(140);
+        this.setBuyPrice(1050);
     }
 
     @Override

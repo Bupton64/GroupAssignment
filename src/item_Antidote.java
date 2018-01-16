@@ -8,6 +8,8 @@ public class item_Antidote extends Item {
         this.setName("Antidote");
         this.setTooltip("Bitter herbs that halt poison");
         this.setUseableOustideCombat(false);
+        this.setSellPrice(50);
+        this.setBuyPrice(200);
     }
 
     @Override

@@ -16,6 +16,24 @@ public class Item {
     private boolean isEquipped;
     private boolean isUseableOustideCombat;
     private String displayString;
+    private int sellPrice;
+    private int buyPrice;
+
+    public int getSellPrice() {
+        return sellPrice;
+    }
+
+    public void setSellPrice(int sellPrice) {
+        this.sellPrice = sellPrice;
+    }
+
+    public int getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(int buyPrice) {
+        this.buyPrice = buyPrice;
+    }
 
     public String getDisplayString() {
         return displayString;

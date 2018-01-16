@@ -8,6 +8,8 @@ public class item_AlchemicalFlask extends Item {
         this.setName("Alchemical Flask");
         this.setTooltip("A violent concoction ready to burst");
         this.setUseableOustideCombat(false);
+        this.setSellPrice(800);
+        this.setBuyPrice(3000);
     }
 
     @Override
