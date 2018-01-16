@@ -47,7 +47,9 @@ public class monster_Wolf extends Monster {
 
     @Override
     public Ability moveChoice() {
-        int num=(int)(Math.random()*100);
+        Ability [] abilities = this.getAbilities();
+        return abilities[3].use(this); //< Use Rabid Fang
+        /*int num=(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
         if(this.getCurrentHP()>0.8*this.getMaxHP()){//< If greater than 80% hp
             if(this.getEnergy()>=4){
@@ -109,6 +111,6 @@ public class monster_Wolf extends Monster {
             } else{
                 return abilities[0].use(this); //< Use Basic
             }
-        }
+        }*/
     }
 }

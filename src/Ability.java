@@ -259,7 +259,7 @@ public class Ability {
         if(user.getLastStatusDuration()>0 && user.getLastStatusEffect() == Statblock.Status.blind){
             hitChance-=10;
         }
-        double successCounter=Math.random()*user.getLevel()*10;
+        double successCounter=Math.random()*user.getLevel()*8;
         if (hitChance>successCounter){
             lastHit=true;
             return true;

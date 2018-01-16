@@ -6,10 +6,10 @@ public class ability_monster_rabidFang extends Ability {
         this.setDefense(0);
         this.setLuck(0);
         this.setStrength(0);
-        this.setMagic(true);
+        this.setMagic(false);
         this.setEnergyCost(2);
-        this.setActive(false);
-        this.setType(AbilityType.buff);
+        this.setActive(true);
+        this.setType(AbilityType.damage);
         this.setDisplayString("");
     }
 
