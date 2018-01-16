@@ -450,7 +450,6 @@ public class Combat extends extraFunctions{
 
 
 
-        drawLog(g);
 
         if(displayItem){
 
@@ -774,7 +773,7 @@ public class Combat extends extraFunctions{
             escapeTimer += dt;
             if(escapeTimer > escapeDelay){
                 escapeActive = true;
-                if(Math.random()* 10 > 1) {
+                if(Math.random()* 10 > 5) {
                     makeEscape = true;
                 }
             }
