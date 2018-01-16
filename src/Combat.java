@@ -509,19 +509,18 @@ public class Combat extends extraFunctions{
     Image spellBookPointer;
 
     double spellBookPointerX;
-    double spellBookpointerY;
+    double spellBookPointerY;
 
     int numOfPages;
     int currentPageNum;
+    int numOfSpellsToDisplay;
+
+    boolean nextPageExist;
+    boolean prevPageExist;
 
     public void initAbilityMenu(){
         currentPageNum = 1;
         numOfPages = 1;
-
-
-
-
-
         spellBook = loadImage("open.png");
         spellBookPointer = subImage(menuSpriteSheet,288,96,48,48);
     }
@@ -530,25 +529,37 @@ public class Combat extends extraFunctions{
     public void updateAbilityMenu(double dt){
 
         if(player.getNumOfAbilities() > 8){
-            numOfPages = 1 + (player.getNumOfAbilities() / 8);
+            numOfPages = 1 + ((player.getNumOfAbilities()-1) / 8);
         }
 
         if(menuOption == 0){
             spellBookPointerX = 70;
-            spellBookpointerY = 485;
+            spellBookPointerY = 485;
         }
-        if(menuOption >= 1){
+        if(menuOption >= 1 && menuOption <= 10){
             spellBookPointerX = 70;
-            spellBookpointerY = 200 - (37 * (menuOption-1));
+            spellBookPointerY = 120 + (40 * (menuOption-1));
         }
 
-        if(menuOption > 2){
-            spellBookPointerX = 70;
-            spellBookpointerY = 203 + (40 * (menuOption -3));
+        if(menuOption == 20 ){
+            spellBookPointerX = 430;
+            spellBookPointerY = 450;
         }
 
+        if(menuOption == 21 ){
+            spellBookPointerX = 430;
+            spellBookPointerY = 470;
+        }
+
+        if(nextPageExist){
+            numOfSpellsToDisplay = 8;
+        }else{
+            numOfSpellsToDisplay = player.getNumOfAbilities()-1;
+
+        }
 
     }
+
 
     public void drawAbilityMenu(Graphics2D g){
 
@@ -561,43 +572,59 @@ public class Combat extends extraFunctions{
 
 
         if(numOfPages > currentPageNum){
-            drawText(480,450,"Next Page","Times New Roman",25,g);
+            drawText(480,480,"Next Page","Times New Roman",25,g);
+            nextPageExist = true;
+        }else{
+            nextPageExist = false;
         }
         if(currentPageNum > 1){
             drawText(480,500,"Previous Page","Times New Roman",25,g);
+            prevPageExist = true;
+        }else{
+            prevPageExist = false;
         }
 
         drawText(100,100,"Abilities", "Times new roman",30,g);
         drawText(530,100,"ToolTip", "Times new roman",30,g);
 
+
+
         int j = 1;
-        for(int i = 1 + (8 * (currentPageNum -1));i< player.getNumOfAbilities() + (8 * (currentPageNum -1));i++){
-          while(!playerAbilities[i].isActive()){
-               i++;
+            for (int i = 1 + (8 * (currentPageNum-1)); i <= numOfSpellsToDisplay; i++) {
+                while (!playerAbilities[i].isActive()) {
+                    i++;
 
-          }
-            changeColor(Color.darkGray,g);
-            drawSolidCircle(230,145 + 40 * (j-1),13,g);
-            changeColor(Color.gray,g);
-            drawText(110,150 + 40 * (j-1),playerAbilities[i % (8 * currentPageNum + 1)].getName(),"Times new Roman",20,g);
-            drawCircle(230,145 + 40 * (j-1),13,2,g);
-            drawImage(energyFullImage,221,135 + 40 * (j-1),20,20,g);
-            drawText(250,150 + 40 * (j-1),Integer.toString(playerAbilities[i % (8 * currentPageNum)].getEnergyCost()),"Times New Roman",20,g);
-            if(playerAbilities[i % (8 * currentPageNum)].isMagic()){
-                drawText(310,150 + 40 * (j-1),"Magic","Times new Roman",20,g);
-            }else{
-                drawText(310,150 + 40 * (j-1),"Physical","Times new Roman",20,g);
+                }
+                changeColor(Color.darkGray, g);
+                drawSolidCircle(230, 145 + 40 * (j - 1), 13, g);
+                changeColor(Color.gray, g);
+                drawText(110, 150 + 40 * (j - 1), playerAbilities[i % (9 * currentPageNum + 1)].getName(), "Times new Roman", 20, g);
+                drawCircle(230, 145 + 40 * (j - 1), 13, 2, g);
+                drawImage(energyFullImage, 221, 135 + 40 * (j - 1), 20, 20, g);
+                drawText(250, 150 + 40 * (j - 1), Integer.toString(playerAbilities[i % (9 * currentPageNum)].getEnergyCost()), "Times New Roman", 20, g);
+                if (playerAbilities[i % (9 * currentPageNum)].isMagic()) {
+                    drawText(310, 150 + 40 * (j - 1), "Magic", "Times new Roman", 20, g);
+                } else {
+                    drawText(310, 150 + 40 * (j - 1), "Physical", "Times new Roman", 20, g);
+                }
+                if (menuOption == j) {
+                    drawText(460, 140, playerAbilities[i % (9 * currentPageNum)].getToolTip(), "Times New Roman", 20, g);
+                }
+
+                j++;
+
             }
-            if(menuOption == j){
-                drawText(460,140,playerAbilities[i % (8 * currentPageNum)].getToolTip(),"Times New Roman",20,g);
-            }
 
-            j++;
-
-        }
 
         if(menuOption == 0){
             drawText(460,140,"Return","Times New Roman",20,g);
+        }
+
+        if(menuOption == 20){
+            drawText(460,140,"Next Page","Times New Roman",20,g);
+        }
+        if(menuOption == 21){
+            drawText(460,140,"Previous Page","Times New Roman",20,g);
         }
 
 
@@ -636,7 +663,7 @@ public class Combat extends extraFunctions{
 
 
 
-        drawImage(spellBookPointer, spellBookPointerX,spellBookpointerY,40,40,g);
+        drawImage(spellBookPointer, spellBookPointerX,spellBookPointerY,40,40,g);
 
 
     }
@@ -667,11 +694,11 @@ public class Combat extends extraFunctions{
     public void updateItemMenu(double dt){
         if(menuOption == 0){
             spellBookPointerX = 70;
-            spellBookpointerY = 485;
+            spellBookPointerY = 485;
         }
-        if(menuOption >= 1){
+        if(menuOption >= 1 && menuOption <= 9){
             spellBookPointerX = 70;
-            spellBookpointerY = 120 + (40 * (menuOption-1));
+            spellBookPointerY = 120 + (40 * (menuOption-1));
         }
     }
 
@@ -716,7 +743,7 @@ public class Combat extends extraFunctions{
         drawLine(125,485,165,525,3,g);
         drawLine(165,485,125,525,3,g);
 
-        drawImage(spellBookPointer, spellBookPointerX,spellBookpointerY,40,40,g);
+        drawImage(spellBookPointer, spellBookPointerX,spellBookPointerY,40,40,g);
 
 
     }
@@ -1106,11 +1133,19 @@ public class Combat extends extraFunctions{
         updateNamePlates(dt);
         updatePlayerTurnDisplay(dt);
         updatePlayerAttack(dt);
-        updateRun(dt);
+        if(state == CombatState.run) {
+            updateRun(dt);
+        }
         updateEnemyTurn(dt);
-        updateAbilityMenu(dt);
-        updateItemMenu(dt);
-        updateLootScreen(dt);
+        if(state == CombatState.abilityMenu) {
+            updateAbilityMenu(dt);
+        }
+        if(state == CombatState.itemMenu) {
+            updateItemMenu(dt);
+        }
+        if(state == CombatState.lootScreen) {
+            updateLootScreen(dt);
+        }
         updateLog(dt);
         if(!player.getCombatActive()){
             return 1;
@@ -1272,9 +1307,16 @@ public class Combat extends extraFunctions{
             if(menuOption == 0){
                 state = CombatState.playerTurn;
                 menuOption = 1;
+            }else if(menuOption == 20) {
+                currentPageNum++;
+                menuOption = 1;
+            }else if(menuOption == 21){
+                currentPageNum--;
+                menuOption = 1;
+
             }else {
-                if (player.getEnergy() >= playerAbilities[menuOption].getEnergyCost()) {
-                    lastAbility = playerAbilities[menuOption];
+                if (player.getEnergy() >= playerAbilities[menuOption + (8 * (currentPageNum-1))].getEnergyCost()) {
+                    lastAbility = playerAbilities[menuOption + (8 * (currentPageNum-1))];
                     if(lastAbility.getType() == Ability.AbilityType.damage){
                         castBasicAttack = true;
                     }else if( lastAbility.getType() == Ability.AbilityType.buff){
@@ -1286,8 +1328,19 @@ public class Combat extends extraFunctions{
                 }
             }
         }
+
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
-            if(menuOption < player.getNumOfAbilities() - 1){
+
+
+            if(menuOption == 20){
+                if(prevPageExist) {
+                    menuOption = 21;
+                }
+            }else if(menuOption == 21){
+                if(nextPageExist) {
+                    menuOption = 20;
+                }
+            }else if(menuOption < numOfSpellsToDisplay - ((currentPageNum-1) * 8)){
                 menuOption++;
             }else{
                 menuOption = 0;
@@ -1295,16 +1348,45 @@ public class Combat extends extraFunctions{
 
         }
         if(e.getKeyCode() == KeyEvent.VK_UP){
-            if(menuOption > 0){
+
+            if(menuOption == 20){
+                if(prevPageExist) {
+                    menuOption = 21;
+                }
+            }else if(menuOption == 21){
+                if(nextPageExist) {
+                    menuOption = 20;
+                }
+            }else if(menuOption > 0 ){
                 menuOption--;
             }else{
-                menuOption = player.getNumOfAbilities() - 1;
+                menuOption = numOfSpellsToDisplay - ((currentPageNum-1) * 8) ;
             }
 
         }
 
-    }
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            if(menuOption != 20 && menuOption != 21) {
+                lastMenuOption = menuOption;
+                if (prevPageExist) {
+                    menuOption = 21;
+                }
+                if (nextPageExist) {
+                    menuOption = 20;
+                }
+            }
+        }
 
+
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            if(menuOption == 20 || menuOption == 21){
+                menuOption = lastMenuOption;
+            }
+            lastMenuOption = 0;
+        }
+
+    }
+    int lastMenuOption;
     public void keyPressedItemMenu(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(menuOption == 0){
