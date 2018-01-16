@@ -98,16 +98,12 @@ public class NPC extends extraFunctions{
     double moveTimer; //Timer for When to Move on route
     double moveDelay; //Duration between Route Traveling
 
-    double[] location; //Locations for Npc travel Route
+    NpcLocation[] Location;
+
+
+    int numOfLocations; //< Number of total locations on path
     int currentLocation; //Npc Current Location on travel Route
-
-    public double getLocation(int index) {
-        return location[index];
-    }
-
-    public void setLocation(int index,double location) {
-        this.location[index] = location;
-    }
+    double distanceT = 0;//< Distance traveled in current Route
 
 
     public double getMoveTimer() {
@@ -145,6 +141,45 @@ public class NPC extends extraFunctions{
 
     public void updateNpcMovement(double dt,Collision collisionDetector){
     }
+
+
+    public boolean startMovement(double dt){
+
+        distanceT += Location[currentLocation].getMoveSpeed() * dt;
+        if(distanceT < Location[currentLocation].getDirectionLength()) {
+            if (Location[currentLocation].getDirection() == "right") {
+                setMapPosX(getMapPosX() + (Location[currentLocation].getMoveSpeed() * dt));
+                npcRight = true;
+            } else if (Location[currentLocation].getDirection() == "left") {
+                setMapPosX(getMapPosX() - (Location[currentLocation].getMoveSpeed() * dt));
+                npcLeft = true;
+            } else if (Location[currentLocation].getDirection() == "up") {
+                setMapPosY(getMapPosY() - (Location[currentLocation].getMoveSpeed() * dt));
+                npcUp = true;
+            } else if (Location[currentLocation].getDirection() == "down") {
+                setMapPosY(getMapPosY() + (Location[currentLocation].getMoveSpeed() * dt));
+                npcDown = true;
+            }
+        }
+        walkTimer += dt;
+        if (walkTimer > walkDuration) {
+            walkTimer -= walkDuration;
+        }
+
+        if(distanceT >= Location[currentLocation].getDirectionLength()){
+            npcLeft = false;
+            npcRight = false;
+            npcUp = false;
+            npcDown = false;
+            setMoveTimer(0);
+            distanceT = 0;
+            return true;
+        }
+        return false;
+
+    }
+
+
 
 
     public void drawNpcMovement(Graphics g){
@@ -191,5 +226,15 @@ public class NPC extends extraFunctions{
     public boolean keyPressed(KeyEvent e){
         return false;
     }
+
+
+
+
+
+
+
+
+
+
 
 }

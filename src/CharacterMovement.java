@@ -108,7 +108,17 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
         dy = playerMan.getMapPosY();
 
 
-        if (right && !lockRight ) {
+        if (down && !lockDown && !up) {
+            directionFacing = Direction.down;
+            dy += 5;
+            walkTimer += dt;
+            if (walkTimer > walkDuration) {
+                monsterDelay++;
+                walkTimer -= walkDuration;
+            }
+            playerMan.setMapPosY(dy);
+        }
+        if (right && !lockRight && !left) {
             directionFacing = Direction.right;
             dx += 5;
             walkTimer += dt;
@@ -118,7 +128,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosX(dx);
         }
-        if (left && !lockLeft) {
+        if (left && !lockLeft && !right) {
             directionFacing = Direction.left;
             dx -= 5;
             walkTimer += dt;
@@ -128,19 +138,9 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             }
             playerMan.setMapPosX(dx);
         }
-        if (up && !lockUp) {
+        if (up && !lockUp && !down) {
             directionFacing = Direction.up;
             dy -= 5;
-            walkTimer += dt;
-            if (walkTimer > walkDuration) {
-                monsterDelay++;
-                walkTimer -= walkDuration;
-            }
-            playerMan.setMapPosY(dy);
-        }
-        if (down && !lockDown) {
-            directionFacing = Direction.down;
-            dy += 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
                 monsterDelay++;
@@ -171,7 +171,8 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
         } else if (down) {
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveDown[j], dx, dy, 50, 70,g);
-        } else {
+        }
+        if(checkStationary()) {
             if (directionFacing == Direction.right) {
                 drawImage(playerMoveRight[0], dx, dy, 50, 70,g);
 

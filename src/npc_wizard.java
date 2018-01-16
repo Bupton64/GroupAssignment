@@ -68,16 +68,28 @@ public class npc_wizard extends  NPC {
                 drawSolidRectangle(400,345,300,50,g);
                 changeColor(Color.white,g);
                 drawRectangle(400,345,300,50,10,g);
-                drawText(425, 375, "Press 'Space' to accept quest", "Arial", 20, g);
+                drawText(425, 375, "Press 'Space' to continue", "Arial", 20, g);
 
 
+                //First text bubble
+                drawText(110, 450, "Ahhhh, who are you? I don't recognise you but you don't seem the sort to", "Times New Roman", 20, g);
+                drawText(110, 475, "be working for Therox, that foul cretin! The town is in danger and it's", "Times New Roman", 20, g);
+                drawText(110, 500, "all my fault! ", "Times New Roman", 20, g);
 
-                drawText(110, 450, "Ah, " + playerName+ " you made it! I'm surprised, but you've got a long way", "Times New Roman", 20, g);
-                drawText(110, 475, "to go before you're ready to take on Jacruler... I need some help from you", "Times New Roman", 20, g);
-                drawText(110, 500, "before we begin. There has been a lot of monsters around these parts of ", "Times New Roman", 20, g);
-                drawText(110, 525, "late, would you please clear this area so we can get to work?", "Times New Roman", 20, g);
+                //Second
+                drawText(110, 450, "Knowing Therox was coming for my collection of spellbooks, I cast a", "Times New Roman", 20, g);
+                drawText(110, 475, "spell to create this forest. It was an old spell, one I had never cast", "Times New Roman", 20, g);
+                drawText(110, 500, "before... I pushed too much power into it... and... well... it grew", "Times New Roman", 20, g);
+                drawText(110, 425, "too large. Now the town lies right between Therox and I.", "Times New Roman", 20, g);
 
+                //Third
+                drawText(110, 450, "His minions have made their way right to my doorstep it seems, and I", "Times New Roman", 20, g);
+                drawText(110, 475, "can hardly work on devising a way to beat Therox with his lackeys nipping", "Times New Roman", 20, g);
+                drawText(110, 500, "at my heels, If you could take up guard duty here in front of my estate,", "Times New Roman", 20, g);
+                drawText(110, 525, "I could begin to get some work done.", "Times New Roman", 20, g);
 
+                //QUEST
+                drawText(110, 450, "Kill 5 Goblins in front of Sevars' estate.", "Times New Roman", 20, g);
             }
             if (currentState == Quest.questState.inQuest) {
                 drawText(110, 450, "You still haven't cleared the area", "Times New Roman", 20, g);

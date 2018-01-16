@@ -98,6 +98,9 @@ public class AdventureMode extends GameEngine {
               stateChanger =  combatMode.update(dt);
            }else if(state == GameState.OverWorldMenu) {
                //add Update later
+
+           }else if(state == GameState.MainMenu){
+               StartController.updateTimer(dt);
            }
     }
 
@@ -116,6 +119,11 @@ public class AdventureMode extends GameEngine {
             playerMan.getCurrentQuest().drawQuest(mGraphics);
            // questInProgress.drawQuest(mGraphics);
 
+            changeColor(white);
+            drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
+            drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
+            drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
+
 
         } else if (state == GameState.CombatMode) {
             combatMode.paintComponent(mGraphics); //< Draw Combat
@@ -127,16 +135,13 @@ public class AdventureMode extends GameEngine {
 
 
         }else if(state == GameState.MainMenu){
-            StartController.changeBackgroundColor(black, mGraphics);
+            changeBackgroundColor(black);
             StartController.drawStartScreen(mGraphics);
         }
 
 
         //Debug Lines Remove on your version
-        changeColor(white);
-        drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
-        drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
-        drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
+
 
 
     }
@@ -166,7 +171,7 @@ public class AdventureMode extends GameEngine {
 
         if(state == GameState.OverWorldMenu){
             MenuController.keyPressed(e);
-            if(e.getKeyCode() == KeyEvent.VK_SPACE && MenuController.getCursorPositionY() == 440 ){
+            if(e.getKeyCode() == KeyEvent.VK_SPACE && MenuController.getCursorPositionY() == 440 ) {
                 stateChanger = 1;
             }
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE && MenuController.isChaMenu()) {
@@ -176,7 +181,7 @@ public class AdventureMode extends GameEngine {
         }
         if (state == GameState.MainMenu){
             StartController.keyPressed(e);
-            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 100)){
+            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 150)&& !StartController.startup){
                 stateChanger = 1;
             }
 
