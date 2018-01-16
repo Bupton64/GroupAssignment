@@ -130,7 +130,7 @@ public class AdventureMode extends GameEngine {
 
 
         }else if(state == GameState.MainMenu){
-            StartController.changeBackgroundColor(black, mGraphics);
+            changeBackgroundColor(black);
             StartController.drawStartScreen(mGraphics);
         }
 
