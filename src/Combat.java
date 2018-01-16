@@ -920,7 +920,10 @@ public class Combat extends extraFunctions{
 
     int currentGold;
 
+    boolean levelUp;
+
     public void initLootScreen(){
+        levelUp = false;
         currentGold = player.getGpTotal();
         right = false;
         collectReward = false;
@@ -951,7 +954,9 @@ public class Combat extends extraFunctions{
         }
 
         if(collectReward){
-            player.winBattle(enemy);
+            if(player.winBattle(enemy)){
+                levelUp = true;
+            }
             reward = new Item();
             reward = enemy.dropLoot();
             if(reward.getName()!=null){
@@ -959,6 +964,8 @@ public class Combat extends extraFunctions{
             }
             collectReward = false;
         }
+
+
 
 
     }
@@ -998,7 +1005,10 @@ public class Combat extends extraFunctions{
 
         }
 
-
+        if(levelUp){
+            changeColor(purple,g);
+            drawBoldText(260,170,"Level Up","Felix Titling",70,g);
+        }
 
     }
 
