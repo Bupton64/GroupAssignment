@@ -7,6 +7,9 @@ public class item_SpeedPotion extends Item {
         this.setCounter(1);
         this.setName("Speed Potion");
         this.setTooltip("A concoction for agility");
+        this.setSellPrice(50);
+        this.setBuyPrice(250);
+        this.setUseableOustideCombat(false);
     }
 
     @Override

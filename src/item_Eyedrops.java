@@ -8,7 +8,8 @@ public class item_Eyedrops extends Item {
         this.setName("Eyedrops");
         this.setTooltip("Healers solution for clearing eyesight");
         this.setUseableOustideCombat(false);
-
+        this.setSellPrice(50);
+        this.setBuyPrice(250);
     }
 
     @Override
