@@ -17,7 +17,7 @@ public class quest_killingForWizard extends Quest {
     }
 
     public void giveReward(Character playerMan){
-        playerMan.setXPTotal(playerMan.getXPTotal() + 500);
+        playerMan.setXPTotal(playerMan.getXPTotal() + 200);
         playerMan.checkLevelUp();
         questFinished = true;
     }

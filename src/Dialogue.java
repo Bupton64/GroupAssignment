@@ -30,6 +30,16 @@ public class Dialogue extends extraFunctions{
 
     }
 
+    public void changeOption(){
+        if (optionPosY == 375) {
+
+            optionPosY = 350;
+        } else {
+            optionPosY = 375;
+        }
+
+    }
+
     public double getOptionPosY() {
         return optionPosY;
     }

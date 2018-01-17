@@ -376,12 +376,14 @@ public class MapControl extends extraFunctions {
     int currentNpcInteraction;
     boolean checkQuestChange;
     boolean rewardDisplay;
+    boolean changeConvoState;
 
 
     public void initNPC(){
         rewardDisplay = false;
         checkQuestChange = false;
         updateQuestState = 0;
+        changeConvoState = false;
 
         currentNpcInteraction = -1;
     }
@@ -416,7 +418,7 @@ public class MapControl extends extraFunctions {
             mapNpcs[i].updateNpcMovement(dt,collisionDetector);
         }
 
-      
+
 
     }
 
@@ -455,15 +457,20 @@ public class MapControl extends extraFunctions {
 
 
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+
+        if(!playerMan.isInConvo()) {
+
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+
+                    checkRangeNPC(playerMan);
 
 
-            if(!playerMan.isInConvo()) {
-                checkRangeNPC(playerMan);
-            }else{
-                playerMan.setInConvo(mapNpcs[currentNpcInteraction].keyPressed(e));
+            }
+        }else {
+            changeConvoState = mapNpcs[currentNpcInteraction].keyPressed(e);
+            if(e.getKeyCode() == KeyEvent.VK_SPACE){
+                playerMan.setInConvo(changeConvoState);
                 checkQuestChange = true;
-
             }
 
         }

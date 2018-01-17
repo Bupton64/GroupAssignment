@@ -207,7 +207,7 @@ public class NPC extends extraFunctions{
     ///
     //////////////////////////////////////////
 
-
+    Dialogue currentDialogue;
 
      public int updateConvo(){
         return 0;
@@ -224,6 +224,17 @@ public class NPC extends extraFunctions{
 
 
     public boolean keyPressed(KeyEvent e){
+        if(currentDialogue.isHasOptions()) {
+            if (e.getKeyCode() == KeyEvent.VK_UP) {
+                currentDialogue.changeOption();
+                return true;
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                currentDialogue.changeOption();
+                return true;
+            }
+        }
         return false;
     }
 

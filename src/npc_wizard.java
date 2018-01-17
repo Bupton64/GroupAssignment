@@ -7,6 +7,7 @@ public class npc_wizard extends  NPC {
 
     boolean questAccepted;
     int questStage;
+    boolean loadDialogue;
 
 
     npc_wizard(){
@@ -18,6 +19,9 @@ public class npc_wizard extends  NPC {
         questAccepted = false;
         questStage = 0;
         initDialogue();
+        loadDialogue = true;
+
+
     }
 
     @Override
@@ -46,7 +50,7 @@ public class npc_wizard extends  NPC {
     Dialogue listTwo;
     Dialogue listThree;
 
-    Dialogue currentDialogue;
+
 
 
     public void initDialogue(){
@@ -64,60 +68,62 @@ public class npc_wizard extends  NPC {
         Dialogue d6 = new Dialogue(null,true,true,"Fantastic work! Looks like you've learnt a few new abilities as well! I'll","need you to venture out East, you can follow the path if you please, and  ","find Camrath. Camrath will be able to craft you a sword, the sword ","alone won't be enough but it's a start. Come and talk to me after you get it.");
         listThree = d6;
 
-        currentDialogue = listOne;
+
+
     }
 
     public int updateConvo(){
         switch (questStage){
             case 1:
+                currentDialogue = listTwo;
                 return 1;
             case 3:
+                currentDialogue = listThree;
                 return 2;
             default:
                 return 0;
 
         }
 
+    }
 
-
-
+    public void updateDialogue(Quest.questState  currentState){
+        if (currentState == Quest.questState.preQuest) {
+            currentDialogue = listOne;
+        }
+        if (currentState == Quest.questState.inQuest) {
+            currentDialogue = listTwo;
+        }
+        if (currentState == Quest.questState.completedQuest) {
+            currentDialogue = listThree;
+        }
     }
 
 
-    public void updateDialogue(){
-            if (currentDialogue.getOptionPosY() == 375) {
 
-                currentDialogue.setOptionPosY(350);
-            } else {
-                currentDialogue.setOptionPosY(375);
-            }
 
-    }
 
-    boolean changeDialogue;
 
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
         super.drawConvo(g, playerName,currentState, questName);
+        if(loadDialogue) {
+            updateDialogue(currentState);
+
+            loadDialogue = false;
+        }
         if(questName == "killingForWizard") {
             if (currentState == Quest.questState.preQuest) {
                 questStage = 0;
-
-                    //listOne.getFirst().display(g);
                 currentDialogue.display(g);
-
-
-
 
             }
             if (currentState == Quest.questState.inQuest) {
-                listTwo.display(g);
-
+                currentDialogue.display(g);
             }
             if (currentState == Quest.questState.completedQuest) {
                 questStage = 2;
-
-                listThree.display(g);
+                currentDialogue.display(g);
             }
         } else if(questName == "talkToBlacksmith") {
             if(currentState == Quest.questState.inQuest){
@@ -159,32 +165,21 @@ public class npc_wizard extends  NPC {
                 return true;
             }
 
-
-            switch (questStage){
-                case 0:
-                    questStage = 1;
-                    break;
-                case 2:
-                    questStage = 3;
-                    break;
-            }
-            return false;
-        }
-
-        if(e.getKeyCode() == KeyEvent.VK_UP){
-            if(currentDialogue.isHasOptions()){
-                updateDialogue();
+            if(currentDialogue.getOptionPosY() == 375) {
+                switch (questStage) {
+                    case 0:
+                        questStage = 1;
+                        break;
+                    case 2:
+                        questStage = 3;
+                        break;
+                }
             }
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_DOWN){
-            if(currentDialogue.isHasOptions()){
-               updateDialogue();
-            }
-        }
+        return super.keyPressed(e);
 
 
-        return false;
     }
 
 
