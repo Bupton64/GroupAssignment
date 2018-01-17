@@ -66,7 +66,7 @@ public class npc_wizard extends  NPC {
         Dialogue d5 = new Dialogue(null,false,true,"You still haven't cleared the area","","","");
         listTwo = d5;
 
-        Dialogue d6 = new Dialogue(null,true,true,"Fantastic work! Looks like you've learnt a few new abilities as well! I'll","need you to venture out East, you can follow the path if you please, and  ","find Camrath. Camrath sells powerful, hand-crafted weaponry. It alone ","won't be enough, but it's a start. Come and talk to me after you buy some.");
+        Dialogue d6 = new Dialogue(null,true,true,"Fantastic work! Looks like you've learnt a few new abilities as well! If","you hold any hope of one day defeating Therox, then you're going to need","to upgrade your equipment. My friend Camrath will be able to help","you with that. Visit her in the East and buy yourself a new sword.");
         listThree = d6;
 
         Dialogue d7 = new Dialogue(null,false,true,"Have you spoken to Camrath yet? you'll find him in the East","","","");

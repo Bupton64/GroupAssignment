@@ -49,14 +49,14 @@ public class npc_plains_H9 extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"Leave me. I am busy....","","","");
+        Dialogue d1 = new Dialogue(null,false,true,"Leave me be. I am busy....","","","");
         listOne = d1;
 
 
-        Dialogue d2 = new Dialogue(null,true,true,"Bjarne! I've been expecting you ever since I heard you had arrived.","Let me guess, you're looking for a weapon? Lucky for you I have an","abundance. Now I can't exactly give them away, but considering the","circumstances I'll sell everything to you at a lowered price.");
+        Dialogue d2 = new Dialogue(null,true,true,"Bjarne! I've been expecting you ever since I heard you had arrived.","Let me guess, you're looking for a weapon? Unfortunately I'm lacking","materials. Could you give me 500GP so that I purchase the resources","needed?");
         listTwo = d2;
 
-        Dialogue d3 = new Dialogue(null,true,true,"Ahhhh good choice! If there's ever anything else you need please","feel free to come back and browse my wares, just talk to my assistant","Link. I always strive to make more powerful weaponry and refresh ","my inventory so you're bound to find something of use!");
+        Dialogue d3 = new Dialogue(null,true,true,"Thank you helping me out! Please go and find Link in town and tell","her to come back, I don't need her to collect resources any longer!","","");
         listThree = d3;
 
     }
