@@ -12,6 +12,9 @@ public class npc_plains_G7 extends  NPC {
         sprite = subImage(spriteSheet,52,288,56,72);
         setMapPosX(400);
         setMapPosY(300);
+
+        initDialogue(); //new
+        loadDialogue = true; // new
     }
 
     @Override
@@ -38,11 +41,30 @@ public class npc_plains_G7 extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
-        super.drawConvo(g, playerName,currentState, questName,questStage);
-        drawText(110,450,"If i'm honest i'm a bit lost. There's so many monsters around here,", "Times New Roman",20,g);
-        drawText(110,475,"thankfully I have these potions to save me!", "Times New Roman",20,g);
+
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"If i'm honest i'm a bit lost. There's so many monsters around here,","thankfully I have these potions to save me!","","");
+        listOne = d1;
     }
+
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+    }
+
 
 
 

@@ -10,6 +10,9 @@ public class npc_plains_E8_byLake extends  NPC {
         sprite = subImage(spriteSheet,208,288,56,72);
         setMapPosX(700);
         setMapPosY(480);
+
+        initDialogue();
+        loadDialogue = true;
     }
 
     @Override
@@ -34,12 +37,28 @@ public class npc_plains_E8_byLake extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
-        super.drawConvo(g, playerName,currentState, questName,questStage);
-        drawText(110,450,"You're going out of town? Be careful, if a monster stores a lot of energy ", "Times New Roman",20,g);
-        drawText(110,475,"in a fight they might release a powerful attack!", "Times New Roman",20,g);
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"You're going out of town? Be careful, if a monster stores a lot of energy ","in a fight they might release a powerful attack!","","");
+        listOne = d1;
     }
 
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+    }
 
 
 }

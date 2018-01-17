@@ -78,13 +78,13 @@ public class npc_wizard extends  NPC {
     }
 
     public int updateConvo(){
-        switch (questStage){
+        switch (this.questStage){
             case 1:
                 currentDialogue = listTwo;
                 return 1;
             case 3:
-                currentDialogue = listThree;
-                return 2;
+                currentDialogue = listFour;
+                return 3;
             default:
                 return 0;
 
@@ -92,15 +92,25 @@ public class npc_wizard extends  NPC {
 
     }
 
-    public void updateDialogue(Quest.questState  currentState){
-        if (currentState == Quest.questState.preQuest) {
-            currentDialogue = listOne;
-        }
-        if (currentState == Quest.questState.inQuest) {
-            currentDialogue = listTwo;
-        }
-        if (currentState == Quest.questState.completedQuest) {
-            currentDialogue = listThree;
+    public void updateDialogue(Quest.questState  currentState,String questName){
+        if(questName == "killingForWizard") {
+            if (currentState == Quest.questState.preQuest) {
+                currentDialogue = listOne;
+            }
+            if (currentState == Quest.questState.inQuest) {
+                currentDialogue = listTwo;
+            }
+            if (currentState == Quest.questState.completedQuest) {
+                currentDialogue = listThree;
+            }
+        }else{
+
+            if (currentState == Quest.questState.inQuest) {
+                currentDialogue = listFour;
+            }
+            if (currentState == Quest.questState.completedQuest) {
+                currentDialogue = listFive;
+            }
         }
     }
 
@@ -112,21 +122,17 @@ public class npc_wizard extends  NPC {
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
         this.questStage = questStage;
-        super.drawConvo(g, playerName,currentState, questName,questStage);
-        if(loadDialogue) {
-            updateDialogue(currentState);
 
+        if(loadDialogue) {
+            updateDialogue(currentState,questName);
             loadDialogue = false;
         }
-        currentDialogue.display(g);
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+
+
         if(questName == "killingForWizard") {
             if (currentState == Quest.questState.preQuest) {
                 this.questStage = 0;
-
-
-            }
-            if (currentState == Quest.questState.inQuest) {
-
             }
             if (currentState == Quest.questState.completedQuest) {
                 this.questStage = 2;
@@ -137,20 +143,9 @@ public class npc_wizard extends  NPC {
 
             }
         } else if(questName == "talkToBlacksmith") {
-            if(currentState == Quest.questState.inQuest){
-            }
-            if(currentState == Quest.questState.completedQuest){
 
-
-//
-//                drawText(110,450,"That's quite the sword! You must use it wisely and well. Train with it, ", "Times New Roman",20,g);
-//                drawText(110,475,"get to know it and let it know you. There is something else you can do", "Times New Roman",20,g);
-//                drawText(110,500,"however... COMPLETE STORY HERE", "Times New Roman",20,g);
-                //Implement when the push space to accept quest works
-                //player.changeQuest(3);
-            }
         }
-//
+
     }
 
 

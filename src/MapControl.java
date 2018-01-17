@@ -429,6 +429,7 @@ public class MapControl extends extraFunctions {
         //Quest Check
         if (checkQuestChange && currentNpcInteraction != -1) {
             updateQuestState = mapNpcs[currentNpcInteraction].updateConvo();
+            playerMan.setQuestStage(updateQuestState);
             if(updateQuestState != 0){
                 playerMan.changeQuest(updateQuestState);
                 updateQuestState = 0;

@@ -677,7 +677,7 @@ public class Character extends Statblock {
             case 1:
                 currentQuest.setState(Quest.questState.inQuest);
                 break;
-            case 2:
+            case 3:
                 currentQuest.giveReward(this);
                 currentQuest = new quest_talkToBlacksmith();
                 break;

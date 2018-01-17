@@ -215,12 +215,13 @@ public class NPC extends extraFunctions{
      }
 
 
-    public void drawConvo(Graphics2D g,String playerName, Quest.questState  state, String questName, int questStage){
+    public void drawConvo(Graphics2D g,String playerName, Quest.questState  state, String questName, int questStage) {
         changeColor(black, g);
-        drawSolidRectangle(100,400,600,150,g);
-        changeColor(Color.white,g);
-        drawRectangle(100,400,600,150,10,g);
-        drawText( 110,425,getName() + ": ","Times New Roman",20,g);
+        drawSolidRectangle(100, 400, 600, 150, g);
+        changeColor(Color.white, g);
+        drawRectangle(100, 400, 600, 150, 10, g);
+        drawText(110, 425, getName() + ": ", "Times New Roman", 20, g);
+        currentDialogue.display(g);
     }
 
 

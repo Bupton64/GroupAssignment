@@ -115,13 +115,12 @@ public class npc_plains_f8_oldman extends  NPC {
     }
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
-        super.drawConvo(g, playerName,currentState, questName,questStage);
+
         if(loadDialogue) {
             updateDialogue(currentState);
-
             loadDialogue = false;
         }
-        currentDialogue.display(g);
+        super.drawConvo(g, playerName,currentState, questName,questStage);
     }
 
 

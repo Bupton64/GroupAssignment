@@ -10,6 +10,9 @@ public class npc_plains_E9_byFence extends  NPC {
         sprite = subImage(spriteSheet,52,0,56,72);
         setMapPosX(550);
         setMapPosY(450);
+
+        initDialogue();
+        loadDialogue = true;
     }
 
     @Override
@@ -36,10 +39,29 @@ public class npc_plains_E9_byFence extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
-        super.drawConvo(g, playerName,currentState, questName, questStage);
-        drawText(110,450,"He's bound to come to our town... if only there was someone to protect us!", "Times New Roman",20,g);
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"He's bound to come to our town... if only there was someone to protect us!","","","");
+        listOne = d1;
     }
+
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+    }
+
 
 
 
