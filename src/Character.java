@@ -332,6 +332,7 @@ public class Character extends Statblock {
         //Quest Init - Zane
         questStage = 0;
         currentQuest = new quest_killingForWizard();
+        playerStoreAccess = StoreAccess.preTier;
 
         // Memory initialisation
 
@@ -507,7 +508,7 @@ public class Character extends Statblock {
         setMaxHP(120);
         setLevel(1);
         setAlive(true);
-        setName("Zarxas");
+        setName("Bjarne");
         setEnergy(0);
     }
 
@@ -651,10 +652,11 @@ public class Character extends Statblock {
     ////////////////////////////////
 
     private Quest currentQuest;
-
     private boolean inConvo;
-
     private int questStage;
+
+    enum StoreAccess{preTier,TierOne,TierTwo,TierThree};
+    StoreAccess playerStoreAccess;
 
     public int getQuestStage() {
         return questStage;
