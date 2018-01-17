@@ -128,7 +128,7 @@ public class AdventureMode extends GameEngine {
         } else if (state == GameState.CombatMode) {
             combatMode.paintComponent(mGraphics); //< Draw Combat
         } else if (state == GameState.OverWorldMenu) {
-            changeBackgroundColor(blue);
+            changeBackgroundColor(black);
             MenuController.drawChaMenu(mGraphics);
             MenuController.drawInvMenu(mGraphics);
             MenuController.drawEquMenu(mGraphics);
@@ -156,7 +156,9 @@ public class AdventureMode extends GameEngine {
 
     public void keyPressed(KeyEvent e) {
         if (state == GameState.TravelMode) {
-            playerMovement.keyPressed(e);
+            if(!playerMan.isInConvo()) {
+                playerMovement.keyPressed(e);
+            }
             mapController.keyPressed(e);
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 stateChanger = 3;

@@ -12,6 +12,9 @@ public class npc_plains_F9_byPath extends  NPC {
         sprite = subImage(spriteSheet,364,0,56,72);
         setMapPosX(600);
         setMapPosY(350);
+
+        initDialogue();
+        loadDialogue = true;
     }
 
     @Override
@@ -36,11 +39,31 @@ public class npc_plains_F9_byPath extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
-        drawText(110,450,"If you follow this path upwards, you'll find the Wizards hut... Be Careful", "Times New Roman",20,g);
-        drawText(110,475,"though, you're all alone outside of town.", "Times New Roman",20,g);
+
+
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"If you follow this path upwards, you'll find the Wizards hut... Be Careful","though, you're all alone outside of town.","","");
+        listOne = d1;
     }
+
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+    }
+
 
 
 

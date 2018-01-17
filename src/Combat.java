@@ -429,9 +429,7 @@ public class Combat extends extraFunctions{
                 playerAttackActive = false;
                 playerAttackTimer = 0;
                 if(enemy.isAlive()){
-                    enemy.addEnergy(1);
-                    enemyMakeAttack = true;
-                    enemyLastAbility = enemy.moveChoice();
+                    enemyTurnSetUp = true;
                     state = CombatState.enemyTurn;
                 }else{
                     pushString(enemy.getName() + " has been killed",true,true);
@@ -780,9 +778,7 @@ public class Combat extends extraFunctions{
             if(escapeTimer > escapeDuration){
                 escapeTimer = 0;
                 escapeActive = false;
-                enemy.addEnergy(1);
-                enemyMakeAttack = true;
-                enemyLastAbility = enemy.moveChoice();
+                enemyTurnSetUp = true;
                 if(makeEscape){
                     player.setCombatActive(false);
                 }else {
@@ -828,6 +824,15 @@ public class Combat extends extraFunctions{
 
     String enemyTurnLog;
 
+    boolean enemyTurnSetUp;
+
+    public void startEnemyTurn(){
+        enemyTurnSetUp = false;
+        enemy.addEnergy(1);
+        enemyMakeAttack = true;
+        enemyLastAbility = enemy.moveChoice();
+
+    }
 
     public void initEnemyTurn(){
         enemyAttackActive = false;
@@ -847,6 +852,7 @@ public class Combat extends extraFunctions{
 
     public void updateEnemyTurn(double dt){
         if(state == CombatState.enemyTurn){
+            if(enemyTurnSetUp){startEnemyTurn();}
             enemyTurnTimer += dt;
             if(enemyTurnTimer > enemyTurnDelay){
                 enemyAttackActive = true;
@@ -1033,16 +1039,16 @@ public class Combat extends extraFunctions{
                 }
                 break;
             case 2:
-                if(roll > 7){
+                if(roll > 5.5){
                     enemy = new monster_Goblin();
-                }else if(roll > 1){
+                }else if(roll > 0.5){
                     enemy = new monster_Wolf();
                 }else{
                     enemy = new monster_Witch();
                 }
                 break;
             case 3:
-                if(roll > 9){
+                if(roll > 8){
                     enemy = new monster_Goblin();
                 }else if(roll > 3){
                     enemy = new monster_Wolf();

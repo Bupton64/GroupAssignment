@@ -330,7 +330,9 @@ public class Character extends Statblock {
 
     public void init(){
         //Quest Init - Zane
+        questStage = 0;
         currentQuest = new quest_killingForWizard();
+        playerStoreAccess = StoreAccess.preTier;
 
         // Memory initialisation
 
@@ -395,7 +397,7 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setXPTotal(500); //< TESTERS
+        setXPTotal(0); //< TESTERS
         checkLevelUp(); //< Tester
     }
 
@@ -512,7 +514,7 @@ public class Character extends Statblock {
         setMaxHP(120);
         setLevel(1);
         setAlive(true);
-        setName("Zarxas");
+        setName("Bjarne");
         setEnergy(0);
     }
 
@@ -639,7 +641,7 @@ public class Character extends Statblock {
     public boolean winBattle(Monster enemy){
         XPTotal+=enemy.getXPGain();
         gpTotal+=enemy.randomGold();
-        currentQuest.updateKillQuest(enemy,currentMapLocation);
+        currentQuest.updateKillQuest(enemy,currentMapLocation,this);
         resetBonuses();
         if(checkLevelUp()){
             return true;
@@ -656,17 +658,34 @@ public class Character extends Statblock {
     ////////////////////////////////
 
     private Quest currentQuest;
+    private boolean inConvo;
+    private int questStage;
 
+    enum StoreAccess{preTier,TierOne,TierTwo,TierThree};
+    StoreAccess playerStoreAccess;
 
+    public int getQuestStage() {
+        return questStage;
+    }
 
+    public void setQuestStage(int questStage) {
+        this.questStage = questStage;
+    }
 
+    public boolean isInConvo() {
+        return inConvo;
+    }
+
+    public void setInConvo(boolean inConvo) {
+        this.inConvo = inConvo;
+    }
 
     public void changeQuest(int swapTo){
         switch(swapTo){
             case 1:
                 currentQuest.setState(Quest.questState.inQuest);
                 break;
-            case 2:
+            case 3:
                 currentQuest.giveReward(this);
                 currentQuest = new quest_talkToBlacksmith();
                 break;

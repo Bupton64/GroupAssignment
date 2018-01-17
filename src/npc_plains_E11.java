@@ -10,6 +10,9 @@ public class npc_plains_E11 extends  NPC {
         sprite = subImage(spriteSheet,52,288,56,72);
         setMapPosX(400);
         setMapPosY(400);
+
+        initDialogue();
+        loadDialogue = true;
     }
 
     @Override
@@ -35,11 +38,29 @@ public class npc_plains_E11 extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
-        drawText(110,450,"Be careful venturing below... anyone who's gone up against such strength...", "Times New Roman",20,g);
-        drawText(110,475,"well let's just say it never ended well...", "Times New Roman",20,g);
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"Be careful venturing below... anyone who's gone up against such strength...","well let's just say it never ended well...","","");
+        listOne = d1;
     }
+
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+    }
+
 
 
 

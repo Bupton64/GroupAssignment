@@ -17,6 +17,9 @@ public class npc_plains_E8_byHouse extends  NPC {
         loadImages();
 
         currentLocation= 1;
+
+        initDialogue();
+        loadDialogue = true;
     }
 
 
@@ -91,12 +94,30 @@ public class npc_plains_E8_byHouse extends  NPC {
     ///
     //////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
-        drawText(110,450,"My business is ruined! I can't get any new supplies from the city", "Times New Roman",20,g);
-        drawText(110,475,"now that Sevar has boxed us in!", "Times New Roman",20,g);
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"My business is ruined! I can't get any new supplies from the city","now that Sevar has boxed us in!","","");
+        listOne = d1;
     }
 
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+
+    }
 
 
 }

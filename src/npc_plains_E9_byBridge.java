@@ -12,6 +12,9 @@ public class npc_plains_E9_byBridge extends  NPC {
         sprite = subImage(spriteSheet,364,144,56,72);
         setMapPosX(475);
         setMapPosY(200);
+
+        initDialogue();
+        loadDialogue = true;
     }
 
     @Override
@@ -38,11 +41,30 @@ public class npc_plains_E9_byBridge extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
-        drawText(110,450,"You must be " + playerName + " right? I'm so sorry to hear what happened to your", "Times New Roman",20,g);
-        drawText(110,475,"town. Hopefully the Wizard in the North will be able to help you!", "Times New Roman",20,g);
+
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"You must be Bjarne right? I'm so sorry to hear what happened to your","town. Hopefully the Wizard in the North will be able to help you!","","");
+        listOne = d1;
     }
+
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+    }
+
 
 
 

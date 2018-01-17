@@ -364,31 +364,27 @@ public class MapControl extends extraFunctions {
         }
         currentMap.setUpCollision(collisionDetector);
     }
+
     ///////////////////////////////////
     ///
     /// NPC Controls
     ///
     //////////////////////////////////
 
-    boolean npcConvo;
+
     int updateQuestState;
     int currentNpcInteraction;
     boolean checkQuestChange;
     boolean rewardDisplay;
+    boolean changeConvoState;
 
-    public boolean isNpcConvo() {
-        return npcConvo;
-    }
-
-    public void setNpcConvo(boolean npcConvo) {
-        this.npcConvo = npcConvo;
-    }
 
     public void initNPC(){
         rewardDisplay = false;
         checkQuestChange = false;
         updateQuestState = 0;
-        npcConvo = false;
+        changeConvoState = false;
+
         currentNpcInteraction = -1;
     }
 
@@ -411,7 +407,7 @@ public class MapControl extends extraFunctions {
         for(int i = 0; i < numOfNpc; i++) {
             if (npcCheck(playerMan, mapNpcs[i])) {
                 currentNpcInteraction = i;
-                npcConvo = true;
+                playerMan.setInConvo(true);
                 return;
             }
         }
@@ -421,10 +417,7 @@ public class MapControl extends extraFunctions {
         for(int i = 0; i < numOfNpc; i++) {
             mapNpcs[i].updateNpcMovement(dt,collisionDetector);
         }
-        if(!movement.checkStationary()){
-            currentNpcInteraction = -1;
-            npcConvo = false;
-        }
+
 
 
     }
@@ -432,9 +425,11 @@ public class MapControl extends extraFunctions {
 
 
     public void updateQuest(double dt){
+
         //Quest Check
         if (checkQuestChange && currentNpcInteraction != -1) {
             updateQuestState = mapNpcs[currentNpcInteraction].updateConvo();
+            playerMan.setQuestStage(updateQuestState);
             if(updateQuestState != 0){
                 playerMan.changeQuest(updateQuestState);
                 updateQuestState = 0;
@@ -455,21 +450,28 @@ public class MapControl extends extraFunctions {
 
 
     public void drawNPCInteraction(Graphics2D g){
-        if(npcConvo) {
-            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName());
+        if(playerMan.isInConvo()) {
+            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName(),playerMan.getQuestStage());
         }
     }
 
 
 
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(!npcConvo) {
-                checkRangeNPC(playerMan);
-            }else{
-                npcConvo =  mapNpcs[currentNpcInteraction].keyPressed(e);
-                checkQuestChange = true;
 
+        if(!playerMan.isInConvo()) {
+
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+
+                    checkRangeNPC(playerMan);
+
+
+            }
+        }else {
+            changeConvoState = mapNpcs[currentNpcInteraction].keyPressed(e);
+            if(e.getKeyCode() == KeyEvent.VK_SPACE){
+                playerMan.setInConvo(changeConvoState);
+                checkQuestChange = true;
             }
 
         }

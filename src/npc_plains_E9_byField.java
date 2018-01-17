@@ -10,6 +10,9 @@ public class npc_plains_E9_byField extends  NPC {
         sprite = subImage(spriteSheet,52,288,56,72);
         setMapPosX(100);
         setMapPosY(450);
+
+        initDialogue();
+        loadDialogue = true;
     }
 
     @Override
@@ -35,12 +38,29 @@ public class npc_plains_E9_byField extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
-        drawText(110,450,"We've always had monsters nearby but it was never this bad... Sevar", "Times New Roman",20,g);
-        drawText(110,475,"the Wizard protected us well, but now Therox has turned attention to ", "Times New Roman",20,g);
-        drawText(110,500,"us... Well I just don't feel safe anymore.", "Times New Roman",20,g);
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"We've always had monsters nearby but it was never this bad... Sevar","the Wizard protected us well, but now Therox has turned attention to ","us... Well I just don't feel safe anymore.","");
+        listOne = d1;
     }
+
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+    }
+
 
 
 

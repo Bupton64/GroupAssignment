@@ -10,6 +10,9 @@ public class npc_plains_D8 extends  NPC {
         sprite = subImage(spriteSheet,520,288,56,72);
         setMapPosX(200);
         setMapPosY(200);
+
+        initDialogue();
+        loadDialogue = true;
     }
 
     @Override
@@ -35,9 +38,27 @@ public class npc_plains_D8 extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
-        drawText(110,450,"It's looking good so far lads, definitely A+ worthy!", "Times New Roman",20,g);
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"It's looking good so far lads, definitely A+ worthy!","","","");
+        listOne = d1;
+    }
+
+    public void updateDialogue(Quest.questState  currentState){
+
+        currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+
+        if(loadDialogue) {
+            updateDialogue(currentState);
+            loadDialogue = false;
+        }
+        super.drawConvo(g, playerName,currentState, questName,questStage);
     }
 
 

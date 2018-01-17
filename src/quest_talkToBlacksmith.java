@@ -33,7 +33,7 @@ public class quest_talkToBlacksmith extends Quest {
                 changeColor(white, g);
                 drawBoldText(230, 300, "Quest Reward:", "Arial", 20, g);
                 changeColor(purple, g);
-                drawBoldText(360, 300, " +500 EXP", "Arial", 20, g);
+                drawBoldText(360, 300, " +250 EXP", "Arial", 20, g);
             }
         }
 

@@ -58,8 +58,19 @@ public class plains_F9_shop extends  Map {
 
         //DETAIL
         //TABLE
-        collisionPoints.addBoxCollision(14,17,16,2,flicker);
-        collisionPoints.addBoxCollision(34,17,20,2,flicker);
+        collisionPoints.addBoxCollision(14,15,16,4,flicker);
+        collisionPoints.addBoxCollision(34,15,30,4,flicker);
+
+        //leftSide
+        collisionPoints.addBoxCollision(14,20,2,14,flicker);
+        collisionPoints.addBoxCollision(17,25,2,4,flicker);
+
+        //rightSide
+        collisionPoints.addSmallCollisionPoint(57,20,flicker);
+        collisionPoints.addSmallCollisionPoint(58,21,flicker);
+        collisionPoints.addSmallCollisionPoint(59,21,flicker);
+        collisionPoints.addSmallCollisionPoint(60,22,flicker);
+        collisionPoints.addSmallCollisionPoint(61,22,flicker);
     }
 
 
