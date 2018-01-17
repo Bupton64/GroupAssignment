@@ -6,7 +6,7 @@ public class item_SpeedPotion extends Item {
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Speed Potion");
-        this.setTooltip("A concoction for agility");
+        this.setTooltip("Increases speed");
         this.setSellPrice(50);
         this.setBuyPrice(250);
         this.setUseableOustideCombat(false);

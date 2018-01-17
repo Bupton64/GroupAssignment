@@ -1,15 +1,15 @@
-public class item_Potion extends Item {
+public class item_megaPotion extends Item {
 
-    public item_Potion(){
-        this.setNumericValue(45);
+    public item_megaPotion(){
+        this.setNumericValue(250);
         this.setEquippable(false);
         this.setSlot(Slot.bag);
         this.setCounter(1);
-        this.setName("Potion");
-        this.setTooltip("Restores 45 HP");
+        this.setName("Mega Potion");
+        this.setTooltip("Restores 250 HP");
         this.setUseableOustideCombat(true);
-        this.setSellPrice(10);
-        this.setBuyPrice(150);
+        this.setSellPrice(80);
+        this.setBuyPrice(500);
     }
 
     @Override

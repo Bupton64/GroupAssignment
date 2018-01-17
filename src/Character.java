@@ -435,7 +435,7 @@ public class Character extends Statblock {
         item_Equipment acolyte = new item_Equipment("Acolyte's Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
         addItemToInventory(acolyte); //T3 Staff
 
-        item_Equipment steelSword = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "From the best smith's in Teraan", 1300, 4500);
+        item_Equipment steelSword = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "Grace and power combined", 1300, 4500);
         addItemToInventory(steelSword); //T4 Sword
 
         item_Equipment gladiator = new item_Equipment("Gladiator's Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
@@ -451,24 +451,101 @@ public class Character extends Statblock {
         addItemToInventory(valkyrie); //Endgame Sword
 
 
-        // Helms
+        // Head
         
         item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather", 10, 0);
         addItemToInventory(ragged);
         equipItem(ragged);
 
-        item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand, "A small buckler that straps to the arm", 10, 0);
+        item_Equipment skull = new item_Equipment("Skull Cap", 0, 1, 0, 0, 0, Item.Slot.head, "Can deflect blows", 40, 290);
+        addItemToInventory(skull); //< T1 Helm
+
+        item_Equipment visor = new item_Equipment("Steel Visor", 0, 2, 0, 0, 0, Item.Slot.head, "Safety is key", 240, 780);
+        addItemToInventory(visor); //< T2 Helm
+
+        item_Equipment conical = new item_Equipment("Conical Helm", 0, 3, 0, 0, 0, Item.Slot.head, "Excellent skull protection", 340, 1980);
+        addItemToInventory(conical); //< T3 Helm
+
+        item_Equipment great = new item_Equipment("Great Helm", 0, 4, 0, 0, 0, Item.Slot.head, "Forged to withstand giants", 765, 3200);
+        addItemToInventory(great); //< T4 Helm
+
+        // Offhand
+
+        item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand, "A small buckler", 20, 200);
         addItemToInventory(buckler);
-        equipItem(buckler);
+        equipItem(buckler); // T1 Shield
+
+        item_Equipment shiv = new item_Equipment("Shiv", 1, 0, 0, 1, 0, Item.Slot.offhand, "A twisted edge", 40, 290);
+        addItemToInventory(shiv);
+        equipItem(buckler); // T1 Dagger
+
+        item_Equipment shield = new item_Equipment("Wooden Shield", 0, 2, 0, 0, 0, Item.Slot.offhand, "A lightweight shield", 120, 600);
+        addItemToInventory(shield);
+        equipItem(buckler); // T2 Shield
+
+        item_Equipment assassin = new item_Equipment("Assassin's Dagger", 3, 0, 0, 1, 0, Item.Slot.offhand, "Keen and silent", 40, 2050);
+        addItemToInventory(assassin);
+        equipItem(buckler); // T3 Dagger
+
+        item_Equipment steelShield = new item_Equipment("Steel Shield", 0, 4, 1, 0, 0, Item.Slot.offhand, "An elite's shield", 1200, 2800);
+        addItemToInventory(steelShield);
+        equipItem(buckler); // T4 Shield
+
+        // Feet
 
         item_Equipment clothShoes = new item_Equipment("Cloth Shoes", 0, 0, 0, 0, 0, Item.Slot.feet, "A comfy pair of wraps", 10, 0);
         addItemToInventory(clothShoes);
-        equipItem(clothShoes);
+        equipItem(clothShoes); // T0 Boots
 
-        item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 0, 0, Item.Slot.chest, "A sturdy chest piece", 10, 0);
-        addItemToInventory(leatherJack);
-        equipItem(leatherJack);
+        item_Equipment boots = new item_Equipment("Leather Boots", 0, 1, 0, 2, 0, Item.Slot.feet, "Sturdy walking boots", 10, 210);
+        addItemToInventory(boots); // T1 Boots
 
+        item_Equipment chain = new item_Equipment("Chain Boots", 0, 2, 0, 2, 0, Item.Slot.feet, "Light and durable", 230, 550);
+        addItemToInventory(chain); // T2 Boots
+
+        item_Equipment half = new item_Equipment("Half Plate Boots", 0, 3, 0, 1, 0, Item.Slot.feet, "A guardman's pair", 415, 1890);
+        addItemToInventory(half); // T3 Boots
+
+        item_Equipment full = new item_Equipment("Full Plate Boots", 0, 4, 0, 0, 0, Item.Slot.feet, "Made for knights", 1090, 3040);
+        addItemToInventory(full); // T4 Boots
+
+        // Chests
+
+        item_Equipment robe = new item_Equipment("Traveller's Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
+        addItemToInventory(robe);
+        equipItem(robe); // T0 Chest
+
+        item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 1, 0, Item.Slot.chest, "Provides basic protection", 50, 300);
+        addItemToInventory(leatherJack); // T1 Chest
+
+        item_Equipment scale = new item_Equipment("Scale Mail", 0, 2, 0, 2, 0, Item.Slot.chest, "A sturdy chestpiece", 390, 1040);
+        addItemToInventory(scale); // T2 Chest
+
+        item_Equipment breast = new item_Equipment("Breastplate", 0, 4, 0, 2, 0, Item.Slot.chest, "Solid and sure", 1080, 2700);
+        addItemToInventory(breast); // T3 Chest
+
+        item_Equipment plate = new item_Equipment("Full Platemail", 0, 8, 0, 0, 0, Item.Slot.chest, "The pinnacle of armour", 2340, 4900);
+        addItemToInventory(plate); // T4 Chest
+
+        // Accessories - All first unlock unless specified
+
+        item_Equipment silver = new item_Equipment("Silver Amulet", 0, 0, 2, 0, 0, Item.Slot.accessory, "A lucky charm", 400, 2000);
+        addItemToInventory(silver);
+
+        item_Equipment gold = new item_Equipment("Gold Amulet", 0, 0, 0, 3, 0, Item.Slot.accessory, "An inspiring memento", 400, 2000);
+        addItemToInventory(gold);
+
+        item_Equipment chainGaunt = new item_Equipment("Chain Gauntlets", 0, 0, 0, 0, 2, Item.Slot.accessory, "Fitted knuckles", 400, 2000);
+        addItemToInventory(chainGaunt);
+
+        item_Equipment leatherBrace = new item_Equipment("Leather Bracers", 0, 1, 0, 1, 0, Item.Slot.accessory, "Extra protection", 450, 4000);
+        addItemToInventory(leatherBrace);
+
+        item_Equipment steelGaunt = new item_Equipment("Steel Gauntlets", 0, 0, 2, 0, 0, Item.Slot.accessory, "Strong, edged plating", 1700, 4500);
+        addItemToInventory(steelGaunt); // After 2nd unlock
+
+        item_Equipment hide = new item_Equipment("Hide Bracers", 0, 2, 0, 0, 0, Item.Slot.accessory, "Forearm guard", 1900, 3800);
+        addItemToInventory(hide); // After 2nd unlock
 
         // Items
 
@@ -487,6 +564,11 @@ public class Character extends Statblock {
         item_HealingSalve salve = new item_HealingSalve();
         addItemToInventory(salve);
 
+        item_megaPotion mega = new item_megaPotion();
+        addItemToInventory(mega);
+
+        item_elixir elixir = new item_elixir();
+        addItemToInventory(elixir);
 
         item_Potion pot = new item_Potion();
         addItemToInventory(pot);
