@@ -455,6 +455,12 @@ public class Character extends Statblock {
         addItemToInventory(ragged);
         equipItem(ragged);
 
+        item_Equipment skull = new item_Equipment("Skull Cap", 0, 1, 0, 0, 0, Item.Slot.head, "Can deflect blows", 40, 290);
+        addItemToInventory(skull); //< T1 Helm
+
+        item_Equipment visor = new item_Equipment("Steel Visor", 0, 2, 0, 0, 0, Item.Slot.head, "Safety is key", 240, 780);
+        addItemToInventory(visor); //< T2 Helm
+
         item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand, "A small buckler that straps to the arm", 10, 0);
         addItemToInventory(buckler);
         equipItem(buckler);
