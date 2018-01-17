@@ -350,6 +350,7 @@ public class Combat extends extraFunctions{
     boolean playerAttackActive;
     Ability[] playerAbilities;
 
+    boolean castCurse;
     boolean castBuff;
     boolean castBasicAttack;
     boolean useItem;
@@ -375,6 +376,8 @@ public class Combat extends extraFunctions{
 
         playerDamage = 0;
         castBasicAttack = false;
+        castCurse = false;
+        castBuff = false;
 
         playerAbilities = player.getAbilities();
 
@@ -399,6 +402,10 @@ public class Combat extends extraFunctions{
         player.setEnergy(player.getEnergy()-lastAbility.getEnergyCost());
     }
 
+    public void castCurseSpell(){
+
+    }
+
     public void useItemTurn() {
 
         lastItemUsed.use(player);
@@ -417,6 +424,8 @@ public class Combat extends extraFunctions{
                     castAttack();
                 }else if(castBuff){
                     castBuffSpell();
+                }else if(castCurse){
+                    castCurseSpell();
                 }
                 if(useItem){
                     useItemTurn();
@@ -821,6 +830,8 @@ public class Combat extends extraFunctions{
 
     boolean enemyAttackActive;
     boolean enemyMakeAttack;
+    boolean enemyMakeBuff;
+    boolean enemyMakeCurse;
 
     String enemyTurnLog;
 
@@ -829,8 +840,15 @@ public class Combat extends extraFunctions{
     public void startEnemyTurn(){
         enemyTurnSetUp = false;
         enemy.addEnergy(1);
-        enemyMakeAttack = true;
+
         enemyLastAbility = enemy.moveChoice();
+        if(enemyLastAbility.getType() == Ability.AbilityType.damage){
+            enemyMakeAttack = true;
+        }else if(enemyLastAbility.getType() == Ability.AbilityType.buff){
+            enemyMakeBuff = true;
+        }else if(enemyLastAbility.getType() == Ability.AbilityType.curse){
+            enemyMakeCurse = true;
+        }
 
     }
 
@@ -850,6 +868,18 @@ public class Combat extends extraFunctions{
 
     }
 
+
+    public void enemyBuff(){
+        enemyLastAbility.use(enemy);
+        enemyDamage = lastAbility.getLastDamage();
+        enemyMakeBuff = false;
+        enemy.setEnergy(enemy.getEnergy()-enemyLastAbility.getEnergyCost());
+    }
+
+    public void enemyCurse(){
+        enemyMakeCurse = false;
+    }
+
     public void updateEnemyTurn(double dt){
         if(state == CombatState.enemyTurn){
             if(enemyTurnSetUp){startEnemyTurn();}
@@ -858,6 +888,12 @@ public class Combat extends extraFunctions{
                 enemyAttackActive = true;
                 if(enemyMakeAttack){
                     enemyAttack();
+                }
+                if(enemyMakeBuff){
+                    enemyBuff();
+                }
+                if(enemyMakeCurse){
+                    enemyCurse();
                 }
 
             }
@@ -880,7 +916,7 @@ public class Combat extends extraFunctions{
 
         if(!enemyAttackActive) {
             if(enemyLastAbility.getType() == Ability.AbilityType.damage) {
-                drawText(100, 500, enemy.getName() + " attempts to " + enemyLastAbility.getName() + "...", textFont, 20, g);
+                drawText(70, 500, enemy.getName() + " attempts to " + enemyLastAbility.getName() + "...", textFont, 20, g);
             }else if(enemyLastAbility.getType() == Ability.AbilityType.buff){
                 drawText(150, 500, enemy.getName() + "Casting " + enemyLastAbility.getName() + "...", textFont, 20,g);
             }
@@ -1306,11 +1342,7 @@ public class Combat extends extraFunctions{
                 //attackl
 
                 lastAbility = playerAbilities[0];
-                if(lastAbility.getType() == Ability.AbilityType.damage){
-                    castBasicAttack = true;
-                }else if(lastAbility.getType() == Ability.AbilityType.buff){
-                    castBuff = true;
-                }
+                castBasicAttack = true;
                 state = CombatState.playerAttack;
             }
             if(menuOption == 1){
@@ -1350,6 +1382,8 @@ public class Combat extends extraFunctions{
                         castBasicAttack = true;
                     }else if( lastAbility.getType() == Ability.AbilityType.buff){
                         castBuff = true;
+                    }else if(lastAbility.getType() == Ability.AbilityType.curse){
+                        castCurse = true;
                     }
 
                     menuOption = 0;
