@@ -156,7 +156,9 @@ public class AdventureMode extends GameEngine {
 
     public void keyPressed(KeyEvent e) {
         if (state == GameState.TravelMode) {
-            playerMovement.keyPressed(e);
+            if(!playerMan.isInConvo()) {
+                playerMovement.keyPressed(e);
+            }
             mapController.keyPressed(e);
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 stateChanger = 3;

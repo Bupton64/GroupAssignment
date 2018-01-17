@@ -371,25 +371,18 @@ public class MapControl extends extraFunctions {
     ///
     //////////////////////////////////
 
-    boolean npcConvo;
+
     int updateQuestState;
     int currentNpcInteraction;
     boolean checkQuestChange;
     boolean rewardDisplay;
 
-    public boolean isNpcConvo() {
-        return npcConvo;
-    }
-
-    public void setNpcConvo(boolean npcConvo) {
-        this.npcConvo = npcConvo;
-    }
 
     public void initNPC(){
         rewardDisplay = false;
         checkQuestChange = false;
         updateQuestState = 0;
-        npcConvo = false;
+
         currentNpcInteraction = -1;
     }
 
@@ -412,7 +405,7 @@ public class MapControl extends extraFunctions {
         for(int i = 0; i < numOfNpc; i++) {
             if (npcCheck(playerMan, mapNpcs[i])) {
                 currentNpcInteraction = i;
-                npcConvo = true;
+                playerMan.setInConvo(true);
                 return;
             }
         }
@@ -422,17 +415,15 @@ public class MapControl extends extraFunctions {
         for(int i = 0; i < numOfNpc; i++) {
             mapNpcs[i].updateNpcMovement(dt,collisionDetector);
         }
-        if(!movement.checkStationary()){
-            currentNpcInteraction = -1;
-            npcConvo = false;
-        }
 
+      
 
     }
 
 
 
     public void updateQuest(double dt){
+
         //Quest Check
         if (checkQuestChange && currentNpcInteraction != -1) {
             updateQuestState = mapNpcs[currentNpcInteraction].updateConvo();
@@ -456,7 +447,7 @@ public class MapControl extends extraFunctions {
 
 
     public void drawNPCInteraction(Graphics2D g){
-        if(npcConvo) {
+        if(playerMan.isInConvo()) {
             mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName());
         }
     }
@@ -465,10 +456,12 @@ public class MapControl extends extraFunctions {
 
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(!npcConvo) {
+
+
+            if(!playerMan.isInConvo()) {
                 checkRangeNPC(playerMan);
             }else{
-                npcConvo =  mapNpcs[currentNpcInteraction].keyPressed(e);
+                playerMan.setInConvo(mapNpcs[currentNpcInteraction].keyPressed(e));
                 checkQuestChange = true;
 
             }

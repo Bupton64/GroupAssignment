@@ -651,9 +651,15 @@ public class Character extends Statblock {
 
     private Quest currentQuest;
 
+    private boolean inConvo;
 
+    public boolean isInConvo() {
+        return inConvo;
+    }
 
-
+    public void setInConvo(boolean inConvo) {
+        this.inConvo = inConvo;
+    }
 
     public void changeQuest(int swapTo){
         switch(swapTo){
