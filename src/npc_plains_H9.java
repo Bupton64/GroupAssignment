@@ -53,10 +53,10 @@ public class npc_plains_H9 extends  NPC {
         listOne = d1;
 
 
-        Dialogue d2 = new Dialogue(null,true,true,"I knew it was only a matter of time before you came looking for help.","Let me guess, you want a new sword? hmmmmm it'll cost you, I don't give","a damn if it's the 'end of the world' I need to put food on the table.","500GP and i'll make you one.");
+        Dialogue d2 = new Dialogue(null,true,true,"Bjarne! I've been expecting you ever since I heard you had arrived.","Let me guess, you're looking for a weapon? Lucky for you I have an","abundance. Now I can't exactly give them away, but considering the","circumstances I'll sell everything to you at a lowered price.");
         listTwo = d2;
 
-        Dialogue d3 = new Dialogue(null,true,true,"This sword is made out of the purest crystal in the land, unbreakable,","unmatchable, unbeatable. If there's any weapon that stands a chance","of banishing Jacruler this is it. good luck Bjarne You'll","need it.");
+        Dialogue d3 = new Dialogue(null,true,true,"Ahhhh good choice! If there's ever anything else you need please","feel free to come back and browse my wares. I always strive to make ","more powerful weaponry and refresh my inventory so you're bound to","find something of use!");
         listThree = d3;
 
     }
