@@ -30,7 +30,7 @@ public class StartScreen extends extraFunctions {
         StartBackground = subImage(paper, 0, 0, 768, 1028);
         swordSprite = subImage(sword, 0, 0, 1793, 445);
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);
-        Logo = subImage(logo, 0, 0, 570, 91);
+        Logo = subImage(logo, 0, 0,518,91);
     }
     public void updateTimer(double dt){
         timer +=dt;
