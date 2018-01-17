@@ -91,8 +91,8 @@ public class npc_plains_E8_byHouse extends  NPC {
     ///
     //////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
+        super.drawConvo(g, playerName,currentState, questName,questStage);
         drawText(110,450,"My business is ruined! I can't get any new supplies from the city", "Times New Roman",20,g);
         drawText(110,475,"now that Sevar has boxed us in!", "Times New Roman",20,g);
     }

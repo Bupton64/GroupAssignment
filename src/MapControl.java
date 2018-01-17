@@ -450,7 +450,7 @@ public class MapControl extends extraFunctions {
 
     public void drawNPCInteraction(Graphics2D g){
         if(playerMan.isInConvo()) {
-            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName());
+            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName(),playerMan.getQuestStage());
         }
     }
 

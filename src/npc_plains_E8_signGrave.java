@@ -29,8 +29,8 @@ public class npc_plains_E8_signGrave extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+        super.drawConvo(g, playerName,currentState, questName,questStage);
         drawText(110,450,"Here lies all lines of cut code. ", "Times New Roman",20,g);
     }
 

@@ -207,6 +207,7 @@ public class NPC extends extraFunctions{
     ///
     //////////////////////////////////////////
 
+    boolean loadDialogue;
     Dialogue currentDialogue;
 
      public int updateConvo(){
@@ -214,7 +215,7 @@ public class NPC extends extraFunctions{
      }
 
 
-    public void drawConvo(Graphics2D g,String playerName, Quest.questState  state, String questName){
+    public void drawConvo(Graphics2D g,String playerName, Quest.questState  state, String questName, int questStage){
         changeColor(black, g);
         drawSolidRectangle(100,400,600,150,g);
         changeColor(Color.white,g);
@@ -224,6 +225,14 @@ public class NPC extends extraFunctions{
 
 
     public boolean keyPressed(KeyEvent e){
+
+         if(e.getKeyCode() == KeyEvent.VK_SPACE){
+             if(currentDialogue.next != null) {
+                 currentDialogue = currentDialogue.next;
+                 return true;
+             }
+         }
+
         if(currentDialogue.isHasOptions()) {
             if (e.getKeyCode() == KeyEvent.VK_UP) {
                 currentDialogue.changeOption();

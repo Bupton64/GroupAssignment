@@ -38,13 +38,14 @@ public class quest_killingForWizard extends Quest {
 
 
 
-    public void updateKillQuest(Monster mon, double mapLocation){
+    public void updateKillQuest(Monster mon, double mapLocation,Character player){
         if(state == questState.inQuest) {
             if (mapLocation == 17) {
                 killCount++;
             }
             if (killCount == 5) {
                 setState(questState.completedQuest);
+                player.setQuestStage(2);
             }
         }
 

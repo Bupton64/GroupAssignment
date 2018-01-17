@@ -330,6 +330,7 @@ public class Character extends Statblock {
 
     public void init(){
         //Quest Init - Zane
+        questStage = 0;
         currentQuest = new quest_killingForWizard();
 
         // Memory initialisation
@@ -633,7 +634,7 @@ public class Character extends Statblock {
     public boolean winBattle(Monster enemy){
         XPTotal+=enemy.getXPGain();
         gpTotal+=enemy.randomGold();
-        currentQuest.updateKillQuest(enemy,currentMapLocation);
+        currentQuest.updateKillQuest(enemy,currentMapLocation,this);
         resetBonuses();
         if(checkLevelUp()){
             return true;
@@ -652,6 +653,16 @@ public class Character extends Statblock {
     private Quest currentQuest;
 
     private boolean inConvo;
+
+    private int questStage;
+
+    public int getQuestStage() {
+        return questStage;
+    }
+
+    public void setQuestStage(int questStage) {
+        this.questStage = questStage;
+    }
 
     public boolean isInConvo() {
         return inConvo;

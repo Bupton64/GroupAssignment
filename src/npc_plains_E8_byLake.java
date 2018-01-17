@@ -34,8 +34,8 @@ public class npc_plains_E8_byLake extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
+        super.drawConvo(g, playerName,currentState, questName,questStage);
         drawText(110,450,"You're going out of town? Be careful, if a monster stores a lot of energy ", "Times New Roman",20,g);
         drawText(110,475,"in a fight they might release a powerful attack!", "Times New Roman",20,g);
     }

@@ -13,8 +13,8 @@ public class Dialogue extends extraFunctions{
 
     public Dialogue next;
 
-    double optionPosX = 415;
-    double optionPosY = 370;
+    double optionPosX ;
+    double optionPosY ;
 
 
     public Dialogue(Dialogue next,boolean hasOptions,boolean lastNode,String dialogueOne, String dialogueTwo, String dialogueThree, String dialogueFour){
@@ -79,7 +79,7 @@ public class Dialogue extends extraFunctions{
 
             drawText(425, 380, "Accept", "Arial", 20, g);
             drawText(425, 355, "Decline", "Arial", 20, g);
-            changeColor(red,g);
+            changeColor(green,g);
             drawSolidCircle(optionPosX,optionPosY,5,g);
         }
         drawText(110, 450, dialogueOne, "Times New Roman", 20, g);

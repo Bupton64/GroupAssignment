@@ -37,8 +37,8 @@ public class npc_plains_H9 extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
+        super.drawConvo(g, playerName,currentState, questName,questStage);
         if(questName == "talkToBlacksmith") {
             if (currentState == Quest.questState.inQuest) {
                 changeColor(black, g);

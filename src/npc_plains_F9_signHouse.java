@@ -35,8 +35,8 @@ public class npc_plains_F9_signHouse extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);;
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
+        super.drawConvo(g, playerName,currentState, questName,questStage);;
         drawText(110,450,"Closed.", "Times New Roman",20,g);
     }
 

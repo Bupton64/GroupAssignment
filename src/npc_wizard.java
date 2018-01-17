@@ -6,8 +6,8 @@ import java.util.*;
 public class npc_wizard extends  NPC {
 
     boolean questAccepted;
+
     int questStage;
-    boolean loadDialogue;
 
 
     npc_wizard(){
@@ -17,7 +17,6 @@ public class npc_wizard extends  NPC {
         setMapPosX(400);
         setMapPosY(250);
         questAccepted = false;
-        questStage = 0;
         initDialogue();
         loadDialogue = true;
 
@@ -50,6 +49,8 @@ public class npc_wizard extends  NPC {
     Dialogue listTwo;
     Dialogue listThree;
 
+    Dialogue listFour;
+    Dialogue listFive;
 
 
 
@@ -68,7 +69,11 @@ public class npc_wizard extends  NPC {
         Dialogue d6 = new Dialogue(null,true,true,"Fantastic work! Looks like you've learnt a few new abilities as well! I'll","need you to venture out East, you can follow the path if you please, and  ","find Camrath. Camrath will be able to craft you a sword, the sword ","alone won't be enough but it's a start. Come and talk to me after you get it.");
         listThree = d6;
 
+        Dialogue d7 = new Dialogue(null,false,true,"Have you spoken to Camrath yet? you'll find him in the East","","","");
+        listFour = d7;
 
+        Dialogue d8 = new Dialogue(null,true,false,"That's quite the sword! You must use it wisely and well. Train with it, ","get to know it and let it know you. There is something else you can do","however... COMPLETE STORY HERE","");
+        listFive = d8;
 
     }
 
@@ -105,41 +110,42 @@ public class npc_wizard extends  NPC {
 
 
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+        this.questStage = questStage;
+        super.drawConvo(g, playerName,currentState, questName,questStage);
         if(loadDialogue) {
             updateDialogue(currentState);
 
             loadDialogue = false;
         }
+        currentDialogue.display(g);
         if(questName == "killingForWizard") {
             if (currentState == Quest.questState.preQuest) {
-                questStage = 0;
-                currentDialogue.display(g);
+                this.questStage = 0;
+
 
             }
             if (currentState == Quest.questState.inQuest) {
-                currentDialogue.display(g);
+
             }
             if (currentState == Quest.questState.completedQuest) {
-                questStage = 2;
-                currentDialogue.display(g);
+                this.questStage = 2;
+                if(currentDialogue != listThree){
+                    loadDialogue = true;
+                }
+
+
             }
         } else if(questName == "talkToBlacksmith") {
             if(currentState == Quest.questState.inQuest){
-                drawText(110,450,"Have you spoken to Camrath yet? you'll find him in the East", "Times New Roman",20,g);
             }
             if(currentState == Quest.questState.completedQuest){
-                changeColor(black, g);
-                drawSolidRectangle(400,345,300,50,g);
-                changeColor(Color.white,g);
-                drawRectangle(400,345,300,50,10,g);
-                drawText(425, 375, "Press 'Space' to accept quest", "Arial", 20, g);
 
 
-                drawText(110,450,"That's quite the sword! You must use it wisely and well. Train with it, ", "Times New Roman",20,g);
-                drawText(110,475,"get to know it and let it know you. There is something else you can do", "Times New Roman",20,g);
-                drawText(110,500,"however... COMPLETE STORY HERE", "Times New Roman",20,g);
+//
+//                drawText(110,450,"That's quite the sword! You must use it wisely and well. Train with it, ", "Times New Roman",20,g);
+//                drawText(110,475,"get to know it and let it know you. There is something else you can do", "Times New Roman",20,g);
+//                drawText(110,500,"however... COMPLETE STORY HERE", "Times New Roman",20,g);
                 //Implement when the push space to accept quest works
                 //player.changeQuest(3);
             }
@@ -160,19 +166,16 @@ public class npc_wizard extends  NPC {
     public boolean keyPressed(KeyEvent e) {
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(currentDialogue.next != null) {
-                currentDialogue = currentDialogue.next;
-                return true;
-            }
-
-            if(currentDialogue.getOptionPosY() == 375) {
-                switch (questStage) {
-                    case 0:
-                        questStage = 1;
-                        break;
-                    case 2:
-                        questStage = 3;
-                        break;
+            if(currentDialogue.next == null) {
+                if (currentDialogue.getOptionPosY() == 375) {
+                    switch (questStage) {
+                        case 0:
+                            questStage = 1;
+                            break;
+                        case 2:
+                            questStage = 3;
+                            break;
+                    }
                 }
             }
         }

@@ -28,8 +28,8 @@ public class npc_E9_signBottom extends  NPC {
     ///
     //////////////////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
+        super.drawConvo(g, playerName,currentState, questName,questStage);
         drawText(110,450,"Welcome to Hurnville, a safe haven for all.", "Times New Roman",20,g);
     }
 

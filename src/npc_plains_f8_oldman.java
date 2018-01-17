@@ -12,6 +12,9 @@ public class npc_plains_f8_oldman extends  NPC {
 
         initPath();
         loadImages();
+
+        initDialogue(); //new
+        loadDialogue = true; // new
     }
 
 
@@ -97,9 +100,28 @@ public class npc_plains_f8_oldman extends  NPC {
     ///
     //////////////////////////////
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName){
-        super.drawConvo(g, playerName,currentState, questName);
-        drawText(110,450,"I'm Julian, the oldest NPC... uh I mean villager in this Town.", "Times New Roman",20,g);
+    Dialogue listOne;
+
+
+    public void initDialogue() {
+        Dialogue d1 = new Dialogue(null,false,true,"I'm Julian, the oldest NPC... uh I mean villager in this Town.","","","");
+        listOne = d1;
+    }
+
+    public void updateDialogue(Quest.questState  currentState){
+
+            currentDialogue = listOne;
+
+    }
+
+    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+        super.drawConvo(g, playerName,currentState, questName,questStage);
+        if(loadDialogue) {
+            updateDialogue(currentState);
+
+            loadDialogue = false;
+        }
+        currentDialogue.display(g);
     }
 
 
