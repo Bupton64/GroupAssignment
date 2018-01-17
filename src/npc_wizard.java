@@ -7,7 +7,7 @@ public class npc_wizard extends  NPC {
 
     boolean questAccepted;
 
-    int questStage;
+//    int questStage;
 
 
     npc_wizard(){
@@ -121,7 +121,7 @@ public class npc_wizard extends  NPC {
 
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
-        this.questStage = questStage;
+//        this.questStage = questStage;
 
         if(loadDialogue) {
             updateDialogue(currentState,questName);

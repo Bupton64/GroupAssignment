@@ -207,6 +207,8 @@ public class NPC extends extraFunctions{
     ///
     //////////////////////////////////////////
 
+    int questStage;
+
     boolean loadDialogue;
     Dialogue currentDialogue;
 
@@ -216,6 +218,7 @@ public class NPC extends extraFunctions{
 
 
     public void drawConvo(Graphics2D g,String playerName, Quest.questState  state, String questName, int questStage) {
+        this.questStage = questStage;
         changeColor(black, g);
         drawSolidRectangle(100, 400, 600, 150, g);
         changeColor(Color.white, g);
