@@ -871,38 +871,52 @@ public class Combat extends extraFunctions{
         }
     }
 
+
+
+
     public void drawEnemyTurn(Graphics2D g){
         changeColor(black,g);
         drawLog(g);
 
         if(!enemyAttackActive) {
-            drawText(100, 500, enemy.getName() + " attempts to " + enemyLastAbility.getName() + "...", textFont, 20,g);
+            if(enemyLastAbility.getType() == Ability.AbilityType.damage) {
+                drawText(100, 500, enemy.getName() + " attempts to " + enemyLastAbility.getName() + "...", textFont, 20, g);
+            }else if(enemyLastAbility.getType() == Ability.AbilityType.buff){
+                drawText(150, 500, enemy.getName() + "Casting " + enemyLastAbility.getName() + "...", textFont, 20,g);
+            }
         }else if(enemyAttackActive){
+            if(enemyLastAbility.getType() == Ability.AbilityType.damage) {
+                if (enemyLastAbility.isLastHit()) {
+                    enemyTurnLog = enemy.getName() + " dealt " + (int) enemyDamage + " with " + enemyLastAbility.getName();
+                    if (enemyLastAbility.isMagic()) {
 
-            if(enemyLastAbility.isLastHit()){
-                enemyTurnLog = enemy.getName() + " dealt " + (int)enemyDamage + " with "+ enemyLastAbility.getName();
-                if(enemyLastAbility.isMagic()) {
+                        drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage + " magic damage", textFont, 20, g);
 
-                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int)enemyDamage + " magic damage", textFont, 20,g);
+                    } else {
+                        if (enemyLastAbility.isLastCrit()) {
+                            enemyTurnLog = enemy.getName() + " crit for " + (int) enemyDamage + " with " + enemyLastAbility.getName();
+                            drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int) enemyDamage + " phys damage", textFont, 20, g);
+                        } else {
 
-                }else{
-                    if(enemyLastAbility.isLastCrit()){
-                        enemyTurnLog = enemy.getName() + " crit for " + (int)enemyDamage + " with "+ enemyLastAbility.getName();
-                        drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int)enemyDamage + " phys damage", textFont, 20,g);
-                    }else{
+                            drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage + " phys damage", textFont, 20, g);
+                        }
 
-                        drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int)enemyDamage + " phys damage", textFont, 20,g);
                     }
-
+                } else {
+                    enemyTurnLog = enemy.getName() + " missed with " + enemyLastAbility.getName();
+                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " misses you", textFont, 20, g);
                 }
-            }else{
-                enemyTurnLog = enemy.getName() + " missed with "+ enemyLastAbility.getName();
-                drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " misses you", textFont, 20,g);
+            } else if(lastAbility.getType() == Ability.AbilityType.buff) {
+                enemyTurnLog = enemy.getName() + " cast " + enemyLastAbility.getName();
+                drawText(150, 500, enemyLastAbility.getDisplayString(), textFont, 20,g);
             }
 
         }
 
     }
+
+
+
 
 
     /////////////////////////////////////////
