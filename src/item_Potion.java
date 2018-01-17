@@ -6,8 +6,10 @@ public class item_Potion extends Item {
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Potion");
-        this.setTooltip("A small brew of magical healing herbs");
+        this.setTooltip("Restores 45 HP");
         this.setUseableOustideCombat(true);
+        this.setSellPrice(10);
+        this.setBuyPrice(150);
     }
 
     @Override
@@ -19,4 +21,5 @@ public class item_Potion extends Item {
         this.setDisplayString(user.getName() + " healed for " + this.getNumericValue() + " health!");
         super.use(user);
     }
+
 }

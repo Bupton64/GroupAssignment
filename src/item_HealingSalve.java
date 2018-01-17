@@ -6,8 +6,10 @@ public class item_HealingSalve extends Item {
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Healing Salve");
-        this.setTooltip("A magical paste for healing the body.");
+        this.setTooltip("Restores 100 HP");
         this.setUseableOustideCombat(true);
+        this.setSellPrice(90);
+        this.setBuyPrice(300);
     }
 
     @Override

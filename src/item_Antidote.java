@@ -6,7 +6,7 @@ public class item_Antidote extends Item {
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Antidote");
-        this.setTooltip("Bitter herbs that halt poison");
+        this.setTooltip("Cures poison");
         this.setUseableOustideCombat(false);
         this.setSellPrice(50);
         this.setBuyPrice(200);

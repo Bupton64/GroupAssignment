@@ -6,7 +6,7 @@ public class item_AlchemicalFlask extends Item {
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Alchemical Flask");
-        this.setTooltip("A violent concoction ready to burst");
+        this.setTooltip("Deals 100 damage");
         this.setUseableOustideCombat(false);
         this.setSellPrice(800);
         this.setBuyPrice(3000);

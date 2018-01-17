@@ -6,7 +6,7 @@ public class item_soulStone extends Item {
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Soul Stone");
-        this.setTooltip("A gemstone containing divine energy");
+        this.setTooltip("Grants 3 energy");
         this.setUseableOustideCombat(false);
         this.setSellPrice(140);
         this.setBuyPrice(1050);

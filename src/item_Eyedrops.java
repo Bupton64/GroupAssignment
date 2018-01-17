@@ -6,7 +6,7 @@ public class item_Eyedrops extends Item {
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Eyedrops");
-        this.setTooltip("Healers solution for clearing eyesight");
+        this.setTooltip("Cures blindness");
         this.setUseableOustideCombat(false);
         this.setSellPrice(50);
         this.setBuyPrice(250);

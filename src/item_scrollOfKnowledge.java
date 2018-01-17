@@ -6,7 +6,7 @@ public class item_scrollOfKnowledge extends Item {
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Scroll of Knowledge");
-        this.setTooltip("Wisdom from the prophets of Artreza");
+        this.setTooltip("Gives 100 EXP");
         this.setUseableOustideCombat(true);
         this.setSellPrice(50);
         this.setBuyPrice(200);
