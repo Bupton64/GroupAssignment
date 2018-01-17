@@ -116,14 +116,6 @@ public class StartScreen extends extraFunctions {
             System.exit(23);
         }
 
-
-
-
-
-
-
-
-
         //drawBoldText(100, 100, Double.toString(timer), g);
 
         if(intro == false) {

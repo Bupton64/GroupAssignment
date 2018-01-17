@@ -128,7 +128,7 @@ public class AdventureMode extends GameEngine {
         } else if (state == GameState.CombatMode) {
             combatMode.paintComponent(mGraphics); //< Draw Combat
         } else if (state == GameState.OverWorldMenu) {
-            changeBackgroundColor(blue);
+            changeBackgroundColor(black);
             MenuController.drawChaMenu(mGraphics);
             MenuController.drawInvMenu(mGraphics);
             MenuController.drawEquMenu(mGraphics);
