@@ -95,6 +95,48 @@ public class Collision  {
                     player.setMapPosX(590);
                     return 2;
                 }
+            case 43:
+                if(player.getMapPosY() >= 390){
+                    player.setMapPosY(460);
+                    player.setMapPosX(650);
+                    return 2;
+                }
+            case 44:
+                if(player.getMapPosY() >= 390){
+                    player.setMapPosY(240);
+                    player.setMapPosX(100);
+                    return 2;
+                }
+            case 45:
+                if(player.getMapPosY() >= 390){
+                    player.setMapPosY(240);
+                    player.setMapPosX(250);
+                    return 2;
+                }
+            case 46:
+                if(player.getMapPosY() >= 390){
+                    player.setMapPosY(190);
+                    player.setMapPosX(250);
+                    return 2;
+                }
+            case 47:
+                if(player.getMapPosY() >= 390){
+                    player.setMapPosY(530);
+                    player.setMapPosX(580);
+                    return 2;
+                }
+            case 48:
+                if(player.getMapPosY() >= 390){
+                    player.setMapPosY(460);
+                    player.setMapPosX(70);
+                    return 2;
+                }
+            case 49:
+                if(player.getMapPosY() >= 390){
+                    player.setMapPosY(460);
+                    player.setMapPosX(270);
+                    return 2;
+                }
         }
      
         if(player.getMapPosY() < 10){

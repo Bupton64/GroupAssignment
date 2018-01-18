@@ -43,6 +43,27 @@ public class plains_E9 extends  Map {
                 player.setCurrentMapLocation(13);
                 flicker = false;
                 return true;
+        }       //NEED TO EDIT BELOW
+        if(player.getMapPosX() < 120 && player.getMapPosX() > 80 && player.getMapPosY() > 210 && player.getMapPosY() < 240){
+            player.setCurrentMapLocation(44);
+            flicker = false;
+            player.setMapPosX(380);
+            player.setMapPosY(360);
+            return true;
+        }
+        else if(player.getMapPosX() < 270 && player.getMapPosX() > 230 && player.getMapPosY() > 210 && player.getMapPosY() < 240){
+            player.setCurrentMapLocation(45);
+            flicker = false;
+            player.setMapPosX(380);
+            player.setMapPosY(360);
+            return true;
+        }
+        else if(player.getMapPosX() < 660 && player.getMapPosX() > 620 && player.getMapPosY() > 420 && player.getMapPosY() < 450){
+            player.setCurrentMapLocation(43);
+            flicker = false;
+            player.setMapPosX(380);
+            player.setMapPosY(360);
+            return true;
         }
         return false;
     }

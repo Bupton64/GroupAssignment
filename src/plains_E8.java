@@ -46,6 +46,13 @@ public class plains_E8 extends  Map {
                 flicker = false;
                 return true;
         }
+        if(player.getMapPosX() < 610 && player.getMapPosX() > 570 && player.getMapPosY() > 200 && player.getMapPosY() < 230){
+            player.setCurrentMapLocation(46);
+            flicker = false;
+            player.setMapPosX(380);
+            player.setMapPosY(360);
+            return true;
+        }
         return false;
     }
 
