@@ -40,9 +40,18 @@ public class Statblock extends extraFunctions{
     private int equipStrengthBonus; //< Characters bonus to strength from equipped items.
     private int lastStatusDuration; //< A counter for how long a characters status duration is effecting them.
     private Status lastStatusEffect; //< The readable variable which informs what status ailment a player is suffering from
+    private double lastStatusDamage; //< The Damage over Time from set Status
 
     // Getters and Setters
 
+
+    public double getLastStatusDamage() {
+        return lastStatusDamage;
+    }
+
+    public void setLastStatusDamage(double lastStatusDamage) {
+        this.lastStatusDamage = lastStatusDamage;
+    }
 
     public int getLastStatusDuration() {
         return lastStatusDuration;

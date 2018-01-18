@@ -21,6 +21,7 @@ public class ability_monster_blindingLight extends Ability {
             int length = (int) (Math.random() * 3);
             length++;
             setLastStatusDuration(length);
+            setDamageOverTime(0);
             setDisplayString(user.getName() + " blinded their foe!");
             return this;
         } else{

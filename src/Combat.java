@@ -215,9 +215,13 @@ public class Combat extends extraFunctions{
     String[] logStrings;
     boolean[] logColours;
     boolean[] kill;
+    Image logImage;
+    Image menuBackGroundSprite;
 
 
     public void initLog(){
+        logImage = loadImage("paper2.png");
+        menuBackGroundSprite = loadImage("CombatMenuImage.png");
         logStrings = new String[6];
         for(int i = 0;i < 6;i++){
             logStrings[i] = "";
@@ -249,7 +253,8 @@ public class Combat extends extraFunctions{
     }
 
     public void drawLog(Graphics2D g){
-
+        drawImage(menuBackGroundSprite,0,400,800,200,g);
+        drawImage(logImage,465,415,315,175,g);
         for(int i = 0; i <= numOfLogs;i++){
             if(logColours[i]){
                 changeColor(blue,g);
@@ -260,14 +265,12 @@ public class Combat extends extraFunctions{
                 changeColor(black,g);
             }
 
-            drawText(480,570 - (26 * i),logStrings[i],"Times New Roman",18,g);
+            drawText(490,570 - (26 * i),logStrings[i],"Times New Roman",18,g);
         }
 
 
-        changeColor(Color.gray,g);
-        drawRectangle(1,401,797,197,4,g);
-        //log
-        drawRectangle(475,415, 300,165,3,g);
+       changeColor(Color.gray,g);
+
     }
 
 
@@ -277,6 +280,7 @@ public class Combat extends extraFunctions{
     ///  Player Turn Display
     ///
     /////////////////////////////////////////
+
 
     Image menuPointer;
     Image menuSpriteSheet;
@@ -289,6 +293,7 @@ public class Combat extends extraFunctions{
     public void initPlayerTurnDisplay(){
         checkCurse = false;
         menuOption = 0;
+
         menuSpriteSheet = loadImage("arrowhead.png");
         menuPointer = subImage(menuSpriteSheet,0,96,48,48);
 
@@ -428,6 +433,8 @@ public class Combat extends extraFunctions{
         if(lastAbility.getLastStatus() != null){
             enemy.setLastStatusDuration(lastAbility.getLastStatusDuration());
             enemy.setLastStatusEffect(lastAbility.getLastStatus());
+            enemy.setLastStatusDamage(lastAbility.getDamageOverTime());
+
         }
 
     }
@@ -443,6 +450,7 @@ public class Combat extends extraFunctions{
         lastAbility.use(player);
         enemy.setLastStatusDuration(lastAbility.getLastStatusDuration());
         enemy.setLastStatusEffect(lastAbility.getLastStatus());
+        enemy.setLastStatusDamage(lastAbility.getDamageOverTime());
         castCurse = false;
     }
 
@@ -497,7 +505,7 @@ public class Combat extends extraFunctions{
                        playerEndTurn();
                        playerNewStatusDisplay = false;
                    }
-               }else if(player.getLastStatusEffect() != Statblock.Status.poison) {
+               }else if(player.getLastStatusEffect() == Statblock.Status.poison) {
                    playerOldStatusDisplay = true;
                    if(playerAttackTimer > playerAttackExtraDelay){
                        playerEndTurn();
@@ -519,7 +527,7 @@ public class Combat extends extraFunctions{
 
 
         if(playerOldStatusDisplay){
-            drawText(150, 500, "You take 5 poison Damage...", textFont, 20, g);
+            drawText(150, 500, "You take "+ player.getLastStatusDamage() +" poison Damage...", textFont, 20, g);
         }else {
             if (displayItem) {
 
@@ -952,6 +960,7 @@ public class Combat extends extraFunctions{
         if(enemyLastAbility.getLastStatus() != null){
             player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
             player.setLastStatusEffect(enemyLastAbility.getLastStatus());
+            player.setLastStatusDamage(enemyLastAbility.getDamageOverTime());
         }
         enemyMakeAttack = false;
 
@@ -969,6 +978,7 @@ public class Combat extends extraFunctions{
         enemyLastAbility.use(enemy);
         player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
         player.setLastStatusEffect(enemyLastAbility.getLastStatus());
+        player.setLastStatusDamage(enemyLastAbility.getDamageOverTime());
         enemyMakeCurse = false;
     }
 
@@ -1008,7 +1018,7 @@ public class Combat extends extraFunctions{
                         enemyEndTurn();
                         displayEnemyNewStatus = false;
                     }
-                }else if(enemy.getLastStatusEffect() != Statblock.Status.poison) {
+                }else if(enemy.getLastStatusEffect() == Statblock.Status.poison) {
                     displayEnemyOldStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
                         enemyEndTurn();
@@ -1028,7 +1038,7 @@ public class Combat extends extraFunctions{
         changeColor(black,g);
         drawLog(g);
         if(displayEnemyOldStatus){
-            drawText(70, 500, enemy.getName() + " takes 5 poisen damage..", textFont, 20, g);
+            drawText(70, 500, enemy.getName() + " takes " + enemy.getLastStatusDamage() +"  poison damage", textFont, 20, g);
         }else {
             if (!enemyAttackActive) {
                 if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
