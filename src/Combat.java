@@ -54,14 +54,9 @@ public class Combat extends extraFunctions{
 
     public void drawPlayerNamePlate(Graphics2D g) {
 
-        //player portrait
-        changeColor(black,g);
-        drawSolidCircle(44, 50, 35,g);
+
 
         changeColor(Color.gray,g);
-        drawCircle(44, 50, 35, 3,g);
-
-
 
         //player Resource Bar
         drawSolidRectangle(80, 52, 203, 20,g);
@@ -105,8 +100,7 @@ public class Combat extends extraFunctions{
         changeColor(white,g);
         drawText(95,23,player.getName(),textFont,20,g);
         drawBoldText(150,47,Integer.toString((int)player.getCurrentHP()) + "/" + Integer.toString((int)player.getMaxHP()),textFont, 15,g);
-        changeColor(blue,g);
-        drawSolidCircle(40,45,13,g);
+
 
 
         //Level Display
@@ -142,12 +136,8 @@ public class Combat extends extraFunctions{
     }
 
     public void drawEnemyNamePlate(Graphics2D g){
-        //player portrait
-        changeColor(black,g);
-        drawSolidCircle(756, 50, 35,g);
-        changeColor(Color.gray,g);
-        drawCircle(756, 50, 35, 3,g);
 
+        changeColor(Color.gray,g);
         //player Resource Bar
         drawSolidRectangle(517, 52, 203, 20,g);
         drawRectangle(517, 52, 203, 20, 2,g);
@@ -190,8 +180,7 @@ public class Combat extends extraFunctions{
         changeColor(white,g);
         drawText(630,23,enemy.getName(),textFont,20,g);
         drawBoldText(600,47,Integer.toString((int)enemy.getCurrentHP()) + "/" + Integer.toString((int)enemy.getMaxHP()),textFont, 15,g);
-        changeColor(red,g);
-        drawSolidCircle(760,45,13,g);
+
 
 
         //Level Display
@@ -293,7 +282,12 @@ public class Combat extends extraFunctions{
 
     boolean checkCurse;
 
+    Image buttonSpriteSheet;
+    Image buttonSprite;
+
     public void initPlayerTurnDisplay(){
+        buttonSpriteSheet = loadImage("buttons.png");
+        buttonSprite = subImage(buttonSpriteSheet,30,70,180,80);
         checkCurse = false;
         menuOption = 0;
 
@@ -353,22 +347,26 @@ public class Combat extends extraFunctions{
         changeColor(white,g);
 
 
-        drawImage(menuPointer,menuPosX,menuPosY,g);
+       // drawImage(menuPointer,menuPosX,menuPosY,g);
 
 
-        drawRectangle(20,415,200,80,2,g);
+       // drawRectangle(20,415,200,80,2,g);
+        drawImage(buttonSprite,30,420,g);
         drawText(90,460,"Attack",textFont,20,g);
 
-        drawRectangle(20,505,200,80,2,g);
-        drawText(90,550,"Items",textFont,20,g);
+        drawImage(buttonSprite,30,505,g);
+      //  drawRectangle(20,505,200,80,2,g);
+        drawText(90,545,"Items",textFont,20,g);
 
-        drawRectangle(240,415,200,80,2,g);
-        drawText(300,460,"Abilities",textFont,20,g);
+        drawImage(buttonSprite,240,420,g);
+     //   drawRectangle(240,415,200,80,2,g);
+        drawText(295,460,"Abilities",textFont,20,g);
 
-        drawRectangle(240,505,200,80,2,g);
-        drawText(320,550,"Run",textFont,20,g);
+        drawImage(buttonSprite,240,505,g);
+      //  drawRectangle(240,505,200,80,2,g);
+        drawText(310,545,"Run",textFont,20,g);
 
-
+        drawImage(menuPointer,menuPosX,menuPosY,g);
 
 
 
@@ -670,7 +668,6 @@ public class Combat extends extraFunctions{
 
 
 
-        drawRectangle(1,401,797,197,4,g);
         drawImage(spellBook,0,0,800,600,g);
 
 
@@ -810,7 +807,6 @@ public class Combat extends extraFunctions{
 
     public void drawItemMenu(Graphics2D g){
         changeColor(Color.gray,g);
-        drawRectangle(1,401,797,197,4,g);
         drawImage(spellBook,0,0,800,600,g);
 
         drawText(100,100,"ITEMS", "Times new roman",30,g);
@@ -889,11 +885,14 @@ public class Combat extends extraFunctions{
             if(escapeTimer > escapeDuration){
                 escapeTimer = 0;
                 escapeActive = false;
+
                 if(makeEscape){
                     player.setCombatActive(false);
                 }else {
-                    state = CombatState.enemyTurn;
                     enemyTurnSetUp = true;
+                    state = CombatState.enemyTurn;
+                    pushString(playerTurnLog,true,false);
+
                 }
             }
         }else{
@@ -903,7 +902,7 @@ public class Combat extends extraFunctions{
     }
 
     public void drawRun(Graphics2D g){
-        changeColor(black,g);
+        changeColor(white,g);
         if(!escapeActive) {
             drawText(100, 500, "You attempt to escape from " + enemy.getName() + "...", textFont, 20,g);
         }else if(escapeActive){
@@ -911,6 +910,7 @@ public class Combat extends extraFunctions{
                 drawText(100, 500, "You managed to get away!", textFont, 20, g);
             }else {
                 drawText(100, 500, "You fail to escape from " + enemy.getName(), textFont, 20, g);
+                playerTurnLog = player.getName() + " failed trying to run";
             }
         }
     }
@@ -1050,7 +1050,7 @@ public class Combat extends extraFunctions{
             }
             if(enemyTurnTimer > enemyTurnDuration){
 
-                if(lastAbility.getType() == Ability.AbilityType.damage && lastAbility.getLastStatus() != null){
+                if(enemyLastAbility.getType() == Ability.AbilityType.damage && enemyLastAbility.getLastStatus() != null){
                     displayEnemyNewStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
 
@@ -1202,7 +1202,7 @@ public class Combat extends extraFunctions{
     }
 
     public void drawLootScreen(Graphics2D g){
-        changeColor(black,g);
+        changeColor(white,g);
         if(!chestOpen) {
             drawText(80, 500, "Victory, Press 'Space' on Chest to collect Reward", "Times New Roman", 18, g);
         }else{
@@ -1424,8 +1424,10 @@ public class Combat extends extraFunctions{
             drawEnemyTurn(g);
 
         }else if(state == CombatState.abilityMenu){
+            drawLog(g);
             drawAbilityMenu(g);
         }else if(state == CombatState.itemMenu){
+            drawLog(g);
             drawItemMenu(g);
         }else if(state == CombatState.run){
             drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
@@ -1436,8 +1438,9 @@ public class Combat extends extraFunctions{
             drawRun(g);
         }else if(state == CombatState.lootScreen){
             drawPlayerNamePlate(g);
-            drawLootScreen(g);
+
             drawLog(g);
+            drawLootScreen(g);
         }else if(state == CombatState.playerDeath){
             drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
             changeColor(white,g);
