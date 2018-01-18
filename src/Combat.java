@@ -284,14 +284,29 @@ public class Combat extends extraFunctions{
     double menuPosX;
     double menuPosY;
 
+    boolean checkCurse;
+
     public void initPlayerTurnDisplay(){
+        checkCurse = false;
         menuOption = 0;
         menuSpriteSheet = loadImage("arrowhead.png");
         menuPointer = subImage(menuSpriteSheet,0,96,48,48);
 
     }
 
+    public void checkPlayerCurse(){
+        if(player.getLastStatusDuration() > 1){
+            player.setLastStatusDuration(player.getLastStatusDuration() - 1);
+        }else{
+            player.setLastStatusEffect(null);
+        }
+        checkCurse = false;
+    }
+
     public void updatePlayerTurnDisplay(double dt){
+
+        if(checkCurse){checkPlayerCurse();}
+
         if(menuOption == 0){
             menuPosX = 15;
             menuPosY = 427;
@@ -357,7 +372,7 @@ public class Combat extends extraFunctions{
     double playerDamage;
 
     boolean displayItem;
-
+    boolean playerTurnSetUp;
 
     String playerTurnLog;
 
@@ -368,12 +383,7 @@ public class Combat extends extraFunctions{
 
     public void initPlayerAttack(){
 
-
         displayItem = false;
-
-
-
-
         playerDamage = 0;
         castBasicAttack = false;
         castCurse = false;
@@ -385,6 +395,23 @@ public class Combat extends extraFunctions{
         playerAttackDelay = 2;
         playerAttackDuration = 4;
     }
+
+
+    public void startPlayerTurn() {
+
+        if (!useItem){
+            if (lastAbility.getType() == Ability.AbilityType.damage) {
+                castBasicAttack = true;
+            } else if (lastAbility.getType() == Ability.AbilityType.buff) {
+                castBuff = true;
+            } else if (lastAbility.getType() == Ability.AbilityType.curse) {
+                castCurse = true;
+            }
+        }
+
+        playerTurnSetUp = false;
+    }
+
 
     public void castAttack(){
             lastAbility.use(player);
@@ -403,8 +430,12 @@ public class Combat extends extraFunctions{
     }
 
     public void castCurseSpell(){
-
+        lastAbility.use(player);
+        enemy.setLastStatusDuration(lastAbility.getLastStatusDuration());
+        enemy.setLastStatusEffect(lastAbility.getLastStatus());
+        castCurse = false;
     }
+
 
     public void useItemTurn() {
 
@@ -414,8 +445,11 @@ public class Combat extends extraFunctions{
     }
 
 
+
+
     public void updatePlayerAttack(double dt){
         if(state == CombatState.playerAttack) {
+            if(playerTurnSetUp){startPlayerTurn();}
             playerAttackTimer += dt;
 
             if (playerAttackTimer > playerAttackDelay) {
@@ -472,7 +506,7 @@ public class Combat extends extraFunctions{
             if (!playerAttackActive) {
                 if (lastAbility.getType() == Ability.AbilityType.damage) {
                     drawText(100, 500, "Using " + lastAbility.getName() + " on " + enemy.getName() + "...", textFont, 20,g);
-                } else if (lastAbility.getType() == Ability.AbilityType.buff) {
+                } else if (lastAbility.getType() == Ability.AbilityType.buff  || lastAbility.getType() == Ability.AbilityType.curse) {
                     drawText(150, 500, "Casting " + lastAbility.getName() + "...", textFont, 20,g);
                 }
             } else if (playerAttackActive) {
@@ -493,7 +527,7 @@ public class Combat extends extraFunctions{
                         playerTurnLog = player.getName() + " missed with " + lastAbility.getName();
                         drawText(70, 500, "Your " + lastAbility.getName() + " misses " + enemy.getName(), textFont, 20,g);
                     }
-                } else if (lastAbility.getType() == Ability.AbilityType.buff) {
+                } else if (lastAbility.getType() == Ability.AbilityType.buff || lastAbility.getType() == Ability.AbilityType.curse) {
                     playerTurnLog = player.getName() + " cast " + lastAbility.getName();
                     drawText(150, 500, lastAbility.getDisplayString(), textFont, 20,g);
                 }
@@ -767,31 +801,36 @@ public class Combat extends extraFunctions{
     boolean makeEscape;
     boolean escapeActive;
 
+    boolean escapeChance;
+
     public void initRun(){
         escapeTimer = 0;
         escapeDelay = 3;
-        escapeDuration = 6;
+        escapeDuration = 5.5;
         makeEscape = false;
+
 
     }
 
+
     public void updateRun(double dt){
         if(state == CombatState.run){
+            if(Math.random()* 10 > 5 && !escapeChance) {
+                makeEscape = true;
+            }
+            escapeChance = true;
             escapeTimer += dt;
             if(escapeTimer > escapeDelay){
                 escapeActive = true;
-                if(Math.random()* 10 > 5) {
-                    makeEscape = true;
-                }
             }
             if(escapeTimer > escapeDuration){
                 escapeTimer = 0;
                 escapeActive = false;
-                enemyTurnSetUp = true;
                 if(makeEscape){
                     player.setCombatActive(false);
                 }else {
                     state = CombatState.enemyTurn;
+                    enemyTurnSetUp = true;
                 }
             }
         }else{
@@ -808,7 +847,7 @@ public class Combat extends extraFunctions{
             if(makeEscape){
                 drawText(100, 500, "You managed to get away!", textFont, 20, g);
             }else {
-                drawText(50, 500, "You escape, But " + enemy.getName() + " uses i++ to catch you", textFont, 20, g);
+                drawText(100, 500, "You fail to escape from " + enemy.getName(), textFont, 20, g);
             }
         }
     }
@@ -850,6 +889,12 @@ public class Combat extends extraFunctions{
             enemyMakeCurse = true;
         }
 
+        if(enemy.getLastStatusDuration() > 1){
+            enemy.setLastStatusDuration(enemy.getLastStatusDuration() - 1);
+        }else{
+            enemy.setLastStatusEffect(null);
+        }
+
     }
 
     public void initEnemyTurn(){
@@ -877,6 +922,9 @@ public class Combat extends extraFunctions{
     }
 
     public void enemyCurse(){
+        enemyLastAbility.use(enemy);
+        player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
+        player.setLastStatusEffect(enemyLastAbility.getLastStatus());
         enemyMakeCurse = false;
     }
 
@@ -901,6 +949,7 @@ public class Combat extends extraFunctions{
                 pushString(enemyTurnLog,false,false);
                 enemyAttackActive = false;
                 enemyTurnTimer = 0;
+                checkCurse = true;
                 player.addEnergy(1);
                 state = CombatState.playerTurn;
             }
@@ -917,7 +966,7 @@ public class Combat extends extraFunctions{
         if(!enemyAttackActive) {
             if(enemyLastAbility.getType() == Ability.AbilityType.damage) {
                 drawText(70, 500, enemy.getName() + " attempts to " + enemyLastAbility.getName() + "...", textFont, 20, g);
-            }else if(enemyLastAbility.getType() == Ability.AbilityType.buff){
+            }else if(enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse){
                 drawText(150, 500, enemy.getName() + "Casting " + enemyLastAbility.getName() + "...", textFont, 20,g);
             }
         }else if(enemyAttackActive){
@@ -942,7 +991,7 @@ public class Combat extends extraFunctions{
                     enemyTurnLog = enemy.getName() + " missed with " + enemyLastAbility.getName();
                     drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " misses you", textFont, 20, g);
                 }
-            } else if(lastAbility.getType() == Ability.AbilityType.buff) {
+            } else if(enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse) {
                 enemyTurnLog = enemy.getName() + " cast " + enemyLastAbility.getName();
                 drawText(150, 500, enemyLastAbility.getDisplayString(), textFont, 20,g);
             }
@@ -1201,6 +1250,7 @@ public class Combat extends extraFunctions{
         if(state == CombatState.run) {
             updateRun(dt);
         }
+
         updateEnemyTurn(dt);
         if(state == CombatState.abilityMenu) {
             updateAbilityMenu(dt);
@@ -1211,6 +1261,7 @@ public class Combat extends extraFunctions{
         if(state == CombatState.lootScreen) {
             updateLootScreen(dt);
         }
+
         updateLog(dt);
         if(!player.getCombatActive()){
             return 1;
@@ -1342,7 +1393,8 @@ public class Combat extends extraFunctions{
                 //attackl
 
                 lastAbility = playerAbilities[0];
-                castBasicAttack = true;
+               // castBasicAttack = true;
+                playerTurnSetUp = true;
                 state = CombatState.playerAttack;
             }
             if(menuOption == 1){
@@ -1357,6 +1409,7 @@ public class Combat extends extraFunctions{
                 menuOption = 0;
             }
             if(menuOption == 3){
+                escapeChance = false;
                 state = CombatState.run;
             }
         }
@@ -1378,13 +1431,7 @@ public class Combat extends extraFunctions{
             }else {
                 if (player.getEnergy() >= playerAbilities[menuOption + (8 * (currentPageNum-1))].getEnergyCost()) {
                     lastAbility = playerAbilities[menuOption + (8 * (currentPageNum-1))];
-                    if(lastAbility.getType() == Ability.AbilityType.damage){
-                        castBasicAttack = true;
-                    }else if( lastAbility.getType() == Ability.AbilityType.buff){
-                        castBuff = true;
-                    }else if(lastAbility.getType() == Ability.AbilityType.curse){
-                        castCurse = true;
-                    }
+                    playerTurnSetUp = true;
 
                     menuOption = 0;
                     state = CombatState.playerAttack;
@@ -1459,6 +1506,7 @@ public class Combat extends extraFunctions{
 
                     lastItemUsed = playerInventory[player.SearchBag(menuOption)];
                     menuOption = 0;
+                    playerTurnSetUp = true;
                     useItem = true;
                     displayItem = true;
                     state = CombatState.playerAttack;
