@@ -250,6 +250,7 @@ public class Menu extends extraFunctions {
 
     public void drawChaMenu(Graphics2D g){
         if (chaMenu == true) {
+            scroller2 = 0;
             clearBackground(800, 600, g);
             changeBackgroundColor(black, g);
             drawImage(background1, 0, 0, g);
@@ -301,6 +302,7 @@ public class Menu extends extraFunctions {
 
     public void drawInvMenu(Graphics2D g) {
         if (invMenu) {
+            scroller2 = 0;
             clearBackground(800, 600, g);
             drawImage(Book, 0, 0, 800, 600, g);
             if(nextPage == true){
