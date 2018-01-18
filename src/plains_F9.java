@@ -48,6 +48,20 @@ public class plains_F9 extends  Map {
             player.setMapPosY(360);
             return true;
         }
+        else if(player.getMapPosX() < 80 && player.getMapPosX() > 40 && player.getMapPosY() > 420 && player.getMapPosY() < 450){
+            player.setCurrentMapLocation(48);
+            flicker = false;
+            player.setMapPosX(380);
+            player.setMapPosY(360);
+            return true;
+        }
+        else if(player.getMapPosX() < 290 && player.getMapPosX() > 250 && player.getMapPosY() > 420 && player.getMapPosY() < 450){
+            player.setCurrentMapLocation(49);
+            flicker = false;
+            player.setMapPosX(380);
+            player.setMapPosY(360);
+            return true;
+        }
         return false;
     }
 
