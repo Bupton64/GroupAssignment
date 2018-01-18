@@ -199,14 +199,17 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
     public int checkCombat(Character playerMan){
         switch((int)playerMan.getCurrentMapLocation()){
             case 21:
-                break;
             case 20:
-                break;
             case 28:
-                break;
             case 29:
-                break;
             case 42:
+            case 43:
+            case 44:
+            case 45:
+            case 46:
+            case 47:
+            case 48:
+            case 49:
                 break;
             case 17:
                 if(playerMan.getCurrentQuestName() != "killingForWizard"){
