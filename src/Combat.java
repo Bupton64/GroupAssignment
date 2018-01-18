@@ -218,8 +218,11 @@ public class Combat extends extraFunctions{
     Image logImage;
     Image menuBackGroundSprite;
 
+    String statusLog;
+
 
     public void initLog(){
+        statusLog = "";
         logImage = loadImage("paper2.png");
         menuBackGroundSprite = loadImage("CombatMenuImage.png");
         logStrings = new String[6];
@@ -308,10 +311,12 @@ public class Combat extends extraFunctions{
                 player.setLastStatusDuration(player.getLastStatusDuration() - 1);
                 if (player.getLastStatusEffect() == Statblock.Status.poison) {
                     playerStatusString = "You takes " + player.getLastStatusDamage() + "  poison damage";
+                    statusLog = player.getName()  + " poisoned for " + player.getLastStatusDamage();
                 }
 
             } else {
                 playerStatusString = player.getLastStatusEffect() + " fades from you";
+                statusLog = player.getLastStatusEffect() + " fades from " + player.getName();
                 player.setLastStatusEffect(null);
 
             }
@@ -526,6 +531,7 @@ public class Combat extends extraFunctions{
                    if(playerAttackTimer > playerAttackExtraDelay){
                        player.takeDamage((int)player.getLastStatusDamage());
                        playerEndTurn();
+                       pushString(statusLog,true,false);
                        playerOldStatusDisplay = false;
                    }
                }else{
@@ -957,10 +963,12 @@ public class Combat extends extraFunctions{
                 enemy.setLastStatusDuration(enemy.getLastStatusDuration() - 1);
                 if (enemy.getLastStatusEffect() == Statblock.Status.poison) {
                     enemyStatusString = enemy.getName() + " takes " + enemy.getLastStatusDamage() + "  poison damage";
+                    statusLog = enemy.getName()  + " poisoned for " + enemy.getLastStatusDamage();
                 }
 
             } else {
                 enemyStatusString = enemy.getLastStatusEffect() + " fades from " + enemy.getName();
+                statusLog = enemy.getLastStatusEffect() + " fades from " + enemy.getName();
                 enemy.setLastStatusEffect(null);
             }
     }
@@ -1054,6 +1062,7 @@ public class Combat extends extraFunctions{
                     if(enemyTurnTimer > enemyTurnExtraDelay){
                         enemy.takeDamage((int)enemy.getLastStatusDamage());
                         enemyEndTurn();
+                        pushString(statusLog,false,false);
                         displayEnemyOldStatus = false;
                     }
                 }else {
