@@ -362,6 +362,7 @@ public class Combat extends extraFunctions{
     double playerAttackTimer;
     double playerAttackDuration;
     double playerAttackDelay;
+    double playerAttackExtraDelay;
     boolean playerAttackActive;
     Ability[] playerAbilities;
 
@@ -376,13 +377,15 @@ public class Combat extends extraFunctions{
 
     String playerTurnLog;
 
-
+    boolean playerNewStatusDisplay;
+    boolean playerOldStatusDisplay;
 
 
 
 
     public void initPlayerAttack(){
-
+        playerNewStatusDisplay = false;
+        playerOldStatusDisplay = false;
         displayItem = false;
         playerDamage = 0;
         castBasicAttack = false;
@@ -394,6 +397,8 @@ public class Combat extends extraFunctions{
         playerAttackTimer = 0;
         playerAttackDelay = 2;
         playerAttackDuration = 4;
+        playerAttackExtraDelay = 6;
+
     }
 
 
@@ -420,6 +425,11 @@ public class Combat extends extraFunctions{
             castBasicAttack = false;
             player.setEnergy(player.getEnergy()-lastAbility.getEnergyCost());
 
+        if(lastAbility.getLastStatus() != null){
+            enemy.setLastStatusDuration(lastAbility.getLastStatusDuration());
+            enemy.setLastStatusEffect(lastAbility.getLastStatus());
+        }
+
     }
 
     public void castBuffSpell(){
@@ -442,6 +452,20 @@ public class Combat extends extraFunctions{
         lastItemUsed.use(player);
         useItem= false;
 
+    }
+
+    public void playerEndTurn(){
+        displayItem =false;
+        pushString(playerTurnLog,true,false);
+        playerAttackActive = false;
+        playerAttackTimer = 0;
+        if(enemy.isAlive()){
+            enemyTurnSetUp = true;
+            state = CombatState.enemyTurn;
+        }else{
+            pushString(enemy.getName() + " has been killed",true,true);
+            state = CombatState.lootScreen;
+        }
     }
 
 
@@ -467,17 +491,21 @@ public class Combat extends extraFunctions{
 
             }
             if (playerAttackTimer > playerAttackDuration) {
-                displayItem =false;
-                pushString(playerTurnLog,true,false);
-                playerAttackActive = false;
-                playerAttackTimer = 0;
-                if(enemy.isAlive()){
-                    enemyTurnSetUp = true;
-                    state = CombatState.enemyTurn;
-                }else{
-                    pushString(enemy.getName() + " has been killed",true,true);
-                    state = CombatState.lootScreen;
-                }
+               if(lastAbility.getType() == Ability.AbilityType.damage && lastAbility.getLastStatus() != null){
+                   playerNewStatusDisplay = true;
+                   if(playerAttackTimer > playerAttackExtraDelay){
+                       playerEndTurn();
+                       playerNewStatusDisplay = false;
+                   }
+               }else if(player.getLastStatusEffect() != Statblock.Status.poison) {
+                   playerOldStatusDisplay = true;
+                   if(playerAttackTimer > playerAttackExtraDelay){
+                       playerEndTurn();
+                       playerOldStatusDisplay = false;
+                   }
+               }else{
+                   playerEndTurn();
+               }
 
             }
 
@@ -490,50 +518,54 @@ public class Combat extends extraFunctions{
     public void drawPlayerAttack(Graphics2D g){
 
 
+        if(playerOldStatusDisplay){
+            drawText(150, 500, "You take 5 poison Damage...", textFont, 20, g);
+        }else {
+            if (displayItem) {
 
-
-        if(displayItem){
-
-            if(!playerAttackActive){
-                drawText(150, 500, "Using " + lastItemUsed.getName() + "...", textFont, 20,g);
-            }else{
-                playerTurnLog = player.getName() + " used " + lastItemUsed.getName();
-                drawText(120, 500, lastItemUsed.getDisplayString(), textFont, 20,g);
-            }
-
-        }else{
-
-            if (!playerAttackActive) {
-                if (lastAbility.getType() == Ability.AbilityType.damage) {
-                    drawText(100, 500, "Using " + lastAbility.getName() + " on " + enemy.getName() + "...", textFont, 20,g);
-                } else if (lastAbility.getType() == Ability.AbilityType.buff  || lastAbility.getType() == Ability.AbilityType.curse) {
-                    drawText(150, 500, "Casting " + lastAbility.getName() + "...", textFont, 20,g);
+                if (!playerAttackActive) {
+                    drawText(150, 500, "Using " + lastItemUsed.getName() + "...", textFont, 20, g);
+                } else {
+                    playerTurnLog = player.getName() + " used " + lastItemUsed.getName();
+                    drawText(120, 500, lastItemUsed.getDisplayString(), textFont, 20, g);
                 }
-            } else if (playerAttackActive) {
-                if (lastAbility.getType() == Ability.AbilityType.damage) {
-                    if (lastAbility.isLastHit()) {
-                        playerTurnLog = player.getName() + " dealt " + (int) playerDamage + " with " + lastAbility.getName();
-                        if (lastAbility.isLastCrit()) {
-                            playerTurnLog = player.getName() + " crit for " + (int) playerDamage + " with " + lastAbility.getName();
-                            drawBoldText(70, 500, "Your " + lastAbility.getName() + " CRITS " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20,g);
+
+            } else {
+
+                if (!playerAttackActive) {
+                    if (lastAbility.getType() == Ability.AbilityType.damage) {
+                        drawText(100, 500, "Using " + lastAbility.getName() + " on " + enemy.getName() + "...", textFont, 20, g);
+                    } else if (lastAbility.getType() == Ability.AbilityType.buff || lastAbility.getType() == Ability.AbilityType.curse) {
+                        drawText(150, 500, "Casting " + lastAbility.getName() + "...", textFont, 20, g);
+                    }
+                } else if (playerAttackActive) {
+                    if (lastAbility.getType() == Ability.AbilityType.damage) {
+                        if (playerNewStatusDisplay) {
+                            drawText(100, 500, enemy.getName() + " has been poisened", textFont, 20, g);
                         } else {
-                            if (lastAbility.isMagic()) {
-                                drawText(70, 500, "Your " + lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20,g);
+                            if (lastAbility.isLastHit()) {
+                                playerTurnLog = player.getName() + " dealt " + (int) playerDamage + " with " + lastAbility.getName();
+                                if (lastAbility.isLastCrit()) {
+                                    playerTurnLog = player.getName() + " crit for " + (int) playerDamage + " with " + lastAbility.getName();
+                                    drawBoldText(70, 500, "Your " + lastAbility.getName() + " CRITS " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
+                                } else {
+                                    if (lastAbility.isMagic()) {
+                                        drawText(70, 500, "Your " + lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
+                                    } else {
+                                        drawText(70, 500, "Your " + lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
+                                    }
+                                }
                             } else {
-                                drawText(70, 500, "Your " + lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20,g);
+                                playerTurnLog = player.getName() + " missed with " + lastAbility.getName();
+                                drawText(70, 500, "Your " + lastAbility.getName() + " misses " + enemy.getName(), textFont, 20, g);
                             }
                         }
-                    } else {
-                        playerTurnLog = player.getName() + " missed with " + lastAbility.getName();
-                        drawText(70, 500, "Your " + lastAbility.getName() + " misses " + enemy.getName(), textFont, 20,g);
+                    } else if (lastAbility.getType() == Ability.AbilityType.buff || lastAbility.getType() == Ability.AbilityType.curse) {
+                        playerTurnLog = player.getName() + " cast " + lastAbility.getName();
+                        drawText(150, 500, lastAbility.getDisplayString(), textFont, 20, g);
                     }
-                } else if (lastAbility.getType() == Ability.AbilityType.buff || lastAbility.getType() == Ability.AbilityType.curse) {
-                    playerTurnLog = player.getName() + " cast " + lastAbility.getName();
-                    drawText(150, 500, lastAbility.getDisplayString(), textFont, 20,g);
                 }
-
             }
-
         }
     }
 
@@ -866,6 +898,7 @@ public class Combat extends extraFunctions{
     double enemyTurnTimer;
     double enemyTurnDelay;
     double enemyTurnDuration;
+    double enemyTurnExtraDelay;
 
     boolean enemyAttackActive;
     boolean enemyMakeAttack;
@@ -875,6 +908,9 @@ public class Combat extends extraFunctions{
     String enemyTurnLog;
 
     boolean enemyTurnSetUp;
+
+    boolean displayEnemyOldStatus;
+    boolean displayEnemyNewStatus;
 
     public void startEnemyTurn(){
         enemyTurnSetUp = false;
@@ -898,10 +934,13 @@ public class Combat extends extraFunctions{
     }
 
     public void initEnemyTurn(){
+        displayEnemyNewStatus = false;
+        displayEnemyOldStatus =false;
         enemyAttackActive = false;
         enemyTurnTimer = 0;
         enemyTurnDelay = 2;
         enemyTurnDuration = 4;
+        enemyTurnExtraDelay = 6;
     }
 
     public void enemyAttack(){
@@ -909,6 +948,11 @@ public class Combat extends extraFunctions{
         enemyDamage = enemyLastAbility.getLastDamage();
         enemy.addEnergy(-enemyLastAbility.getEnergyCost());
         enemyDamage = player.takeDamage((int)enemyDamage);
+
+        if(enemyLastAbility.getLastStatus() != null){
+            player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
+            player.setLastStatusEffect(enemyLastAbility.getLastStatus());
+        }
         enemyMakeAttack = false;
 
     }
@@ -928,6 +972,17 @@ public class Combat extends extraFunctions{
         enemyMakeCurse = false;
     }
 
+    public void enemyEndTurn(){
+        pushString(enemyTurnLog,false,false);
+        enemyAttackActive = false;
+        enemyTurnTimer = 0;
+        checkCurse = true;
+        player.addEnergy(1);
+        state = CombatState.playerTurn;
+    }
+
+
+
     public void updateEnemyTurn(double dt){
         if(state == CombatState.enemyTurn){
             if(enemyTurnSetUp){startEnemyTurn();}
@@ -946,12 +1001,22 @@ public class Combat extends extraFunctions{
 
             }
             if(enemyTurnTimer > enemyTurnDuration){
-                pushString(enemyTurnLog,false,false);
-                enemyAttackActive = false;
-                enemyTurnTimer = 0;
-                checkCurse = true;
-                player.addEnergy(1);
-                state = CombatState.playerTurn;
+
+                if(lastAbility.getType() == Ability.AbilityType.damage && lastAbility.getLastStatus() != null){
+                    displayEnemyNewStatus = true;
+                    if(enemyTurnTimer > enemyTurnExtraDelay){
+                        enemyEndTurn();
+                        displayEnemyNewStatus = false;
+                    }
+                }else if(enemy.getLastStatusEffect() != Statblock.Status.poison) {
+                    displayEnemyOldStatus = true;
+                    if(enemyTurnTimer > enemyTurnExtraDelay){
+                        enemyEndTurn();
+                        displayEnemyNewStatus = false;
+                    }
+                }else {
+                    enemyEndTurn();
+                }
             }
         }
     }
@@ -962,40 +1027,49 @@ public class Combat extends extraFunctions{
     public void drawEnemyTurn(Graphics2D g){
         changeColor(black,g);
         drawLog(g);
-
-        if(!enemyAttackActive) {
-            if(enemyLastAbility.getType() == Ability.AbilityType.damage) {
-                drawText(70, 500, enemy.getName() + " attempts to " + enemyLastAbility.getName() + "...", textFont, 20, g);
-            }else if(enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse){
-                drawText(150, 500, enemy.getName() + "Casting " + enemyLastAbility.getName() + "...", textFont, 20,g);
-            }
-        }else if(enemyAttackActive){
-            if(enemyLastAbility.getType() == Ability.AbilityType.damage) {
-                if (enemyLastAbility.isLastHit()) {
-                    enemyTurnLog = enemy.getName() + " dealt " + (int) enemyDamage + " with " + enemyLastAbility.getName();
-                    if (enemyLastAbility.isMagic()) {
-
-                        drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage + " magic damage", textFont, 20, g);
-
-                    } else {
-                        if (enemyLastAbility.isLastCrit()) {
-                            enemyTurnLog = enemy.getName() + " crit for " + (int) enemyDamage + " with " + enemyLastAbility.getName();
-                            drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int) enemyDamage + " phys damage", textFont, 20, g);
-                        } else {
-
-                            drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage + " phys damage", textFont, 20, g);
-                        }
-
-                    }
-                } else {
-                    enemyTurnLog = enemy.getName() + " missed with " + enemyLastAbility.getName();
-                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " misses you", textFont, 20, g);
+        if(displayEnemyOldStatus){
+            drawText(70, 500, enemy.getName() + " takes 5 poisen damage..", textFont, 20, g);
+        }else {
+            if (!enemyAttackActive) {
+                if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
+                    drawText(70, 500, enemy.getName() + " attempts to " + enemyLastAbility.getName() + "...", textFont, 20, g);
+                } else if (enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse) {
+                    drawText(150, 500, enemy.getName() + "Casting " + enemyLastAbility.getName() + "...", textFont, 20, g);
                 }
-            } else if(enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse) {
-                enemyTurnLog = enemy.getName() + " cast " + enemyLastAbility.getName();
-                drawText(150, 500, enemyLastAbility.getDisplayString(), textFont, 20,g);
-            }
+            } else if (enemyAttackActive) {
+                if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
+                    if (displayEnemyNewStatus) {
+                        drawText(100, 500, "You have been poisoned", textFont, 20, g);
+                        //Might have to add somthing for log
+                    } else {
+                        if (enemyLastAbility.isLastHit()) {
+                            enemyTurnLog = enemy.getName() + " dealt " + (int) enemyDamage + " with " + enemyLastAbility.getName();
+                            if (enemyLastAbility.isMagic()) {
 
+                                drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage + " magic damage", textFont, 20, g);
+
+                            } else {
+                                if (enemyLastAbility.isLastCrit()) {
+                                    enemyTurnLog = enemy.getName() + " crit for " + (int) enemyDamage + " with " + enemyLastAbility.getName();
+                                    drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int) enemyDamage + " phys damage", textFont, 20, g);
+                                } else {
+
+                                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage + " phys damage", textFont, 20, g);
+                                }
+
+                            }
+
+                        } else {
+                            enemyTurnLog = enemy.getName() + " missed with " + enemyLastAbility.getName();
+                            drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " misses you", textFont, 20, g);
+                        }
+                    }
+                } else if (enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse) {
+                    enemyTurnLog = enemy.getName() + " cast " + enemyLastAbility.getName();
+                    drawText(150, 500, enemyLastAbility.getDisplayString(), textFont, 20, g);
+                }
+
+            }
         }
 
     }
