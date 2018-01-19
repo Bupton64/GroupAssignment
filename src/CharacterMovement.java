@@ -214,6 +214,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             case 47:
             case 48:
             case 49:
+            case 50:
                 break;
             case 17:
                 if(playerMan.getCurrentQuestName() != "killingForWizard"){
