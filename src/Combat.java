@@ -512,7 +512,9 @@ public class Combat extends extraFunctions{
                     castCurseSpell();
                 }
                 if(useItem){
+
                     useItemTurn();
+                    lastAbility = playerAbilities[0];
                 }
 
             }
@@ -824,7 +826,7 @@ public class Combat extends extraFunctions{
 
 
                 if (menuOption == j) {
-                    drawText(430, 140, playerInventory[i % (8 * currentPageNum)].getTooltip(), "Times New Roman", 20, g);
+                    drawText(430, 140, playerInventory[i].getTooltip(), "Times New Roman", 20, g);
                 }
 
                 if (j == player.getBagSize()) {
