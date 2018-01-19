@@ -304,8 +304,8 @@ public class Combat extends extraFunctions{
 
                 player.setLastStatusDuration(player.getLastStatusDuration() - 1);
                 if (player.getLastStatusEffect() == Statblock.Status.poison) {
-                    playerStatusString = "You takes " + player.getLastStatusDamage() + "  poison damage";
-                    statusLog = player.getName()  + " poisoned for " + player.getLastStatusDamage();
+                    playerStatusString = "You takes " + (int)player.getLastStatusDamage() + "  poison damage";
+                    statusLog = player.getName()  + " poisoned for " + (int)player.getLastStatusDamage();
                 }
 
             } else {
@@ -452,6 +452,7 @@ public class Combat extends extraFunctions{
             enemy.setLastStatusDuration(lastAbility.getLastStatusDuration());
             enemy.setLastStatusEffect(lastAbility.getLastStatus());
             enemy.setLastStatusDamage(lastAbility.getDamageOverTime());
+            statusLog = enemy.getName() + " was poisoned";
 
         }
 
@@ -521,13 +522,16 @@ public class Combat extends extraFunctions{
                    playerNewStatusDisplay = true;
                    if(playerAttackTimer > playerAttackExtraDelay){
                        playerEndTurn();
+                       pushString(statusLog,true,false);
                        playerNewStatusDisplay = false;
                    }
                }else if(playerStatusString != "") {
                    playerOldStatusDisplay = true;
 
                    if(playerAttackTimer > playerAttackExtraDelay){
-                       player.takeDamage((int)player.getLastStatusDamage());
+                       if(enemy.isAlive()) {
+                           player.takeDamage((int) player.getLastStatusDamage());
+                       }
                        playerEndTurn();
                        pushString(statusLog,true,false);
                        playerOldStatusDisplay = false;
@@ -962,8 +966,8 @@ public class Combat extends extraFunctions{
             if (enemy.getLastStatusDuration() > 1) {
                 enemy.setLastStatusDuration(enemy.getLastStatusDuration() - 1);
                 if (enemy.getLastStatusEffect() == Statblock.Status.poison) {
-                    enemyStatusString = enemy.getName() + " takes " + enemy.getLastStatusDamage() + "  poison damage";
-                    statusLog = enemy.getName()  + " poisoned for " + enemy.getLastStatusDamage();
+                    enemyStatusString = enemy.getName() + " takes " + (int)enemy.getLastStatusDamage() + "  poison damage";
+                    statusLog = enemy.getName()  + " poisoned for " + (int)enemy.getLastStatusDamage();
                 }
 
             } else {
@@ -999,6 +1003,7 @@ public class Combat extends extraFunctions{
             player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
             player.setLastStatusEffect(enemyLastAbility.getLastStatus());
             player.setLastStatusDamage(enemyLastAbility.getDamageOverTime());
+            statusLog = player.getName() + " was poisoned";
         }
         enemyMakeAttack = false;
 
@@ -1053,14 +1058,16 @@ public class Combat extends extraFunctions{
                 if(enemyLastAbility.getType() == Ability.AbilityType.damage && enemyLastAbility.getLastStatus() != null){
                     displayEnemyNewStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
-
                         enemyEndTurn();
+                        pushString(statusLog,false,false);
                         displayEnemyNewStatus = false;
                     }
                 }else if(enemyStatusString != "") {
                     displayEnemyOldStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
-                        enemy.takeDamage((int)enemy.getLastStatusDamage());
+                        if(player.isAlive()) {
+                            enemy.takeDamage((int) enemy.getLastStatusDamage());
+                        }
                         enemyEndTurn();
                         pushString(statusLog,false,false);
                         displayEnemyOldStatus = false;
