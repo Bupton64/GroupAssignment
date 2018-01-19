@@ -249,6 +249,9 @@ public class MapControl extends extraFunctions {
                     case 49:
                         currentMap = new plains_F9_bottomRightHouse();
                         break;
+                    case 50:
+                        currentMap = new plains_E8_topLeftHouse();
+                        break;
                 }
             }
         }
