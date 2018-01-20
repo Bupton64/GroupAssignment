@@ -58,13 +58,15 @@ public class AdventureMode extends GameEngine {
 
     }
 
+
+
    public void updateGameState(){
         if(stateChanger != 0) {
 
             if(stateChanger == 1){
                 state = GameState.TravelMode;
             }else if(stateChanger == 2){
-                combatMode = new Combat(playerMan);
+                combatMode = new Combat(playerMan,playerMan.getMonsterGen());
                 state = GameState.CombatMode;
             }else if(stateChanger == 3){
                 state = GameState.OverWorldMenu;
@@ -88,12 +90,15 @@ public class AdventureMode extends GameEngine {
            if (state == GameState.TravelMode) {
 
               mapController.updateNPC(dt,playerMovement,collisionDetector);
-             mapController.updateQuest(dt);
+
 
 
                mapController.updateMap(collisionDetector);
                collisionDetector.updateCollision(playerMan, playerMovement);
               stateChanger = playerMovement.updateCharMovement(dt, playerMan);
+              if(stateChanger != 2) {
+                  stateChanger = mapController.updateQuest(dt);
+              }
            } else if (state == GameState.CombatMode) {
               stateChanger =  combatMode.update(dt);
            }else if(state == GameState.OverWorldMenu) {

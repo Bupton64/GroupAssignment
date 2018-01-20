@@ -788,4 +788,15 @@ public class Character extends Statblock {
     public String getCurrentQuestName(){
         return currentQuest.getQuestName();
     }
+
+
+    private int monsterGen;
+
+    public int getMonsterGen() {
+        return monsterGen;
+    }
+
+    public void setMonsterGen(int monsterGen) {
+        this.monsterGen = monsterGen;
+    }
 }

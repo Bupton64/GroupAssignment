@@ -1,6 +1,6 @@
 public class ability_monster_chargeUp extends Ability {
 
-    public ability_monster_chargeUp {
+    public ability_monster_chargeUp(){
         this.setName("Charge Up!");
         this.setSpeed(0);
         this.setAttack(0);

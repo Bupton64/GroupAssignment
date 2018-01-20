@@ -46,7 +46,7 @@ public class npc_plains_E9_byBridge extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"You must be Bjarne right? I'm so sorry to hear what happened to your","town. Hopefully the Wizard in the North will be able to help you!","","");
+        Dialogue d1 = new Dialogue(null,true,true,"You must be Bjarne right? I'm so sorry to hear what happened to your","town. Hopefully the Wizard in the North will be able to help you!","","");
         listOne = d1;
     }
 
@@ -66,6 +66,33 @@ public class npc_plains_E9_byBridge extends  NPC {
     }
 
 
+
+    public int updateConvo(){
+        if(summonMonster){
+            return 99;
+
+        }
+        return 0;
+    }
+
+    //test code
+    boolean summonMonster =false;
+
+
+    public boolean keyPressed(KeyEvent e) {
+
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(currentDialogue.next == null) {
+                if (currentDialogue.getOptionPosY() == 375) {
+                    summonMonster = true;
+                }
+            }
+        }
+
+        return super.keyPressed(e);
+
+
+    }
 
 
 }

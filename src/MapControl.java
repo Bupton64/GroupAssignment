@@ -450,13 +450,18 @@ public class MapControl extends extraFunctions {
 
 
 
-    public void updateQuest(double dt){
+    public int updateQuest(double dt){
 
         //Quest Check
         if (checkQuestChange && currentNpcInteraction != -1) {
             updateQuestState = mapNpcs[currentNpcInteraction].updateConvo();
             playerMan.setQuestStage(updateQuestState);
-            if(updateQuestState != 0){
+            if(updateQuestState == 99) {
+                playerMan.setCombatActive(true);
+                playerMan.setMonsterGen(1);
+                return 2;
+
+            }else if(updateQuestState != 0){
                 playerMan.changeQuest(updateQuestState);
                 updateQuestState = 0;
                 rewardDisplay = true;
@@ -471,6 +476,7 @@ public class MapControl extends extraFunctions {
             rewardDisplay = playerMan.updateQuestReward(dt);
 
         }
+        return 0;
     }
 
 

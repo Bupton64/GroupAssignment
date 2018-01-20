@@ -221,10 +221,12 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
                     break;
                 }
                 playerMan.setCombatActive(true);
+                playerMan.setMonsterGen(0);
                 return 2;
             default :
 
                 playerMan.setCombatActive(true);
+                playerMan.setMonsterGen(0);
                 return 2;
         }
         return 0;

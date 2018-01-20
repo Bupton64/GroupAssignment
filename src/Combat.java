@@ -1271,54 +1271,59 @@ public class Combat extends extraFunctions{
 
     double roll;
 
-    public void randomMonster(){
+    public void randomMonster(int monsterToFight){
 
-        roll = Math.random() * 10;
+        if(monsterToFight == 0) {
+            roll = Math.random() * 10;
 
-        switch(player.getLevel()){
-            case 1:
-                if(roll > 1) {
-                    enemy = new monster_Goblin();
-                }else{
-                    enemy = new monster_Wolf();
-                }
-                break;
-            case 2:
-                if(roll > 5.5){
-                    enemy = new monster_Goblin();
-                }else if(roll > 0.5){
-                    enemy = new monster_Wolf();
-                }else{
+            switch (player.getLevel()) {
+                case 1:
+                    if (roll > 1) {
+                        enemy = new monster_Goblin();
+                    } else {
+                        enemy = new monster_Wolf();
+                    }
+                    break;
+                case 2:
+                    if (roll > 5.5) {
+                        enemy = new monster_Goblin();
+                    } else if (roll > 0.5) {
+                        enemy = new monster_Wolf();
+                    } else {
+                        enemy = new monster_Witch();
+                    }
+                    break;
+                case 3:
+                    if (roll > 8) {
+                        enemy = new monster_Goblin();
+                    } else if (roll > 3) {
+                        enemy = new monster_Wolf();
+                    } else {
+                        enemy = new monster_Witch();
+                    }
+                    break;
+                case 4:
+                    if (roll > 9) {
+                        enemy = new monster_Goblin();
+                    } else if (roll > 5) {
+                        enemy = new monster_Wolf();
+                    } else {
+                        enemy = new monster_Witch();
+                    }
+                    break;
+                case 5:
+                    if (roll > 8) {
+                        enemy = new monster_Wolf();
+                    } else {
+                        enemy = new monster_Witch();
+                    }
+                    break;
+                default:
                     enemy = new monster_Witch();
-                }
-                break;
-            case 3:
-                if(roll > 8){
-                    enemy = new monster_Goblin();
-                }else if(roll > 3){
-                    enemy = new monster_Wolf();
-                }else{
-                    enemy = new monster_Witch();
-                }
-                break;
-            case 4:
-                if(roll > 9){
-                    enemy = new monster_Goblin();
-                }else if(roll > 5){
-                    enemy = new monster_Wolf();
-                }else{
-                    enemy = new monster_Witch();
-                }
-                break;
-            case 5:
-                if(roll > 8){
-                    enemy = new monster_Wolf();
-                }else{
-                    enemy = new monster_Witch();
-                }
-                break;
-            default :
-                enemy = new monster_Witch();
+            }
+
+        }else if(monsterToFight == 1){
+            enemy = new monster_BOSS_Valliard();
         }
 
 
@@ -1342,13 +1347,13 @@ public class Combat extends extraFunctions{
     Character player;
     Monster enemy;
 
-    Combat(Character playertest){
+    Combat(Character playertest, int monsterToFight){
         this.player = playertest;
 
         playerImage = new Image[3];
         player.setCombatPosX(150);
         player.setCombatPosY(200);
-        randomMonster();
+        randomMonster(monsterToFight);
         enemy.init();
         enemy.setCombatPosX(600);
         enemy.setCombatPosY(200);
