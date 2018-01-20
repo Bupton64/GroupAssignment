@@ -249,6 +249,11 @@ public class MapControl extends extraFunctions {
                     case 49:
                         currentMap = new plains_F9_bottomRightHouse();
                         break;
+                    case 50:
+                        currentMap = new plains_E8_topLeftHouse();
+                        mapNpcs[0] = new npc_plains_priest();
+                        numOfNpc = 1;
+                        break;
                 }
             }
         }

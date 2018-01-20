@@ -42,6 +42,10 @@ public class monster_Wolf extends Monster {
     @Override
     public Item dropLoot(){
         Item newItem = new Item();
+        int num =(int)(Math.random()*100);
+        if(num >90){
+            newItem = new item_Antidote();
+        }
         return newItem;
     }
 

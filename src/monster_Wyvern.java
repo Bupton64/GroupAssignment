@@ -1,38 +1,37 @@
 import java.awt.*;
 
-public class monster_Witch extends Monster {
+public class monster_Wyvern extends Monster {
 
-    public monster_Witch() {
+    public monster_Wyvern() {
         this.init();
     }
 
     public void init() {
         Ability[] temp;
-        temp = new Ability[4];
-        for (int i = 0; i < 4; i++) {
+        temp = new Ability[3];
+        for (int i = 0; i < 3; i++) {
             temp[i] = new Ability();
         }
-        setAttack(6);
-        setDefense(4);
+        setAttack(15);
+        setDefense(6);
         setLuck(0);
-        setSpeed(0);
+        setSpeed(30);
         setStrength(2);
-        setXPGain(400);
-        setGoldMin(130);
-        setGoldMax(160);
-        setCurrentHP(200);
-        setMaxHP(200);
-        setLevel(3);
+        setXPGain(1280);
+        setGoldMin(240);
+        setGoldMax(360);
+        setCurrentHP(300);
+        setMaxHP(300);
+        setLevel(6);
         setAlive(true);
-        setName("Witch");
+        setName("Wyvern");
         setEnergy(0);
-        setUpAbilityNumberI(temp, 0, "Freezing Ray", 5, 1, 1, 1, 1, true, -1, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 1, "Snowblast", 0, 2, 2, 0, 2, true, 2, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 2, "Ice Storm", 0, 4, 0, 0, 4, true, 5, "", true, Ability.AbilityType.damage, "");
-        temp[3] = new ability_monster_blindingLight();
+        setUpAbilityNumberI(temp, 0, "Swooping Claw", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 1, "Razor Bite", 0, 10, 0, 0, 0, false, 2, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 2, "Body Slam", 0, 10, 0, 0, 4, false, 4, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_Witch.png");
+        Image sprite = loadImage("monster_wyvern.png");
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);
@@ -43,7 +42,8 @@ public class monster_Witch extends Monster {
         Item newItem = new Item();
         int num =(int)(Math.random()*100);
         if(num >90){
-            newItem = new item_scrollOfKnowledge()
+            newItem = new item_Equipment("Scale Mail", 0, 2, 0, 2, 0, Item.Slot.chest, "A sturdy chestpiece", 390, 1040);
+
         }
         return newItem;
     }
@@ -51,7 +51,7 @@ public class monster_Witch extends Monster {
     public Ability moveChoice(){
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
-        return abilities[3].use(this); //< Use Blinding Light
+        return abilities[1].use(this);
         /*if(getCurrentHP()>getMaxHP()*0.5){
             if(getEnergy()>1){
                 if(num>70){
@@ -82,4 +82,5 @@ public class monster_Witch extends Monster {
             }
         }*/
     }
+
 }

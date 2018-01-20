@@ -109,7 +109,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
 
         if (down && !lockDown && !up) {
-            directionFacing = Direction.down;
+//            directionFacing = Direction.down;
             dy += 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
@@ -119,7 +119,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             playerMan.setMapPosY(dy);
         }
         if (right && !lockRight && !left) {
-            directionFacing = Direction.right;
+        //    directionFacing = Direction.right;
             dx += 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
@@ -129,7 +129,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             playerMan.setMapPosX(dx);
         }
         if (left && !lockLeft && !right) {
-            directionFacing = Direction.left;
+           // directionFacing = Direction.left;
             dx -= 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
@@ -139,7 +139,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             playerMan.setMapPosX(dx);
         }
         if (up && !lockUp && !down) {
-            directionFacing = Direction.up;
+         //   directionFacing = Direction.up;
             dy -= 5;
             walkTimer += dt;
             if (walkTimer > walkDuration) {
@@ -160,15 +160,19 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
     public void drawCharMovement(Graphics g) {
         if (right) {
+            directionFacing = Direction.right;
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveRight[j], dx, dy, 50, 70,g);
         } else if (left) {
+            directionFacing = Direction.left;
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveLeft[j], dx, dy, 50, 70,g);
         } else if (up) {
+            directionFacing = Direction.up;
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveUp[j], dx, dy, 50, 70,g);
         } else if (down) {
+            directionFacing = Direction.down;
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveDown[j], dx, dy, 50, 70,g);
         }
@@ -210,6 +214,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             case 47:
             case 48:
             case 49:
+            case 50:
                 break;
             case 17:
                 if(playerMan.getCurrentQuestName() != "killingForWizard"){

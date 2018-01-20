@@ -1,38 +1,37 @@
 import java.awt.*;
 
-public class monster_Witch extends Monster {
+public class monster_Vanguard extends Monster{
 
-    public monster_Witch() {
+    public monster_Vanguard() {
         this.init();
     }
 
     public void init() {
         Ability[] temp;
-        temp = new Ability[4];
-        for (int i = 0; i < 4; i++) {
+        temp = new Ability[3];
+        for (int i = 0; i < 3; i++) {
             temp[i] = new Ability();
         }
-        setAttack(6);
-        setDefense(4);
-        setLuck(0);
-        setSpeed(0);
-        setStrength(2);
-        setXPGain(400);
-        setGoldMin(130);
-        setGoldMax(160);
-        setCurrentHP(200);
-        setMaxHP(200);
-        setLevel(3);
+        setAttack(13);
+        setDefense(6);
+        setLuck(4);
+        setSpeed(14);
+        setStrength(4);
+        setXPGain(900);
+        setGoldMin(190);
+        setGoldMax(230);
+        setCurrentHP(250);
+        setMaxHP(250);
+        setLevel(5);
         setAlive(true);
-        setName("Witch");
+        setName("Therox's Vanguard");
         setEnergy(0);
-        setUpAbilityNumberI(temp, 0, "Freezing Ray", 5, 1, 1, 1, 1, true, -1, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 1, "Snowblast", 0, 2, 2, 0, 2, true, 2, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 2, "Ice Storm", 0, 4, 0, 0, 4, true, 5, "", true, Ability.AbilityType.damage, "");
-        temp[3] = new ability_monster_blindingLight();
+        setUpAbilityNumberI(temp, 0, "Two Handed Smash", 2, 0, 0, 0, 1, false, -1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 1, "Cleave", 0, 2, 2, 2, 2, false, 2, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 2, "Whirling Axes", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_Witch.png");
+        Image sprite = loadImage("monster_theroxVanguard.png");
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);
@@ -43,7 +42,7 @@ public class monster_Witch extends Monster {
         Item newItem = new Item();
         int num =(int)(Math.random()*100);
         if(num >90){
-            newItem = new item_scrollOfKnowledge()
+            newItem = new item_soulStone();
         }
         return newItem;
     }
@@ -51,7 +50,7 @@ public class monster_Witch extends Monster {
     public Ability moveChoice(){
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
-        return abilities[3].use(this); //< Use Blinding Light
+        return abilities[1].use(this);
         /*if(getCurrentHP()>getMaxHP()*0.5){
             if(getEnergy()>1){
                 if(num>70){
@@ -82,4 +81,5 @@ public class monster_Witch extends Monster {
             }
         }*/
     }
+
 }

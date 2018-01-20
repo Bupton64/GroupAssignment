@@ -5,8 +5,8 @@ public class monster_BOSS_Valliard extends Monster {
 
     public void init(){
         Ability [] temp;
-        temp= new Ability[3];
-        for(int i=0; i<3; i++){
+        temp= new Ability[5];
+        for(int i=0; i<5; i++){
             temp[i]=new Ability();
         }
         setAttack(6);
@@ -32,11 +32,10 @@ public class monster_BOSS_Valliard extends Monster {
         // NEEDS ABILITIES
         setUpAbilityNumberI(temp, 0, "Hand of Judgment", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
         temp[1] =  new ability_monster_lifeCoil();
-        setUpAbilityNumberI(temp, 2, "Flame Thrust", 4, 2, 2, 2, 4, true, 2, "", true, Ability.AbilityType.damage, "");
+        temp[2] = new ability_monster_rabidFang();
         temp[3] = new ability_Berserk();
         temp[3].setDisplayString("Valliard's rage overflows!");
         temp[4] = new ability_BladeDance();
-
 
         this.setAbilities(temp);
     }
@@ -49,6 +48,67 @@ public class monster_BOSS_Valliard extends Monster {
 
     @Override
     public Ability moveChoice() {
-        return null;
+        int num =(int)(Math.random()*100);
+        Ability [] abilities = this.getAbilities();
+        if(this.getCurrentHP() > this.getMaxHP()*0.7){
+            if(this.getEnergy() > 2){
+                if(num > 60){
+                    return abilities[3].use(this);
+                } else if (num >20){
+                    return abilities[4].use(this);
+                } else if (num > 5){
+                    return abilities[2].use(this);
+                } else {
+                    return abilities[0].use(this);
+                }
+            } else if (this.getEnergy() > 1){
+                if (num > 20){
+                    return abilities[2].use(this);
+                } else {
+                    return abilities[0].use(this);
+                }
+            } else {
+                return abilities[0].use(this);
+            }
+        } else if (this.getCurrentHP() > this.getMaxHP()*0.4){
+            if(this.getEnergy() > 3){
+                if(num > 30){
+                    return abilities[1].use(this);
+                } else if (num >20){
+                    return abilities[4].use(this);
+                } else if (num > 10){
+                    return abilities[2].use(this);
+                } else {
+                    return abilities[0].use(this);
+                }
+            } else if(this.getEnergy() > 2){
+                if (num > 60){
+                    return abilities[4].use(this);
+                } else if (num > 30){
+                    return abilities[2].use(this);
+                } else {
+                    return abilities[0].use(this);
+                }
+            } else if (this.getEnergy() > 1){
+                if (num > 30){
+                    return abilities[2].use(this);
+                } else {
+                    return abilities[0].use(this);
+                }
+            } else {
+                return abilities[0].use(this);
+            }
+        } else{
+            if(this.getEnergy() > 3){
+                return abilities[1].use(this);
+            } else if(this.getEnergy() > 2){
+                return abilities[4].use(this);
+            } else if (this.getEnergy() > 1){
+                return abilities[2].use(this);
+            } else {
+                return abilities[0].use(this);
+            }
+        }
+
     }
 }

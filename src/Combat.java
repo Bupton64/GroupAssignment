@@ -32,10 +32,12 @@ public class Combat extends extraFunctions{
     Image energyEmptyImage;
 
 
-
+    Image LevelPortrait;
 
 
     public void initPortrait(){
+        LevelPortrait = subImage(buttonSpriteSheet,450,155,120,120);
+
 
 
 
@@ -54,7 +56,10 @@ public class Combat extends extraFunctions{
 
     public void drawPlayerNamePlate(Graphics2D g) {
 
-
+        //Level Display
+        drawImage(LevelPortrait,80,0,30,30,g);
+        changeColor(white,g);
+        drawBoldText(91,19,Integer.toString(player.getLevel()), "felix titling",13,g);
 
         changeColor(Color.gray,g);
 
@@ -98,18 +103,12 @@ public class Combat extends extraFunctions{
 
         //replace circle with portrait later
         changeColor(white,g);
-        drawText(95,23,player.getName(),textFont,20,g);
+        drawText(110,23,player.getName(),textFont,20,g);
         drawBoldText(150,47,Integer.toString((int)player.getCurrentHP()) + "/" + Integer.toString((int)player.getMaxHP()),textFont, 15,g);
 
 
 
-        //Level Display
-        changeColor(black,g);
-        drawSolidCircle(15,80,10,g);
-        changeColor(Color.gray,g);
-        drawCircle(15,80,10,2,g);
-        changeColor(white,g);
-        drawText(12,85,Integer.toString(player.getLevel()), textFont,13,g);
+
 
 
 
@@ -136,6 +135,11 @@ public class Combat extends extraFunctions{
     }
 
     public void drawEnemyNamePlate(Graphics2D g){
+
+        //Level Display
+        drawImage(LevelPortrait,690 ,0,30,30,g);
+        changeColor(white,g);
+        drawBoldText(701,19,Integer.toString(enemy.getLevel()), "felix titling",13,g);
 
         changeColor(Color.gray,g);
         //player Resource Bar
@@ -183,13 +187,9 @@ public class Combat extends extraFunctions{
 
 
 
-        //Level Display
-        changeColor(black,g);
-        drawSolidCircle(785,80,10,g);
-        changeColor(Color.gray,g);
-        drawCircle(785,80,10,2,g);
-        changeColor(white,g);
-        drawText(782,85,Integer.toString(enemy.getLevel()), textFont,13,g);
+
+
+
 
 
     }
@@ -304,8 +304,8 @@ public class Combat extends extraFunctions{
 
                 player.setLastStatusDuration(player.getLastStatusDuration() - 1);
                 if (player.getLastStatusEffect() == Statblock.Status.poison) {
-                    playerStatusString = "You takes " + player.getLastStatusDamage() + "  poison damage";
-                    statusLog = player.getName()  + " poisoned for " + player.getLastStatusDamage();
+                    playerStatusString = "You takes " + (int)player.getLastStatusDamage() + "  poison damage";
+                    statusLog = player.getName()  + " poisoned for " + (int)player.getLastStatusDamage();
                 }
 
             } else {
@@ -452,6 +452,7 @@ public class Combat extends extraFunctions{
             enemy.setLastStatusDuration(lastAbility.getLastStatusDuration());
             enemy.setLastStatusEffect(lastAbility.getLastStatus());
             enemy.setLastStatusDamage(lastAbility.getDamageOverTime());
+            statusLog = enemy.getName() + " was poisoned";
 
         }
 
@@ -523,15 +524,21 @@ public class Combat extends extraFunctions{
                    playerNewStatusDisplay = true;
                    if(playerAttackTimer > playerAttackExtraDelay){
                        playerEndTurn();
+                       pushString(statusLog,true,false);
                        playerNewStatusDisplay = false;
                    }
                }else if(playerStatusString != "") {
                    playerOldStatusDisplay = true;
 
                    if(playerAttackTimer > playerAttackExtraDelay){
-                       player.takeDamage((int)player.getLastStatusDamage());
+                       if(enemy.isAlive()) {
+                           player.takeDamage((int) player.getLastStatusDamage());
+                           pushString(statusLog,true,false);
+                       }else{
+                           player.setLastStatusEffect(null);
+                       }
                        playerEndTurn();
-                       pushString(statusLog,true,false);
+
                        playerOldStatusDisplay = false;
                    }
                }else{
@@ -964,8 +971,8 @@ public class Combat extends extraFunctions{
             if (enemy.getLastStatusDuration() > 1) {
                 enemy.setLastStatusDuration(enemy.getLastStatusDuration() - 1);
                 if (enemy.getLastStatusEffect() == Statblock.Status.poison) {
-                    enemyStatusString = enemy.getName() + " takes " + enemy.getLastStatusDamage() + "  poison damage";
-                    statusLog = enemy.getName()  + " poisoned for " + enemy.getLastStatusDamage();
+                    enemyStatusString = enemy.getName() + " takes " + (int)enemy.getLastStatusDamage() + "  poison damage";
+                    statusLog = enemy.getName()  + " poisoned for " + (int)enemy.getLastStatusDamage();
                 }
 
             } else {
@@ -1001,6 +1008,7 @@ public class Combat extends extraFunctions{
             player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
             player.setLastStatusEffect(enemyLastAbility.getLastStatus());
             player.setLastStatusDamage(enemyLastAbility.getDamageOverTime());
+            statusLog = player.getName() + " was poisoned";
         }
         enemyMakeAttack = false;
 
@@ -1055,16 +1063,20 @@ public class Combat extends extraFunctions{
                 if(enemyLastAbility.getType() == Ability.AbilityType.damage && enemyLastAbility.getLastStatus() != null){
                     displayEnemyNewStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
-
                         enemyEndTurn();
+                        pushString(statusLog,false,false);
                         displayEnemyNewStatus = false;
                     }
                 }else if(enemyStatusString != "") {
                     displayEnemyOldStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
-                        enemy.takeDamage((int)enemy.getLastStatusDamage());
                         enemyEndTurn();
-                        pushString(statusLog,false,false);
+                        if(player.isAlive()) {
+                            enemy.takeDamage((int) enemy.getLastStatusDamage());
+                            pushString(statusLog,false,false);
+                        }
+
+
                         displayEnemyOldStatus = false;
                     }
                 }else {
@@ -1138,9 +1150,13 @@ public class Combat extends extraFunctions{
     ///
     ////////////////////////////////////////
 
+    Image chestSpriteSheet;
+    Image chestOne;
+    Image chestTwo;
+
+
+
     Image coinImage;
-    Image chestClosedImage;
-    Image chestOpenImage;
 
     Item reward;
     boolean collectReward;
@@ -1156,14 +1172,20 @@ public class Combat extends extraFunctions{
     boolean levelUp;
 
     public void initLootScreen(){
+
+        chestSpriteSheet = loadImage("chests.png");
+        chestOne = subImage(chestSpriteSheet,0,310,80,50);
+        chestTwo = subImage(chestSpriteSheet,0,526,80,50);
+
+
+
         levelUp = false;
         currentGold = player.getGpTotal();
         right = false;
         collectReward = false;
 
         coinImage = loadImage("coin.png");
-        chestClosedImage = loadImage("chest1.png");
-        chestOpenImage = loadImage("chest2.png");
+
 
         walkTimer = 0;
         walkDuration = 0.16;
@@ -1204,25 +1226,21 @@ public class Combat extends extraFunctions{
     }
 
     public void drawLootScreen(Graphics2D g){
-        changeColor(white,g);
-        if(!chestOpen) {
-            drawText(80, 500, "Victory, Press 'Space' on Chest to collect Reward", "Times New Roman", 18, g);
-        }else{
-            if(reward.getName() == null){
-                drawText(80, 470, "Nothing dropped from " + enemy.getName(), "Times New Roman", 18, g);
-            }else{
-                drawText(80, 470, reward.getName() + " dropped from " + enemy.getName(), "Times New Roman", 18, g);
-            }
-            drawText(80, 500, "Press 'Space' again to return to the overworld!", "Times New Roman", 18, g);
-        }
         drawImage(coinImage,640,-10,70,70,g);
         changeColor(white,g);
         drawText(710,35,Integer.toString(player.getGpTotal()),"Times New Roman",30,g);
 
         if(!chestOpen){
-            drawImage(chestClosedImage,630,220,130,130,g);
+            drawText(80, 500, "Victory, Press 'Space' on Chest to collect Reward", "Times New Roman", 18, g);
+            drawImage(chestOne,580,210,130,100,g);
         }else{
-            drawImage(chestOpenImage,630,220,130,130,g);
+            drawImage(chestTwo,580,210,130,100,g);
+            drawText(80, 500, "Press 'Space' again to return to the overworld!", "Times New Roman", 18, g);
+            if(reward.getName() == null){
+                drawText(80, 470, "Nothing dropped from " + enemy.getName(), "Times New Roman", 18, g);
+            }else{
+                drawText(80, 470, reward.getName() + " dropped from " + enemy.getName(), "Times New Roman", 18, g);
+            }
             changeColor(purple,g);
             drawBoldText(570,210,"+" + enemy.getXPGain() + " EXP","Times New Roman", 20,g);
             changeColor(yellow,g);
@@ -1335,8 +1353,10 @@ public class Combat extends extraFunctions{
         enemy.setCombatPosX(600);
         enemy.setCombatPosY(200);
         player.resetBonuses();
-        initPortrait();
+        initLog();
+
         initPlayerTurnDisplay();
+        initPortrait();
         initPlayerAttack();
         initRun();
         initAbilityMenu();
