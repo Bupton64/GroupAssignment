@@ -889,7 +889,7 @@ public class Combat extends extraFunctions{
 
     public void updateRun(double dt){
         if(state == CombatState.run){
-            if(Math.random()* 10 > 5 && !escapeChance) {
+            if(Math.random()* 10 > 3 && !escapeChance) {
                 makeEscape = true;
             }
             escapeChance = true;

@@ -17,7 +17,16 @@ public class Dialogue extends extraFunctions{
     double optionPosY ;
 
 
+    Image dialogueSpriteSheet;
+
+    Image dialogueSimpleBox;
+    Image dialogueContinueBox;
+
+
     public Dialogue(Dialogue next,boolean hasOptions,boolean lastNode,String dialogueOne, String dialogueTwo, String dialogueThree, String dialogueFour){
+        dialogueSpriteSheet = loadImage("dialogue_Boxes.png");
+        dialogueSimpleBox = subImage(dialogueSpriteSheet,20,20,470,100);
+        dialogueContinueBox = subImage(dialogueSpriteSheet,20,350,470,100);
         this.dialogueOne = dialogueOne;
         this.dialogueTwo = dialogueTwo;
         this.dialogueThree = dialogueThree;
@@ -57,30 +66,31 @@ public class Dialogue extends extraFunctions{
     }
 
     public void display(Graphics2D g){
+
+
+
         if(!lastNode){
-            changeColor(black, g);
-            drawSolidRectangle(400,345,300,50,g);
+            drawImage(dialogueContinueBox,90,400,620,165,g);
             changeColor(Color.white,g);
-            drawRectangle(400,345,300,50,10,g);
-            drawText(425, 375, "Press 'Space' to continue", "Arial", 20, g);
+            drawText(530, 540, "Press 'Space' to continue", "Arial", 10, g);
+
         }
         if(lastNode && !hasOptions){
-            changeColor(black, g);
-            drawSolidRectangle(400,345,300,50,g);
-            changeColor(Color.white,g);
-            drawRectangle(400,345,300,50,10,g);
-            drawText(425, 375, "Press 'Space' to stop", "Arial", 20, g);
+            drawImage(dialogueSimpleBox,90,400,620,165,g);
+            changeColor(white,g);
+
+
+
         }
         if(hasOptions){
-            changeColor(black, g);
-            drawSolidRectangle(400,325,300,70,g);
-            changeColor(Color.white,g);
-            drawRectangle(400,325,300,70,10,g);
-
-            drawText(425, 380, "Accept", "Arial", 20, g);
-            drawText(425, 355, "Decline", "Arial", 20, g);
+            drawImage(dialogueSimpleBox,90,400,620,165,g);
+            drawImage(dialogueSimpleBox,400,335,300,70,g);
+            changeColor(white,g);
+            drawText(425, 385, "Accept", "Arial", 20, g);
+            drawText(425, 359, "Decline", "Arial", 20, g);
             changeColor(green,g);
             drawSolidCircle(optionPosX,optionPosY,5,g);
+            changeColor(white,g);
         }
         drawText(110, 450, dialogueOne, "Times New Roman", 20, g);
         drawText(110, 475, dialogueTwo, "Times New Roman", 20, g);
