@@ -7,6 +7,7 @@ public class Credits {
     //Skeleton art form Castlevania: Bloodlines
     //Giant art from Final Fantasy: Record keeper
     //Vanguard art from Shining Force CD
-
+    //Valliard art form Tales of Eternia
     //www.spriters-resource.com
 }
+
