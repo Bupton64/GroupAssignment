@@ -14,7 +14,7 @@ public class item_Antidote extends Item {
 
     @Override
     public void use(Character user){
-        if((user.getLastStatusDuration() > 0) && (user.getLastStatusEffect() == Statblock.Status.poison)){
+        if((user.getLastStatusDuration() > 0) && (user.getLastStatusEffect() == Statblock.Status.Poison)){
             user.setLastStatusDuration(0);
             user.setLastStatusEffect(null);
             this.setDisplayString(user.getName() + "'s blood was cleansed!");

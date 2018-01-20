@@ -4,7 +4,7 @@ import java.util.Arrays;
 /* Parent class for all character objects */
 public class Statblock extends extraFunctions{
 
-    enum Status {poison, blind}
+    enum Status {Poison, Blind}
 
     // Members
 

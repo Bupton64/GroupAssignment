@@ -137,9 +137,9 @@ public class Combat extends extraFunctions{
     public void drawEnemyNamePlate(Graphics2D g){
 
         //Level Display
-        drawImage(LevelPortrait,690 ,0,30,30,g);
+        drawImage(LevelPortrait,695 ,0,30,30,g);
         changeColor(white,g);
-        drawBoldText(701,19,Integer.toString(enemy.getLevel()), "felix titling",13,g);
+        drawBoldText(705  ,19,Integer.toString(enemy.getLevel()), "felix titling",13,g);
 
         changeColor(Color.gray,g);
         //player Resource Bar
@@ -303,8 +303,8 @@ public class Combat extends extraFunctions{
             if (player.getLastStatusDuration() > 1) {
 
                 player.setLastStatusDuration(player.getLastStatusDuration() - 1);
-                if (player.getLastStatusEffect() == Statblock.Status.poison) {
-                    playerStatusString = "You takes " + (int)player.getLastStatusDamage() + "  poison damage";
+                if (player.getLastStatusEffect() == Statblock.Status.Poison) {
+                    playerStatusString = "You take " + (int)player.getLastStatusDamage() + "  poison damage";
                     statusLog = player.getName()  + " poisoned for " + (int)player.getLastStatusDamage();
                 }
 
@@ -536,6 +536,8 @@ public class Combat extends extraFunctions{
                            pushString(statusLog,true,false);
                        }else{
                            player.setLastStatusEffect(null);
+                           player.setLastStatusDuration(0);
+                           player.setLastStatusDamage(0);
                        }
                        playerEndTurn();
 
@@ -970,7 +972,7 @@ public class Combat extends extraFunctions{
         if (enemy.getLastStatusEffect() != null)
             if (enemy.getLastStatusDuration() > 1) {
                 enemy.setLastStatusDuration(enemy.getLastStatusDuration() - 1);
-                if (enemy.getLastStatusEffect() == Statblock.Status.poison) {
+                if (enemy.getLastStatusEffect() == Statblock.Status.Poison) {
                     enemyStatusString = enemy.getName() + " takes " + (int)enemy.getLastStatusDamage() + "  poison damage";
                     statusLog = enemy.getName()  + " poisoned for " + (int)enemy.getLastStatusDamage();
                 }
@@ -1209,6 +1211,9 @@ public class Combat extends extraFunctions{
         }
 
         if(collectReward){
+            player.setLastStatusEffect(null);
+            player.setLastStatusDuration(0);
+            player.setLastStatusDamage(0);
             if(player.winBattle(enemy)){
                 levelUp = true;
             }

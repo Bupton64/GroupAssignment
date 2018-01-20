@@ -22,7 +22,7 @@ public class ability_monster_rabidFang extends Ability {
         rabid.setLastStatusDuration(0);
         if(rabid.getLastDamage() > 0) {
             if (poisonChance > 70) {
-                rabid.setLastStatus(Statblock.Status.poison);
+                rabid.setLastStatus(Statblock.Status.Poison);
                 rabid.setLastStatusDuration(4);
                 int rand = (int) (Math.random() * 8);
                 rabid.setDamageOverTime(rand + user.getLevel() * 3);

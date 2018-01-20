@@ -19,7 +19,7 @@ public class ability_monster_blindingLight extends Ability {
         setLastStatusDuration(0);
         int num =(int)(Math.random()*100);
         if (num>20) {
-            setLastStatus(Statblock.Status.blind);
+            setLastStatus(Statblock.Status.Blind);
             int length = (int) (Math.random() * 3);
             length++;
             setLastStatusDuration(length);

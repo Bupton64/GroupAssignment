@@ -16,7 +16,7 @@ public class ability_monster_witheringTouch extends Ability {
 
     @Override
     public Ability use(Statblock user){
-        setLastStatus(Statblock.Status.poison);
+        setLastStatus(Statblock.Status.Poison);
         setLastStatusDuration(3);
         int rand = (int)(Math.random()*8);
         setDamageOverTime(rand + user.getLevel()*5);
