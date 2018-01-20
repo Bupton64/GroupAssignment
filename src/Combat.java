@@ -478,6 +478,10 @@ public class Combat extends extraFunctions{
 
         lastItemUsed.use(player);
         useItem= false;
+        if(lastItemUsed.getName() == "Antidote"){
+            playerStatusString = player.getLastStatusEffect() + " fades from you";
+            statusLog = player.getLastStatusEffect() + " fades from " + player.getName();
+        }
 
     }
 
@@ -574,14 +578,14 @@ public class Combat extends extraFunctions{
 
                 if (!playerAttackActive) {
                     if (lastAbility.getType() == Ability.AbilityType.damage) {
-                        drawText(100, 500, "Using " + lastAbility.getName() + " on " + enemy.getName() + "...", textFont, 20, g);
+                        drawText(150, 500, "You cast " + lastAbility.getName()  , textFont, 20, g);
                     } else if (lastAbility.getType() == Ability.AbilityType.buff || lastAbility.getType() == Ability.AbilityType.curse) {
-                        drawText(150, 500, "Casting " + lastAbility.getName() + "...", textFont, 20, g);
+                        drawText(150, 500, "You cast " + lastAbility.getName(), textFont, 20, g);
                     }
                 } else if (playerAttackActive) {
                     if (lastAbility.getType() == Ability.AbilityType.damage) {
                         if (playerNewStatusDisplay) {
-                            drawText(100, 500, enemy.getName() + " has been poisened", textFont, 20, g);
+                            drawText(100, 500, enemy.getName() + " has been poisoned", textFont, 20, g);
                         } else {
                             if (lastAbility.isLastHit()) {
                                 playerTurnLog = player.getName() + " dealt " + (int) playerDamage + " with " + lastAbility.getName();
@@ -590,9 +594,9 @@ public class Combat extends extraFunctions{
                                     drawBoldText(70, 500, "Your " + lastAbility.getName() + " CRITS " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
                                 } else {
                                     if (lastAbility.isMagic()) {
-                                        drawText(70, 500, "Your " + lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
+                                        drawText(70, 500, lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
                                     } else {
-                                        drawText(70, 500, "Your " + lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
+                                        drawText(70, 500, lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
                                     }
                                 }
                             } else {
@@ -1069,7 +1073,7 @@ public class Combat extends extraFunctions{
                         pushString(statusLog,false,false);
                         displayEnemyNewStatus = false;
                     }
-                }else if(enemyStatusString != "") {
+                }else if(enemyStatusString != "" ) {
                     displayEnemyOldStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
                         enemyEndTurn();
@@ -1100,9 +1104,9 @@ public class Combat extends extraFunctions{
         }else {
             if (!enemyAttackActive) {
                 if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
-                    drawText(70, 500, enemy.getName() + " attempts to " + enemyLastAbility.getName() + "...", textFont, 20, g);
+                    drawText(130, 500, enemy.getName() + " casts " + enemyLastAbility.getName() , textFont, 20, g);
                 } else if (enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse) {
-                    drawText(150, 500, enemy.getName() + "Casting " + enemyLastAbility.getName() + "...", textFont, 20, g);
+                    drawText(130, 500, enemy.getName() + " casts " + enemyLastAbility.getName(), textFont, 20, g);
                 }
             } else if (enemyAttackActive) {
                 if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
@@ -1114,15 +1118,15 @@ public class Combat extends extraFunctions{
                             enemyTurnLog = enemy.getName() + " dealt " + (int) enemyDamage + " with " + enemyLastAbility.getName();
                             if (enemyLastAbility.isMagic()) {
 
-                                drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage + " magic damage", textFont, 20, g);
+                                drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage , textFont, 20, g);
 
                             } else {
                                 if (enemyLastAbility.isLastCrit()) {
                                     enemyTurnLog = enemy.getName() + " crit for " + (int) enemyDamage + " with " + enemyLastAbility.getName();
-                                    drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int) enemyDamage + " phys damage", textFont, 20, g);
+                                    drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int) enemyDamage , textFont, 20, g);
                                 } else {
 
-                                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage + " phys damage", textFont, 20, g);
+                                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage , textFont, 20, g);
                                 }
 
                             }
