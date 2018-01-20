@@ -14,10 +14,10 @@ public class item_Eyedrops extends Item {
 
     @Override
     public void use(Character user){
-        if(user.getLastStatusDuration()>0 && user.getLastStatusEffect() == Statblock.Status.blind){
+        if((user.getLastStatusDuration()>0) && (user.getLastStatusEffect() == Statblock.Status.blind)){
             user.setLastStatusDuration(0);
             user.setLastStatusEffect(null);
-            this.setDisplayString(user.getName() + "eyes were cleared!");
+            this.setDisplayString(user.getName() + "'s eyes were cleared!");
         } else{
             this.setDisplayString("Nothing happened!");
         }

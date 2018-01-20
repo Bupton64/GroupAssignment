@@ -256,10 +256,10 @@ public class Ability {
             return true;
         }
         double hitChance=10+attack+attackBonus+speed+speedBonus;
-        if(user.getLastStatusDuration()>0 && user.getLastStatusEffect() == Statblock.Status.blind){
+        if((user.getLastStatusDuration() > 0) && (user.getLastStatusEffect() == Statblock.Status.blind)){
             hitChance-=10;
         }
-        double successCounter=Math.random()*user.getLevel()*8;
+        double successCounter=Math.random()*user.getLevel()*5;
         if (hitChance>successCounter){
             lastHit=true;
             return true;

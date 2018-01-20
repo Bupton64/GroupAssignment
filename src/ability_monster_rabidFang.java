@@ -17,11 +17,16 @@ public class ability_monster_rabidFang extends Ability {
     public Ability use(Statblock user){
         Ability rabid = super.use(user);
         int poisonChance = (int)(Math.random()*100);
-        if(poisonChance > 70){
-            setLastStatus(Statblock.Status.poison);
-            setLastStatusDuration(4);
-            int rand = (int)(Math.random()*8);
-            setDamageOverTime(rand + user.getLevel()*7);
+        System.out.println(poisonChance);
+        rabid.setLastStatus(null);
+        rabid.setLastStatusDuration(0);
+        if(rabid.getLastDamage() > 0) {
+            if (poisonChance > 70) {
+                rabid.setLastStatus(Statblock.Status.poison);
+                rabid.setLastStatusDuration(4);
+                int rand = (int) (Math.random() * 8);
+                rabid.setDamageOverTime(rand + user.getLevel() * 3);
+            }
         }
         return rabid;
     }

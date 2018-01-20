@@ -397,7 +397,7 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setXPTotal(0); //< TESTERS
+        setXPTotal(500); //< TESTERS
         checkLevelUp(); //< Tester
     }
 
@@ -559,6 +559,7 @@ public class Character extends Statblock {
         addItemToInventory(eye);
 
         item_Antidote anti = new item_Antidote();
+        anti.setCounter(99);
         addItemToInventory(anti);
 
         item_HealingSalve salve = new item_HealingSalve();
@@ -571,8 +572,7 @@ public class Character extends Statblock {
         addItemToInventory(elixir);
 
         item_Potion pot = new item_Potion();
-        addItemToInventory(pot);
-        addItemToInventory(pot);
+        pot.setCounter(99);
         addItemToInventory(pot);
     }
 

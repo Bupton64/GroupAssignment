@@ -15,13 +15,14 @@ public class ability_monster_blindingLight extends Ability {
 
     @Override
     public Ability use(Statblock user){
+        setLastStatus(null);
+        setLastStatusDuration(0);
         int num =(int)(Math.random()*100);
         if (num>20) {
             setLastStatus(Statblock.Status.blind);
             int length = (int) (Math.random() * 3);
             length++;
             setLastStatusDuration(length);
-            setDamageOverTime(0);
             setDisplayString(user.getName() + " blinded their foe!");
             return this;
         } else{

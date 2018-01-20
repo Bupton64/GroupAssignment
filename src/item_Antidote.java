@@ -14,10 +14,10 @@ public class item_Antidote extends Item {
 
     @Override
     public void use(Character user){
-        if(user.getLastStatusDuration()>0 && user.getLastStatusEffect() == Statblock.Status.poison){
+        if((user.getLastStatusDuration() > 0) && (user.getLastStatusEffect() == Statblock.Status.poison)){
             user.setLastStatusDuration(0);
             user.setLastStatusEffect(null);
-            this.setDisplayString(user.getName() + "blood was cleansed!");
+            this.setDisplayString(user.getName() + "'s blood was cleansed!");
         } else {
             this.setDisplayString("Nothing happened!");
         }

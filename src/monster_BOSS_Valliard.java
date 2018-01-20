@@ -26,11 +26,11 @@ public class monster_BOSS_Valliard extends Monster {
 
         Image sprite = loadImage("monster_BOSS_valliard.png"); //NEEDS IMAGE
         setSprite(sprite);
-        setSpriteWidth(120);
-        setSpriteHeight(120);
+        setSpriteWidth(200);
+        setSpriteHeight(200);
 
         // NEEDS ABILITIES
-        setUpAbilityNumberI(temp, 0, "Hand of Judgment", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 0, "Judgment", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
         temp[1] =  new ability_monster_lifeCoil();
         temp[2] = new ability_monster_rabidFang();
         temp[3] = new ability_Berserk();
