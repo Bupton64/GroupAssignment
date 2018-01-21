@@ -7,7 +7,7 @@ public class npc_plains_G7 extends  NPC {
 
 
     npc_plains_G7(){
-        setName("Camrath");
+        setName("Camrath the second");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setMapPosX(400);

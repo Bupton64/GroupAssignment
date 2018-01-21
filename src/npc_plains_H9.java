@@ -98,8 +98,6 @@ public class npc_plains_H9 extends  NPC {
         super.drawConvo(g, playerName,currentState, questName,questStage);
         if(questName == "talkToBlacksmith") {
             if (currentState == Quest.questState.inQuest) {
-
-                drawText(425, 375, "Press 'Space' to buy sword", "Arial", 20, g);
                 this.questStage = 4;
             }
             if(currentState == Quest.questState.completedQuest){

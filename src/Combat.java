@@ -499,9 +499,9 @@ public class Combat extends extraFunctions{
 
         lastItemUsed.use(player);
         useItem= false;
-        if(lastItemUsed.getName() == "Antidote"){
-            playerStatusString = player.getLastStatusEffect() + " fades from you";
-            statusLog = player.getLastStatusEffect() + " fades from " + player.getName();
+        if(lastItemUsed.getName() == "Antidote" && player.getLastStatusEffect() == Statblock.Status.Poison){
+            playerStatusString =  "Poison fades from you";
+            statusLog = "Poison fades from " + player.getName();
         }
 
     }
@@ -548,6 +548,8 @@ public class Combat extends extraFunctions{
                if(lastAbility.getType() == Ability.AbilityType.damage && lastAbility.getLastStatus() != null){
                    playerNewStatusDisplay = true;
                    if(playerAttackTimer > playerAttackExtraDelay){
+
+
                        playerEndTurn();
                        pushString(statusLog,true,false);
                        playerNewStatusDisplay = false;
@@ -558,13 +560,15 @@ public class Combat extends extraFunctions{
                    if(playerAttackTimer > playerAttackExtraDelay){
                        if(enemy.isAlive()) {
                            player.takeDamage((int) player.getLastStatusDamage());
+                           playerEndTurn();
                            pushString(statusLog,true,false);
                        }else{
                            player.setLastStatusEffect(null);
                            player.setLastStatusDuration(0);
                            player.setLastStatusDamage(0);
+                           playerEndTurn();
                        }
-                       playerEndTurn();
+
 
                        playerOldStatusDisplay = false;
                    }
