@@ -159,7 +159,7 @@ public class Ability {
     }
 
     public void setSpeedBonus(int speedBonus) {
-        speedBonus = speedBonus;
+        this.speedBonus = speedBonus;
     }
 
     public int getDefenseBonus() {
@@ -231,7 +231,7 @@ public class Ability {
        setAttackBonus(user.getAttackBonus()+user.getAttack()+user.getEquipAttackBonus());
        setDefenseBonus(user.getDefenseBonus()+user.getDefense()+user.getEquipDefenseBonus());
        setStrengthBonus(user.getStrengthBonus()+user.getStrength()+user.getEquipStrengthBonus());
-       setSpeedBonus(user.getSpeedBonus()+user.getSpeed()+user.getEquipSpeedBonus());
+       setSpeedBonus(user.getSpeedBonus() + user.getSpeed() + user.getEquipSpeedBonus());
        setLuckBonus(user.getLuckBonus()+user.getLuck()+user.getEquipLuckBonus());
        lastDamage=attackLoop(user);
        //user.setEnergy(user.getEnergy()-energyCost);
@@ -256,10 +256,12 @@ public class Ability {
             return true;
         }
         double hitChance=10+attack+attackBonus+speed+speedBonus;
+        System.out.println(user.getName() + " hit chance = attack " + attack + " + aBonus " + attackBonus + " + speed " + speed + " + sBonus " + speedBonus);
         if((user.getLastStatusDuration() > 0) && (user.getLastStatusEffect() == Statblock.Status.Blind)){
             hitChance-=10;
         }
         double successCounter=Math.random()*user.getLevel()*5;
+        System.out.println(user.getName() + " Hitchance " + hitChance + " success counter " + successCounter);
         if (hitChance>successCounter){
             lastHit=true;
             return true;
