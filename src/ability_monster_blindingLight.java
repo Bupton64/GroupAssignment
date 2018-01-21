@@ -20,7 +20,7 @@ public class ability_monster_blindingLight extends Ability {
         int num =(int)(Math.random()*100);
         if (num>20) {
             setLastStatus(Statblock.Status.Blind);
-            int length = (int) (Math.random() * 3);
+            int length = (int) (Math.random() * 4);
             length++;
             setLastStatusDuration(length);
             setDisplayString(user.getName() + " blinded their foe!");
