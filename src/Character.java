@@ -397,7 +397,7 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setXPTotal(0); //< TESTERS
+        setXPTotal(400); //< TESTERS
         checkLevelUp(); //< Tester
     }
 

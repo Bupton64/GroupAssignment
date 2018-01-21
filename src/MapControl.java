@@ -459,6 +459,7 @@ public class MapControl extends extraFunctions {
             if(updateQuestState == 99) {
                 playerMan.setCombatActive(true);
                 playerMan.setMonsterGen(1);
+                updateQuestState = 0;
                 return 2;
 
             }else if(updateQuestState != 0){

@@ -35,11 +35,16 @@ public class Combat extends extraFunctions{
     Image LevelPortrait;
 
 
+    Image statusSpriteSheet;
+    Image statusPoison;
+    Image statusBlind;
+
     public void initPortrait(){
         LevelPortrait = subImage(buttonSpriteSheet,450,155,120,120);
 
-
-
+        statusSpriteSheet = loadImage("status_effects.png");
+        statusPoison = subImage(statusSpriteSheet,189,0,16,16);
+        statusBlind = subImage(statusSpriteSheet,336,0,16,16);
 
         heartImage = loadImage("heart.png");
         energyImage = loadImage("newbolt.png");
@@ -56,10 +61,19 @@ public class Combat extends extraFunctions{
 
     public void drawPlayerNamePlate(Graphics2D g) {
 
+        //Status Display
+        if(player.getLastStatusEffect() == Statblock.Status.Poison){
+            drawImage(statusPoison,287,41,32,32,g);
+        }else if( player.getLastStatusEffect() == Statblock.Status.Blind){
+            drawImage(statusBlind,287,41,32,32,g);
+        }
+
+
         //Level Display
         drawImage(LevelPortrait,80,0,30,30,g);
         changeColor(white,g);
         drawBoldText(91,19,Integer.toString(player.getLevel()), "felix titling",13,g);
+
 
         changeColor(Color.gray,g);
 
@@ -135,6 +149,13 @@ public class Combat extends extraFunctions{
     }
 
     public void drawEnemyNamePlate(Graphics2D g){
+
+        //Status Display
+        if(enemy.getLastStatusEffect() == Statblock.Status.Poison){
+            drawImage(statusPoison,482,41,32,32,g);
+        }else if(enemy.getLastStatusEffect() == Statblock.Status.Blind){
+            drawImage(statusBlind,482,41,32,32,g);
+        }
 
         //Level Display
         drawImage(LevelPortrait,695 ,0,30,30,g);
@@ -577,10 +598,10 @@ public class Combat extends extraFunctions{
             } else {
 
                 if (!playerAttackActive) {
-                    if (lastAbility.getType() == Ability.AbilityType.damage) {
+                    if (lastAbility.isMagic()) {
                         drawText(150, 500, "You cast " + lastAbility.getName()  , textFont, 20, g);
-                    } else if (lastAbility.getType() == Ability.AbilityType.buff || lastAbility.getType() == Ability.AbilityType.curse) {
-                        drawText(150, 500, "You cast " + lastAbility.getName(), textFont, 20, g);
+                    } else {
+                        drawText(150, 500, "You used " + lastAbility.getName(), textFont, 20, g);
                     }
                 } else if (playerAttackActive) {
                     if (lastAbility.getType() == Ability.AbilityType.damage) {
@@ -890,7 +911,12 @@ public class Combat extends extraFunctions{
     public void updateRun(double dt){
         if(state == CombatState.run){
             if(Math.random()* 10 > 3 && !escapeChance) {
+
                 makeEscape = true;
+
+                if(enemy.getName() == "Valliard" ){
+                    makeEscape = false;
+                }
             }
             escapeChance = true;
             escapeTimer += dt;
@@ -1103,10 +1129,10 @@ public class Combat extends extraFunctions{
             drawText(70, 500, enemyStatusString, textFont, 20, g);
         }else {
             if (!enemyAttackActive) {
-                if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
+                if (enemyLastAbility.isMagic()){
                     drawText(130, 500, enemy.getName() + " casts " + enemyLastAbility.getName() , textFont, 20, g);
-                } else if (enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse) {
-                    drawText(130, 500, enemy.getName() + " casts " + enemyLastAbility.getName(), textFont, 20, g);
+                } else{
+                    drawText(130, 500, enemy.getName() + " uses " + enemyLastAbility.getName(), textFont, 20, g);
                 }
             } else if (enemyAttackActive) {
                 if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
@@ -1252,18 +1278,24 @@ public class Combat extends extraFunctions{
             drawImage(chestTwo,580,210,130,100,g);
             drawText(80, 500, "Press 'Space' again to return to the overworld!", "Times New Roman", 18, g);
             if(reward.getName() == null){
+                changeColor(red,g);
                 drawText(400, 270, "Nothing", "Times New Roman", 18, g);
             }else{
+                changeColor(blue,g);
                 drawText(400, 270, reward.getName(), "Times New Roman", 18, g);
             }
             changeColor(black,g);
             drawBoldText(360,170,"Victory","felix Titling",22,g);
             drawBoldText(340,230,"Gold ","felix Titling",15,g);
+
             drawBoldText(340,250,"Exp","felix Titling",15,g);
+
             drawBoldText(340,270,"Item","felix Titling",15,g);
-            changeColor(white,g);
+
+            changeColor(purple,g);
             drawBoldText(400,250,"+" + enemy.getXPGain() ,"Times New Roman", 20,g);
            // changeColor(yellow,g);
+            changeColor(yellow,g);
             drawBoldText(400,230,"+" + (player.getGpTotal() - currentGold)  ,"Times New Roman",20,g);
 
         }
@@ -1278,7 +1310,7 @@ public class Combat extends extraFunctions{
 
         if(levelUp){
             changeColor(purple,g);
-            drawBoldText(260,170,"Level Up","Felix Titling",70,g);
+            drawBoldText(340,310,"Level Up!","Felix Titling",30,g);
         }
 
     }
