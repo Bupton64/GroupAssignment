@@ -102,11 +102,14 @@ public class StartScreen extends extraFunctions {
 
         if(timer>6){
             if(timer<10.9) {
-                num += 1;
+                if(num<105) {
+                    num += 1;
+                }
             }
+            drawText(100, 100, Integer.toString(num), g);
             drawImage(Logo, 85, 100,6*num,1*num, g );
         }
-        if((timer>10.9)&&(timer<100)) {
+        if((num>104)&&(timer<100)) {
 
             changeColor(white, g);
             drawText(220, 500, "- Press <SPACE> to begin your adventure -",  "New Roman Times", 20, g);

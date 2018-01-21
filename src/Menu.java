@@ -611,13 +611,11 @@ public class Menu extends extraFunctions {
                     drawBoldText(60, 300, "CHARACTER:", "Felix Titling", 20, g);
                     drawLine(60, 306, 170, 306, 2, g);
                     drawLine(270, 330, 270, 480, 2, g);
-
                     drawBoldText(60, 350, "ATK", "Felix Titling", 15, g);
                     drawBoldText(60, 350 + 30, "DEF", "Felix Titling", 15, g);
                     drawBoldText(60, 350 + 60, "STR", "Felix Titling", 15, g);
                     drawBoldText(60, 350 + 90, "SPD", "Felix Titling", 15, g);
                     drawBoldText(60, 350 + 120, "LUK", "Felix Titling", 15, g);
-
                     drawBoldText(200, 350, Integer.toString(player1.getAttack() + player1.getEquipAttackBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 30, Integer.toString(player1.getDefense() + player1.getEquipDefenseBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 60, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 18, g);
@@ -849,6 +847,7 @@ public class Menu extends extraFunctions {
               index = checkLeftItemEquip(temp);
           }
           if((e.getKeyCode() == KeyEvent.VK_SPACE)&&slotSelect){
+              scroller2 = 0;
               itemSelect = true;
               slotSelect = false;
           }
