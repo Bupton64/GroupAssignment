@@ -51,8 +51,7 @@ public class monster_Witch extends Monster {
     public Ability moveChoice(){
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
-        return abilities[3].use(this); //< Use Blinding Light
-        /*if(getCurrentHP()>getMaxHP()*0.5){
+        if(getCurrentHP()>getMaxHP()*0.5){
             if(getEnergy()>1){
                 if(num>70){
                     return abilities[1].use(this); //< Use Snowblast
@@ -68,8 +67,10 @@ public class monster_Witch extends Monster {
             if(getEnergy()>4){
                 if(num>30) {
                     return abilities[2].use(this); //< Use Ice Storm
-                } else {
+                } else if ( num > 10) {
                     return abilities[3].use(this); //< Use Blinding Light
+                } else {
+                    return abilities[0].use(this); //< Use Freezing Ray
                 }
             } else if(getEnergy()>1){
                 if(num>50){
@@ -80,6 +81,6 @@ public class monster_Witch extends Monster {
             } else{
                 return abilities[0].use(this); //< Use Freezing Ray
             }
-        }*/
+        }
     }
 }
