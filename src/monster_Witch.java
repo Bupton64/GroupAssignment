@@ -67,8 +67,10 @@ public class monster_Witch extends Monster {
             if(getEnergy()>4){
                 if(num>30) {
                     return abilities[2].use(this); //< Use Ice Storm
-                } else {
+                } else if ( num > 10) {
                     return abilities[3].use(this); //< Use Blinding Light
+                } else {
+                    return abilities[0].use(this); //< Use Freezing Ray
                 }
             } else if(getEnergy()>1){
                 if(num>50){

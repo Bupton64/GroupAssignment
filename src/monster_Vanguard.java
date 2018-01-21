@@ -12,10 +12,10 @@ public class monster_Vanguard extends Monster{
         for (int i = 0; i < 3; i++) {
             temp[i] = new Ability();
         }
-        setAttack(13);
-        setDefense(6);
+        setAttack(6);
+        setDefense(0);
         setLuck(4);
-        setSpeed(14);
+        setSpeed(16);
         setStrength(4);
         setXPGain(900);
         setGoldMin(190);
@@ -24,9 +24,9 @@ public class monster_Vanguard extends Monster{
         setMaxHP(250);
         setLevel(5);
         setAlive(true);
-        setName("Therox's Vanguard");
+        setName("Vanguard");
         setEnergy(0);
-        setUpAbilityNumberI(temp, 0, "Two Handed Smash", 2, 0, 0, 0, 1, false, -1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 0, "Smash", 2, 0, 0, 0, 1, false, -1, "", true, Ability.AbilityType.damage, "");
         setUpAbilityNumberI(temp, 1, "Cleave", 0, 2, 2, 2, 2, false, 2, "", true, Ability.AbilityType.damage, "");
         setUpAbilityNumberI(temp, 2, "Whirling Axes", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
