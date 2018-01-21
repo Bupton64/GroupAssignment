@@ -1252,16 +1252,19 @@ public class Combat extends extraFunctions{
             drawImage(chestTwo,580,210,130,100,g);
             drawText(80, 500, "Press 'Space' again to return to the overworld!", "Times New Roman", 18, g);
             if(reward.getName() == null){
-                drawText(80, 470, "Nothing dropped from " + enemy.getName(), "Times New Roman", 18, g);
+                drawText(400, 270, "Nothing", "Times New Roman", 18, g);
             }else{
-                drawText(80, 470, reward.getName() + " dropped from " + enemy.getName(), "Times New Roman", 18, g);
+                drawText(400, 270, reward.getName(), "Times New Roman", 18, g);
             }
             changeColor(black,g);
-            drawText(300,100,"Reward","felix Titling",30,g);
-            changeColor(purple,g);
-            drawBoldText(570,210,"+" + enemy.getXPGain() + " EXP","Times New Roman", 20,g);
-            changeColor(yellow,g);
-            drawBoldText(570,190,"+" + (player.getGpTotal() - currentGold) + " GOLD","Times New Roman",20,g);
+            drawBoldText(360,170,"Victory","felix Titling",22,g);
+            drawBoldText(340,230,"Gold ","felix Titling",15,g);
+            drawBoldText(340,250,"Exp","felix Titling",15,g);
+            drawBoldText(340,270,"Item","felix Titling",15,g);
+            changeColor(white,g);
+            drawBoldText(400,250,"+" + enemy.getXPGain() ,"Times New Roman", 20,g);
+           // changeColor(yellow,g);
+            drawBoldText(400,230,"+" + (player.getGpTotal() - currentGold)  ,"Times New Roman",20,g);
 
         }
         if(right){
