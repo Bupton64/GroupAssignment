@@ -51,36 +51,30 @@ public class monster_Wyvern extends Monster {
     public Ability moveChoice(){
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
-        return abilities[1].use(this);
-        /*if(getCurrentHP()>getMaxHP()*0.5){
-            if(getEnergy()>1){
-                if(num>70){
-                    return abilities[1].use(this); //< Use Snowblast
-                } else if(num>50){
-                    return abilities[3].use(this); //< Use Blinding Light
+
+        if(this.getCurrentHP() > this.getMaxHP()*0.8){
+            if(this.getEnergy() > 1){
+                if(num > 30){
+                    return abilities[1].use(this); //< Razor Bite
                 } else {
-                    return abilities[0].use(this); //< Use Freezing Ray
-                }
-            }  else{
-                return abilities[0].use(this); //< Use Freezing Ray
-            }
-        } else{
-            if(getEnergy()>4){
-                if(num>30) {
-                    return abilities[2].use(this); //< Use Ice Storm
-                } else {
-                    return abilities[3].use(this); //< Use Blinding Light
-                }
-            } else if(getEnergy()>1){
-                if(num>50){
-                    return abilities[1].use(this); //< Use Snowblast
-                } else{
-                    return abilities[0].use(this); //< Use Freezing Ray
+                    return abilities[0].use(this); //< Swooping Claw
                 }
             } else{
-                return abilities[0].use(this); //< Use Freezing Ray
+                return abilities[0].use(this); //< Swooping Claw
             }
-        }*/
+        } else if(this.getCurrentHP() > this.getMaxHP() * 0.3){
+            if(num > 70){
+                return abilities[1].use(this); //< Razor Bite
+            } else {
+                return abilities[0].use(this); //< Swooping Claw
+            }
+        } else{
+            if(this.getEnergy() > 3){
+                return abilities[2].use(this); //< Body Slam
+            } else{
+                return abilities[0].use(this); //< Swooping Claw
+            }
+        }
     }
 
 }

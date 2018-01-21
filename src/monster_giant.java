@@ -30,7 +30,7 @@ public class monster_giant extends Monster {
         setUpAbilityNumberI(temp, 1, "Hammer Down!", 0, 0, 0, 0, 0, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_wyvern.png");
+        Image sprite = loadImage("monster_giant.png");
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);

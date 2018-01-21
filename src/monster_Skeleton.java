@@ -50,36 +50,33 @@ public class monster_Skeleton extends Monster {
     public Ability moveChoice(){
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
-        return abilities[1].use(this);
-        /*if(getCurrentHP()>getMaxHP()*0.5){
-            if(getEnergy()>1){
-                if(num>70){
-                    return abilities[1].use(this); //< Use Snowblast
-                } else if(num>50){
-                    return abilities[3].use(this); //< Use Blinding Light
+
+        if(this.getCurrentHP() > this.getMaxHP() *0.6){
+            if (this.getEnergy() > 1){
+                if(num > 80){
+                    return abilities[1].use(this); //< Withering Touch
                 } else {
-                    return abilities[0].use(this); //< Use Freezing Ray
-                }
-            }  else{
-                return abilities[0].use(this); //< Use Freezing Ray
-            }
-        } else{
-            if(getEnergy()>4){
-                if(num>30) {
-                    return abilities[2].use(this); //< Use Ice Storm
-                } else {
-                    return abilities[3].use(this); //< Use Blinding Light
-                }
-            } else if(getEnergy()>1){
-                if(num>50){
-                    return abilities[1].use(this); //< Use Snowblast
-                } else{
-                    return abilities[0].use(this); //< Use Freezing Ray
+                    return abilities[0].use(this); //< Skeletal Fist
                 }
             } else{
-                return abilities[0].use(this); //< Use Freezing Ray
+                return abilities[0].use(this); //< Skeletal Fist
             }
-        }*/
+        } else{
+            if(this.getEnergy() > 4){
+                return abilities[2].use(this); //< Sacrament
+            } else if (this.getEnergy() > 1){
+                if(num > 70){
+                    return abilities[1].use(this); //< Withering Touch
+                } else {
+                    return abilities[0].use(this); //< Skeletal Fist
+                }
+            } else {
+                return abilities[0].use(this); //< Skeletal Fist
+            }
+        }
+
+
+
     }
 
 }
