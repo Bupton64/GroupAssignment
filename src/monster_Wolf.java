@@ -17,7 +17,7 @@ public class monster_Wolf extends Monster {
         setLuck(0);
         setSpeed(2);
         setStrength(2);
-        setXPGain(175);
+        setXPGain(200);
         setGoldMin(60);
         setGoldMax(80);
         setCurrentHP(105);
@@ -42,18 +42,12 @@ public class monster_Wolf extends Monster {
     @Override
     public Item dropLoot(){
         Item newItem = new Item();
-        int num =(int)(Math.random()*100);
-        if(num >90){
-            newItem = new item_Antidote();
-        }
         return newItem;
     }
 
     @Override
     public Ability moveChoice() {
-        Ability [] abilities = this.getAbilities();
-        return abilities[3].use(this); //< Use Rabid Fang
-        /*int num=(int)(Math.random()*100);
+        int num=(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
         if(this.getCurrentHP()>0.8*this.getMaxHP()){//< If greater than 80% hp
             if(this.getEnergy()>=4){
@@ -115,6 +109,6 @@ public class monster_Wolf extends Monster {
             } else{
                 return abilities[0].use(this); //< Use Basic
             }
-        }*/
+        }
     }
 }

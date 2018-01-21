@@ -50,36 +50,33 @@ public class monster_Vanguard extends Monster{
     public Ability moveChoice(){
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
-        return abilities[1].use(this);
-        /*if(getCurrentHP()>getMaxHP()*0.5){
-            if(getEnergy()>1){
-                if(num>70){
-                    return abilities[1].use(this); //< Use Snowblast
-                } else if(num>50){
-                    return abilities[3].use(this); //< Use Blinding Light
+        if(this.getCurrentHP() > this.getMaxHP()*0.6){
+            if(this.getEnergy() > 1){
+                if(num > 70){
+                    return abilities[1].use(this); //< Cleave
                 } else {
-                    return abilities[0].use(this); //< Use Freezing Ray
+                    return abilities[0].use(this); //< Two Handed Smash
                 }
-            }  else{
-                return abilities[0].use(this); //< Use Freezing Ray
+            } else {
+                return abilities[0].use(this); //< Two Handed Smash
             }
         } else{
-            if(getEnergy()>4){
-                if(num>30) {
-                    return abilities[2].use(this); //< Use Ice Storm
+            if(this.getEnergy() > 4){
+                if(num > 40){
+                    return abilities[2].use(this); //< Whirling Axes
                 } else {
-                    return abilities[3].use(this); //< Use Blinding Light
+                    return abilities[1].use(this); //< Cleave
                 }
-            } else if(getEnergy()>1){
-                if(num>50){
-                    return abilities[1].use(this); //< Use Snowblast
+            } else if (this.getEnergy() > 1) {
+                if(num > 40) {
+                    return abilities[1].use(this); //< Cleave
                 } else{
-                    return abilities[0].use(this); //< Use Freezing Ray
+                    return abilities[0].use(this); //< Two Handed Smash
                 }
-            } else{
-                return abilities[0].use(this); //< Use Freezing Ray
+            } else {
+                return abilities[0].use(this); //< Two Handed Smash
             }
-        }*/
+        }
     }
 
 }
