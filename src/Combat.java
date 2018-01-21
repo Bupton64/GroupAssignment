@@ -1160,6 +1160,8 @@ public class Combat extends extraFunctions{
     Image chestOne;
     Image chestTwo;
 
+    Image lootScroll;
+
 
 
     Image coinImage;
@@ -1178,6 +1180,8 @@ public class Combat extends extraFunctions{
     boolean levelUp;
 
     public void initLootScreen(){
+
+        lootScroll = loadImage("LootPicture.png");
 
         chestSpriteSheet = loadImage("chests.png");
         chestOne = subImage(chestSpriteSheet,0,310,80,50);
@@ -1243,6 +1247,8 @@ public class Combat extends extraFunctions{
             drawText(80, 500, "Victory, Press 'Space' on Chest to collect Reward", "Times New Roman", 18, g);
             drawImage(chestOne,580,210,130,100,g);
         }else{
+            drawImage(lootScroll,270,50,300,350,g);
+
             drawImage(chestTwo,580,210,130,100,g);
             drawText(80, 500, "Press 'Space' again to return to the overworld!", "Times New Roman", 18, g);
             if(reward.getName() == null){
@@ -1250,6 +1256,8 @@ public class Combat extends extraFunctions{
             }else{
                 drawText(80, 470, reward.getName() + " dropped from " + enemy.getName(), "Times New Roman", 18, g);
             }
+            changeColor(black,g);
+            drawText(300,100,"Reward","felix Titling",30,g);
             changeColor(purple,g);
             drawBoldText(570,210,"+" + enemy.getXPGain() + " EXP","Times New Roman", 20,g);
             changeColor(yellow,g);
@@ -1312,8 +1320,8 @@ public class Combat extends extraFunctions{
                     }
                     break;
                 case 4:
-                    if (roll > 9) {
-                        enemy = new monster_Goblin();
+                    if (roll > 7) {
+                        enemy = new monster_Vanguard();
                     } else if (roll > 5) {
                         enemy = new monster_Wolf();
                     } else {
@@ -1322,9 +1330,42 @@ public class Combat extends extraFunctions{
                     break;
                 case 5:
                     if (roll > 8) {
-                        enemy = new monster_Wolf();
-                    } else {
                         enemy = new monster_Witch();
+                    } else if(roll > 1) {
+                        enemy = new monster_Vanguard();
+                    }else{
+                        enemy = new monster_Skeleton();
+                    }
+                    break;
+                case 6:
+                    if (roll > 7) {
+                        enemy = new monster_Vanguard();
+                    } else if (roll > 4) {
+                        enemy = new monster_Skeleton();
+                    }else if (roll > 1){
+                        enemy = new monster_Wyvern();
+                    }else{
+                        enemy = new monster_giant();
+                    }
+                    break;
+                case 7:
+                    if (roll > 6) {
+                        enemy = new monster_Skeleton();
+                    } else if (roll > 2) {
+                        enemy = new monster_Wyvern();
+                    }else if (roll > 1){
+                        enemy = new monster_Vanguard();
+                    }else{
+                        enemy = new monster_giant();
+                    }
+                    break;
+                case 8:
+                    if (roll > 6.5) {
+                        enemy = new monster_Skeleton();
+                    } else if (roll > 3) {
+                        enemy = new monster_Wyvern();
+                    }else{
+                        enemy = new monster_giant();
                     }
                     break;
                 default:
