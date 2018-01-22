@@ -7,7 +7,7 @@ public class npc_plains_E13_Valliard extends NPC{
     npc_plains_E13_Valliard() {
         setName("Valliard");
         spriteSheet = loadImage("chara4.png");
-        sprite = subImage(spriteSheet,520,288,56,72);
+        sprite = subImage(spriteSheet,520,504,56,72);
         setMapPosX(400);
         setMapPosY(250);
 
@@ -17,7 +17,7 @@ public class npc_plains_E13_Valliard extends NPC{
 
     @Override
     public void setUpCollision(Collision collisionDetector, Map map) {
-        collisionDetector.addBoxCollision(((int) getMapPosX() / 10 - 2), ((int) getMapPosY() / 10 - 5), ((int) getWidth() / 10 - 2), ((int) getHeight() / 10 - 2), map.isFlicker());
+        collisionDetector.addBoxCollision(((int) getMapPosX() / 10 - 2), ((int) getMapPosY() / 10 - 4), ((int) getWidth() / 10 - 2), ((int) getHeight() / 10 - 2), map.isFlicker());
     }
 
     /////////////////////////////////////////

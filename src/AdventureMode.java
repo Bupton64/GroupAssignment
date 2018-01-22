@@ -58,6 +58,7 @@ public class AdventureMode extends GameEngine {
 
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
+
         state = GameState.MainMenu;
         StartController.initStart();
 
@@ -98,28 +99,23 @@ public class AdventureMode extends GameEngine {
 
 
 
-           if (state == GameState.TravelMode) {
-
-              mapController.updateNPC(dt,playerMovement,collisionDetector);
-
-
-
-               mapController.updateMap();
-               collisionDetector.updateCollision(playerMan, playerMovement);
-              stateChanger = playerMovement.updateCharMovement(dt, playerMan);
-              if(stateChanger != 2) {
-                  stateChanger = mapController.updateQuest(dt);
-              }
-           } else if (state == GameState.CombatMode) {
-              stateChanger =  combatMode.update(dt);
-           }else if(state == GameState.OverWorldMenu) {
-               //add Update later
-
-           }else if(state == GameState.MainMenu){
-               StartController.updateTimer(dt);
-           } else if(state == GameState.CutScene){
-               cut_scene.updateTimer(dt);
-           }
+        if (state == GameState.TravelMode) {
+            mapController.updateNPC(dt,playerMovement,collisionDetector);
+            mapController.updateMap();
+            collisionDetector.updateCollision(playerMan, playerMovement);
+            stateChanger = playerMovement.updateCharMovement(dt, playerMan);
+            if(stateChanger != 2) {
+                stateChanger = mapController.updateQuest(dt);
+            }
+        }else if (state == GameState.CombatMode) {
+            stateChanger =  combatMode.update(dt);
+        }else if(state == GameState.OverWorldMenu) {
+            //add Update later
+        }else if(state == GameState.MainMenu){
+            StartController.updateTimer(dt);
+        } else if(state == GameState.CutScene){
+            cut_scene.updateTimer(dt);
+        }
     }
 
 
@@ -128,11 +124,8 @@ public class AdventureMode extends GameEngine {
         clearBackground(800, 600);
         changeBackgroundColor(white);
         if (state == GameState.TravelMode) {
-
             mapController.drawMap(mGraphics); //< Draw the Map
-
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
-
             mapController.drawNPCInteraction(mGraphics);
             playerMan.getCurrentQuest().drawQuest(mGraphics);
            // questInProgress.drawQuest(mGraphics);
@@ -141,7 +134,6 @@ public class AdventureMode extends GameEngine {
             drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
             drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
             drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
-
             drawText(50, 110, Integer.toString(playerMan.getQuestStage()), "Times New Roman", 20);
 
 
@@ -152,7 +144,6 @@ public class AdventureMode extends GameEngine {
             MenuController.drawChaMenu(mGraphics);
             MenuController.drawInvMenu(mGraphics);
             MenuController.drawEquMenu(mGraphics);
-
 
         }else if(state == GameState.MainMenu){
             changeBackgroundColor(black);
@@ -205,16 +196,15 @@ public class AdventureMode extends GameEngine {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE && MenuController.isChaMenu()) {
                 stateChanger = 1;
             }
-
         }
+
         if (state == GameState.MainMenu){
             StartController.keyPressed(e);
             if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 150)&& !StartController.startup){
                 stateChanger = 7;
             }
-
-
         }
+
         if(e.getKeyCode() == KeyEvent.VK_T){
             stateChanger = 5;
         }
