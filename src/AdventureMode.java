@@ -135,6 +135,8 @@ public class AdventureMode extends GameEngine {
             drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
             drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
 
+            drawText(50, 110, Integer.toString(playerMan.getQuestStage()), "Times New Roman", 20);
+
 
         } else if (state == GameState.CombatMode) {
             combatMode.paintComponent(mGraphics); //< Draw Combat

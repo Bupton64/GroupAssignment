@@ -79,9 +79,9 @@ public class npc_wizard extends  NPC {
 
     public int updateConvo(){
         switch (this.questStage){
-            case 1:
+            case 2:
                 currentDialogue = listTwo;
-                return 1;
+                return 2;
             case 3:
                 currentDialogue = listFour;
                 return 3;
@@ -131,11 +131,9 @@ public class npc_wizard extends  NPC {
 
 
         if(questName == "A Wizards Problem") {
-            if (currentState == Quest.questState.preQuest) {
-                this.questStage = 0;
-            }
+
             if (currentState == Quest.questState.completedQuest) {
-                this.questStage = 2;
+                this.questStage = 3;
                 if(currentDialogue != listThree){
                     loadDialogue = true;
                 }
@@ -164,10 +162,10 @@ public class npc_wizard extends  NPC {
             if(currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375) {
                     switch (questStage) {
-                        case 0:
-                            questStage = 1;
+                        case 1:
+                            questStage = 2;
                             break;
-                        case 2:
+                        case 3:
                             questStage = 3;
                             break;
                     }

@@ -43,23 +43,46 @@ public class npc_plains_E9_byBridge extends  NPC {
 
 
     Dialogue listOne;
+    Dialogue listTwo;
 
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,true,true,"You must be Bjarne right? I'm so sorry to hear what happened to your","town. Hopefully the Wizard in the North will be able to help you!","","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"Have you gone to see the wizard yet?","","","");
+        listTwo = d2;
     }
 
-    public void updateDialogue(Quest.questState  currentState){
 
-        currentDialogue = listOne;
 
+    public int updateConvo(){
+        switch (this.questStage){
+            case 1:
+                currentDialogue = listTwo;
+                return 1;
+            default:
+                return 0;
+
+        }
+
+    }
+
+
+    public void updateDialogue(int currentStage,String questName){
+
+        if(questStage == 0) {
+            currentDialogue = listOne;
+        }
+        if (currentStage > 0) {
+            currentDialogue = listTwo;
+        }
     }
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
 
         if(loadDialogue) {
-            updateDialogue(currentState);
+            updateDialogue(questStage, questName);
             loadDialogue = false;
         }
         super.drawConvo(g, playerName,currentState, questName,questStage);

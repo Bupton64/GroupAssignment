@@ -759,8 +759,11 @@ public class Character extends Statblock {
     public void changeQuest(int swapTo){
         switch(swapTo){
             case 1:
-                currentQuest.setState(Quest.questState.inQuest);
+                currentQuest = new quest_AWizardsProblem();
+                currentQuest.setState(Quest.questState.preQuest);
                 break;
+            case 2:
+                currentQuest.setState(Quest.questState.inQuest);
             case 3:
                 currentQuest.giveReward(this);
                 currentQuest = new quest_TheRoadToRiches();
