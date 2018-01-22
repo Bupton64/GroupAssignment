@@ -67,6 +67,7 @@ public class Shop1 extends extraFunctions {
     }
 
     void drawShop(Graphics2D g) {
+        player1.setGpTotal(10000);
         if(pos == 0) {
             current = scroller / 100;
         }

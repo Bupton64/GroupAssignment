@@ -173,6 +173,7 @@ public class Character extends Statblock {
     }
 
     public void addItemToInventory(Item newItem){
+        if(isInventoryFull()){ return;}
         if(newItem.getSlot() == Item.Slot.bag) {
             if (alreadyHoldsItem(newItem)) {
                 int index = findItemIndex(newItem);
@@ -335,8 +336,8 @@ public class Character extends Statblock {
 
         // Memory initialisation
 
-        inventory = new Item [100];
-        for(int i=0; i<100; i++){
+        inventory = new Item [50];
+        for(int i=0; i<50; i++){
             inventory[i] = new Item();
         }
         equippedItems = new Item [6];
@@ -396,6 +397,7 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
+        setGpTotal(100000000);
         setXPTotal(0); //< TESTERS
         setGpTotal(5000);
         checkLevelUp(); //< Tester
