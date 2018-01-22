@@ -30,7 +30,7 @@ public class Shop1 extends shop {
         setShopInventory(inventory);
     }
 
-    void drawShop(Graphics2D g) {
+    public void drawShop(Graphics2D g) {
         this.getPlayer1().setGpTotal(10000);
         if(this.getPos() == 0) {
             this.setCurrent(this.getScroller() / 100);
