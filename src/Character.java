@@ -329,7 +329,7 @@ public class Character extends Statblock {
     public void init(){
         //Quest Init - Zane
         questStage = 0;
-        currentQuest = new quest_killingForWizard();
+        currentQuest = new quest_blankQuest();
         playerStoreAccess = StoreAccess.preTier;
 
         // Memory initialisation
@@ -781,7 +781,7 @@ public class Character extends Statblock {
                 break;
             case 3:
                 currentQuest.giveReward(this);
-                currentQuest = new quest_talkToBlacksmith();
+                currentQuest = new quest_TheRoadToRiches();
                 break;
         }
 

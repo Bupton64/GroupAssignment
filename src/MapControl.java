@@ -254,6 +254,9 @@ public class MapControl extends extraFunctions {
                         mapNpcs[0] = new npc_plains_priest();
                         numOfNpc = 1;
                         break;
+                    case 51:
+                        currentMap = new plains_A9_church();
+                        break;
                 }
             }
         }
