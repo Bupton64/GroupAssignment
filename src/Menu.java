@@ -770,7 +770,7 @@ public class Menu extends extraFunctions {
 
 
           if(e.getKeyCode() == KeyEvent.VK_SPACE){
-              if(player1.getInventory()[index].getName() == "Potion"){
+              if(player1.getInventory()[index].getSlot().name() == "bag"){
                   player1.getInventory()[index].use(player1);
               }
               if(player1.getInventory()[index].isEquippable() == true){
