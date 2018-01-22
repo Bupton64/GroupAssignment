@@ -793,7 +793,11 @@ public class Menu extends extraFunctions {
               nextPage = true;
               if(pageNum==1){
                   pageNum = totalPages;
-                  pos = player1.getInventorySize() - player1.getInventorySize()%5;;
+                  if(player1.getInventorySize() == 50) {
+                      pos = (player1.getInventorySize() - player1.getInventorySize() % 5) - 5;
+                  }else{
+                      pos = (player1.getInventorySize() - player1.getInventorySize() % 5);
+                  }
                   if(player1.getInventorySize() == 50) {
                       index = (player1.getInventorySize() - player1.getInventorySize() % 5)-1;
                   }else{
