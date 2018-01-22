@@ -397,12 +397,11 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setGpTotal(100000000);
-        setQuestStage(9);
-        currentQuest = new quest_TheRoadToRiches();
-        currentQuest.setState(Quest.questState.completedQuest);
+//        setGpTotal(100000000);
+//        setQuestStage(9);
+//        currentQuest = new quest_TheRoadToRiches();
+//        currentQuest.setState(Quest.questState.completedQuest);
         setXPTotal(0); //< TESTERS
-        setGpTotal(5000);
         checkLevelUp(); //< Tester
     }
 
