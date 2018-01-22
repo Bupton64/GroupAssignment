@@ -760,6 +760,15 @@ public class Character extends Statblock {
     enum StoreAccess{preTier,TierOne,TierTwo,TierThree};
     StoreAccess playerStoreAccess;
 
+    public boolean getCollectableState(int index) { return currentQuest.getCollectableState()[index];}
+
+    public void setCollectableState(int index,boolean change){currentQuest.setCollectableState(change,index);}
+
+    public int getCollectableNum(){return currentQuest.getNumOfCollectables();}
+
+    public void setCollectableNum(int num){currentQuest.setNumOfCollectables(num);}
+
+
     public int getQuestStage() {
         return questStage;
     }

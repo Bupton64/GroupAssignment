@@ -121,12 +121,21 @@ public class MapControl extends extraFunctions {
                         break;
                     case 14:
                         currentMap = new plains_D10();
+                        if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(6)){
+                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            numOfNpc = 1;
+                        }
                         break;
                     case 15:
                         currentMap = new plains_D11();
+                        if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(5)){
+                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            numOfNpc = 1;
+                        }
                         break;
                     case 16:
                         currentMap = new plains_D12();
+
                         break;
                     case 17:
                         currentMap = new plains_E5();
@@ -157,6 +166,10 @@ public class MapControl extends extraFunctions {
                         break;
                     case 22:
                         currentMap = new plains_E10();
+                        if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(4)){
+                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            numOfNpc = 1;
+                        }
                         break;
                     case 23:
                         currentMap = new plains_E11();
@@ -165,9 +178,17 @@ public class MapControl extends extraFunctions {
                         break;
                     case 24:
                         currentMap = new plains_E12();
+                        if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(3)){
+                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            numOfNpc = 1;
+                        }
                         break;
                     case 25:
                         currentMap = new plains_E13();
+                        if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(2)){
+                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            numOfNpc = 1;
+                        }
                         break;
                     case 26:
                         currentMap = new plains_F6();
@@ -197,9 +218,17 @@ public class MapControl extends extraFunctions {
                         break;
                     case 31:
                         currentMap = new plains_F11();
+                        if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(1)){
+                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            numOfNpc = 1;
+                        }
                         break;
                     case 32:
                         currentMap = new plains_F12();
+                        if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(0)) {
+                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            numOfNpc = 1;
+                        }
                         break;
                     case 33:
                         currentMap = new plains_G7();
@@ -349,6 +378,33 @@ public class MapControl extends extraFunctions {
                 updateQuestState = 0;
                 return 2;
 
+            }else if(updateQuestState == 98){
+                switch((int)playerMan.getCurrentMapLocation()){
+                    case 14:
+                        playerMan.setCollectableState(0,true);
+
+                        break;
+                    case 15:
+                        playerMan.setCollectableState(1,true);
+                        break;
+                    case 22:
+                        playerMan.setCollectableState(2,true);
+                        break;
+                    case 24:
+                        playerMan.setCollectableState(3,true);
+                        break;
+                    case 25:
+                        playerMan.setCollectableState(4,true);
+                        break;
+                    case 31:
+                        playerMan.setCollectableState(5,true);
+                        break;
+                    case 32:
+                        playerMan.setCollectableState(6,true);
+                        break;
+                }
+
+                updateQuestState = 0;
             }else if(updateQuestState != 0){
                 playerMan.setQuestStage(updateQuestState);
                 playerMan.changeQuest();

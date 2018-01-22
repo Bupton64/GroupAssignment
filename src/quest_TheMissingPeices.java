@@ -4,10 +4,21 @@ public class quest_TheMissingPeices extends Quest {
 
     boolean displayReward;
 
-    int orbsCollected;
+
+
+
+
+
+
+
 
     quest_TheMissingPeices(){
-        orbsCollected = 0;
+        collectableState = new boolean[7];
+        for(int i = 0; i < 7;i++){
+            collectableState[i] = false;
+        }
+        numOfCollectables = 0;
+        totalCollectables = 7;
         setQuestName("The Missing Peices");
         state = questState.inQuest;
         displayReward = true;
@@ -26,10 +37,14 @@ public class quest_TheMissingPeices extends Quest {
         return false;
     }
 
+
+
+
+
     public void drawQuest(Graphics2D g){
         if(getState() == questState.inQuest) {
             changeColor(red, g);
-            drawText(450, 30, orbsCollected +"/7 Orbs Collected", "Arial", 30, g);
+            drawText(450, 30, numOfCollectables +"/7 Orbs Collected", "Arial", 30, g);
 
         }
 

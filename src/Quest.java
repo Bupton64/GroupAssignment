@@ -3,6 +3,8 @@ import java.awt.*;
 public class Quest extends extraFunctions {
     //Members
 
+
+
     Quest(){
         displayTimer = 0;
         displayDuration = 5;
@@ -36,9 +38,27 @@ public class Quest extends extraFunctions {
         this.reward = reward;
     }
 
+    boolean[] collectableState;
 
+    public boolean[] getCollectableState() {
+        return collectableState;
+    }
 
+    public void setCollectableState(boolean collectableState, int index) {
+        this.collectableState[index] = collectableState;
+    }
 
+    int numOfCollectables;
+
+    int totalCollectables;
+
+    public int getNumOfCollectables() {
+        return numOfCollectables;
+    }
+
+    public void setNumOfCollectables(int numOfCollectables) {
+        this.numOfCollectables = numOfCollectables;
+    }
 
     public questState getState() {
         return state;
