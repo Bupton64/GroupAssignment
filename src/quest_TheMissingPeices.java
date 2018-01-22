@@ -1,12 +1,10 @@
 import java.awt.*;
 
-public class quest_TheRoadToRiches extends Quest {
-
-
+public class quest_TheMissingPeices extends Quest {
 
     boolean displayReward;
 
-    quest_TheRoadToRiches(){
+    quest_TheMissingPeices(){
         setQuestName("The Road To Riches");
         state = questState.inQuest;
         displayReward = true;
@@ -19,9 +17,9 @@ public class quest_TheRoadToRiches extends Quest {
     public boolean updateRewardDisplay(double dt) {
         if(displayReward = super.updateRewardDisplay(dt)) {
 
-         return true;
+            return true;
         }
-       displayTimer = 0;
+        displayTimer = 0;
         return false;
     }
 
@@ -38,9 +36,5 @@ public class quest_TheRoadToRiches extends Quest {
         }
 
     }
-
-
-
-
 
 }

@@ -4,9 +4,10 @@ import java.awt.event.*;
 //BLACKSMITH
 public class npc_plains_H9 extends  NPC {
 
+    private int gold;
 
-
-    npc_plains_H9(){
+    npc_plains_H9(int gold){
+        this.gold = gold;
         setName("Camrath");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,52,288,56,72);
@@ -56,13 +57,16 @@ public class npc_plains_H9 extends  NPC {
         Dialogue d2 = new Dialogue(null,true,true,"Bjarne! I've been expecting you ever since I heard you had arrived.","Let me guess, you're looking for a weapon? Unfortunately I'm lacking","materials. Could you give me 500GP so that I purchase the resources","needed?");
         listTwo = d2;
 
-        Dialogue d3 = new Dialogue(null,true,true,"Thank you helping me out! Please go and find Link in town and tell","her to come back, I don't need her to collect resources any longer!","","");
+        Dialogue d3 = new Dialogue(null,true,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword","");
         listThree = d3;
 
     }
 
     public void updateDialogue(Quest.questState  currentState,String questName){
-        if(questName == "talkToBlacksmith"){
+        if(questName == "empty" || questName == "A Wizards Problem"){
+            currentDialogue = listOne;
+        }
+        if(questName == "The Road To Riches"){
             if (currentState == Quest.questState.inQuest) {
                 currentDialogue = listTwo;
             }
@@ -79,8 +83,11 @@ public class npc_plains_H9 extends  NPC {
 
     public int updateConvo(){
         switch (this.questStage){
-            case 5:
+            case 4:
                 currentDialogue = listTwo;
+                return 4;
+            case 5:
+                currentDialogue = listThree;
                 return 5;
             default:
                 return 0;
@@ -96,7 +103,7 @@ public class npc_plains_H9 extends  NPC {
             loadDialogue = false;
         }
         super.drawConvo(g, playerName,currentState, questName,questStage);
-        if(questName == "talkToBlacksmith") {
+        if(questName == "The Road To Riches") {
             if (currentState == Quest.questState.inQuest) {
                 this.questStage = 4;
             }
@@ -131,14 +138,14 @@ public class npc_plains_H9 extends  NPC {
 
 
 
-    public boolean keyPressed(KeyEvent e) {
+    public boolean keyReleased(KeyEvent e) {
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(currentDialogue.next == null) {
-                if (currentDialogue.getOptionPosY() == 375) {
+                if (currentDialogue.getOptionPosY() == 375 && gold >= 500) {
                     switch (questStage) {
                         case 4:
-                            questStage = 5;
+                            questStage = 4;
                             break;
 
                     }
@@ -146,7 +153,7 @@ public class npc_plains_H9 extends  NPC {
             }
         }
 
-        return super.keyPressed(e);
+        return super.keyReleased(e);
 
 
     }

@@ -45,6 +45,7 @@ public class npc_wizard extends  NPC {
     ///    Convo
     ///
     /////////////////////////////////
+    Dialogue listZero;
     Dialogue listOne;
     Dialogue listTwo;
     Dialogue listThree;
@@ -55,6 +56,9 @@ public class npc_wizard extends  NPC {
 
 
     public void initDialogue(){
+        Dialogue d0 = new Dialogue(null,false,true,"Who are you? Come back later im busy","","","");
+        listZero = d0;
+
         Dialogue d4 = new Dialogue(null,true,true,"Kill 5 Goblins in front of Sevars' estate.","","","");
         Dialogue d3 = new Dialogue(d4,false,false,"His minions have made their way right to my doorstep it seems, and I","can hardly work on devising a way to beat Therox with his lackeys nipping","at my heels, If you could take up guard duty here in front of my estate,","I could begin to get some work done.");
         Dialogue d2 = new Dialogue(d3,false,false,"Knowing Therox was coming for my collection of spellbooks, I cast a","spell to create this forest. It was an old spell, one I had never cast" ,"before... I   pushed too much power into it... and... well... it grew","too large. Now the town lies right between Therox and I.");
@@ -66,14 +70,15 @@ public class npc_wizard extends  NPC {
         Dialogue d5 = new Dialogue(null,false,true,"You still haven't cleared the area","","","");
         listTwo = d5;
 
-        Dialogue d6 = new Dialogue(null,true,true,"Fantastic work! Looks like you've learnt a few new abilities as well! If","you hold any hope of one day defeating Therox, then you're going to need","to upgrade your equipment. My friend Camrath will be able to help","you with that. Visit her in the East and buy yourself a new sword.");
+        Dialogue d7 = new Dialogue(null,true,true," My friend Camrath should be able to help you with that."," Visit her in the East and buy yourself a new sword, and then return to me","","");
+        Dialogue d6 = new Dialogue(d7,false,false,"Fantastic work! Looks like you've learnt a few new abilities as well! If","you hold any hope of one day defeating Therox, then you're going to need","to upgrade your equipment.","");
         listThree = d6;
 
-        Dialogue d7 = new Dialogue(null,false,true,"Have you spoken to Camrath yet? you'll find him in the East","","","");
-        listFour = d7;
+        Dialogue d8 = new Dialogue(null,false,true,"Have you spoken to Camrath yet? you'll find him in the East","","","");
+        listFour = d8;
 
-        Dialogue d8 = new Dialogue(null,true,false,"That's quite the sword! You must use it wisely and well. Train with it, ","get to know it and let it know you. There is something else you can do","however... COMPLETE STORY HERE","");
-        listFive = d8;
+        Dialogue d9 = new Dialogue(null,true,false,"That's quite the sword! You must use it wisely and well. Train with it, ","get to know it and let it know you. There is something else you can do","however... COMPLETE STORY HERE","");
+        listFive = d9;
 
     }
 
@@ -93,7 +98,9 @@ public class npc_wizard extends  NPC {
     }
 
     public void updateDialogue(Quest.questState  currentState,String questName){
-        if(questName == "A Wizards Problem") {
+        if(questName == "empty"){
+            currentDialogue = listZero;
+        } else if(questName == "A Wizards Problem") {
             if (currentState == Quest.questState.preQuest) {
                 currentDialogue = listOne;
             }
@@ -156,7 +163,7 @@ public class npc_wizard extends  NPC {
 
 
 
-    public boolean keyPressed(KeyEvent e) {
+    public boolean keyReleased(KeyEvent e) {
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(currentDialogue.next == null) {
@@ -173,10 +180,12 @@ public class npc_wizard extends  NPC {
             }
         }
 
-        return super.keyPressed(e);
+        return super.keyReleased(e);
 
 
     }
+
+
 
 
 

@@ -216,7 +216,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 39:
                         currentMap = new plains_H9();
-                        mapNpcs[0] = new npc_plains_H9();
+                        mapNpcs[0] = new npc_plains_H9(playerMan.getGpTotal());
                         numOfNpc = 1;
                         break;
                     case 40:
@@ -332,7 +332,7 @@ public class MapControl extends extraFunctions {
         //Quest Check
         if (checkQuestChange && currentNpcInteraction != -1) {
             updateQuestState = mapNpcs[currentNpcInteraction].updateConvo();
-            playerMan.setQuestStage(updateQuestState);
+
             if(updateQuestState == 99) {
                 playerMan.setCombatActive(true);
                 playerMan.setMonsterGen(1);
@@ -340,7 +340,8 @@ public class MapControl extends extraFunctions {
                 return 2;
 
             }else if(updateQuestState != 0){
-                playerMan.changeQuest(updateQuestState);
+                playerMan.setQuestStage(updateQuestState);
+                playerMan.changeQuest();
                 updateQuestState = 0;
                 rewardDisplay = true;
 
@@ -378,7 +379,7 @@ public class MapControl extends extraFunctions {
 
             }
         }else {
-            changeConvoState = mapNpcs[currentNpcInteraction].keyPressed(e);
+            changeConvoState = mapNpcs[currentNpcInteraction].keyReleased(e);
             if(e.getKeyCode() == KeyEvent.VK_SPACE){
                 playerMan.setInConvo(changeConvoState);
                 checkQuestChange = true;

@@ -93,7 +93,7 @@ public class npc_plains_E9_byBridge extends  NPC {
 
 
 
-    public boolean keyPressed(KeyEvent e) {
+    public boolean keyReleased(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE) {
             if (currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375) {
@@ -106,7 +106,7 @@ public class npc_plains_E9_byBridge extends  NPC {
             }
         }
 
-        return super.keyPressed(e);
+        return super.keyReleased(e);
 
 
     }

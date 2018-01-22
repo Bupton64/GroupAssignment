@@ -206,6 +206,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             case 20:
             case 28:
             case 29:
+            case 39:
             case 42:
             case 43:
             case 44:

@@ -30,11 +30,11 @@ public class quest_AWizardsProblem extends Quest {
             drawText(510, 30, "Find the Wizard", "Arial", 30, g);
         }
         if(getState() == questState.inQuest) {
-            changeColor(red, g);
+            changeColor(white, g);
             drawText(510, 30, "Monsters killed: " + killCount + "/5", "Arial", 30, g);
         }
         if(getState() == questState.completedQuest && !questFinished) {
-            changeColor(red, g);
+            changeColor(white, g);
             drawText(510, 30, "Complete", "Arial", 30, g);
         }
 

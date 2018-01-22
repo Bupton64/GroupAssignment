@@ -395,7 +395,7 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setXPTotal(2500); //< TESTERS
+        setXPTotal(0); //< TESTERS
         checkLevelUp(); //< Tester
     }
 
@@ -774,18 +774,24 @@ public class Character extends Statblock {
         this.inConvo = inConvo;
     }
 
-    public void changeQuest(int swapTo){
-        switch(swapTo){
+    public void changeQuest(){
+        switch(questStage){
             case 1:
                 currentQuest = new quest_AWizardsProblem();
                 currentQuest.setState(Quest.questState.preQuest);
                 break;
             case 2:
                 currentQuest.setState(Quest.questState.inQuest);
+                break;
             case 3:
                 currentQuest.giveReward(this);
                 currentQuest = new quest_TheRoadToRiches();
                 break;
+            case 4:
+                setGpTotal(getGpTotal() - 500);
+                currentQuest.setState(Quest.questState.inQuest);
+                break;
+
         }
 
 
