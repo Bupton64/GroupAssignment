@@ -18,7 +18,7 @@ public class AdventureMode extends GameEngine {
     ///
     /////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, Shop1Mode, Shop2Mode}
+    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, Shop1Mode, Shop2Mode, CutScene}
     GameState state = GameState.TravelMode;
 
     int stateChanger;
@@ -31,6 +31,7 @@ public class AdventureMode extends GameEngine {
     Collision collisionDetector;
     Combat combatMode;
     Shop1 Shop1Controller;
+    cutScene cut_scene;
 
 
 
@@ -60,6 +61,7 @@ public class AdventureMode extends GameEngine {
         state = GameState.MainMenu;
         StartController.initStart();
 
+        cut_scene = new cutScene();
     }
 
 
@@ -78,6 +80,9 @@ public class AdventureMode extends GameEngine {
                 state = GameState.MainMenu;
             }else if(stateChanger == 5){
                 state = GameState.Shop1Mode;
+            }
+            else if(stateChanger == 7){
+                state = GameState.CutScene;
             }
 
 
@@ -112,6 +117,8 @@ public class AdventureMode extends GameEngine {
 
            }else if(state == GameState.MainMenu){
                StartController.updateTimer(dt);
+           } else if(state == GameState.CutScene){
+               cut_scene.updateTimer(dt);
            }
     }
 
@@ -151,6 +158,9 @@ public class AdventureMode extends GameEngine {
         }else if(state == GameState.Shop1Mode){
             Shop1Controller.drawShop(mGraphics);
 
+        }else if(state == GameState.CutScene) {
+            changeBackgroundColor(black);
+            cut_scene.drawCutScene(mGraphics);
         }
 
 
@@ -198,7 +208,7 @@ public class AdventureMode extends GameEngine {
         if (state == GameState.MainMenu){
             StartController.keyPressed(e);
             if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 150)&& !StartController.startup){
-                stateChanger = 1;
+                stateChanger = 7;
             }
 
 
@@ -209,7 +219,11 @@ public class AdventureMode extends GameEngine {
         if(state == GameState.Shop1Mode){
             Shop1Controller.keyPressed(e);
         }
-
+        if(state == GameState.CutScene){
+            if(e.getKeyCode() == KeyEvent.VK_SPACE){
+                stateChanger = 1;
+            }
+        }
 
 
 

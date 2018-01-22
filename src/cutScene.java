@@ -11,7 +11,11 @@ public class cutScene extends extraFunctions {
     Image spriteLeft[];
     Image spriteRight[];
     double timer;
+    double timePast;
     boolean back;
+    int posX;
+    int posY;
+    int flameChange;
 
 
     enum introState {text, animation}
@@ -24,13 +28,17 @@ public class cutScene extends extraFunctions {
         background = loadImage("intro_cutscene.png");
         backgroundAlt = loadImage("intro_cutscene2.png");
         timer = 0;
+        timePast = 0;
         back = true;
-        introState state = introState.text;
+        state = introState.text;
         spriteSheet = loadImage("chara1.png");
         spriteUp = new Image[3];
         spriteDown = new Image[3];
         spriteLeft = new Image[3];
         spriteRight = new Image[3];
+        posX = 0;
+        posY = 0;
+        flameChange = 0;
         for(int i =0; i < 3;i++){
             spriteDown[i] = subImage(spriteSheet,312 + (52 * i), 288,52,72);
         }
@@ -55,11 +63,11 @@ public class cutScene extends extraFunctions {
      * Draws the whole cutscene
      */
     public void drawCutScene(Graphics2D g){
+        System.out.println("Test1");
         if(state == introState.text) {
             clearBackground(800, 600, g);
             changeBackgroundColor(black, g);
             changeColor(white, g);
-
 
             if ((timer > 2) && (timer < 5)) {
                 changeColor(grey1, g);
@@ -120,14 +128,17 @@ public class cutScene extends extraFunctions {
             }
         }
         if(state == introState.animation){
-            if((timer % 0.2) == 0){
+            flameChange++;
+            if(flameChange % 3 == 0){
                 back = !back;
-                if(back){
-                    drawImage(background, 0, 0, g);
-                } else{
-                    drawImage(backgroundAlt, 0, 0, g);
-                }
             }
+            if(back){
+                drawImage(background, posX, posY, g);
+            } else{
+                drawImage(backgroundAlt, posX, posY, g);
+            }
+            posX--;
+            posY--;
         }
     }
 }
