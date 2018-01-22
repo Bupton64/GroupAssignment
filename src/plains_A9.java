@@ -37,6 +37,13 @@ public class plains_A9 extends  Map{
              
                 return true;
         }
+        if(player.getMapPosX() < 400 && player.getMapPosX() > 350 && player.getMapPosY() > 340 && player.getMapPosY() < 370){
+            player.setCurrentMapLocation(51);
+            flicker = false;
+            player.setMapPosX(380);
+            player.setMapPosY(360);
+            return true;
+        }
         return false;
     }
 
