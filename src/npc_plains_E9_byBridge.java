@@ -71,7 +71,17 @@ public class npc_plains_E9_byBridge extends  NPC {
 
 
     public boolean keyPressed(KeyEvent e) {
-
+        if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+            if (currentDialogue.next == null) {
+                if (currentDialogue.getOptionPosY() == 375) {
+                    switch (questStage) {
+                        case 0:
+                            questStage = 1;
+                            break;
+                    }
+                }
+            }
+        }
 
         return super.keyPressed(e);
 
