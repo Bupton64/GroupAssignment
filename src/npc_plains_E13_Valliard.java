@@ -20,6 +20,11 @@ public class npc_plains_E13_Valliard extends NPC{
         collisionDetector.addBoxCollision(((int) getMapPosX() / 10 - 2), ((int) getMapPosY() / 10 - 4), ((int) getWidth() / 10 - 2), ((int) getHeight() / 10 - 2), map.isFlicker());
     }
 
+    @Override
+    public void undoCollision(Collision collisionDetector){
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 4),((int)getWidth()/10-2),((int)getHeight()/10 - 2),false);
+    }
+
     /////////////////////////////////////////
     ///
     ///  Movement
