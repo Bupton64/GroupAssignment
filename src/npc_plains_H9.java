@@ -82,9 +82,9 @@ public class npc_plains_H9 extends  NPC {
 
     public int updateConvo(){
         switch (this.questStage){
-            case 5:
+            case 6:
                 currentDialogue = listThree;
-                return 5;
+                return 6;
 
             default:
                 return 0;
@@ -102,9 +102,7 @@ public class npc_plains_H9 extends  NPC {
         super.drawConvo(g, playerName,currentState, questName,questStage);
         if(questName == "The Road To Riches") {
             if (currentState == Quest.questState.preQuest) {
-                if(gold >=500) {
-                    this.questStage = 4;
-                }
+
             }
             if(currentState == Quest.questState.inQuest){
                 if(currentDialogue != listThree){
@@ -141,8 +139,8 @@ public class npc_plains_H9 extends  NPC {
             if(currentDialogue.next == null && gold >= 500) {
                 if (currentDialogue.getOptionPosY() == 375 ) {
                     switch (questStage) {
-                        case 4:
-                            questStage = 5;
+                        case 5:
+                            questStage = 6;
                             break;
 
                     }

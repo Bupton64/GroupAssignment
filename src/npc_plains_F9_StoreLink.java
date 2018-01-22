@@ -55,7 +55,7 @@ public class npc_plains_F9_StoreLink extends  NPC {
 
 
     public void updateDialogue(int currentStage){
-        if(currentStage == 5) {
+        if(currentStage == 7) {
             currentDialogue = listOne;
         }else{
             currentDialogue = listTwo;
@@ -65,9 +65,9 @@ public class npc_plains_F9_StoreLink extends  NPC {
 
     public int updateConvo(){
         switch (this.questStage){
-            case 6:
+            case 8:
                 currentDialogue = listTwo;
-                return 6;
+                return 8;
 
             default:
                 return 0;
@@ -87,9 +87,6 @@ public class npc_plains_F9_StoreLink extends  NPC {
         super.drawConvo(g, playerName,currentState, questName,questStage);
         if(questName == "The Road To Riches") {
 
-            if (currentState == Quest.questState.inQuest) {
-                this.questStage = 5;
-            }
         }
 
     }
@@ -110,8 +107,8 @@ public class npc_plains_F9_StoreLink extends  NPC {
             if(currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375) {
                     switch (questStage) {
-                        case 5:
-                            questStage = 6;
+                        case 7:
+                            questStage = 8;
                             break;
 
                     }

@@ -98,9 +98,9 @@ public class npc_wizard extends  NPC {
             case 4:
                 currentDialogue = listFour;
                 return 4;
-            case 7:
+            case 10:
                 currentDialogue = listSix;
-                return 7;
+                return 10;
             default:
                 return 0;
 
@@ -117,11 +117,11 @@ public class npc_wizard extends  NPC {
             currentDialogue = listTwo;
         }else if (questStage == 3) {
             currentDialogue = listThree;
-        }else if (questStage == 4) {
+        }else if (questStage == 5) {
             currentDialogue = listFour;
-        }else if (questStage == 5){
+        }else if (questStage == 9){
             currentDialogue = listFive;
-        }else if (questStage == 6) {
+        }else if (questStage == 10) {
             currentDialogue = listSix;
         }
     }
@@ -148,18 +148,16 @@ public class npc_wizard extends  NPC {
                 if(questStage == 2) {
                     this.questStage = 3;
                     currentDialogue = listThree;
-
-
                 }
 
 
             }
         } else if(questName == "The Road To Riches") {
             if (currentState == Quest.questState.preQuest) {
-                this.questStage = 4;
+
             }
             if (currentState == Quest.questState.completedQuest) {
-                this.questStage = 6;
+
             }
         }
 
@@ -187,8 +185,8 @@ public class npc_wizard extends  NPC {
                         case 3:
                             questStage = 4;
                             break;
-                        case 6:
-                            questStage = 7;
+                        case 9:
+                            questStage = 10;
                             break;
                     }
                 }

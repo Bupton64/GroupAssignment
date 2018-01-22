@@ -52,7 +52,7 @@ public class npc_plains_F9_signHouse extends  NPC {
     }
 
     public void updateDialogue(int questStage){
-        if(questStage < 5) {
+        if(questStage < 7) {
             currentDialogue = listOne;
         }else{
             currentDialogue = listTwo;

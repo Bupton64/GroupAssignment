@@ -396,6 +396,7 @@ public class Character extends Statblock {
 
         // Test Functions
         setXPTotal(0); //< TESTERS
+        setGpTotal(5000);
         checkLevelUp(); //< Tester
     }
 
@@ -785,25 +786,29 @@ public class Character extends Statblock {
                 break;
             case 3:
                 questStage = 3;
+                break;
             case 4:
                 currentQuest.giveReward(this);
                 currentQuest = new quest_TheRoadToRiches();
-                break;
-            case 5:
-                setGpTotal(getGpTotal() - 500);
-                currentQuest.setState(Quest.questState.inQuest);
+                questStage = 5;
                 break;
             case 6:
+                setGpTotal(getGpTotal() - 500);
+                currentQuest.setState(Quest.questState.inQuest);
+                questStage = 7;
+                break;
+            case 8:
                 currentQuest.setState(Quest.questState.completedQuest);
                 item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
                 addItemToInventory(bronzeSword); //T1 Sword
                 playerStoreAccess = StoreAccess.TierOne;
-                break;
-            case 7:
-                currentQuest = new quest_TheMissingPeices();
+                questStage = 9;
                 break;
             case 9:
 
+                break;
+            case 10:
+                currentQuest = new quest_TheMissingPeices();
                 break;
         }
 
