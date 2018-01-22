@@ -40,11 +40,13 @@ public class Dialogue extends extraFunctions{
     }
 
     public void changeOption(){
-        if (optionPosY == 375) {
+        if(isHasOptions()) {
+            if (optionPosY == 375) {
 
-            optionPosY = 350;
-        } else {
-            optionPosY = 375;
+                optionPosY = 350;
+            } else {
+                optionPosY = 375;
+            }
         }
 
     }

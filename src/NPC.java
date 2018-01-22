@@ -225,7 +225,7 @@ public class NPC extends extraFunctions{
     }
 
 
-    public boolean keyReleased(KeyEvent e){
+    public boolean keyPressed(KeyEvent e){
 
          if(e.getKeyCode() == KeyEvent.VK_SPACE){
              if(currentDialogue.next != null) {

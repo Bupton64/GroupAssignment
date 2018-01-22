@@ -76,7 +76,7 @@ public class npc_wizard extends  NPC {
         Dialogue d6 = new Dialogue(d7,false,false,"Fantastic work! Looks like you've learnt a few new abilities as well! If","you hold any hope of one day defeating Therox, then you're going to need","to upgrade your equipment.","");
         listThree = d6;
 
-        Dialogue d8 = new Dialogue(null,false,true,"Have you spoken to Camrath yet? you'll find him in the East","","","");
+        Dialogue d8 = new Dialogue(null,false,true,"Have you spoken to Camrath yet? you'll find her in the East","","","");
         listFour = d8;
 
         Dialogue d10 = new Dialogue(null,true,true,"Can you go retreive my 7 Orbs from the south?","","","");
@@ -94,11 +94,13 @@ public class npc_wizard extends  NPC {
                 currentDialogue = listTwo;
                 return 2;
             case 3:
-                currentDialogue = listFour;
                 return 3;
-            case 6:
+            case 4:
+                currentDialogue = listFour;
+                return 4;
+            case 10:
                 currentDialogue = listSix;
-                return 6;
+                return 10;
             default:
                 return 0;
 
@@ -106,29 +108,21 @@ public class npc_wizard extends  NPC {
 
     }
 
-    public void updateDialogue(Quest.questState  currentState,String questName){
-        if(questName == "empty"){
+    public void updateDialogue(int currentStage,String questName){
+        if(questStage == 0) {
             currentDialogue = listZero;
-        } else if(questName == "A Wizards Problem") {
-            if (currentState == Quest.questState.preQuest) {
-                currentDialogue = listOne;
-            }
-            if (currentState == Quest.questState.inQuest) {
-                currentDialogue = listTwo;
-            }
-            if (currentState == Quest.questState.completedQuest) {
-                currentDialogue = listThree;
-            }
-        }else if(questName == "The Road To Riches"){
-            if (currentState == Quest.questState.preQuest) {
-                currentDialogue = listThree;
-            }
-            if (currentState == Quest.questState.inQuest) {
-                currentDialogue = listFour;
-            }
-            if (currentState == Quest.questState.completedQuest) {
-                currentDialogue = listFive;
-            }
+        }else if (questStage == 1) {
+            currentDialogue = listOne;
+        }else if (questStage == 2) {
+            currentDialogue = listTwo;
+        }else if (questStage == 3) {
+            currentDialogue = listThree;
+        }else if (questStage == 5) {
+            currentDialogue = listFour;
+        }else if (questStage == 9){
+            currentDialogue = listFive;
+        }else if (questStage == 10) {
+            currentDialogue = listSix;
         }
     }
 
@@ -139,10 +133,10 @@ public class npc_wizard extends  NPC {
 
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
-//        this.questStage = questStage;
+        this.questStage = questStage;
 
         if(loadDialogue) {
-            updateDialogue(currentState,questName);
+            updateDialogue(questStage,questName);
             loadDialogue = false;
         }
         super.drawConvo(g, playerName,currentState, questName,questStage);
@@ -151,16 +145,19 @@ public class npc_wizard extends  NPC {
         if(questName == "A Wizards Problem") {
 
             if (currentState == Quest.questState.completedQuest) {
-                this.questStage = 3;
-                if(currentDialogue != listThree){
-                    loadDialogue = true;
+                if(questStage == 2) {
+                    this.questStage = 3;
+                    currentDialogue = listThree;
                 }
 
 
             }
         } else if(questName == "The Road To Riches") {
+            if (currentState == Quest.questState.preQuest) {
+
+            }
             if (currentState == Quest.questState.completedQuest) {
-                this.questStage = 6;
+
             }
         }
 
@@ -176,7 +173,7 @@ public class npc_wizard extends  NPC {
 
 
 
-    public boolean keyReleased(KeyEvent e) {
+    public boolean keyPressed(KeyEvent e) {
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(currentDialogue.next == null) {
@@ -186,14 +183,19 @@ public class npc_wizard extends  NPC {
                             questStage = 2;
                             break;
                         case 3:
-                            questStage = 3;
+                            questStage = 4;
+                            break;
+                        case 9:
+                            questStage = 10;
                             break;
                     }
                 }
             }
+
+
         }
 
-        return super.keyReleased(e);
+        return super.keyPressed(e);
 
 
     }
