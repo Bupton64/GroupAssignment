@@ -28,7 +28,7 @@ public class monster_Vanguard extends Monster{
         setEnergy(0);
         setUpAbilityNumberI(temp, 0, "Smash", 2, 0, 0, 0, 1, false, -1, "", true, Ability.AbilityType.damage, "");
         setUpAbilityNumberI(temp, 1, "Cleave", 0, 2, 2, 2, 2, false, 2, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 2, "Whirling Axes", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 2, "Whirlwind", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
         Image sprite = loadImage("monster_theroxVanguard.png");
