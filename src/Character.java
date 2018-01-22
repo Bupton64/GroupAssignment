@@ -398,6 +398,9 @@ public class Character extends Statblock {
 
         // Test Functions
         setGpTotal(100000000);
+        setQuestStage(9);
+        currentQuest = new quest_TheRoadToRiches();
+        currentQuest.setState(Quest.questState.completedQuest);
         setXPTotal(0); //< TESTERS
         setGpTotal(5000);
         checkLevelUp(); //< Tester
@@ -861,5 +864,24 @@ public class Character extends Statblock {
 
     public void setMonsterGen(int monsterGen) {
         this.monsterGen = monsterGen;
+    }
+
+
+
+
+    //////////////////////////////
+    ///
+    ///  Boss Kill
+    ///
+    //////////////////////////////
+
+    boolean ValliardAlive = true;
+
+    public boolean isValliardAlive() {
+        return ValliardAlive;
+    }
+
+    public void setValliardAlive(boolean valliardAlive) {
+        ValliardAlive = valliardAlive;
     }
 }

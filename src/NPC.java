@@ -71,6 +71,10 @@ public class NPC extends extraFunctions{
 
     }
 
+    public void undoCollision(Collision collisionDetector){
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
+    }
+
 
 
     /////////////////////////////////////////

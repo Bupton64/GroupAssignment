@@ -42,7 +42,7 @@ public class AdventureMode extends GameEngine {
         playerMovement = new CharacterMovement(playerMan);
 
         collisionDetector = new Collision();
-        mapController = new MapControl(playerMan);
+        mapController = new MapControl(playerMan,collisionDetector);
 
         MenuController = new Menu(playerMan);
         MenuController.initMenu();
@@ -104,7 +104,7 @@ public class AdventureMode extends GameEngine {
 
 
 
-               mapController.updateMap(collisionDetector);
+               mapController.updateMap();
                collisionDetector.updateCollision(playerMan, playerMovement);
               stateChanger = playerMovement.updateCharMovement(dt, playerMan);
               if(stateChanger != 2) {

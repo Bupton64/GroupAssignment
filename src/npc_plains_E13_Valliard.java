@@ -8,8 +8,8 @@ public class npc_plains_E13_Valliard extends NPC{
         setName("Valliard");
         spriteSheet = loadImage("chara4.png");
         sprite = subImage(spriteSheet,520,288,56,72);
-        setMapPosX(100);
-        setMapPosY(450);
+        setMapPosX(400);
+        setMapPosY(250);
 
         initDialogue();
         loadDialogue = true;

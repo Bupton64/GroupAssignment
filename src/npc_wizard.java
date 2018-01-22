@@ -55,6 +55,8 @@ public class npc_wizard extends  NPC {
 
     Dialogue listSix;
 
+    Dialogue listSeven;
+
 
 
     public void initDialogue(){
@@ -85,6 +87,9 @@ public class npc_wizard extends  NPC {
 
         Dialogue d11 = new Dialogue(null,false,true,"I saw the creatures run south of town, Best of luck Bjarne!","","","");
         listSix = d11;
+
+        Dialogue d12 = new Dialogue(null,false,true,"Hey thanks pal. that was pretty dandy!","","","");
+        listSeven = d12;
 
     }
 
@@ -123,6 +128,8 @@ public class npc_wizard extends  NPC {
             currentDialogue = listFive;
         }else if (questStage == 10) {
             currentDialogue = listSix;
+        }else if(questStage == 11){
+            currentDialogue = listSeven;
         }
     }
 
