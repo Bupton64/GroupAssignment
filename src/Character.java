@@ -2,8 +2,6 @@ import java.awt.*;
 
 public class Character extends Statblock {
 
-
-
     private int XPTotal; //< Contains the characters current XP total
     private int XPToNextLevel; //< Contains the characters required XPTotal for next level
     private int gpTotal; //< The characters gold total
@@ -600,7 +598,6 @@ public class Character extends Statblock {
             temp[i] = new Ability();
             temp[i].setActive(false);
         }
-
         setMaxNumAbilities(20);
         temp[0] = new ability_BasicAttack();
         temp[1] = new ability_Slash();
@@ -612,6 +609,11 @@ public class Character extends Statblock {
         temp[7] = new ability_Heal();
         temp[8] = new ability_IronSkin();
         temp[9] = new ability_Berserk();
+        temp[10] = new ability_Devastate();
+        temp[11] =  new ability_regenerate();
+        temp[12] = new ability_psiblast();
+        temp[13] = new ability_heroism();
+        temp[14] = new ability_ironFist();
         this.setAbilities(temp);
         setNumOfAbilities();
         sortAbilities();
@@ -630,50 +632,66 @@ public class Character extends Statblock {
             temp[i]=new Ability();
         }
         temp=getAbilities();
-        if(getLevel()==2){
-            for(int i=0; i<getMaxNumAbilities(); i++){
-                if(temp[i].getName()=="Spark"){
+        int level = getLevel();
+        switch(level){
+
+            case 2:
+            for(int i=0; i<getMaxNumAbilities(); i++) {
+                if (temp[i].getName() == "Spark") {
                     temp[i].setActive(true);
                 }
-            }
-            for(int i=0; i<getMaxNumAbilities(); i++){
+                if(temp[i].getName()=="Smash"){
+                    temp[i].setActive(true);
+                }
                 if(temp[i].getName()=="Heal"){
                     temp[i].setActive(true);
                 }
+                if(temp[i].getName()=="Devastate"){
+                    temp[i].setActive(true);
+                }
+                if(temp[i].getName()=="Regenerate"){
+                    temp[i].setActive(true);
+                }
+                if(temp[i].getName()=="Psi Blast"){
+                    temp[i].setActive(true);
+                }
+                if(temp[i].getName()=="Heroism"){
+                    temp[i].setActive(true);
+                }
+                if(temp[i].getName()=="Iron Fist"){
+                    temp[i].setActive(true);
+                }
             }
-        }
-        if(getLevel()==3){
+            break;
+
+            case 3:
             for(int i=0; i<getMaxNumAbilities(); i++){
                 if(temp[i].getName()=="Blade Dance"){
                     temp[i].setActive(true);
                 }
-            }
-            for(int i=0; i<getMaxNumAbilities(); i++){
                 if(temp[i].getName()=="Berserk"){
                     temp[i].setActive(true);
                 }
             }
-        }
-        if(getLevel()==4){
+            break;
+
+            case 4:
             for(int i=0; i<getMaxNumAbilities(); i++){
                 if(temp[i].getName()=="Dual Strike"){
                     temp[i].setActive(true);
                 }
             }
-        }
-        if(getLevel()==5){
+            break;
+            case 5:
             for(int i=0; i<getMaxNumAbilities(); i++){
                 if(temp[i].getName()=="Armageddon"){
                     temp[i].setActive(true);
                 }
             }
-        }
-        if(getLevel()==6){
-            for(int i=0; i<getMaxNumAbilities(); i++){
-                if(temp[i].getName()=="Smash"){
-                    temp[i].setActive(true);
-                }
-            }
+            break;
+            case 6:
+            break;
+
         }
         setNumOfAbilities();
         setAbilities(temp);
