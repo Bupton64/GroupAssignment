@@ -18,7 +18,7 @@ public class AdventureMode extends GameEngine {
     ///
     /////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu}
+    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, Shop1Mode, Shop2Mode}
     GameState state = GameState.TravelMode;
 
     int stateChanger;
@@ -30,6 +30,7 @@ public class AdventureMode extends GameEngine {
     CharacterMovement playerMovement;
     Collision collisionDetector;
     Combat combatMode;
+    Shop1 Shop1Controller;
 
 
 
@@ -44,6 +45,9 @@ public class AdventureMode extends GameEngine {
 
         MenuController = new Menu(playerMan);
         MenuController.initMenu();
+
+        Shop1Controller = new Shop1();
+        Shop1Controller.shopInit();
 
         StartController = new StartScreen();
 
@@ -72,6 +76,8 @@ public class AdventureMode extends GameEngine {
                 state = GameState.OverWorldMenu;
             }else if(stateChanger == 4){
                 state = GameState.MainMenu;
+            }else if(stateChanger == 5){
+                state = GameState.Shop1Mode;
             }
 
 
@@ -142,6 +148,9 @@ public class AdventureMode extends GameEngine {
         }else if(state == GameState.MainMenu){
             changeBackgroundColor(black);
             StartController.drawStartScreen(mGraphics);
+        }else if(state == GameState.Shop1Mode){
+            Shop1Controller.drawShop(mGraphics);
+
         }
 
 
@@ -193,6 +202,12 @@ public class AdventureMode extends GameEngine {
             }
 
 
+        }
+        if(e.getKeyCode() == KeyEvent.VK_T){
+            stateChanger = 5;
+        }
+        if(state == GameState.Shop1Mode){
+            Shop1Controller.keyPressed(e);
         }
 
 
