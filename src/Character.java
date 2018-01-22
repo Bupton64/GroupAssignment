@@ -237,6 +237,7 @@ public class Character extends Statblock {
                 for(int j = 0; j < maxInventorySize ; j++){ //< Find the open spot in inventory
                     if(inventory[j].getSlot() == null){
                         inventory[j] = item; //< Place item in inventory
+                        equippedItems[i] = new Item(); //< Remove old item
                         break;
                     }
                 }
