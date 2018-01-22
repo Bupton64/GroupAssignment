@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class quest_killingForWizard extends Quest {
+public class quest_AWizardsProblem extends Quest {
 
 
 
@@ -8,8 +8,8 @@ public class quest_killingForWizard extends Quest {
     private int toBeKilled;
     boolean questFinished;
 
-    quest_killingForWizard(){
-        setQuestName("killingForWizard");
+    quest_AWizardsProblem(){
+        setQuestName("A Wizards Problem");
         killCount = 0;
         toBeKilled = 5;
         questFinished = false;

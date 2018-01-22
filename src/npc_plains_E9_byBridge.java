@@ -67,27 +67,11 @@ public class npc_plains_E9_byBridge extends  NPC {
 
 
 
-    public int updateConvo(){
-        if(summonMonster){
-            return 99;
 
-        }
-        return 0;
-    }
-
-    //test code
-    boolean summonMonster =false;
 
 
     public boolean keyPressed(KeyEvent e) {
 
-        if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(currentDialogue.next == null) {
-                if (currentDialogue.getOptionPosY() == 375) {
-                    summonMonster = true;
-                }
-            }
-        }
 
         return super.keyPressed(e);
 

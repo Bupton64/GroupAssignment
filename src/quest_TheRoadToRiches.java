@@ -1,13 +1,13 @@
 import java.awt.*;
 
-public class quest_talkToBlacksmith extends Quest {
+public class quest_TheRoadToRiches extends Quest {
 
 
 
     boolean displayReward;
 
-    quest_talkToBlacksmith(){
-        setQuestName("talkToBlacksmith");
+    quest_TheRoadToRiches(){
+        setQuestName("The Road To Riches");
         state = questState.inQuest;
         displayReward = true;
         displayTimer = 0;

@@ -93,7 +93,7 @@ public class npc_wizard extends  NPC {
     }
 
     public void updateDialogue(Quest.questState  currentState,String questName){
-        if(questName == "killingForWizard") {
+        if(questName == "A Wizards Problem") {
             if (currentState == Quest.questState.preQuest) {
                 currentDialogue = listOne;
             }
@@ -130,7 +130,7 @@ public class npc_wizard extends  NPC {
         super.drawConvo(g, playerName,currentState, questName,questStage);
 
 
-        if(questName == "killingForWizard") {
+        if(questName == "A Wizards Problem") {
             if (currentState == Quest.questState.preQuest) {
                 this.questStage = 0;
             }
@@ -142,7 +142,7 @@ public class npc_wizard extends  NPC {
 
 
             }
-        } else if(questName == "talkToBlacksmith") {
+        } else if(questName == "The Road To Riches") {
 
         }
 
