@@ -8,7 +8,7 @@ public class quest_TheRoadToRiches extends Quest {
 
     quest_TheRoadToRiches(){
         setQuestName("The Road To Riches");
-        state = questState.inQuest;
+        state = questState.preQuest;
         displayReward = true;
         displayTimer = 0;
         displayDuration = 5;

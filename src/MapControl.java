@@ -115,6 +115,8 @@ public class MapControl extends extraFunctions {
                         numOfNpc = 1;
                         break;
                     case 13:
+                        mapNpcs[0] = new npc_plains_E13_Valliard();
+                        numOfNpc = 1;
                         currentMap = new plains_D9();
                         break;
                     case 14:
@@ -176,8 +178,12 @@ public class MapControl extends extraFunctions {
                     case 28:
                         currentMap = new plains_F8();
                         mapNpcs[0] = new npc_plains_f8_oldman();
-                        mapNpcs[1] = new npc_plains_f8_byLog();
-                        numOfNpc = 2;
+                        if(playerMan.getQuestStage() < 5) {
+                            mapNpcs[1] = new npc_plains_f8_byLog();
+                            numOfNpc = 2;
+                        }else{
+                            numOfNpc = 1;
+                        }
                         break;
                     case 29:
                         currentMap = new plains_F9();
@@ -227,6 +233,10 @@ public class MapControl extends extraFunctions {
                         break;
                     case 42:
                         currentMap = new plains_F9_shop();
+                        if(playerMan.getQuestStage() >= 5) {
+                            mapNpcs[0] = new npc_plains_F9_StoreLink();
+                            numOfNpc = 1;
+                        }
                         break;
                     case 43:
                         currentMap = new plains_E9_bottomHouse();

@@ -38,6 +38,8 @@ public class quest_AWizardsProblem extends Quest {
             drawText(510, 30, "Complete", "Arial", 30, g);
         }
 
+
+
     }
 
 

@@ -46,7 +46,7 @@ public class npc_plains_H9 extends  NPC {
 
     Dialogue listThree;
 
-
+    Dialogue listFour;
 
 
     public void initDialogue() {
@@ -60,23 +60,22 @@ public class npc_plains_H9 extends  NPC {
         Dialogue d3 = new Dialogue(null,true,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword","");
         listThree = d3;
 
+        Dialogue d4 = new Dialogue(null,false,true,"Hey Bjarne! Thanks again for helping me. I hope Link has been","able to help you with your quest.","","");
+        listFour = d4;
     }
 
     public void updateDialogue(Quest.questState  currentState,String questName){
         if(questName == "empty" || questName == "A Wizards Problem"){
             currentDialogue = listOne;
-        }
-        if(questName == "The Road To Riches"){
-            if (currentState == Quest.questState.inQuest) {
+        }else if(questName == "The Road To Riches"){
+            if (currentState == Quest.questState.preQuest) {
                 currentDialogue = listTwo;
             }
-            if (currentState == Quest.questState.completedQuest) {
+            if (currentState == Quest.questState.inQuest) {
                 currentDialogue = listThree;
             }
-
-
         }else{
-            currentDialogue = listThree;
+            currentDialogue = listFour;
         }
 
     }
@@ -84,11 +83,9 @@ public class npc_plains_H9 extends  NPC {
     public int updateConvo(){
         switch (this.questStage){
             case 4:
-                currentDialogue = listTwo;
-                return 4;
-            case 5:
                 currentDialogue = listThree;
-                return 5;
+                return 4;
+
             default:
                 return 0;
 
@@ -104,7 +101,7 @@ public class npc_plains_H9 extends  NPC {
         }
         super.drawConvo(g, playerName,currentState, questName,questStage);
         if(questName == "The Road To Riches") {
-            if (currentState == Quest.questState.inQuest) {
+            if (currentState == Quest.questState.preQuest) {
                 this.questStage = 4;
             }
             if(currentState == Quest.questState.completedQuest){

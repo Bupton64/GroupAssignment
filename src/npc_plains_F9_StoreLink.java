@@ -2,14 +2,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class npc_plains_f8_byLog extends  NPC {
+public class npc_plains_F9_StoreLink extends  NPC {
 
-    npc_plains_f8_byLog(){
+    npc_plains_F9_StoreLink(){
         setName("Link");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,520,0,56,72);
-        setMapPosX(650);
-        setMapPosY(85);
+        setMapPosX(400);
+        setMapPosY(200);
 
         initDialogue();
         loadDialogue = true;
@@ -40,23 +40,34 @@ public class npc_plains_f8_byLog extends  NPC {
 
     Dialogue listOne;
 
-
+    Dialogue listTwo;
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"Can't you see I'm busy!? Camrath sent me to fetch wood!","","","");
+
+
+        Dialogue d1 = new Dialogue(null,true,true,"Hey Thanks For Helping Camrath and I.","Here take this sword as a token of appreciation!","","");
         listOne = d1;
-
-
     }
 
 
-        public void updateDialogue(int currentStage){
-            if(questStage < 5){
-                currentDialogue = listOne;
-            }
+    public void updateDialogue(int currentStage){
+       currentDialogue = listOne;
+
+    }
+
+    public int updateConvo(){
+        switch (this.questStage){
+            case 5:
+                currentDialogue = listTwo;
+                return 5;
+
+            default:
+                return 0;
 
         }
+
+    }
 
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
@@ -66,6 +77,36 @@ public class npc_plains_f8_byLog extends  NPC {
             loadDialogue = false;
         }
         super.drawConvo(g, playerName,currentState, questName,questStage);
+    }
+
+
+
+    //////////////////////////////
+    ///
+    ///    KeyBinds
+    ///
+    //////////////////////////////
+
+
+
+    public boolean keyReleased(KeyEvent e) {
+
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(currentDialogue.next == null) {
+                if (currentDialogue.getOptionPosY() == 375) {
+                    switch (questStage) {
+                        case 5:
+                            questStage = 5;
+                            break;
+
+                    }
+                }
+            }
+        }
+
+        return super.keyReleased(e);
+
+
     }
 
 
