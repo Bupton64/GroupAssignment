@@ -73,7 +73,7 @@ public class npc_plains_E9_byField extends  NPC {
     boolean summonMonster = false;
 
 
-    public boolean keyReleased(KeyEvent e) {
+    public boolean keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if (currentDialogue.next == null) {
@@ -83,7 +83,7 @@ public class npc_plains_E9_byField extends  NPC {
             }
         }
 
-        return super.keyReleased(e);
+        return super.keyPressed(e);
 
 
     }

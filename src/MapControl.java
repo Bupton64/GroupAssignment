@@ -233,7 +233,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 42:
                         currentMap = new plains_F9_shop();
-                        if(playerMan.getQuestStage() >= 4) {
+                        if(playerMan.getQuestStage() >= 5) {
                             mapNpcs[0] = new npc_plains_F9_StoreLink();
                             numOfNpc = 1;
                         }
@@ -389,7 +389,7 @@ public class MapControl extends extraFunctions {
 
             }
         }else {
-            changeConvoState = mapNpcs[currentNpcInteraction].keyReleased(e);
+            changeConvoState = mapNpcs[currentNpcInteraction].keyPressed(e);
             if(e.getKeyCode() == KeyEvent.VK_SPACE){
                 playerMan.setInConvo(changeConvoState);
                 checkQuestChange = true;

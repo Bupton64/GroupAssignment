@@ -75,7 +75,7 @@ public class npc_plains_E13_Valliard extends NPC{
     boolean summonMonster = false;
 
 
-    public boolean keyReleased(KeyEvent e) {
+    public boolean keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if (currentDialogue.next == null) {
@@ -85,7 +85,7 @@ public class npc_plains_E13_Valliard extends NPC{
             }
         }
 
-        return super.keyReleased(e);
+        return super.keyPressed(e);
 
 
     }

@@ -57,7 +57,7 @@ public class npc_plains_H9 extends  NPC {
         Dialogue d2 = new Dialogue(null,true,true,"Bjarne! I've been expecting you ever since I heard you had arrived.","Let me guess, you're looking for a weapon? Unfortunately I'm lacking","materials. Could you give me 500GP so that I purchase the resources","needed?");
         listTwo = d2;
 
-        Dialogue d3 = new Dialogue(null,true,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword","");
+        Dialogue d3 = new Dialogue(null,false,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword","");
         listThree = d3;
 
         Dialogue d4 = new Dialogue(null,false,true,"Hey Bjarne! Thanks again for helping me. I hope Link has been","able to help you with your quest.","","");
@@ -82,9 +82,9 @@ public class npc_plains_H9 extends  NPC {
 
     public int updateConvo(){
         switch (this.questStage){
-            case 4:
+            case 5:
                 currentDialogue = listThree;
-                return 4;
+                return 5;
 
             default:
                 return 0;
@@ -102,7 +102,14 @@ public class npc_plains_H9 extends  NPC {
         super.drawConvo(g, playerName,currentState, questName,questStage);
         if(questName == "The Road To Riches") {
             if (currentState == Quest.questState.preQuest) {
-                this.questStage = 4;
+                if(gold >=500) {
+                    this.questStage = 4;
+                }
+            }
+            if(currentState == Quest.questState.inQuest){
+                if(currentDialogue != listThree){
+                    loadDialogue = true;
+                }
             }
             if(currentState == Quest.questState.completedQuest){
 
@@ -114,15 +121,8 @@ public class npc_plains_H9 extends  NPC {
 
 
 
-        } else{ //Figure this out later
-            changeColor(black, g);
-            drawSolidRectangle(400,345,300,50,g);
-            changeColor(Color.white,g);
-            drawRectangle(400,345,300,50,10,g);
-            drawText(425, 375, "Press 'Space' to open menu", "Arial", 20, g);
-
-            drawText(110, 450, "Would you like to browse my wares?", "Times New Roman", 20, g);
         }
+
     }
 
 
@@ -135,14 +135,14 @@ public class npc_plains_H9 extends  NPC {
 
 
 
-    public boolean keyReleased(KeyEvent e) {
+    public boolean keyPressed(KeyEvent e) {
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(currentDialogue.next == null) {
-                if (currentDialogue.getOptionPosY() == 375 && gold >= 500) {
+            if(currentDialogue.next == null && gold >= 500) {
+                if (currentDialogue.getOptionPosY() == 375 ) {
                     switch (questStage) {
                         case 4:
-                            questStage = 4;
+                            questStage = 5;
                             break;
 
                     }
@@ -150,7 +150,7 @@ public class npc_plains_H9 extends  NPC {
             }
         }
 
-        return super.keyReleased(e);
+        return super.keyPressed(e);
 
 
     }

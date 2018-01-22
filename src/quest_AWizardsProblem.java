@@ -10,7 +10,7 @@ public class quest_AWizardsProblem extends Quest {
 
     quest_AWizardsProblem(){
         setQuestName("A Wizards Problem");
-        killCount = 0;
+        killCount = 4;
         toBeKilled = 5;
         questFinished = false;
         state = questState.preQuest;

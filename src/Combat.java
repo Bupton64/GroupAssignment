@@ -914,7 +914,7 @@ public class Combat extends extraFunctions{
 
     public void updateRun(double dt){
         if(state == CombatState.run){
-            if(Math.random()* 10 > 3 && !escapeChance) {
+            if(Math.random()* 10 > 2.5 && !escapeChance) {
 
                 makeEscape = true;
 
@@ -1053,7 +1053,7 @@ public class Combat extends extraFunctions{
 
     public void enemyBuff(){
         enemyLastAbility.use(enemy);
-        enemyDamage = lastAbility.getLastDamage();
+
         enemyMakeBuff = false;
         enemy.setEnergy(enemy.getEnergy()-enemyLastAbility.getEnergyCost());
     }
