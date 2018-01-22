@@ -6,12 +6,23 @@ public class cutScene extends extraFunctions {
     Image background;
     Image backgroundAlt;
     Image spriteSheet;
+    Image spriteSheet2;
     Image spriteUp[];
     Image spriteDown[];
     Image spriteLeft[];
     Image spriteRight[];
+    Image spriteDown2[];
+    Image spriteLeft2[];
+    Image spriteRight2[];
     double timer;
+    double timePast;
     boolean back;
+    int posX;
+    int posY;
+    int flameChange;
+    int runSpeed;
+    int runSpeedLeft;
+    int height;
 
 
     enum introState {text, animation}
@@ -24,24 +35,35 @@ public class cutScene extends extraFunctions {
         background = loadImage("intro_cutscene.png");
         backgroundAlt = loadImage("intro_cutscene2.png");
         timer = 0;
+        timePast = 0;
         back = true;
-        introState state = introState.text;
+        state = introState.text;
         spriteSheet = loadImage("chara1.png");
+        spriteSheet2 = loadImage("chara2.png");
         spriteUp = new Image[3];
         spriteDown = new Image[3];
         spriteLeft = new Image[3];
         spriteRight = new Image[3];
+        spriteDown2 = new Image[3];
+        spriteLeft2 = new Image[3];
+        spriteRight2 = new Image[3];
+        posX = -800;
+        posY = -600;
+        runSpeed = 0;
+        runSpeedLeft = 0;
+        flameChange = 0;
+        height = 0;
         for(int i =0; i < 3;i++){
             spriteDown[i] = subImage(spriteSheet,312 + (52 * i), 288,52,72);
-        }
-        for(int i =0; i < 3;i++){
-            spriteUp[i] = subImage(spriteSheet,312 + (52 * i), 504,52,72);
+            spriteDown2[i] = subImage(spriteSheet2,312 + (52 * i), 288,52,72);
         }
         for(int i =0; i < 3;i++){
             spriteLeft[i] = subImage(spriteSheet,312 + (52 * i), 360,52,72);
+            spriteLeft2[i] = subImage(spriteSheet2,312 + (52 * i), 360,52,72);
         }
-        for(int i =0; i < 3;i++){
-            spriteRight[i] = subImage(spriteSheet,312 + (52 * i), 432,52,72);
+        for(int i =0; i < 3;i++) {
+            spriteRight[i] = subImage(spriteSheet, 312 + (52 * i), 432, 52, 72);
+            spriteRight2[i] = subImage(spriteSheet2, 312 + (52 * i), 432, 52, 72);
         }
     }
     /*
@@ -59,7 +81,6 @@ public class cutScene extends extraFunctions {
             clearBackground(800, 600, g);
             changeBackgroundColor(black, g);
             changeColor(white, g);
-
 
             if ((timer > 2) && (timer < 5)) {
                 changeColor(grey1, g);
@@ -120,13 +141,27 @@ public class cutScene extends extraFunctions {
             }
         }
         if(state == introState.animation){
-            if((timer % 0.2) == 0){
+            flameChange++;
+            runSpeed+=2;
+            if(flameChange % 3 == 0){
                 back = !back;
-                if(back){
-                    drawImage(background, 0, 0, g);
-                } else{
-                    drawImage(backgroundAlt, 0, 0, g);
-                }
+            }
+            if(back){
+                drawImage(background, posX, posY, g);
+            } else{
+                drawImage(backgroundAlt, posX, posY, g);
+            }
+            if((posY + 200 + runSpeed) <280) {
+                drawImage(spriteDown[flameChange % 3], posX + 857, posY + 1000 + runSpeed, g);
+                drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
+                height = runSpeed;
+            } else if((posY + 200 + runSpeed) >=280) {
+                drawImage(spriteLeft2[flameChange % 3], posX + 1020 - runSpeedLeft, posY + 200 + height, g);
+                runSpeedLeft+=2;
+            }
+            if(posY < 0) {
+                posX+=2;
+                posY+=2;
             }
         }
     }

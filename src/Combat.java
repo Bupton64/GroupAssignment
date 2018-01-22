@@ -1360,7 +1360,7 @@ public class Combat extends extraFunctions{
                     break;
                 case 4:
                     if (roll > 7) {
-                        enemy = new monster_Vanguard();
+                        enemy = new monster_brawler();
                     } else if (roll > 5) {
                         enemy = new monster_Wolf();
                     } else {
@@ -1368,8 +1368,10 @@ public class Combat extends extraFunctions{
                     }
                     break;
                 case 5:
-                    if (roll > 8) {
+                    if(roll > 9) {
                         enemy = new monster_Witch();
+                    } else if (roll > 6) {
+                        enemy = new monster_brawler();
                     } else if(roll > 1) {
                         enemy = new monster_Vanguard();
                     }else{
@@ -1384,7 +1386,7 @@ public class Combat extends extraFunctions{
                     }else if (roll > 1){
                         enemy = new monster_Wyvern();
                     }else{
-                        enemy = new monster_giant();
+                        enemy = new monster_brawler();
                     }
                     break;
                 case 7:
