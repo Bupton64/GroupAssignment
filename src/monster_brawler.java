@@ -1,10 +1,6 @@
 import java.awt.*;
 
-public class monster_Vanguard extends Monster{
-
-    public monster_Vanguard() {
-        this.init();
-    }
+public class monster_brawler extends Monster{
 
     public void init() {
         Ability[] temp;
@@ -12,26 +8,27 @@ public class monster_Vanguard extends Monster{
         for (int i = 0; i < 3; i++) {
             temp[i] = new Ability();
         }
-        setAttack(6);
+        setAttack(3);
         setDefense(0);
-        setLuck(4);
-        setSpeed(16);
+        setLuck(2);
+        setSpeed(10);
         setStrength(4);
-        setXPGain(650);
+        setXPGain(450);
         setGoldMin(190);
         setGoldMax(230);
-        setCurrentHP(250);
-        setMaxHP(250);
-        setLevel(5);
+        setCurrentHP(220);
+        setMaxHP(220);
+        setLevel(4);
         setAlive(true);
-        setName("Vanguard");
+        setName("Brawler");
         setEnergy(0);
-        setUpAbilityNumberI(temp, 0, "Smash", 2, 0, 0, 0, 1, false, -1, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 1, "Cleave", 0, 2, 2, 2, 2, false, 2, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 2, "Whirlwind", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 0, "Punch", 2, -2, 0, 0, -1, false, -1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 1, "Grapple", 0, 2, 2, 2, 2, false, 2, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 2, "Haymaker", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
         Image sprite = loadImage("monster_theroxVanguard.png");
+        //Image sprite = loadImage("monster_brawler.png");
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);
@@ -42,7 +39,8 @@ public class monster_Vanguard extends Monster{
         Item newItem = new Item();
         int num =(int)(Math.random()*100);
         if(num >90){
-            newItem = new item_soulStone();
+            newItem = new item_Equipment("Scale Mail", 0, 2, 0, 2, 0, Item.Slot.chest, "A sturdy chestpiece", 390, 1040);
+
         }
         return newItem;
     }
@@ -50,10 +48,10 @@ public class monster_Vanguard extends Monster{
     public Ability moveChoice(){
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
-        if(this.getCurrentHP() > this.getMaxHP()*0.6){
+        if(this.getCurrentHP() > this.getMaxHP()*0.4){
             if(this.getEnergy() > 1){
-                if(num > 70){
-                    return abilities[1].use(this); //< Cleave
+                if(num > 60){
+                    return abilities[1].use(this); //< Grapple
                 } else {
                     return abilities[0].use(this); //< Two Handed Smash
                 }
@@ -62,13 +60,13 @@ public class monster_Vanguard extends Monster{
             }
         } else{
             if(this.getEnergy() > 4){
-                if(num > 40){
+                if(num > 70){
                     return abilities[2].use(this); //< Whirling Axes
                 } else {
                     return abilities[1].use(this); //< Cleave
                 }
             } else if (this.getEnergy() > 1) {
-                if(num > 40) {
+                if(num > 50) {
                     return abilities[1].use(this); //< Cleave
                 } else{
                     return abilities[0].use(this); //< Two Handed Smash
