@@ -38,15 +38,15 @@ public class cutScene extends extraFunctions {
         timePast = 0;
         back = true;
         state = introState.text;
-        spriteSheet = loadImage("chara1.png");
+        spriteSheet = loadImage("scaredRunning.png");
         spriteSheet2 = loadImage("chara2.png");
-        spriteUp = new Image[3];
+//        spriteUp = new Image[3];
         spriteDown = new Image[3];
-        spriteLeft = new Image[3];
-        spriteRight = new Image[3];
+//        spriteLeft = new Image[3];
+//        spriteRight = new Image[3];
         spriteDown2 = new Image[3];
-        spriteLeft2 = new Image[3];
-        spriteRight2 = new Image[3];
+//        spriteLeft2 = new Image[3];
+//        spriteRight2 = new Image[3];
         posX = -800;
         posY = -600;
         runSpeed = 0;
@@ -54,17 +54,17 @@ public class cutScene extends extraFunctions {
         flameChange = 0;
         height = 0;
         for(int i =0; i < 3;i++){
-            spriteDown[i] = subImage(spriteSheet,312 + (52 * i), 288,52,72);
-            spriteDown2[i] = subImage(spriteSheet2,312 + (52 * i), 288,52,72);
+            spriteDown[i] = subImage(spriteSheet,156 + (52 * i), 0,52,72);
+            spriteDown2[i] = subImage(spriteSheet,312 + (52 * i), 0,52,72);
         }
-        for(int i =0; i < 3;i++){
-            spriteLeft[i] = subImage(spriteSheet,312 + (52 * i), 360,52,72);
-            spriteLeft2[i] = subImage(spriteSheet2,312 + (52 * i), 360,52,72);
-        }
-        for(int i =0; i < 3;i++) {
-            spriteRight[i] = subImage(spriteSheet, 312 + (52 * i), 432, 52, 72);
-            spriteRight2[i] = subImage(spriteSheet2, 312 + (52 * i), 432, 52, 72);
-        }
+//        for(int i =0; i < 3;i++){
+//            spriteLeft[i] = subImage(spriteSheet,104 + (52 * i), 360,52,72);
+//            spriteLeft2[i] = subImage(spriteSheet2,312 + (52 * i), 360,52,72);
+//        }
+//        for(int i =0; i < 3;i++) {
+//            spriteRight[i] = subImage(spriteSheet, 104 + (52 * i), 432, 52, 72);
+//            spriteRight2[i] = subImage(spriteSheet2, 312 + (52 * i), 432, 52, 72);
+//        }
     }
     /*
      * Updates the timer
@@ -84,56 +84,82 @@ public class cutScene extends extraFunctions {
 
             if ((timer > 2) && (timer < 5)) {
                 changeColor(grey1, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 2.1) && (timer < 5)) {
                 changeColor(grey2, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 2.2) && (timer < 5)) {
                 changeColor(grey3, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 2.3) && (timer < 5)) {
                 changeColor(grey4, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 2.5) && (timer < 5)) {
                 changeColor(grey5, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 2.6) && (timer < 5)) {
                 changeColor(grey6, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 2.7) && (timer < 5)) {
                 changeColor(white, g);
                 clearBackground(800, 600, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 4) && (timer < 5)) {
                 changeColor(grey6, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 4.1) && (timer < 5)) {
                 changeColor(grey5, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 4.2) && (timer < 5)) {
                 changeColor(grey4, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 4.3) && (timer < 5)) {
                 changeColor(grey3, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 4.4) && (timer < 5)) {
                 changeColor(grey2, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 4.5) && (timer < 5)) {
                 changeColor(grey1, g);
-                drawBoldText(150, 300, "In the distant future...", g);
+                drawBoldText(300, 265, "In a far off land, the dark", g);
+                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
             }
             if ((timer > 4.6) && (timer < 5)) {
                 clearBackground(800, 600, g);
@@ -156,7 +182,10 @@ public class cutScene extends extraFunctions {
                 drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
                 height = runSpeed;
             } else if((posY + 200 + runSpeed) >=280) {
-                drawImage(spriteLeft2[flameChange % 3], posX + 1020 - runSpeedLeft, posY + 200 + height, g);
+//                drawImage(spriteLeft2[flameChange % 3], posX + 1020 - runSpeedLeft, posY + 200 + height, g);
+                if((posX +1020 - runSpeedLeft) > 560) {
+                    drawImage(spriteDown2[flameChange % 3], posX + 1020 - runSpeedLeft, posY + 200 + runSpeed, g);
+                }
                 runSpeedLeft+=2;
             }
             if(posY < 0) {
@@ -166,3 +195,4 @@ public class cutScene extends extraFunctions {
         }
     }
 }
+

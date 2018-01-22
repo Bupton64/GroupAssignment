@@ -47,6 +47,13 @@ public class plains_H9 extends Map {
                 flicker = false;
                 return true;
         }
+        if(player.getMapPosX() < 570 && player.getMapPosX() > 530 && player.getMapPosY() > 220 && player.getMapPosY() < 250){
+            player.setCurrentMapLocation(52);
+            flicker = false;
+            player.setMapPosX(380);
+            player.setMapPosY(360);
+            return true;
+        }
         return false;
     }
 
