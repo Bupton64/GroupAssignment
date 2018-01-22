@@ -53,6 +53,8 @@ public class npc_wizard extends  NPC {
     Dialogue listFour;
     Dialogue listFive;
 
+    Dialogue listSix;
+
 
 
     public void initDialogue(){
@@ -77,8 +79,12 @@ public class npc_wizard extends  NPC {
         Dialogue d8 = new Dialogue(null,false,true,"Have you spoken to Camrath yet? you'll find him in the East","","","");
         listFour = d8;
 
-        Dialogue d9 = new Dialogue(null,true,false,"That's quite the sword! You must use it wisely and well. Train with it, ","get to know it and let it know you. There is something else you can do","however... COMPLETE STORY HERE","");
+        Dialogue d10 = new Dialogue(null,true,true,"Can you go retreive my 7 Orbs from the south?","","","");
+        Dialogue d9 = new Dialogue(d10,false,false,"That's quite the sword! You must use it wisely and well. Train with it, ","get to know it and let it know you. There is something else you can do.","Therox's creatures have managed to steal 7 of my Magical orbs. I need you","to go and retreive the orbs, I saw them running to the south.");
         listFive = d9;
+
+        Dialogue d11 = new Dialogue(null,false,true,"I saw the creatures run south of town, Best of luck Bjarne!","","","");
+        listSix = d11;
 
     }
 
@@ -90,6 +96,9 @@ public class npc_wizard extends  NPC {
             case 3:
                 currentDialogue = listFour;
                 return 3;
+            case 6:
+                currentDialogue = listSix;
+                return 6;
             default:
                 return 0;
 
@@ -110,8 +119,10 @@ public class npc_wizard extends  NPC {
             if (currentState == Quest.questState.completedQuest) {
                 currentDialogue = listThree;
             }
-        }else{
-
+        }else if(questName == "The Road To Riches"){
+            if (currentState == Quest.questState.preQuest) {
+                currentDialogue = listThree;
+            }
             if (currentState == Quest.questState.inQuest) {
                 currentDialogue = listFour;
             }
@@ -148,7 +159,9 @@ public class npc_wizard extends  NPC {
 
             }
         } else if(questName == "The Road To Riches") {
-
+            if (currentState == Quest.questState.completedQuest) {
+                this.questStage = 6;
+            }
         }
 
     }

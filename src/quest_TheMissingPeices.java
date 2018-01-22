@@ -4,8 +4,11 @@ public class quest_TheMissingPeices extends Quest {
 
     boolean displayReward;
 
+    int orbsCollected;
+
     quest_TheMissingPeices(){
-        setQuestName("The Road To Riches");
+        orbsCollected = 0;
+        setQuestName("The Missing Peices");
         state = questState.inQuest;
         displayReward = true;
         displayTimer = 0;
@@ -26,13 +29,8 @@ public class quest_TheMissingPeices extends Quest {
     public void drawQuest(Graphics2D g){
         if(getState() == questState.inQuest) {
             changeColor(red, g);
-            drawText(450, 30, "Speak to the Blacksmith", "Arial", 30, g);
-            if(displayReward){
-                changeColor(white, g);
-                drawBoldText(230, 300, "Quest Reward:", "Arial", 20, g);
-                changeColor(purple, g);
-                drawBoldText(360, 300, " +250 EXP", "Arial", 20, g);
-            }
+            drawText(450, 30, orbsCollected +"/7 Orbs Collected", "Arial", 30, g);
+
         }
 
     }

@@ -789,15 +789,21 @@ public class Character extends Statblock {
                 break;
             case 4:
                 setGpTotal(getGpTotal() - 500);
-                playerStoreAccess = StoreAccess.TierOne;
+
                 currentQuest.setState(Quest.questState.inQuest);
                 break;
             case 5:
                 currentQuest.setState(Quest.questState.completedQuest);
                 item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
                 addItemToInventory(bronzeSword); //T1 Sword
+                playerStoreAccess = StoreAccess.TierOne;
                 break;
+            case 6:
+                currentQuest = new quest_TheRoadToRiches();
+                break;
+            case 7:
 
+                break;
         }
 
 
