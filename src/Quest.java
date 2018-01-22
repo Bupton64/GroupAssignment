@@ -52,12 +52,17 @@ public class Quest extends extraFunctions {
 
     int totalCollectables;
 
+    public int getTotalCollectables() {
+        return totalCollectables;
+    }
+
     public int getNumOfCollectables() {
         return numOfCollectables;
     }
 
     public void setNumOfCollectables(int numOfCollectables) {
         this.numOfCollectables = numOfCollectables;
+
     }
 
     public questState getState() {

@@ -4,12 +4,12 @@ import java.awt.event.*;
 public class npc_plains_quest_collectable extends NPC{
 
 
-    npc_plains_quest_collectable (){
+    npc_plains_quest_collectable (int posX, int posY){
         setName("Crystal");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,520,0,56,72);
-        setMapPosX(400);
-        setMapPosY(200);
+        setMapPosX(posX);
+        setMapPosY(posY);
 
         initDialogue();
         loadDialogue = true;

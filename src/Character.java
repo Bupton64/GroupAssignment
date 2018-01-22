@@ -768,7 +768,13 @@ public class Character extends Statblock {
 
     public int getCollectableNum(){return currentQuest.getNumOfCollectables();}
 
-    public void setCollectableNum(int num){currentQuest.setNumOfCollectables(num);}
+    public void setCollectableNum(int num) {
+        currentQuest.setNumOfCollectables(num);
+        if (currentQuest.getNumOfCollectables() == currentQuest.getTotalCollectables()) {
+            currentQuest.setState(Quest.questState.completedQuest);
+            setQuestStage(11);
+        }
+    }
 
 
     public int getQuestStage() {

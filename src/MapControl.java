@@ -115,21 +115,20 @@ public class MapControl extends extraFunctions {
                         numOfNpc = 1;
                         break;
                     case 13:
-                        mapNpcs[0] = new npc_plains_E13_Valliard();
-                        numOfNpc = 1;
+
                         currentMap = new plains_D9();
                         break;
                     case 14:
                         currentMap = new plains_D10();
                         if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(6)){
-                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            mapNpcs[0] = new npc_plains_quest_collectable(200,350);
                             numOfNpc = 1;
                         }
                         break;
                     case 15:
                         currentMap = new plains_D11();
                         if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(5)){
-                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            mapNpcs[0] = new npc_plains_quest_collectable(399,399);
                             numOfNpc = 1;
                         }
                         break;
@@ -167,7 +166,7 @@ public class MapControl extends extraFunctions {
                     case 22:
                         currentMap = new plains_E10();
                         if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(4)){
-                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            mapNpcs[0] = new npc_plains_quest_collectable(700,300);
                             numOfNpc = 1;
                         }
                         break;
@@ -179,15 +178,18 @@ public class MapControl extends extraFunctions {
                     case 24:
                         currentMap = new plains_E12();
                         if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(3)){
-                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            mapNpcs[0] = new npc_plains_quest_collectable(100,150);
                             numOfNpc = 1;
                         }
                         break;
                     case 25:
                         currentMap = new plains_E13();
                         if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(2)){
-                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            mapNpcs[0] = new npc_plains_quest_collectable(400,290);
                             numOfNpc = 1;
+                            
+                            mapNpcs[1] = new npc_plains_E13_Valliard();
+                            numOfNpc = 2;
                         }
                         break;
                     case 26:
@@ -219,14 +221,14 @@ public class MapControl extends extraFunctions {
                     case 31:
                         currentMap = new plains_F11();
                         if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(1)){
-                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            mapNpcs[0] = new npc_plains_quest_collectable(400,300);
                             numOfNpc = 1;
                         }
                         break;
                     case 32:
                         currentMap = new plains_F12();
                         if(playerMan.getQuestStage() >= 9  && playerMan.getCollectableState(0)) {
-                            mapNpcs[0] = new npc_plains_quest_collectable();
+                            mapNpcs[0] = new npc_plains_quest_collectable(600,200);
                             numOfNpc = 1;
                         }
                         break;
@@ -385,25 +387,38 @@ public class MapControl extends extraFunctions {
                 switch((int)playerMan.getCurrentMapLocation()){
                     case 14:
                         playerMan.setCollectableState(0,true);
-
+                        playerMan.setCollectableNum(playerMan.getCollectableNum() + 1);
+                        swapMap = true;
                         break;
                     case 15:
                         playerMan.setCollectableState(1,true);
+                        playerMan.setCollectableNum(playerMan.getCollectableNum() + 1);
+                        swapMap = true;
                         break;
                     case 22:
                         playerMan.setCollectableState(2,true);
+                        playerMan.setCollectableNum(playerMan.getCollectableNum() + 1);
+                        swapMap = true;
                         break;
                     case 24:
                         playerMan.setCollectableState(3,true);
+                        playerMan.setCollectableNum(playerMan.getCollectableNum() + 1);
+                        swapMap = true;
                         break;
                     case 25:
                         playerMan.setCollectableState(4,true);
+                        playerMan.setCollectableNum(playerMan.getCollectableNum() + 1);
+                        swapMap = true;
                         break;
                     case 31:
                         playerMan.setCollectableState(5,true);
+                        playerMan.setCollectableNum(playerMan.getCollectableNum() + 1);
+                        swapMap = true;
                         break;
                     case 32:
                         playerMan.setCollectableState(6,true);
+                        playerMan.setCollectableNum(playerMan.getCollectableNum() + 1);
+                        swapMap = true;
                         break;
                 }
 
