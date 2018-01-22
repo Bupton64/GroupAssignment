@@ -57,6 +57,8 @@ public class npc_wizard extends  NPC {
 
     Dialogue listSeven;
 
+    Dialogue listEight;
+
 
 
     public void initDialogue(){
@@ -88,8 +90,13 @@ public class npc_wizard extends  NPC {
         Dialogue d11 = new Dialogue(null,false,true,"I saw the creatures run south of town, Best of luck Bjarne!","","","");
         listSix = d11;
 
-        Dialogue d12 = new Dialogue(null,false,true,"Hey thanks pal. that was pretty dandy!","","","");
+        Dialogue d14 = new Dialogue(null,true,true,"Can you go and look around town for some clues","Check the houses. I have a bad feeling about this!","","");
+        Dialogue d13 = new Dialogue(d14,false,false,"Oh No....","I can sense dark energy in town, there must be something hiding.","","");
+        Dialogue d12 = new Dialogue(d13,false,false,"Oh you have them! Hope that wasn't to much trouble.","Alright now lets see how they are getting inside.","","");
         listSeven = d12;
+
+        Dialogue d15 = new Dialogue(null,false,true,"How goes your search? I think the houses in town","might have some clues.","","");
+        listEight = d15;
 
     }
 
@@ -106,6 +113,8 @@ public class npc_wizard extends  NPC {
             case 10:
                 currentDialogue = listSix;
                 return 10;
+            case 12:
+                return 12;
             default:
                 return 0;
 
@@ -130,6 +139,8 @@ public class npc_wizard extends  NPC {
             currentDialogue = listSix;
         }else if(questStage == 11){
             currentDialogue = listSeven;
+        }else if(questStage == 12){
+            currentDialogue = listEight;
         }
     }
 
@@ -194,6 +205,9 @@ public class npc_wizard extends  NPC {
                             break;
                         case 9:
                             questStage = 10;
+                            break;
+                        case 11:
+                            questStage = 12;
                             break;
                     }
                 }

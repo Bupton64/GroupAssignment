@@ -831,6 +831,11 @@ public class Character extends Statblock {
             case 10:
                 currentQuest = new quest_TheMissingPeices();
                 break;
+            case 12:
+                currentQuest = new quest_ASpyInTheClutches();
+                break;
+            case 13:
+                break;
         }
 
 
