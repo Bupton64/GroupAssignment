@@ -47,7 +47,7 @@ public class AdventureMode extends GameEngine {
         MenuController = new Menu(playerMan);
         MenuController.initMenu();
 
-        Shop1Controller = new Shop1();
+        Shop1Controller = new Shop1(playerMan);
         Shop1Controller.shopInit();
 
         StartController = new StartScreen();
@@ -220,6 +220,9 @@ public class AdventureMode extends GameEngine {
         }
         if(state == GameState.Shop1Mode){
             Shop1Controller.keyPressed(e);
+            if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+                stateChanger = 1;
+            }
         }
         if(state == GameState.CutScene){
             if(e.getKeyCode() == KeyEvent.VK_SPACE){

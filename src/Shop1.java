@@ -5,6 +5,11 @@ import java.lang.String;
 
 public class Shop1 extends extraFunctions {
 
+    Shop1(Character playerMan){
+        this.player1 = playerMan;
+    }
+    Character player1;
+
     public Item[] getShopInventory() {
         return shopInventory;
     }
@@ -23,6 +28,19 @@ public class Shop1 extends extraFunctions {
     int pos =0;
     int bar =0;
     int increaser = 0;
+    private Item soldItem;
+    int current = 0;
+
+
+    void buyItem(int i){
+       Item soldItem = shopInventory[i];
+       player1.addItemToInventory(soldItem);
+       player1.setGpTotal(player1.getGpTotal()-soldItem.getSellPrice());
+    }
+
+    void sellItem(int i){
+        player1.getInventory()[i].getSellPrice();
+    }
 
     void shopInit() {
         shopBackground = subImage(book, 0, 0, 544, 416);
@@ -45,33 +63,34 @@ public class Shop1 extends extraFunctions {
         inventory[12] = new item_Equipment("Emperor's Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
         inventory[13] = new item_Equipment("Valkyrie", 10, 10, 4, 0, 8, Item.Slot.weapon, "A legend made reality", 0, 0);
         inventory[14] = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather", 10, 0);
-
-
-
-
         setShopInventory(inventory);
     }
 
     void drawShop(Graphics2D g) {
+        if(pos == 0) {
+            current = scroller / 100;
+        }
         clearBackground(800, 600, g);
         drawImage(shopBackground, 0, 0, 800, 600, g);
-        changeColor(red, g);
+        changeColor(black, g);
         if (nextPage == true) {
             scroller = 100;
         }
         drawLine(70, scroller + 40, 250, scroller + 40, 2, g);
-        drawBoldText(50, 50, "Weapons & Equipment", g);
+        drawBoldText(80, 50, "Weapons & Equipment", "Felix Titling", 20, g);
         drawBoldText(500, 500, Integer.toString(pageNum), g);
-        int dis =5;
-        if((pos+5)>50){
+        int dis = 5;
+        if((pos + 5) > 50){
             dis = 50-pos;
         }
-
+        increaser = 0;
         for (int i = pos; i < pos+dis; i++) {
-            drawBoldText(65, 130 + (increaser * 70),shopInventory[i].getName(), "Felix Titling", 20, g);
+            changeColor(red, g);
+            drawBoldText(100, 100+(i*40), Integer.toString(i), g);
+            drawBoldText(65, 130 + (increaser * 100),shopInventory[i].getName(), "Felix Titling", 20, g);
             increaser++;
         }
-        drawBoldText(200, 200, shopInventory[0].getName(), g);
+        //drawBoldText(200, 200, shopInventory[0].getName(), g);
         nextPage = false;
 
     }
@@ -79,18 +98,26 @@ public class Shop1 extends extraFunctions {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             if (scroller < 360) {
-                scroller += 70;
+                scroller += 100;
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
             if (scroller > 100) {
-                scroller -= 70;
+                scroller -= 100;
             }
         }
         if ((e.getKeyCode() == KeyEvent.VK_TAB) || (e.getKeyCode() == KeyEvent.VK_RIGHT)) {
             pageNum++;
+            pos +=5;
             nextPage = true;
 
+        }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+            if (player1.getGpTotal() > shopInventory[current].getSellPrice()) {
+                buyItem(current);
+            } else {
+                System.out.println("You don't have enough funds boi");
+            }
         }
     }
 }
