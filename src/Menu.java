@@ -376,15 +376,6 @@ public class Menu extends extraFunctions {
         nextPage = false;
 
     }
-
-
-
-
-
-
-
-
-
     public void drawEquMenu(Graphics2D g) {
         if (equMenu) {
             firstHead = firstItem("head", firstHead);
@@ -464,29 +455,24 @@ public class Menu extends extraFunctions {
             changeColor(red, g);
             if (h == false) {
                 drawBoldText(370, 125, "None", "Felix Titling", 15, g);
-                noneStats("head", g);
+
             }
             if (w == false) {
                 drawBoldText(370, 150, "None", "Felix Titling", 15, g);
-                noneStats("weapon", g);
             }
             if (o == false) {
                 drawBoldText(370, 175, "None", "Felix Titling", 15, g);
-                noneStats("offhand", g);
             }
 
             if (c == false) {
                 drawBoldText(370, 200, "None", "Felix Titling", 15, g);
-                noneStats("chest", g);
             }
             if (f == false) {
                 drawBoldText(370, 225, "None", "Felix Titling", 15, g);
-                noneStats("feet", g);
             }
 
             if (a == false) {
                 drawBoldText(370, 250, "None", "Felix Titling", 15, g);
-                noneStats("accessory", g);
             }
 
 
@@ -652,13 +638,16 @@ public class Menu extends extraFunctions {
                     drawBoldText(200, 350 + 60, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
-                    if(itemSelect&&!none) {
-                        stats("head", g);
-                        stats("weapon", g);
-                        stats("offhand", g);
-                        stats("chest", g);
-                        stats("feet", g);
-                        stats("accessory", g);
+                    drawBoldText(300, 300, Boolean.toString(none), g);
+                    if(itemSelect) {
+                        if(none == false) {
+                            stats("head", g);
+                            stats("weapon", g);
+                            stats("offhand", g);
+                            stats("chest", g);
+                            stats("feet", g);
+                            stats("accessory", g);
+                        }
                     }
 
                 }
