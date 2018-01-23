@@ -37,7 +37,7 @@ public class accessoriesShop extends shop {
         changeBackgroundColor(black, g);
         drawImage(this.getShopBackground(), 0, 0, 800, 600, g);
         changeColor(black, g);
-        drawBoldText(80, 60, "LINK'S ARMORY", "Felix Titling", 30, g);
+        drawBoldText(80, 60, "SALLY'S PHARMACY", "Felix Titling", 30, g);
 
         //< Draw scroller
         drawLine(70,  (this.getScroller()*45) + 140, 250, (this.getScroller()*45) + 140, 2, g);
