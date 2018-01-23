@@ -30,7 +30,7 @@ public class AdventureMode extends GameEngine {
     CharacterMovement playerMovement;
     Collision collisionDetector;
     Combat combatMode;
-    Shop1 Shop1Controller;
+    weaponShop Shop1Controller;
     cutScene cut_scene;
 
 
@@ -47,8 +47,7 @@ public class AdventureMode extends GameEngine {
         MenuController = new Menu(playerMan);
         MenuController.initMenu();
 
-        Shop1Controller = new Shop1(playerMan);
-        Shop1Controller.shopInit();
+        Shop1Controller = new weaponShop(playerMan);
 
         StartController = new StartScreen();
 
