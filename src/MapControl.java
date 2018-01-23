@@ -324,8 +324,15 @@ public class MapControl extends extraFunctions {
                         break;
                     case 50:
                         currentMap = new plains_E8_topLeftHouse();
+
                         mapNpcs[0] = new npc_plains_priest();
                         numOfNpc = 1;
+                        if(playerMan.getQuestStage() == 12){
+                            if(!playerMan.getCollectableState(0)) {
+                                mapNpcs[1] = new npc_plains_quest_collectable(360, 160);
+                                numOfNpc = 2;
+                            }
+                        }
                         break;
                     case 51:
                         currentMap = new plains_A9_church();
