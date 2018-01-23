@@ -397,7 +397,7 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setGpTotal(100000000);
+        setGpTotal(1);
         setQuestStage(10);
         currentQuest = new quest_TheMissingPeices();
         setXPTotal(0); //< TESTERS

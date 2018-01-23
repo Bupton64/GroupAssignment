@@ -115,6 +115,8 @@ public class AdventureMode extends GameEngine {
             StartController.updateTimer(dt);
         } else if(state == GameState.CutScene){
             cut_scene.updateTimer(dt);
+        } else if(state == GameState.Shop1Mode){
+            Shop1Controller.updtaeShop();
         }
     }
 

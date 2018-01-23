@@ -3,50 +3,53 @@ import java.awt.*;
 abstract public class shop extends extraFunctions {
 
     private Character player1;
-    private int current;
+    private Item boughtItem;
     private Item soldItem;
     private int increaser;
     private int totalPages;
     private int pageNum;
     private int shopIndex;
-    private int pos;
-    private int bar;
+    private int itemIndex;
+    private int maxIndex;
     private Item [] shopInventory;
     private Image book;
     private Image shopBackground;
     private int scroller;
-    private boolean nextPage;
+    private boolean purchaseSuccess;
+    private boolean purchaseAttempt;
 
 
     shop(Character playerMan){this.init(playerMan); }
 
     public void init(Character playerMan){
         this.player1 = playerMan;
-        this.current = 0;
         this.increaser = 0;
         this.totalPages = 0;
-        this.pageNum = 0;
+        this.pageNum = 1;
         this.shopIndex = 0;
-        this.pos = 0;
-        this.bar = 0;
         this.book = loadImage("open.png");
         this.shopBackground = subImage(book, 0, 0, 544, 416);
         this.scroller = 100;
-        this.nextPage = false;
         this.shopInit();
+        this.purchaseAttempt = false;
+        this.purchaseSuccess = false;
     }
 
     abstract public void shopInit();
 
-    void buyItem(int i){
+    public void buyItem(int i){
+        purchaseAttempt = true;
         if(player1.getGpTotal() >= shopInventory[i].getBuyPrice()) {
             if(!player1.isInventoryFull()) {
                 Item soldItem = shopInventory[i];
                 player1.addItemToInventory(soldItem);
                 player1.setGpTotal(player1.getGpTotal() - soldItem.getBuyPrice());
+                purchaseSuccess = true;
+            } else{
+                purchaseSuccess = false;
             }
         } else{
-            return;
+            purchaseSuccess = false;
         }
     }
 
@@ -56,6 +59,48 @@ abstract public class shop extends extraFunctions {
     }
 
     //< Getters and Setters
+
+
+    public boolean isPurchaseAttempt() {
+        return purchaseAttempt;
+    }
+
+    public void setPurchaseAttempt(boolean purchaseAttempt) {
+        this.purchaseAttempt = purchaseAttempt;
+    }
+
+    public boolean isPurchaseSuccess() {
+        return purchaseSuccess;
+    }
+
+    public void setPurchaseSuccess(boolean purchaseSuccess) {
+        this.purchaseSuccess = purchaseSuccess;
+    }
+
+    public Item getBoughtItem() {
+        return boughtItem;
+    }
+
+    public void setBoughtItem(Item boughtItem) {
+        this.boughtItem = boughtItem;
+    }
+
+    public int getMaxIndex() {
+        return maxIndex;
+    }
+
+    public void setMaxIndex(int maxIndex) {
+        this.maxIndex = maxIndex;
+    }
+
+    public int getItemIndex() {
+        return itemIndex;
+    }
+
+    public void setItemIndex(int itemIndex) {
+        this.itemIndex = itemIndex;
+    }
+
     public Item[] getShopInventory() {
         return shopInventory;
     }
@@ -70,14 +115,6 @@ abstract public class shop extends extraFunctions {
 
     public void setPlayer1(Character player1) {
         this.player1 = player1;
-    }
-
-    public int getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(int current) {
-        this.current = current;
     }
 
     public Item getSoldItem() {
@@ -120,22 +157,6 @@ abstract public class shop extends extraFunctions {
         this.shopIndex = shopIndex;
     }
 
-    public int getPos() {
-        return pos;
-    }
-
-    public void setPos(int pos) {
-        this.pos = pos;
-    }
-
-    public int getBar() {
-        return bar;
-    }
-
-    public void setBar(int bar) {
-        this.bar = bar;
-    }
-
     public Image getBook() {
         return book;
     }
@@ -158,14 +179,6 @@ abstract public class shop extends extraFunctions {
 
     public void setScroller(int scroller) {
         this.scroller = scroller;
-    }
-
-    public boolean isNextPage() {
-        return nextPage;
-    }
-
-    public void setNextPage(boolean nextPage) {
-        this.nextPage = nextPage;
     }
 
 }

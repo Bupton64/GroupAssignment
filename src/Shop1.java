@@ -7,6 +7,8 @@ public class Shop1 extends shop {
 
     Shop1(Character playerMan){
         super(playerMan);
+        setTotalPages(3);
+        setMaxIndex(11);
     }
 
     @Override
@@ -30,57 +32,94 @@ public class Shop1 extends shop {
         setShopInventory(inventory);
     }
 
-    public void drawShop(Graphics2D g) {
-        this.getPlayer1().setGpTotal(10000);
-        if(this.getPos() == 0) {
-            this.setCurrent(this.getScroller() / 100);
+    public void updtaeShop(){
+        if(getItemIndex() > getMaxIndex()){
+            setItemIndex(getMaxIndex());
         }
+        setScroller((getItemIndex()%5));
+    }
+
+    public void drawShop(Graphics2D g) {
+        //< Set up background
         clearBackground(800, 600, g);
         drawImage(this.getShopBackground(), 0, 0, 800, 600, g);
         changeColor(black, g);
-        if (this.isNextPage() == true) {
-            this.setScroller(100);
-        }
-        drawLine(70,  this.getScroller() + 40, 250, this.getScroller() + 40, 2, g);
         drawBoldText(80, 50, "Weapons & Equipment", "Felix Titling", 20, g);
+
+        //< Draw scroller
+        drawLine(70,  (this.getScroller()*100) + 140, 250, (this.getScroller()*100) + 140, 2, g);
+
+        //< Draw page number
         drawBoldText(500, 500, Integer.toString(this.getPageNum()), g);
-        int dis = 5;
-        if((this.getPos() + 5) > 50){
-            dis = 50-this.getPos();
-        }
+
+        // Draw Items on screen
         setIncreaser(0);
-        for (int i = this.getPos(); i < this.getPos()+dis; i++) {
-            changeColor(red, g);
-            drawBoldText(100, 100+(i*40), Integer.toString(i), g);
-            drawBoldText(65, 130 + (this.getIncreaser() * 100), this.getShopInventory()[i].getName(), "Felix Titling", 20, g);
-            this.setIncreaser(this.getIncreaser() + 1);
+        for (int i = ((getPageNum()- 1) * 5); i < (getPageNum()*5); i++) {
+            if(i <= getMaxIndex()) {
+                changeColor(red, g);
+                drawBoldText(65, 130 + (this.getIncreaser() * 100), this.getShopInventory()[i].getName(), "Felix Titling", 20, g);
+                this.setIncreaser(this.getIncreaser() + 1);
+            }
         }
-        //drawBoldText(200, 200, shopInventory[0].getName(), g);
-        setNextPage(false);
+
+        // Draw purchase results
+        if(isPurchaseAttempt()){
+            changeColor(black, g);
+            drawSolidRectangle(100, 200, 600, 200, g);
+            changeColor(white, g);
+            if(isPurchaseSuccess()){
+                drawBoldText(225, 280, "You bought " + getShopInventory()[getItemIndex()].getName(), "Felix Titling", 20, g) ;
+                drawBoldText( 300, 320,  "for " + Integer.toString(getShopInventory()[getItemIndex()].getBuyPrice()) + " gold","Felix Titling", 20, g);
+            }else{
+                if(getPlayer1().isInventoryFull()) {
+                    drawBoldText(225, 280, "Cannot buy " + getShopInventory()[getItemIndex()].getName() + "!", "Felix Titling", 20, g) ;
+                    drawBoldText( 275, 320,  "Inventory is full!","Felix Titling", 20, g);
+                } else if(getPlayer1().getGpTotal() < getShopInventory()[getItemIndex()].getBuyPrice()){
+                    drawBoldText(225, 280, "Cannot buy " + getShopInventory()[getItemIndex()].getName() + "!", "Felix Titling", 20, g) ;
+                    drawBoldText( 275, 320,  "Not enough gold!","Felix Titling", 20, g);
+                }
+            }
+        }
 
     }
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            if (this.getScroller() < 360) {
-                this.setScroller(this.getScroller() + 100);
+            if(!isPurchaseAttempt()) {
+                if ((this.getScroller() * 100) + 40 < 460) {
+                    setItemIndex(getItemIndex() + 1);
+                }
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
-            if (this.getScroller() > 100) {
-                this.setScroller(this.getScroller() - 100);
+            if(!isPurchaseAttempt()) {
+                if ((this.getScroller() * 100) + 40 > 100) {
+                    setItemIndex(getItemIndex() - 1);
+                }
             }
         }
-        if ((e.getKeyCode() == KeyEvent.VK_TAB) || (e.getKeyCode() == KeyEvent.VK_RIGHT)) {
-            this.setPageNum(this.getPageNum() + 1);
-            this.setPos(this.getPos() + 5);
-            this.setNextPage(true);
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+            if(!isPurchaseAttempt()) {
+                if (getPageNum() < getTotalPages()) {
+                    setPageNum(getPageNum() + 1);
+                    setItemIndex(((getPageNum() - 1) * 5));
+                }
+            }
+        }
+        if (e.getKeyCode() == KeyEvent.VK_LEFT){
+            if(!isPurchaseAttempt()) {
+                if (getPageNum() != 1) {
+                    setPageNum(getPageNum() - 1);
+                    setItemIndex(((getPageNum() - 1) * 5));
+                }
+            }
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-            if (this.getPlayer1().getGpTotal() > this.getShopInventory()[this.getCurrent()].getSellPrice()) {
-                buyItem(this.getCurrent());
+            if(!isPurchaseAttempt()) {
+                this.buyItem(getItemIndex());
             } else {
-                System.out.println("You don't have enough funds boi");
+                setPurchaseAttempt(false);
+                setPurchaseSuccess(false);
             }
         }
     }
