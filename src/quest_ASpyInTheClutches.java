@@ -5,7 +5,7 @@ public class quest_ASpyInTheClutches extends Quest {
 
     quest_ASpyInTheClutches(){
         setQuestName("A Spy In The Clutches");
-        state = questState.inQuest;
+        state = questState.preQuest;
         displayReward = true;
         displayTimer = 0;
         displayDuration = 5;

@@ -137,7 +137,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 14:
                         currentMap = new plains_D10();
-                        if(playerMan.getQuestStage() >= 9){
+                        if(playerMan.getQuestStage() == 10){
                             if(!playerMan.getCollectableState(6)) {
                                 mapNpcs[0] = new npc_plains_quest_collectable(200, 350);
                                 numOfNpc = 1;
@@ -146,7 +146,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 15:
                         currentMap = new plains_D11();
-                        if(playerMan.getQuestStage() >= 9){
+                        if(playerMan.getQuestStage() == 10){
                             if(!playerMan.getCollectableState(5)) {
                                 mapNpcs[0] = new npc_plains_quest_collectable(399, 399);
                                 numOfNpc = 1;
@@ -186,7 +186,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 22:
                         currentMap = new plains_E10();
-                        if(playerMan.getQuestStage() >= 9){
+                        if(playerMan.getQuestStage() == 10){
                             if(!playerMan.getCollectableState(4)) {
                                 mapNpcs[0] = new npc_plains_quest_collectable(700, 300);
                                 numOfNpc = 1;
@@ -200,7 +200,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 24:
                         currentMap = new plains_E12();
-                        if(playerMan.getQuestStage() >= 9){
+                        if(playerMan.getQuestStage() == 10){
                             if(!playerMan.getCollectableState(3)) {
                                 mapNpcs[0] = new npc_plains_quest_collectable(100, 150);
                                 numOfNpc = 1;
@@ -209,7 +209,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 25:
                         currentMap = new plains_E13();
-                        if(playerMan.getQuestStage() >= 9){
+                        if(playerMan.getQuestStage() == 10){
                             if(!playerMan.getCollectableState(2)) {
                                 mapNpcs[0] = new npc_plains_quest_collectable(400, 370);
                                 numOfNpc = 1;
@@ -248,7 +248,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 31:
                         currentMap = new plains_F11();
-                        if(playerMan.getQuestStage() >= 9){
+                        if(playerMan.getQuestStage() == 10){
                             if(!playerMan.getCollectableState(1)) {
                                 mapNpcs[0] = new npc_plains_quest_collectable(400, 300);
                                 numOfNpc = 1;
@@ -257,7 +257,7 @@ public class MapControl extends extraFunctions {
                         break;
                     case 32:
                         currentMap = new plains_F12();
-                        if(playerMan.getQuestStage() >= 9){
+                        if(playerMan.getQuestStage() == 10){
                             if(!playerMan.getCollectableState(0)) {
                                 mapNpcs[0] = new npc_plains_quest_collectable(450, 200);
                                 numOfNpc = 1;
