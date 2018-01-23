@@ -151,6 +151,7 @@ public class AdventureMode extends GameEngine {
             changeBackgroundColor(black);
             StartController.drawStartScreen(mGraphics);
         }else if(state == GameState.Shop1Mode){
+            changeBackgroundColor(black);
             Shop1Controller.drawShop(mGraphics);
 
         }else if(state == GameState.CutScene) {

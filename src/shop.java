@@ -17,11 +17,14 @@ abstract public class shop extends extraFunctions {
     private int scroller;
     private boolean purchaseSuccess;
     private boolean purchaseAttempt;
+    private Image dialougeBox;
 
 
     shop(Character playerMan){this.init(playerMan); }
 
     public void init(Character playerMan){
+        this.dialougeBox = loadImage("dialogue_Boxes.png");
+        this.dialougeBox = subImage(dialougeBox, 11, 11, 490, 100);
         this.player1 = playerMan;
         this.increaser = 0;
         this.totalPages = 0;
@@ -60,6 +63,14 @@ abstract public class shop extends extraFunctions {
 
     //< Getters and Setters
 
+
+    public Image getDialougeBox() {
+        return dialougeBox;
+    }
+
+    public void setDialougeBox(Image dialougeBox) {
+        this.dialougeBox = dialougeBox;
+    }
 
     public boolean isPurchaseAttempt() {
         return purchaseAttempt;

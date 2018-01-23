@@ -42,6 +42,7 @@ public class Shop1 extends shop {
     public void drawShop(Graphics2D g) {
         //< Set up background
         clearBackground(800, 600, g);
+        changeBackgroundColor(black, g);
         drawImage(this.getShopBackground(), 0, 0, 800, 600, g);
         changeColor(black, g);
         drawBoldText(80, 50, "Weapons & Equipment", "Felix Titling", 20, g);
@@ -65,7 +66,8 @@ public class Shop1 extends shop {
         // Draw purchase results
         if(isPurchaseAttempt()){
             changeColor(black, g);
-            drawSolidRectangle(100, 200, 600, 200, g);
+            drawImage(getDialougeBox(),100, 200, 600, 200, g);
+            //drawSolidRectangle(100, 200, 600, 200, g);
             changeColor(white, g);
             if(isPurchaseSuccess()){
                 drawBoldText(225, 280, "You bought " + getShopInventory()[getItemIndex()].getName(), "Felix Titling", 20, g) ;
