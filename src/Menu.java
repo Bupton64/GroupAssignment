@@ -309,12 +309,23 @@ public class Menu extends extraFunctions {
     public void drawInvMenu(Graphics2D g) {
         if (invMenu) {
 
-            if (scroller < 100) {
-                pos -= 5;
-                pageNum--;
-                index = pos;
-                scroller = 100;
+            if ((scroller < 100)&&(index == player1.getInventorySize() - 1)) {
+                if(pageNum == 1){
+                    pos++;
+                    index = pos;
+                }
+                scroller = 380;
                 //totalPages--;
+            }else if((scroller< 100)&&(index == player1.getInventorySize() - 2)){
+                scroller = 100;
+                index++;
+
+            }else if((scroller <100) && (index == 0)){
+                index=0;
+                pos=0;
+            }else if(scroller <100){
+                scroller = 100;
+                index++;
             }
             if(pos == player1.getInventorySize()){
                 pos-=5;
@@ -814,8 +825,12 @@ public class Menu extends extraFunctions {
                     if (player1.getInventory()[index].getName() != null) {
                         if (player1.getInventory()[index].getCounter() == 1) {
                             player1.getInventory()[index].use(player1);
-                            index--;
-                            scroller -= 70;
+                            if(index != 0) {
+                                index--;
+                                scroller -= 70;
+                            }else{
+                                index = 0;
+                            }
                         } else {
                             player1.getInventory()[index].use(player1);
                         }
