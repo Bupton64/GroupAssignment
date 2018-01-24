@@ -308,6 +308,7 @@ public class Menu extends extraFunctions {
 
     public void drawInvMenu(Graphics2D g) {
         if (invMenu) {
+
             if (scroller < 100) {
                 pos -= 5;
                 pageNum--;
@@ -342,8 +343,8 @@ public class Menu extends extraFunctions {
                 dis = player1.getInventorySize() - pos;
             }
             changeColor(red, g);
-            drawBoldText(200, 200, Integer.toString(pos), g);
-            drawBoldText(200, 250, Integer.toString(dis), g);
+            //drawBoldText(200, 200, Integer.toString(pos), g);
+            //drawBoldText(200, 250, Integer.toString(dis), g);
             changeColor(grey2, g);
             for (int i = pos; i < pos + dis; i++) {
                 drawBoldText(65, 130 + (increaser * 70), player1.getInventory()[i].getName(), "Felix Titling", 20, g);
@@ -393,6 +394,9 @@ public class Menu extends extraFunctions {
                 // drawBoldText(400, 200, Integer.toString(player1.getInventorySize()%5), g);
             }
             nextPage = false;
+        }
+        if(pageNum>totalPages){
+            pageNum = totalPages;
         }
 
     }
@@ -764,6 +768,12 @@ public class Menu extends extraFunctions {
                 System.exit(23);
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 470) {
+                //maybe temporary vvvvv
+                index = 0;
+                pos = 0;
+                pageNum = 1;
+                scroller = 100;
+                //^^^^^^
                 invMenu = true;
                 equMenu = false;
                 chaMenu = false;
