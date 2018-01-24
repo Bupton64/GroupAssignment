@@ -52,7 +52,15 @@ public class sellShop extends shop {
             default:
                 setTotalPages((getPlayer1().getInventorySize()/10)+1);
         }
-        setMaxIndex(getPlayer1().getInventorySize()-1);
+        if(getPageNum() < 1){
+            setPageNum(1);
+        }
+        if(getItemIndex() < 0){
+            setItemIndex(0);
+        }
+        if(getPlayer1().getInventorySize() > 0) {
+            setMaxIndex(getPlayer1().getInventorySize() - 1);
+        }
         if(getItemIndex() > getMaxIndex()){
             setItemIndex(getMaxIndex());
         }
@@ -67,66 +75,76 @@ public class sellShop extends shop {
         changeColor(black, g);
         drawBoldText(80, 60, "SELL TO VENDOR", "Felix Titling", 30, g);
 
-        //< Draw scroller
-        drawLine(70,  (this.getScroller()*45) + 140, 250, (this.getScroller()*45) + 140, 2, g);
+        if(getPlayer1().getInventorySize() != 0) {
 
-        //< Draw page number
-        drawBoldText(80, 90, "Page: " + Integer.toString(this.getPageNum()) + " / " + Integer.toString(this.getTotalPages()), "Felix Titling", 17, g);
+            //< Draw scroller
+            drawLine(70, (this.getScroller() * 45) + 140, 250, (this.getScroller() * 45) + 140, 2, g);
 
-        // Draw Items on screen
-        setIncreaser(0);
-        for (int i = ((getPageNum()- 1) * 10); i < (getPageNum()*10); i++) {
-            if(i <= getMaxIndex()) {
-                //Draw left side (Item name)
-                changeColor(purple, g);
-                drawBoldText(70, 130 + (this.getIncreaser() * 45), getPlayer1().getInventory()[i].getName(), "Felix Titling", 15, g);
-                this.setIncreaser(this.getIncreaser() + 1);
+            //< Draw page number
+            drawBoldText(80, 90, "Page: " + Integer.toString(this.getPageNum()) + " / " + Integer.toString(this.getTotalPages()), "Felix Titling", 17, g);
+
+            // Draw Items on screen
+            setIncreaser(0);
+            for (int i = ((getPageNum() - 1) * 10); i < (getPageNum() * 10); i++) {
+                if (i <= getMaxIndex()) {
+                    //Draw left side (Item name)
+                    changeColor(purple, g);
+                    drawBoldText(70, 130 + (this.getIncreaser() * 45), getPlayer1().getInventory()[i].getName(), "Felix Titling", 15, g);
+                    this.setIncreaser(this.getIncreaser() + 1);
+                }
             }
-        }
 
-        // Draw Cursored Item
-        if(getPlayer1().getInventory()[getItemIndex()].getSlot() == Item.Slot.bag){
-            drawBoldText(420, 65, getPlayer1().getInventory()[getItemIndex()].getName(), "Felix Titling", 20, g);
-            drawLine(420, 70, 620, 70, 2, g);
+            // Draw Cursored Item
+            if (getPlayer1().getInventory()[getItemIndex()].getSlot() == Item.Slot.bag) {
+                drawBoldText(420, 65, getPlayer1().getInventory()[getItemIndex()].getName(), "Felix Titling", 20, g);
+                drawLine(420, 70, 620, 70, 2, g);
 
-            changeColor(black, g);
+                changeColor(black, g);
 
+                changeColor(purple, g);
+                drawBoldText(420, 100, getPlayer1().getInventory()[getItemIndex()].getSlot().name() + " ITEM", "Felix Titling", 20, g);
+                changeColor(black, g);
+                drawBoldText(420, 130, getPlayer1().getInventory()[getItemIndex()].getTooltip() + ".", "Felix Titling", 17, g);
+            } else {
+                drawBoldText(420, 65, getPlayer1().getInventory()[getItemIndex()].getName(), "Felix Titling", 20, g);
+                drawLine(420, 70, 620, 70, 2, g);
+
+                changeColor(black, g);
+                drawBoldText(420, 100, "ATK", "Felix Titling", 15, g);
+                drawBoldText(420, 100 + 30, "DEF", "Felix Titling", 15, g);
+                drawBoldText(420, 100 + 60, "STR", "Felix Titling", 15, g);
+                drawBoldText(420, 100 + 90, "SPD", "Felix Titling", 15, g);
+                drawBoldText(420, 100 + 120, "LUK", "Felix Titling", 15, g);
+
+                drawBoldText(690, 100, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getAttack()), "Felix Titling", 18, g);
+                drawBoldText(690, 100 + 30, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getDefense()), "Felix Titling", 18, g);
+                drawBoldText(690, 100 + 60, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getStrength()), "Felix Titling", 18, g);
+                drawBoldText(690, 100 + 90, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getSpeed()), "Felix Titling", 18, g);
+                drawBoldText(690, 100 + 120, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getLuck()), "Felix Titling", 18, g);
+
+                changeColor(purple, g);
+                drawBoldText(420, 260, getPlayer1().getInventory()[getItemIndex()].getSlot().name() + " ITEM", "Felix Titling", 20, g);
+                changeColor(black, g);
+                drawBoldText(420, 300, getPlayer1().getInventory()[getItemIndex()].getTooltip() + ".", "Felix Titling", 17, g);
+            }
             changeColor(purple, g);
-            drawBoldText(420, 100, getPlayer1().getInventory()[getItemIndex()].getSlot().name() + " ITEM", "Felix Titling", 20, g);
+            drawBoldText(420, 450, "Bjarne's Gold:", "Felix Titling", 20, g);
+            drawBoldText(420, 500, "SELL FOR:", "Felix Titling", 20, g);
             changeColor(black, g);
-            drawBoldText(420, 130, getPlayer1().getInventory()[getItemIndex()].getTooltip() + ".", "Felix Titling", 17, g);
+            drawBoldText(670, 450, Integer.toString(getPlayer1().getGpTotal()), "Felix Titling", 20, g);
+            drawBoldText(670, 500, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getSellPrice()), "Felix Titling", 20, g);
+
+            // Draw extras
+            drawBoldText(420, 530, "BUY ITEM [SPACE]", "Felix Titling", 15, g);
+            drawBoldText(620, 530, "BACK [ESC]", "Felix Titling", 15, g);
         } else {
-            drawBoldText(420, 65, getPlayer1().getInventory()[getItemIndex()].getName(), "Felix Titling", 20, g);
-            drawLine(420, 70, 620, 70, 2, g);
 
             changeColor(black, g);
-            drawBoldText(420, 100, "ATK", "Felix Titling", 15, g);
-            drawBoldText(420, 100 + 30, "DEF", "Felix Titling", 15, g);
-            drawBoldText(420, 100 + 60, "STR", "Felix Titling", 15, g);
-            drawBoldText(420, 100 + 90, "SPD", "Felix Titling", 15, g);
-            drawBoldText(420, 100 + 120, "LUK", "Felix Titling", 15, g);
-
-            drawBoldText(690, 100, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getAttack()), "Felix Titling", 18, g);
-            drawBoldText(690, 100 + 30, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getDefense()), "Felix Titling", 18, g);
-            drawBoldText(690, 100 + 60, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getStrength()), "Felix Titling", 18, g);
-            drawBoldText(690, 100 + 90, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getSpeed()), "Felix Titling", 18, g);
-            drawBoldText(690, 100 + 120, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getLuck()), "Felix Titling", 18, g);
-
-            changeColor(purple, g);
-            drawBoldText(420, 260, getPlayer1().getInventory()[getItemIndex()].getSlot().name() + " ITEM", "Felix Titling", 20, g);
-            changeColor(black, g);
-            drawBoldText(420, 300, getPlayer1().getInventory()[getItemIndex()].getTooltip() + ".", "Felix Titling", 17, g);
+            drawImage(getDialougeBox(),100, 200, 600, 200, g);
+            changeColor(white, g);
+            drawBoldText(250, 280, "No items to display! ", "Felix Titling", 20, g) ;
+            drawBoldText( 250, 320,  "Inventory is empty","Felix Titling", 20, g);
         }
-        changeColor(purple, g);
-        drawBoldText(420, 450, "Bjarne's Gold:", "Felix Titling", 20, g);
-        drawBoldText(420, 500, "SELL FOR:", "Felix Titling", 20, g);
-        changeColor(black, g);
-        drawBoldText(670, 450, Integer.toString(getPlayer1().getGpTotal()), "Felix Titling", 20, g);
-        drawBoldText(670, 500, Integer.toString(getPlayer1().getInventory()[getItemIndex()].getSellPrice()), "Felix Titling", 20, g);
-
-        // Draw extras
-        drawBoldText(420, 530, "BUY ITEM [SPACE]", "Felix Titling", 15, g);
-        drawBoldText(620, 530, "BACK [ESC]", "Felix Titling", 15, g);
 
         // If Sale
         if(isSaleMade()){
@@ -171,17 +189,19 @@ public class sellShop extends shop {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-            if(!isSaleMade()) {
-                this.sellItem(getItemIndex());
-                if(getPageNum() == getTotalPages()){
-                    if(getMaxIndex()%10 == 0){
-                        setPageNum(getPageNum()-1);
-                        setItemIndex(((getPageNum() - 1) * 10));
+                if (!isSaleMade()) {
+                    if(getPlayer1().getInventorySize() != 0) {
+                        this.sellItem(getItemIndex());
+                        if (getPageNum() == getTotalPages()) {
+                            if (getMaxIndex() % 10 == 0) {
+                                setPageNum(getPageNum() - 1);
+                                setItemIndex(((getPageNum() - 1) * 10));
+                            }
+                        }
                     }
+                } else {
+                    setSaleMade(false);
                 }
-            } else {
-                setSaleMade(false);
-            }
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
