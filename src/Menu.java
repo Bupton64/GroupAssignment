@@ -559,40 +559,48 @@ public class Menu extends extraFunctions {
                 } else if (scroller3 == 235) {
                     isAccessory = true;
                 }
+                none = false;
                 for (int i = 0; i < player1.getEquipmentSize(); i++) {
                     if (isHead) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "head") {
                             index2 = i;
+                            break;
                         }else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
                     } else if (isWeapon) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "weapon") {
                             index2 = i;
+                            break;
                         }else if (i == player1.getEquipmentSize() - 1) {
+
                             none = true;
                         }
                     } else if (isOffhand) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "offhand") {
                             index2 = i;
+                            break;
                         }else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
                     } else if (isChest) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "chest") {
                             index2 = i;
+                            break;
                         }else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
                     } else if (isFeet) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "feet") {
                             index2 = i;
+                            break;
                         }else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
                     } else if (isAccessory) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "accessory") {
                             index2 = i;
+                            break;
                         } else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
@@ -601,7 +609,7 @@ public class Menu extends extraFunctions {
 
 
 //            drawBoldText(200, 250, Boolean.toString(isHead), g);
-//            drawBoldText(200, 300, Boolean.toString(isWeapon), g);
+//           drawBoldText(200, 300, Boolean.toString(isWeapon), g);
 //            drawBoldText(200, 350, Boolean.toString(isOffhand), g);
 //            drawBoldText(200, 400, Boolean.toString(isChest), g);
 //            drawBoldText(200, 450, Boolean.toString(isFeet), g);
@@ -704,7 +712,7 @@ public class Menu extends extraFunctions {
                     drawBoldText(200, 350 + 60, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
-                    drawBoldText(300, 300, Boolean.toString(none), g);
+                    //drawBoldText(300, 300, Boolean.toString(none), g);
                     if (itemSelect) {
                         if (none == false) {
                             stats("head", g);
@@ -783,11 +791,12 @@ public class Menu extends extraFunctions {
                             if (index2 == player1.getEquipmentSize()) {
                                 index2 = 0;
                             }
-                            stopper = false;
+
                         }
                         // changeColor(green, g);
                         //drawBoldText(100, 100, Integer.toString(index), g);
                     }
+                    stopper = false;
                 }
             }else{
                 clearBackground(800, 600, g);
@@ -806,6 +815,9 @@ public class Menu extends extraFunctions {
 
             stopper2 = false;
         }
+//        changeColor(red, g);
+//        drawBoldText(500, 500, "IS =  " + Boolean.toString(itemSelect), g );
+//        drawBoldText(500, 550, "SS =  " + Boolean.toString(slotSelect), g );
     }
 
 
