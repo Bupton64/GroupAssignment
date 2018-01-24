@@ -18,7 +18,7 @@ public class AdventureMode extends GameEngine {
     ///
     /////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, Shop1Mode, Shop2Mode, CutScene}
+    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, Shop1Mode, CutScene}
     GameState state = GameState.TravelMode;
 
     int stateChanger;
@@ -32,6 +32,8 @@ public class AdventureMode extends GameEngine {
     Combat combatMode;
     weaponShop Shop1Controller;
     cutScene cut_scene;
+
+    ShopControl shopController;
 
 
 
@@ -182,7 +184,12 @@ public class AdventureMode extends GameEngine {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 stateChanger = 3;
             }
+
+            if(e.getKeyCode() == KeyEvent.VK_T){
+                stateChanger = 5;
+            }
         }
+
 
         if (state == GameState.CombatMode) {
             combatMode.keyPressed(e);
@@ -207,9 +214,7 @@ public class AdventureMode extends GameEngine {
             }
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_T){
-            stateChanger = 5;
-        }
+
         if(state == GameState.Shop1Mode){
             Shop1Controller.keyPressed(e);
             if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
