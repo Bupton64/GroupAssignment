@@ -69,9 +69,10 @@ public class cutScene extends extraFunctions {
             spriteDown2[i] = subImage(spriteSheet,312 + (52 * i), 0,52,72);
             spriteDown3[i] = subImage(spriteSheet2,312 + (52 * i), 0,52,72);
             wizardDown[i] = subImage(spriteSheet3,468 + (52 * i), 288,52,72);
-            wizardSpin[i] = subImage(spriteSheet3,530, 288 + (72*i),52,72);
+            wizardSpin[i] = subImage(spriteSheet3,520, 288 + (72*i),52,72);
         }
-        wizardSpin[3] = subImage(spriteSheet3,530, 504,52,72);
+        wizardSpin[3] = wizardSpin[2];
+        wizardSpin[2] = subImage(spriteSheet3,520, 504,52,72);
     }
     /*
      * Updates the timer
