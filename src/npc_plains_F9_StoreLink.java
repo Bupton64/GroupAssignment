@@ -8,7 +8,7 @@ public class npc_plains_F9_StoreLink extends  NPC {
         setName("Link");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,520,0,56,72);
-        setMapPosX(400);
+        setMapPosX(450);
         setMapPosY(200);
 
         initDialogue();
