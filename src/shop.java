@@ -64,7 +64,11 @@ abstract public class shop extends extraFunctions {
         lastSoldName = player1.getInventory()[i].getName();
         lastSoldPrice = player1.getInventory()[i].getSellPrice();
         player1.setGpTotal(player1.getInventory()[i].getSellPrice() + player1.getGpTotal());
-        player1.removeFromInventory(player1.getInventory()[i]);
+        if(player1.getInventory()[i].getCounter() > 1){
+            player1.getInventory()[i].setCounter(player1.getInventory()[i].getCounter() - 1);
+        } else {
+            player1.removeFromInventory(player1.getInventory()[i]);
+        }
     }
 
     //< Getters and Setters

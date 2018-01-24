@@ -90,6 +90,9 @@ public class sellShop extends shop {
                     //Draw left side (Item name)
                     changeColor(purple, g);
                     drawBoldText(70, 130 + (this.getIncreaser() * 45), getPlayer1().getInventory()[i].getName(), "Felix Titling", 15, g);
+                    if(getPlayer1().getInventory()[i].getCounter() > 1){
+                        drawBoldText(350, 130 + (this.getIncreaser() *45), "x " + getPlayer1().getInventory()[i].getCounter() , "Felix Titling", 15, g);
+                    }
                     this.setIncreaser(this.getIncreaser() + 1);
                 }
             }
