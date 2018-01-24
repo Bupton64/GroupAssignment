@@ -1,6 +1,5 @@
 
 
-import java.awt.*;
 import java.awt.event.*;
 
 
@@ -21,17 +20,17 @@ public class AdventureMode extends GameEngine {
     enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, CutScene, ShopMode}
     GameState state = GameState.TravelMode;
 
-    int stateChanger;
+    private int stateChanger;
 
-    Menu menuController;
-    StartScreen startController;
-    MapControl mapController;
-    Character playerMan;
-    CharacterMovement playerMovement;
-    Collision collisionDetector;
-    Combat combatMode;
-    cutScene cutScene;
-    ShopControl shopController;
+    private Menu menuController;
+    private StartScreen startController;
+    private MapControl mapController;
+    private Character playerMan;
+    private CharacterMovement playerMovement;
+    private Collision collisionDetector;
+    private Combat combatMode;
+    private cutScene cutScene;
+    private ShopControl shopController;
 
 
 
@@ -54,8 +53,7 @@ public class AdventureMode extends GameEngine {
     }
 
 
-
-   public void updateGameState(){
+    private void updateGameState(){
         switch(stateChanger) {
             case 0:
                 break;
@@ -88,7 +86,7 @@ public class AdventureMode extends GameEngine {
 
         switch (state){
             case TravelMode:
-                mapController.updateNPC(dt,playerMovement,collisionDetector);
+                mapController.updateNPC(dt,collisionDetector);
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
@@ -99,11 +97,11 @@ public class AdventureMode extends GameEngine {
             case CombatMode:
                 stateChanger =  combatMode.update(dt);
                 break;
+            case ShopMode:
+                shopController.updateShopControl(playerMan.getCurrentShopActive());
+                break;
             case MainMenu:
                 startController.updateTimer(dt);
-                break;
-            case ShopMode:
-                shopController.updateShopControl(dt,playerMan.getCurrentShopActive());
                 break;
             case CutScene:
                 cutScene.updateTimer(dt);

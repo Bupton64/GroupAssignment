@@ -17,11 +17,8 @@ public class ShopControl extends extraFunctions {
     ////////////////////////////////
 
 
-    int menuOption;
-    double menuPointerPosX;
-    double menuPointerPosY;
 
-    public void updateStartShop(double dt){
+    private void updateStartShop(){
 
         if(menuOption == 0){
             menuPointerPosY = 200;
@@ -31,7 +28,7 @@ public class ShopControl extends extraFunctions {
 
     }
 
-    public void drawStartShop(Graphics2D g){
+    private void drawStartShop(Graphics2D g){
             drawSolidCircle(menuPointerPosX,menuPointerPosY,5,g);
             drawText(200,200,"Buy","Arial",30,g);
             drawText(200,250,"Sell","Arial",30,g);
@@ -45,7 +42,7 @@ public class ShopControl extends extraFunctions {
     ///
     ////////////////////////////////
 
-    public void updateBuyShop(double dt){
+    private void updateBuyShop(){
         if(menuOption == 0){
             menuPointerPosY = 200;
         }else if(menuOption == 1){
@@ -55,7 +52,7 @@ public class ShopControl extends extraFunctions {
 
 
 
-    public void drawBuyShop(Graphics2D g){
+    private void drawBuyShop(Graphics2D g){
         drawSolidCircle(menuPointerPosX,menuPointerPosY,5,g);
         if(shopNum == 0){
             drawText(200,200,"Weapons","Arial",30,g);
@@ -76,24 +73,27 @@ public class ShopControl extends extraFunctions {
     ////////////////////////////////
 
 
+    private int menuOption;
+    private double menuPointerPosX;
+    private double menuPointerPosY;
 
 
     enum ShopState {Start, Sell, Buy, BuyWeapons, BuyArmor, BuyAccessories, BuyConsumables}
     ShopState state;
 
-    Character playerMan;
-    int shopStateChanger;
-    int shopNum;
+    private Character playerMan;
+    private int shopStateChanger;
+    private int shopNum;
 
-    sellShop sellController;
-    weaponShop weaponController;
-    armorShop armorController;
-    accessoriesShop accessoriesController;
-    itemShop consumablesController;
+    private sellShop sellController;
+    private weaponShop weaponController;
+    private armorShop armorController;
+    private accessoriesShop accessoriesController;
+    private itemShop consumablesController;
 
 
 
-    public void initShopControl(){
+    private void initShopControl(){
         shopNum = 0;
         state = ShopState.Start;
         shopStateChanger = 0;
@@ -111,7 +111,7 @@ public class ShopControl extends extraFunctions {
 
 
 
-    public void updateShopState(){
+    private void updateShopState(){
         switch(shopStateChanger) {
             case 0:
                 break;
@@ -141,18 +141,18 @@ public class ShopControl extends extraFunctions {
     }
 
 
-    public int updateShopControl(double dt,int shopNum ){
+    public void updateShopControl(int shopNum ){
         this.shopNum = shopNum;
         updateShopState();
         switch (state){
             case Start:
-                updateStartShop(dt);
+                updateStartShop();
                 break;
             case Buy:
-                updateBuyShop(dt);
+                updateBuyShop();
                 break;
             case Sell:
-                updateBuyShop(dt);
+                updateBuyShop();
                 break;
             case BuyWeapons:
                 weaponController.updateShop();
@@ -167,7 +167,6 @@ public class ShopControl extends extraFunctions {
                 consumablesController.updateShop();
                 break;
         }
-        return 0;
     }
 
 
@@ -232,7 +231,7 @@ public class ShopControl extends extraFunctions {
     }
 
 
-    public int startKeyPressed(KeyEvent e){
+    private int startKeyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_UP){
             if(menuOption == 1){
                 menuOption = 0;
@@ -261,7 +260,7 @@ public class ShopControl extends extraFunctions {
         return 0;
     }
 
-    public void buyKeyPressed(KeyEvent e){
+    private void buyKeyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_UP){
             if(menuOption == 1){
                 menuOption = 0;
