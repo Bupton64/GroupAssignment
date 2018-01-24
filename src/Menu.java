@@ -323,6 +323,9 @@ public class Menu extends extraFunctions {
             }else if((scroller <100) && (index == 0)){
                 index=0;
                 pos=0;
+            }else if(scroller <100){
+                scroller = 100;
+                index++;
             }
             if(pos == player1.getInventorySize()){
                 pos-=5;
