@@ -7,6 +7,7 @@ import java.lang.String;
 public class Menu extends extraFunctions {
     Menu(Character playerMan) {
         this.player1 = playerMan;
+        initMenu();
     }
 
     Character player1;
@@ -77,6 +78,12 @@ public class Menu extends extraFunctions {
     int num6 = 0;
     boolean stopper = false;
     boolean stopper2 = false;
+
+    public void drawMenu(Graphics2D g){
+        drawChaMenu(g);
+        drawEquMenu(g);
+        drawInvMenu(g);
+    }
 
 
     private int checkRightItemEquip(String name) {

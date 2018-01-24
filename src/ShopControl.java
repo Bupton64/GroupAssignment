@@ -32,9 +32,7 @@ public class ShopControl extends extraFunctions {
     }
 
     public void drawStartShop(Graphics2D g){
-
             drawSolidCircle(menuPointerPosX,menuPointerPosY,5,g);
-
             drawText(200,200,"Buy","Arial",30,g);
             drawText(200,250,"Sell","Arial",30,g);
     }
@@ -53,15 +51,12 @@ public class ShopControl extends extraFunctions {
         }else if(menuOption == 1){
             menuPointerPosY = 300;
         }
-
     }
 
-    int shopNum = 0;
+
 
     public void drawBuyShop(Graphics2D g){
-
         drawSolidCircle(menuPointerPosX,menuPointerPosY,5,g);
-
         if(shopNum == 0){
             drawText(200,200,"Weapons","Arial",30,g);
             drawText(200,300,"Armor","Arial",30,g);
@@ -69,9 +64,6 @@ public class ShopControl extends extraFunctions {
             drawText(200,200,"Accessories","Arial",30,g);
             drawText(200,300,"Consumable","Arial",30,g);
         }
-
-
-
 
     }
 
@@ -91,16 +83,18 @@ public class ShopControl extends extraFunctions {
 
     Character playerMan;
     int shopStateChanger;
+    int shopNum;
 
     sellShop sellController;
     weaponShop weaponController;
     armorShop armorController;
     accessoriesShop accessoriesController;
-    itemShop ConsumablesController;
+    itemShop consumablesController;
 
 
 
     public void initShopControl(){
+        shopNum = 0;
         state = ShopState.Start;
         shopStateChanger = 0;
         menuOption = 0;
@@ -111,96 +105,97 @@ public class ShopControl extends extraFunctions {
         weaponController = new weaponShop(playerMan);
         armorController = new armorShop(playerMan);
         accessoriesController = new accessoriesShop(playerMan);
-        ConsumablesController = new itemShop(playerMan);
+        consumablesController = new itemShop(playerMan);
 
     }
 
 
 
     public void updateShopState(){
-        if(shopStateChanger != 0){
-
-            switch(shopStateChanger) {
-                case 1:
-                    state = ShopState.Start;
-                    break;
-                case 2:
-                    state = ShopState.Buy;
-                    break;
-                case 3:
-                    state = ShopState.Sell;
-                    break;
-                case 4:
-                    state = ShopState.BuyWeapons;
-                    break;
-                case 5:
-                    state = ShopState.BuyArmor;
-                    break;
-                case 6:
-                    state = ShopState.BuyAccessories;
-                    break;
-                case 7:
-                    state = ShopState.BuyConsumables;
-                    break;
-            }
-
-            shopStateChanger = 0;
+        switch(shopStateChanger) {
+            case 0:
+                break;
+            case 1:
+                state = ShopState.Start;
+                break;
+            case 2:
+                state = ShopState.Buy;
+                break;
+            case 3:
+                state = ShopState.Sell;
+                break;
+            case 4:
+                state = ShopState.BuyWeapons;
+                break;
+            case 5:
+                state = ShopState.BuyArmor;
+                break;
+            case 6:
+                state = ShopState.BuyAccessories;
+                break;
+            case 7:
+                state = ShopState.BuyConsumables;
+                break;
         }
-
+        shopStateChanger = 0;
     }
 
 
     public int updateShopControl(double dt,int shopNum ){
         this.shopNum = shopNum;
         updateShopState();
-
-//        switch(state){
-//            case Sell:
-//
-//        }
-
-        if(state == ShopState.Start){
-            updateStartShop(dt);
-        }else if(state == ShopState.Sell){
-            sellController.updateShop();
-        }else if(state == ShopState.Buy){
-            updateBuyShop(dt);
-        }else if(state == ShopState.BuyWeapons){
-            weaponController.updateShop();
-        }else if(state == ShopState.BuyArmor){
-            armorController.updateShop();
-        }else if(state == ShopState.BuyAccessories){
-            accessoriesController.updateShop();
-        }else if(state == ShopState.BuyConsumables){
-            ConsumablesController.updateShop();
+        switch (state){
+            case Start:
+                updateStartShop(dt);
+                break;
+            case Buy:
+                updateBuyShop(dt);
+                break;
+            case Sell:
+                updateBuyShop(dt);
+                break;
+            case BuyWeapons:
+                weaponController.updateShop();
+                break;
+            case BuyArmor:
+                armorController.updateShop();
+                break;
+            case BuyAccessories:
+                accessoriesController.updateShop();
+                break;
+            case BuyConsumables:
+                consumablesController.updateShop();
+                break;
         }
-
         return 0;
-
-
     }
 
 
     public void drawShopControl(Graphics2D g){
-
         changeColor(red, g);
-        if(state == ShopState.Start){
-            drawStartShop(g);
-        }else if(state == ShopState.Sell){
-            sellController.drawShop(g);
-        }else if(state == ShopState.Buy){
-            drawBuyShop(g);
-        }else if(state == ShopState.BuyWeapons){
-            weaponController.drawShop(g);
-        }else if(state == ShopState.BuyArmor){
-            armorController.drawShop(g);
-        }else if(state == ShopState.BuyAccessories){
-            accessoriesController.drawShop(g);
-        }else if(state == ShopState.BuyConsumables){
-            ConsumablesController.drawShop(g);
+        switch (state){
+            case Start:
+                drawStartShop(g);
+                break;
+            case Buy:
+                drawBuyShop(g);
+                break;
+            case Sell:
+                sellController.drawShop(g);
+                break;
+            case BuyWeapons:
+                weaponController.drawShop(g);
+                break;
+            case BuyArmor:
+                armorController.drawShop(g);
+                break;
+            case BuyAccessories:
+                accessoriesController.drawShop(g);
+                break;
+            case BuyConsumables:
+                consumablesController.drawShop(g);
+                break;
         }
-
-
     }
 
 
@@ -211,26 +206,29 @@ public class ShopControl extends extraFunctions {
     ////////////////////////////////
 
     public int keyPressed(KeyEvent e) {
-        if(state == ShopState.Start){
-            return startKeyPressed(e);
-        }else if(state == ShopState.Sell){
-            shopStateChanger = sellController.keyPressed(e);
-        }else if(state == ShopState.Buy){
-            buyKeyPressed(e);
-        }else if(state == ShopState.BuyWeapons){
-            shopStateChanger = weaponController.keyPressed(e);
-        }else if(state == ShopState.BuyArmor){
-            shopStateChanger = armorController.keyPressed(e);
-        }else if(state == ShopState.BuyAccessories){
-            shopStateChanger = accessoriesController.keyPressed(e);
-        }else if(state == ShopState.BuyConsumables){
-            shopStateChanger = ConsumablesController.keyPressed(e);
+        switch(state){
+            case Start:
+                return startKeyPressed(e);
+            case Sell:
+                shopStateChanger = sellController.keyPressed(e);
+                break;
+            case Buy:
+                buyKeyPressed(e);
+                break;
+            case BuyWeapons:
+                shopStateChanger = weaponController.keyPressed(e);
+                break;
+            case BuyArmor:
+                shopStateChanger = armorController.keyPressed(e);
+                break;
+            case BuyAccessories:
+                shopStateChanger = accessoriesController.keyPressed(e);
+                break;
+            case BuyConsumables:
+                shopStateChanger = consumablesController.keyPressed(e);
+                break;
         }
-
         return 0;
-
-
-
     }
 
 
@@ -238,9 +236,7 @@ public class ShopControl extends extraFunctions {
         if(e.getKeyCode() == KeyEvent.VK_UP){
             if(menuOption == 1){
                 menuOption = 0;
-               // menuPointerPosY = 250;
             }else{
-              //  menuPointerPosY = 200;
                 menuOption = 1;
             }
         }
@@ -269,9 +265,7 @@ public class ShopControl extends extraFunctions {
         if(e.getKeyCode() == KeyEvent.VK_UP){
             if(menuOption == 1){
                 menuOption = 0;
-                // menuPointerPosY = 250;
             }else{
-                //  menuPointerPosY = 200;
                 menuOption = 1;
             }
         }
@@ -283,29 +277,19 @@ public class ShopControl extends extraFunctions {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-
             if(menuOption == 0 && shopNum == 0){
                 shopStateChanger = 4;
-            }
-            if(menuOption == 1 && shopNum == 0){
+            }else if(menuOption == 1 && shopNum == 0){
                 shopStateChanger = 5;
-            }
-            if(menuOption == 0 && shopNum == 1){
+            }else if(menuOption == 0 && shopNum == 1){
                 shopStateChanger = 6;
-            }
-            if(menuOption == 1 && shopNum == 1){
+            }else if(menuOption == 1 && shopNum == 1){
                 shopStateChanger = 7;
             }
         }
-
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
             shopStateChanger = 1;
             menuOption = 0;
         }
     }
-
-
-
-
-
 }

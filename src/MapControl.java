@@ -12,6 +12,8 @@ public class MapControl extends extraFunctions {
         firstMap = true;
         mapNpcs = new NPC[10];
         numOfNpc = 0;
+
+        initNPC();
     }
 
 

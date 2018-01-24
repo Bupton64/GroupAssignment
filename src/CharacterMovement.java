@@ -17,6 +17,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
     CharacterMovement(Character playerMan){
         this.playerMan = playerMan;
+        initCharMovement();
     }
 
     double walkTimer;

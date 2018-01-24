@@ -8,6 +8,10 @@ import java.lang.String;
 
 
 public class StartScreen extends extraFunctions {
+    StartScreen(){
+        initStart();
+    }
+
     Image paper = loadImage("paper.png");
     Image sword = loadImage("sword.png");
     Image sword2 = loadImage("sword2.png");
