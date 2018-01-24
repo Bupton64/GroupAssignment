@@ -222,9 +222,7 @@ public class AdventureMode extends GameEngine {
             }
         }
         if(state == GameState.CutScene){
-            if(e.getKeyCode() == KeyEvent.VK_SPACE){
-                stateChanger = 1;
-            }
+            stateChanger = cut_scene.keyPressed(e);
         }
 
 
