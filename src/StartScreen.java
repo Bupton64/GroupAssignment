@@ -140,25 +140,24 @@ public class StartScreen extends extraFunctions {
         }
 
     }
-    public void keyPressed(KeyEvent e) {
-            if(startup&&(e.getKeyCode() == KeyEvent.VK_SPACE)&&intro){
-                intro = false;
-            }
 
-
-
-            if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
-                cursorPositionY += 80;
-
-            }
-            if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 150) {
-                cursorPositionY -= 80;
-
-            }
-            if (((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 390)) {
-                System.exit(23);
-            }
-
+    public int keyPressed(KeyEvent e) {
+        if(startup&&(e.getKeyCode() == KeyEvent.VK_SPACE)&&intro) {
+            intro = false;
         }
+        if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
+            cursorPositionY += 80;
+        }
+        if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 150) {
+            cursorPositionY -= 80;
+        }
+        if (((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 390)) {
+            System.exit(23);
+        }
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 150)&& !startup){
+           return 7;
+        }
+        return 0;
+    }
 
 }

@@ -95,10 +95,6 @@ public class AdventureMode extends GameEngine {
     public void update(double dt) {
 
         updateGameState();
-
-
-
-
         if (state == GameState.TravelMode) {
             mapController.updateNPC(dt,playerMovement,collisionDetector);
             mapController.updateMap();
@@ -107,7 +103,6 @@ public class AdventureMode extends GameEngine {
             if(stateChanger != 2) {
                 stateChanger = mapController.updateQuest(dt);
             }
-
         }else if (state == GameState.CombatMode) {
             stateChanger =  combatMode.update(dt);
         }else if(state == GameState.OverWorldMenu) {
@@ -131,7 +126,6 @@ public class AdventureMode extends GameEngine {
             playerMovement.drawCharMovement(mGraphics);//<Draw Player
             mapController.drawNPCInteraction(mGraphics);
             playerMan.getCurrentQuest().drawQuest(mGraphics);
-           // questInProgress.drawQuest(mGraphics);
 
             changeColor(white);
             drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
@@ -183,42 +177,19 @@ public class AdventureMode extends GameEngine {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 stateChanger = 3;
             }
-
-//            if(e.getKeyCode() == KeyEvent.VK_V){
-//                stateChanger = 6;
-//            }
         }
-
-
         if (state == GameState.CombatMode) {
             combatMode.keyPressed(e);
         }
-
-
-
         if(state == GameState.OverWorldMenu){
-            MenuController.keyPressed(e);
-            if(e.getKeyCode() == KeyEvent.VK_SPACE && MenuController.getCursorPositionY() == 440 ) {
-                stateChanger = 1;
-            }
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE && MenuController.isChaMenu()) {
-                stateChanger = 1;
-            }
+           stateChanger = MenuController.keyPressed(e);
         }
-
-        if (state == GameState.MainMenu){
-            StartController.keyPressed(e);
-            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 150)&& !StartController.startup){
-                stateChanger = 7;
-            }
+        if (state == GameState.MainMenu) {
+            stateChanger = StartController.keyPressed(e);
         }
-
-
-
         if(state == GameState.CutScene){
             stateChanger = cut_scene.keyPressed(e);
         }
-
         if(state == GameState.ShopMode){
             stateChanger = shopController.keyPressed(e);
         }

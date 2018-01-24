@@ -741,7 +741,7 @@ public class Menu extends extraFunctions {
     }
 
 
-    public void keyPressed(KeyEvent e) {
+    public int keyPressed(KeyEvent e) {
 
 
         if (chaMenu) {
@@ -951,8 +951,15 @@ public class Menu extends extraFunctions {
 
         }
 
+        if(e.getKeyCode() == KeyEvent.VK_SPACE && getCursorPositionY() == 440 ) {
+            return 1;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE && isChaMenu()) {
+            return 1;
+        }
 
 
+        return 0;
     }
 
     public void keyReleased(KeyEvent e) {
