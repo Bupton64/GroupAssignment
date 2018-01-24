@@ -17,7 +17,10 @@ abstract public class shop extends extraFunctions {
     private int scroller;
     private boolean purchaseSuccess;
     private boolean purchaseAttempt;
+    private boolean saleMade;
     private Image dialougeBox;
+    private String lastSoldName;
+    private int lastSoldPrice;
 
 
     shop(Character playerMan){this.init(playerMan); }
@@ -57,12 +60,39 @@ abstract public class shop extends extraFunctions {
     }
 
     void sellItem(int i){
+        saleMade=true;
+        lastSoldName = player1.getInventory()[i].getName();
+        lastSoldPrice = player1.getInventory()[i].getSellPrice();
         player1.setGpTotal(player1.getInventory()[i].getSellPrice() + player1.getGpTotal());
         player1.removeFromInventory(player1.getInventory()[i]);
     }
 
     //< Getters and Setters
 
+
+    public String getLastSoldName() {
+        return lastSoldName;
+    }
+
+    public void setLastSoldName(String lastSoldName) {
+        this.lastSoldName = lastSoldName;
+    }
+
+    public int getLastSoldPrice() {
+        return lastSoldPrice;
+    }
+
+    public void setLastSoldPrice(int lastSoldPrice) {
+        this.lastSoldPrice = lastSoldPrice;
+    }
+
+    public boolean isSaleMade() {
+        return saleMade;
+    }
+
+    public void setSaleMade(boolean saleMade) {
+        this.saleMade = saleMade;
+    }
 
     public Image getDialougeBox() {
         return dialougeBox;

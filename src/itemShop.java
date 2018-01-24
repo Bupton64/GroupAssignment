@@ -86,7 +86,6 @@ public class itemShop extends shop {
         if(isPurchaseAttempt()){
             changeColor(black, g);
             drawImage(getDialougeBox(),100, 200, 600, 200, g);
-            //drawSolidRectangle(100, 200, 600, 200, g);
             changeColor(white, g);
             if(isPurchaseSuccess()){
                 drawBoldText(225, 280, "You bought " + getShopInventory()[getItemIndex()].getName(), "Felix Titling", 20, g) ;
