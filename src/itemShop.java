@@ -27,7 +27,7 @@ public class itemShop extends shop {
         setShopInventory(inventory);
     }
 
-    public void updtaeShop(){
+    public void updateShop(){
         if(getItemIndex() > getMaxIndex()){
             setItemIndex(getMaxIndex());
         }
@@ -104,7 +104,7 @@ public class itemShop extends shop {
 
     }
 
-    public void keyPressed(KeyEvent e) {
+    public int keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 9) {
@@ -143,6 +143,11 @@ public class itemShop extends shop {
                 setPurchaseSuccess(false);
             }
         }
+
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            return 2;
+        }
+        return 0;
     }
 
 }

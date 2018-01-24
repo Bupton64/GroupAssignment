@@ -6,7 +6,7 @@ public class npc_plains_quest_collectable extends NPC{
 
     npc_plains_quest_collectable (int posX, int posY){
         setName("Crystal");
-        spriteSheet = loadImage("chara3.png");
+        sprite = loadImage("crystal.png");
         sprite = subImage(spriteSheet,520,0,56,72);
         setMapPosX(posX);
         setMapPosY(posY);

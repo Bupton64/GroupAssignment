@@ -68,7 +68,9 @@ public class npc_plains_F9_StoreLink extends  NPC {
             case 8:
                 currentDialogue = listTwo;
                 return 8;
-
+            case 97:
+                this.questStage = 9;
+                return 97;
             default:
                 return 0;
 
@@ -106,12 +108,12 @@ public class npc_plains_F9_StoreLink extends  NPC {
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375) {
-                    switch (questStage) {
-                        case 7:
-                            questStage = 8;
-                            break;
-
+                    if(questStage == 7){
+                        questStage = 8;
+                    }else{
+                        questStage = 97;
                     }
+
                 }
             }
         }
