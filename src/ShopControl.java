@@ -152,7 +152,7 @@ public class ShopControl extends extraFunctions {
                 updateBuyShop();
                 break;
             case Sell:
-                updateBuyShop();
+                sellController.updateShop();
                 break;
             case BuyWeapons:
                 weaponController.updateShop();

@@ -190,13 +190,18 @@ public class AdventureMode extends GameEngine {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        playerMovement.keyReleased(e);
+
         switch (state){
+            case TravelMode:
+                playerMovement.keyReleased(e);
+                break;
             case CombatMode:
                 combatMode.keyReleased(e);
+                playerMovement.keyReleased(e);
                 break;
             case OverWorldMenu:
                 menuController.keyReleased(e);
+                playerMovement.keyReleased(e);
                 break;
         }
     }
