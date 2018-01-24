@@ -7,14 +7,11 @@ public class cutScene extends extraFunctions {
     Image backgroundAlt;
     Image spriteSheet;
     Image spriteSheet2;
-    Image spriteUp[];
+    Image spriteSheet3;
     Image spriteDown[];
-    Image spriteLeft[];
-    Image spriteRight[];
     Image spriteDown2[];
     Image spriteDown3[];
-    Image spriteLeft2[];
-    Image spriteRight2[];
+    Image wizardDown[];
     double timer;
     double timePast;
     boolean back;
@@ -26,6 +23,8 @@ public class cutScene extends extraFunctions {
     int runSpeed2;
     int runSpeedLeft;
     int height;
+    int wizardPosX;
+    int wizardPosY;
 
 
     enum introState {text, animation}
@@ -44,14 +43,11 @@ public class cutScene extends extraFunctions {
         state = introState.text;
         spriteSheet = loadImage("scaredRunning.png");
         spriteSheet2 = loadImage("scaredRunning2.png");
-//        spriteUp = new Image[3];
+        spriteSheet3 = loadImage("chara2.png");
         spriteDown = new Image[3];
-//        spriteLeft = new Image[3];
-//        spriteRight = new Image[3];
         spriteDown2 = new Image[3];
         spriteDown3 = new Image[3];
-//        spriteLeft2 = new Image[3];
-//        spriteRight2 = new Image[3];
+        wizardDown = new Image[3];
         posX = -800;
         posY = -600;
         runSpeed = 0;
@@ -59,19 +55,14 @@ public class cutScene extends extraFunctions {
         runSpeedLeft = 0;
         flameChange = 0;
         height = 0;
+        wizardPosX = 130;
+        wizardPosY = -74;
         for(int i =0; i < 3;i++){
             spriteDown[i] = subImage(spriteSheet,156 + (52 * i), 0,52,72);
             spriteDown2[i] = subImage(spriteSheet,312 + (52 * i), 0,52,72);
             spriteDown3[i] = subImage(spriteSheet2,312 + (52 * i), 0,52,72);
+            wizardDown[i] = subImage(spriteSheet3,468 + (52 * i), 288,52,72);
         }
-//        for(int i =0; i < 3;i++){
-//            spriteLeft[i] = subImage(spriteSheet,104 + (52 * i), 360,52,72);
-//            spriteLeft2[i] = subImage(spriteSheet2,312 + (52 * i), 360,52,72);
-//        }
-//        for(int i =0; i < 3;i++) {
-//            spriteRight[i] = subImage(spriteSheet, 104 + (52 * i), 432, 52, 72);
-//            spriteRight2[i] = subImage(spriteSheet2, 312 + (52 * i), 432, 52, 72);
-//        }
     }
     /*
      * Updates the timer
@@ -196,10 +187,17 @@ public class cutScene extends extraFunctions {
                 drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + height, g);
                 drawImage(spriteDown3[flameChange % 3], posX + 1200 + runSpeedLeft, posY + 180 + runSpeed, g);
                 //Need if condition to break loop
+                if((posY + 200 + height) > 800){
+                    render = false;
+                }
             }
             if(posY < 0) {
                 posX+=2;
                 posY+=2;
+            }
+            if((posY >= 0) && (wizardPosY < 50)){
+                wizardPosY+=1;
+                drawImage(wizardDown[flameChange % 3], wizardPosX, wizardPosY, g);
             }
         }
     }
