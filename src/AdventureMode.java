@@ -18,7 +18,7 @@ public class AdventureMode extends GameEngine {
     ///
     /////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, Shop1Mode, CutScene}
+    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, CutScene, ShopMode}
     GameState state = GameState.TravelMode;
 
     int stateChanger;
@@ -30,7 +30,6 @@ public class AdventureMode extends GameEngine {
     CharacterMovement playerMovement;
     Collision collisionDetector;
     Combat combatMode;
-    weaponShop Shop1Controller;
     cutScene cut_scene;
 
     ShopControl shopController;
@@ -49,7 +48,6 @@ public class AdventureMode extends GameEngine {
         MenuController = new Menu(playerMan);
         MenuController.initMenu();
 
-        Shop1Controller = new weaponShop(playerMan);
 
         StartController = new StartScreen();
 
@@ -62,6 +60,8 @@ public class AdventureMode extends GameEngine {
 
         state = GameState.MainMenu;
         StartController.initStart();
+
+       shopController = new ShopControl(playerMan);
 
         cut_scene = new cutScene();
     }
@@ -80,11 +80,10 @@ public class AdventureMode extends GameEngine {
                 state = GameState.OverWorldMenu;
             }else if(stateChanger == 4){
                 state = GameState.MainMenu;
-            }else if(stateChanger == 5){
-                state = GameState.Shop1Mode;
-            }
-            else if(stateChanger == 7){
+            }else if(stateChanger == 7){
                 state = GameState.CutScene;
+            }else if(stateChanger == 6){
+                state = GameState.ShopMode;
             }
 
 
@@ -108,6 +107,7 @@ public class AdventureMode extends GameEngine {
             if(stateChanger != 2) {
                 stateChanger = mapController.updateQuest(dt);
             }
+
         }else if (state == GameState.CombatMode) {
             stateChanger =  combatMode.update(dt);
         }else if(state == GameState.OverWorldMenu) {
@@ -116,8 +116,8 @@ public class AdventureMode extends GameEngine {
             StartController.updateTimer(dt);
         } else if(state == GameState.CutScene){
             cut_scene.updateTimer(dt);
-        } else if(state == GameState.Shop1Mode){
-            Shop1Controller.updtaeShop();
+        }else if(state == GameState.ShopMode){
+            shopController.updateShopControl(dt,playerMan.getCurrentShopActive());
         }
     }
 
@@ -151,13 +151,12 @@ public class AdventureMode extends GameEngine {
         }else if(state == GameState.MainMenu){
             changeBackgroundColor(black);
             StartController.drawStartScreen(mGraphics);
-        }else if(state == GameState.Shop1Mode){
-            changeBackgroundColor(black);
-            Shop1Controller.drawShop(mGraphics);
-
         }else if(state == GameState.CutScene) {
             changeBackgroundColor(black);
             cut_scene.drawCutScene(mGraphics);
+        }else if(state == GameState.ShopMode){
+            changeBackgroundColor(black);
+            shopController.drawShopControl(mGraphics);
         }
 
 
@@ -185,9 +184,9 @@ public class AdventureMode extends GameEngine {
                 stateChanger = 3;
             }
 
-            if(e.getKeyCode() == KeyEvent.VK_T){
-                stateChanger = 5;
-            }
+//            if(e.getKeyCode() == KeyEvent.VK_V){
+//                stateChanger = 6;
+//            }
         }
 
 
@@ -215,16 +214,13 @@ public class AdventureMode extends GameEngine {
         }
 
 
-        if(state == GameState.Shop1Mode){
-            Shop1Controller.keyPressed(e);
-            if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-                stateChanger = 1;
-            }
-        }
+
         if(state == GameState.CutScene){
-            if(e.getKeyCode() == KeyEvent.VK_SPACE){
-                stateChanger = 1;
-            }
+            stateChanger = cut_scene.keyPressed(e);
+        }
+
+        if(state == GameState.ShopMode){
+            stateChanger = shopController.keyPressed(e);
         }
 
 

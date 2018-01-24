@@ -427,7 +427,6 @@ public class MapControl extends extraFunctions {
                 mapNpcs[1].undoCollision(collisionDetector);
                 updateQuestState = 0;
                 return 2;
-
             }else if(updateQuestState == 98){
                 switch((int)playerMan.getCurrentMapLocation()){
                     case 14:
@@ -464,7 +463,15 @@ public class MapControl extends extraFunctions {
                 mapNpcs[0].undoCollision(collisionDetector);
 
                 updateQuestState = 0;
-            }else if(updateQuestState != 0){
+            }else if(updateQuestState == 97) {
+                playerMan.setCurrentShopActive(0);
+                updateQuestState = 0;
+                return 6;
+            }else if(updateQuestState == 96) {
+                playerMan.setCurrentShopActive(1);
+                updateQuestState = 0;
+                return 6;
+            }else if(updateQuestState != 0) {
                 playerMan.setQuestStage(updateQuestState);
                 playerMan.changeQuest();
                 updateQuestState = 0;

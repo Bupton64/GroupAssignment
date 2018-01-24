@@ -5,9 +5,10 @@ import java.lang.String;
 
 
 public class Menu extends extraFunctions {
-    Menu(Character playerMan){
+    Menu(Character playerMan) {
         this.player1 = playerMan;
     }
+
     Character player1;
     Image background1;
     Image background2;
@@ -49,41 +50,40 @@ public class Menu extends extraFunctions {
     boolean none = false;
     int scroller = 100;
     boolean nextPage = false;
-    int bar =0;
+    int bar = 0;
     int increaser = 0;
-    int pos= 0;
+    int pos = 0;
     int pageNum = 1;
     int totalPages = 0;
     int scroller2 = 0;
     int scroller3 = 110;
     boolean slotSelect = true;
     boolean itemSelect = false;
+    boolean stopper3 = false;
 
-    int firstHead =0;
-    int firstWeapon =0;
-    int firstOffhand =0;
-    int firstChest =0;
-    int firstFeet =0;
-    int firstAccessory =0;
+    int firstHead = 0;
+    int firstWeapon = 0;
+    int firstOffhand = 0;
+    int firstChest = 0;
+    int firstFeet = 0;
+    int firstAccessory = 0;
     boolean firstTime = true;
-    int limit =375;
-    int num1 =0;
-    int num2 =0;
-    int num3 =0;
-    int num4 =0;
-    int num5 =0;
-    int num6 =0;
+    int limit = 375;
+    int num1 = 0;
+    int num2 = 0;
+    int num3 = 0;
+    int num4 = 0;
+    int num5 = 0;
+    int num6 = 0;
     boolean stopper = false;
     boolean stopper2 = false;
 
 
-
-
-    private int checkRightItemEquip(String name){
-        for(int i = 0; i<player1.getInventorySize(); i++){
-            if((player1.getInventory()[i].getSlot().name() == name)&&(player1.getInventory()[i].isEquippable())){
-                if(index !=i) {
-                    if(index<i) {
+    private int checkRightItemEquip(String name) {
+        for (int i = 0; i < player1.getInventorySize(); i++) {
+            if ((player1.getInventory()[i].getSlot().name() == name) && (player1.getInventory()[i].isEquippable())) {
+                if (index != i) {
+                    if (index < i) {
                         index = i;
                         return i;
 
@@ -93,11 +93,12 @@ public class Menu extends extraFunctions {
         }
         return index;
     }
-    private int checkLeftItemEquip(String temp){
-        for(int i = player1.getInventorySize()-1; i>-1; i--){
-            if((player1.getInventory()[i].getSlot().name() == temp)){
-                if(index != i){
-                    if(index>i){
+
+    private int checkLeftItemEquip(String temp) {
+        for (int i = player1.getInventorySize() - 1; i > -1; i--) {
+            if ((player1.getInventory()[i].getSlot().name() == temp)) {
+                if (index != i) {
+                    if (index > i) {
                         index = i;
                         return i;
                     }
@@ -108,19 +109,11 @@ public class Menu extends extraFunctions {
     }
 
 
-
-
-
-
-
-
-
-
-    private int checkRightEquippable(){
-        for(int i= 0; i<player1.getInventorySize(); i++){
-            if(player1.getInventory()[i].isEquippable()){
-                if(index !=i) {
-                    if(index<i) {
+    private int checkRightEquippable() {
+        for (int i = 0; i < player1.getInventorySize(); i++) {
+            if (player1.getInventory()[i].isEquippable()) {
+                if (index != i) {
+                    if (index < i) {
                         index = i;
                         return i;
 
@@ -130,11 +123,12 @@ public class Menu extends extraFunctions {
         }
         return index;
     }
+
     private int checkLeftEquippable() {
-        for(int i = player1.getInventorySize(); i>-1; i--){
-            if(player1.getInventory()[i].isEquippable()){
-                if(index != i){
-                    if(index>i){
+        for (int i = player1.getInventorySize(); i > -1; i--) {
+            if (player1.getInventory()[i].isEquippable()) {
+                if (index != i) {
+                    if (index > i) {
                         index = i;
                         return i;
                     }
@@ -143,16 +137,18 @@ public class Menu extends extraFunctions {
         }
         return index;
     }
-    private int equippableSize(){
+
+    private int equippableSize() {
         int num = 0;
-        for(int i=0; i<player1.getInventorySize(); i++){
-            if(player1.getInventory()[i].isEquippable()){
+        for (int i = 0; i < player1.getInventorySize(); i++) {
+            if (player1.getInventory()[i].isEquippable()) {
                 num++;
             }
         }
         return num;
     }
-    void stats(String name, Graphics2D g){
+
+    void stats(String name, Graphics2D g) {
 
 
         for (int i = 0; i < player1.getEquipmentSize(); i++) {
@@ -204,8 +200,9 @@ public class Menu extends extraFunctions {
         }
 
     }
-    void noneStats(String name, Graphics2D g){
-        if(player1.getInventory()[index].getSlot().name() == name) {
+
+    void noneStats(String name, Graphics2D g) {
+        if (player1.getInventory()[index].getSlot().name() == name) {
             changeColor(blue, g);
             drawBoldText(220, 350, "+" + player1.getInventory()[index].getAttack(), "Felix Titling", 18, g);
             drawBoldText(220, 350 + 30, "+" + player1.getInventory()[index].getDefense(), "Felix Titling", 18, g);
@@ -214,7 +211,8 @@ public class Menu extends extraFunctions {
             drawBoldText(220, 350 + 120, "+" + player1.getInventory()[index].getLuck(), "Felix Titling", 18, g);
         }
     }
-    int firstItem(String name, int  temp){
+
+    int firstItem(String name, int temp) {
         for (int i = 0; i < player1.getInventorySize(); i++) {
             if (player1.getInventory()[i].getSlot().name() == name) {
                 temp = i;
@@ -232,7 +230,7 @@ public class Menu extends extraFunctions {
         return cursorPositionY;
     }
 
-    public void initMenu(){
+    public void initMenu() {
         chaMenu = true;
         cursorPositionY = 440;
         background1 = subImage(menuSprite, 0, 0, 800, 600);
@@ -249,7 +247,7 @@ public class Menu extends extraFunctions {
     }
 
 
-    public void drawChaMenu(Graphics2D g){
+    public void drawChaMenu(Graphics2D g) {
         if (chaMenu == true) {
             scroller2 = 0;
             clearBackground(800, 600, g);
@@ -303,10 +301,16 @@ public class Menu extends extraFunctions {
 
     public void drawInvMenu(Graphics2D g) {
         if (invMenu) {
-            if(scroller <100){
+            if (scroller < 100) {
+                pos -= 5;
                 pageNum--;
-                scroller = 380;
-                totalPages--;
+                index = pos;
+                scroller = 100;
+                //totalPages--;
+            }
+            if(pos == player1.getInventorySize()){
+                pos-=5;
+                index = pos;
             }
             scroller2 = 0;
             clearBackground(800, 600, g);
@@ -330,7 +334,10 @@ public class Menu extends extraFunctions {
             if ((pos + 5) > player1.getInventorySize()) {
                 dis = player1.getInventorySize() - pos;
             }
-
+            changeColor(red, g);
+            drawBoldText(200, 200, Integer.toString(pos), g);
+            drawBoldText(200, 250, Integer.toString(dis), g);
+            changeColor(grey2, g);
             for (int i = pos; i < pos + dis; i++) {
                 drawBoldText(65, 130 + (increaser * 70), player1.getInventory()[i].getName(), "Felix Titling", 20, g);
                 if (player1.getInventory()[i].getCounter() != 0) {
@@ -382,6 +389,7 @@ public class Menu extends extraFunctions {
         }
 
     }
+
     public void drawEquMenu(Graphics2D g) {
         if (equMenu) {
             firstHead = firstItem("head", firstHead);
@@ -483,7 +491,7 @@ public class Menu extends extraFunctions {
 
 
             changeColor(black, g);
-           // drawBoldText(500, 250, player1.getEquipmentSize() + " / 6", "Felix Titling", 15, g);
+            // drawBoldText(500, 250, player1.getEquipmentSize() + " / 6", "Felix Titling", 15, g);
             changeColor(purple, g);
             drawBoldText(570, 90, "UNEQUIPPED", "Felix Titling", 20, g);
             drawLine(570, 96, 680, 96, 2, g);
@@ -533,7 +541,7 @@ public class Menu extends extraFunctions {
                 } else if (isAccessory) {
                     if (player1.getEquippedItems()[i].getSlot().name() == "accessory") {
                         index2 = i;
-                    }else if(i == player1.getEquipmentSize()-1){
+                    } else if (i == player1.getEquipmentSize() - 1) {
                         none = true;
                     }
                 }
@@ -548,133 +556,166 @@ public class Menu extends extraFunctions {
 //            drawBoldText(200, 500, Boolean.toString(isAccessory), g);
 
 
-                num1 = 0;
-                num2 = 0;
-                num3 = 0;
-                num4 = 0;
-                num5 = 0;
-                num6 = 0;
+            num1 = 0;
+            num2 = 0;
+            num3 = 0;
+            num4 = 0;
+            num5 = 0;
+            num6 = 0;
 
 
-                for (int i = 0; i < player1.getInventorySize(); i++) {
+            for (int i = 0; i < player1.getInventorySize(); i++) {
 
-                    if ((player1.getInventory()[i].isEquippable())) {
-                        if (isHead) {
-                            if (player1.getInventory()[i].getSlot().name() == "head") {
-                                if ((num1 == 0) && slotSelect) {
-                                    index = i;
-                                }
-
-                                drawBoldText(575, 125 + (20 * (num1)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
-                                num1++;
+                if ((player1.getInventory()[i].isEquippable())) {
+                    if (isHead) {
+                        if (player1.getInventory()[i].getSlot().name() == "head") {
+                            if ((num1 == 0) && slotSelect) {
+                                index = i;
                             }
 
+                            drawBoldText(575, 125 + (20 * (num1)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
+                            num1++;
+                        }
 
-                        } else if (isWeapon) {
-                            if (player1.getInventory()[i].getSlot().name() == "weapon") {
-                                drawBoldText(575, 125 + (20 * (num2)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
-                                if ((num2 == 0) && slotSelect) {
-                                    index = i;
-                                }
-                                num2++;
+
+                    } else if (isWeapon) {
+                        if (player1.getInventory()[i].getSlot().name() == "weapon") {
+                            drawBoldText(575, 125 + (20 * (num2)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
+                            if ((num2 == 0) && slotSelect) {
+                                index = i;
+                            }
+                            num2++;
+                        }
+
+                    } else if (isOffhand) {
+                        if (player1.getInventory()[i].getSlot().name() == "offhand") {
+                            if ((num3 == 0) && slotSelect) {
+                                index = i;
+                            }
+                            drawBoldText(575, 125 + (20 * (num3)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
+                            num3++;
+                        }
+                    } else if (isChest) {
+                        if (player1.getInventory()[i].getSlot().name() == "chest") {
+                            if ((num4 == 0) && slotSelect) {
+                                index = i;
                             }
 
-                        } else if (isOffhand) {
-                            if (player1.getInventory()[i].getSlot().name() == "offhand") {
-                                if ((num3 == 0) && slotSelect) {
-                                    index = i;
-                                }
-                                drawBoldText(575, 125 + (20 * (num3)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
-                                num3++;
+                            drawBoldText(575, 125 + (20 * (num4)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
+                            num4++;
+                        }
+                    } else if (isFeet) {
+                        if (player1.getInventory()[i].getSlot().name() == "feet") {
+                            if ((num5 == 0) && slotSelect) {
+                                index = i;
                             }
-                        } else if (isChest) {
-                            if (player1.getInventory()[i].getSlot().name() == "chest") {
-                                if ((num4 == 0) && slotSelect) {
-                                    index = i;
-                                }
+                            drawBoldText(575, 125 + (20 * (num5)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
 
-                                drawBoldText(575, 125 + (20 * (num4)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
-                                num4++;
+                            num5++;
+                        }
+                    } else if (isAccessory) {
+                        if (player1.getInventory()[i].getSlot().name() == "accessory") {
+                            if ((num6 == 0) && slotSelect) {
+                                index = i;
                             }
-                        } else if (isFeet) {
-                            if (player1.getInventory()[i].getSlot().name() == "feet") {
-                                if ((num5 == 0) && slotSelect) {
-                                    index = i;
-                                }
-                                drawBoldText(575, 125 + (20 * (num5)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
 
-                                num5++;
-                            }
-                        } else if (isAccessory) {
-                            if (player1.getInventory()[i].getSlot().name() == "accessory") {
-                                if ((num6 == 0) && slotSelect) {
-                                    index = i;
-                                }
+                            drawBoldText(575, 125 + (20 * (num6)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
 
-                                drawBoldText(575, 125 + (20 * (num6)), player1.getInventory()[i].getName(), "Felix Titling", 12, g);
-
-                                num6++;
-                            }
+                            num6++;
                         }
                     }
                 }
-                if (firstTime == true) {
-                    index = firstHead;
-                    firstTime = false;
-                }
+            }
+            if (firstTime == true) {
+                index = firstHead;
+                firstTime = false;
+            }
 
 
-                changeColor(white, g);
+            changeColor(white, g);
 
 
-                if (player1.getInventory()[index].isEquippable()) {
-                    changeColor(black, g);
-                    drawLine(50, 265, 550, 265, 2, g);
-                    drawLine(550, 100, 550, 480, 2, g);
-                    drawBoldText(60, 300, "CHARACTER:", "Felix Titling", 20, g);
-                    drawLine(60, 306, 170, 306, 2, g);
-                    drawLine(270, 330, 270, 480, 2, g);
-                    drawBoldText(60, 350, "ATK", "Felix Titling", 15, g);
-                    drawBoldText(60, 350 + 30, "DEF", "Felix Titling", 15, g);
-                    drawBoldText(60, 350 + 60, "STR", "Felix Titling", 15, g);
-                    drawBoldText(60, 350 + 90, "SPD", "Felix Titling", 15, g);
-                    drawBoldText(60, 350 + 120, "LUK", "Felix Titling", 15, g);
-                    drawBoldText(200, 350, Integer.toString(player1.getAttack() + player1.getEquipAttackBonus()), "Felix Titling", 18, g);
-                    drawBoldText(200, 350 + 30, Integer.toString(player1.getDefense() + player1.getEquipDefenseBonus()), "Felix Titling", 18, g);
-                    drawBoldText(200, 350 + 60, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 18, g);
-                    drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
-                    drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
-                    //drawBoldText(300, 300, Boolean.toString(none), g);
-                    if(itemSelect) {
-                        if(none == false) {
-                            stats("head", g);
-                            stats("weapon", g);
-                            stats("offhand", g);
-                            stats("chest", g);
-                            stats("feet", g);
-                            stats("accessory", g);
-                        }
-                    }
-
-                }
-
+            if (player1.getInventory()[index].isEquippable()) {
+                changeColor(black, g);
+                drawLine(50, 265, 550, 265, 2, g);
+                drawLine(550, 100, 550, 480, 2, g);
+                drawBoldText(60, 300, "CHARACTER:", "Felix Titling", 20, g);
+                drawLine(60, 306, 170, 306, 2, g);
+                drawLine(270, 330, 270, 480, 2, g);
+                drawBoldText(60, 350, "ATK", "Felix Titling", 15, g);
+                drawBoldText(60, 350 + 30, "DEF", "Felix Titling", 15, g);
+                drawBoldText(60, 350 + 60, "STR", "Felix Titling", 15, g);
+                drawBoldText(60, 350 + 90, "SPD", "Felix Titling", 15, g);
+                drawBoldText(60, 350 + 120, "LUK", "Felix Titling", 15, g);
+                drawBoldText(200, 350, Integer.toString(player1.getAttack() + player1.getEquipAttackBonus()), "Felix Titling", 18, g);
+                drawBoldText(200, 350 + 30, Integer.toString(player1.getDefense() + player1.getEquipDefenseBonus()), "Felix Titling", 18, g);
+                drawBoldText(200, 350 + 60, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 18, g);
+                drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
+                drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
+                //drawBoldText(300, 300, Boolean.toString(none), g);
                 if (itemSelect) {
+                    if (none == false) {
+                        stats("head", g);
+                        stats("weapon", g);
+                        stats("offhand", g);
+                        stats("chest", g);
+                        stats("feet", g);
+                        stats("accessory", g);
+                    }
+                }
+
+            }
+
+            if (itemSelect) {
+                changeColor(purple, g);
+                drawBoldText(295, 300, player1.getInventory()[index].getName(), "Felix Titling", 20, g);
+//                changeColor(purple, g);
+//                drawBoldText(520, 175, "INFO:", "Felix Titling", 25, g  );
+                changeColor(blue, g);
+                drawBoldText(295, 315, player1.getInventory()[index].getSlot().name() + " ITEM", "Felix Titling", 12, g);
+                changeColor(black, g);
+                drawBoldText(295, 330, player1.getInventory()[index].getTooltip() + " .", "Felix Titling", 12, g);
+//                changeColor(black, g);
+//                drawBoldText(520, 360, "STATS:", "Felix Titling", 25, g );
+                changeColor(red, g);
+                drawBoldText(480, 350, Integer.toString(player1.getInventory()[index].getAttack()), "Felix Titling", 15, g);
+                drawBoldText(480, 350 + 30, Integer.toString(player1.getInventory()[index].getDefense()), "Felix Titling", 15, g);
+                drawBoldText(480, 350 + 60, Integer.toString(player1.getInventory()[index].getStrength()), "Felix Titling", 15, g);
+                drawBoldText(480, 350 + 90, Integer.toString(player1.getInventory()[index].getSpeed()), "Felix Titling", 15, g);
+                drawBoldText(480, 350 + 120, Integer.toString(player1.getInventory()[index].getLuck()), "Felix Titling", 15, g);
+                changeColor(red, g);
+                drawBoldText(295, 350, "ATK", "Felix Titling", 15, g);
+                drawBoldText(295, 350 + 30, "DEF", "Felix Titling", 15, g);
+                drawBoldText(295, 350 + 60, "STR", "Felix Titling", 15, g);
+                drawBoldText(295, 350 + 90, "SPD", "Felix Titling", 15, g);
+                drawBoldText(295, 350 + 120, "LUK", "Felix Titling", 15, g);
+                //drawText(300 ,300, Integer.toString(scroller2), g);
+
+                changeColor(grey4, g);
+                //drawBoldText(520, 535, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g);
+
+                if (index == player1.getInventorySize()) {
+                    index = 0;
+                }
+                stopper = false;
+            } else {
+                if (none == false) {
                     changeColor(purple, g);
-                    drawBoldText(295, 300, player1.getInventory()[index].getName(), "Felix Titling", 20, g);
+                    drawBoldText(295, 300, player1.getEquippedItems()[index2].getName(), "Felix Titling", 20, g);
 //                changeColor(purple, g);
 //                drawBoldText(520, 175, "INFO:", "Felix Titling", 25, g  );
                     changeColor(blue, g);
-                    drawBoldText(295, 315, player1.getInventory()[index].getSlot().name() + " ITEM", "Felix Titling", 12, g);
+                    drawBoldText(295, 315, player1.getEquippedItems()[index2].getSlot().name() + " ITEM", "Felix Titling", 12, g);
                     changeColor(black, g);
-                    drawBoldText(295, 330, player1.getInventory()[index].getTooltip() + " .", "Felix Titling", 12, g);
+                    drawBoldText(295, 330, player1.getEquippedItems()[index2].getTooltip() + " .", "Felix Titling", 12, g);
 //                changeColor(black, g);
 //                drawBoldText(520, 360, "STATS:", "Felix Titling", 25, g );
                     changeColor(red, g);
-                    drawBoldText(480, 350, Integer.toString(player1.getInventory()[index].getAttack()), "Felix Titling", 15, g);
-                    drawBoldText(480, 350 + 30, Integer.toString(player1.getInventory()[index].getDefense()), "Felix Titling", 15, g);
-                    drawBoldText(480, 350 + 60, Integer.toString(player1.getInventory()[index].getStrength()), "Felix Titling", 15, g);
-                    drawBoldText(480, 350 + 90, Integer.toString(player1.getInventory()[index].getSpeed()), "Felix Titling", 15, g);
-                    drawBoldText(480, 350 + 120, Integer.toString(player1.getInventory()[index].getLuck()), "Felix Titling", 15, g);
+                    drawBoldText(480, 350, Integer.toString(player1.getEquippedItems()[index2].getAttack()), "Felix Titling", 15, g);
+                    drawBoldText(480, 350 + 30, Integer.toString(player1.getEquippedItems()[index2].getDefense()), "Felix Titling", 15, g);
+                    drawBoldText(480, 350 + 60, Integer.toString(player1.getEquippedItems()[index2].getStrength()), "Felix Titling", 15, g);
+                    drawBoldText(480, 350 + 90, Integer.toString(player1.getEquippedItems()[index2].getSpeed()), "Felix Titling", 15, g);
+                    drawBoldText(480, 350 + 120, Integer.toString(player1.getEquippedItems()[index2].getLuck()), "Felix Titling", 15, g);
                     changeColor(red, g);
                     drawBoldText(295, 350, "ATK", "Felix Titling", 15, g);
                     drawBoldText(295, 350 + 30, "DEF", "Felix Titling", 15, g);
@@ -686,48 +727,15 @@ public class Menu extends extraFunctions {
                     changeColor(grey4, g);
                     //drawBoldText(520, 535, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g);
 
-                    if (index == player1.getInventorySize()) {
-                        index = 0;
+                    if (index2 == player1.getEquipmentSize()) {
+                        index2 = 0;
                     }
                     stopper = false;
-                } else {
-                    if (none == false) {
-                        changeColor(purple, g);
-                        drawBoldText(295, 300, player1.getEquippedItems()[index2].getName(), "Felix Titling", 20, g);
-//                changeColor(purple, g);
-//                drawBoldText(520, 175, "INFO:", "Felix Titling", 25, g  );
-                        changeColor(blue, g);
-                        drawBoldText(295, 315, player1.getEquippedItems()[index2].getSlot().name() + " ITEM", "Felix Titling", 12, g);
-                        changeColor(black, g);
-                        drawBoldText(295, 330, player1.getEquippedItems()[index2].getTooltip() + " .", "Felix Titling", 12, g);
-//                changeColor(black, g);
-//                drawBoldText(520, 360, "STATS:", "Felix Titling", 25, g );
-                        changeColor(red, g);
-                        drawBoldText(480, 350, Integer.toString(player1.getEquippedItems()[index2].getAttack()), "Felix Titling", 15, g);
-                        drawBoldText(480, 350 + 30, Integer.toString(player1.getEquippedItems()[index2].getDefense()), "Felix Titling", 15, g);
-                        drawBoldText(480, 350 + 60, Integer.toString(player1.getEquippedItems()[index2].getStrength()), "Felix Titling", 15, g);
-                        drawBoldText(480, 350 + 90, Integer.toString(player1.getEquippedItems()[index2].getSpeed()), "Felix Titling", 15, g);
-                        drawBoldText(480, 350 + 120, Integer.toString(player1.getEquippedItems()[index2].getLuck()), "Felix Titling", 15, g);
-                        changeColor(red, g);
-                        drawBoldText(295, 350, "ATK", "Felix Titling", 15, g);
-                        drawBoldText(295, 350 + 30, "DEF", "Felix Titling", 15, g);
-                        drawBoldText(295, 350 + 60, "STR", "Felix Titling", 15, g);
-                        drawBoldText(295, 350 + 90, "SPD", "Felix Titling", 15, g);
-                        drawBoldText(295, 350 + 120, "LUK", "Felix Titling", 15, g);
-                        //drawText(300 ,300, Integer.toString(scroller2), g);
-
-                        changeColor(grey4, g);
-                        //drawBoldText(520, 535, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g);
-
-                        if (index2 == player1.getEquipmentSize()) {
-                            index2 = 0;
-                        }
-                        stopper = false;
-                    }
-                    // changeColor(green, g);
-                    //drawBoldText(100, 100, Integer.toString(index), g);
                 }
+                // changeColor(green, g);
+                //drawBoldText(100, 100, Integer.toString(index), g);
             }
+        }
 
         stopper2 = false;
     }
@@ -736,226 +744,224 @@ public class Menu extends extraFunctions {
     public void keyPressed(KeyEvent e) {
 
 
-      if(chaMenu) {
-          if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 510) {
-              cursorPositionY += 30;
+        if (chaMenu) {
+            if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 510) {
+                cursorPositionY += 30;
 
-          }
-          if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 450) {
-              cursorPositionY -= 30;
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 450) {
+                cursorPositionY -= 30;
 
-          }
-          if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 530) {
-              System.exit(23);
-          }
-          if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 470) {
-              invMenu = true;
-              equMenu = false;
-              chaMenu = false;
-          }
-          if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 500) {
-              equMenu = true;
-              invMenu = false;
-              chaMenu = false;
-          }
-      }else if(invMenu){
-          if(e.getKeyCode() == KeyEvent.VK_DOWN){
-              if((index<player1.getInventorySize()-1)&&scroller<360){
-                  scroller+=70;
-                  index++;
-              }
-          }
-          if((e.getKeyCode() == KeyEvent.VK_UP)&&scroller>100){
-              if(index>0){
-                  scroller-=70;
-                  index--;
-              }
-          }
-          if((e.getKeyCode() == KeyEvent.VK_TAB)||(e.getKeyCode() == KeyEvent.VK_RIGHT)){
-              nextPage = true;
-              if(pageNum==totalPages){
-                  pageNum = 1;
-                  pos= 0;
-                  index =0;
-              }else {
-                  pos += 5;
-                  pageNum++;
-                  index = pos;
-              }
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 530) {
+                System.exit(23);
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 470) {
+                invMenu = true;
+                equMenu = false;
+                chaMenu = false;
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 500) {
+                equMenu = true;
+                invMenu = false;
+                chaMenu = false;
+            }
+        } else if (invMenu) {
+            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                if ((index < player1.getInventorySize() - 1) && scroller < 360) {
+                    scroller += 70;
+                    index++;
+                }
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_UP) && scroller > 100) {
+                if (index > 0) {
+                    scroller -= 70;
+                    index--;
+                }
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_TAB) || (e.getKeyCode() == KeyEvent.VK_RIGHT)) {
+                nextPage = true;
+                if (pageNum == totalPages) {
+                    pageNum = 1;
+                    pos = 0;
+                    index = 0;
+                } else {
+                    pos += 5;
+                    pageNum++;
+                    index = pos;
+                }
 
-          }
-          if(e.getKeyCode() == KeyEvent.VK_LEFT){
-              nextPage = true;
-              if(pageNum==1){
-                  pageNum = totalPages;
-                  if(player1.getInventorySize() == 50) {
-                      pos = (player1.getInventorySize() - player1.getInventorySize() % 5) - 5;
-                  }else{
-                      pos = (player1.getInventorySize() - player1.getInventorySize() % 5);
-                  }
-                  if(player1.getInventorySize() == 50) {
-                      index = (player1.getInventorySize() - player1.getInventorySize() % 5)-1;
-                  }else{
-                      index = player1.getInventorySize() - player1.getInventorySize() % 5;
-                  }
-              }else {
-                  pos -= 5;
-                  pageNum--;
-                  index = pos;
-              }
+            }
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                if (player1.getInventory()[index].getSlot().name() == "bag") {
+                    if (player1.getInventory()[index].getName() != null) {
+                        if (player1.getInventory()[index].getCounter() == 1) {
+                            player1.getInventory()[index].use(player1);
+                            index--;
+                            scroller -= 70;
+                        } else {
+                            player1.getInventory()[index].use(player1);
+                        }
+                        stopper3 = true;
+                    }
 
-          }
+                }
+                if ((player1.getInventory()[index].isEquippable() == true) && !stopper3) {
+                    equMenu = true;
+                    invMenu = false;
 
+                }
+                stopper3 = false;
+            }
+            //Bug vvvvv
+            if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                nextPage = true;
+                if (pageNum == 1) {
+                    pageNum = totalPages;
+                    if (player1.getInventorySize() == 50) {
+                        pos = (player1.getInventorySize() - player1.getInventorySize() % 5) - 5;
+                    } else {
+                        pos = (player1.getInventorySize() - player1.getInventorySize() % 5);
+                    }
+                    if (player1.getInventorySize() == 50) {
+                        index = (player1.getInventorySize() - player1.getInventorySize() % 5) - 1;
+                    } else {
+                        index = player1.getInventorySize() - player1.getInventorySize() % 5;
+                    }
+                } else {
+                    pos -= 5;
+                    pageNum--;
+                    index = pos;
+                }
 
-
-
-
-
-          if(e.getKeyCode() == KeyEvent.VK_SPACE){
-              if(player1.getInventory()[index].getSlot().name() == "bag"){
-                  if(player1.getInventory()[index].getName() !=null) {
-                      if(player1.getInventory()[index].getCounter()== 1) {
-                          player1.getInventory()[index].use(player1);
-                          index--;
-                          scroller-=70;
-                      }else{
-                          player1.getInventory()[index].use(player1);
-                      }
-                  }
-
-              }
-              if(player1.getInventory()[index].isEquippable() == true){
-                  equMenu = true;
-                  invMenu = false;
-
-              }
-          }
-
-
-      }else{
-
-          if((e.getKeyCode() == KeyEvent.VK_DOWN)&&itemSelect){
-              if(isHead){
-                  limit = num1;
-              }
-              if(isWeapon){
-                  limit = num2;
-              }
-              if(isOffhand){
-                  limit = num3;
-              }
-              if(isChest){
-                  limit = num4;
-              }
-              if(isFeet){
-                  limit = num5;
-              }
-              if(isAccessory){
-                  limit = num6;
-              }
-
-              if(scroller2<((limit*20)-20)) {
-                  scroller2 += 20;
-              }
-              if(isHead) {
-                  index = checkRightItemEquip("head");
-              }
-              if(isWeapon) {
-                  index = checkRightItemEquip("weapon");
-              }
-              if(isOffhand) {
-                  index = checkRightItemEquip("offhand");
-              }
-              if(isChest) {
-                  index = checkRightItemEquip("chest");
-              }
-              if(isFeet) {
-                  index = checkRightItemEquip("feet");
-              }
-              if(isAccessory) {
-                  index = checkRightItemEquip("accessory");
-              }
-
-
-          }
-
-
-          if((e.getKeyCode() == KeyEvent.VK_DOWN)&&slotSelect){
-              if(scroller3<235){
-                  scroller3+=25;
-              }
-              none = false;
+            }
 
 
 
-          }
-          if((e.getKeyCode() == KeyEvent.VK_UP)&&itemSelect){
-              if(scroller2>0) {
-                  scroller2 -= 20;
-              }
-              if(isHead) {
-                  index = checkLeftItemEquip("head");
-              }
-              if(isWeapon) {
-                  index = checkLeftItemEquip("weapon");
-              }
-              if(isOffhand) {
-                  index = checkLeftItemEquip("offhand");
-              }
-              if(isChest) {
-                  index = checkLeftItemEquip("chest");
-              }
-              if(isFeet) {
-                  index = checkLeftItemEquip("feet");
-              }
-              if(isAccessory) {
-                  index = checkLeftItemEquip("accessory");
-              }
+        } else {
+
+            if ((e.getKeyCode() == KeyEvent.VK_DOWN) && itemSelect) {
+                if (isHead) {
+                    limit = num1;
+                }
+                if (isWeapon) {
+                    limit = num2;
+                }
+                if (isOffhand) {
+                    limit = num3;
+                }
+                if (isChest) {
+                    limit = num4;
+                }
+                if (isFeet) {
+                    limit = num5;
+                }
+                if (isAccessory) {
+                    limit = num6;
+                }
+
+                if (scroller2 < ((limit * 20) - 20)) {
+                    scroller2 += 20;
+                }
+                if (isHead) {
+                    index = checkRightItemEquip("head");
+                }
+                if (isWeapon) {
+                    index = checkRightItemEquip("weapon");
+                }
+                if (isOffhand) {
+                    index = checkRightItemEquip("offhand");
+                }
+                if (isChest) {
+                    index = checkRightItemEquip("chest");
+                }
+                if (isFeet) {
+                    index = checkRightItemEquip("feet");
+                }
+                if (isAccessory) {
+                    index = checkRightItemEquip("accessory");
+                }
 
 
-          }
-          if((e.getKeyCode() == KeyEvent.VK_SPACE)&&slotSelect){
-              scroller2 = 0;
-              none = false;
-              itemSelect = true;
-              slotSelect = false;
-              stopper2 = true;
-          }
-          if((e.getKeyCode() == KeyEvent.VK_SPACE)&&itemSelect&&!stopper2){
-              String temp = player1.getInventory()[index].getSlot().name();
-              player1.equipItem(player1.getInventory()[index]);
-              none = false;
-              index = checkRightItemEquip(temp);
-              index = checkLeftItemEquip(temp);
-              itemSelect = false;
-              slotSelect = true;
-          }
-          if((e.getKeyCode() == KeyEvent.VK_UP)&&slotSelect){
-              if(scroller3>110){
-                  scroller3-=25;
-              }
-              none = false;
+            }
 
 
+            if ((e.getKeyCode() == KeyEvent.VK_DOWN) && slotSelect) {
+                if (scroller3 < 235) {
+                    scroller3 += 25;
+                }
+                none = false;
 
-          }
 
-          if((e.getKeyCode() == KeyEvent.VK_X)&&slotSelect){
-              player1.unequipItem(player1.getEquippedItems()[index2]);
-          }
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_UP) && itemSelect) {
+                if (scroller2 > 0) {
+                    scroller2 -= 20;
+                }
+                if (isHead) {
+                    index = checkLeftItemEquip("head");
+                }
+                if (isWeapon) {
+                    index = checkLeftItemEquip("weapon");
+                }
+                if (isOffhand) {
+                    index = checkLeftItemEquip("offhand");
+                }
+                if (isChest) {
+                    index = checkLeftItemEquip("chest");
+                }
+                if (isFeet) {
+                    index = checkLeftItemEquip("feet");
+                }
+                if (isAccessory) {
+                    index = checkLeftItemEquip("accessory");
+                }
 
-      }
+
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && slotSelect) {
+                scroller2 = 0;
+                none = false;
+                itemSelect = true;
+                slotSelect = false;
+                stopper2 = true;
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && itemSelect && !stopper2) {
+                String temp = player1.getInventory()[index].getSlot().name();
+                player1.equipItem(player1.getInventory()[index]);
+                none = false;
+                index = checkRightItemEquip(temp);
+                index = checkLeftItemEquip(temp);
+                itemSelect = false;
+                slotSelect = true;
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_UP) && slotSelect) {
+                if (scroller3 > 110) {
+                    scroller3 -= 25;
+                }
+                none = false;
+
+
+            }
+
+            if ((e.getKeyCode() == KeyEvent.VK_X) && slotSelect) {
+                player1.unequipItem(player1.getEquippedItems()[index2]);
+            }
+
+
+        }
+
 
 
     }
 
     public void keyReleased(KeyEvent e) {
-        if((e.getKeyCode() == KeyEvent.VK_ESCAPE)&&itemSelect&&equMenu){
+        if ((e.getKeyCode() == KeyEvent.VK_ESCAPE) && itemSelect && equMenu) {
             slotSelect = true;
             itemSelect = false;
             stopper = true;
         }
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE && !chaMenu&&!itemSelect&&!stopper) {
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE && !chaMenu && !itemSelect && !stopper) {
             chaMenu = true;
             invMenu = false;
             equMenu = false;
@@ -963,8 +969,8 @@ public class Menu extends extraFunctions {
 
         }
 
-
     }
+
 
 }
 

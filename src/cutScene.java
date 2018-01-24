@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class cutScene extends extraFunctions {
     //WON'T BE USED FOR A WHILE
@@ -223,5 +224,15 @@ public class cutScene extends extraFunctions {
             }
         }
     }
+
+    public int keyPressed(KeyEvent e) {
+
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            return 1;
+        }
+        return 0;
+    }
+
+
 }
 

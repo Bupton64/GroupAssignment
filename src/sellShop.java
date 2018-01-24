@@ -32,7 +32,7 @@ public class sellShop extends shop {
 
     }
 
-    public void updtaeShop(){
+    public void updateShop(){
         switch(getPlayer1().getInventorySize()){
             case 10:
                 setTotalPages(1);
@@ -139,7 +139,7 @@ public class sellShop extends shop {
 
     }
 
-    public void keyPressed(KeyEvent e) {
+    public int keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 9) {
@@ -183,6 +183,11 @@ public class sellShop extends shop {
                 setSaleMade(false);
             }
         }
+
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            return 1;
+        }
+        return 0;
     }
 
 }

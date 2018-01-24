@@ -10,8 +10,8 @@ public class npc_plains_F9_StoreBabbage extends  NPC {
         setName("Babbage");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,52,288,56,72);
-        setMapPosX(400);
-        setMapPosY(300);
+        setMapPosX(300);
+        setMapPosY(200);
 
         initDialogue(); //new
         loadDialogue = true; // new
@@ -46,7 +46,7 @@ public class npc_plains_F9_StoreBabbage extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"Would you like to browse my wares?","","","");
+        Dialogue d1 = new Dialogue(null,true,true,"Would you like to browse my wares?","","","");
         listOne = d1;
     }
 
@@ -55,6 +55,20 @@ public class npc_plains_F9_StoreBabbage extends  NPC {
         currentDialogue = listOne;
 
     }
+
+
+    public int updateConvo(){
+        switch (this.questStage){
+            case 96:
+                this.questStage = 9;
+                return 96;
+            default:
+                return 0;
+
+        }
+
+    }
+
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
 
@@ -65,7 +79,20 @@ public class npc_plains_F9_StoreBabbage extends  NPC {
         super.drawConvo(g, playerName,currentState, questName,questStage);
     }
 
+    public boolean keyPressed(KeyEvent e) {
 
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(currentDialogue.next == null) {
+                if (currentDialogue.getOptionPosY() == 375) {
+                    questStage = 96;
+                }
+            }
+        }
+
+        return super.keyPressed(e);
+
+
+    }
 
 
 

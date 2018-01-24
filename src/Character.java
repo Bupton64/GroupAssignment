@@ -859,7 +859,30 @@ public class Character extends Statblock {
     }
 
 
+
+
+
+
+
+
+    //////////////////////////////
+    ///
+    ///  Boss Kill And Monsters
+    ///
+    //////////////////////////////
+
     private int monsterGen;
+
+    private boolean ValliardAlive = true;
+
+    public boolean isValliardAlive() {
+        return ValliardAlive;
+    }
+
+    public void setValliardAlive(boolean valliardAlive) {
+        ValliardAlive = valliardAlive;
+    }
+
 
     public int getMonsterGen() {
         return monsterGen;
@@ -870,21 +893,19 @@ public class Character extends Statblock {
     }
 
 
-
-
     //////////////////////////////
     ///
-    ///  Boss Kill
+    ///  Shop
     ///
     //////////////////////////////
 
-    boolean ValliardAlive = true;
+    int currentShopActive = 0;
 
-    public boolean isValliardAlive() {
-        return ValliardAlive;
+    public int getCurrentShopActive() {
+        return currentShopActive;
     }
 
-    public void setValliardAlive(boolean valliardAlive) {
-        ValliardAlive = valliardAlive;
+    public void setCurrentShopActive(int currentShopActive) {
+        this.currentShopActive = currentShopActive;
     }
 }
