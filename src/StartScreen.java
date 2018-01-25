@@ -32,10 +32,11 @@ public class StartScreen extends extraFunctions {
 
 
     public void initStart(){
+        clicks = loadAudio("clicks.wav");
+        clicks2 = loadAudio("clicks2.wav");
+        exitClick = loadAudio("exitClick.wav");
         introMusic = loadAudio("epic.wav");
         startAudioLoop(introMusic);
-
-
         StartBackground = subImage(paper, 0, 0, 768, 1028);
         swordSprite = subImage(sword, 0, 0, 1793, 445);
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);
@@ -158,15 +159,21 @@ public class StartScreen extends extraFunctions {
             intro = false;
         }
         if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
+            playAudio(clicks);
+
             cursorPositionY += 80;
         }
         if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 150) {
             cursorPositionY -= 80;
+
+            playAudio(clicks);
+
         }
         if (((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 390)) {
             System.exit(23);
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 150)&& !startup){
+            playAudio(exitClick);
            return 7;
         }
         return 0;

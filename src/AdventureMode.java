@@ -34,12 +34,18 @@ public class AdventureMode extends GameEngine {
     AudioClip backgroundMusic;
     AudioClip cutSceneMusic;
     AudioClip villageMusic;
+    AudioClip menuMusic;
+    float volume = 0;
+    boolean stopper = false;
+
 
 
     public void init() {
         cutSceneMusic = loadAudio("cutscene.wav");
         backgroundMusic = loadAudio("epic.wav");
         villageMusic = loadAudio("village.wav");
+        menuMusic = loadAudio("menuMusic.wav");
+
         setWindowSize(800, 600);
         playerMan = new Character();
         playerMovement = new CharacterMovement(playerMan);
@@ -65,7 +71,11 @@ public class AdventureMode extends GameEngine {
             case 1:
                 state = GameState.TravelMode;
                 stopAudioLoop(cutSceneMusic);
-                startAudioLoop(villageMusic, -8);
+                volume = -8;
+                if(!stopper) {
+                    startAudioLoop(villageMusic, volume);
+                    stopper = true;
+                }
 
                 break;
             case 2:
@@ -74,12 +84,15 @@ public class AdventureMode extends GameEngine {
                 break;
             case 3:
                 state = GameState.OverWorldMenu;
+
                 break;
             case 4:
                 state = GameState.MainMenu;
                 break;
             case 6:
                 state = GameState.ShopMode;
+                startAudioLoop(menuMusic);
+
                 break;
             case 7:
                 state = GameState.CutScene;
@@ -91,6 +104,7 @@ public class AdventureMode extends GameEngine {
 
     @Override
     public void update(double dt) {
+
         updateGameState();
 
         switch (state){

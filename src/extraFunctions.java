@@ -15,6 +15,10 @@ import javax.sound.sampled.*;
 
 public abstract class extraFunctions {
 
+    AudioClip clicks;
+    AudioClip clicks2;
+    AudioClip exitClick;
+    AudioClip select;
 
 
     // My Definition of some colors
