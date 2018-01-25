@@ -14,6 +14,7 @@ public class cutScene extends extraFunctions {
     Image dialogueBack;
     Image dialogueBackSheet;
     Image fade;
+    Image startScreen;
     Image fadeArray[];
     Image spriteDown[];
     Image spriteDown2[];
@@ -27,6 +28,7 @@ public class cutScene extends extraFunctions {
     boolean back;
     boolean render;
     boolean vanish;
+    boolean start;
     int posX;
     int posY;
     int flameChange;
@@ -51,11 +53,13 @@ public class cutScene extends extraFunctions {
         background = loadImage("intro_cutscene.png");
         backgroundAlt = loadImage("intro_cutscene2.png");
         fade = loadImage("fade.png");
+        startScreen = loadImage("townPic.png");
         timer = 0;
         timePast = 9999999;
         back = true;
         render = true;
         vanish = false;
+        start = false;
         runCount = 0;
         state = introState.text;
         smokeSheet = loadImage("smoke.png");
@@ -104,7 +108,7 @@ public class cutScene extends extraFunctions {
         smokeArray[34] = subImage(smokeSheet, 256, 512, 128,128);
         for(int i = 0; i < 2; i++){
             for(int j = 0; j < 5; j++){
-                fadeArray[(i*5) + j] = subImage(fade, j*160, i*120, 160, 120);
+                fadeArray[(i*5) + j] = subImage(fade, j*160, i*120, 140, 100);
             }
         }
     }
@@ -124,86 +128,86 @@ public class cutScene extends extraFunctions {
             changeBackgroundColor(black, g);
             changeColor(white, g);
 
-            if ((timer > 2) && (timer < 5)) {
+            if ((timer > 2) && (timer < 8)) {
                 changeColor(grey1, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 2.1) && (timer < 5)) {
+            if ((timer > 2.1) && (timer < 8)) {
                 changeColor(grey2, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 2.2) && (timer < 5)) {
+            if ((timer > 2.2) && (timer < 8)) {
                 changeColor(grey3, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 2.3) && (timer < 5)) {
+            if ((timer > 2.3) && (timer < 8)) {
                 changeColor(grey4, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 2.5) && (timer < 5)) {
+            if ((timer > 2.5) && (timer < 8)) {
                 changeColor(grey5, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 2.6) && (timer < 5)) {
+            if ((timer > 2.6) && (timer < 8)) {
                 changeColor(grey6, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 2.7) && (timer < 5)) {
+            if ((timer > 2.7) && (timer < 8)) {
                 changeColor(white, g);
                 clearBackground(800, 600, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 4) && (timer < 5)) {
+            if ((timer > 6.9) && (timer < 8)) {
                 changeColor(grey6, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 4.1) && (timer < 5)) {
+            if ((timer > 7) && (timer < 8)) {
                 changeColor(grey5, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 4.2) && (timer < 5)) {
+            if ((timer > 7.1) && (timer < 8)) {
                 changeColor(grey4, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 4.3) && (timer < 5)) {
+            if ((timer > 7.2) && (timer < 8)) {
                 changeColor(grey3, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 4.4) && (timer < 5)) {
+            if ((timer > 7.3) && (timer < 8)) {
                 changeColor(grey2, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 4.5) && (timer < 5)) {
+            if ((timer > 7.4) && (timer < 8)) {
                 changeColor(grey1, g);
-                drawBoldText(300, 265, "In a far off land, the dark", g);
-                drawBoldText(0, 300, "wizard Therox was pillaging villages", g);
-                drawBoldText(150, 335, "in a hunt for power and fortune.", g);
+                drawBoldText(180, 255, "In a far off land, the dark", g);
+                drawBoldText(60, 300, "wizard Therox was pillaging villages", g);
+                drawBoldText(110, 345, "in a hunt for power and fortune.", g);
             }
-            if ((timer > 4.6) && (timer < 5)) {
+            if ((timer > 7.5) && (timer < 8)) {
                 clearBackground(800, 600, g);
                 state = introState.animation;
             }
@@ -214,10 +218,13 @@ public class cutScene extends extraFunctions {
             if(flameChange % 3 == 0){
                 back = !back;
             }
-            if(back){
+            if(back && !start){
                 drawImage(background, posX, posY, g);
             } else{
                 drawImage(backgroundAlt, posX, posY, g);
+            }
+            if(start){
+               drawImage(startScreen, 0, 0, g);
             }
             if((posY + 200 + runSpeed) <450) {
                 runSpeed+=2;
@@ -258,7 +265,7 @@ public class cutScene extends extraFunctions {
                 drawImage(wizardSpin[flameChange % 4], wizardPosX, 50, g);
             }
             if((timer > 32) && !vanish){
-                drawImage(smokeArray[flameChange%34], 70, 0, g);
+                drawImage(smokeArray[flameChange%34], 80, 0, g);
                 runCount++;
                 if(runCount >=20){
                     vanish = true;
@@ -268,17 +275,83 @@ public class cutScene extends extraFunctions {
                 BjarnePosY-=2;
                 drawImage(bjarneUp[flameChange%3], BjarnePosX, BjarnePosY, g);
             }
-            if((BjarnePosY <= 550)){
+            if((BjarnePosY <= 550) && timer < 40){
                 drawImage(bjarneUp[1], BjarnePosX, 550, g);
                 changeColor(white, g);
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY FOR", "Times New Roman", 20, g);
-                drawText(110, 475, "THIS! I'll travel East to the town of ______ to warn", "Times New Roman", 20, g);
-                drawText(110, 500, "them. They need to be prepared.", "Times New Roman", 20, g);
-                System.out.println(timer);
+                drawText(110, 475, "THIS! I'll travel East to the town of ______ to warn them. They need to ", "Times New Roman", 20, g);
+                drawText(110, 500, "be prepared.", "Times New Roman", 20, g);
             }
             if(timer > 40){
-
+                if(timer > 40 && timer < 42){
+                    drawImage(fadeArray[0], 0,0,800,600,g);
+                }
+                if(timer > 40.1 && timer < 40.2){
+                    drawImage(fadeArray[1], 0,0,800,600,g);
+                }
+                if(timer > 40.2 && timer < 40.3){
+                    drawImage(fadeArray[2], 0,0,800,600,g);
+                }
+                if(timer > 40.3 && timer < 40.4){
+                    drawImage(fadeArray[3], 0,0,800,600,g);
+                }
+                if(timer > 40.4 && timer < 40.5){
+                    drawImage(fadeArray[4], 0,0,800,600,g);
+                }
+                if(timer > 40.5 && timer < 40.6){
+                    drawImage(fadeArray[5], 0,0,800,600,g);
+                }
+                if(timer > 40.6 && timer < 40.7){
+                    drawImage(fadeArray[6], 0,0,800,600,g);
+                }
+                if(timer > 40.7 && timer < 40.8){
+                    drawImage(fadeArray[7], 0,0,800,600,g);
+                }
+                if(timer > 40.8 && timer < 40.9){
+                    drawImage(fadeArray[8], 0,0,800,600,g);
+                }
+                if(timer > 40.9 && timer < 41){
+                    drawImage(fadeArray[9], 0,0,800,600,g);
+                }
+                if(timer > 41 && timer < 42){
+                    drawImage(fadeArray[9], 0,0,800,600,g);
+                    start = true;
+                }
+                if(timer > 42 && timer < 42.1){
+                    drawImage(fadeArray[9], 0,0,800,600,g);
+                }
+                if(timer > 42.1 && timer < 42.2){
+                    drawImage(fadeArray[8], 0,0,800,600,g);
+                }
+                if(timer > 42.2 && timer < 42.3){
+                    drawImage(fadeArray[7], 0,0,800,600,g);
+                }
+                if(timer > 42.3 && timer < 42.4){
+                    drawImage(fadeArray[6], 0,0,800,600,g);
+                }
+                if(timer > 42.4 && timer < 42.5){
+                    drawImage(fadeArray[5], 0,0,800,600,g);
+                }
+                if(timer > 42.5 && timer < 42.6){
+                    drawImage(fadeArray[4], 0,0,800,600,g);
+                }
+                if(timer > 42.6 && timer < 42.7){
+                    drawImage(fadeArray[3], 0,0,800,600,g);
+                }
+                if(timer > 42.7 && timer < 42.8){
+                    drawImage(fadeArray[2], 0,0,800,600,g);
+                }
+                if(timer > 42.8 && timer < 42.9){
+                    drawImage(fadeArray[1], 0,0,800,600,g);
+                }
+                if(timer > 42.9 && timer < 43){
+                    drawImage(fadeArray[0], 0,0,800,600,g);
+                }
+                if(timer > 43){
+                    changeColor(white, g);
+                    drawText(220, 500, "- Press <SPACE> to begin your adventure -",  "New Roman Times", 20, g);
+                }
             }
         }
     }
