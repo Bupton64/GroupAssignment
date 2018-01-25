@@ -16,7 +16,7 @@ public class ability_monster_lifeCoil extends Ability{
     public Ability use(Statblock user){
         Ability useThis = super.use(user);
         user.setCurrentHP(useThis.getLastDamage()+user.getCurrentHP());
-        setDisplayString("Valliard drained you for " + useThis.getLastDamage() + " health!");
+        setDisplayString( user.getName() + " drained you for " + useThis.getLastDamage() + " health!");
         return useThis;
     }
 }
