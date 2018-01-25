@@ -18,6 +18,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
     CharacterMovement(Character playerMan){
         this.playerMan = playerMan;
         initCharMovement();
+
     }
 
     double walkTimer;
@@ -70,7 +71,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
    }
 
     public void initCharMovement(){
-
+         inGameMusic = loadAudio("inGame.wav");
 
         lockRight = false;
         lockLeft = false;
