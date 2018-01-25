@@ -31,12 +31,16 @@ public class AdventureMode extends GameEngine {
     private Combat combatMode;
     private cutScene cutScene;
     private ShopControl shopController;
-
+    AudioClip backgroundMusic;
+    AudioClip cutSceneMusic;
+    AudioClip villageMusic;
 
 
     public void init() {
+        cutSceneMusic = loadAudio("cutscene.wav");
+        backgroundMusic = loadAudio("epic.wav");
+        villageMusic = loadAudio("village.wav");
         setWindowSize(800, 600);
-
         playerMan = new Character();
         playerMovement = new CharacterMovement(playerMan);
         collisionDetector = new Collision();
@@ -50,6 +54,7 @@ public class AdventureMode extends GameEngine {
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
         state = GameState.MainMenu;
+
     }
 
 
@@ -59,6 +64,9 @@ public class AdventureMode extends GameEngine {
                 break;
             case 1:
                 state = GameState.TravelMode;
+                stopAudioLoop(cutSceneMusic);
+                startAudioLoop(villageMusic, -8);
+
                 break;
             case 2:
                 combatMode = new Combat(playerMan, playerMan.getMonsterGen());
@@ -75,6 +83,7 @@ public class AdventureMode extends GameEngine {
                 break;
             case 7:
                 state = GameState.CutScene;
+                startAudioLoop(cutSceneMusic);
                 break;
         }
        stateChanger = 0;
