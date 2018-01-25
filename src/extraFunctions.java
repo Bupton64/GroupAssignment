@@ -19,6 +19,11 @@ public abstract class extraFunctions {
     AudioClip clicks2;
     AudioClip exitClick;
     AudioClip select;
+    AudioClip p1;
+    AudioClip p2;
+    AudioClip p3;
+    AudioClip leave;
+
 
 
     // My Definition of some colors

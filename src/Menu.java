@@ -242,6 +242,11 @@ public class Menu extends extraFunctions {
         clicks = loadAudio("clicks.wav");
         clicks2 = loadAudio("clicks2.wav");
         exitClick = loadAudio("exitClick.wav");
+        select = loadAudio("select.wav");
+        p1 = loadAudio("page1.wav");
+        p2 = loadAudio("page2.wav");
+        p3 = loadAudio("page3.wav");
+        leave = loadAudio("leave.wav");
         chaMenu = true;
         cursorPositionY = 440;
         background1 = subImage(menuSprite, 0, 0, 800, 600);
@@ -842,6 +847,7 @@ public class Menu extends extraFunctions {
                 System.exit(23);
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 470) {
+                playAudio(p2);
                 //maybe temporary vvvvv
                 index = 0;
                 pos = 0;
@@ -853,6 +859,7 @@ public class Menu extends extraFunctions {
                 chaMenu = false;
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 500) {
+                playAudio(p3);
                 equMenu = true;
                 invMenu = false;
                 chaMenu = false;
@@ -873,7 +880,7 @@ public class Menu extends extraFunctions {
                 }
             }
             if ((e.getKeyCode() == KeyEvent.VK_TAB) || (e.getKeyCode() == KeyEvent.VK_RIGHT)) {
-                playAudio(clicks);
+                playAudio(p2);
                 nextPage = true;
                 if (pageNum == totalPages) {
                     pageNum = 1;
@@ -887,7 +894,7 @@ public class Menu extends extraFunctions {
 
             }
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                playAudio(clicks2);
+                playAudio(p3);
                 if (player1.getInventory()[index].getSlot().name() == "bag") {
                     if (player1.getInventory()[index].getName() != null) {
                         if (player1.getInventory()[index].getCounter() == 1) {
@@ -914,7 +921,7 @@ public class Menu extends extraFunctions {
             }
             //Bug vvvvv
             if (e.getKeyCode() == KeyEvent.VK_LEFT){
-                playAudio(clicks);
+                playAudio(p1);
                 nextPage = true;
                 if (pageNum == 1) {
                     pageNum = totalPages;
@@ -1024,6 +1031,7 @@ public class Menu extends extraFunctions {
 
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && slotSelect&&isEquiblableItems) {
+                playAudio(select);
                 scroller2 = 0;
                 none = false;
                 itemSelect = true;
@@ -1031,7 +1039,7 @@ public class Menu extends extraFunctions {
                 stopper2 = true;
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && itemSelect && !stopper2) {
-                playAudio(clicks2);
+                playAudio(select);
                 String temp = player1.getInventory()[index].getSlot().name();
                 player1.equipItem(player1.getInventory()[index]);
                 none = false;
@@ -1063,7 +1071,6 @@ public class Menu extends extraFunctions {
         }
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE && isChaMenu()) {
             playAudio(exitClick);
-
             return 1;
         }
 
@@ -1073,14 +1080,12 @@ public class Menu extends extraFunctions {
 
     public void keyReleased(KeyEvent e) {
         if ((e.getKeyCode() == KeyEvent.VK_ESCAPE) && itemSelect && equMenu) {
-            playAudio(exitClick);
-
             slotSelect = true;
             itemSelect = false;
             stopper = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE && !chaMenu && !itemSelect && !stopper) {
-            playAudio(exitClick);
+            playAudio(leave);
             chaMenu = true;
             invMenu = false;
             equMenu = false;

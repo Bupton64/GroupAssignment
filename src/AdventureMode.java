@@ -35,6 +35,7 @@ public class AdventureMode extends GameEngine {
     AudioClip cutSceneMusic;
     AudioClip villageMusic;
     AudioClip menuMusic;
+    AudioClip clicks;
     float volume = 0;
     boolean stopper = false;
 
@@ -45,6 +46,7 @@ public class AdventureMode extends GameEngine {
         backgroundMusic = loadAudio("epic.wav");
         villageMusic = loadAudio("village.wav");
         menuMusic = loadAudio("menuMusic.wav");
+        clicks = loadAudio("clicks.wav");
 
         setWindowSize(800, 600);
         playerMan = new Character();
@@ -190,7 +192,10 @@ public class AdventureMode extends GameEngine {
             case TravelMode:
                 if(!playerMan.isInConvo()) { playerMovement.keyPressed(e); }
                 mapController.keyPressed(e);
-                if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {stateChanger = 3;}
+                if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    playAudio(clicks);
+                    stateChanger = 3;
+                }
                 break;
             case CombatMode:
                 combatMode.keyPressed(e);
