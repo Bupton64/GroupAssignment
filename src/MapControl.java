@@ -223,9 +223,13 @@ public class MapControl extends extraFunctions {
                     currentMap = new plains_F7();
                     break;
                 case 28:
+
                     currentMap = new plains_F8();
                     mapNpcs[0] = new npc_plains_f8_oldman();
-                    if(playerMan.getQuestStage() < 7) {
+                    if(playerMan.getQuestStage() > 13) {
+                        mapNpcs[1] = new npc_plains_priest();
+                        numOfNpc = 2;
+                    }else if(playerMan.getQuestStage() < 7) {
                         mapNpcs[1] = new npc_plains_f8_byLog();
                         numOfNpc = 2;
                     }else{
@@ -321,14 +325,17 @@ public class MapControl extends extraFunctions {
                     break;
                 case 50:
                     currentMap = new plains_E8_topLeftHouse();
-                    mapNpcs[0] = new npc_plains_priest();
-                    numOfNpc = 1;
+                    if(playerMan.getQuestStage() < 12) {
+                        mapNpcs[0] = new npc_plains_priest();
+                        numOfNpc = 1;
+                    }
                     if(playerMan.getQuestStage() == 12){
                         if(!playerMan.getCollectableState(0)) {
-                            mapNpcs[1] = new npc_plains_quest_collectable(360, 160);
-                            numOfNpc = 2;
+                            mapNpcs[0] = new npc_plains_quest4_collectable(360, 160);
+                            numOfNpc = 1;
                         }
                     }
+
                     break;
                 case 51:
                     currentMap = new plains_A9_church();
@@ -424,6 +431,10 @@ public class MapControl extends extraFunctions {
                 return 2;
             }else if(updateQuestState == 98){
                 switch((int)playerMan.getCurrentMapLocation()){
+                    case 50:
+                        playerMan.setCollectableState(0,true);
+                        reloadMap = true;
+                        break;
                     case 14:
                         playerMan.setCollectableState(6,true);
                         reloadMap = true;

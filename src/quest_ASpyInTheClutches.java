@@ -40,8 +40,10 @@ public class quest_ASpyInTheClutches extends Quest {
         if(getState() == questState.inQuest){
             changeColor(white, g);
             drawText(450, 30, "Return to Sevar", "Arial", 30, g);
-
-
+        }
+        if(getState() == questState.completedQuest){
+            changeColor(white, g);
+            drawText(450, 30, "Confront the priest", "Arial", 30, g);
         }
 
     }

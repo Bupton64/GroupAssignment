@@ -59,6 +59,8 @@ public class npc_wizard extends  NPC {
 
     Dialogue listEight;
 
+    Dialogue listNine;
+
 
 
     public void initDialogue(){
@@ -98,6 +100,10 @@ public class npc_wizard extends  NPC {
         Dialogue d15 = new Dialogue(null,false,true,"How goes your search? I think the houses in town","might have some clues.","","");
         listEight = d15;
 
+        Dialogue d17 = new Dialogue(null,true,true,"Can you go confront the priest in Town?","","","");
+        Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm............ It appears this book belongs to the priest.","I fear we have a spy in our clutches Young Bjarne. You need to go"," confront him. I saw him in town earlier, After you confront him,"," find me I'll be in town, This situation seems to be dire!");
+        listNine = d16;
+
     }
 
     public int updateConvo(){
@@ -115,6 +121,8 @@ public class npc_wizard extends  NPC {
                 return 10;
             case 12:
                 return 12;
+            case 14:
+                return 14;
             default:
                 return 0;
 
@@ -141,6 +149,8 @@ public class npc_wizard extends  NPC {
             currentDialogue = listSeven;
         }else if(questStage == 12){
             currentDialogue = listEight;
+        }else if(questStage == 13){
+            currentDialogue = listNine;
         }
     }
 
@@ -161,7 +171,6 @@ public class npc_wizard extends  NPC {
 
 
         if(questName == "A Wizards Problem") {
-
             if (currentState == Quest.questState.completedQuest) {
                 if(questStage == 2) {
                     this.questStage = 3;
@@ -170,15 +179,7 @@ public class npc_wizard extends  NPC {
 
 
             }
-        } else if(questName == "The Road To Riches") {
-            if (currentState == Quest.questState.preQuest) {
-
-            }
-            if (currentState == Quest.questState.completedQuest) {
-
-            }
         }
-
     }
 
 
@@ -208,6 +209,9 @@ public class npc_wizard extends  NPC {
                             break;
                         case 11:
                             questStage = 12;
+                            break;
+                        case 13:
+                            questStage = 14;
                             break;
                     }
                 }

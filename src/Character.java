@@ -398,8 +398,9 @@ public class Character extends Statblock {
 
         // Test Functions
         setGpTotal(1);
-        setQuestStage(10);
-        currentQuest = new quest_TheMissingPeices();
+        setQuestStage(14);
+        currentQuest = new quest_ASpyInTheClutches();
+        currentQuest.setState(Quest.questState.completedQuest);
         setXPTotal(0); //< TESTERS
         checkLevelUp(); //< Tester
     }
@@ -772,8 +773,12 @@ public class Character extends Statblock {
     public void setCollectableNum(int num) {
         currentQuest.setNumOfCollectables(num);
         if (currentQuest.getNumOfCollectables() == currentQuest.getTotalCollectables()) {
-            currentQuest.setState(Quest.questState.completedQuest);
-            setQuestStage(11);
+            if(questStage == 10) {
+                currentQuest.setState(Quest.questState.completedQuest);
+            }else if(questStage == 12){
+                currentQuest.setState(Quest.questState.inQuest);
+            }
+            setQuestStage(getQuestStage() + 1);
         }
     }
 
@@ -832,7 +837,8 @@ public class Character extends Statblock {
             case 12:
                 currentQuest = new quest_ASpyInTheClutches();
                 break;
-            case 13:
+            case 14:
+                currentQuest.setState(Quest.questState.completedQuest);
                 break;
         }
 

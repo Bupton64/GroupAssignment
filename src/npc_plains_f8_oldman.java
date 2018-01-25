@@ -31,6 +31,7 @@ public class npc_plains_f8_oldman extends  NPC {
     //////////////////////////////
 
     public void initPath(){
+
         setMoveTimer(2);
         setMoveDelay(3);
         setMapPosX(200);
@@ -80,14 +81,15 @@ public class npc_plains_f8_oldman extends  NPC {
 
 
     public void updateNpcMovement(double dt,Collision collisionDetector){
+
             setMoveTimer(getMoveTimer() + dt);
 
-            if(getMoveTimer() > getMoveDelay()){
-                collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
-                if(startMovement(dt)){
+            if (getMoveTimer() > getMoveDelay()) {
+                collisionDetector.addBoxCollision(((int) getMapPosX() / 10 - 2), ((int) getMapPosY() / 10 - 5), ((int) getWidth() / 10 - 2), ((int) getHeight() / 10 - 2), false);
+                if (startMovement(dt)) {
                     currentLocation = Location[currentLocation].getNextLocation();
                 }
-                collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
+                collisionDetector.addBoxCollision(((int) getMapPosX() / 10 - 2), ((int) getMapPosY() / 10 - 5), ((int) getWidth() / 10 - 2), ((int) getHeight() / 10 - 2), true);
             }
 
 
@@ -102,22 +104,33 @@ public class npc_plains_f8_oldman extends  NPC {
 
     Dialogue listOne;
 
+    Dialogue listTwo;
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"I'm Julian, the oldest NPC... uh I mean villager in this Town.","","","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"Bjarne, Save yourself. This Demon is too strong.","","","");
+        listTwo = d2;
     }
 
-    public void updateDialogue(Quest.questState  currentState){
+    public void updateDialogue(int questStage){
 
+        if(questStage < 14) {
             currentDialogue = listOne;
-
+        }else if(questStage == 14){
+            currentDialogue = listTwo;
+            setMapPosX(470);
+            setMapPosY(200);
+        }
     }
+
+
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
 
         if(loadDialogue) {
-            updateDialogue(currentState);
+            updateDialogue(questStage);
             loadDialogue = false;
         }
         super.drawConvo(g, playerName,currentState, questName,questStage);
