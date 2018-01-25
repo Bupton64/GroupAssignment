@@ -397,7 +397,7 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setGpTotal(400);
+        setGpTotal(5000);
         setQuestStage(4);
         currentQuest = new quest_AWizardsProblem();
         currentQuest.setState(Quest.questState.completedQuest);
