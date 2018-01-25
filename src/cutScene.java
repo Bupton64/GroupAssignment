@@ -6,20 +6,27 @@ public class cutScene extends extraFunctions {
 
     Image background;
     Image backgroundAlt;
+    Image smokeSheet;
+    Image spriteSheetBjarne;
     Image spriteSheet;
     Image spriteSheet2;
     Image spriteSheet3;
     Image dialogueBack;
     Image dialogueBackSheet;
+    Image fade;
+    Image fadeArray[];
     Image spriteDown[];
     Image spriteDown2[];
     Image spriteDown3[];
     Image wizardDown[];
     Image wizardSpin[];
+    Image smokeArray[];
+    Image bjarneUp[];
     double timer;
     double timePast;
     boolean back;
     boolean render;
+    boolean vanish;
     int posX;
     int posY;
     int flameChange;
@@ -29,6 +36,9 @@ public class cutScene extends extraFunctions {
     int height;
     int wizardPosX;
     int wizardPosY;
+    int BjarnePosX;
+    int BjarnePosY;
+    int runCount;
 
 
     enum introState {text, animation}
@@ -40,11 +50,16 @@ public class cutScene extends extraFunctions {
     cutScene(){
         background = loadImage("intro_cutscene.png");
         backgroundAlt = loadImage("intro_cutscene2.png");
+        fade = loadImage("fade.png");
         timer = 0;
         timePast = 9999999;
         back = true;
         render = true;
+        vanish = false;
+        runCount = 0;
         state = introState.text;
+        smokeSheet = loadImage("smoke.png");
+        spriteSheetBjarne = loadImage("chara1.png");
         spriteSheet = loadImage("scaredRunning.png");
         spriteSheet2 = loadImage("scaredRunning2.png");
         spriteSheet3 = loadImage("chara2.png");
@@ -53,6 +68,9 @@ public class cutScene extends extraFunctions {
         spriteDown3 = new Image[3];
         wizardDown = new Image[3];
         wizardSpin = new Image[4];
+        smokeArray = new Image[35];
+        bjarneUp = new Image[3];
+        fadeArray = new Image[10];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
         posX = -800;
@@ -64,15 +82,31 @@ public class cutScene extends extraFunctions {
         height = 0;
         wizardPosX = 120;
         wizardPosY = -74;
+        BjarnePosX = 200;
+        BjarnePosY = 600;
         for(int i =0; i < 3;i++){
             spriteDown[i] = subImage(spriteSheet,156 + (52 * i), 0,52,72);
             spriteDown2[i] = subImage(spriteSheet,312 + (52 * i), 0,52,72);
             spriteDown3[i] = subImage(spriteSheet2,312 + (52 * i), 0,52,72);
             wizardDown[i] = subImage(spriteSheet3,468 + (52 * i), 288,52,72);
             wizardSpin[i] = subImage(spriteSheet3,520, 288 + (72*i),52,72);
+            bjarneUp[i] = subImage(spriteSheetBjarne, (52*i),216,52,72);
         }
         wizardSpin[3] = wizardSpin[2];
         wizardSpin[2] = subImage(spriteSheet3,520, 504,52,72);
+        for(int i = 0; i < 4; i++) {
+            for (int j = 0; j < 8; j++) {
+                smokeArray[(i*8)+j] = subImage(smokeSheet, j * 128, i * 128, 128, 128);
+            }
+        }
+        smokeArray[32] = subImage(smokeSheet, 0, 512, 128,128);
+        smokeArray[33] = subImage(smokeSheet, 128, 512, 128,128);
+        smokeArray[34] = subImage(smokeSheet, 256, 512, 128,128);
+        for(int i = 0; i < 2; i++){
+            for(int j = 0; j < 5; j++){
+                fadeArray[(i*5) + j] = subImage(fade, j*160, i*120, 160, 120);
+            }
+        }
     }
     /*
      * Updates the timer
@@ -220,8 +254,31 @@ public class cutScene extends extraFunctions {
                     drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
                 }
             }
-            if((timePast < timer) && (posY>=0)){
+            if((timePast < timer) && (posY>=0) && (timer < 32)){
                 drawImage(wizardSpin[flameChange % 4], wizardPosX, 50, g);
+            }
+            if((timer > 32) && !vanish){
+                drawImage(smokeArray[flameChange%34], 70, 0, g);
+                runCount++;
+                if(runCount >=20){
+                    vanish = true;
+                }
+            }
+            if((timer > 34) && vanish && (BjarnePosY > 550)){
+                BjarnePosY-=2;
+                drawImage(bjarneUp[flameChange%3], BjarnePosX, BjarnePosY, g);
+            }
+            if((BjarnePosY <= 550)){
+                drawImage(bjarneUp[1], BjarnePosX, 550, g);
+                changeColor(white, g);
+                drawImage(dialogueBack, 90, 400, 620, 165, g);
+                drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY FOR", "Times New Roman", 20, g);
+                drawText(110, 475, "THIS! I'll travel East to the town of ______ to warn", "Times New Roman", 20, g);
+                drawText(110, 500, "them. They need to be prepared.", "Times New Roman", 20, g);
+                System.out.println(timer);
+            }
+            if(timer > 40){
+
             }
         }
     }
