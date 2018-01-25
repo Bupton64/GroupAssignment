@@ -1,9 +1,10 @@
+
 import java.awt.*;
 
-public class quest_ASpyInTheClutches extends Quest {
+public class quest_NoEscapeFromReality extends Quest {
     boolean displayReward;
 
-    quest_ASpyInTheClutches(){
+    quest_NoEscapeFromReality(){
 
 
         collectableState = new boolean[1];
@@ -13,7 +14,7 @@ public class quest_ASpyInTheClutches extends Quest {
         numOfCollectables = 0;
         totalCollectables = 1;
 
-        setQuestName("A Spy In The Clutches");
+        setQuestName("No Escape From Reality");
         state = questState.preQuest;
         displayReward = true;
         displayTimer = 0;
@@ -34,7 +35,7 @@ public class quest_ASpyInTheClutches extends Quest {
     public void drawQuest(Graphics2D g){
         if(getState() == questState.preQuest) {
             changeColor(white, g);
-            drawText(450, 30, "Search Town for Clues", "Arial", 30, g);
+            drawText(450, 30, "Go Find the Holy Symbol", "Arial", 30, g);
 
         }
         if(getState() == questState.inQuest){
@@ -43,12 +44,11 @@ public class quest_ASpyInTheClutches extends Quest {
         }
         if(getState() == questState.completedQuest){
             changeColor(white, g);
-            drawText(450, 30, "Confront the priest", "Arial", 30, g);
+            drawText(450, 30, "Head to the Church", "Arial", 30, g);
         }
         if(getState() == questState.extraQuest){
             changeColor(white, g);
-            drawText(450, 30, "Find sevar in town", "Arial", 30, g);
+            drawText(450, 30, "Head Back to town", "Arial", 30, g);
         }
-
     }
 }

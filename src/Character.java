@@ -401,7 +401,7 @@ public class Character extends Statblock {
         setQuestStage(14);
         currentQuest = new quest_ASpyInTheClutches();
         currentQuest.setState(Quest.questState.completedQuest);
-        setXPTotal(0); //< TESTERS
+        setXPTotal(90000); //< TESTERS
         checkLevelUp(); //< Tester
     }
 
@@ -777,6 +777,8 @@ public class Character extends Statblock {
                 currentQuest.setState(Quest.questState.completedQuest);
             }else if(questStage == 12){
                 currentQuest.setState(Quest.questState.inQuest);
+            }else if(questStage == 16){
+                currentQuest.setState(Quest.questState.inQuest);
             }
             setQuestStage(getQuestStage() + 1);
         }
@@ -838,6 +840,15 @@ public class Character extends Statblock {
                 currentQuest = new quest_ASpyInTheClutches();
                 break;
             case 14:
+                currentQuest.setState(Quest.questState.completedQuest);
+                break;
+            case 15:
+                currentQuest.setState(Quest.questState.extraQuest);
+                break;
+            case 16:
+                currentQuest = new quest_NoEscapeFromReality();
+                break;
+            case 18:
                 currentQuest.setState(Quest.questState.completedQuest);
                 break;
         }

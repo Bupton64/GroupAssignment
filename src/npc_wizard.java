@@ -10,12 +10,12 @@ public class npc_wizard extends  NPC {
 //    int questStage;
 
 
-    npc_wizard(){
+    npc_wizard(int posX, int posY){
         setName("Sevar");
         spriteSheet = loadImage("chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
-        setMapPosX(400);
-        setMapPosY(250);
+        setMapPosX(posX);
+        setMapPosY(posY);
         questAccepted = false;
         initDialogue();
         loadDialogue = true;
@@ -49,18 +49,17 @@ public class npc_wizard extends  NPC {
     Dialogue listOne;
     Dialogue listTwo;
     Dialogue listThree;
-
     Dialogue listFour;
     Dialogue listFive;
-
     Dialogue listSix;
-
     Dialogue listSeven;
-
     Dialogue listEight;
-
     Dialogue listNine;
-
+    Dialogue listTen;
+    Dialogue listEleven;
+    Dialogue listTwelve;
+    Dialogue listThirteen;
+    Dialogue listFourteen;
 
 
     public void initDialogue(){
@@ -104,6 +103,21 @@ public class npc_wizard extends  NPC {
         Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm............ It appears this book belongs to the priest.","I fear we have a spy in our clutches Young Bjarne. You need to go"," confront him. I saw him in town earlier, After you confront him,"," find me I'll be in town, This situation seems to be dire!");
         listNine = d16;
 
+
+        Dialogue d20 = new Dialogue(null,true,true,"go find a symbol","","","");
+        Dialogue d19 = new Dialogue(d20,false,false,"im a wizzy, kek","","","");
+        Dialogue d18 = new Dialogue(d19,false,false,"hi","","","");
+        listTen = d18;
+
+        Dialogue d21 = new Dialogue(null,false,true,"I think I remember Seeing the Holy symbol east of my House.","","","");
+        listEleven = d21;
+
+        Dialogue d23 = new Dialogue(null,true,true,"Can you go west , And bring Sally back!","","","");
+        Dialogue d22 = new Dialogue(d23,false,false,"Well Done getting the Holy Symbol.","I've Tracked the Demon down to his Church in the west.","Be weary he will not go down easy, Make sure you are Prepared.","");
+        listTwelve = d22;
+
+        Dialogue d24 = new Dialogue(null,false,true,"The church is in the west, Goodluck my friend.","","","");
+        listThirteen = d24;
     }
 
     public int updateConvo(){
@@ -123,6 +137,12 @@ public class npc_wizard extends  NPC {
                 return 12;
             case 14:
                 return 14;
+            case 16:
+                currentDialogue = listEleven;
+                return 16;
+            case 18:
+                currentDialogue = listThirteen;
+                return 18;
             default:
                 return 0;
 
@@ -151,6 +171,14 @@ public class npc_wizard extends  NPC {
             currentDialogue = listEight;
         }else if(questStage == 13){
             currentDialogue = listNine;
+        }else if (questStage == 15){
+            currentDialogue = listTen;
+        }else if(questStage == 16){
+            currentDialogue = listEleven;
+        }else if(questStage == 17){
+            currentDialogue = listTwelve;
+        }else if(questStage == 18){
+            currentDialogue = listThirteen;
         }
     }
 
@@ -213,6 +241,11 @@ public class npc_wizard extends  NPC {
                         case 13:
                             questStage = 14;
                             break;
+                        case 15:
+                            questStage = 16;
+                            break;
+                        case 17:
+                            questStage = 18;
                     }
                 }
             }

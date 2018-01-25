@@ -1,12 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
 
-public class npc_plains_quest4_collectable extends NPC{
+public class npc_plains_quest5_collectable extends NPC{
 
 
-    npc_plains_quest4_collectable (int posX, int posY){
-        setName("Infiltrators Diary");
-        spriteSheet = loadImage("Book.png");
+    npc_plains_quest5_collectable (int posX, int posY){
+        setName("Holy Symbol");
+        spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,520,0,56,72);
         setMapPosX(posX);
         setMapPosY(posY);
@@ -50,7 +50,7 @@ public class npc_plains_quest4_collectable extends NPC{
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,true,true,"Take Infiltrators Diary?","","","");
+        Dialogue d1 = new Dialogue(null,true,true,"Take Holy Symbol?","","","");
         listOne = d1;
     }
 

@@ -6,12 +6,12 @@ public class npc_plains_E9_byBridge extends  NPC {
 
 
 
-    npc_plains_E9_byBridge(){
+    npc_plains_E9_byBridge(int posX, int posY){
         setName("Sally");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,364,144,56,72);
-        setMapPosX(475);
-        setMapPosY(200);
+        setMapPosX(posX);
+        setMapPosY(posY);
 
         initDialogue();
         loadDialogue = true;
@@ -44,7 +44,7 @@ public class npc_plains_E9_byBridge extends  NPC {
 
     Dialogue listOne;
     Dialogue listTwo;
-
+    Dialogue listThree;
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,true,true,"You must be Bjarne right? I'm so sorry to hear what happened to your","town. Hopefully the Wizard in the North will be able to help you!","","");
@@ -52,6 +52,9 @@ public class npc_plains_E9_byBridge extends  NPC {
 
         Dialogue d2 = new Dialogue(null,false,true,"Have you gone to see the wizard yet?","","","");
         listTwo = d2;
+
+        Dialogue d3 = new Dialogue(null,false,true,"huh.. What happened? Why am I in the church?","weird.... okay im going to head back to town. Cya Bjarne!","","");
+        listThree = d3;
     }
 
 
@@ -71,10 +74,11 @@ public class npc_plains_E9_byBridge extends  NPC {
 
     public void updateDialogue(int currentStage,String questName){
 
-        if(questStage == 0) {
+        if(currentStage == 0) {
             currentDialogue = listOne;
-        }
-        if (currentStage > 0) {
+        }else if(currentStage == 19){
+            currentDialogue = listThree;
+        }else if (currentStage > 0) {
             currentDialogue = listTwo;
         }
     }

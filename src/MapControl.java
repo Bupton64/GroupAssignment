@@ -155,8 +155,10 @@ public class MapControl extends extraFunctions {
                     break;
                 case 17:
                     currentMap = new plains_E5();
-                    mapNpcs[0] = new npc_wizard();
-                    numOfNpc = 1;
+                    if(playerMan.getQuestStage() < 15) {
+                        mapNpcs[0] = new npc_wizard(400, 250);
+                        numOfNpc = 1;
+                    }
                     break;
                 case 18:
                     currentMap = new plains_E6();
@@ -174,11 +176,14 @@ public class MapControl extends extraFunctions {
                     break;
                 case 21:
                     currentMap = new plains_E9();
-                    mapNpcs[0] = new npc_plains_E9_byBridge();
+                    mapNpcs[0] = new npc_plains_E9_byBridge(475,200);
                     mapNpcs[1] = new npc_plains_E9_byFence();
                     mapNpcs[2] = new npc_plains_E9_byField();
                     mapNpcs[3] = new npc_E9_signBottom();
                     numOfNpc = 4;
+                    if(playerMan.getQuestStage() >= 15) {
+                        mapNpcs[0] = new npc_wizard(200, 230);
+                    }
                     break;
                 case 22:
                     currentMap = new plains_E10();
@@ -225,16 +230,27 @@ public class MapControl extends extraFunctions {
                 case 28:
 
                     currentMap = new plains_F8();
-                    mapNpcs[0] = new npc_plains_f8_oldman();
-                    if(playerMan.getQuestStage() > 13) {
-                        mapNpcs[1] = new npc_plains_priest();
-                        numOfNpc = 2;
-                    }else if(playerMan.getQuestStage() < 7) {
+                    if(playerMan.getQuestStage() < 14) {
+                        mapNpcs[0] = new npc_plains_f8_oldman(200, 200);
+                    }
+                    if(playerMan.getQuestStage() < 7) {
                         mapNpcs[1] = new npc_plains_f8_byLog();
                         numOfNpc = 2;
                     }else{
+                         numOfNpc = 1;
+                    }
+
+                    if(playerMan.getQuestStage() == 14) {
+
+                        mapNpcs[0] = new npc_plains_f8_oldman(420,200);
+                        mapNpcs[1] = new npc_plains_priest(480,200);
+                        numOfNpc = 2;
+                    }else if(playerMan.getQuestStage() >= 15) {
+                        mapNpcs[0] = new npc_plains_f8_oldman(420,200);
+
                         numOfNpc = 1;
                     }
+
                     break;
                 case 29:
                     currentMap = new plains_F9();
@@ -267,6 +283,7 @@ public class MapControl extends extraFunctions {
                 case 33:
                     currentMap = new plains_G7();
                     mapNpcs[0] = new npc_plains_G7();
+                    numOfNpc = 1;
                     break;
                 case 34:
                     currentMap = new plains_G8();
@@ -282,6 +299,10 @@ public class MapControl extends extraFunctions {
                     break;
                 case 38:
                     currentMap = new plains_H8();
+                    if(playerMan.getQuestStage() == 16){
+                        mapNpcs[0] = new npc_plains_quest5_collectable(350,290);
+                        numOfNpc = 1;
+                    }
                     break;
                 case 39:
                     currentMap = new plains_H9();
@@ -326,7 +347,7 @@ public class MapControl extends extraFunctions {
                 case 50:
                     currentMap = new plains_E8_topLeftHouse();
                     if(playerMan.getQuestStage() < 12) {
-                        mapNpcs[0] = new npc_plains_priest();
+                        mapNpcs[0] = new npc_plains_priest(600,350);
                         numOfNpc = 1;
                     }
                     if(playerMan.getQuestStage() == 12){
@@ -339,6 +360,17 @@ public class MapControl extends extraFunctions {
                     break;
                 case 51:
                     currentMap = new plains_A9_church();
+                    if(playerMan.getQuestStage() == 19){
+                        mapNpcs[0] = new npc_plains_E9_byBridge(170,170);
+                        numOfNpc = 1;
+
+                    }
+                    if(playerMan.getQuestStage() == 18){
+                        mapNpcs[0] = new npc_plains_E9_byBridge(170,170);
+                        mapNpcs[1] = new npc_plains_priest(320,200);
+
+                        numOfNpc = 2;
+                    }
                     break;
                 case 52:
                     currentMap = new plains_H9_blackSmith();
@@ -423,14 +455,27 @@ public class MapControl extends extraFunctions {
 
             if(updateQuestState == 99) {
                 playerMan.setCombatActive(true);
-                playerMan.setMonsterGen(1);
-                playerMan.setValliardAlive(false);
+
+                if (playerMan.getCurrentQuestName() == "The Missing Peices") {
+                    playerMan.setMonsterGen(1);
+                    playerMan.setValliardAlive(false);
+                } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches") {
+                    playerMan.setMonsterGen(1);
+                    playerMan.setQuestStage(15);
+                    playerMan.changeQuest();
+                } else if (playerMan.getCurrentQuestName() == "No Escape From Reality"){
+                    playerMan.setMonsterGen(1);
+                    playerMan.setQuestStage(19);
+                    playerMan.changeQuest();
+                }
+
                 reloadMap = true;
                 mapNpcs[1].undoCollision(collisionDetector);
                 updateQuestState = 0;
                 return 2;
             }else if(updateQuestState == 98){
                 switch((int)playerMan.getCurrentMapLocation()){
+                    case 38:
                     case 50:
                         playerMan.setCollectableState(0,true);
                         reloadMap = true;

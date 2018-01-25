@@ -12,7 +12,7 @@ public class Quest extends extraFunctions {
 
     }
 
-    enum questState{preQuest, inQuest, completedQuest}
+    enum questState{preQuest, inQuest, completedQuest, extraQuest}
     questState state = questState.preQuest;
 
     private String questName; //<Name of the quest

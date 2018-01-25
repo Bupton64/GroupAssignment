@@ -6,12 +6,12 @@ public class npc_plains_priest extends  NPC {
 
 
 
-    npc_plains_priest(){
+    npc_plains_priest(int posX, int posY){
         setName("Priest");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,364,0,56,72);
-        setMapPosX(600);
-        setMapPosY(350);
+        setMapPosX(posX);
+        setMapPosY(posY);
 
         initDialogue();
         loadDialogue = true;
@@ -45,15 +45,21 @@ public class npc_plains_priest extends  NPC {
 
     Dialogue listTwo;
 
+    Dialogue listThree;
+
     public void initDialogue() {
 
         Dialogue d1 = new Dialogue(null,false,true,"Hello, little man, you seem weak.... ","I would consider changing your Faith before the end comes","","");
         listOne = d1;
 
         Dialogue d4 = new Dialogue(null,true,true,"Or will you try to stop me? hahaha","","","");
-        Dialogue d3 = new Dialogue(d4,false,false, "The dark lord is near, you have last,","And now your friend Julien shall die.","","");
+        Dialogue d3 = new Dialogue(d4,false,false, "The dark lord is near, you have lost,","And now your friend Julien shall die.","","");
         Dialogue d2 = new Dialogue(d3,false,false, "Hello Again little man. ","I see you found my Book, well no problem the time has come for action","","");
         listTwo = d2;
+
+
+        Dialogue d5 = new Dialogue(null,true,true,"round 2 habibs?","","","");
+        listThree = d5;
 
     }
 
@@ -63,8 +69,9 @@ public class npc_plains_priest extends  NPC {
         }
         if(questStage == 14){
             currentDialogue = listTwo;
-            setMapPosX(430);
-            setMapPosY(200);
+        }
+        if(questStage == 18){
+            currentDialogue = listThree;
         }
     }
 
