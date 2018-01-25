@@ -28,7 +28,7 @@ public class plains_B9 extends  Map{
                 return true;
             case 2:
                 //going down
-					 if(player.getMapPosX() < 500){
+                if(player.getMapPosX() < 500){
                     player.setMapPosX(player.getMapPosX()+100);
                 }
 					 player.setCurrentMapLocation(3);

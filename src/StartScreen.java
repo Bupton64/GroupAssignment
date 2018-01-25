@@ -8,6 +8,10 @@ import java.lang.String;
 
 
 public class StartScreen extends extraFunctions {
+    StartScreen(){
+        initStart();
+    }
+
     Image paper = loadImage("paper.png");
     Image sword = loadImage("sword.png");
     Image sword2 = loadImage("sword2.png");
@@ -26,11 +30,18 @@ public class StartScreen extends extraFunctions {
     double index3 = 11.3;
     double index4 = 11.4;
 
+
     public void initStart(){
+        introMusic = loadAudio("epic.wav");
+        startAudioLoop(introMusic);
+
+
         StartBackground = subImage(paper, 0, 0, 768, 1028);
         swordSprite = subImage(sword, 0, 0, 1793, 445);
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);
         Logo = subImage(logo, 0, 0,518,91);
+
+
     }
     public void updateTimer(double dt){
         timer +=dt;
@@ -39,6 +50,7 @@ public class StartScreen extends extraFunctions {
 
 
     public void drawStartScreen(Graphics2D g){
+
         clearBackground(800, 600, g);
         changeBackgroundColor(black,g);
         changeColor(white, g);
@@ -107,10 +119,9 @@ public class StartScreen extends extraFunctions {
                 }
             }
             drawText(100, 100, Integer.toString(num), g);
-            drawImage(Logo, 85, 100,6*num,1*num, g );
+            drawImage(Logo, 85, 100,6*num,1*num,g );
         }
         if((num>104)&&(timer<100)) {
-
             changeColor(white, g);
             drawText(220, 500, "- Press <SPACE> to begin your adventure -",  "New Roman Times", 20, g);
 
@@ -140,25 +151,25 @@ public class StartScreen extends extraFunctions {
         }
 
     }
-    public void keyPressed(KeyEvent e) {
-            if(startup&&(e.getKeyCode() == KeyEvent.VK_SPACE)&&intro){
-                intro = false;
-            }
 
-
-
-            if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
-                cursorPositionY += 80;
-
-            }
-            if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 150) {
-                cursorPositionY -= 80;
-
-            }
-            if (((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 390)) {
-                System.exit(23);
-            }
-
+    public int keyPressed(KeyEvent e) {
+        if(startup&&(e.getKeyCode() == KeyEvent.VK_SPACE)&&intro) {
+            stopAudioLoop(introMusic);
+            intro = false;
         }
+        if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
+            cursorPositionY += 80;
+        }
+        if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 150) {
+            cursorPositionY -= 80;
+        }
+        if (((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 390)) {
+            System.exit(23);
+        }
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 150)&& !startup){
+           return 7;
+        }
+        return 0;
+    }
 
 }

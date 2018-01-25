@@ -397,10 +397,11 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setGpTotal(100000000);
-        setQuestStage(10);
-        currentQuest = new quest_TheMissingPeices();
-        setXPTotal(0); //< TESTERS
+        setGpTotal(5000);
+        setQuestStage(4);
+        currentQuest = new quest_AWizardsProblem();
+        currentQuest.setState(Quest.questState.completedQuest);
+        setXPTotal(9000); //< TESTERS
         checkLevelUp(); //< Tester
     }
 
@@ -772,8 +773,14 @@ public class Character extends Statblock {
     public void setCollectableNum(int num) {
         currentQuest.setNumOfCollectables(num);
         if (currentQuest.getNumOfCollectables() == currentQuest.getTotalCollectables()) {
-            currentQuest.setState(Quest.questState.completedQuest);
-            setQuestStage(11);
+            if(questStage == 10) {
+                currentQuest.setState(Quest.questState.completedQuest);
+            }else if(questStage == 12){
+                currentQuest.setState(Quest.questState.inQuest);
+            }else if(questStage == 16){
+                currentQuest.setState(Quest.questState.inQuest);
+            }
+            setQuestStage(getQuestStage() + 1);
         }
     }
 
@@ -832,7 +839,17 @@ public class Character extends Statblock {
             case 12:
                 currentQuest = new quest_ASpyInTheClutches();
                 break;
-            case 13:
+            case 14:
+                currentQuest.setState(Quest.questState.completedQuest);
+                break;
+            case 15:
+                currentQuest.setState(Quest.questState.extraQuest);
+                break;
+            case 16:
+                currentQuest = new quest_NoEscapeFromReality();
+                break;
+            case 18:
+                currentQuest.setState(Quest.questState.completedQuest);
                 break;
         }
 
@@ -859,7 +876,30 @@ public class Character extends Statblock {
     }
 
 
+
+
+
+
+
+
+    //////////////////////////////
+    ///
+    ///  Boss Kill And Monsters
+    ///
+    //////////////////////////////
+
     private int monsterGen;
+
+    private boolean ValliardAlive = true;
+
+    public boolean isValliardAlive() {
+        return ValliardAlive;
+    }
+
+    public void setValliardAlive(boolean valliardAlive) {
+        ValliardAlive = valliardAlive;
+    }
+
 
     public int getMonsterGen() {
         return monsterGen;
@@ -870,21 +910,19 @@ public class Character extends Statblock {
     }
 
 
-
-
     //////////////////////////////
     ///
-    ///  Boss Kill
+    ///  Shop
     ///
     //////////////////////////////
 
-    boolean ValliardAlive = true;
+    int currentShopActive = 0;
 
-    public boolean isValliardAlive() {
-        return ValliardAlive;
+    public int getCurrentShopActive() {
+        return currentShopActive;
     }
 
-    public void setValliardAlive(boolean valliardAlive) {
-        ValliardAlive = valliardAlive;
+    public void setCurrentShopActive(int currentShopActive) {
+        this.currentShopActive = currentShopActive;
     }
 }

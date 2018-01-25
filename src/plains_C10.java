@@ -27,6 +27,9 @@ public class plains_C10 extends  Map {
                 return true;
             case 2:
                 //going down
+                if(player.getMapPosX() < 170){
+                    player.setMapPosX(170);
+                }
                 player.setCurrentMapLocation(8);
                 flicker = false;
                 return true;

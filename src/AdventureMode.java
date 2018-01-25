@@ -1,6 +1,5 @@
 
 
-import java.awt.*;
 import java.awt.event.*;
 
 
@@ -18,103 +17,107 @@ public class AdventureMode extends GameEngine {
     ///
     /////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, Shop1Mode, Shop2Mode, CutScene}
+    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, CutScene, ShopMode}
     GameState state = GameState.TravelMode;
 
-    int stateChanger;
+    private int stateChanger;
 
-    Menu MenuController;
-    StartScreen StartController;
-    MapControl mapController;
-    Character playerMan;
-    CharacterMovement playerMovement;
-    Collision collisionDetector;
-    Combat combatMode;
-    Shop1 Shop1Controller;
-    cutScene cut_scene;
-
+    private Menu menuController;
+    private StartScreen startController;
+    private MapControl mapController;
+    private Character playerMan;
+    private CharacterMovement playerMovement;
+    private Collision collisionDetector;
+    private Combat combatMode;
+    private cutScene cutScene;
+    private ShopControl shopController;
+    AudioClip backgroundMusic;
+    AudioClip cutSceneMusic;
+    AudioClip villageMusic;
 
 
     public void init() {
-
+        cutSceneMusic = loadAudio("cutscene.wav");
+        backgroundMusic = loadAudio("epic.wav");
+        villageMusic = loadAudio("village.wav");
         setWindowSize(800, 600);
         playerMan = new Character();
         playerMovement = new CharacterMovement(playerMan);
-
         collisionDetector = new Collision();
         mapController = new MapControl(playerMan,collisionDetector);
+        menuController = new Menu(playerMan);
+        shopController = new ShopControl(playerMan);
+        cutScene = new cutScene();
+        startController = new StartScreen();
 
-        MenuController = new Menu(playerMan);
-        MenuController.initMenu();
-
-        Shop1Controller = new Shop1(playerMan);
-        Shop1Controller.shopInit();
-
-        StartController = new StartScreen();
-
-        playerMovement.initCharMovement();
-        collisionDetector.initCollision();
-        mapController.initNPC();
 
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
-
         state = GameState.MainMenu;
-        StartController.initStart();
 
-        cut_scene = new cutScene();
     }
 
 
-
-   public void updateGameState(){
-        if(stateChanger != 0) {
-
-            if(stateChanger == 1){
+    private void updateGameState(){
+        switch(stateChanger) {
+            case 0:
+                break;
+            case 1:
                 state = GameState.TravelMode;
-            }else if(stateChanger == 2){
-                combatMode = new Combat(playerMan,playerMan.getMonsterGen());
+                stopAudioLoop(cutSceneMusic);
+                startAudioLoop(villageMusic, -8);
+
+                break;
+            case 2:
+                combatMode = new Combat(playerMan, playerMan.getMonsterGen());
                 state = GameState.CombatMode;
-            }else if(stateChanger == 3){
+                break;
+            case 3:
                 state = GameState.OverWorldMenu;
-            }else if(stateChanger == 4){
+                break;
+            case 4:
                 state = GameState.MainMenu;
-            }else if(stateChanger == 5){
-                state = GameState.Shop1Mode;
-            }
-            else if(stateChanger == 7){
+                break;
+            case 6:
+                state = GameState.ShopMode;
+                break;
+            case 7:
                 state = GameState.CutScene;
-            }
-
-
-            stateChanger = 0;
+                startAudioLoop(cutSceneMusic);
+                break;
         }
+       stateChanger = 0;
    }
 
     @Override
     public void update(double dt) {
-
         updateGameState();
 
+        switch (state){
+            case TravelMode:
+                mapController.updateNPC(dt,collisionDetector);
+                mapController.updateMap();
+                collisionDetector.updateCollision(playerMan, playerMovement);
+                stateChanger = playerMovement.updateCharMovement(dt, playerMan);
+                if(stateChanger != 2) {
+                    stateChanger = mapController.updateQuest(dt);
+                }
+                break;
+            case CombatMode:
+                stateChanger =  combatMode.update(dt);
+                break;
+            case ShopMode:
+                shopController.updateShopControl(playerMan.getCurrentShopActive());
+                break;
+            case MainMenu:
+                startController.updateTimer(dt);
+                break;
+            case CutScene:
+                cutScene.updateTimer(dt);
+                break;
+            case OverWorldMenu:
+                break;
 
-
-
-        if (state == GameState.TravelMode) {
-            mapController.updateNPC(dt,playerMovement,collisionDetector);
-            mapController.updateMap();
-            collisionDetector.updateCollision(playerMan, playerMovement);
-            stateChanger = playerMovement.updateCharMovement(dt, playerMan);
-            if(stateChanger != 2) {
-                stateChanger = mapController.updateQuest(dt);
-            }
-        }else if (state == GameState.CombatMode) {
-            stateChanger =  combatMode.update(dt);
-        }else if(state == GameState.OverWorldMenu) {
-            //add Update later
-        }else if(state == GameState.MainMenu){
-            StartController.updateTimer(dt);
-        } else if(state == GameState.CutScene){
-            cut_scene.updateTimer(dt);
         }
     }
 
@@ -123,43 +126,40 @@ public class AdventureMode extends GameEngine {
     public void paintComponent() {
         clearBackground(800, 600);
         changeBackgroundColor(white);
-        if (state == GameState.TravelMode) {
-            mapController.drawMap(mGraphics); //< Draw the Map
-            playerMovement.drawCharMovement(mGraphics);//<Draw Player
-            mapController.drawNPCInteraction(mGraphics);
-            playerMan.getCurrentQuest().drawQuest(mGraphics);
-           // questInProgress.drawQuest(mGraphics);
 
-            changeColor(white);
-            drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
-            drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
-            drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
-            drawText(50, 110, Integer.toString(playerMan.getQuestStage()), "Times New Roman", 20);
+        switch (state){
+            case TravelMode:
+                mapController.drawMap(mGraphics); //< Draw the Map
+                playerMovement.drawCharMovement(mGraphics);//<Draw Player
+                mapController.drawNPCInteraction(mGraphics);
+                playerMan.getCurrentQuest().drawQuest(mGraphics);
 
-
-        } else if (state == GameState.CombatMode) {
-            combatMode.paintComponent(mGraphics); //< Draw Combat
-        } else if (state == GameState.OverWorldMenu) {
-            changeBackgroundColor(black);
-            MenuController.drawChaMenu(mGraphics);
-            MenuController.drawInvMenu(mGraphics);
-            MenuController.drawEquMenu(mGraphics);
-
-        }else if(state == GameState.MainMenu){
-            changeBackgroundColor(black);
-            StartController.drawStartScreen(mGraphics);
-        }else if(state == GameState.Shop1Mode){
-            Shop1Controller.drawShop(mGraphics);
-
-        }else if(state == GameState.CutScene) {
-            changeBackgroundColor(black);
-            cut_scene.drawCutScene(mGraphics);
+                changeColor(white);
+                drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
+                drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
+                drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
+                drawText(50, 110, Integer.toString(playerMan.getQuestStage()), "Times New Roman", 20);
+                break;
+            case CombatMode:
+                combatMode.paintComponent(mGraphics); //< Draw Combat
+                break;
+            case OverWorldMenu:
+                changeBackgroundColor(black);
+                menuController.drawMenu(mGraphics);
+                break;
+            case ShopMode:
+                changeBackgroundColor(black);
+                shopController.drawShopControl(mGraphics);
+                break;
+            case MainMenu:
+                changeBackgroundColor(black);
+                startController.drawStartScreen(mGraphics);
+                break;
+            case CutScene:
+                changeBackgroundColor(black);
+                cutScene.drawCutScene(mGraphics);
+                break;
         }
-
-
-        //Debug Lines Remove on your version
-
-
 
     }
 
@@ -172,79 +172,47 @@ public class AdventureMode extends GameEngine {
 
 
     public void keyPressed(KeyEvent e) {
-        if (state == GameState.TravelMode) {
-            if(!playerMan.isInConvo()) {
-                playerMovement.keyPressed(e);
-            }
-            mapController.keyPressed(e);
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                stateChanger = 3;
-            }
+        switch (state){
+            case TravelMode:
+                if(!playerMan.isInConvo()) { playerMovement.keyPressed(e); }
+                mapController.keyPressed(e);
+                if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {stateChanger = 3;}
+                break;
+            case CombatMode:
+                combatMode.keyPressed(e);
+                break;
+            case OverWorldMenu:
+                stateChanger = menuController.keyPressed(e);
+                break;
+            case MainMenu:
+                stateChanger = startController.keyPressed(e);
+                break;
+            case CutScene:
+                stateChanger = cutScene.keyPressed(e);
+                break;
+            case ShopMode:
+                stateChanger = shopController.keyPressed(e);
+                break;
         }
-
-        if (state == GameState.CombatMode) {
-            combatMode.keyPressed(e);
-        }
-
-
-
-        if(state == GameState.OverWorldMenu){
-            MenuController.keyPressed(e);
-            if(e.getKeyCode() == KeyEvent.VK_SPACE && MenuController.getCursorPositionY() == 440 ) {
-                stateChanger = 1;
-            }
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE && MenuController.isChaMenu()) {
-                stateChanger = 1;
-            }
-        }
-
-        if (state == GameState.MainMenu){
-            StartController.keyPressed(e);
-            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(StartController.cursorPositionY == 150)&& !StartController.startup){
-                stateChanger = 7;
-            }
-        }
-
-        if(e.getKeyCode() == KeyEvent.VK_T){
-            stateChanger = 5;
-        }
-        if(state == GameState.Shop1Mode){
-            Shop1Controller.keyPressed(e);
-            if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-                stateChanger = 1;
-            }
-        }
-        if(state == GameState.CutScene){
-            if(e.getKeyCode() == KeyEvent.VK_SPACE){
-                stateChanger = 1;
-            }
-        }
-
-
-
-
-
-
-
     }
 
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (state == GameState.TravelMode) {
-            playerMovement.keyReleased(e);
-        }
-        if (state == GameState.CombatMode) {
-            playerMovement.keyReleased(e);
-            combatMode.keyReleased(e);
-        }
-        if(state == GameState.OverWorldMenu){
-            playerMovement.keyReleased(e);
-            MenuController.keyReleased(e);
-            
-        }
 
-
-
+        switch (state){
+            case TravelMode:
+                playerMovement.keyReleased(e);
+                break;
+            case CombatMode:
+                combatMode.keyReleased(e);
+                playerMovement.keyReleased(e);
+                break;
+            case OverWorldMenu:
+                menuController.keyReleased(e);
+                playerMovement.keyReleased(e);
+                break;
+        }
     }
+
 }
