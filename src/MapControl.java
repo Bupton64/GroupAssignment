@@ -12,6 +12,7 @@ public class MapControl extends extraFunctions {
         firstMap = true;
         mapNpcs = new NPC[10];
         numOfNpc = 0;
+        clicks = loadAudio("clicks.wav");
 
         initNPC();
     }
@@ -556,7 +557,7 @@ public class MapControl extends extraFunctions {
         if(!playerMan.isInConvo()) {
 
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-
+                playAudio(clicks);
                     checkRangeNPC(playerMan);
 
 
@@ -564,6 +565,8 @@ public class MapControl extends extraFunctions {
         }else {
             changeConvoState = mapNpcs[currentNpcInteraction].keyPressed(e);
             if(e.getKeyCode() == KeyEvent.VK_SPACE){
+
+
                 playerMan.setInConvo(changeConvoState);
                 checkQuestChange = true;
             }

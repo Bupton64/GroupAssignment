@@ -95,7 +95,9 @@ public class plains_A9 extends  Map{
             collisionPoints.addCollisionPoint(i * 16,flicker);
         }
 
-
+        //Chruch
+        collisionPoints.addBoxCollision(21,3,31,31,flicker);
+        collisionPoints.addBoxCollision(50,3,4,24,flicker);
     }
 
 

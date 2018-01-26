@@ -57,7 +57,15 @@ public class plains_F9_bottomLeftHouse extends  Map {
         collisionPoints.addBoxCollision(2,1,74,12,flicker);
 
         //DETAIL
-
+        //Table
+        collisionPoints.addBoxCollision(32,21,11,8,flicker);
+        collisionPoints.addBoxCollision(30,22,3,5,flicker);
+        collisionPoints.addBoxCollision(41,22,3,5,flicker);
+        collisionPoints.addBoxCollision(35,18,5,3,flicker);
+        collisionPoints.addBoxCollision(35,28,5,3,flicker);
+        //Bed
+        collisionPoints.addBoxCollision(16,14,7,4,flicker);
+        collisionPoints.addBoxCollision(51,14,7,4,flicker);
     }
 
 

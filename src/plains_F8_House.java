@@ -58,7 +58,16 @@ public class plains_F8_House extends  Map {
         collisionPoints.addBoxCollision(2,1,74,12,flicker);
 
         //DETAIL
-
+        //Table
+        collisionPoints.addBoxCollision(50,15,8,7,flicker);
+        collisionPoints.addBoxCollision(48,15,4,5,flicker);
+        collisionPoints.addBoxCollision(56,15,4,5,flicker);
+        collisionPoints.addBoxCollision(52,14,4,1,flicker);
+        collisionPoints.addBoxCollision(52,21,4,3,flicker);
+        //Bed
+        collisionPoints.addBoxCollision(16,14,7,3,flicker);
+        //Shelf
+        collisionPoints.addBoxCollision(14,24,10,14,flicker);
     }
 
 

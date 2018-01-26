@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 public class NPC extends extraFunctions{
 
     NPC(){
+        exitClick = loadAudio("exitClick.wav");
+        clicks2 = loadAudio("clicks2.wav");
         this.height = 70;
         this.width = 50;
     }
@@ -232,6 +234,7 @@ public class NPC extends extraFunctions{
     public boolean keyPressed(KeyEvent e){
 
          if(e.getKeyCode() == KeyEvent.VK_SPACE){
+             playAudio(exitClick);
              if(currentDialogue.next != null) {
                  currentDialogue = currentDialogue.next;
                  return true;
@@ -239,12 +242,15 @@ public class NPC extends extraFunctions{
          }
 
         if(currentDialogue.isHasOptions()) {
+
             if (e.getKeyCode() == KeyEvent.VK_UP) {
+                playAudio(clicks2);
                 currentDialogue.changeOption();
                 return true;
             }
 
             if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                playAudio(clicks2);
                 currentDialogue.changeOption();
                 return true;
             }
