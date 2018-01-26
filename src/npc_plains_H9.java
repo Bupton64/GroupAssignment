@@ -90,11 +90,11 @@ public class npc_plains_H9 extends  NPC {
 
     public void updateDialogue(int questStage){
 
-        if(questStage < 6){
+        if(questStage < 5){
             currentDialogue = listOne;
-        }else if(questStage ==6){
+        }else if(questStage == 5){
             currentDialogue = listTwo;
-        }else if(questStage == 7){
+        }else if(questStage == 6){
             currentDialogue = listThree;
         }else if(questStage < 23){
             currentDialogue = listFour;

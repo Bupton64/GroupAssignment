@@ -336,9 +336,10 @@ public class MapControl extends extraFunctions {
                     break;
                 case 42:
                     currentMap = new plains_F9_shop();
+                    mapNpcs[0] = new npc_plains_F9_StoreBabbage();
+                    numOfNpc = 1;
                     if(playerMan.getQuestStage() >= 7) {
-                        mapNpcs[0] = new npc_plains_F9_StoreLink();
-                        mapNpcs[1] = new npc_plains_F9_StoreBabbage();
+                        mapNpcs[1] = new npc_plains_F9_StoreLink();
                         numOfNpc = 2;
                     }
                     break;
