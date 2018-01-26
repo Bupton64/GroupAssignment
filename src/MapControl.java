@@ -465,7 +465,7 @@ public class MapControl extends extraFunctions {
                     playerMan.setQuestStage(15);
                     playerMan.changeQuest();
                 } else if (playerMan.getCurrentQuestName() == "No Escape From Reality"){
-                    playerMan.setMonsterGen(1);
+                    playerMan.setMonsterGen(2);
                     playerMan.setQuestStage(19);
                     playerMan.changeQuest();
                 }

@@ -119,7 +119,9 @@ public class npc_wizard extends  NPC {
         Dialogue d24 = new Dialogue(null,false,true,"The church is in the west, Goodluck my friend.","","","");
         listThirteen = d24;
 
-        Dialogue d25 = new Dialogue(null,false,true,"You Did it good job! Good to see Sally back in town.","Although while you were gone...","Therox has found a way into Town. ","");
+        Dialogue d27 = new Dialogue(null,true,true,"Will you go find Dijkstra","","","");
+        Dialogue d26 = new Dialogue(d27,false,false,"Our Only hope is a wanderer west of town, His name is Dijkstra,","He was a great warrior who fought with logic and vigor.","Please go find him, and ask for his help!","");
+        Dialogue d25 = new Dialogue(d26,false,false,"You Did it good job! Good to see Sally back in town.","Although while you were gone...","Therox has found a way into Town. ","");
         listFourteen = d25;
     }
 
@@ -147,6 +149,8 @@ public class npc_wizard extends  NPC {
             case 18:
                 currentDialogue = listThirteen;
                 return 18;
+            case 21:
+                return 21;
 
             default:
                 return 0;
@@ -272,6 +276,10 @@ public class npc_wizard extends  NPC {
                             break;
                         case 17:
                             questStage = 18;
+                            break;
+                        case 20:
+                            questStage = 21;
+                            break;
                     }
                 }
             }

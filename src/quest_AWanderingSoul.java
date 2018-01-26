@@ -1,10 +1,10 @@
 
 import java.awt.*;
 
-public class quest_NoEscapeFromReality extends Quest {
+public class quest_AWanderingSoul extends Quest {
     boolean displayReward;
 
-    quest_NoEscapeFromReality(){
+    quest_AWanderingSoul(){
 
 
         collectableState = new boolean[1];
@@ -14,7 +14,7 @@ public class quest_NoEscapeFromReality extends Quest {
         numOfCollectables = 0;
         totalCollectables = 1;
 
-        setQuestName("A Wondering Soul");
+        setQuestName("A Wandering Soul");
         state = questState.preQuest;
         displayReward = true;
         displayTimer = 0;

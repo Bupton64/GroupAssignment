@@ -44,10 +44,15 @@ public class npc_plains_G7 extends  NPC {
 
     Dialogue listOne;
 
+    Dialogue listTwo;
+
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"If i'm honest i'm a bit lost. There's so many monsters around here,","thankfully I have these potions to save me!","","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"Hello Adventurer","","","");
+        listTwo = d2;
     }
 
     public void updateDialogue(Quest.questState  currentState){

@@ -854,6 +854,9 @@ public class Character extends Statblock {
             case 20:
                 currentQuest.setState(Quest.questState.extraQuest);
                 break;
+            case 21:
+                currentQuest = new quest_AWanderingSoul();
+                break;
 
         }
 
