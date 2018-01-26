@@ -379,6 +379,9 @@ public class MapControl extends extraFunctions {
                 case 53:
                     currentMap = new plains_C8_farm();
                     break;
+                case 54:
+                    currentMap = new plains_bossFight();
+                    break;
             }
         }
 
