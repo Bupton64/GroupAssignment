@@ -29,7 +29,12 @@ public class sellShop extends shop {
 
     @Override
     public void shopInit() {
-
+        clicks = loadAudio("clicks.wav");
+        p1 = loadAudio("page1.wav");
+        p2 = loadAudio("page2.wav");
+        p3 = loadAudio("page3.wav");
+        leave = loadAudio("leave.wav");
+        exitClick = loadAudio("exitClick.wav");
     }
 
     public void updateShop(){
@@ -162,6 +167,7 @@ public class sellShop extends shop {
 
     public int keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            playAudio(clicks);
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 9) {
                     setItemIndex(getItemIndex() + 1);
@@ -169,6 +175,8 @@ public class sellShop extends shop {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
+            playAudio(clicks);
+
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 0){
                     setItemIndex(getItemIndex() - 1);
@@ -176,23 +184,32 @@ public class sellShop extends shop {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+
+
             if(!isPurchaseAttempt()) {
+
                 if (getPageNum() < getTotalPages()) {
+                    playAudio(p1);
                     setPageNum(getPageNum() + 1);
                     setItemIndex(((getPageNum() - 1) * 10));
                 }
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
+
+
             if(!isPurchaseAttempt()) {
                 if (getPageNum() != 1) {
+                    playAudio(p2);
                     setPageNum(getPageNum() - 1);
                     setItemIndex(((getPageNum() - 1) * 10));
                 }
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-                if (!isSaleMade()) {
+            playAudio(clicks);
+
+            if (!isSaleMade()) {
                     if(getPlayer1().getInventorySize() != 0) {
                         this.sellItem(getItemIndex());
                         if (getPageNum() == getTotalPages()) {
@@ -208,6 +225,8 @@ public class sellShop extends shop {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            playAudio(leave);
+
             return 1;
         }
         return 0;

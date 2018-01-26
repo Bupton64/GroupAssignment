@@ -38,6 +38,7 @@ public class AdventureMode extends GameEngine {
     AudioClip clicks;
     float volume = 0;
     boolean stopper = false;
+    boolean mute = false;
 
 
 
@@ -105,6 +106,11 @@ public class AdventureMode extends GameEngine {
                 break;
         }
        stateChanger = 0;
+        if(mute){
+            stopAudioLoop(villageMusic);
+            stopAudioLoop(menuMusic);
+            stopAudioLoop(cutSceneMusic);
+        }
    }
 
     @Override
@@ -216,6 +222,9 @@ public class AdventureMode extends GameEngine {
             case ShopMode:
                 stateChanger = shopController.keyPressed(e);
                 break;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_M){
+            mute = !mute;
         }
     }
 
