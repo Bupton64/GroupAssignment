@@ -398,7 +398,7 @@ public class Character extends Statblock {
 
         // Test Functions
         setGpTotal(1);
-        setQuestStage(12);
+        setQuestStage(23);
         currentQuest = new quest_ASpyInTheClutches();
         currentQuest.setState(Quest.questState.preQuest);
         setXPTotal(9000); //< TESTERS
@@ -779,6 +779,8 @@ public class Character extends Statblock {
                 currentQuest.setState(Quest.questState.inQuest);
             }else if(questStage == 16){
                 currentQuest.setState(Quest.questState.inQuest);
+            }else if(questStage == 22){
+                currentQuest.setState(Quest.questState.completedQuest);
             }
             setQuestStage(getQuestStage() + 1);
         }
@@ -857,6 +859,13 @@ public class Character extends Statblock {
             case 21:
                 currentQuest = new quest_AWanderingSoul();
                 break;
+            case 22:
+                currentQuest.setState(Quest.questState.inQuest);
+                break;
+            case 25:
+                currentQuest.setState(Quest.questState.extraQuest);
+                break;
+
 
         }
 

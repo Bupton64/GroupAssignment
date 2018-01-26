@@ -220,6 +220,8 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             case 50:
             case 51:
             case 52:
+            case 53:
+            case 54:
                 break;
             case 17:
                 if(playerMan.getCurrentQuestName() != "A Wizards Problem"){

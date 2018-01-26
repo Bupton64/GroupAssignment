@@ -48,6 +48,16 @@ public class npc_plains_H9 extends  NPC {
 
     Dialogue listFour;
 
+    Dialogue listFive;
+
+    Dialogue listSix;
+
+    Dialogue listSeven;
+
+    Dialogue listEight;
+
+    Dialogue listNine;
+
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"Leave me be. I am busy....","","","");
@@ -62,20 +72,36 @@ public class npc_plains_H9 extends  NPC {
 
         Dialogue d4 = new Dialogue(null,false,true,"Hey Bjarne! Thanks again for helping me. I hope Link has been","able to help you with your quest.","","");
         listFour = d4;
+
+        Dialogue d5 = new Dialogue(null,true,true,"Good to see you again Bjarne! Ohh whats this an envelope?","What! this is from my old friend the King, where did you get this?","Come inside my house , we cant talk about this out here!","");
+        listFive = d5;
+
+        Dialogue d6 = new Dialogue(null,false,true,"I'll Meet you inside","","","");
+        listSix = d6;
+
+        Dialogue d8 = new Dialogue(null,true,true,"Look... it doesn't matter. Go tell Sevar I will start preparations.","","","");
+        Dialogue d7 = new Dialogue(d8,false,false,"Bjarne, Do you understand what you brought me?","This envelope has a message from the king telling me to gather the","materials for a location spell, You're not planning on going after Therox","are you? And where did you get this?");
+        listSeven = d7;
+
+        Dialogue d9 = new Dialogue(null,false,true,"Make haste Bjarne, Time is of the essence.","","","");
+        listEight = d9;
+
     }
 
-    public void updateDialogue(Quest.questState  currentState,String questName){
-        if(questName == "empty" || questName == "A Wizards Problem"){
+    public void updateDialogue(int questStage){
+
+        if(questStage < 6){
             currentDialogue = listOne;
-        }else if(questName == "The Road To Riches"){
-            if (currentState == Quest.questState.preQuest) {
-                currentDialogue = listTwo;
-            }
-            if (currentState == Quest.questState.inQuest) {
-                currentDialogue = listThree;
-            }
-        }else{
+        }else if(questStage ==6){
+            currentDialogue = listTwo;
+        }else if(questStage == 7){
+            currentDialogue = listThree;
+        }else if(questStage < 23){
             currentDialogue = listFour;
+        }else if (questStage == 23){
+            currentDialogue = listFive;
+        }else if(questStage == 24){
+            currentDialogue = listSeven;
         }
 
     }
@@ -85,6 +111,13 @@ public class npc_plains_H9 extends  NPC {
             case 6:
                 currentDialogue = listThree;
                 return 6;
+            case 40:
+                currentDialogue = listSix;
+                return 24;
+            case 25:
+                currentDialogue = listEight;
+                return 25;
+
 
             default:
                 return 0;
@@ -96,29 +129,16 @@ public class npc_plains_H9 extends  NPC {
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
 
         if(loadDialogue) {
-            updateDialogue(currentState,questName);
+            updateDialogue(questStage);
             loadDialogue = false;
         }
         super.drawConvo(g, playerName,currentState, questName,questStage);
         if(questName == "The Road To Riches") {
-            if (currentState == Quest.questState.preQuest) {
-
-            }
             if(currentState == Quest.questState.inQuest){
                 if(currentDialogue != listThree){
                     loadDialogue = true;
                 }
             }
-            if(currentState == Quest.questState.completedQuest){
-
-            }
-
-
-
-
-
-
-
         }
 
     }
@@ -136,11 +156,19 @@ public class npc_plains_H9 extends  NPC {
     public boolean keyPressed(KeyEvent e) {
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(currentDialogue.next == null && gold >= 500) {
+            if(currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375 ) {
                     switch (questStage) {
                         case 5:
-                            questStage = 6;
+                            if(gold >= 500) {
+                                questStage = 6;
+                            }
+                            break;
+                        case 23:
+                            questStage = 40;
+                            break;
+                        case 24:
+                            questStage = 25;
                             break;
 
                     }

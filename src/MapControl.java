@@ -109,6 +109,8 @@ public class MapControl extends extraFunctions {
                     break;
                 case 5:
                     currentMap = new plains_C8();
+                    mapNpcs[0] = new npc_plains_Dijkstra();
+                    numOfNpc = 1;
                     break;
                 case 6:
                     currentMap = new plains_C9();
@@ -184,6 +186,10 @@ public class MapControl extends extraFunctions {
                     numOfNpc = 4;
                     if(playerMan.getQuestStage() >= 15) {
                         mapNpcs[0] = new npc_wizard(200, 230);
+                    }
+                    if(playerMan.getQuestStage() >= 20){
+                        mapNpcs[4] = new npc_plains_E9_byBridge(475,200);
+                        numOfNpc = 5;
                     }
                     break;
                 case 22:
@@ -283,8 +289,7 @@ public class MapControl extends extraFunctions {
                     break;
                 case 33:
                     currentMap = new plains_G7();
-                    mapNpcs[0] = new npc_plains_G7();
-                    numOfNpc = 1;
+
                     break;
                 case 34:
                     currentMap = new plains_G8();
@@ -307,8 +312,10 @@ public class MapControl extends extraFunctions {
                     break;
                 case 39:
                     currentMap = new plains_H9();
-                    mapNpcs[0] = new npc_plains_H9(playerMan.getGpTotal());
-                    numOfNpc = 1;
+                    if(playerMan.getQuestStage() <= 23) {
+                        mapNpcs[0] = new npc_plains_H9(playerMan.getGpTotal());
+                        numOfNpc = 1;
+                    }
                     break;
                 case 40:
                     currentMap = new plains_H10();
@@ -372,9 +379,17 @@ public class MapControl extends extraFunctions {
 
                         numOfNpc = 2;
                     }
+                    if (playerMan.getQuestStage() == 22) {
+                        mapNpcs[0] = new npc_plains_quest6_collectable(430,130);
+                        numOfNpc = 1;
+                    }
                     break;
                 case 52:
                     currentMap = new plains_H9_blackSmith();
+                    if(playerMan.getQuestStage() == 24 || playerMan.getQuestStage() == 25 ) {
+                        mapNpcs[0] = new npc_plains_H9(playerMan.getGpTotal());
+                        numOfNpc = 1;
+                    }
                     break;
                 case 53:
                     currentMap = new plains_C8_farm();
@@ -482,6 +497,7 @@ public class MapControl extends extraFunctions {
                 return 2;
             }else if(updateQuestState == 98){
                 switch((int)playerMan.getCurrentMapLocation()){
+                    case 51:
                     case 38:
                     case 50:
                         playerMan.setCollectableState(0,true);

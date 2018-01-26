@@ -60,7 +60,8 @@ public class npc_wizard extends  NPC {
     Dialogue listTwelve;
     Dialogue listThirteen;
     Dialogue listFourteen;
-
+    Dialogue listFifteen;
+    Dialogue listSixteen;
 
     public void initDialogue(){
         Dialogue d0 = new Dialogue(null,false,true,"Who are you? Come back later im busy","","","");
@@ -123,6 +124,13 @@ public class npc_wizard extends  NPC {
         Dialogue d26 = new Dialogue(d27,false,false,"Our Only hope is a wanderer west of town, His name is Dijkstra,","He was a great warrior who fought with logic and vigor.","Please go find him, and ask for his help!","");
         Dialogue d25 = new Dialogue(d26,false,false,"You Did it good job! Good to see Sally back in town.","Although while you were gone...","Therox has found a way into Town. ","");
         listFourteen = d25;
+
+        Dialogue d28 = new Dialogue(null,false,true,"I think Dijkstra was somewhere to the west.","","","");
+        listFifteen = d28;
+
+        Dialogue d30 = new Dialogue(null,true,true,"We need to make a stand soon, Take your time to get ready.","Therox will not fall easily, When you are ready meet me at my tower in the North.","","");
+        Dialogue d29 = new Dialogue(d30,false,false,"Hmmmm. I see Camrath is preparing that means we are almost ready.","There is one last thing you must know Bjarne. Dijkstra is not just a wanderer,","He is also the King. The last living eir of Javania.","");
+        listSixteen = d29;
     }
 
     public int updateConvo(){
@@ -206,6 +214,12 @@ public class npc_wizard extends  NPC {
                 break;
             case 20:
                 currentDialogue = listFourteen;
+                break;
+            case 21:
+            case 22:
+            case 23:
+            case 24:
+                currentDialogue = listFifteen;
                 break;
 
         }
