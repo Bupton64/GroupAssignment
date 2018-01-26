@@ -155,6 +155,12 @@ public class Collision  {
                     player.setMapPosX(550);
                     return 2;
                 }
+            case 53:
+                if(player.getMapPosY() >= 390){
+                    player.setMapPosY(250);
+                    player.setMapPosX(205);
+                    return 2;
+                }
         }
      
         if(player.getMapPosY() < 10){

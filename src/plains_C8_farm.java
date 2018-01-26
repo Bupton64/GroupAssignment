@@ -1,11 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
 
-public class plains_C8 extends  Map{
+public class plains_C8_farm extends  Map {
 
 
-    plains_C8() {
-        backgroundImage= loadImage("farm.png");
+
+    plains_C8_farm() {
+        backgroundImage= loadImage("plains_E8_topLeftHouse.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }
@@ -21,33 +22,21 @@ public class plains_C8 extends  Map{
                 break;
             case 1:
                 //going up
-				player.setCurrentMapLocation(4);
-
-                flicker = false;
-                return true;
+                break;
             case 2:
                 //going down
-				player.setCurrentMapLocation(6);
+                player.setCurrentMapLocation(5);
                 flicker = false;
                 return true;
+
             case 3:
                 // going right
-                player.setCurrentMapLocation(12);
-                flicker = false;
-                return true;
+                break;
             case 4:
                 //going left
-                player.setCurrentMapLocation(1);
-                flicker = false;
-                return true;
+                break;
         }
-        if(player.getMapPosX() < 200 && player.getMapPosX() > 160 && player.getMapPosY() > 230 && player.getMapPosY() < 260){
-            player.setCurrentMapLocation(53);
-            flicker = false;
-            player.setMapPosX(380);
-            player.setMapPosY(360);
-            return true;
-        }
+
         return false;
     }
 
@@ -59,7 +48,16 @@ public class plains_C8 extends  Map{
     ///////////////////////////////////////////////////////////
     @Override
     public void setUpCollision(Collision collisionPoints){
+        //Walls at the bottom
+        collisionPoints.addBoxCollision(2,39,32,15,flicker);
+        collisionPoints.addBoxCollision(41,39,35,15,flicker);
+        collisionPoints.addBoxCollision(34,40,7,1,flicker);
+        //Walls sides
+        collisionPoints.addBoxCollision(2,1,11,37,flicker);
+        collisionPoints.addBoxCollision(62,14,11,36,flicker);
+        collisionPoints.addBoxCollision(2,1,74,12,flicker);
 
+        //DETAIL
 
     }
 
