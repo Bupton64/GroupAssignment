@@ -62,6 +62,7 @@ public class npc_wizard extends  NPC {
     Dialogue listFourteen;
     Dialogue listFifteen;
     Dialogue listSixteen;
+    Dialogue listSeventeen;
 
     public void initDialogue(){
         Dialogue d0 = new Dialogue(null,false,true,"Who are you? Come back later im busy","","","");
@@ -128,9 +129,12 @@ public class npc_wizard extends  NPC {
         Dialogue d28 = new Dialogue(null,false,true,"I think Dijkstra was somewhere to the west.","","","");
         listFifteen = d28;
 
-        Dialogue d30 = new Dialogue(null,true,true,"We need to make a stand soon, Take your time to get ready.","Therox will not fall easily, When you are ready meet me at my tower in the North.","","");
+        Dialogue d30 = new Dialogue(null,true,true,"We need to make a stand soon, Take your time to get ready.","Therox will not fall easily, When you are ready meet me ","at my tower in the North.","");
         Dialogue d29 = new Dialogue(d30,false,false,"Hmmmm. I see Camrath is preparing that means we are almost ready.","There is one last thing you must know Bjarne. Dijkstra is not just a wanderer,","He is also the King. The last living eir of Javania.","");
         listSixteen = d29;
+
+        Dialogue d31 = new Dialogue(null,false,true,"I'll meet you at my house when you are ready.","","","");
+        listSeventeen = d31;
     }
 
     public int updateConvo(){
@@ -159,7 +163,9 @@ public class npc_wizard extends  NPC {
                 return 18;
             case 21:
                 return 21;
-
+            case 26:
+                currentDialogue = listSeventeen;
+                return 26;
             default:
                 return 0;
 
@@ -220,6 +226,9 @@ public class npc_wizard extends  NPC {
             case 23:
             case 24:
                 currentDialogue = listFifteen;
+                break;
+            case 25:
+                currentDialogue = listSixteen;
                 break;
 
         }
@@ -293,6 +302,9 @@ public class npc_wizard extends  NPC {
                             break;
                         case 20:
                             questStage = 21;
+                            break;
+                        case 25:
+                            questStage = 26;
                             break;
                     }
                 }

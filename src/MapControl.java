@@ -109,8 +109,10 @@ public class MapControl extends extraFunctions {
                     break;
                 case 5:
                     currentMap = new plains_C8();
-                    mapNpcs[0] = new npc_plains_Dijkstra();
-                    numOfNpc = 1;
+                    if(playerMan.getQuestStage() < 26) {
+                        mapNpcs[0] = new npc_plains_Dijkstra();
+                        numOfNpc = 1;
+                    }
                     break;
                 case 6:
                     currentMap = new plains_C9();
@@ -162,6 +164,12 @@ public class MapControl extends extraFunctions {
                         mapNpcs[0] = new npc_wizard(400, 250);
                         numOfNpc = 1;
                     }
+                    if(playerMan.getQuestStage() == 26){
+                        mapNpcs[0] = new npc_plains_Dijkstra();
+                        mapNpcs[1] = new npc_wizard(300, 250);
+                        mapNpcs[2] = new npc_plains_H9(playerMan.getGpTotal());
+                        numOfNpc = 3;
+                    }
                     break;
                 case 18:
                     currentMap = new plains_E6();
@@ -184,12 +192,15 @@ public class MapControl extends extraFunctions {
                     mapNpcs[2] = new npc_plains_E9_byField();
                     mapNpcs[3] = new npc_E9_signBottom();
                     numOfNpc = 4;
-                    if(playerMan.getQuestStage() >= 15) {
+
+
+                    if(playerMan.getQuestStage() >= 15 &&  playerMan.getQuestStage() < 26) {
                         mapNpcs[0] = new npc_wizard(200, 230);
-                    }
-                    if(playerMan.getQuestStage() >= 20){
-                        mapNpcs[4] = new npc_plains_E9_byBridge(475,200);
-                        numOfNpc = 5;
+                        if(playerMan.getQuestStage() >= 20) {
+                            mapNpcs[4] = new npc_plains_E9_byBridge(475, 200);
+                            numOfNpc = 5;
+                        }
+
                     }
                     break;
                 case 22:

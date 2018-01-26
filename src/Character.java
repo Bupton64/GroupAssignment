@@ -398,10 +398,10 @@ public class Character extends Statblock {
 
         // Test Functions
         setGpTotal(1);
-        setQuestStage(23);
-        currentQuest = new quest_ASpyInTheClutches();
-        currentQuest.setState(Quest.questState.preQuest);
-        setXPTotal(9000); //< TESTERS
+//        setQuestStage(23);
+//        currentQuest = new quest_ASpyInTheClutches();
+//        currentQuest.setState(Quest.questState.preQuest);
+        setXPTotal(0); //< TESTERS
         checkLevelUp(); //< Tester
     }
 
@@ -864,6 +864,9 @@ public class Character extends Statblock {
                 break;
             case 25:
                 currentQuest.setState(Quest.questState.extraQuest);
+                break;
+            case 26:
+                currentQuest = new quest_OneLastThing();
                 break;
 
 
