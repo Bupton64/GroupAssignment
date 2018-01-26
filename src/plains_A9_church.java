@@ -58,7 +58,18 @@ public class plains_A9_church extends  Map {
         collisionPoints.addBoxCollision(2,1,74,12,flicker);
 
         //DETAIL
-
+        //Front
+        collisionPoints.addBoxCollision(33,14,8,4,flicker);
+        //Seats left
+        collisionPoints.addBoxCollision(14,21,17,3,flicker);
+        collisionPoints.addBoxCollision(14,26,17,3,flicker);
+        collisionPoints.addBoxCollision(14,31,17,3,flicker);
+        collisionPoints.addBoxCollision(14,36,17,3,flicker);
+        //Seats right
+        collisionPoints.addBoxCollision(43,21,17,3,flicker);
+        collisionPoints.addBoxCollision(43,26,17,3,flicker);
+        collisionPoints.addBoxCollision(43,31,17,3,flicker);
+        collisionPoints.addBoxCollision(43,36,17,3,flicker);
     }
 
 

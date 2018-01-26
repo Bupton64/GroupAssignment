@@ -57,7 +57,12 @@ public class plains_H9_blackSmith extends  Map {
         collisionPoints.addBoxCollision(2,1,74,12,flicker);
 
         //DETAIL
-
+        //Back Table
+        collisionPoints.addBoxCollision(31,14,13,3,flicker);
+        //Left
+        collisionPoints.addBoxCollision(14,18,5,20,flicker);
+        //Right
+        collisionPoints.addBoxCollision(55,18,6,16,flicker);
     }
 
 

@@ -58,7 +58,14 @@ public class plains_E9_topLeftHouse extends  Map {
         collisionPoints.addBoxCollision(2,1,74,12,flicker);
 
         //DETAIL
+        //Table
+        collisionPoints.addBoxCollision(14,14,7,5,flicker);
+        collisionPoints.addBoxCollision(17,19,3,2,flicker);
+        collisionPoints.addBoxCollision(22,16,1,2,flicker);
 
+        collisionPoints.addBoxCollision(14,23,6,15,flicker);
+
+        collisionPoints.addBoxCollision(48,14,12,5,flicker);
     }
 
 
