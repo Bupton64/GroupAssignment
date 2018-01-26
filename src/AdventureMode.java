@@ -93,6 +93,8 @@ public class AdventureMode extends GameEngine {
                 break;
             case 6:
                 state = GameState.ShopMode;
+                stopAudioLoop(villageMusic);
+                stopper = false;
                 startAudioLoop(menuMusic);
 
                 break;
