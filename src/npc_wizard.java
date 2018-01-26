@@ -104,9 +104,9 @@ public class npc_wizard extends  NPC {
         listNine = d16;
 
 
-        Dialogue d20 = new Dialogue(null,true,true,"go find a symbol","","","");
-        Dialogue d19 = new Dialogue(d20,false,false,"im a wizzy, kek","","","");
-        Dialogue d18 = new Dialogue(d19,false,false,"hi","","","");
+        Dialogue d20 = new Dialogue(null,true,true,"find the symbol, I think i remember leaving it somewhere northeast.","","","");
+        Dialogue d19 = new Dialogue(d20,false,false,"To defeat him you will need alot more than strength.","You will need to go collect my Holy Symbol to stand a chance.","I think i left it somewhere north east of town.","");
+        Dialogue d18 = new Dialogue(d19,false,false,"Bjarne , He came through here and took Sally.","He is one of Therox's Generals (insertNameHere). ","A demon from the underworld.","");
         listTen = d18;
 
         Dialogue d21 = new Dialogue(null,false,true,"I think I remember Seeing the Holy symbol east of my House.","","","");
@@ -118,6 +118,9 @@ public class npc_wizard extends  NPC {
 
         Dialogue d24 = new Dialogue(null,false,true,"The church is in the west, Goodluck my friend.","","","");
         listThirteen = d24;
+
+        Dialogue d25 = new Dialogue(null,false,true,"You Did it good job! Good to see Sally back in town.","Although while you were gone...","Therox has found a way into Town. ","");
+        listFourteen = d25;
     }
 
     public int updateConvo(){
@@ -128,6 +131,7 @@ public class npc_wizard extends  NPC {
             case 3:
                 return 3;
             case 4:
+
                 currentDialogue = listFour;
                 return 4;
             case 10:
@@ -143,6 +147,7 @@ public class npc_wizard extends  NPC {
             case 18:
                 currentDialogue = listThirteen;
                 return 18;
+
             default:
                 return 0;
 
@@ -151,35 +156,56 @@ public class npc_wizard extends  NPC {
     }
 
     public void updateDialogue(int currentStage,String questName){
-        if(questStage == 0) {
-            currentDialogue = listZero;
-        }else if (questStage == 1) {
-            currentDialogue = listOne;
-        }else if (questStage == 2) {
-            currentDialogue = listTwo;
-        }else if (questStage == 3) {
-            currentDialogue = listThree;
-        }else if (questStage == 5) {
-            currentDialogue = listFour;
-        }else if (questStage == 9){
-            currentDialogue = listFive;
-        }else if (questStage == 10) {
-            currentDialogue = listSix;
-        }else if(questStage == 11){
-            currentDialogue = listSeven;
-        }else if(questStage == 12){
-            currentDialogue = listEight;
-        }else if(questStage == 13){
-            currentDialogue = listNine;
-        }else if (questStage == 15){
-            currentDialogue = listTen;
-        }else if(questStage == 16){
-            currentDialogue = listEleven;
-        }else if(questStage == 17){
-            currentDialogue = listTwelve;
-        }else if(questStage == 18){
-            currentDialogue = listThirteen;
+
+        switch(questStage){
+            case 0:
+                currentDialogue = listZero;
+                break;
+            case 1:
+                currentDialogue = listOne;
+                break;
+            case 2:
+                currentDialogue = listTwo;
+                break;
+            case 3:
+                currentDialogue = listThree;
+                break;
+            case 5:
+                currentDialogue = listFour;
+                break;
+            case 9:
+                currentDialogue = listFive;
+                break;
+            case 10:
+                currentDialogue = listSix;
+                break;
+            case 11:
+                currentDialogue = listSeven;
+                break;
+            case 12:
+                currentDialogue = listEight;
+                break;
+            case 13:
+                currentDialogue = listNine;
+                break;
+            case 15:
+                currentDialogue = listTen;
+                break;
+            case 16:
+                currentDialogue = listEleven;
+                break;
+            case 17:
+                currentDialogue = listTwelve;
+                break;
+            case 18:
+                currentDialogue = listThirteen;
+                break;
+            case 20:
+                currentDialogue = listFourteen;
+                break;
+
         }
+
     }
 
 

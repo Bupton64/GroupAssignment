@@ -129,7 +129,7 @@ public class npc_plains_f8_oldman extends  NPC {
             currentDialogue = listOne;
         }else if(questStage == 14){
             currentDialogue = listTwo;
-        }else if(questStage == 15){
+        }else if(questStage >= 15){
             currentDialogue = listThree;
         }
     }

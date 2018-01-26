@@ -851,6 +851,10 @@ public class Character extends Statblock {
             case 18:
                 currentQuest.setState(Quest.questState.completedQuest);
                 break;
+            case 20:
+                currentQuest.setState(Quest.questState.extraQuest);
+                break;
+
         }
 
 
