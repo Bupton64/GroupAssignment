@@ -73,6 +73,7 @@ public class AdventureMode extends GameEngine {
             case 1:
                 state = GameState.TravelMode;
                 stopAudioLoop(cutSceneMusic);
+                stopAudioLoop(menuMusic);
                 volume = -8;
                 if(!stopper) {
                     startAudioLoop(villageMusic, volume);
