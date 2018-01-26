@@ -94,6 +94,12 @@ public class ShopControl extends extraFunctions {
 
 
     private void initShopControl(){
+        clicks = loadAudio("clicks.wav");
+        p1 = loadAudio("page1.wav");
+        p2 = loadAudio("page2.wav");
+        p3 = loadAudio("page3.wav");
+        leave = loadAudio("leave.wav");
+        exitClick = loadAudio("exitClick.wav");
         shopNum = 0;
         state = ShopState.Start;
         shopStateChanger = 0;
@@ -233,6 +239,7 @@ public class ShopControl extends extraFunctions {
 
     private int startKeyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_UP){
+            playAudio(clicks);
             if(menuOption == 1){
                 menuOption = 0;
             }else{
@@ -240,6 +247,7 @@ public class ShopControl extends extraFunctions {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            playAudio(clicks);
             if(menuOption == 1){
                 menuOption = 0;
             }else{
@@ -247,6 +255,7 @@ public class ShopControl extends extraFunctions {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            playAudio(clicks);
             if(menuOption == 0){
                 shopStateChanger = 2;
             }else{
@@ -255,6 +264,9 @@ public class ShopControl extends extraFunctions {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            playAudio(exitClick);
+
+
             return 1;
         }
         return 0;
@@ -262,6 +274,8 @@ public class ShopControl extends extraFunctions {
 
     private void buyKeyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_UP){
+            playAudio(clicks);
+
             if(menuOption == 1){
                 menuOption = 0;
             }else{
@@ -269,6 +283,8 @@ public class ShopControl extends extraFunctions {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            playAudio(clicks);
+
             if (menuOption == 1) {
                 menuOption = 0;
             } else {
@@ -276,6 +292,8 @@ public class ShopControl extends extraFunctions {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            playAudio(clicks);
+
             if(menuOption == 0 && shopNum == 0){
                 shopStateChanger = 4;
             }else if(menuOption == 1 && shopNum == 0){
@@ -287,6 +305,7 @@ public class ShopControl extends extraFunctions {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            playAudio(leave);
             shopStateChanger = 1;
             menuOption = 0;
         }
