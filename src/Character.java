@@ -397,10 +397,10 @@ public class Character extends Statblock {
         initImage();
 
         // Test Functions
-        setGpTotal(5000);
-        setQuestStage(4);
-        currentQuest = new quest_AWizardsProblem();
-        currentQuest.setState(Quest.questState.completedQuest);
+        setGpTotal(1);
+        setQuestStage(12);
+        currentQuest = new quest_ASpyInTheClutches();
+        currentQuest.setState(Quest.questState.preQuest);
         setXPTotal(9000); //< TESTERS
         checkLevelUp(); //< Tester
     }

@@ -95,6 +95,7 @@ public class AdventureMode extends GameEngine {
 
         switch (state){
             case TravelMode:
+
                 mapController.updateNPC(dt,collisionDetector);
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);

@@ -6,8 +6,8 @@ public class npc_plains_quest4_collectable extends NPC{
 
     npc_plains_quest4_collectable (int posX, int posY){
         setName("Infiltrators Diary");
-        spriteSheet = loadImage("Book.png");
-        sprite = subImage(spriteSheet,520,0,56,72);
+        sprite = loadImage("Book.png");
+//        sprite = subImage(spriteSheet,520,0,56,72);
         setMapPosX(posX);
         setMapPosY(posY);
 
