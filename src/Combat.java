@@ -1415,6 +1415,8 @@ public class Combat extends extraFunctions{
 
         }else if(monsterToFight == 1){
             enemy = new monster_BOSS_Valliard();
+        }else if(monsterToFight == 2){
+            enemy = new monster_BOSS_priest();
         }
 
 
