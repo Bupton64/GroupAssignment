@@ -64,7 +64,7 @@ public class AdventureMode extends GameEngine {
         shopController = new ShopControl(playerMan);
         cutScene = new cutScene();
         startController = new StartScreen();
-
+        endCutSceneController = new endCutScene();
 
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;

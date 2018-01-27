@@ -5,6 +5,7 @@ public class endCutScene extends extraFunctions{
 
     Image spriteSheet;
     Image spriteSheet2;
+    Image spriteSheet3;
     Image bossBack;
     Image plainsBack;
     Image Bjarne[];
@@ -31,26 +32,29 @@ public class endCutScene extends extraFunctions{
         plainsBack = loadImage("plains_E5.png");
         spriteSheet = loadImage("chara1.png");
         spriteSheet2 = loadImage("chara3.png");
-        Dijkstra = subImage(spriteSheet, 0, 0,0,0);
-        Camrath = subImage(spriteSheet, 0, 0, 0, 0);
+        spriteSheet3 = loadImage("military2.png");
 
-        WizardSpin = new Image[3];
-        BjarneSpin = new Image[3];
+        Dijkstra = subImage(spriteSheet3, 52, 0,56,72);
+        Camrath = subImage(spriteSheet2, 52, 288, 56, 72);
+
+        WizardSpin = new Image[4];
+        BjarneSpin = new Image[4];
         Bjarne = new Image[3];
         WizardGood = new Image[3];
         WizardBad = new Image[3];
         fadeArray = new Image[10];
+        smokeArray = new Image[35];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
 
         for(int i =0; i < 3;i++){
-            WizardSpin[i] = subImage(spriteSheet,520, 288 + (72*i),52,72);
-            BjarneSpin[i] = subImage(spriteSheet,520, 288 + (72*i),52,72);
+            WizardSpin[i] = subImage(spriteSheet,52, 288 + (72*i),52,72);
+            BjarneSpin[i] = subImage(spriteSheet,52, 72*i,52,72);
         }
         WizardSpin[3] = WizardSpin[2];
-        WizardSpin[2] = subImage(spriteSheet,520, 504,52,72);
+        WizardSpin[2] = subImage(spriteSheet,52, 504,52,72);
         BjarneSpin[3] = BjarneSpin[2];
-        BjarneSpin[2] = subImage(spriteSheet,520, 504,52,72);
+        BjarneSpin[2] = subImage(spriteSheet,52, 216,52,72);
 
         for(int i = 0; i < 4; i++) {
             for (int j = 0; j < 8; j++) {
@@ -72,7 +76,9 @@ public class endCutScene extends extraFunctions{
     }
 
     public void drawCutScene(Graphics2D g) {
-
+        drawImage(WizardSpin[0], 300, 250, g);
+        drawImage(Dijkstra, 300, 250, g);
+        drawImage(Camrath, 300, 250, g);
     }
 
     public int keyPressed(KeyEvent e) {
