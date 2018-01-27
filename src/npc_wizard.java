@@ -64,6 +64,7 @@ public class npc_wizard extends  NPC {
     Dialogue listFifteen;
     Dialogue listSixteen;
     Dialogue listSeventeen;
+    Dialogue listEightteen;
 
     public void initDialogue(){
         Dialogue d0 = new Dialogue(null,false,true,"Who are you? Come back later im busy","","","");
@@ -139,6 +140,10 @@ public class npc_wizard extends  NPC {
 
         Dialogue d31 = new Dialogue(null,false,true,"I'll meet you at my house when you are ready.","","","");
         listSeventeen = d31;
+
+        Dialogue d32 = new Dialogue(null,false,true,"Teleport to Therox","","","");
+        listEightteen = d32;
+
     }
 
     public int updateConvo(){
@@ -234,6 +239,9 @@ public class npc_wizard extends  NPC {
                 break;
             case 25:
                 currentDialogue = listSixteen;
+                break;
+            case 26:
+                currentDialogue = listEightteen;
                 break;
 
         }

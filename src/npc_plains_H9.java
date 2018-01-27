@@ -86,6 +86,9 @@ public class npc_plains_H9 extends  NPC {
         Dialogue d9 = new Dialogue(null,false,true,"Make haste Bjarne, Time is of the essence.","","","");
         listEight = d9;
 
+        Dialogue d10 = new Dialogue(null,false,true,"test diagloue","","","");
+        listNine = d10;
+
     }
 
     public void updateDialogue(int questStage){
@@ -102,8 +105,9 @@ public class npc_plains_H9 extends  NPC {
             currentDialogue = listFive;
         }else if(questStage == 24){
             currentDialogue = listSeven;
+        }else if(questStage == 26) {
+            currentDialogue = listNine;
         }
-
     }
 
     public int updateConvo(){
@@ -117,6 +121,7 @@ public class npc_plains_H9 extends  NPC {
             case 25:
                 currentDialogue = listEight;
                 return 25;
+
 
 
             default:
