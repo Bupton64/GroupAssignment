@@ -7,8 +7,8 @@ public class weaponShop extends shop {
 
     weaponShop(Character playerMan){
         super(playerMan);
-        setTotalPages(2);
-        setMaxIndex(10);
+        setTotalPages(1);
+        setMaxIndex(4);
     }
 
     @Override
@@ -20,22 +20,37 @@ public class weaponShop extends shop {
         inventory[0] = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
         inventory[1] = new item_Equipment("Stone Axe", 0, 0, 0, 0, 1, Item.Slot.weapon, "Rugged, yet effective", 300, 400);
         inventory[2] = new item_Equipment("Monks Staff", 1, 0, 0, 2, 0, Item.Slot.weapon, "A light wooden staff", 300, 1000);
-        inventory[3] = new item_Equipment("Rough Axe", 0, 0, 0, 0, 2, Item.Slot.weapon, "A violent edge and little else", 3300, 1200);
-        inventory[4] = new item_Equipment("Guardsmans Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);
-        inventory[5] = new item_Equipment("Iron Sword", 4, 0, 0, 0, 2, Item.Slot.weapon, "A well forged sword", 600, 2300);
-        inventory[6] = new item_Equipment("Acolytes Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
+        inventory[3] = new item_Equipment("Guardsmans Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);
+        inventory[4] = new item_Equipment("Rough Axe", 0, 0, 0, 0, 2, Item.Slot.weapon, "A violent edge and little else", 3300, 1200);
+
+        inventory[5] =  new item_Equipment("Acolytes Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
+        inventory[6] = new item_Equipment("Iron Sword", 4, 0, 0, 0, 2, Item.Slot.weapon, "A well forged sword", 600, 2300);
+
         inventory[7] = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "Grace and power combined", 1300, 4500);
-        inventory[8] = new item_Equipment("Gladiators Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
-        inventory[9] = new item_Equipment("Jesters Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
-        inventory[10] = new item_Equipment("Emperors Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
+        inventory[8] = new item_Equipment("Jesters Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
+        inventory[9] = new item_Equipment("Emperors Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
+        inventory[10] = new item_Equipment("Gladiators Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
+
         setShopInventory(inventory);
     }
 
     public void updateShop(){
-        if(getItemIndex() > getMaxIndex()){
+        if(getPlayer1().getQuestStage() > 11) { // Beat Valliard
+            if (getMaxIndex() < 6) {
+                setTotalPages(1);
+                setMaxIndex(6);
+            }
+        }
+        if(getPlayer1().getQuestStage() > 20) { // Beat Razuul
+            if (getMaxIndex() < 10) {
+                setTotalPages(2);
+                setMaxIndex(10);
+            }
+        }
+        if (getItemIndex() > getMaxIndex()) {
             setItemIndex(getMaxIndex());
         }
-        setScroller((getItemIndex()%10));
+        setScroller((getItemIndex() % 10));
     }
 
     public void drawShop(Graphics2D g) {

@@ -6,7 +6,7 @@ public class itemShop extends shop {
     itemShop(Character playerMan){
         super(playerMan);
         setTotalPages(1);
-        setMaxIndex(8);
+        setMaxIndex(4);
     }
 
     @Override
@@ -17,17 +17,28 @@ public class itemShop extends shop {
         }
         inventory[0] = new item_Potion();
         inventory[1] = new item_Antidote();
-        inventory[2] = new item_soulStone();
-        inventory[3] = new item_elixir();
-        inventory[4] = new item_Eyedrops();
-        inventory[5] = new item_HealingSalve();
-        inventory[6] = new item_megaPotion();
-        inventory[7] = new item_scrollOfKnowledge();
-        inventory[8] = new item_SpeedPotion();
+        inventory[2] = new item_SpeedPotion();
+        inventory[3] = new item_Eyedrops();
+        inventory[4] = new item_scrollOfKnowledge();
+        inventory[5] = new item_soulStone();
+        inventory[6] = new item_HealingSalve();
+        inventory[7] = new item_megaPotion();
+        inventory[8] = new item_elixir();
+
         setShopInventory(inventory);
     }
 
     public void updateShop(){
+        if(getPlayer1().getQuestStage() > 11) { // Beat Valliard
+            if (getMaxIndex() < 6) {
+                setMaxIndex(6);
+            }
+        }
+        if(getPlayer1().getQuestStage() > 20) { // Beat Razuul
+            if (getMaxIndex() < 8) {
+                setMaxIndex(8);
+            }
+        }
         if(getItemIndex() > getMaxIndex()){
             setItemIndex(getMaxIndex());
         }

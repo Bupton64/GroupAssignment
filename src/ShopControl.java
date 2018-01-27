@@ -38,6 +38,9 @@ public class ShopControl extends extraFunctions {
         drawImage(menuPointer, menuPointerPosX,menuPointerPosY,g);
         drawText(215,295,"Buy","Arial",30,g);
         drawText(565,295,"Sell","Arial",30,g);
+        changeColor(black, g);
+        drawBoldText(170, 530, "SELECT [SPACE]", "Felix Titling", 15, g);
+        drawBoldText(540, 530, "BACK [ESC]", "Felix Titling", 15, g);
     }
 
 
@@ -73,6 +76,9 @@ public class ShopControl extends extraFunctions {
             drawText(175,295,"Accessories","Arial",24,g);
             drawText(525,295,"Consumable","Arial",24,g);
         }
+        changeColor(black, g);
+        drawBoldText(170, 530, "SELECT [SPACE]", "Felix Titling", 15, g);
+        drawBoldText(540, 530, "BACK [ESC]", "Felix Titling", 15, g);
 
     }
 
