@@ -35,20 +35,20 @@ public class quest_NoEscapeFromReality extends Quest {
     public void drawQuest(Graphics2D g){
         if(getState() == questState.preQuest) {
             changeColor(white, g);
-            drawText(450, 30, "Go Find the Holy Symbol", "Arial", 30, g);
+            drawText(40, 400, "Go Find the Holy Symbol", "Arial", 20, g);
 
         }
         if(getState() == questState.inQuest){
             changeColor(white, g);
-            drawText(450, 30, "Return to Sevar", "Arial", 30, g);
+            drawText(40, 400, "Return to Sevar", "Arial", 20, g);
         }
         if(getState() == questState.completedQuest){
             changeColor(white, g);
-            drawText(450, 30, "Head to the Church", "Arial", 30, g);
+            drawText(40, 400, "Head to the Church", "Arial", 20, g);
         }
         if(getState() == questState.extraQuest){
             changeColor(white, g);
-            drawText(450, 30, "Head Back to town", "Arial", 30, g);
+            drawText(40, 400, "Head Back to town", "Arial", 20, g);
         }
     }
 }

@@ -27,15 +27,15 @@ public class quest_AWizardsProblem extends Quest {
     public void drawQuest(Graphics2D g){
         if(getState() == questState.preQuest){
             changeColor(white, g);
-            drawText(510, 30, "Find the Wizard", "Arial", 30, g);
+            drawText(40, 400, "Find the Wizard", "Arial", 20, g);
         }
         if(getState() == questState.inQuest) {
             changeColor(white, g);
-            drawText(510, 30, "Monsters killed: " + killCount + "/5", "Arial", 30, g);
+            drawText(40, 400, "Monsters killed: " + killCount + "/5", "Arial", 20, g);
         }
         if(getState() == questState.completedQuest && !questFinished) {
             changeColor(white, g);
-            drawText(510, 30, "Return to wizard", "Arial", 30, g);
+            drawText(40, 400, "Return to wizard", "Arial", 20, g);
         }
 
 

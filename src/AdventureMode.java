@@ -176,7 +176,7 @@ public class AdventureMode extends GameEngine {
                 mapController.drawMap(mGraphics); //< Draw the Map
                 playerMovement.drawCharMovement(mGraphics);//<Draw Player
                 mapController.drawNPCInteraction(mGraphics);
-                playerMan.getCurrentQuest().drawQuest(mGraphics);
+             //   playerMan.getCurrentQuest().drawQuest(mGraphics);
 
 
                 changeColor(white);

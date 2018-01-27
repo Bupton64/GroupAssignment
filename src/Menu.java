@@ -16,6 +16,8 @@ public class Menu extends extraFunctions {
     }
 
     Character player1;
+    Image buttonSpriteSheet;
+    Image buttonSprite;
     Image background1;
     Image background2;
     Image background3;
@@ -239,7 +241,10 @@ public class Menu extends extraFunctions {
         return cursorPositionY;
     }
 
+
     public void initMenu() {
+        buttonSpriteSheet = loadImage("buttons.png");
+        buttonSprite = subImage(buttonSpriteSheet,30,70,180,80);
         clicks = loadAudio("clicks.wav");
         clicks2 = loadAudio("clicks2.wav");
         exitClick = loadAudio("exitClick.wav");
@@ -275,12 +280,26 @@ public class Menu extends extraFunctions {
 
     public void drawChaMenu(Graphics2D g) {
         if (chaMenu == true) {
+
             scroller2 = 0;
             clearBackground(800, 600, g);
             changeBackgroundColor(black, g);
             drawImage(background1, 0, 0, g);
             drawImage(character, 429, 97, 144, 144, g);
             changeColor(white, g);
+            drawBoldText(80,290,"Current Quest","Felix Titling",18,g);
+            drawImage(buttonSprite,20,300,300,80,g);
+            if(player1.getCurrentQuest().getQuestName() == "empty"){
+                drawBoldText(140,340,player1.getCurrentQuest().getQuestName(),"Felix Titling",16,g);
+            }else{
+                drawBoldText(60,340,player1.getCurrentQuest().getQuestName(),"Felix Titling",16,g);
+            }
+
+            player1.getCurrentQuest().drawQuest(g);
+
+
+
+
             drawBoldText(650, 420, "RESUME", "Felix Titling", 20, g);
             drawBoldText(650, 450, "Save", "Felix Titling", 20, g);
             drawBoldText(650, 480, "INVENTORY", "Felix Titling", 20, g);

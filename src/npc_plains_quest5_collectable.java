@@ -6,8 +6,7 @@ public class npc_plains_quest5_collectable extends NPC{
 
     npc_plains_quest5_collectable (int posX, int posY){
         setName("Holy Symbol");
-        spriteSheet = loadImage("chara3.png");
-        sprite = subImage(spriteSheet,520,0,56,72);
+        sprite = loadImage("cross.png");
         setMapPosX(posX);
         setMapPosY(posY);
 
