@@ -152,7 +152,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
         if(monsterDelay > 6){
             monsterDelay = 0;
-           if(Math.random() * 20 > 18) { // was 17
+           if(Math.random() * 20 > 17) { // was 17
              return  checkCombat(playerMan);
            }
         }
@@ -224,7 +224,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
             case 55:
                 break;
             case 17:
-                if(playerMan.getCurrentQuestName() != "A Wizards Problem"){
+                if(playerMan.getCurrentQuestName() != "A Wizards Problem" || playerMan.getCurrentQuestName() != "empty"){
                     break;
                 }
                 playerMan.setCombatActive(true);

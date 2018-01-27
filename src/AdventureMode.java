@@ -177,7 +177,7 @@ public class AdventureMode extends GameEngine {
                 playerMovement.drawCharMovement(mGraphics);//<Draw Player
                 mapController.drawNPCInteraction(mGraphics);
                 playerMan.getCurrentQuest().drawQuest(mGraphics);
-           
+
 
                 changeColor(white);
                 drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);

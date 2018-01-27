@@ -580,6 +580,9 @@ public class Character extends Statblock {
         item_Potion pot = new item_Potion();
         pot.setCounter(99);
         addItemToInventory(pot);
+
+        item_scrollOfKnowledge scroll = new item_scrollOfKnowledge();
+        addItemToInventory(scroll);
     }
 
     public void initStats(){
