@@ -179,7 +179,7 @@ public class endCutScene extends extraFunctions{
                 drawImage(WizardSpin[animationChange % 4], 300, 250, 50, 70, g);
                 drawImage(BjarneSpin[animationChange % 4], 400, 315, 50, 70, g);
             }
-            if(timer > 6 && timer < 50){
+            if(timer > 6 && timer < 15){
                 drawImage(WizardBad, 400, 100, 50, 70, g);
                 drawImage(WizardSpin[2], 300, 250, 50, 70, g);
                 drawImage(BjarneSpin[2], 400, 315, 50, 70, g);
@@ -201,7 +201,23 @@ public class endCutScene extends extraFunctions{
                 drawText(110, 500, "", "Times New Roman", 20, g);
             }
             if(timer > 12 && timer < 15){
-
+                //Insert fireball animation here
+            }
+            if(timer > 15 && timer < 50){
+                drawImage(WizardBad, 400, 100, 50, 70, g);
+                drawImage(BjarneSpin[2], 400, 315, 50, 70, g);
+            }
+            if(timer > 15 && timer < 18){
+                drawImage(dialogueBack, 90, 400, 620, 165, g);
+                changeColor(white, g);
+                drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
+                drawText(110, 450, "SEVARRRRR NOOOOOO! Therox! You did this, you'll pay!", "Times New Roman", 20, g);
+                drawText(110, 475, "", "Times New Roman", 20, g);
+                drawText(110, 500, "", "Times New Roman", 20, g);
+            }
+            if(timer > 18){
+                changeColor(white, g);
+                drawText(250, 450, "- Press <SPACE> to initiate battle -",  "New Roman Times", 20, g);
             }
         }
     }
