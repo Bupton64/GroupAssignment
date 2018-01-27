@@ -6,7 +6,7 @@ public class plains_C8_farm extends  Map {
 
 
     plains_C8_farm() {
-        backgroundImage= loadImage("plains_E8_topLeftHouse.png");
+        backgroundImage= loadImage("plains_F9_bottomRightHouse.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }
@@ -58,7 +58,18 @@ public class plains_C8_farm extends  Map {
         collisionPoints.addBoxCollision(2,1,74,12,flicker);
 
         //DETAIL
-
+        //Table
+        collisionPoints.addBoxCollision(14,14,7,7,flicker);
+        collisionPoints.addBoxCollision(15,21,5,1,flicker);
+        collisionPoints.addBoxCollision(19,14,4,5,flicker);
+        //Bed
+        collisionPoints.addBoxCollision(46,14,7,4,flicker);
+        collisionPoints.addBoxCollision(52,14,5,1,flicker);
+        //Bench
+        collisionPoints.addBoxCollision(52,23,10,3,flicker);
+        //Plants
+        collisionPoints.addBoxCollision(29,33,5,5,flicker);
+        collisionPoints.addBoxCollision(40,33,5,5,flicker);
     }
 
 
