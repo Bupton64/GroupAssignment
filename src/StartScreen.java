@@ -1,5 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileReader;
 import java.lang.String;
 
 
@@ -8,7 +12,10 @@ import java.lang.String;
 
 
 public class StartScreen extends extraFunctions {
-    StartScreen(){
+
+    StartScreen(Character playerMan, saveGame Load){
+        this.player = playerMan;
+        this.loadController = Load;
         initStart();
     }
 
@@ -46,21 +53,31 @@ public class StartScreen extends extraFunctions {
         Logo = subImage(logo, 0, 0,518,91);
 
 
+        initLoad();
+
     }
+
     public void updateTimer(double dt){
+
         timer +=dt;
+        if(state == startState.loadScreen){
+            updateLoad();
+        }
     }
 
     public void drawStartMenu(Graphics2D g){
+        changeBackgroundColor(black,g);
         if(state == startState.startScreen){
             drawStartScreen(g);
+        }else if(state == startState.loadScreen){
+            drawLoad(g);
         }
     }
 
     public void drawStartScreen(Graphics2D g){
 
         clearBackground(800, 600, g);
-        changeBackgroundColor(black,g);
+        //changeBackgroundColor(black,g);
         changeColor(white, g);
 
         if((timer >2)&&(timer<5)) {
@@ -150,9 +167,7 @@ public class StartScreen extends extraFunctions {
 
             changeColor(red, g);
             drawBoldText(358, 150, "New Game", "Felix Titling", 20, g);
-            changeColor(grey4, g);
             drawBoldText(352, 150 + 80, "Load game", "Felix Titling", 20, g);
-            changeColor(red, g);
             drawBoldText(370, 150 + 160, "Credits", "Felix Titling", 20, g);
             drawBoldText(395, 150 + 240, "Exit", "Felix Titling", 20, g);
             startup = false;
@@ -160,18 +175,193 @@ public class StartScreen extends extraFunctions {
 
     }
 
+
+    ////////////////////////////////
+    ///
+    ///     Load
+    ///
+    ///////////////////////////////
+
+
+    Character player;
+    saveGame loadController;
+
+    private String loadOneQuestName;
+    private String loadOneLevel;
+    private boolean loadOneDisplay;
+
+
+    private String loadTwoQuestName;
+    private String loadTwoLevel;
+    private boolean loadTwoDisplay;
+
+
+    private String loadThreeQuestName;
+    private String loadThreeLevel;
+    private boolean loadThreeDisplay;
+
+
+    private boolean getLoadFiles;
+
+    public void initLoad(){
+        getLoadFiles = false;
+
+
+        loadOneQuestName = "";
+        loadOneLevel = "";
+        loadOneDisplay = false;
+
+        loadTwoQuestName = "";
+        loadTwoLevel = "";
+        loadTwoDisplay = false;
+
+        loadThreeQuestName = "";
+        loadThreeLevel = "";
+        loadThreeDisplay = false;
+    }
+
+    public void getLoadFiles(){
+        String temp;
+        try (BufferedReader br = new BufferedReader(new FileReader("SaveOne.txt"))) {
+            temp = br.readLine();
+            if(temp == null){
+
+
+            }else{
+                loadOneQuestName = temp;
+                loadOneLevel = br.readLine();
+                loadOneDisplay = true;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader("SaveTwo.txt"))) {
+            temp = br.readLine();
+            if(temp == null){
+
+
+            }else{
+                loadTwoQuestName = temp;
+                loadTwoLevel = br.readLine();
+                loadTwoDisplay = true;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader("SaveThree.txt"))) {
+            temp = br.readLine();
+            if(temp == null){
+
+
+            }else{
+                loadThreeQuestName = temp;
+                loadThreeLevel = br.readLine();
+                loadThreeDisplay = true;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    public void updateLoad(){
+        if(!getLoadFiles){
+            getLoadFiles();
+            getLoadFiles = true;
+        }
+
+       // File file = new File("SaveOne.txt");
+
+    }
+
     public void drawLoad(Graphics2D g){
+      changeBackgroundColor(black,g);
         drawImage(StartBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
+        changeColor(black, g);
+        drawBoldText(330, 150, "Load Files", "Felix Titling", 30, g);
+        changeColor(red, g);
+        drawBoldText(280, 150 + 80, "Save_1", "Felix Titling", 20, g);
+        if(loadOneDisplay) {
+            drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
+            drawBoldText(390, 240, "Level " +loadOneLevel, "Felix Titling", 15, g);
+        }else{
+            drawBoldText(352, 230, "Empty", "Felix Titling", 15, g);
+        }
+
+        drawBoldText(280, 150 + 160, "Save_2", "Felix Titling", 20, g);
+        if(loadTwoDisplay) {
+            drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
+            drawBoldText(390, 320, "Level " +loadTwoLevel, "Felix Titling", 15, g);
+        }else{
+            drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
+        }
+
+        drawBoldText(280, 150 + 240, "Save_3", "Felix Titling", 20, g);
+        if(loadThreeDisplay) {
+            drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
+            drawBoldText(390, 400, "Level " +loadThreeLevel, "Felix Titling", 15, g);
+        }else{
+            drawBoldText(392, 390, "Empty", "Felix Titling", 15, g);
+        }
+
+
+        drawImage(swordSprite, 500, cursorPositionY - 20, 89, 22, g);
+        drawImage(swordSprite2, 250, cursorPositionY - 20, 89, 22, g);
 
 
     }
 
-    public void loadGame(saveGame loadController, Character playerMan){
-        loadController.loadGame(playerMan);
 
+
+    public int keyPressed(KeyEvent e){
+        if(state == startState.startScreen){
+            return startKeyPressed(e);
+        }else if(state == startState.loadScreen){
+            return loadKeyPressed(e);
+        }
+
+        return 0;
     }
 
-    public int keyPressed(KeyEvent e) {
+
+    public int loadKeyPressed(KeyEvent e){
+
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            state = startState.startScreen;
+        }
+        if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
+            playAudio(clicks);
+            cursorPositionY += 80;
+        }
+        if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 230) {
+            cursorPositionY -= 80;
+            playAudio(clicks);
+        }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(cursorPositionY == 230 && loadOneDisplay){
+                loadController.loadGame(player,"SaveOne.txt");
+                return 1;
+
+            }else if(cursorPositionY == 310 && loadTwoDisplay){
+                loadController.loadGame(player,"SaveTwo.txt");
+                return 1;
+            }else if(cursorPositionY == 390 && loadThreeDisplay){
+                loadController.loadGame(player,"SaveThree.txt");
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    public int startKeyPressed(KeyEvent e) {
         if(startup&&(e.getKeyCode() == KeyEvent.VK_SPACE)&&intro) {
             stopAudioLoop(introMusic);
             intro = false;
@@ -192,8 +382,13 @@ public class StartScreen extends extraFunctions {
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 150)&& !startup){
             playAudio(exitClick);
-           return 7;
+            return 7;
         }
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 230)){
+            playAudio(exitClick);
+            state = startState.loadScreen;
+        }
+
         return 0;
     }
 

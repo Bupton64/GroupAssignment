@@ -63,16 +63,17 @@ public class AdventureMode extends GameEngine {
         menuController = new Menu(playerMan);
         shopController = new ShopControl(playerMan);
         cutScene = new cutScene();
-        startController = new StartScreen();
+        saveController = new saveGame(playerMan);
+
         endCutSceneController = new endCutScene();
 
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
         state = GameState.MainMenu;
 
+        startController = new StartScreen(playerMan,saveController);
 
 
-        saveController = new saveGame(playerMan);
 
     }
 
@@ -225,10 +226,10 @@ public class AdventureMode extends GameEngine {
                 }
 
                 if(e.getKeyCode() == KeyEvent.VK_V){
-                    saveController.save();
+                    saveController.save("SaveOne.txt");
                 }
                 if(e.getKeyCode() == KeyEvent.VK_B){
-                    saveController.loadGame(playerMan);
+                    saveController.loadGame(playerMan,"SaveOne.txt");
                     mapController.setReloadMap(true);
                 }
 

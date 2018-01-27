@@ -14,23 +14,30 @@ public class saveGame {
 
     public void getFile(int index) {
 
-        fileName = "SaveFile1";
-        fileName = "SaveFile2";
-        fileName = "SaveFile3";
+        if(index == 1) {
+            fileName = "SaveOne.txt";
+        }else if(index == 2) {
+            fileName = "SaveTwo.txt";
+        }else if(index == 3) {
+            fileName = "SaveThree.txt";
+        }
 
 
     }
 
-    public void save() {
+    public void save(String fileName) {
         PrintWriter pw = null;
         try {
 
-            File file = new File("fubars.txt");
+            File file = new File(fileName);
             file.delete();
             FileWriter fw = new FileWriter(file, true);
             pw = new PrintWriter(fw);
 
 
+            //Display for Load
+            pw.println(playerMan.getCurrentQuest().getQuestName());
+            pw.println(playerMan.getLevel());
 
             //StatBlock Save
             pw.println("#######################");
@@ -117,10 +124,12 @@ public class saveGame {
 
 
 
-    public void loadGame(Character temp) {
-        try (BufferedReader br = new BufferedReader(new FileReader("fubars.txt"))) {
+    public void loadGame(Character temp,String fileName) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line = br.readLine();
 
+            line = br.readLine();
+            line = br.readLine();
             line = br.readLine();
             while (line.charAt(0) == '#') {
                 line = br.readLine();
