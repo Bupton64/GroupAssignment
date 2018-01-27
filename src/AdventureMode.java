@@ -11,6 +11,8 @@ public class AdventureMode extends GameEngine {
 
 
 
+    saveGame saveController;
+
     //////////////////////////////////
     ///
     /// Game
@@ -43,6 +45,9 @@ public class AdventureMode extends GameEngine {
 
 
     public void init() {
+
+
+
         cutSceneMusic = loadAudio("cutscene.wav");
         backgroundMusic = loadAudio("epic.wav");
         villageMusic = loadAudio("village.wav");
@@ -63,6 +68,10 @@ public class AdventureMode extends GameEngine {
         playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
         state = GameState.MainMenu;
+
+
+
+        saveController = new saveGame(playerMan);
 
     }
 
@@ -206,6 +215,14 @@ public class AdventureMode extends GameEngine {
                     playAudio(clicks);
                     stateChanger = 3;
                 }
+
+                if(e.getKeyCode() == KeyEvent.VK_V){
+                    saveController.save();
+                }
+                if(e.getKeyCode() == KeyEvent.VK_B){
+                    saveController.loadGame();
+                }
+
                 break;
             case CombatMode:
                 combatMode.keyPressed(e);

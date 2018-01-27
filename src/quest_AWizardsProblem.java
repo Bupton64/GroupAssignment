@@ -4,7 +4,7 @@ public class quest_AWizardsProblem extends Quest {
 
 
 
-    private int killCount; //<Amount of monsters killed
+
     private int toBeKilled;
     boolean questFinished;
 

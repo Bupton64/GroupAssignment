@@ -332,7 +332,6 @@ public class Character extends Statblock {
         //Quest Init - Zane
         questStage = 0;
         currentQuest = new quest_blankQuest();
-        playerStoreAccess = StoreAccess.preTier;
 
         // Memory initialisation
 
@@ -761,8 +760,6 @@ public class Character extends Statblock {
     private boolean inConvo;
     private int questStage;
 
-    enum StoreAccess{preTier,TierOne,TierTwo,TierThree};
-    StoreAccess playerStoreAccess;
 
     public boolean getCollectableState(int index) { return currentQuest.getCollectableState()[index];}
 
@@ -829,7 +826,6 @@ public class Character extends Statblock {
                 currentQuest.setState(Quest.questState.completedQuest);
                 item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
                 addItemToInventory(bronzeSword); //T1 Sword
-                playerStoreAccess = StoreAccess.TierOne;
                 questStage = 9;
                 break;
             case 9:
@@ -885,6 +881,9 @@ public class Character extends Statblock {
         return currentQuest;
     }
 
+    public void setCurrentQuest(Quest currentQuest) {
+        this.currentQuest = currentQuest;
+    }
 
     public Quest.questState getCurrentQuestState(){
         return currentQuest.getState();

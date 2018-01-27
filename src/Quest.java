@@ -21,6 +21,13 @@ public class Quest extends extraFunctions {
     double displayTimer;
     double displayDuration;
 
+    int numOfCollectables;
+    int totalCollectables;
+
+    int killCount; //<Amount of monsters killed
+
+    boolean[] collectableState;
+
     public String getQuestName() {
         return questName;
     }
@@ -38,7 +45,7 @@ public class Quest extends extraFunctions {
         this.reward = reward;
     }
 
-    boolean[] collectableState;
+
 
     public boolean[] getCollectableState() {
         return collectableState;
@@ -48,9 +55,9 @@ public class Quest extends extraFunctions {
         this.collectableState[index] = collectableState;
     }
 
-    int numOfCollectables;
-
-    int totalCollectables;
+    public void setTotalCollectables(int totalCollectables) {
+        this.totalCollectables = totalCollectables;
+    }
 
     public int getTotalCollectables() {
         return totalCollectables;
@@ -63,6 +70,14 @@ public class Quest extends extraFunctions {
     public void setNumOfCollectables(int numOfCollectables) {
         this.numOfCollectables = numOfCollectables;
 
+    }
+
+    public int getKillCount() {
+        return killCount;
+    }
+
+    public void setKillCount(int killCount) {
+        this.killCount = killCount;
     }
 
     public questState getState() {
@@ -82,6 +97,7 @@ public class Quest extends extraFunctions {
     public void drawQuest(Graphics2D g){
 
     }
+
 
 
 
