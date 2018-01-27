@@ -22,7 +22,7 @@ public class cutScene extends extraFunctions {
     Image wizardDown[];
     Image wizardSpin[];
     Image smokeArray[];
-    Image bjarneUp[];
+    Image bjarneRight[];
     double timer;
     double timePast;
     boolean back;
@@ -73,7 +73,7 @@ public class cutScene extends extraFunctions {
         wizardDown = new Image[3];
         wizardSpin = new Image[4];
         smokeArray = new Image[35];
-        bjarneUp = new Image[3];
+        bjarneRight = new Image[3];
         fadeArray = new Image[10];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
@@ -86,15 +86,15 @@ public class cutScene extends extraFunctions {
         height = 0;
         wizardPosX = 120;
         wizardPosY = -74;
-        BjarnePosX = 200;
-        BjarnePosY = 600;
+        BjarnePosX = -52;
+        BjarnePosY = 180;
         for(int i =0; i < 3;i++){
             spriteDown[i] = subImage(spriteSheet,156 + (52 * i), 0,52,72);
             spriteDown2[i] = subImage(spriteSheet,312 + (52 * i), 0,52,72);
             spriteDown3[i] = subImage(spriteSheet2,312 + (52 * i), 0,52,72);
             wizardDown[i] = subImage(spriteSheet3,468 + (52 * i), 288,52,72);
             wizardSpin[i] = subImage(spriteSheet3,520, 288 + (72*i),52,72);
-            bjarneUp[i] = subImage(spriteSheetBjarne, (52*i),216,52,72);
+            bjarneRight[i] = subImage(spriteSheetBjarne, (52*i),144,52,72);
         }
         wizardSpin[3] = wizardSpin[2];
         wizardSpin[2] = subImage(spriteSheet3,520, 504,52,72);
@@ -261,22 +261,22 @@ public class cutScene extends extraFunctions {
                     drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
                 }
             }
-            if((timePast < timer) && (posY>=0) && (timer < 32)){
+            if((timePast < timer) && (posY>=0) && (timer < 30)){
                 drawImage(wizardSpin[flameChange % 4], wizardPosX, 50, g);
             }
-            if((timer > 32) && !vanish){
+            if((timer > 30) && !vanish){
                 drawImage(smokeArray[flameChange%34], 80, 0, g);
                 runCount++;
                 if(runCount >=20){
                     vanish = true;
                 }
             }
-            if((timer > 34) && vanish && (BjarnePosY > 550)){
-                BjarnePosY-=2;
-                drawImage(bjarneUp[flameChange%3], BjarnePosX, BjarnePosY, g);
+            if((timer > 32) && vanish && (BjarnePosX < 50)){
+                BjarnePosX+=2;
+                drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
             }
-            if((BjarnePosY <= 550) && timer < 40){
-                drawImage(bjarneUp[1], BjarnePosX, 550, g);
+            if((BjarnePosX >= 50) && timer < 40){
+                drawImage(bjarneRight[1], BjarnePosX, BjarnePosY, g);
                 changeColor(white, g);
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY FOR", "Times New Roman", 20, g);
