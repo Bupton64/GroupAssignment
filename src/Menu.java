@@ -1028,18 +1028,24 @@ public class Menu extends extraFunctions {
             playAudio(clicks);
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(menuPointerPosY == 230 && loadOneDisplay){
+            if(menuPointerPosY == 230 ){
                // loadController.loadGame(player,"SaveOne.txt");
                 loadController.save("SaveOne.txt");
+                getSaveFiles = false;
+                updateSave();
                 return 0;
 
-            }else if(menuPointerPosY == 310 && loadTwoDisplay){
+            }else if(menuPointerPosY == 310 ){
               //  loadController.loadGame(player,"SaveTwo.txt");
                 loadController.save("SaveTwo.txt");
+                getSaveFiles = false;
+                updateSave();
                 return 0;
-            }else if(menuPointerPosY == 390 && loadThreeDisplay){
+            }else if(menuPointerPosY == 390 ){
             //    loadController.loadGame(player,"SaveThree.txt");
                 loadController.save("SaveThree.txt");
+                getSaveFiles = false;
+                updateSave();
                 return 0;
             }
         }

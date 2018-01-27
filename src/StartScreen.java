@@ -285,37 +285,43 @@ public class StartScreen extends extraFunctions {
 
     public void drawLoad(Graphics2D g){
       changeBackgroundColor(black,g);
-        drawImage(StartBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
+    //    drawImage(StartBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
         changeColor(black, g);
         drawBoldText(330, 150, "Load Files", "Felix Titling", 30, g);
         changeColor(red, g);
         drawBoldText(280, 150 + 80, "Save_1", "Felix Titling", 20, g);
         if(loadOneDisplay) {
+            changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 240, "Level " +loadOneLevel, "Felix Titling", 15, g);
         }else{
+            changeColor(red, g);
             drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
         }
-
+        changeColor(red, g);
         drawBoldText(280, 150 + 160, "Save_2", "Felix Titling", 20, g);
         if(loadTwoDisplay) {
+            changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 320, "Level " +loadTwoLevel, "Felix Titling", 15, g);
         }else{
+            changeColor(red, g);
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
         }
-
+        changeColor(red, g);
         drawBoldText(280, 150 + 240, "Save_3", "Felix Titling", 20, g);
         if(loadThreeDisplay) {
+            changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 400, "Level " +loadThreeLevel, "Felix Titling", 15, g);
         }else{
+            changeColor(red, g);
             drawBoldText(392, 390, "Empty", "Felix Titling", 15, g);
         }
 
 
-        drawImage(swordSprite, 500, cursorPositionY - 20, 89, 22, g);
-        drawImage(swordSprite2, 250, cursorPositionY - 20, 89, 22, g);
+        drawImage(swordSprite, 600, cursorPositionY - 20, 89, 22, g);
+        drawImage(swordSprite2, 150, cursorPositionY - 20, 89, 22, g);
 
 
     }
