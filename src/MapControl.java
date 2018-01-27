@@ -563,7 +563,9 @@ public class MapControl extends extraFunctions {
                 playerMan.setCurrentShopActive(1);
                 updateQuestState = 0;
                 return 6;
-            }else if(updateQuestState != 0) {
+            }else if(updateQuestState == 95){
+                return 5;
+            } else if(updateQuestState != 0) {
                 playerMan.setQuestStage(updateQuestState);
                 playerMan.changeQuest();
                 updateQuestState = 0;

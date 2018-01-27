@@ -19,7 +19,7 @@ public class AdventureMode extends GameEngine {
     ///
     /////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, CutScene, ShopMode}
+    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, CutScene, ShopMode, endCutScene}
     GameState state = GameState.TravelMode;
 
     private int stateChanger;
@@ -33,6 +33,7 @@ public class AdventureMode extends GameEngine {
     private Combat combatMode;
     private cutScene cutScene;
     private ShopControl shopController;
+    private endCutScene endCutSceneController;
     AudioClip backgroundMusic;
     AudioClip cutSceneMusic;
     AudioClip villageMusic;
@@ -97,17 +98,18 @@ public class AdventureMode extends GameEngine {
                 break;
             case 3:
                 state = GameState.OverWorldMenu;
-
                 break;
             case 4:
                 state = GameState.MainMenu;
+                break;
+            case 5:
+                state = GameState.endCutScene;
                 break;
             case 6:
                 state = GameState.ShopMode;
                 stopAudioLoop(villageMusic);
                 stopper = false;
                 startAudioLoop(menuMusic);
-
                 break;
             case 7:
                 state = GameState.CutScene;
@@ -134,7 +136,7 @@ public class AdventureMode extends GameEngine {
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
-                if(stateChanger != 2) {
+                if(stateChanger != 2 && stateChanger != 5) {
                     stateChanger = mapController.updateQuest(dt);
                 }
                 break;
@@ -146,6 +148,9 @@ public class AdventureMode extends GameEngine {
                 break;
             case MainMenu:
                 startController.updateTimer(dt);
+                break;
+            case endCutScene:
+                endCutSceneController.updateTimer(dt);
                 break;
             case CutScene:
                 cutScene.updateTimer(dt);
@@ -188,11 +193,14 @@ public class AdventureMode extends GameEngine {
                 break;
             case MainMenu:
                 changeBackgroundColor(black);
-                startController.drawStartScreen(mGraphics);
+                startController.drawStartMenu(mGraphics);
                 break;
             case CutScene:
                 changeBackgroundColor(black);
                 cutScene.drawCutScene(mGraphics);
+                break;
+            case endCutScene:
+                endCutSceneController.drawCutScene(mGraphics);
                 break;
         }
 
@@ -236,6 +244,9 @@ public class AdventureMode extends GameEngine {
                 break;
             case CutScene:
                 stateChanger = cutScene.keyPressed(e);
+                break;
+            case endCutScene:
+                stateChanger = endCutSceneController.keyPressed(e);
                 break;
             case ShopMode:
                 stateChanger = shopController.keyPressed(e);

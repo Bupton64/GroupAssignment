@@ -60,7 +60,7 @@ public class npc_plains_Dijkstra extends  NPC {
         Dialogue d4 = new Dialogue(null,false,true,"The church is just west of here. ","Take what you find to Camrath.","","");
         listThree = d4;
 
-        Dialogue d5 = new Dialogue(null,false,true,"Hello... Is it me Your Looking for...","I can see it in your eyes","I can see it in your... Heart","");
+        Dialogue d5 = new Dialogue(null,true,true,"Hello... Is it me Your Looking for...","I can see it in your eyes","I can see it in your... Heart","");
         listFour = d5;
     }
 
@@ -80,7 +80,7 @@ public class npc_plains_Dijkstra extends  NPC {
                     currentDialogue = listThree;
                     break;
                 case 26:
-                    //insert Dialogue here
+                    currentDialogue = listFour;
                     break;
             }
 
@@ -103,6 +103,8 @@ public class npc_plains_Dijkstra extends  NPC {
             case 22:
                 currentDialogue = listThree;
                 return 22;
+            case 27:
+                return 95;
             default:
                 return 0;
 
@@ -125,6 +127,9 @@ public class npc_plains_Dijkstra extends  NPC {
                     switch (questStage) {
                         case 21:
                             questStage = 22;
+                            break;
+                        case 26:
+                            questStage = 27;
                             break;
                     }
                 }

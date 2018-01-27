@@ -12,6 +12,9 @@ public class StartScreen extends extraFunctions {
         initStart();
     }
 
+    enum startState {startScreen, loadScreen, credits}
+    startState state = startState.startScreen;
+
     Image paper = loadImage("paper.png");
     Image sword = loadImage("sword.png");
     Image sword2 = loadImage("sword2.png");
@@ -48,7 +51,11 @@ public class StartScreen extends extraFunctions {
         timer +=dt;
     }
 
-
+    public void drawStartMenu(Graphics2D g){
+        if(state == startState.startScreen){
+            drawStartScreen(g);
+        }
+    }
 
     public void drawStartScreen(Graphics2D g){
 
@@ -150,6 +157,17 @@ public class StartScreen extends extraFunctions {
             drawBoldText(395, 150 + 240, "Exit", "Felix Titling", 20, g);
             startup = false;
         }
+
+    }
+
+    public void drawLoad(Graphics2D g){
+        drawImage(StartBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
+
+
+    }
+
+    public void loadGame(saveGame loadController, Character playerMan){
+        loadController.loadGame(playerMan);
 
     }
 

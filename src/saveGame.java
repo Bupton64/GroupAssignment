@@ -5,9 +5,20 @@ import java.io.*;
 public class saveGame {
 
     Character playerMan;
+    String fileName;
 
     saveGame(Character player){
         this.playerMan = player;
+    }
+
+
+    public void getFile(int index) {
+
+        fileName = "SaveFile1";
+        fileName = "SaveFile2";
+        fileName = "SaveFile3";
+
+
     }
 
     public void save() {
