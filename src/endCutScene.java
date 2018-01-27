@@ -32,9 +32,9 @@ public class endCutScene extends extraFunctions{
         plainsBack = loadImage("plains_E5.png");
         spriteSheet = loadImage("chara1.png");
         spriteSheet2 = loadImage("chara3.png");
-        spriteSheet3 = loadImage("military2.png");
+        spriteSheet3 = loadImage("chara2.png");
 
-        Dijkstra = subImage(spriteSheet3, 52, 0,56,72);
+        Dijkstra = subImage(spriteSheet3, 520, 0,56,72);
         Camrath = subImage(spriteSheet2, 52, 288, 56, 72);
 
         WizardSpin = new Image[4];
@@ -76,9 +76,11 @@ public class endCutScene extends extraFunctions{
     }
 
     public void drawCutScene(Graphics2D g) {
+        drawImage(plainsBack, 0, 0, g);
         drawImage(WizardSpin[0], 300, 250, g);
-        drawImage(Dijkstra, 300, 250, g);
-        drawImage(Camrath, 300, 250, g);
+        drawImage(Dijkstra, 400, 300, g);
+        drawImage(Camrath, 500, 250, g);
+        drawImage(BjarneSpin[2], 400, 315, g);
     }
 
     public int keyPressed(KeyEvent e) {
