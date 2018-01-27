@@ -12,11 +12,12 @@ public class ability_heroism extends Ability {
         this.setToolTip("Gain divine strength");
         this.setActive(true);
         this.setType(AbilityType.buff);
-        this.setDisplayString("Your destiny nears!");
+
     }
 
     @Override
     public Ability use(Statblock user){
+        this.setDisplayString(user.getName() + "'s destiny nears!");
         int amountToIncrease = 1 + (int)(Math.random()*4);
         user.setDefenseBonus(user.getDefenseBonus()+amountToIncrease);
         user.setStrengthBonus(user.getStrengthBonus()+amountToIncrease);
