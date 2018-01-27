@@ -6,8 +6,8 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     npc_plains_E8_byHouse(){
         setName("Alyx");
-        spriteSheet = loadImage("chara1.png");
-        sprite = subImage(spriteSheet,52,288,56,72);
+        spriteSheet = loadImage("chara5.png");
+        sprite = subImage(spriteSheet,196,288,56,72);
         setMapPosX(80);
         setMapPosY(180);
 
@@ -57,10 +57,10 @@ public class npc_plains_E8_byHouse extends  NPC {
         super.loadImages();
         //Load Images here
         for(int i =0; i < 3;i++){
-            spriteRight[i] = subImage(spriteSheet,0 + (52 * i), 432,52,72);
+            spriteRight[i] = subImage(spriteSheet,144 + (52 * i), 432,52,72);
         }
         for(int i =0; i < 3;i++){
-            spriteLeft[i] = subImage(spriteSheet,0 + (52 * i), 360,52,72);
+            spriteLeft[i] = subImage(spriteSheet,144 + (52 * i), 360,52,72);
         }
 
 

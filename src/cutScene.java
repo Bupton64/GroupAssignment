@@ -23,6 +23,7 @@ public class cutScene extends extraFunctions {
     Image wizardSpin[];
     Image smokeArray[];
     Image bjarneRight[];
+    Image bjarneLeft[];
     double timer;
     double timePast;
     boolean back;
@@ -74,6 +75,7 @@ public class cutScene extends extraFunctions {
         wizardSpin = new Image[4];
         smokeArray = new Image[35];
         bjarneRight = new Image[3];
+        bjarneLeft = new Image[3];
         fadeArray = new Image[10];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
@@ -95,6 +97,7 @@ public class cutScene extends extraFunctions {
             wizardDown[i] = subImage(spriteSheet3,468 + (52 * i), 288,52,72);
             wizardSpin[i] = subImage(spriteSheet3,520, 288 + (72*i),52,72);
             bjarneRight[i] = subImage(spriteSheetBjarne, (52*i),144,52,72);
+            bjarneLeft[i] = subImage(spriteSheetBjarne, (52*i),72,52,72);
         }
         wizardSpin[3] = wizardSpin[2];
         wizardSpin[2] = subImage(spriteSheet3,520, 504,52,72);
@@ -272,11 +275,17 @@ public class cutScene extends extraFunctions {
                 }
             }
             if((timer > 32) && vanish && (BjarnePosX < 50)){
-                BjarnePosX+=2;
+                BjarnePosX+=3;
                 drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
             }
             if((BjarnePosX >= 50) && timer < 40){
-                drawImage(bjarneRight[1], BjarnePosX, BjarnePosY, g);
+                if(timer < 37) {
+                    BjarnePosX += 4;
+                    drawImage(bjarneRight[flameChange % 3], BjarnePosX, BjarnePosY, g);
+                } else{
+                    BjarnePosX -= 4;
+                    drawImage(bjarneLeft[flameChange % 3], BjarnePosX, BjarnePosY, g);
+                }
                 changeColor(white, g);
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY FOR", "Times New Roman", 20, g);
