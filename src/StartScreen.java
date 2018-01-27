@@ -294,7 +294,7 @@ public class StartScreen extends extraFunctions {
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 240, "Level " +loadOneLevel, "Felix Titling", 15, g);
         }else{
-            drawBoldText(352, 230, "Empty", "Felix Titling", 15, g);
+            drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
         }
 
         drawBoldText(280, 150 + 160, "Save_2", "Felix Titling", 20, g);

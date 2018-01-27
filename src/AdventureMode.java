@@ -60,7 +60,7 @@ public class AdventureMode extends GameEngine {
         playerMovement = new CharacterMovement(playerMan);
         collisionDetector = new Collision();
         mapController = new MapControl(playerMan,collisionDetector);
-        menuController = new Menu(playerMan);
+        menuController = new Menu(playerMan,saveController);
         shopController = new ShopControl(playerMan);
 
         saveController = new saveGame(playerMan);

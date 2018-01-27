@@ -8,9 +8,11 @@ import java.lang.String;
 
 
 public class Menu extends extraFunctions {
-    Menu(Character playerMan) {
+    Menu(Character playerMan, saveGame load) {
         this.player1 = playerMan;
+        this.loadController = load;
         initMenu();
+        initSaveGame();
     }
 
     Character player1;
@@ -83,11 +85,7 @@ public class Menu extends extraFunctions {
     boolean stopper2 = false;
     boolean isEquiblableItems = false;
 
-    public void drawMenu(Graphics2D g){
-        drawChaMenu(g);
-        drawEquMenu(g);
-        drawInvMenu(g);
-    }
+
 
 
     private int checkRightItemEquip(String name) {
@@ -265,6 +263,15 @@ public class Menu extends extraFunctions {
 
     }
 
+    public void drawMenu(Graphics2D g){
+        if(state == MenuState.CharacterMenu) {
+            drawChaMenu(g);
+            drawInvMenu(g);
+            drawEquMenu(g);
+        }else if(state == MenuState.SaveMenu){
+            drawSaveGame(g);
+        }
+    }
 
     public void drawChaMenu(Graphics2D g) {
         if (chaMenu == true) {
@@ -274,7 +281,8 @@ public class Menu extends extraFunctions {
             drawImage(background1, 0, 0, g);
             drawImage(character, 429, 97, 144, 144, g);
             changeColor(white, g);
-            drawBoldText(650, 450, "RESUME", "Felix Titling", 20, g);
+            drawBoldText(650, 420, "RESUME", "Felix Titling", 20, g);
+            drawBoldText(650, 450, "Save", "Felix Titling", 20, g);
             drawBoldText(650, 480, "INVENTORY", "Felix Titling", 20, g);
             drawBoldText(650, 510, "EQUIPMENT", "Felix Titling", 20, g);
             drawBoldText(650, 540, "EXIT", "Felix Titling", 20, g);
@@ -839,6 +847,8 @@ public class Menu extends extraFunctions {
     ///
     ////////////////////////////////////
 
+    saveGame loadController;
+
     Image startBackground;
     Image swordSprite;
     Image swordSprite2;
@@ -858,6 +868,9 @@ public class Menu extends extraFunctions {
     private boolean loadThreeDisplay;
 
     private boolean getSaveFiles;
+
+  //  private int menuPointerPosX;
+    private int menuPointerPosY;
 
 
     public void initSaveGame(){
@@ -882,6 +895,8 @@ public class Menu extends extraFunctions {
         loadThreeQuestName = "";
         loadThreeLevel = "";
         loadThreeDisplay = false;
+
+        menuPointerPosY = 230;
     }
 
     public void getSaveFiles(){
@@ -889,8 +904,6 @@ public class Menu extends extraFunctions {
         try (BufferedReader br = new BufferedReader(new FileReader("SaveOne.txt"))) {
             temp = br.readLine();
             if(temp == null){
-
-
             }else{
                 loadOneQuestName = temp;
                 loadOneLevel = br.readLine();
@@ -904,8 +917,6 @@ public class Menu extends extraFunctions {
         try (BufferedReader br = new BufferedReader(new FileReader("SaveTwo.txt"))) {
             temp = br.readLine();
             if(temp == null){
-
-
             }else{
                 loadTwoQuestName = temp;
                 loadTwoLevel = br.readLine();
@@ -919,8 +930,6 @@ public class Menu extends extraFunctions {
         try (BufferedReader br = new BufferedReader(new FileReader("SaveThree.txt"))) {
             temp = br.readLine();
             if(temp == null){
-
-
             }else{
                 loadThreeQuestName = temp;
                 loadThreeLevel = br.readLine();
@@ -949,37 +958,43 @@ public class Menu extends extraFunctions {
     public void drawSaveGame(Graphics2D g){
 
         changeBackgroundColor(black,g);
-        drawImage(startBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
+        //drawImage(startBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
         changeColor(black, g);
-        drawBoldText(330, 150, "Load Files", "Felix Titling", 30, g);
+        drawBoldText(330, 150, "Save Files", "Felix Titling", 30, g);
         changeColor(red, g);
         drawBoldText(280, 150 + 80, "Save_1", "Felix Titling", 20, g);
         if(loadOneDisplay) {
+            changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 240, "Level " +loadOneLevel, "Felix Titling", 15, g);
         }else{
-            drawBoldText(352, 230, "Empty", "Felix Titling", 15, g);
+            changeColor(red, g);
+            drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
         }
-
+        changeColor(red, g);
         drawBoldText(280, 150 + 160, "Save_2", "Felix Titling", 20, g);
         if(loadTwoDisplay) {
+            changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 320, "Level " +loadTwoLevel, "Felix Titling", 15, g);
         }else{
+            changeColor(red, g);
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
         }
-
+        changeColor(red, g);
         drawBoldText(280, 150 + 240, "Save_3", "Felix Titling", 20, g);
         if(loadThreeDisplay) {
+            changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 400, "Level " +loadThreeLevel, "Felix Titling", 15, g);
         }else{
+            changeColor(red, g);
             drawBoldText(392, 390, "Empty", "Felix Titling", 15, g);
         }
 
 
-        drawImage(swordSprite, 500, cursorPositionY - 20, 89, 22, g);
-        drawImage(swordSprite2, 250, cursorPositionY - 20, 89, 22, g);
+        drawImage(swordSprite, 600, menuPointerPosY - 20, 89, 22, g);
+        drawImage(swordSprite2, 150, menuPointerPosY - 20, 89, 22, g);
     }
 
     ////////////////////////////////////
@@ -1004,25 +1019,28 @@ public class Menu extends extraFunctions {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
             state = MenuState.CharacterMenu;
         }
-        if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
+        if ((e.getKeyCode() == KeyEvent.VK_DOWN) && menuPointerPosY < 390) {
             playAudio(clicks);
-            cursorPositionY += 80;
+            menuPointerPosY += 80;
         }
-        if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 230) {
-            cursorPositionY -= 80;
+        if ((e.getKeyCode() == KeyEvent.VK_UP) && menuPointerPosY > 230) {
+            menuPointerPosY -= 80;
             playAudio(clicks);
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(cursorPositionY == 230 && loadOneDisplay){
+            if(menuPointerPosY == 230 && loadOneDisplay){
                // loadController.loadGame(player,"SaveOne.txt");
-                return 1;
+                loadController.save("SaveOne.txt");
+                return 0;
 
-            }else if(cursorPositionY == 310 && loadTwoDisplay){
+            }else if(menuPointerPosY == 310 && loadTwoDisplay){
               //  loadController.loadGame(player,"SaveTwo.txt");
-                return 1;
-            }else if(cursorPositionY == 390 && loadThreeDisplay){
+                loadController.save("SaveTwo.txt");
+                return 0;
+            }else if(menuPointerPosY == 390 && loadThreeDisplay){
             //    loadController.loadGame(player,"SaveThree.txt");
-                return 1;
+                loadController.save("SaveThree.txt");
+                return 0;
             }
         }
 
@@ -1041,13 +1059,18 @@ public class Menu extends extraFunctions {
                 cursorPositionY += 30;
 
             }
-            if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 450) {
+            if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 420) {
                 playAudio(clicks);
                 cursorPositionY -= 30;
 
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 530) {
                 System.exit(23);
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 440) {
+                getSaveFiles = false;
+                updateSave();
+                state = MenuState.SaveMenu;
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 470) {
                 playAudio(p2);
@@ -1267,7 +1290,7 @@ public class Menu extends extraFunctions {
 
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_SPACE && getCursorPositionY() == 440 ) {
+        if(e.getKeyCode() == KeyEvent.VK_SPACE && getCursorPositionY() == 410 ) {
             playAudio(exitClick);
 
             return 1;
