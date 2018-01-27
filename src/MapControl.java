@@ -415,6 +415,9 @@ public class MapControl extends extraFunctions {
                 case 54:
                     currentMap = new plains_bossFight();
                     break;
+                case 55:
+                    currentMap = new plains_E5_wizards();
+                    break;
             }
         }
 
