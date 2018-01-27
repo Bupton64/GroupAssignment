@@ -57,9 +57,8 @@ public class AdventureMode extends GameEngine {
 
         setWindowSize(800, 600);
         playerMan = new Character();
-        playerMovement = new CharacterMovement(playerMan);
-        collisionDetector = new Collision();
-        mapController = new MapControl(playerMan,collisionDetector);
+
+
 
         shopController = new ShopControl(playerMan);
 
@@ -69,9 +68,12 @@ public class AdventureMode extends GameEngine {
 
         stateChanger = 0;
         state = GameState.MainMenu;
+
         menuController = new Menu(playerMan,saveController);
         startController = new StartScreen(playerMan,saveController);
-
+        playerMovement = new CharacterMovement(playerMan);
+        collisionDetector = new Collision();
+        mapController = new MapControl(playerMan,collisionDetector);
 
 
     }
@@ -175,6 +177,7 @@ public class AdventureMode extends GameEngine {
                 playerMovement.drawCharMovement(mGraphics);//<Draw Player
                 mapController.drawNPCInteraction(mGraphics);
                 playerMan.getCurrentQuest().drawQuest(mGraphics);
+           
 
                 changeColor(white);
                 drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
