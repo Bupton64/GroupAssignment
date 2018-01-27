@@ -1,0 +1,142 @@
+A Wizards Problem
+1
+#######################
+###
+###  StatBlock
+###
+#######################
+5
+3
+3
+3
+3
+120.0
+66.0
+1
+#######################
+###
+###  Character
+###
+#######################
+200
+500
+85
+390.0
+265.0
+17.0
+50
+#######################
+###
+###  Quests
+###
+#######################
+2
+A Wizards Problem
+inQuest
+0
+0
+0
+true
+#######################
+###
+###  Items
+###
+#######################
+43
+Bronze Sword
+0
+Stone Axe
+0
+Monk's Staff
+0
+Rough Axe
+0
+Guardsman's Spear
+0
+Iron Sword
+0
+Trickster's Spear
+0
+Acolyte's Staff
+0
+Steel Sword
+0
+Gladiator's Axe
+0
+Jester's Staff
+0
+Emperor's Word
+0
+Valkyrie
+0
+Skull Cap
+0
+Steel Visor
+0
+Conical Helm
+0
+Great Helm
+0
+Shiv
+0
+Wooden Shield
+0
+Assassin's Dagger
+0
+Steel Shield
+0
+Leather Boots
+0
+Chain Boots
+0
+Half Plate Boots
+0
+Full Plate Boots
+0
+Leather Jack
+0
+Scale Mail
+0
+Breastplate
+0
+Full Platemail
+0
+Silver Amulet
+0
+Gold Amulet
+0
+Chain Gauntlets
+0
+Leather Bracers
+0
+Steel Gauntlets
+0
+Hide Bracers
+0
+Speed Potion
+1
+Soul Stone
+1
+Eyedrops
+1
+Antidote
+99
+Healing Salve
+1
+Mega Potion
+1
+Elixir
+1
+Potion
+99
+#######################
+###
+###  Equipped Items
+###
+#######################
+5
+Rusty Sword
+Ragged Cap
+Worn Buckler
+Cloth Shoes
+Traveller's Robe

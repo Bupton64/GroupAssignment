@@ -21,17 +21,23 @@ public class ShopControl extends extraFunctions {
     private void updateStartShop(){
 
         if(menuOption == 0){
-            menuPointerPosY = 200;
+            menuPointerPosX = 150;
         }else if(menuOption == 1){
-            menuPointerPosY = 250;
+            menuPointerPosX = 500;
         }
 
     }
 
     private void drawStartShop(Graphics2D g){
-            drawSolidCircle(menuPointerPosX,menuPointerPosY,5,g);
-            drawText(200,200,"Buy","Arial",30,g);
-            drawText(200,250,"Sell","Arial",30,g);
+        clearBackground(800, 600, g);
+        changeBackgroundColor(black, g);
+        drawImage(background, 0, 0, 800, 600, g);
+        changeColor(white, g);
+        drawImage(buttonSprite, 150, 250, g);
+        drawImage(buttonSprite, 500, 250, g);
+        drawImage(menuPointer, menuPointerPosX,menuPointerPosY,g);
+        drawText(215,295,"Buy","Arial",30,g);
+        drawText(565,295,"Sell","Arial",30,g);
     }
 
 
@@ -44,22 +50,28 @@ public class ShopControl extends extraFunctions {
 
     private void updateBuyShop(){
         if(menuOption == 0){
-            menuPointerPosY = 200;
+            menuPointerPosX = 130;
         }else if(menuOption == 1){
-            menuPointerPosY = 300;
+            menuPointerPosX = 480;
         }
     }
 
 
 
     private void drawBuyShop(Graphics2D g){
-        drawSolidCircle(menuPointerPosX,menuPointerPosY,5,g);
+        clearBackground(800, 600, g);
+        changeBackgroundColor(black, g);
+        drawImage(background, 0, 0, 800, 600, g);
+        changeColor(white, g);
+        drawImage(buttonSprite, 150, 250, g);
+        drawImage(buttonSprite, 500, 250, g);
+        drawImage(menuPointer, menuPointerPosX,menuPointerPosY,g);
         if(shopNum == 0){
-            drawText(200,200,"Weapons","Arial",30,g);
-            drawText(200,300,"Armor","Arial",30,g);
+            drawText(215,295,"Weapons","Arial",30,g);
+            drawText(565,295,"Armor","Arial",30,g);
         }else{
-            drawText(200,200,"Accessories","Arial",30,g);
-            drawText(200,300,"Consumable","Arial",30,g);
+            drawText(175,295,"Accessories","Arial",24,g);
+            drawText(525,295,"Consumable","Arial",24,g);
         }
 
     }
@@ -72,6 +84,9 @@ public class ShopControl extends extraFunctions {
     ///
     ////////////////////////////////
 
+    private Image background;
+    private Image buttonSprite;
+    private Image menuPointer;
 
     private int menuOption;
     private double menuPointerPosX;
@@ -104,8 +119,14 @@ public class ShopControl extends extraFunctions {
         state = ShopState.Start;
         shopStateChanger = 0;
         menuOption = 0;
-        menuPointerPosX = 180;
-        menuPointerPosY = 200;
+        menuPointerPosX = 200;
+        menuPointerPosY = 260;
+        background = loadImage("open.png");
+        background = subImage(background, 0, 0, 544, 416);
+        buttonSprite =  loadImage("buttons.png");
+        buttonSprite = subImage(buttonSprite,30,70,180,80);
+        menuPointer = loadImage("arrowhead.png");
+        menuPointer = subImage(menuPointer,0,96,48,48);
 
         sellController = new sellShop(playerMan);
         weaponController = new weaponShop(playerMan);
@@ -238,7 +259,7 @@ public class ShopControl extends extraFunctions {
 
 
     private int startKeyPressed(KeyEvent e){
-        if(e.getKeyCode() == KeyEvent.VK_UP){
+        if(e.getKeyCode() == KeyEvent.VK_LEFT){
             playAudio(clicks);
             if(menuOption == 1){
                 menuOption = 0;
@@ -246,7 +267,7 @@ public class ShopControl extends extraFunctions {
                 menuOption = 1;
             }
         }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN){
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             playAudio(clicks);
             if(menuOption == 1){
                 menuOption = 0;
@@ -273,7 +294,7 @@ public class ShopControl extends extraFunctions {
     }
 
     private void buyKeyPressed(KeyEvent e){
-        if(e.getKeyCode() == KeyEvent.VK_UP){
+        if(e.getKeyCode() == KeyEvent.VK_LEFT){
             playAudio(clicks);
 
             if(menuOption == 1){
@@ -282,7 +303,7 @@ public class ShopControl extends extraFunctions {
                 menuOption = 1;
             }
         }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
             playAudio(clicks);
 
             if (menuOption == 1) {
