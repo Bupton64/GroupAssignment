@@ -106,6 +106,30 @@ public class plains_E13 extends  Map {
         for(int i = 0;i < 12;i++){
             collisionPoints.addCollisionPoint(14 + (i * 16),flicker);
         }
+        //Bottom trees
+
+        collisionPoints.addBoxCollision(22,45,27,4,flicker);
+        //Trees left
+        collisionPoints.addBoxCollision(5,16,10,1,flicker);
+        collisionPoints.addBoxCollision(15,17,2,2,flicker);
+        collisionPoints.addBoxCollision(17,19,2,2,flicker);
+        collisionPoints.addBoxCollision(19,21,2,5,flicker);
+
+        collisionPoints.addBoxCollision(20,23,18,5,flicker);
+        collisionPoints.addBoxCollision(21,19,14,5,flicker);
+        collisionPoints.addBoxCollision(23,18,12,2,flicker);
+        collisionPoints.addBoxCollision(25,17,9,2,flicker);
+        collisionPoints.addBoxCollision(27,30,8,5,flicker);
+        collisionPoints.addBoxCollision(32,27,6,5,flicker);
+
+        collisionPoints.addBoxCollision(22,32,8,12,flicker);
+        //Right
+        collisionPoints.addBoxCollision(41,23,29,7,flicker);
+        collisionPoints.addBoxCollision(42,18,28,6,flicker);
+        collisionPoints.addBoxCollision(45,17,25,4,flicker);
+        collisionPoints.addBoxCollision(55,14,14,4,flicker);
+        collisionPoints.addBoxCollision(42,28,19,7,flicker);
+        collisionPoints.addBoxCollision(49,35,11,6,flicker);
 
 
     }
