@@ -77,10 +77,10 @@ public class endCutScene extends extraFunctions{
 
     public void drawCutScene(Graphics2D g) {
         drawImage(plainsBack, 0, 0, g);
-        drawImage(WizardSpin[0], 300, 250, g);
-        drawImage(Dijkstra, 400, 300, g);
-        drawImage(Camrath, 500, 250, g);
-        drawImage(BjarneSpin[2], 400, 315, g);
+        drawImage(WizardSpin[0], 300, 250, 49, 72, g);
+        drawImage(Dijkstra, 400, 300, 49, 72, g);
+        drawImage(Camrath, 500, 250, 49, 72, g);
+        drawImage(BjarneSpin[2], 400, 315, 49, 72,  g);
     }
 
     public int keyPressed(KeyEvent e) {
