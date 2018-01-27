@@ -6,7 +6,7 @@ public class accessoriesShop extends shop {
     accessoriesShop(Character playerMan){
         super(playerMan);
         setTotalPages(1);
-        setMaxIndex(5);
+        setMaxIndex(2);
     }
 
     @Override
@@ -18,13 +18,20 @@ public class accessoriesShop extends shop {
         inventory[0] = new item_Equipment("Silver Amulet", 0, 0, 2, 0, 0, Item.Slot.accessory, "A lucky charm", 400, 2000);
         inventory[1] = new item_Equipment("Gold Amulet", 0, 0, 0, 3, 0, Item.Slot.accessory, "An inspiring memento", 400, 2000);
         inventory[2] = new item_Equipment("Chain Gauntlets", 0, 0, 0, 0, 2, Item.Slot.accessory, "Fitted knuckles", 400, 2000);
-        inventory[3] = new item_Equipment("Leather Bracers", 0, 1, 0, 1, 0, Item.Slot.accessory, "Extra protection", 450, 4000);
-        inventory[4] = new item_Equipment("Steel Gauntlets", 0, 0, 2, 0, 0, Item.Slot.accessory, "Strong, edged plating", 1700, 4500);
-        inventory[5] = new item_Equipment("Hide Bracers", 0, 2, 0, 0, 0, Item.Slot.accessory, "Forearm guard", 1900, 3800);
+
+        inventory[3] = new item_Equipment("Hide Bracers", 0, 2, 0, 0, 0, Item.Slot.accessory, "Forearm guard", 1900, 3800);
+        inventory[4] = new item_Equipment("Leather Bracers", 0, 1, 0, 1, 0, Item.Slot.accessory, "Extra protection", 450, 4000);
+        inventory[5] = new item_Equipment("Steel Gauntlets", 0, 0, 2, 0, 2, Item.Slot.accessory, "Strong, edged plating", 1700, 4500);
         setShopInventory(inventory);
     }
 
     public void updateShop(){
+        if(getPlayer1().getQuestStage() > 20) {
+            if (getMaxIndex() < 10) {
+                setTotalPages(1);
+                setMaxIndex(5);
+            }
+        }
         if(getItemIndex() > getMaxIndex()){
             setItemIndex(getMaxIndex());
         }
