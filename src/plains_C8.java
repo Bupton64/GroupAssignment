@@ -59,7 +59,20 @@ public class plains_C8 extends  Map{
     ///////////////////////////////////////////////////////////
     @Override
     public void setUpCollision(Collision collisionPoints){
-
+        //Fence
+        collisionPoints.addBoxCollision(24,44,42,2,flicker);
+        collisionPoints.addBoxCollision(9,44,10,2,flicker);
+        collisionPoints.addBoxCollision(9,31,14,2,flicker);
+        collisionPoints.addBoxCollision(27,31,5,2,flicker);
+        collisionPoints.addBoxCollision(9,4,57,2,flicker);
+        collisionPoints.addBoxCollision(33,22,4,2,flicker);
+        collisionPoints.addBoxCollision(42,22,24,2,flicker);
+        collisionPoints.addBoxCollision(9,4,1,43,flicker);
+        collisionPoints.addBoxCollision(30,28,1,19,flicker);
+        collisionPoints.addBoxCollision(33,4,1,21,flicker);
+        collisionPoints.addBoxCollision(64,4,1,42,flicker);
+        //House
+        collisionPoints.addBoxCollision(12,6,19,17,flicker);
 
     }
 

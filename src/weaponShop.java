@@ -8,7 +8,7 @@ public class weaponShop extends shop {
     weaponShop(Character playerMan){
         super(playerMan);
         setTotalPages(2);
-        setMaxIndex(11);
+        setMaxIndex(10);
     }
 
     @Override
@@ -28,7 +28,6 @@ public class weaponShop extends shop {
         inventory[8] = new item_Equipment("Gladiators Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
         inventory[9] = new item_Equipment("Jesters Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
         inventory[10] = new item_Equipment("Emperors Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
-        inventory[11] = new item_Equipment("Valkyrie", 10, 10, 4, 0, 8, Item.Slot.weapon, "A legend made reality", 0, 0);
         setShopInventory(inventory);
     }
 
