@@ -19,6 +19,8 @@ public class StartScreen extends extraFunctions {
         initStart();
     }
 
+    MapControl reloader;
+
     enum startState {startScreen, loadScreen, credits}
     startState state = startState.startScreen;
 

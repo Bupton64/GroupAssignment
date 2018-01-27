@@ -12,19 +12,6 @@ public class saveGame {
     }
 
 
-    public void getFile(int index) {
-
-        if(index == 1) {
-            fileName = "SaveOne.txt";
-        }else if(index == 2) {
-            fileName = "SaveTwo.txt";
-        }else if(index == 3) {
-            fileName = "SaveThree.txt";
-        }
-
-
-    }
-
     public void save(String fileName) {
         PrintWriter pw = null;
         try {

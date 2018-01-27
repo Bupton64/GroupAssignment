@@ -62,12 +62,11 @@ public class AdventureMode extends GameEngine {
         mapController = new MapControl(playerMan,collisionDetector);
         menuController = new Menu(playerMan);
         shopController = new ShopControl(playerMan);
-        cutScene = new cutScene();
-        saveController = new saveGame(playerMan);
 
+        saveController = new saveGame(playerMan);
+        cutScene = new cutScene();
         endCutSceneController = new endCutScene();
 
-        playerMan.setCurrentMapLocation(21); //< Change what map you start on
         stateChanger = 0;
         state = GameState.MainMenu;
 
@@ -116,8 +115,10 @@ public class AdventureMode extends GameEngine {
                 state = GameState.CutScene;
                 startAudioLoop(cutSceneMusic);
                 break;
+
         }
        stateChanger = 0;
+
         if(mute){
             stopAudioLoop(villageMusic);
             stopAudioLoop(menuMusic);

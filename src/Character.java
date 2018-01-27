@@ -330,6 +330,9 @@ public class Character extends Statblock {
 
     public void init(){
         //Quest Init - Zane
+        setMapPosX(250);
+        setMapPosY(240);
+        setCurrentMapLocation(21);
         questStage = 0;
         currentQuest = new quest_blankQuest();
 

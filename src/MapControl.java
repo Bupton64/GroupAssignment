@@ -386,14 +386,13 @@ public class MapControl extends extraFunctions {
                     break;
                 case 51:
                     currentMap = new plains_A9_church();
-                    if(playerMan.getQuestStage() == 19){
+                    if(playerMan.getQuestStage() >= 15 && playerMan.getQuestStage() <= 19){
                         mapNpcs[0] = new npc_plains_E9_byBridge(170,170);
                         numOfNpc = 1;
 
                     }
-                    if(playerMan.getQuestStage() == 18){
-                        mapNpcs[0] = new npc_plains_A11_Razuul();
-                        mapNpcs[1] = new npc_plains_priest(320,200);
+                    if(playerMan.getQuestStage() >= 15 && playerMan.getQuestStage() <= 18){
+                        mapNpcs[1] = new npc_plains_A11_Razuul();
 
                         numOfNpc = 2;
                     }
@@ -506,8 +505,12 @@ public class MapControl extends extraFunctions {
                     playerMan.setMonsterGen(2);
                     playerMan.setQuestStage(15);
                     playerMan.changeQuest();
-                } else if (playerMan.getCurrentQuestName() == "No Escape From Reality"){
-                    playerMan.setMonsterGen(2);
+                } else if (playerMan.getQuestStage() == 18){
+                    playerMan.setMonsterGen(3);
+                    playerMan.setQuestStage(19);
+                    playerMan.changeQuest();
+                }else if (playerMan.getCurrentQuestName() == "No Escape From Reality") {
+                    playerMan.setMonsterGen(4);
                     playerMan.setQuestStage(19);
                     playerMan.changeQuest();
                 }

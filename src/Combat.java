@@ -1417,6 +1417,10 @@ public class Combat extends extraFunctions{
             enemy = new monster_BOSS_Valliard();
         }else if(monsterToFight == 2){
             enemy = new monster_BOSS_priest();
+        }else if(monsterToFight == 3){
+            enemy = new monster_BOSS_razuulActual();
+        }else if(monsterToFight == 4){
+            enemy = new monster_BOSS_razuulEmpowered();
         }
 
 
