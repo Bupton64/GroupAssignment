@@ -1,6 +1,9 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.String;
 
 
@@ -829,7 +832,207 @@ public class Menu extends extraFunctions {
     }
 
 
-    public int keyPressed(KeyEvent e) {
+
+    ////////////////////////////////////
+    ///
+    ///     Save Game
+    ///
+    ////////////////////////////////////
+
+    Image startBackground;
+    Image swordSprite;
+    Image swordSprite2;
+
+    private String loadOneQuestName;
+    private String loadOneLevel;
+    private boolean loadOneDisplay;
+
+
+    private String loadTwoQuestName;
+    private String loadTwoLevel;
+    private boolean loadTwoDisplay;
+
+
+    private String loadThreeQuestName;
+    private String loadThreeLevel;
+    private boolean loadThreeDisplay;
+
+    private boolean getSaveFiles;
+
+
+    public void initSaveGame(){
+        Image paper = loadImage("paper.png");
+        Image sword = loadImage("sword.png");
+        Image sword2 = loadImage("sword2.png");
+        startBackground = subImage(paper, 0, 0, 768, 1028);
+        swordSprite = subImage(sword, 0, 0, 1793, 445);
+        swordSprite2 = subImage(sword2, 0, 0, 1793, 445);
+
+        getSaveFiles = false;
+
+
+        loadOneQuestName = "";
+        loadOneLevel = "";
+        loadOneDisplay = false;
+
+        loadTwoQuestName = "";
+        loadTwoLevel = "";
+        loadTwoDisplay = false;
+
+        loadThreeQuestName = "";
+        loadThreeLevel = "";
+        loadThreeDisplay = false;
+    }
+
+    public void getSaveFiles(){
+        String temp;
+        try (BufferedReader br = new BufferedReader(new FileReader("SaveOne.txt"))) {
+            temp = br.readLine();
+            if(temp == null){
+
+
+            }else{
+                loadOneQuestName = temp;
+                loadOneLevel = br.readLine();
+                loadOneDisplay = true;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader("SaveTwo.txt"))) {
+            temp = br.readLine();
+            if(temp == null){
+
+
+            }else{
+                loadTwoQuestName = temp;
+                loadTwoLevel = br.readLine();
+                loadTwoDisplay = true;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader("SaveThree.txt"))) {
+            temp = br.readLine();
+            if(temp == null){
+
+
+            }else{
+                loadThreeQuestName = temp;
+                loadThreeLevel = br.readLine();
+                loadThreeDisplay = true;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    public void updateSave(){
+        if(!getSaveFiles){
+            getSaveFiles();
+            getSaveFiles = true;
+        }
+
+        // File file = new File("SaveOne.txt");
+
+    }
+
+
+    public void drawSaveGame(Graphics2D g){
+
+        changeBackgroundColor(black,g);
+        drawImage(startBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
+        changeColor(black, g);
+        drawBoldText(330, 150, "Load Files", "Felix Titling", 30, g);
+        changeColor(red, g);
+        drawBoldText(280, 150 + 80, "Save_1", "Felix Titling", 20, g);
+        if(loadOneDisplay) {
+            drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
+            drawBoldText(390, 240, "Level " +loadOneLevel, "Felix Titling", 15, g);
+        }else{
+            drawBoldText(352, 230, "Empty", "Felix Titling", 15, g);
+        }
+
+        drawBoldText(280, 150 + 160, "Save_2", "Felix Titling", 20, g);
+        if(loadTwoDisplay) {
+            drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
+            drawBoldText(390, 320, "Level " +loadTwoLevel, "Felix Titling", 15, g);
+        }else{
+            drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
+        }
+
+        drawBoldText(280, 150 + 240, "Save_3", "Felix Titling", 20, g);
+        if(loadThreeDisplay) {
+            drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
+            drawBoldText(390, 400, "Level " +loadThreeLevel, "Felix Titling", 15, g);
+        }else{
+            drawBoldText(392, 390, "Empty", "Felix Titling", 15, g);
+        }
+
+
+        drawImage(swordSprite, 500, cursorPositionY - 20, 89, 22, g);
+        drawImage(swordSprite2, 250, cursorPositionY - 20, 89, 22, g);
+    }
+
+    ////////////////////////////////////
+    ///
+    ///     Save Game
+    ///
+    ////////////////////////////////////
+
+    enum MenuState {CharacterMenu, SaveMenu, EquipmentMenu, InventoryMenu}
+    MenuState state = MenuState.CharacterMenu;
+
+    public int keyPressed(KeyEvent e){
+        if(state == MenuState.CharacterMenu){
+            return characterKeyPressed(e);
+        }else if(state == MenuState.SaveMenu){
+            return saveKeyPressed(e);
+        }
+        return 0;
+    }
+
+    public int saveKeyPressed(KeyEvent e){
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            state = MenuState.CharacterMenu;
+        }
+        if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
+            playAudio(clicks);
+            cursorPositionY += 80;
+        }
+        if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 230) {
+            cursorPositionY -= 80;
+            playAudio(clicks);
+        }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(cursorPositionY == 230 && loadOneDisplay){
+               // loadController.loadGame(player,"SaveOne.txt");
+                return 1;
+
+            }else if(cursorPositionY == 310 && loadTwoDisplay){
+              //  loadController.loadGame(player,"SaveTwo.txt");
+                return 1;
+            }else if(cursorPositionY == 390 && loadThreeDisplay){
+            //    loadController.loadGame(player,"SaveThree.txt");
+                return 1;
+            }
+        }
+
+
+        return 0;
+    }
+
+
+    public int characterKeyPressed(KeyEvent e) {
+
 
 
         if (chaMenu) {
