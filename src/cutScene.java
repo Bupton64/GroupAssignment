@@ -260,6 +260,7 @@ public class cutScene extends extraFunctions {
                     changeColor(white, g);
                     drawImage(wizardDown[1], wizardPosX, 50, g);
                     drawImage(dialogueBack, 90, 400, 620, 165, g);
+                    drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
                     drawText(110, 450, "MWA HA HA HA! There's no stopping me now! Once I gain control", "Times New Roman", 20, g);
                     drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
                 }
@@ -288,6 +289,7 @@ public class cutScene extends extraFunctions {
                 }
                 changeColor(white, g);
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
+                drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
                 drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY FOR", "Times New Roman", 20, g);
                 drawText(110, 475, "THIS! I'll travel East to the town of ______ to warn them. They need to ", "Times New Roman", 20, g);
                 drawText(110, 500, "be prepared.", "Times New Roman", 20, g);
