@@ -249,7 +249,7 @@ public class Menu extends extraFunctions {
         p3 = loadAudio("page3.wav");
         leave = loadAudio("leave.wav");
         chaMenu = true;
-        cursorPositionY = 440;
+        cursorPositionY = 410;
         background1 = subImage(menuSprite, 0, 0, 800, 600);
         background2 = subImage(inventorySprite, 0, 0, 800, 600);
         background3 = subImage(equipmentSprite, 0, 0, 800, 600);
@@ -1037,7 +1037,7 @@ public class Menu extends extraFunctions {
 
             }else if(menuPointerPosY == 310 ){
               //  loadController.loadGame(player,"SaveTwo.txt");
-                loadController.save("SaveTwo.txt");
+                 loadController.save("SaveTwo.txt");
                 getSaveFiles = false;
                 updateSave();
                 return 0;

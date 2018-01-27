@@ -152,7 +152,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
         if(monsterDelay > 6){
             monsterDelay = 0;
-           if(Math.random() * 20 > 20) { // was 17
+           if(Math.random() * 20 > 18) { // was 17
              return  checkCombat(playerMan);
            }
         }

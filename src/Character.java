@@ -400,8 +400,8 @@ public class Character extends Statblock {
 
         // Test Functions
         setGpTotal(1);
-        setQuestStage(26);
-        currentQuest = new quest_OneLastThing();
+//        setQuestStage(26);
+//        currentQuest = new quest_OneLastThing();
 //        currentQuest.setState(Quest.questState.preQuest);
         setXPTotal(0); //< TESTERS
         checkLevelUp(); //< Tester

@@ -38,7 +38,7 @@ public class plains_E5 extends Map {
                
                 return true;
         }
-        if(player.getMapPosX() < 410 && player.getMapPosX() > 370 && player.getMapPosY() > 240 && player.getMapPosY() < 270){
+        if(player.getMapPosX() < 410 && player.getMapPosX() > 370 && player.getMapPosY() > 240 && player.getMapPosY() < 250){
             player.setCurrentMapLocation(55);
             flicker = false;
             player.setMapPosX(380);
