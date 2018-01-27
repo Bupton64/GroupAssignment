@@ -10,7 +10,7 @@ public class quest_AWizardsProblem extends Quest {
 
     quest_AWizardsProblem(){
         setQuestName("A Wizards Problem");
-        killCount = 4;
+        killCount = 0;
         toBeKilled = 5;
         questFinished = false;
         state = questState.preQuest;
@@ -35,7 +35,7 @@ public class quest_AWizardsProblem extends Quest {
         }
         if(getState() == questState.completedQuest && !questFinished) {
             changeColor(white, g);
-            drawText(510, 30, "Complete", "Arial", 30, g);
+            drawText(510, 30, "Return to wizard", "Arial", 30, g);
         }
 
 

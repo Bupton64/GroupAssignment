@@ -45,7 +45,6 @@ public class npc_plains_priest extends  NPC {
 
     Dialogue listTwo;
 
-    Dialogue listThree;
 
     public void initDialogue() {
 
@@ -58,8 +57,7 @@ public class npc_plains_priest extends  NPC {
         listTwo = d2;
 
 
-        Dialogue d5 = new Dialogue(null,true,true,"round 2 habibs?","","","");
-        listThree = d5;
+
 
     }
 
@@ -70,9 +68,7 @@ public class npc_plains_priest extends  NPC {
         if(questStage == 14){
             currentDialogue = listTwo;
         }
-        if(questStage == 18){
-            currentDialogue = listThree;
-        }
+
     }
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){

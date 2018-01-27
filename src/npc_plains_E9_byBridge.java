@@ -61,7 +61,7 @@ public class npc_plains_E9_byBridge extends  NPC {
         Dialogue d4 = new Dialogue(null,false,true,"Just give me a second to prepare. You can have a head start!","You'll need it loser ","","");
         listFour= d4;
 
-        Dialogue d5 = new Dialogue(null, false, true,"Today seems like another great day!, apart from the whole","end of the world thing!","","");
+        Dialogue d5 = new Dialogue(null, false, true,"Well hello again Bjarne!","Thanks again for the whole saving my life thing, hehe.","Maybe after Therox is gone we could go for an ale?","");
         listFive = d5;
     }
 

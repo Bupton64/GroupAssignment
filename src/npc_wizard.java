@@ -55,6 +55,7 @@ public class npc_wizard extends  NPC {
     Dialogue listSeven;
     Dialogue listEight;
     Dialogue listNine;
+    Dialogue listNineHalf;
     Dialogue listTen;
     Dialogue listEleven;
     Dialogue listTwelve;
@@ -105,10 +106,13 @@ public class npc_wizard extends  NPC {
         Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm... It appears this book belongs to the priest.","I fear we have a spy in our clutches Young Bjarne. You need to go"," confront him. I saw him in town earlier, After you confront him,"," find me I'll be in town, This situation seems to be dire!");
         listNine = d16;
 
+        Dialogue d017 = new Dialogue(null,false,true,"Go confront the priest and get to the bottom of this","","","");
+        listNineHalf = d017;
+
 
         Dialogue d20 = new Dialogue(null,true,true,"find the symbol, I think i remember leaving it somewhere northeast.","","","");
         Dialogue d19 = new Dialogue(d20,false,false,"To defeat him you will need alot more than strength.","You will need to go collect my Holy Symbol to stand a chance.","I think i left it somewhere north east of town.","");
-        Dialogue d18 = new Dialogue(d19,false,false,"Bjarne , He came through here and took Sally.","He is one of Therox's Generals (insertNameHere). ","A demon from the underworld.","");
+        Dialogue d18 = new Dialogue(d19,false,false,"Bjarne , He came through here and took Sally.","He is one of Therox's Generals Razuul. ","A demon from the underworld.","");
         listTen = d18;
 
         Dialogue d21 = new Dialogue(null,false,true,"I think I remember Seeing the Holy symbol east of my House.","","","");
@@ -154,6 +158,7 @@ public class npc_wizard extends  NPC {
             case 12:
                 return 12;
             case 14:
+                currentDialogue = listNineHalf;
                 return 14;
             case 16:
                 currentDialogue = listEleven;

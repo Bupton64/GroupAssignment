@@ -49,7 +49,7 @@ public class quest_TheMissingPeices extends Quest {
         }
         if(getState() == questState.completedQuest){
             changeColor(white, g);
-            drawText(450, 30, "Complete", "Arial", 30, g);
+            drawText(450, 30, "Return to Sevar", "Arial", 30, g);
         }
 
     }

@@ -386,7 +386,7 @@ public class MapControl extends extraFunctions {
 
                     }
                     if(playerMan.getQuestStage() == 18){
-                        mapNpcs[0] = new npc_plains_E9_byBridge(170,170);
+                        mapNpcs[0] = new npc_plains_A11_Razuul();
                         mapNpcs[1] = new npc_plains_priest(320,200);
 
                         numOfNpc = 2;
