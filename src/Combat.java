@@ -673,10 +673,7 @@ public class Combat extends extraFunctions{
             numOfPages = 1 + ((player.getNumOfAbilities()-1) / 8);
         }
 
-        if(menuOption == 0){
-            spellBookPointerX = 70;
-            spellBookPointerY = 485;
-        }
+
         if(menuOption >= 1 && menuOption <= 10){
             spellBookPointerX = 70;
             spellBookPointerY = 120 + (40 * (menuOption-1));
@@ -756,9 +753,7 @@ public class Combat extends extraFunctions{
             }
 
 
-        if(menuOption == 0){
-            drawText(460,140,"Return","Times New Roman",20,g);
-        }
+
 
         if(menuOption == 20){
             drawText(460,140,"Next Page","Times New Roman",20,g);
@@ -796,11 +791,8 @@ public class Combat extends extraFunctions{
 
 
 
-        changeColor(red,g);
-        drawCircle(145,505,30,4,g);
-        drawLine(125,485,165,525,3,g);
-        drawLine(165,485,125,525,3,g);
 
+        drawBoldText(110,535,"Back[ESC]","Felix titling",14,g);
 
 
         drawImage(spellBookPointer, spellBookPointerX,spellBookPointerY,40,40,g);
@@ -832,10 +824,10 @@ public class Combat extends extraFunctions{
 
 
     public void updateItemMenu(double dt){
-        if(menuOption == 0){
-            spellBookPointerX = 70;
-            spellBookPointerY = 485;
-        }
+//        if(menuOption == 0){
+//            spellBookPointerX = 70;
+//            spellBookPointerY = 485;
+//        }
         if(menuOption >= 1 && menuOption <= 9){
             spellBookPointerX = 70;
             spellBookPointerY = 120 + (40 * (menuOption-1));
@@ -860,7 +852,7 @@ public class Combat extends extraFunctions{
                 changeColor(Color.darkGray, g);
                 changeColor(Color.gray, g);
                 drawText(110, 150 + 40 * (j - 1), playerInventory[i].getName(), "Times new Roman", 20, g);
-                drawText(250, 150 + 40 * (j - 1), "x" + Integer.toString(playerInventory[i].getCounter()), "Times New Roman", 20, g);
+                drawText(300, 150 + 40 * (j - 1), "x" + Integer.toString(playerInventory[i].getCounter()), "Times New Roman", 20, g);
 
 
                 if (menuOption == j) {
@@ -877,10 +869,8 @@ public class Combat extends extraFunctions{
         }
 
 
-        changeColor(red,g);
-        drawCircle(145,505,30,4,g);
-        drawLine(125,485,165,525,3,g);
-        drawLine(165,485,125,525,3,g);
+
+          drawBoldText(110,535,"Back[ESC]","Felix titling",14,g);
 
         drawImage(spellBookPointer, spellBookPointerX,spellBookPointerY,40,40,g);
 
@@ -1654,13 +1644,13 @@ public class Combat extends extraFunctions{
             if(menuOption == 1){
                 //abilitie
                 state = CombatState.abilityMenu;
-                menuOption = 0;
+                menuOption = 1;
 
             }
             if(menuOption == 2){
                 //item
                 state = CombatState.itemMenu;
-                menuOption = 0;
+                menuOption = 1;
             }
             if(menuOption == 3){
                 escapeChance = false;
@@ -1672,10 +1662,7 @@ public class Combat extends extraFunctions{
 
     public void keyPressedAbilityMenu(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(menuOption == 0){
-                state = CombatState.playerTurn;
-                menuOption = 1;
-            }else if(menuOption == 20) {
+           if(menuOption == 20) {
                 currentPageNum++;
                 menuOption = 1;
             }else if(menuOption == 21){
@@ -1693,6 +1680,12 @@ public class Combat extends extraFunctions{
             }
         }
 
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            state = CombatState.playerTurn;
+            menuOption = 1;
+
+        }
+
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
 
 
@@ -1707,7 +1700,7 @@ public class Combat extends extraFunctions{
             }else if(menuOption < numOfSpellsToDisplay - ((currentPageNum-1) * 8)){
                 menuOption++;
             }else{
-                menuOption = 0;
+                menuOption = 1;
             }
 
         }
@@ -1721,7 +1714,7 @@ public class Combat extends extraFunctions{
                 if(nextPageExist) {
                     menuOption = 20;
                 }
-            }else if(menuOption > 0 ){
+            }else if(menuOption > 1 ){
                 menuOption--;
             }else{
                 menuOption = numOfSpellsToDisplay - ((currentPageNum-1) * 8) ;
@@ -1753,29 +1746,33 @@ public class Combat extends extraFunctions{
     int lastMenuOption;
     public void keyPressedItemMenu(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(menuOption == 0){
-                state = CombatState.playerTurn;
-                menuOption = 2;
-            }else {
-
-                    lastItemUsed = playerInventory[player.SearchBag(menuOption)];
-                    menuOption = 0;
-                    playerTurnSetUp = true;
-                    useItem = true;
-                    displayItem = true;
-                    state = CombatState.playerAttack;
-                }
+             {
+                lastItemUsed = playerInventory[player.SearchBag(menuOption)];
+                menuOption = 0;
+                playerTurnSetUp = true;
+                useItem = true;
+                displayItem = true;
+                state = CombatState.playerAttack;
             }
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            state = CombatState.playerTurn;
+            menuOption = 2;
+
+        }
+
+
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
             if(menuOption < player.getBagSize()){
                 menuOption++;
             }else{
-                menuOption = 0;
+                menuOption = 1;
             }
 
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
-            if (menuOption > 0) {
+            if (menuOption > 1) {
                 menuOption--;
             } else {
                 menuOption = player.getBagSize();
@@ -1795,24 +1792,24 @@ public class Combat extends extraFunctions{
             right = true;
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_R){
-            numOfLogs = 0;
-            chestOpen = false;
-            enemy.setCurrentHP(enemy.getMaxHP());
-            player.setCurrentHP(player.getMaxHP());
-            enemy.setEnergy(0);
-            player.setEnergy(0);
-            enemy.setAlive(true);
-            player.setCombatPosY(200);
-            player.setCombatPosX(150);
-            chestOpen = false;
-            kill[0] = false;
-            for(int i = 0;i < 6;i++){
-                logStrings[i] = "";
-            }
-
-            state = CombatState.playerTurn;
-        }
+//        if(e.getKeyCode() == KeyEvent.VK_R){
+//            numOfLogs = 0;
+//            chestOpen = false;
+//            enemy.setCurrentHP(enemy.getMaxHP());
+//            player.setCurrentHP(player.getMaxHP());
+//            enemy.setEnergy(0);
+//            player.setEnergy(0);
+//            enemy.setAlive(true);
+//            player.setCombatPosY(200);
+//            player.setCombatPosX(150);
+//            chestOpen = false;
+//            kill[0] = false;
+//            for(int i = 0;i < 6;i++){
+//                logStrings[i] = "";
+//            }
+//
+//            state = CombatState.playerTurn;
+//        }
 
     }
 

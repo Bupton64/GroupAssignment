@@ -190,32 +190,39 @@ public class saveGame {
 
             temp.setQuestStage(Integer.parseInt(line));
             line = br.readLine();
-            if (line == "empty") {
+            if (line.equals("empty")) {
                 temp.setCurrentQuest(new quest_blankQuest());
-            } else if (line == "A Wizards Problem") {
+            } else if (line.equals("A Wizards Problem")){
                 temp.setCurrentQuest(new quest_AWizardsProblem());
-            } else if (line == "The Road To Riches") {
+            } else if (line.equals("The Road To Riches")) {
                 temp.setCurrentQuest(new quest_TheRoadToRiches());
-            } else if (line == "The Missing Peices") {
+            } else if (line.equals("The Missing Peices")) {
                 temp.setCurrentQuest(new quest_TheMissingPeices());
-            } else if (line == "A Spy In The Clutches") {
+            } else if (line.equals("A Spy In The Clutches")) {
                 temp.setCurrentQuest(new quest_ASpyInTheClutches());
-            } else if (line == "No Escape From Reality") {
+            } else if (line.equals("No Escape From Reality")) {
                 temp.setCurrentQuest(new quest_NoEscapeFromReality());
-            } else if (line == "A Wandering Soul") {
+            } else if (line.equals("A Wandering Soul")) {
                 temp.setCurrentQuest(new quest_AWanderingSoul());
-            } else if (line == "One Last Thing") {
+            } else if (line.equals("One Last Thing")) {
                 temp.setCurrentQuest(new quest_OneLastThing());
             }
              line = br.readLine();
+
             if(line.equals("preQuest")){
-                temp.getCurrentQuest().setState(Quest.questState.preQuest);
+                temp.setQuestState(Quest.questState.preQuest);
+            //    temp.getCurrentQuest().setState(Quest.questState.preQuest);
             }else if(line.equals("inQuest")){
-                temp.getCurrentQuest().setState(Quest.questState.inQuest);
+                temp.setQuestState(Quest.questState.inQuest);
+
+
+           //     temp.getCurrentQuest().setState(Quest.questState.inQuest);
             }else if(line.equals("completedQuest")){
-                temp.getCurrentQuest().setState(Quest.questState.completedQuest);
+                temp.setQuestState(Quest.questState.completedQuest);
+           //     temp.getCurrentQuest().setState(Quest.questState.completedQuest);
             }else if(line.equals("extraQuest")){
-                temp.getCurrentQuest().setState(Quest.questState.extraQuest);
+                temp.setQuestState(Quest.questState.extraQuest);
+            //    temp.getCurrentQuest().setState(Quest.questState.extraQuest);
             }
 
             line = br.readLine();
