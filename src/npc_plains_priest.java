@@ -53,7 +53,7 @@ public class npc_plains_priest extends  NPC {
         listOne = d1;
 
         Dialogue d4 = new Dialogue(null,true,true,"Or will you try to stop me? hahaha","","","");
-        Dialogue d3 = new Dialogue(d4,false,false, "The dark lord is near, you have lost,","And now your friend Julien shall die.","","");
+        Dialogue d3 = new Dialogue(d4,false,false, "The dark lord is near, you have lost,","And now your friend Julian shall die.","","");
         Dialogue d2 = new Dialogue(d3,false,false, "Hello Again little man. ","I see you found my Book, well no problem the time has come for action","","");
         listTwo = d2;
 

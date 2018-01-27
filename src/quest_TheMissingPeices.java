@@ -44,7 +44,7 @@ public class quest_TheMissingPeices extends Quest {
     public void drawQuest(Graphics2D g){
         if(getState() == questState.inQuest) {
             changeColor(white, g);
-            drawText(450, 30, numOfCollectables +"/7 Orbs Collected", "Arial", 30, g);
+            drawText(450, 30, numOfCollectables +"/7 Crystals Collected", "Arial", 30, g);
 
         }
         if(getState() == questState.completedQuest){

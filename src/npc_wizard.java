@@ -86,8 +86,8 @@ public class npc_wizard extends  NPC {
         Dialogue d8 = new Dialogue(null,false,true,"Have you spoken to Camrath yet? you'll find her in the East","","","");
         listFour = d8;
 
-        Dialogue d10 = new Dialogue(null,true,true,"Can you go retreive my 7 Orbs from the south?","","","");
-        Dialogue d9 = new Dialogue(d10,false,false,"That's quite the sword! You must use it wisely and well. Train with it, ","get to know it and let it know you. There is something else you can do.","Therox's creatures have managed to steal 7 of my Magical orbs. I need you","to go and retreive the orbs, I saw them running to the south.");
+        Dialogue d10 = new Dialogue(null,true,true,"Can you go retrieve my 7 Crystals from the south?","","","");
+        Dialogue d9 = new Dialogue(d10,false,false,"That's quite the sword! You must use it wisely and well. Train with it, ","get to know it and let it know you. There is something else you can do.","Therox's creatures have managed to steal 7 of my Magical crystals. I need you","to go and retrieve the crystals, I saw them running to the south.");
         listFive = d9;
 
         Dialogue d11 = new Dialogue(null,false,true,"I saw the creatures run south of town, Best of luck Bjarne!","","","");
@@ -95,14 +95,14 @@ public class npc_wizard extends  NPC {
 
         Dialogue d14 = new Dialogue(null,true,true,"Can you go and look around town for some clues","Check the houses. I have a bad feeling about this!","","");
         Dialogue d13 = new Dialogue(d14,false,false,"Oh No....","I can sense dark energy in town, there must be something hiding.","","");
-        Dialogue d12 = new Dialogue(d13,false,false,"Oh you have them! Hope that wasn't to much trouble.","Alright now lets see how they are getting inside.","","");
+        Dialogue d12 = new Dialogue(d13,false,false,"Oh you have them! Hope that wasn't too much trouble.","Alright now lets see how they are getting inside.","","");
         listSeven = d12;
 
         Dialogue d15 = new Dialogue(null,false,true,"How goes your search? I think the houses in town","might have some clues.","","");
         listEight = d15;
 
         Dialogue d17 = new Dialogue(null,true,true,"Can you go confront the priest in Town?","","","");
-        Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm............ It appears this book belongs to the priest.","I fear we have a spy in our clutches Young Bjarne. You need to go"," confront him. I saw him in town earlier, After you confront him,"," find me I'll be in town, This situation seems to be dire!");
+        Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm... It appears this book belongs to the priest.","I fear we have a spy in our clutches Young Bjarne. You need to go"," confront him. I saw him in town earlier, After you confront him,"," find me I'll be in town, This situation seems to be dire!");
         listNine = d16;
 
 
@@ -130,7 +130,7 @@ public class npc_wizard extends  NPC {
         listFifteen = d28;
 
         Dialogue d30 = new Dialogue(null,true,true,"We need to make a stand soon, Take your time to get ready.","Therox will not fall easily, When you are ready meet me ","at my tower in the North.","");
-        Dialogue d29 = new Dialogue(d30,false,false,"Hmmmm. I see Camrath is preparing that means we are almost ready.","There is one last thing you must know Bjarne. Dijkstra is not just a wanderer,","He is also the King. The last living eir of Javania.","");
+        Dialogue d29 = new Dialogue(d30,false,false,"Hmmmm. I see Camrath is preparing that means we are almost ready.","There is one last thing you must know Bjarne. Dijkstra is not just a ","wanderer, He is also the King. The last living eir of Javaniah.","");
         listSixteen = d29;
 
         Dialogue d31 = new Dialogue(null,false,true,"I'll meet you at my house when you are ready.","","","");

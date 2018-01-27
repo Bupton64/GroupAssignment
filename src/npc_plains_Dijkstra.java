@@ -54,10 +54,10 @@ public class npc_plains_Dijkstra extends  NPC {
         listOne = d1;
 
         Dialogue d3 = new Dialogue(null,true,true,"Go Search the picture frame in the church, And then visit Camrath the blacksmith.","","","");
-        Dialogue d2 = new Dialogue(d3,false,false,"Hello Adventurer, I know why you are here.....","I can get you to Therox. although it will not be easy","I hid something in the church many years ago.","Go to the church and search behind the picture frame. return to me after.");
+        Dialogue d2 = new Dialogue(d3,false,false,"Hello Adventurer, I know why you are here.....","I can get you to Therox. although it will not be easy","I hid something in the church many years ago.","Go to the church and search behind the picture frame.");
         listTwo = d2;
 
-        Dialogue d4 = new Dialogue(null,false,true,"The church is just west of here. Take what you find to Camrath","","","");
+        Dialogue d4 = new Dialogue(null,false,true,"The church is just west of here. ","Take what you find to Camrath.","","");
         listThree = d4;
     }
 
@@ -93,7 +93,7 @@ public class npc_plains_Dijkstra extends  NPC {
     public int updateConvo(){
         switch (this.questStage){
             case 22:
-                currentDialogue = listTwo;
+                currentDialogue = listThree;
                 return 22;
             default:
                 return 0;

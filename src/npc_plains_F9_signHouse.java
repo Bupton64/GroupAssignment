@@ -40,23 +40,18 @@ public class npc_plains_F9_signHouse extends  NPC {
 
     Dialogue listOne;
 
-    Dialogue listTwo;
+
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"Closed.","","","");
-        listOne = d1;
 
-        Dialogue d2 = new Dialogue(null,false,true,"Open","","","");
-        listTwo = d2;
+        Dialogue d1 = new Dialogue(null,false,true,"Open","","","");
+        listOne = d1;
     }
 
     public void updateDialogue(int questStage){
-        if(questStage < 7) {
+
             currentDialogue = listOne;
-        }else{
-            currentDialogue = listTwo;
-        }
 
     }
 
