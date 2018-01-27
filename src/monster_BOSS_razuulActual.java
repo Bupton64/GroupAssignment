@@ -23,7 +23,7 @@ public class monster_BOSS_razuulActual extends Monster {
         setName("Razuul");
         setEnergy(0);
 
-        Image sprite = loadImage("monster_lich.png");
+        Image sprite = loadImage("monster_lich2.png");
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);
