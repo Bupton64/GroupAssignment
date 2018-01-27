@@ -220,7 +220,8 @@ public class AdventureMode extends GameEngine {
                     saveController.save();
                 }
                 if(e.getKeyCode() == KeyEvent.VK_B){
-                    saveController.loadGame();
+                    saveController.loadGame(playerMan);
+                    mapController.setReloadMap(true);
                 }
 
                 break;

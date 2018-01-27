@@ -32,7 +32,7 @@ public class MapControl extends extraFunctions {
      */
     private boolean firstMap; //< Checks if this the first map to load when game starts
     private boolean swapMap; //< checks if map should be changed
-
+    private boolean reloadMap;
 
     private Map currentMap; //< Holds current map data
     private NPC[] mapNpcs; //< Objects to hold NPC data
@@ -42,7 +42,13 @@ public class MapControl extends extraFunctions {
 
     private Collision collisionDetector;
 
+    public boolean isReloadMap() {
+        return reloadMap;
+    }
 
+    public void setReloadMap(boolean reloadMap) {
+        this.reloadMap = reloadMap;
+    }
 
     public void drawMap(Graphics g) {
         if (!firstMap) {
@@ -425,7 +431,7 @@ public class MapControl extends extraFunctions {
     ///
     //////////////////////////////////
 
-    private boolean reloadMap;
+
     private int updateQuestState;
     private int currentNpcInteraction;
     private boolean checkQuestChange;
