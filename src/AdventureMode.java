@@ -269,6 +269,7 @@ public class AdventureMode extends GameEngine {
             if(timer >= 1){
                 if(generateCombat){
                     stateChanger = 2;
+                    playerMan.setCombatActive(true);
                     combatMode = new Combat(playerMan, playerMan.getMonsterGen());
                     generateCombat = false;
                 }
