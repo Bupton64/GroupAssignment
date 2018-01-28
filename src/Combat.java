@@ -939,8 +939,9 @@ public class Combat extends extraFunctions{
 
           drawBoldText(110,535,"Back[ESC]","Felix titling",14,g);
 
-        drawImage(spellBookPointer, spellBookPointerX,spellBookPointerY,40,40,g);
-
+        if(player.getBagSize() > 0) {
+            drawImage(spellBookPointer, spellBookPointerX, spellBookPointerY, 40, 40, g);
+        }
 
     }
 
@@ -2022,14 +2023,16 @@ public class Combat extends extraFunctions{
     int lastMenuOption;
     public void keyPressedItemMenu(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            playAudio(exitClick);
-             {
-                lastItemUsed = playerInventory[player.SearchBag(menuOption)];
-                menuOption = 0;
-                playerTurnSetUp = true;
-                useItem = true;
-                displayItem = true;
-                state = CombatState.playerAttack;
+            if(player.getBagSize() > 0) {
+                playAudio(exitClick);
+                {
+                    lastItemUsed = playerInventory[player.SearchBag(menuOption)];
+                    menuOption = 0;
+                    playerTurnSetUp = true;
+                    useItem = true;
+                    displayItem = true;
+                    state = CombatState.playerAttack;
+                }
             }
         }
 

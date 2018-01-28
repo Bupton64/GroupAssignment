@@ -879,7 +879,7 @@ public class Character extends Statblock {
 
 
                 currentQuest.giveReward(this);
-                currentQuest = new quest_TheMissingPeices();
+                currentQuest = new quest_TheMissingPieces();
                 questStage = 9;
                 break;
             case 9:

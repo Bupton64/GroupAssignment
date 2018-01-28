@@ -209,8 +209,8 @@ public class saveGame {
                 temp.setCurrentQuest(new quest_AWizardsProblem());
             } else if (line.equals("The Road To Riches")) {
                 temp.setCurrentQuest(new quest_TheRoadToRiches());
-            } else if (line.equals("The Missing Peices")) {
-                temp.setCurrentQuest(new quest_TheMissingPeices());
+            } else if (line.equals("The Missing Pieces")) {
+                temp.setCurrentQuest(new quest_TheMissingPieces());
             } else if (line.equals("A Spy In The Clutches")) {
                 temp.setCurrentQuest(new quest_ASpyInTheClutches());
             } else if (line.equals("No Escape From Reality")) {
