@@ -78,7 +78,7 @@ public class npc_plains_E9_byField extends  NPC {
         super.drawConvo(g, playerName, currentState, questName, questStage);
     }
 
-    
+
 
 
 
