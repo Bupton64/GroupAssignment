@@ -77,7 +77,8 @@ public class npc_plains_Dijkstra extends  NPC {
         Dialogue d4 = new Dialogue(null,false,true,"The church is just west of here. ","Take what you find to Camrath.","","");
         listThree = d4;
 
-        Dialogue d5 = new Dialogue(null,true,true,"Hello... Is it me Your Looking for...","I can see it in your eyes","I can see it in your... Heart","");
+        Dialogue d6 = new Dialogue(null,true,true,"Teleport Now?","","Add more here later","");
+        Dialogue d5 = new Dialogue(d6,false,false,"Bjarne! Glad to see you made it in time.","We have managed to create a location spell that will send ","You, Sevar and Therox to an isolated arena away from his army.","This will be your best chance to finish him.");
         listFour = d5;
     }
 

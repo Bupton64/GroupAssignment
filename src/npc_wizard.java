@@ -141,7 +141,7 @@ public class npc_wizard extends  NPC {
         Dialogue d31 = new Dialogue(null,false,true,"I'll meet you at my house when you are ready.","","","");
         listSeventeen = d31;
 
-        Dialogue d32 = new Dialogue(null,false,true,"Teleport to Therox","","","");
+        Dialogue d32 = new Dialogue(null,false,true,"Hello Bjarne, Make sure you are ready and stocked up before we Go.","Once we are there, we cannot turn back","Try Grinding Mobs for Some levels to get an advantage!","");
         listEightteen = d32;
 
     }

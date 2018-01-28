@@ -86,7 +86,7 @@ public class npc_plains_H9 extends  NPC {
         Dialogue d9 = new Dialogue(null,false,true,"Make haste Bjarne, Time is of the essence.","","","");
         listEight = d9;
 
-        Dialogue d10 = new Dialogue(null,false,true,"test diagloue","","","");
+        Dialogue d10 = new Dialogue(null,false,true,"Good to see you again, The location spell is ready,","Talk to Dijkstra when you're ready to fight Therox.","","");
         listNine = d10;
 
     }
