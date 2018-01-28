@@ -34,7 +34,7 @@ public class itemShop extends shop {
                 setMaxIndex(6);
             }
         }
-        if(getPlayer1().getQuestStage() > 20) { // Beat Razuul
+        if(getPlayer1().getQuestStage() > 21) { // Beat Razuul
             if (getMaxIndex() < 8) {
                 setMaxIndex(8);
             }
@@ -156,7 +156,9 @@ public class itemShop extends shop {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            return 2;
+            if(!isPurchaseAttempt()){
+                return 2;
+            }
         }
         return 0;
     }

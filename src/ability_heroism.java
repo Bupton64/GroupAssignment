@@ -10,7 +10,7 @@ public class ability_heroism extends Ability {
         this.setMagic(true);
         this.setEnergyCost(4);
         this.setToolTip("Gain divine strength");
-        this.setActive(true);
+        this.setActive(false);
         this.setType(AbilityType.buff);
 
     }

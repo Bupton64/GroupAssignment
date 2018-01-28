@@ -225,9 +225,11 @@ public class sellShop extends shop {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            playAudio(leave);
+            if(!isSaleMade()) {
+                playAudio(leave);
 
-            return 1;
+                return 1;
+            }
         }
         return 0;
     }
