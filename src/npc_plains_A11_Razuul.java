@@ -6,13 +6,26 @@ public class npc_plains_A11_Razuul extends NPC{
 
     npc_plains_A11_Razuul() {
         setName("Razuul");
-        spriteSheet = loadImage("chara2.png");
+        spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,364,0,56,72);
         setMapPosX(320);
         setMapPosY(200);
 
+        spriteLeft = new Image[3];
+        spriteRight = new Image[3];
+
         initDialogue();
         loadDialogue = true;
+    }
+
+    @Override
+    public void loadImages(){
+        super.loadImages();
+        //Load Images here
+        for(int i =0; i < 3;i++){
+            spriteDown[i] = subImage(spriteSheet,312 + (52 * i), 288,52,72);
+            spriteLeft[i] = subImage(spriteSheet,312 + (52 * i), 360,52,72);
+        }
     }
 
     @Override
