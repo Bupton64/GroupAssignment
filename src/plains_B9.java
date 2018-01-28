@@ -20,16 +20,16 @@ public class plains_B9 extends  Map{
                 break;
             case 1:
                 //going up
-                if(player.getMapPosX() < 500){
-                    player.setMapPosX(player.getMapPosX()+100);
+                if(player.getMapPosX()< 100){
+                    player.setMapPosY(100);
                 }
 					 player.setCurrentMapLocation(1);
                 flicker = false;
                 return true;
             case 2:
                 //going down
-                if(player.getMapPosX() < 500){
-                    player.setMapPosX(player.getMapPosX()+100);
+                if(player.getMapPosX() < 100){
+                    player.setMapPosX(100);
                 }
 					 player.setCurrentMapLocation(3);
                 flicker = false;
@@ -41,7 +41,13 @@ public class plains_B9 extends  Map{
                 return true;
             case 4:
                 //going left
-					 player.setCurrentMapLocation(0);
+                player.setCurrentMapLocation(0);
+                if(player.getMapPosY() < 40){
+                    player.setMapPosY(40);
+                }
+                if(player.getMapPosY() > 440){
+                    player.setMapPosY(440);
+                }
                 flicker = false;
                 return true;
         }

@@ -27,6 +27,12 @@ public class plains_E12 extends  Map {
             case 2:
                 //going down
                 player.setCurrentMapLocation(25);
+                if(player.getMapPosX() > 680){
+                    player.setMapPosX(680);
+                }
+                if(player.getMapPosX() < 50){
+                    player.setMapPosX(50);
+                }
                 flicker = false;
                 return true;
             case 3:
@@ -51,12 +57,6 @@ public class plains_E12 extends  Map {
     ///////////////////////////////////////////////////////////
     @Override
     public void setUpCollision(Collision collisionPoints){
-		  for(int i = 0;i < 5;i++){
-            collisionPoints.addSmallCollisionPoint(i,54,flicker);
-        }
-        for(int i = 55;i < 60;i++){
-            collisionPoints.addSmallCollisionPoint(i,54,flicker);
-        }
 
         
 

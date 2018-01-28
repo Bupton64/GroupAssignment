@@ -22,8 +22,8 @@ public class plains_H9 extends Map {
             case 1:
                 //going up
                 player.setCurrentMapLocation(38);
-                if(player.getMapPosX() <500){
-                    player.setMapPosX(player.getMapPosX()-80);
+                if(player.getMapPosX() > 660){
+                    player.setMapPosX(660);
                 }
 
                 flicker = false;
@@ -31,14 +31,20 @@ public class plains_H9 extends Map {
             case 2:
                 //going down
                 player.setCurrentMapLocation(40);
-                if(player.getMapPosX() <500){
-                    player.setMapPosX(player.getMapPosX()-80);
+                if(player.getMapPosX() > 670){
+                    player.setMapPosX(670);
                 }
                 flicker = false;
                 return true;
             case 3:
                 // going right
                 player.setCurrentMapLocation(41);
+                if(player.getMapPosY() < 40){
+                    player.setMapPosY(40);
+                }
+                if(player.getMapPosY() > 440){
+                    player.setMapPosY(440);
+                }
                 flicker = false;
                 return true;
             case 4:

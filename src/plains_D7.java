@@ -22,6 +22,9 @@ public class plains_D7 extends  Map {
             case 1:
                 //going up
                 player.setCurrentMapLocation(10);
+                if(player.getMapPosX()< 100){
+                    player.setMapPosY(100);
+                }
                 flicker = false;
                 return true;
             case 2:

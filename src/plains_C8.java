@@ -22,7 +22,9 @@ public class plains_C8 extends  Map{
             case 1:
                 //going up
 				player.setCurrentMapLocation(4);
-
+                if(player.getMapPosX()< 100){
+                    player.setMapPosY(100);
+                }
                 flicker = false;
                 return true;
             case 2:
