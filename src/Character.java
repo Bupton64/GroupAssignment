@@ -427,14 +427,12 @@ public class Character extends Statblock {
         item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword", 10, 0);
         addItemToInventory(rusty); // T0 Sword
         equipItem(rusty);
-
-<<<<<<< HEAD
+        
         item_Potion pot = new item_Potion();
         pot.setCounter(2);
         addItemToInventory(pot);
         /*
-=======
->>>>>>> 414417e317701fa2970c1ead96f8b5481872c345
+
 
         item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
         addItemToInventory(bronzeSword); //T1 Sword
