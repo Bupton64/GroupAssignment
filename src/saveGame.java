@@ -80,6 +80,19 @@ public class saveGame {
             pw.println(playerMan.isValliardAlive());
 
 
+
+
+            pw.println("#######################");
+            pw.println("###");
+            pw.println("###  Equipped Items");
+            pw.println("###");
+            pw.println("#######################");
+            pw.println(playerMan.getEquipmentSize());
+            for(int i = 0; i < playerMan.getEquipmentSize();i++){
+                pw.println(playerMan.getEquippedItems()[i].getName());
+            }
+
+
             //Items
             pw.println("#######################");
             pw.println("###");
@@ -90,15 +103,6 @@ public class saveGame {
             for(int i = 0; i < playerMan.getInventorySize();i++){
                 pw.println(playerMan.getInventory()[i].getName());
                 pw.println(playerMan.getInventory()[i].getCounter());
-            }
-            pw.println("#######################");
-            pw.println("###");
-            pw.println("###  Equipped Items");
-            pw.println("###");
-            pw.println("#######################");
-            pw.println(playerMan.getEquipmentSize());
-            for(int i = 0; i < playerMan.getEquipmentSize();i++){
-                pw.println(playerMan.getEquippedItems()[i].getName());
             }
 
 
@@ -177,6 +181,8 @@ public class saveGame {
             line = br.readLine();
             temp.setMaxInventorySize(Integer.parseInt(line));
             line = br.readLine();
+
+            temp.unlockAbility();
             while (line.charAt(0) == '#') {
                 line = br.readLine();
             }
@@ -250,16 +256,12 @@ public class saveGame {
             line = br.readLine();
             while (line.charAt(0) == '#') {
                 line = br.readLine();
-            }
-            //Items
-//            pw.println(playerMan.getInventorySize());
-//            for(int i = 0; i < playerMan.getInventorySize();i++){
-//                pw.println(playerMan.getInventory()[i].getName());
-//                pw.println(playerMan.getInventory()[i].getCounter());
-//            }
 
-            int inventorySize = Integer.parseInt(line);
-            String name;
+            }
+            //Equipped Items
+//            for(int i = 0; i < playerMan.getEquipmentSize();i++){
+//                pw.println(playerMan.getEquippedItems()[i].getName());
+//            }
             temp.setInventory(new Item [50]);
             for(int i=0; i<50; i++){
                 temp.getInventory()[i] = new Item();
@@ -268,6 +270,30 @@ public class saveGame {
             for(int i=0; i<6; i++){
                 temp.getEquippedItems()[i] = new Item();
             }
+
+            int inventorySize = Integer.parseInt(line);
+            for (int j = 0; j < inventorySize; j++) {
+                line = br.readLine();
+                loadEquiped(line, temp);
+
+            }
+
+
+
+            line = br.readLine();
+            while (line.charAt(0) == '#') {
+                line = br.readLine();
+            }
+            //Items
+//            pw.println(playerMan.getInventorySize());
+//            for(int i = 0; i < playerMan.getInventorySize();i++){
+//                pw.println(playerMan.getInventory()[i].getName());
+//                pw.println(playerMan.getInventory()[i].getCounter());
+//            }
+
+            inventorySize = Integer.parseInt(line);
+            String name;
+
             for (int j = 0; j < inventorySize; j++) {
                 name = br.readLine();
                 line = br.readLine();
@@ -275,21 +301,6 @@ public class saveGame {
 
             }
 
-
-            line = br.readLine();
-            while (line.charAt(0) == '#') {
-                line = br.readLine();
-            }
-            //Equipped Items
-//            for(int i = 0; i < playerMan.getEquipmentSize();i++){
-//                pw.println(playerMan.getEquippedItems()[i].getName());
-//            }
-            inventorySize = Integer.parseInt(line);
-            for (int j = 0; j < inventorySize; j++) {
-                line = br.readLine();
-                loadEquiped(line, temp);
-
-            }
 
 
 
@@ -484,123 +495,163 @@ public class saveGame {
     public void loadEquiped(String name, Character temp){
         if(name.equals("Rusty Sword")){
             item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword", 10, 0);
+            temp.addItemToInventory(rusty); // T0 Sword
             temp.equipItem(rusty);
         }else if(name.equals("Bronze Sword")){
             item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
+            temp.addItemToInventory(bronzeSword); // T0 Sword
             temp.equipItem(bronzeSword);
         }else if(name.equals("Stone Axe")){
             item_Equipment stone = new item_Equipment("Stone Axe", 0, 0, 0, 0, 1, Item.Slot.weapon, "Rugged, yet effective", 300, 400);
+            temp.addItemToInventory(stone); // T0 Sword
             temp.equipItem(stone);
         }else if(name.equals("Monk's Staff")){
             item_Equipment monksStaff = new item_Equipment("Monk's Staff", 1, 0, 0, 2, 0, Item.Slot.weapon, "A light wooden staff", 300, 1000);
+            temp.addItemToInventory(monksStaff); // T0 Sword
             temp.equipItem(monksStaff);
         }else if(name.equals("Rough Axe")){
             item_Equipment rough = new item_Equipment("Rough Axe", 0, 0, 0, 0, 2, Item.Slot.weapon, "A violent edge and little else", 3300, 1200);
+            temp.addItemToInventory(rough); // T0 Sword
             temp.equipItem(rough);
         }else if(name.equals("Guardsman's Spear")){
             item_Equipment spear = new item_Equipment("Guardsman's Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);
+            temp.addItemToInventory(spear); // T0 Sword
             temp.equipItem(spear);
         }else if(name.equals("Iron Sword")){
             item_Equipment ironSword = new item_Equipment("Iron Sword", 4, 0, 0, 0, 2, Item.Slot.weapon, "A well forged sword", 600, 2300);
+            temp.addItemToInventory(ironSword); // T0 Sword
             temp.equipItem(ironSword);
         }else if(name.equals("Trickster's Spear")){
             item_Equipment trickspear = new item_Equipment("Trickster's Spear", 2, 0, 3, 0, 0, Item.Slot.weapon, "Expertly balanced spear", 590, 2250);
+            temp.addItemToInventory(trickspear); // T0 Sword
             temp.equipItem(trickspear);
         }else if(name.equals("Acolyte's Staff")){
             item_Equipment acolyte = new item_Equipment("Acolyte's Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
+            temp.addItemToInventory(acolyte); // T0 Sword
             temp.equipItem(acolyte);
         }else if(name.equals("Steel Sword")){
             item_Equipment steelSword = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "Grace and power combined", 1300, 4500);
+            temp.addItemToInventory(steelSword); // T0 Sword
             temp.equipItem(steelSword);
         }else if(name.equals("Gladiator's Axe")){
             item_Equipment gladiator = new item_Equipment("Gladiator's Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
+            temp.addItemToInventory(gladiator); // T0 Sword
             temp.equipItem(gladiator);
         }else if(name.equals("Jester's Staff")){
             item_Equipment jester = new item_Equipment("Jester's Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
+            temp.addItemToInventory(jester); // T0 Sword
             temp.equipItem(jester);
         }else if(name.equals("Emperor's Word")){
             item_Equipment emperor = new item_Equipment("Emperor's Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
+            temp.addItemToInventory(emperor); // T0 Sword
             temp.equipItem(emperor);
         }else if(name.equals("Valkyrie")){
             item_Equipment valkyrie = new item_Equipment("Valkyrie", 10, 10, 4, 0, 8, Item.Slot.weapon, "A legend made reality", 0, 0);
+            temp.addItemToInventory(valkyrie); // T0 Sword
             temp.equipItem(valkyrie);
         }else if(name.equals("Ragged Cap")){
             item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather", 10, 0);
+            temp.addItemToInventory(ragged); // T0 Sword
             temp.equipItem(ragged);
         }else if(name.equals("Skull Cap")){
             item_Equipment skull = new item_Equipment("Skull Cap", 0, 1, 0, 0, 0, Item.Slot.head, "Can deflect blows", 40, 290);
+            temp.addItemToInventory(skull); // T0 Sword
             temp.equipItem(skull);
         }else if(name.equals("Steel Visor")){
             item_Equipment visor = new item_Equipment("Steel Visor", 0, 2, 0, 0, 0, Item.Slot.head, "Safety is key", 240, 780);
+            temp.addItemToInventory(visor);
             temp.equipItem(visor);
         }else if(name.equals("Conical Helm")){
             item_Equipment conical = new item_Equipment("Conical Helm", 0, 3, 0, 0, 0, Item.Slot.head, "Excellent skull protection", 340, 1980);
+            temp.addItemToInventory(conical);
             temp.equipItem(conical);
         }else if(name.equals("Great Helm")){
             item_Equipment great = new item_Equipment("Great Helm", 0, 4, 0, 0, 0, Item.Slot.head, "Forged to withstand giants", 765, 3200);
+            temp.addItemToInventory(great);
             temp.equipItem(great);
         }else if(name.equals("Worn Buckler")){
             item_Equipment buckler = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand, "A small buckler", 20, 200);
+            temp.addItemToInventory(buckler);
             temp.equipItem(buckler);
         }else if(name.equals("Shiv")){
             item_Equipment shiv = new item_Equipment("Shiv", 1, 0, 0, 1, 0, Item.Slot.offhand, "A twisted edge", 40, 290);
+            temp.addItemToInventory(shiv);
             temp.equipItem(shiv);
         }else if(name.equals("Wooden Shield")){
             item_Equipment shield = new item_Equipment("Wooden Shield", 0, 2, 0, 0, 0, Item.Slot.offhand, "A lightweight shield", 120, 600);
+            temp.addItemToInventory(shield);
             temp.equipItem(shield);
         }else if(name.equals("Assassin's Dagger")){
             item_Equipment assassin = new item_Equipment("Assassin's Dagger", 3, 0, 0, 1, 0, Item.Slot.offhand, "Keen and silent", 40, 2050);
+            temp.addItemToInventory(assassin);
             temp.equipItem(assassin);
         }else if(name.equals("Steel Shield")){
             item_Equipment steelShield = new item_Equipment("Steel Shield", 0, 4, 1, 0, 0, Item.Slot.offhand, "An elite's shield", 1200, 2800);
+            temp.addItemToInventory(steelShield);
             temp.equipItem(steelShield);
         }else if(name.equals("Cloth Shoes")){
             item_Equipment clothShoes = new item_Equipment("Cloth Shoes", 0, 0, 0, 0, 0, Item.Slot.feet, "A comfy pair of wraps", 10, 0);
+            temp.addItemToInventory(clothShoes);
             temp.equipItem(clothShoes);
         }else if(name.equals("Leather Boots")){
             item_Equipment boots = new item_Equipment("Leather Boots", 0, 1, 0, 2, 0, Item.Slot.feet, "Sturdy walking boots", 10, 210);
+            temp.addItemToInventory(boots);
             temp.equipItem(boots);
         }else if(name.equals("Chain Boots")){
             item_Equipment chain = new item_Equipment("Chain Boots", 0, 2, 0, 2, 0, Item.Slot.feet, "Light and durable", 230, 550);
+            temp.addItemToInventory(chain);
             temp.equipItem(chain);
         }else if(name.equals("Half Plate Boots")){
             item_Equipment half = new item_Equipment("Half Plate Boots", 0, 3, 0, 1, 0, Item.Slot.feet, "A guardman's pair", 415, 1890);
+            temp.addItemToInventory(half);
             temp.equipItem(half);
         }else if(name.equals("Full Plate Boots")){
             item_Equipment full = new item_Equipment("Full Plate Boots", 0, 4, 0, 0, 0, Item.Slot.feet, "Made for knights", 1090, 3040);
+            temp.addItemToInventory(full);
             temp.equipItem(full);
         }else if(name.equals("Traveller's Robe")){
             item_Equipment robe = new item_Equipment("Traveller's Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
+            temp.addItemToInventory(robe);
             temp.equipItem(robe);
         }else if(name.equals("Leather Jack")){
             item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 1, 0, Item.Slot.chest, "Provides basic protection", 50, 300);
+            temp.addItemToInventory(leatherJack);
             temp.equipItem(leatherJack);
         }else if(name.equals("Scale Mail")){
             item_Equipment scale = new item_Equipment("Scale Mail", 0, 2, 0, 2, 0, Item.Slot.chest, "A sturdy chestpiece", 390, 1040);
+            temp.addItemToInventory(scale);
             temp.equipItem(scale);
         }else if(name.equals("Breastplate")){
             item_Equipment breast = new item_Equipment("Breastplate", 0, 4, 0, 2, 0, Item.Slot.chest, "Solid and sure", 1080, 2700);
+            temp.addItemToInventory(breast);
             temp.equipItem(breast);
         }else if(name.equals("Full Platemail")){
             item_Equipment plate = new item_Equipment("Full Platemail", 0, 8, 0, 0, 0, Item.Slot.chest, "The pinnacle of armour", 2340, 4900);
+            temp.addItemToInventory(plate);
             temp.equipItem(plate);
         }else if(name.equals("Silver Amulet")){
             item_Equipment silver = new item_Equipment("Silver Amulet", 0, 0, 2, 0, 0, Item.Slot.accessory, "A lucky charm", 400, 2000);
+            temp.addItemToInventory(silver);
             temp.equipItem(silver);
         }else if(name.equals("Gold Amulet")){
             item_Equipment gold = new item_Equipment("Gold Amulet", 0, 0, 0, 3, 0, Item.Slot.accessory, "An inspiring memento", 400, 2000);
+            temp.addItemToInventory(gold);
             temp.equipItem(gold);
         }else if(name.equals("Chain Gauntlets")){
             item_Equipment chainGaunt = new item_Equipment("Chain Gauntlets", 0, 0, 0, 0, 2, Item.Slot.accessory, "Fitted knuckles", 400, 2000);
+            temp.addItemToInventory(chainGaunt);
             temp.equipItem(chainGaunt);
         }else if(name.equals("Leather Bracers")){
             item_Equipment leatherBrace = new item_Equipment("Leather Bracers", 0, 1, 0, 1, 0, Item.Slot.accessory, "Extra protection", 450, 4000);
+            temp.addItemToInventory(leatherBrace);
             temp.equipItem(leatherBrace);
         }else if(name.equals("Steel Gauntlets")){
             item_Equipment steelGaunt = new item_Equipment("Steel Gauntlets", 0, 0, 2, 0, 0, Item.Slot.accessory, "Strong, edged plating", 1700, 4500);
+            temp.addItemToInventory(steelGaunt);
             temp.equipItem(steelGaunt);
         }else if(name.equals("Hide Bracers")){
             item_Equipment hide = new item_Equipment("Hide Bracers", 0, 2, 0, 0, 0, Item.Slot.accessory, "Forearm guard", 1900, 3800);
+            temp.addItemToInventory(hide);
             temp.equipItem(hide);
         }
     }

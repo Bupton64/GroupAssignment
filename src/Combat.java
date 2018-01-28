@@ -1253,7 +1253,7 @@ public class Combat extends extraFunctions{
                     }
                 } else if (enemyLastAbility.getType() == Ability.AbilityType.buff || enemyLastAbility.getType() == Ability.AbilityType.curse) {
                     enemyTurnLog = enemy.getName() + " cast " + enemyLastAbility.getName();
-                    drawText(150, 500, enemyLastAbility.getDisplayString(), textFont, 20, g);
+                    drawText(120, 500, enemyLastAbility.getDisplayString(), textFont, 20, g);
                 }
 
             }
