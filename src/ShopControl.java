@@ -19,7 +19,6 @@ public class ShopControl extends extraFunctions {
 
 
     private void updateStartShop(){
-
         if(menuOption == 0){
             menuPointerPosX = 150;
         }else if(menuOption == 1){
@@ -70,8 +69,8 @@ public class ShopControl extends extraFunctions {
         drawImage(buttonSprite, 500, 250, g);
         drawImage(menuPointer, menuPointerPosX,menuPointerPosY,g);
         if(shopNum == 0){
-            drawText(215,295,"Weapons","Arial",30,g);
-            drawText(565,295,"Armor","Arial",30,g);
+            drawText(180,295,"Weapons","Arial",30,g);
+            drawText(550,295,"Armor","Arial",30,g);
         }else{
             drawText(175,295,"Accessories","Arial",24,g);
             drawText(525,295,"Consumable","Arial",24,g);

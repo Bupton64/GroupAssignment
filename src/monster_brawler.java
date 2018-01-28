@@ -27,8 +27,8 @@ public class monster_brawler extends Monster{
         setUpAbilityNumberI(temp, 2, "Haymaker", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_theroxVanguard.png");
-        //Image sprite = loadImage("monster_brawler.png");
+        //Image sprite = loadImage("monster_theroxVanguard.png");
+        Image sprite = loadImage("monster_brawler.png");
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);

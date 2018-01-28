@@ -5,7 +5,7 @@ public class ability_BladeDance extends Ability{
         this.setAttack(1);
         this.setDefense(1);
         this.setLuck(1);
-        this.setStrength(1);
+        this.setStrength(8);
         this.setMagic(false);
         this.setEnergyCost(3);
         this.setToolTip("A song of speed, rhythm and grace");
