@@ -357,6 +357,8 @@ public class MapControl extends extraFunctions {
                     break;
                 case 45:
                     currentMap = new plains_E9_topRightHouse();
+                    mapNpcs[0] = new npc_plains_E9topRightBed();
+                    numOfNpc = 1;
                     break;
                 case 46:
                     currentMap = new plains_E8_topRightHouse();
