@@ -176,7 +176,9 @@ public class weaponShop extends shop {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            return 2;
+            if(!isPurchaseAttempt()){
+                return 2;
+            }
         }
         return 0;
     }
