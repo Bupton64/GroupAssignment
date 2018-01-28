@@ -101,7 +101,6 @@ public class endCutScene extends extraFunctions{
 
     public void drawCutScene(Graphics2D g) {
         animationChange++;
-        System.out.println(timer);
         if(!change) {
             drawImage(plainsBack, 0, 0, g);
             drawImage(Dijkstra, 400, 350, 50, 70, g);
