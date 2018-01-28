@@ -34,7 +34,7 @@ public class itemShop extends shop {
                 setMaxIndex(6);
             }
         }
-        if(getPlayer1().getQuestStage() > 20) { // Beat Razuul
+        if(getPlayer1().getQuestStage() > 21) { // Beat Razuul
             if (getMaxIndex() < 8) {
                 setMaxIndex(8);
             }

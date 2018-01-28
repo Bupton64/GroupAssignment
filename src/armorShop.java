@@ -45,7 +45,7 @@ public class armorShop extends shop {
                 setMaxIndex(12);
             }
         }
-        if(getPlayer1().getQuestStage() > 20) { // Beat Razuul
+        if(getPlayer1().getQuestStage() > 21) { // Beat Razuul
             if (getMaxIndex() < 16) {
                 setTotalPages(2);
                 setMaxIndex(16);

@@ -26,7 +26,7 @@ public class accessoriesShop extends shop {
     }
 
     public void updateShop(){
-        if(getPlayer1().getQuestStage() > 20) {
+        if(getPlayer1().getQuestStage() > 21) {
             if (getMaxIndex() < 10) {
                 setTotalPages(1);
                 setMaxIndex(5);
