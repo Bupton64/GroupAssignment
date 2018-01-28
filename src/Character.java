@@ -427,7 +427,7 @@ public class Character extends Statblock {
         item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword", 10, 0);
         addItemToInventory(rusty); // T0 Sword
         equipItem(rusty);
-        /*
+
 
         item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
         addItemToInventory(bronzeSword); //T1 Sword
@@ -470,7 +470,7 @@ public class Character extends Statblock {
 
 
         // Head
-        
+
         item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather", 10, 0);
         addItemToInventory(ragged);
         equipItem(ragged);
@@ -595,7 +595,7 @@ public class Character extends Statblock {
 
         item_scrollOfKnowledge scroll = new item_scrollOfKnowledge();
         addItemToInventory(scroll);
-        */
+
     }
 
     public void initStats(){
