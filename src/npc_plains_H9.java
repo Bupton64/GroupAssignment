@@ -65,7 +65,7 @@ public class npc_plains_H9 extends  NPC {
 
 
         Dialogue d02 = new Dialogue(null,true,true,"Could you spare 500GP so that I can purchase the resources needed?","","","");
-        Dialogue d2 = new Dialogue(d02,true,true,"Hey there, I just finished clearing all the monsters out of this area.","I've been expecting you ever since I heard you had arrived." ,"Let me guess, you're looking for a weapon? "," Unfortunately I'm lacking materials.");
+        Dialogue d2 = new Dialogue(d02,false,false,"Hey there, I just finished clearing all the monsters out of this area.","I've been expecting you ever since I heard you had arrived." ,"Let me guess, you're looking for a weapon? "," Unfortunately I'm lacking materials.");
         listTwo = d2;
 
         Dialogue d3 = new Dialogue(null,false,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword","");
@@ -132,6 +132,8 @@ public class npc_plains_H9 extends  NPC {
 
     }
 
+    private boolean enoughGold = true;
+
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
 
         if(loadDialogue) {
@@ -145,6 +147,10 @@ public class npc_plains_H9 extends  NPC {
                     loadDialogue = true;
                 }
             }
+        }
+        if(!enoughGold){
+            changeColor(red,g);
+            drawText(230,500,"Not enough gold","Felix Titling",20,g);
         }
 
     }
@@ -168,6 +174,10 @@ public class npc_plains_H9 extends  NPC {
                         case 5:
                             if(gold >= 500) {
                                 questStage = 6;
+
+                            }else{
+                                enoughGold = false;
+                                return true;
                             }
                             break;
                         case 26:
@@ -178,6 +188,8 @@ public class npc_plains_H9 extends  NPC {
                             break;
 
                     }
+                }else{
+                    enoughGold =true;
                 }
             }
         }
