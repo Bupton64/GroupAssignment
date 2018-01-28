@@ -2,6 +2,8 @@ import java.awt.*;
 
 public class monster_BOSS_razuulActual extends Monster {
 
+    public monster_BOSS_razuulActual(){this.init();}
+
     public void init(){
         Ability [] temp;
         temp= new Ability[5];
