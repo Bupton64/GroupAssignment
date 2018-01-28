@@ -18,8 +18,8 @@ public class monster_giant extends Monster {
         setSpeed(10);
         setStrength(20);
         setXPGain(1560);
-        setGoldMin(450);
-        setGoldMax(670);
+        setGoldMin(480);
+        setGoldMax(700);
         setCurrentHP(400);
         setMaxHP(400);
         setLevel(8);

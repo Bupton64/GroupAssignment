@@ -14,8 +14,8 @@ public class monster_brawler extends Monster{
         setSpeed(10);
         setStrength(4);
         setXPGain(450);
-        setGoldMin(190);
-        setGoldMax(230);
+        setGoldMin(220);
+        setGoldMax(260);
         setCurrentHP(220);
         setMaxHP(220);
         setLevel(4);

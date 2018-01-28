@@ -18,8 +18,8 @@ public class monster_Skeleton extends Monster {
         setSpeed(14);
         setStrength(4);
         setXPGain(1210);
-        setGoldMin(280);
-        setGoldMax(320);
+        setGoldMin(310);
+        setGoldMax(350);
         setCurrentHP(250);
         setMaxHP(250);
         setLevel(6);

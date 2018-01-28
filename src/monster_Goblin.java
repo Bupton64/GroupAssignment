@@ -18,8 +18,8 @@ public class monster_Goblin extends Monster {
         setSpeed(3);
         setStrength(3);
         setXPGain(100);
-        setGoldMin(40);
-        setGoldMax(70);
+        setGoldMin(60);
+        setGoldMax(90);
         setCurrentHP(45);
         setMaxHP(45);
         setLevel(1);

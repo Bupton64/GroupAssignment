@@ -18,8 +18,8 @@ public class monster_darkCultist extends Monster {
         setSpeed(14);
         setStrength(12);
         setXPGain(2790);
-        setGoldMin(980);
-        setGoldMax(1040);
+        setGoldMin(1020);
+        setGoldMax(1180);
         setCurrentHP(450);
         setMaxHP(450);
         setLevel(12);
