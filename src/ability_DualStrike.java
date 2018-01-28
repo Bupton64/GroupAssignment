@@ -5,7 +5,7 @@ public class ability_DualStrike extends Ability{
         this.setAttack(6);
         this.setDefense(-2);
         this.setLuck(-1);
-        this.setStrength(6);
+        this.setStrength(12);
         this.setMagic(false);
         this.setEnergyCost(4);
         this.setToolTip("A devastating combination move");

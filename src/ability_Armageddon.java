@@ -5,7 +5,7 @@ public class ability_Armageddon extends Ability{
         this.setAttack(20);
         this.setDefense(0);
         this.setLuck(0);
-        this.setStrength(20);
+        this.setStrength(30);
         this.setMagic(true);
         this.setEnergyCost(5);
         this.setToolTip("The end of all things");
