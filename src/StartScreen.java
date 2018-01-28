@@ -42,7 +42,7 @@ public class StartScreen extends extraFunctions {
     double index3 = 11.3;
     double index4 = 11.4;
 
-    Credits Credits;
+
 
     public void initStart(){
         clicks = loadAudio("clicks.wav");
@@ -67,6 +67,7 @@ public class StartScreen extends extraFunctions {
             updateLoad();
         }
     }
+    Credits CreditsEnd;
 
     public void drawStartMenu(Graphics2D g){
         changeBackgroundColor(black,g);
@@ -75,7 +76,7 @@ public class StartScreen extends extraFunctions {
         }else if(state == startState.loadScreen){
             drawLoad(g);
         } else if(state == startState.credits){
-            Credits.drawCredits(g);
+            CreditsEnd.drawCredits(g);
         }
     }
 
@@ -420,7 +421,10 @@ public class StartScreen extends extraFunctions {
             playAudio(exitClick);
             state = startState.loadScreen;
         }
-
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 310)) {
+           playAudio(exitClick);
+           state = startState.credits;
+        }
         return 0;
     }
 

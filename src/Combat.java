@@ -1574,8 +1574,76 @@ public class Combat extends extraFunctions{
                         enemy = new monster_giant();
                     }
                     break;
+                case 9:
+                    if( roll > 7){
+                        enemy = new monster_giant();
+                    } else if ( roll > 2){
+                        enemy = new monster_Elite();
+                    } else if (roll > 1){
+                        enemy = new monster_Wyvern();
+                    } else {
+                        enemy = new monster_vampire();
+                    }
+                    break;
+                case 10:
+                    if (roll > 9){
+                        enemy = new monster_giant();
+                    } else if ( roll > 6){
+                        enemy = new monster_Elite();
+                    } else if ( roll > 5){
+                        enemy = new monster_troll();
+                    } else {
+                        enemy = new monster_vampire();
+                    }
+                    break;
+                case 11:
+                    if(roll > 8){
+                        enemy = new monster_Elite();
+                    } else if (roll > 6){
+                        enemy = new monster_vampire();
+                    } else if (roll > 2){
+                        enemy = new monster_troll();
+                    } else {
+                        enemy = new monster_darkCultist();
+                    }
+                    break;
+                case 12:
+                    if(roll > 9){
+                        enemy = new monster_Elite();
+                    } else if ( roll > 7){
+                        enemy = new monster_vampire();
+                    } else if (roll > 4){
+                        enemy = new monster_troll();
+                    } else {
+                        enemy = new monster_darkCultist();
+                    }
+                    break;
+                case 13:
+                    if(roll > 9){
+                        enemy = new monster_vampire();
+                    } else if (roll > 5){
+                        enemy = new monster_troll();
+                    } else {
+                        enemy = new monster_darkCultist();
+                    }
+                    break;
+                case 14:
+                    if(roll > 6){
+                        enemy = new monster_troll();
+                    } else {
+                        enemy = new monster_darkCultist();
+                    }
+                    break;
+                case 15:
+                    if(roll > 8){
+                        enemy = new monster_troll();
+                    } else {
+                        enemy = new monster_darkCultist();
+                    }
+                    break;
                 default:
-                    enemy = new monster_Witch();
+                    enemy = new monster_darkCultist();
+
             }
 
         }else if(monsterToFight == 1){
