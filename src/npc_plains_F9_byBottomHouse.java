@@ -66,19 +66,23 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
         Dialogue d1 = new Dialogue(null,false,true,"Therox's witches have been driving packs of wolves at the town. The ", "militia can't handle it, they've already lost two good men!","","");
         listOne = d1;
 
-        Dialogue d2 = new Dialogue(null,false,true,"Hey Bjarne, I've noticed the priest to hangout in this house ","most days, It seems a little suspicious.","","");
+        Dialogue d2 = new Dialogue(null,false,true,"Hey Bjarne, I've noticed the priest has been visiting this house ","a lot these days, It seems a little suspicious.","","");
+        listTwo = d2;
     }
 
-    public void updateDialogue(Quest.questState  currentState){
-
-        currentDialogue = listOne;
+    public void updateDialogue(int questStage){
+        if(questStage < 13) {
+            currentDialogue = listOne;
+        }else{
+            currentDialogue = listTwo;
+        }
 
     }
 
     public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
 
         if(loadDialogue) {
-            updateDialogue(currentState);
+            updateDialogue(questStage);
             loadDialogue = false;
         }
         super.drawConvo(g, playerName,currentState, questName,questStage);

@@ -386,7 +386,7 @@ public class AdventureMode extends GameEngine {
             case TravelMode:
                 if(!playerMan.isInConvo() && !fadeState) { playerMovement.keyPressed(e); }
                 mapController.keyPressed(e);
-                if(e.getKeyCode() == KeyEvent.VK_ESCAPE && !fadeState) {
+                if(e.getKeyCode() == KeyEvent.VK_ESCAPE && !fadeState && !playerMan.isInConvo()) {
                     playAudio(clicks);
                     stateChanger = 3;
                 }
