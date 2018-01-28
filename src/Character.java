@@ -648,28 +648,10 @@ public class Character extends Statblock {
 
             case 2:
             for(int i=0; i<getMaxNumAbilities(); i++) {
-                if (temp[i].getName() == "Spark") {
-                    temp[i].setActive(true);
-                }
-                if(temp[i].getName()=="Smash"){
+                if (temp[i].getName() == "Slash") {
                     temp[i].setActive(true);
                 }
                 if(temp[i].getName()=="Heal"){
-                    temp[i].setActive(true);
-                }
-                if(temp[i].getName()=="Devastate"){
-                    temp[i].setActive(true);
-                }
-                if(temp[i].getName()=="Regenerate"){
-                    temp[i].setActive(true);
-                }
-                if(temp[i].getName()=="Psi Blast"){
-                    temp[i].setActive(true);
-                }
-                if(temp[i].getName()=="Heroism"){
-                    temp[i].setActive(true);
-                }
-                if(temp[i].getName()=="Iron Fist"){
                     temp[i].setActive(true);
                 }
             }
@@ -677,10 +659,10 @@ public class Character extends Statblock {
 
             case 3:
             for(int i=0; i<getMaxNumAbilities(); i++){
-                if(temp[i].getName()=="Blade Dance"){
+                if(temp[i].getName()=="Smash"){
                     temp[i].setActive(true);
                 }
-                if(temp[i].getName()=="Berserk"){
+                if(temp[i].getName()=="Blade Dance"){
                     temp[i].setActive(true);
                 }
             }
@@ -688,20 +670,65 @@ public class Character extends Statblock {
 
             case 4:
             for(int i=0; i<getMaxNumAbilities(); i++){
-                if(temp[i].getName()=="Dual Strike"){
+                if(temp[i].getName()=="Devastate"){
+                    temp[i].setActive(true);
+                }
+                if(temp[i].getName()=="Toxicity"){
                     temp[i].setActive(true);
                 }
             }
             break;
+
             case 5:
             for(int i=0; i<getMaxNumAbilities(); i++){
-                if(temp[i].getName()=="Armageddon"){
+                if(temp[i].getName()=="Berserk"){
                     temp[i].setActive(true);
                 }
             }
             break;
+
             case 6:
-            break;
+                for(int i=0; i<getMaxNumAbilities(); i++){
+                    if(temp[i].getName()=="Psi Blast"){
+                        temp[i].setActive(true);
+                    }
+                }
+                break;
+
+            case 7:
+                for(int i=0; i<getMaxNumAbilities(); i++){
+                    if(temp[i].getName()=="Regenerate"){
+                        temp[i].setActive(true);
+                    }
+                    if(temp[i].getName()=="Dual Strike"){
+                        temp[i].setActive(true);
+                    }
+                }
+                break;
+
+            case 8:
+                for(int i=0; i<getMaxNumAbilities(); i++){
+                    if(temp[i].getName()=="Iron Fist"){
+                        temp[i].setActive(true);
+                    }
+                }
+                break;
+
+            case 9:
+                for(int i=0; i<getMaxNumAbilities(); i++){
+                    if(temp[i].getName()=="Heroism"){
+                        temp[i].setActive(true);
+                    }
+                }
+                break;
+
+            case 10:
+                for(int i=0; i<getMaxNumAbilities(); i++){
+                    if(temp[i].getName()=="Armageddon"){
+                        temp[i].setActive(true);
+                    }
+                }
+                break;
 
         }
         setNumOfAbilities();
@@ -723,7 +750,7 @@ public class Character extends Statblock {
     public boolean checkLevelUp(){
         if(XPToNextLevel<=XPTotal){
             levelUp();
-            // Comment tomake a dud commit, making sure I didn't break everything
+            // Comment to make a dud commit, making sure I didn't break everything
             XPTotal-=XPToNextLevel;
             XPToNextLevel=getLevel()*getLevel()*150;
             checkLevelUp();

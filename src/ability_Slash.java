@@ -9,7 +9,7 @@ public class ability_Slash extends Ability{
         this.setMagic(false);
         this.setEnergyCost(1);
         this.setToolTip("A fierce strike");
-        this.setActive(true);
+        this.setActive(false);
         this.setType(AbilityType.damage);
         this.setDisplayString(null);
     }
