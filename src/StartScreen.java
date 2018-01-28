@@ -42,6 +42,7 @@ public class StartScreen extends extraFunctions {
     double index3 = 11.3;
     double index4 = 11.4;
 
+    Credits Credits;
 
     public void initStart(){
         clicks = loadAudio("clicks.wav");
@@ -73,6 +74,8 @@ public class StartScreen extends extraFunctions {
             drawStartScreen(g);
         }else if(state == startState.loadScreen){
             drawLoad(g);
+        } else if(state == startState.credits){
+            Credits.drawCredits(g);
         }
     }
 
