@@ -816,11 +816,11 @@ public class Character extends Statblock {
         if (currentQuest.getNumOfCollectables() == currentQuest.getTotalCollectables()) {
             if(questStage == 10) {
                 currentQuest.setState(Quest.questState.completedQuest);
-            }else if(questStage == 12){
+            }else if(questStage == 13){
                 currentQuest.setState(Quest.questState.inQuest);
-            }else if(questStage == 16){
+            }else if(questStage == 17){
                 currentQuest.setState(Quest.questState.inQuest);
-            }else if(questStage == 22){
+            }else if(questStage == 23){
                 currentQuest.setState(Quest.questState.completedQuest);
             }
             setQuestStage(getQuestStage() + 1);
@@ -882,37 +882,46 @@ public class Character extends Statblock {
             case 12:
                 currentQuest.giveReward(this);
                 currentQuest = new quest_ASpyInTheClutches();
-                break;
-            case 14:
-                currentQuest.setState(Quest.questState.completedQuest);
+                questStage = 13;
                 break;
             case 15:
-                currentQuest.setState(Quest.questState.extraQuest);
-                break;
-            case 16:
-                currentQuest.giveReward(this);
-                currentQuest = new quest_NoEscapeFromReality();
-                break;
-            case 18:
                 currentQuest.setState(Quest.questState.completedQuest);
                 break;
-            case 20:
+            case 16:
                 currentQuest.setState(Quest.questState.extraQuest);
                 break;
-            case 21:
+            case 17:
                 currentQuest.giveReward(this);
-                currentQuest = new quest_AWanderingSoul();
+                currentQuest = new quest_NoEscapeFromReality();
+                questStage = 18;
+                break;
+            case 20:
+                currentQuest.setState(Quest.questState.completedQuest);
                 break;
             case 22:
-                currentQuest.setState(Quest.questState.inQuest);
-                break;
-            case 25:
                 currentQuest.setState(Quest.questState.extraQuest);
                 break;
-            case 26:
+            case 23:
+                currentQuest.giveReward(this);
+                currentQuest = new quest_AWanderingSoul();
+                questStage = 24;
+                break;
+            case 25:
+                currentQuest.setState(Quest.questState.inQuest);
+                break;
+            case 28:
+                currentQuest.setState(Quest.questState.extraQuest);
+                break;
+            case 29:
                 currentQuest.giveReward(this);
                 currentQuest = new quest_OneLastThing();
+                questStage = 30;
                 break;
+            case 31:
+                break;
+            case 32:
+                break;
+
 
 
         }

@@ -83,20 +83,20 @@ public class npc_plains_Dijkstra extends  NPC {
 
     public void updateDialogue(int questStage){
 
-        if(questStage < 21) {
+        if(questStage < 24) {
             currentDialogue = listOne;
         }else {
             switch (questStage) {
-                case 21:
+                case 24:
                     currentDialogue = listTwo;
                     break;
-                case 22:
-                case 23:
-                case 24:
                 case 25:
+                case 26:
+                case 27:
+                case 28:
                     currentDialogue = listThree;
                     break;
-                case 26:
+                case 29:
                     currentDialogue = listFour;
                     break;
             }
@@ -117,10 +117,10 @@ public class npc_plains_Dijkstra extends  NPC {
 
     public int updateConvo(){
         switch (this.questStage){
-            case 22:
+            case 25:
                 currentDialogue = listThree;
-                return 22;
-            case 27:
+                return 25;
+            case 30:
                 return 95;
             default:
                 return 0;
@@ -142,11 +142,11 @@ public class npc_plains_Dijkstra extends  NPC {
             if (currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375) {
                     switch (questStage) {
-                        case 21:
-                            questStage = 22;
+                        case 24:
+                            questStage = 25;
                             break;
-                        case 26:
-                            questStage = 27;
+                        case 29:
+                            questStage = 30;
                             break;
                     }
                 }

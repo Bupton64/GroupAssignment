@@ -115,7 +115,7 @@ public class MapControl extends extraFunctions {
                     break;
                 case 5:
                     currentMap = new plains_C8();
-                    if(playerMan.getQuestStage() < 26) {
+                    if(playerMan.getQuestStage() < 29) {
                         mapNpcs[0] = new npc_plains_Dijkstra(400,300);
                         numOfNpc = 1;
                     }
@@ -166,11 +166,11 @@ public class MapControl extends extraFunctions {
                     break;
                 case 17:
                     currentMap = new plains_E5();
-                    if(playerMan.getQuestStage() < 15) {
+                    if(playerMan.getQuestStage() < 16) {
                         mapNpcs[0] = new npc_wizard(400, 250);
                         numOfNpc = 1;
                     }
-                    if(playerMan.getQuestStage() == 26){
+                    if(playerMan.getQuestStage() == 29){
                         mapNpcs[0] = new npc_plains_Dijkstra(400,350);
                         mapNpcs[1] = new npc_wizard(300, 250);
                         mapNpcs[2] = new npc_plains_H9(playerMan.getGpTotal());
@@ -200,9 +200,9 @@ public class MapControl extends extraFunctions {
                     numOfNpc = 4;
 
 
-                    if(playerMan.getQuestStage() >= 15 &&  playerMan.getQuestStage() < 26) {
+                    if(playerMan.getQuestStage() >= 16 &&  playerMan.getQuestStage() < 29) {
                         mapNpcs[0] = new npc_wizard(200, 230);
-                        if(playerMan.getQuestStage() >= 20) {
+                        if(playerMan.getQuestStage() >= 22) {
                             mapNpcs[4] = new npc_plains_E9_byBridge(475, 200);
                             numOfNpc = 5;
                         }
@@ -254,7 +254,7 @@ public class MapControl extends extraFunctions {
                 case 28:
 
                     currentMap = new plains_F8();
-                    if(playerMan.getQuestStage() < 14) {
+                    if(playerMan.getQuestStage() < 15) {
                         mapNpcs[0] = new npc_plains_f8_oldman(200, 200);
                     }
                     if(playerMan.getQuestStage() < 7) {
@@ -264,12 +264,12 @@ public class MapControl extends extraFunctions {
                          numOfNpc = 1;
                     }
 
-                    if(playerMan.getQuestStage() == 14) {
+                    if(playerMan.getQuestStage() == 15) {
 
                         mapNpcs[0] = new npc_plains_f8_oldman(420,200);
                         mapNpcs[1] = new npc_plains_priest(480,200);
                         numOfNpc = 2;
-                    }else if(playerMan.getQuestStage() >= 15) {
+                    }else if(playerMan.getQuestStage() >= 16) {
                         mapNpcs[0] = new npc_plains_f8_oldman(420,200);
 
                         numOfNpc = 1;
@@ -322,14 +322,14 @@ public class MapControl extends extraFunctions {
                     break;
                 case 38:
                     currentMap = new plains_H8();
-                    if(playerMan.getQuestStage() == 16){
+                    if(playerMan.getQuestStage() == 18){
                         mapNpcs[0] = new npc_plains_quest5_collectable(350,290);
                         numOfNpc = 1;
                     }
                     break;
                 case 39:
                     currentMap = new plains_H9();
-                    if(playerMan.getQuestStage() <= 23) {
+                    if(playerMan.getQuestStage() <= 26) {
                         mapNpcs[0] = new npc_plains_H9(playerMan.getGpTotal());
                         numOfNpc = 1;
                     }
@@ -372,11 +372,11 @@ public class MapControl extends extraFunctions {
                     break;
                 case 50:
                     currentMap = new plains_E8_topLeftHouse();
-                    if(playerMan.getQuestStage() < 12) {
+                    if(playerMan.getQuestStage() < 13) {
                         mapNpcs[0] = new npc_plains_priest(600,350);
                         numOfNpc = 1;
                     }
-                    if(playerMan.getQuestStage() == 12){
+                    if(playerMan.getQuestStage() == 13){
                         if(!playerMan.getCollectableState(0)) {
                             mapNpcs[0] = new npc_plains_quest4_collectable(360, 160);
                             numOfNpc = 1;
@@ -386,24 +386,24 @@ public class MapControl extends extraFunctions {
                     break;
                 case 51:
                     currentMap = new plains_A9_church();
-                    if(playerMan.getQuestStage() >= 15 && playerMan.getQuestStage() <= 19){
+                    if(playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 21){
                         mapNpcs[0] = new npc_plains_E9_byBridge(170,170);
                         numOfNpc = 1;
 
                     }
-                    if(playerMan.getQuestStage() >= 15 && playerMan.getQuestStage() <= 18){
+                    if(playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 20){
                         mapNpcs[1] = new npc_plains_A11_Razuul();
 
                         numOfNpc = 2;
                     }
-                    if (playerMan.getQuestStage() == 22) {
+                    if (playerMan.getQuestStage() == 25) {
                         mapNpcs[0] = new npc_plains_quest6_collectable(540,130);
                         numOfNpc = 1;
                     }
                     break;
                 case 52:
                     currentMap = new plains_H9_blackSmith();
-                    if(playerMan.getQuestStage() == 24 || playerMan.getQuestStage() == 25 ) {
+                    if(playerMan.getQuestStage() == 27 || playerMan.getQuestStage() == 28 ) {
                         mapNpcs[0] = new npc_plains_H9(playerMan.getGpTotal());
                         numOfNpc = 1;
                     }
@@ -503,15 +503,15 @@ public class MapControl extends extraFunctions {
                     playerMan.setValliardAlive(false);
                 } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches") {
                     playerMan.setMonsterGen(2);
-                    playerMan.setQuestStage(15);
+                    playerMan.setQuestStage(16);
                     playerMan.changeQuest();
-                } else if (playerMan.getQuestStage() == 18){
+                } else if (playerMan.getQuestStage() == 20){
                     playerMan.setMonsterGen(3);
-                    playerMan.setQuestStage(19);
+                    playerMan.setQuestStage(21);
                     playerMan.changeQuest();
                 }else if (playerMan.getCurrentQuestName() == "No Escape From Reality") {
                     playerMan.setMonsterGen(4);
-                    playerMan.setQuestStage(19);
+                    playerMan.setQuestStage(21);
                     playerMan.changeQuest();
                 }
 

@@ -62,10 +62,10 @@ public class npc_plains_priest extends  NPC {
     }
 
     public void updateDialogue(int questStage){
-        if(questStage < 14) {
+        if(questStage < 15) {
             currentDialogue = listOne;
         }
-        if(questStage == 14){
+        if(questStage == 16){
             currentDialogue = listTwo;
         }
 

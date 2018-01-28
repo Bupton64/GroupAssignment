@@ -125,11 +125,11 @@ public class npc_plains_f8_oldman extends  NPC {
 
     public void updateDialogue(int questStage){
 
-        if(questStage < 14) {
+        if(questStage < 15) {
             currentDialogue = listOne;
-        }else if(questStage == 14){
+        }else if(questStage == 15){
             currentDialogue = listTwo;
-        }else if(questStage >= 15){
+        }else if(questStage >= 16){
             currentDialogue = listThree;
         }
     }
