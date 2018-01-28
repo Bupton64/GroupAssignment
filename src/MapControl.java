@@ -498,7 +498,7 @@ public class MapControl extends extraFunctions {
             if(updateQuestState == 99) {
                 playerMan.setCombatActive(true);
 
-                if (playerMan.getCurrentQuestName() == "The Missing Peices") {
+                if (playerMan.getCurrentQuestName() == "The Missing Pieces") {
                     playerMan.setMonsterGen(1);
                     playerMan.setValliardAlive(false);
                 } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches") {

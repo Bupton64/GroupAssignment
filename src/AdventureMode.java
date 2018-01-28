@@ -266,8 +266,10 @@ public class AdventureMode extends GameEngine {
 
         }
         if(fadeState){
+
             playerMovement.stopMovement();
             if(timer >= 1){
+
                 if(generateCombat){
                     stateChanger = 2;
                     playerMan.setCombatActive(true);
