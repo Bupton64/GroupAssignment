@@ -44,7 +44,7 @@ public class npc_plains_E9topRightBed extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null, false, true, "Would you like to sleep?", "", "", "");
+        Dialogue d1 = new Dialogue(null, true, true, "Would you like to sleep?", "", "", "");
         listOne = d1;
     }
 
@@ -63,8 +63,28 @@ public class npc_plains_E9topRightBed extends  NPC {
         super.drawConvo(g, playerName, currentState, questName, questStage);
     }
 
+    public int updateConvo(){
+        switch (this.questStage){
+            case 94:
+                return 94;
+            default:
+                return 0;
+        }
+
+    }
+
+    public boolean keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+            if (currentDialogue.next == null) {
+                if (currentDialogue.getOptionPosY() == 375) {
+                    questStage = 94;
+                }
+            }
+        }
+        return super.keyPressed(e);
 
 
+    }
 
 
 

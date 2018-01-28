@@ -575,7 +575,10 @@ public class MapControl extends extraFunctions {
                 return 6;
             }else if(updateQuestState == 95){
                 return 5;
-            } else if(updateQuestState != 0) {
+            }else if(updateQuestState == 94){
+                playerMan.setCurrentHP(playerMan.getMaxHP());
+                updateQuestState = 0;
+            }else if(updateQuestState != 0) {
                 playerMan.setQuestStage(updateQuestState);
                 playerMan.changeQuest();
                 updateQuestState = 0;

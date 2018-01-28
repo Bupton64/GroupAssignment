@@ -13,7 +13,7 @@ public class Credits extends extraFunctions{
         clearBackground(800, 600, g);
         changeBackgroundColor(black, g);
         changeColor(white, g);
-        if(wordsScrollingY > -950) {
+        if(wordsScrollingY > -955) {
             wordsScrollingY -= 2;
         }
         drawBoldText(330, wordsScrollingY, "Made By:", g);
