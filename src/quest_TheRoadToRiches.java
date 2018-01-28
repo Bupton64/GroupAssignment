@@ -18,7 +18,7 @@ public class quest_TheRoadToRiches extends Quest {
     @Override
     public boolean updateRewardDisplay(double dt) {
         if(displayReward = super.updateRewardDisplay(dt)) {
-
+// Bronze sword
          return true;
         }
        displayTimer = 0;

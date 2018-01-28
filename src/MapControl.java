@@ -116,7 +116,7 @@ public class MapControl extends extraFunctions {
                 case 5:
                     currentMap = new plains_C8();
                     if(playerMan.getQuestStage() < 26) {
-                        mapNpcs[0] = new npc_plains_Dijkstra();
+                        mapNpcs[0] = new npc_plains_Dijkstra(400,300);
                         numOfNpc = 1;
                     }
                     break;
@@ -171,7 +171,7 @@ public class MapControl extends extraFunctions {
                         numOfNpc = 1;
                     }
                     if(playerMan.getQuestStage() == 26){
-                        mapNpcs[0] = new npc_plains_Dijkstra();
+                        mapNpcs[0] = new npc_plains_Dijkstra(400,350);
                         mapNpcs[1] = new npc_wizard(300, 250);
                         mapNpcs[2] = new npc_plains_H9(playerMan.getGpTotal());
                         numOfNpc = 3;

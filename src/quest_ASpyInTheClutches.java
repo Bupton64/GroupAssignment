@@ -24,7 +24,8 @@ public class quest_ASpyInTheClutches extends Quest {
     @Override
     public boolean updateRewardDisplay(double dt) {
         if(displayReward = super.updateRewardDisplay(dt)) {
-
+            //500xp
+            // mega pot
             return true;
         }
         displayTimer = 0;

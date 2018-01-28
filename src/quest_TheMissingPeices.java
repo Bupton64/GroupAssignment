@@ -30,7 +30,8 @@ public class quest_TheMissingPeices extends Quest {
     @Override
     public boolean updateRewardDisplay(double dt) {
         if(displayReward = super.updateRewardDisplay(dt)) {
-
+            // 300
+            // 500exp
             return true;
         }
         displayTimer = 0;

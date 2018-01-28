@@ -25,7 +25,8 @@ public class quest_AWanderingSoul extends Quest {
     @Override
     public boolean updateRewardDisplay(double dt) {
         if(displayReward = super.updateRewardDisplay(dt)) {
-
+            // 500exp
+            // 1000gold
             return true;
         }
         displayTimer = 0;

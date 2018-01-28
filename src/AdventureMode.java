@@ -88,6 +88,8 @@ public class AdventureMode extends GameEngine {
         mapController = new MapControl(playerMan,collisionDetector);
 
 
+        initFade();
+
     }
 
 
@@ -154,13 +156,24 @@ public class AdventureMode extends GameEngine {
 
         switch (state){
             case TravelMode:
-
+                updateFade(dt);
                 mapController.updateNPC(dt,collisionDetector);
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
                 if(stateChanger != 2 && stateChanger != 5) {
                     stateChanger = mapController.updateQuest(dt);
+                }
+                if(stateChanger == 2){
+                    stateChanger = 0;
+                    fadeState = true;
+                    timer = 0;
+                }
+                if(fadeState){
+                    if(timer == 1){
+                        stateChanger = 2;
+                        fadeState = false;
+                    }
                 }
                 break;
             case CombatMode:
@@ -192,11 +205,15 @@ public class AdventureMode extends GameEngine {
 
         switch (state){
             case TravelMode:
+
                 mapController.drawMap(mGraphics); //< Draw the Map
                 playerMovement.drawCharMovement(mGraphics);//<Draw Player
                 mapController.drawNPCInteraction(mGraphics);
              //   playerMan.getCurrentQuest().drawQuest(mGraphics);
+                if(fadeState){
+                    drawFade();
 
+                }
 
                 changeColor(white);
                 drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
@@ -233,12 +250,14 @@ public class AdventureMode extends GameEngine {
     private double timer;
     private Image fade;
     private Image fadeArray[];
+    private boolean fadeState;
 
-    public void fadeUpdate(double dt){
+    public void updateFade(double dt){
         timer+=dt;
     }
 
-    public void fadeInit(){
+    public void initFade(){
+        fadeState = false;
         timer = 0;
         fadeArray = new Image[10];
         fade = loadImage("fade.png");
@@ -249,7 +268,7 @@ public class AdventureMode extends GameEngine {
         }
     }
     
-    public void fadeDraw(){
+    public void drawFade(){
         if(timer > 0 && timer < 1){
             drawImage(fadeArray[0], 0,0,800,600);
         }

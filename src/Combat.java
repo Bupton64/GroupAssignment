@@ -17,6 +17,30 @@ public class Combat extends extraFunctions{
 
     String textFont = "arial";
 
+    /////////////////////////////////////////
+    ///
+    ///  Sound
+    ///
+    /////////////////////////////////////////
+    AudioClip attackMusic;
+    AudioClip coin;
+    AudioClip win;
+    private boolean stopper;
+
+    public void initSound(){
+        stopper = false;
+        attackMusic = loadAudio("epic.wav");
+        coin = loadAudio("coin.wav");
+        clicks = loadAudio("clicks.wav");
+        p1 = loadAudio("page1.wav");
+        p2 = loadAudio("page2.wav");
+        p3 = loadAudio("page3.wav");
+        leave = loadAudio("leave.wav");
+        exitClick = loadAudio("exitClick.wav");
+        win = loadAudio("win.wav");
+        startAudioLoop(attackMusic);
+
+    }
 
 
     /////////////////////////////////////////
@@ -38,23 +62,11 @@ public class Combat extends extraFunctions{
     Image statusSpriteSheet;
     Image statusPoison;
     Image statusBlind;
-    AudioClip attackMusic;
-    AudioClip coin;
-    AudioClip win;
-    private boolean stopper = false;
+
 
     public void initPortrait(){
 
-        attackMusic = loadAudio("epic.wav");
-        coin = loadAudio("coin.wav");
-        clicks = loadAudio("clicks.wav");
-        p1 = loadAudio("page1.wav");
-        p2 = loadAudio("page2.wav");
-        p3 = loadAudio("page3.wav");
-        leave = loadAudio("leave.wav");
-        exitClick = loadAudio("exitClick.wav");
-        win = loadAudio("win.wav");
-        startAudioLoop(attackMusic);
+
 
         LevelPortrait = subImage(buttonSpriteSheet,450,155,120,120);
 
@@ -1470,7 +1482,7 @@ public class Combat extends extraFunctions{
         enemy.setCombatPosY(200);
         player.resetBonuses();
         initLog();
-
+        initSound();
         initPlayerTurnDisplay();
         initPortrait();
         initPlayerAttack();
