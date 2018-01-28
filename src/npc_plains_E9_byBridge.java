@@ -89,9 +89,9 @@ public class npc_plains_E9_byBridge extends  NPC {
             case 1:
                 currentDialogue = listTwo;
                 return 1;
-            case 20:
+            case 22:
                 currentDialogue = listFour;
-                return 20;
+                return 22;
             default:
                 return 0;
 
@@ -104,13 +104,13 @@ public class npc_plains_E9_byBridge extends  NPC {
 
         if(currentStage == 0) {
             currentDialogue = listOne;
-        }else if(currentStage == 19){
+        }else if(currentStage == 21){
             currentDialogue = listThree;
-        }else if(currentStage == 20){
+        }else if(currentStage == 22){
             currentDialogue = listFour;
-        } else if (currentStage <19) {
+        } else if (currentStage < 21) {
             currentDialogue = listTwo;
-        }else if(currentStage > 20){
+        }else if(currentStage > 22){
             currentDialogue = listFive;
         }
     }
@@ -137,8 +137,8 @@ public class npc_plains_E9_byBridge extends  NPC {
                         case 0:
                             questStage = 1;
                             break;
-                        case 19:
-                            questStage = 20;
+                        case 21:
+                            questStage = 22;
                             break;
 
                     }

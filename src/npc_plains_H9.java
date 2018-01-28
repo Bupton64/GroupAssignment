@@ -99,13 +99,13 @@ public class npc_plains_H9 extends  NPC {
             currentDialogue = listTwo;
         }else if(questStage == 6){
             currentDialogue = listThree;
-        }else if(questStage < 23){
+        }else if(questStage < 26){
             currentDialogue = listFour;
-        }else if (questStage == 23){
+        }else if (questStage == 26){
             currentDialogue = listFive;
-        }else if(questStage == 24){
+        }else if(questStage == 27){
             currentDialogue = listSeven;
-        }else if(questStage == 26) {
+        }else if(questStage == 29) {
             currentDialogue = listNine;
         }
     }
@@ -117,10 +117,10 @@ public class npc_plains_H9 extends  NPC {
                 return 6;
             case 40:
                 currentDialogue = listSix;
-                return 24;
-            case 25:
+                return 27;
+            case 28:
                 currentDialogue = listEight;
-                return 25;
+                return 28;
 
 
 
@@ -169,11 +169,11 @@ public class npc_plains_H9 extends  NPC {
                                 questStage = 6;
                             }
                             break;
-                        case 23:
+                        case 26:
                             questStage = 40;
                             break;
-                        case 24:
-                            questStage = 25;
+                        case 27:
+                            questStage = 28;
                             break;
 
                     }

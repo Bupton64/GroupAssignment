@@ -10,6 +10,7 @@ public class Credits extends extraFunctions{
     }
 
     public void drawCredits(Graphics2D g){
+        changeColor(white, g);
         wordsScrollingY-=2;
         drawBoldText(300, wordsScrollingY, "Made By:", g);
         drawText(200, wordsScrollingY + 25, "Zane Lamb          Benjamin Upton", g);
@@ -49,6 +50,10 @@ public class Credits extends extraFunctions{
         drawText(230, wordsScrollingY + 900, "- Game coin  from Jojikiba", g);
         drawText(230, wordsScrollingY + 925, "- Melee sounds from remaxim (opengameart.org)", g);
         drawText(230, wordsScrollingY + 950, "- Weapon hits from Jute (opengameart.org)", g);
+        if(wordsScrollingY <= 1550){
+            drawText(200, 400, "Thank you for playing our game!", g);
+            drawText(250, 450, "- Press <SPACE> to return to menu -", g);
+        }
     }
 
     //Goblin art from Luminous Arc
@@ -67,6 +72,13 @@ public class Credits extends extraFunctions{
     // Dark Cultist art from Nora to Toki no Koubou: Kiri no Mori no Majo
     // Troll art from art from Nora to Toki no Koubou: Kiri no Mori no Majo
     //www.spriters-resource.com
+    public int keyPressed(KeyEvent e) {
+
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            return 4;
+        }
+        return 0;
+    }
 }
 
 

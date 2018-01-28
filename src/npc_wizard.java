@@ -162,20 +162,20 @@ public class npc_wizard extends  NPC {
                 return 10;
             case 12:
                 return 12;
-            case 14:
+            case 15:
                 currentDialogue = listNineHalf;
-                return 14;
-            case 16:
+                return 15;
+            case 17:
                 currentDialogue = listEleven;
-                return 16;
-            case 18:
+                return 17;
+            case 20:
                 currentDialogue = listThirteen;
-                return 18;
-            case 21:
-                return 21;
-            case 26:
+                return 20;
+            case 23:
+                return 23;
+            case 29:
                 currentDialogue = listSeventeen;
-                return 26;
+                return 29;
             default:
                 return 0;
 
@@ -196,9 +196,13 @@ public class npc_wizard extends  NPC {
                 currentDialogue = listTwo;
                 break;
             case 3:
+            case 4:
                 currentDialogue = listThree;
                 break;
             case 5:
+            case 6:
+            case 7:
+            case 8:
                 currentDialogue = listFour;
                 break;
             case 9:
@@ -208,39 +212,40 @@ public class npc_wizard extends  NPC {
                 currentDialogue = listSix;
                 break;
             case 11:
+            case 12:
                 currentDialogue = listSeven;
                 break;
-            case 12:
+            case 13:
                 currentDialogue = listEight;
                 break;
-            case 13:
+            case 14:
                 currentDialogue = listNine;
                 break;
-            case 15:
+            case 16:
                 currentDialogue = listTen;
                 break;
-            case 16:
+            case 18:
                 currentDialogue = listEleven;
                 break;
-            case 17:
+            case 19:
                 currentDialogue = listTwelve;
                 break;
-            case 18:
+            case 20:
                 currentDialogue = listThirteen;
                 break;
-            case 20:
+            case 22:
                 currentDialogue = listFourteen;
                 break;
-            case 21:
-            case 22:
-            case 23:
             case 24:
+            case 25:
+            case 26:
+            case 27:
                 currentDialogue = listFifteen;
                 break;
-            case 25:
+            case 28:
                 currentDialogue = listSixteen;
                 break;
-            case 26:
+            case 29:
                 currentDialogue = listEightteen;
                 break;
 
@@ -304,20 +309,20 @@ public class npc_wizard extends  NPC {
                         case 11:
                             questStage = 12;
                             break;
-                        case 13:
-                            questStage = 14;
+                        case 14:
+                            questStage = 15;
                             break;
-                        case 15:
-                            questStage = 16;
+                        case 16:
+                            questStage = 17;
                             break;
-                        case 17:
-                            questStage = 18;
+                        case 19:
+                            questStage = 20;
                             break;
-                        case 20:
-                            questStage = 21;
+                        case 22:
+                            questStage = 23;
                             break;
-                        case 25:
-                            questStage = 26;
+                        case 28:
+                            questStage = 29;
                             break;
                     }
                 }
