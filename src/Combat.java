@@ -38,8 +38,24 @@ public class Combat extends extraFunctions{
     Image statusSpriteSheet;
     Image statusPoison;
     Image statusBlind;
+    AudioClip attackMusic;
+    AudioClip coin;
+    AudioClip win;
+    private boolean stopper = false;
 
     public void initPortrait(){
+
+        attackMusic = loadAudio("epic.wav");
+        coin = loadAudio("coin.wav");
+        clicks = loadAudio("clicks.wav");
+        p1 = loadAudio("page1.wav");
+        p2 = loadAudio("page2.wav");
+        p3 = loadAudio("page3.wav");
+        leave = loadAudio("leave.wav");
+        exitClick = loadAudio("exitClick.wav");
+        win = loadAudio("win.wav");
+        startAudioLoop(attackMusic);
+
         LevelPortrait = subImage(buttonSpriteSheet,450,155,120,120);
 
         statusSpriteSheet = loadImage("status_effects.png");
@@ -922,6 +938,7 @@ public class Combat extends extraFunctions{
                 escapeActive = false;
 
                 if(makeEscape){
+                    stopAudioLoop(attackMusic);
                     player.setCombatActive(false);
                 }else {
                     enemyTurnSetUp = true;
@@ -1239,6 +1256,7 @@ public class Combat extends extraFunctions{
         }
 
         if(collectReward){
+
             player.setLastStatusEffect(null);
             player.setLastStatusDuration(0);
             player.setLastStatusDamage(0);
@@ -1259,11 +1277,17 @@ public class Combat extends extraFunctions{
     }
 
     public void drawLootScreen(Graphics2D g){
+        stopAudioLoop(attackMusic);
+
         drawImage(coinImage,640,-10,70,70,g);
         changeColor(white,g);
         drawText(710,35,Integer.toString(player.getGpTotal()),"Times New Roman",30,g);
 
         if(!chestOpen){
+            if(!stopper){
+                playAudio(win);
+                stopper = true;
+            }
             drawText(80, 500, "Victory, Press 'Space' on Chest to collect Reward", "Times New Roman", 18, g);
             drawImage(chestOne,580,210,130,100,g);
         }else{
@@ -1598,42 +1622,52 @@ public class Combat extends extraFunctions{
     public void keyPressedPlayerTurn(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             if(menuOption == 0){
+                playAudio(clicks);
                 menuOption = 1;
             }
             if(menuOption == 2){
+                playAudio(clicks);
                 menuOption = 3;
             }
         }
 
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
             if(menuOption == 1){
+                playAudio(clicks);
                 menuOption = 0;
             }
             if(menuOption == 3){
+                playAudio(clicks);
                 menuOption = 2;
             }
         }
 
         if(e.getKeyCode() == KeyEvent.VK_UP){
             if(menuOption == 2){
+                playAudio(clicks);
                 menuOption = 0;
             }
             if(menuOption == 3){
+                playAudio(clicks);
                 menuOption =1;
             }
         }
 
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
             if(menuOption == 0){
+                playAudio(clicks);
                 menuOption = 2;
             }
             if(menuOption == 1){
+                playAudio(clicks);
                 menuOption = 3;
             }
         }
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            playAudio(exitClick);
             if(menuOption == 0){
+                playAudio(clicks);
                 //attackl
 
                 lastAbility = playerAbilities[0];
@@ -1642,17 +1676,20 @@ public class Combat extends extraFunctions{
                 state = CombatState.playerAttack;
             }
             if(menuOption == 1){
+                playAudio(clicks);
                 //abilitie
                 state = CombatState.abilityMenu;
                 menuOption = 1;
 
             }
             if(menuOption == 2){
+                playAudio(clicks);
                 //item
                 state = CombatState.itemMenu;
                 menuOption = 1;
             }
             if(menuOption == 3){
+                playAudio(clicks);
                 escapeChance = false;
                 state = CombatState.run;
             }
@@ -1662,6 +1699,7 @@ public class Combat extends extraFunctions{
 
     public void keyPressedAbilityMenu(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            playAudio(exitClick);
            if(menuOption == 20) {
                 currentPageNum++;
                 menuOption = 1;
@@ -1681,6 +1719,7 @@ public class Combat extends extraFunctions{
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            playAudio(exitClick);
             state = CombatState.playerTurn;
             menuOption = 1;
 
@@ -1690,14 +1729,17 @@ public class Combat extends extraFunctions{
 
 
             if(menuOption == 20){
+                playAudio(clicks);
                 if(prevPageExist) {
                     menuOption = 21;
                 }
             }else if(menuOption == 21){
+                playAudio(clicks);
                 if(nextPageExist) {
                     menuOption = 20;
                 }
             }else if(menuOption < numOfSpellsToDisplay - ((currentPageNum-1) * 8)){
+                playAudio(clicks);
                 menuOption++;
             }else{
                 menuOption = 1;
@@ -1707,14 +1749,17 @@ public class Combat extends extraFunctions{
         if(e.getKeyCode() == KeyEvent.VK_UP){
 
             if(menuOption == 20){
+                playAudio(clicks);
                 if(prevPageExist) {
                     menuOption = 21;
                 }
             }else if(menuOption == 21){
+                playAudio(clicks);
                 if(nextPageExist) {
                     menuOption = 20;
                 }
             }else if(menuOption > 1 ){
+                playAudio(clicks);
                 menuOption--;
             }else{
                 menuOption = numOfSpellsToDisplay - ((currentPageNum-1) * 8) ;
@@ -1723,7 +1768,9 @@ public class Combat extends extraFunctions{
         }
 
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
             if(menuOption != 20 && menuOption != 21) {
+                playAudio(p2);
                 lastMenuOption = menuOption;
                 if (prevPageExist) {
                     menuOption = 21;
@@ -1736,7 +1783,9 @@ public class Combat extends extraFunctions{
 
 
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+
             if(menuOption == 20 || menuOption == 21){
+                playAudio(p1);
                 menuOption = lastMenuOption;
             }
             lastMenuOption = 0;
@@ -1746,6 +1795,7 @@ public class Combat extends extraFunctions{
     int lastMenuOption;
     public void keyPressedItemMenu(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            playAudio(exitClick);
              {
                 lastItemUsed = playerInventory[player.SearchBag(menuOption)];
                 menuOption = 0;
@@ -1757,6 +1807,7 @@ public class Combat extends extraFunctions{
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            playAudio(exitClick);
             state = CombatState.playerTurn;
             menuOption = 2;
 
@@ -1765,6 +1816,7 @@ public class Combat extends extraFunctions{
 
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
             if(menuOption < player.getBagSize()){
+                playAudio(clicks);
                 menuOption++;
             }else{
                 menuOption = 1;
@@ -1773,6 +1825,7 @@ public class Combat extends extraFunctions{
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
             if (menuOption > 1) {
+                playAudio(clicks);
                 menuOption--;
             } else {
                 menuOption = player.getBagSize();
@@ -1786,6 +1839,7 @@ public class Combat extends extraFunctions{
 
             if(chestOpen){
                 player.setCombatActive(false);
+
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
@@ -1827,6 +1881,8 @@ public class Combat extends extraFunctions{
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(player.getCombatPosX() > 550 & !chestOpen){
+                playAudio(p3);
+                playAudio(coin);
                 chestOpen = true;
                 collectReward = true;
             }
