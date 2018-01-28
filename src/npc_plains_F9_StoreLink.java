@@ -46,7 +46,7 @@ public class npc_plains_F9_StoreLink extends  NPC {
     public void initDialogue() {
 
 
-        Dialogue d1 = new Dialogue(null,true,true,"Hey Thanks For Helping Camrath and I.","Here take this sword as a token of appreciation! And remember  ","you are always welcome to come browse my store.","");
+        Dialogue d1 = new Dialogue(null,true,true,"Hey thanks For helping Camrath and I.","Here take this sword as a token of appreciation! And remember  ","you are always welcome to come browse my store.","");
         listOne = d1;
 
         Dialogue d2 = new Dialogue(null,true,true,"Hey Bjarne good to see you again! Care to browse my goods?","","","");
