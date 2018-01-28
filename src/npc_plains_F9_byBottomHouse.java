@@ -59,10 +59,14 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
     Dialogue listOne;
 
+    Dialogue listTwo;
+
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"Therox's witches have been driving packs of wolves at the town. The ", "militia can't handle it, they've already lost two good men!","","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"Hey Bjarne, I've noticed the priest to hangout in this house ","most days, It seems a little suspicious.","","");
     }
 
     public void updateDialogue(Quest.questState  currentState){

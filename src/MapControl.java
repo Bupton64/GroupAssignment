@@ -366,6 +366,10 @@ public class MapControl extends extraFunctions {
                     break;
                 case 48:
                     currentMap = new plains_F9_bottomLeftHouse();
+                    if(playerMan.getQuestStage() < 13) {
+                        mapNpcs[0] = new npc_plains_priest(520,240);
+                        numOfNpc = 1;
+                    }
                     if(playerMan.getQuestStage() == 13){
                         if(!playerMan.getCollectableState(0)) {
                             mapNpcs[0] = new npc_plains_quest4_collectable(290, 180);
@@ -378,10 +382,7 @@ public class MapControl extends extraFunctions {
                     break;
                 case 50:
                     currentMap = new plains_E8_topLeftHouse();
-                    if(playerMan.getQuestStage() < 13) {
-                        mapNpcs[0] = new npc_plains_priest(600,350);
-                        numOfNpc = 1;
-                    }
+
 
 
                     break;
