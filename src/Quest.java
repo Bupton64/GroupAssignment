@@ -7,6 +7,8 @@ public class Quest extends extraFunctions {
 
     Image dialogueSimpleBox;
 
+
+
     Quest(){
         displayTimer = 0;
         displayDuration = 5;
@@ -30,6 +32,15 @@ public class Quest extends extraFunctions {
     int killCount; //<Amount of monsters killed
 
     boolean[] collectableState;
+
+
+    public boolean isDisplayReward() {
+        return displayReward;
+    }
+
+    public void setDisplayReward(boolean displayReward) {
+        this.displayReward = displayReward;
+    }
 
     public String getQuestName() {
         return questName;

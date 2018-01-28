@@ -24,6 +24,7 @@ public class saveGame {
 
             //Display for Load
             pw.println(playerMan.getCurrentQuest().getQuestName());
+            pw.println(playerMan.getGameTimer());
             pw.println(playerMan.getLevel());
 
             //StatBlock Save
@@ -49,6 +50,7 @@ public class saveGame {
             pw.println("###  Character");
             pw.println("###");
             pw.println("#######################");
+            pw.println(playerMan.getGameTimer());
             pw.println(playerMan.getXPTotal());
             pw.println(playerMan.getXPToNextLevel());
             pw.println(playerMan.getGpTotal());
@@ -67,6 +69,7 @@ public class saveGame {
             pw.println(playerMan.getQuestStage());
             pw.println(playerMan.getCurrentQuest().getQuestName());
             pw.println(playerMan.getCurrentQuest().getState());
+            pw.println(playerMan.getCurrentQuest().isDisplayReward());
             pw.println(playerMan.getCurrentQuest().getKillCount());
             pw.println(playerMan.getCurrentQuest().getTotalCollectables());
             pw.println(playerMan.getCurrentQuest().getNumOfCollectables());
@@ -115,6 +118,7 @@ public class saveGame {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line = br.readLine();
 
+
             line = br.readLine();
             line = br.readLine();
             line = br.readLine();
@@ -157,6 +161,8 @@ public class saveGame {
 ////            pw.println(playerMan.getMapPosY());
 ////            pw.println(playerMan.getCurrentMapLocation());
 ////            pw.println(playerMan.getMaxInventorySize());
+            temp.setGameTimer(Double.parseDouble(line));
+            line = br.readLine();
             temp.setXPTotal(Integer.parseInt(line));
             line = br.readLine();
             temp.setXPToNextLevel(Integer.parseInt(line));
@@ -190,7 +196,8 @@ public class saveGame {
 
             temp.setQuestStage(Integer.parseInt(line));
             line = br.readLine();
-            if (line.equals("empty")) {
+
+            if (line.equals("No Current Quest")) {
                 temp.setCurrentQuest(new quest_blankQuest());
             } else if (line.equals("A Wizards Problem")){
                 temp.setCurrentQuest(new quest_AWizardsProblem());
@@ -224,7 +231,8 @@ public class saveGame {
                 temp.setQuestState(Quest.questState.extraQuest);
             //    temp.getCurrentQuest().setState(Quest.questState.extraQuest);
             }
-
+            line = br.readLine();
+            temp.getCurrentQuest().setDisplayReward(Boolean.parseBoolean(line));
             line = br.readLine();
             temp.getCurrentQuest().setKillCount(Integer.parseInt(line));
             line = br.readLine();
