@@ -170,7 +170,7 @@ public class AdventureMode extends GameEngine {
                     timer = 0;
                 }
                 if(fadeState){
-                    if(timer == 1){
+                    if(timer >= 1){
                         stateChanger = 2;
                         fadeState = false;
                     }

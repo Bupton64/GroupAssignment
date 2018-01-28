@@ -10,8 +10,8 @@ public class npc_plains_Dijkstra extends  NPC {
         setName("Dijkstra");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet,520,0,56,72);
-        setMapPosX(400);
-        setMapPosY(300);
+        setMapPosX(posX);
+        setMapPosY(posY);
 
         initDialogue(); //new
         loadDialogue = true; // new
