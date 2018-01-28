@@ -397,7 +397,7 @@ public class MapControl extends extraFunctions {
                         numOfNpc = 2;
                     }
                     if (playerMan.getQuestStage() == 22) {
-                        mapNpcs[0] = new npc_plains_quest6_collectable(430,130);
+                        mapNpcs[0] = new npc_plains_quest6_collectable(540,130);
                         numOfNpc = 1;
                     }
                     break;
