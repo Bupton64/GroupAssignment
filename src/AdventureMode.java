@@ -384,17 +384,9 @@ public class AdventureMode extends GameEngine {
             case TravelMode:
                 if(!playerMan.isInConvo() && !fadeState) { playerMovement.keyPressed(e); }
                 mapController.keyPressed(e);
-                if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                if(e.getKeyCode() == KeyEvent.VK_ESCAPE && !fadeState) {
                     playAudio(clicks);
                     stateChanger = 3;
-                }
-
-                if(e.getKeyCode() == KeyEvent.VK_V){
-                    saveController.save("SaveOne.txt");
-                }
-                if(e.getKeyCode() == KeyEvent.VK_B){
-                    saveController.loadGame(playerMan,"SaveOne.txt");
-                    mapController.setReloadMap(true);
                 }
 
                 break;
