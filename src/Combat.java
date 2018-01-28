@@ -1423,10 +1423,10 @@ public class Combat extends extraFunctions{
         if(timer > 2.4){
             drawImage(fadeArray[9], 0,0,800,600,g);
             changeColor(white,g);
-            drawText(240,200,"GAME OVER!", "Times New Roman",60,g);
-            drawText(240,200,"Score: " + (player.getLevel() * player.getQuestStage()) * 100, "Times New Roman",60,g);
-            drawText(240,200,"Level: " + player.getLevel(), "Times New Roman",60,g);
-            drawText(300, 400,"EXIT[ESC]","Felix Titling",15,g);
+            drawText(240,200,"GAME OVER!", "Felix Titling",60,g);
+            drawText(240,300,"Score: " + (player.getLevel() * player.getQuestStage()) * 100, "Felix Titling",30,g);
+            drawText(240,360,"Level: " + player.getLevel(), "Felix Titling",30,g);
+            drawText(350, 450,"EXIT[ESC]","Felix Titling",15,g);
         }
     }
 
@@ -1719,6 +1719,10 @@ public class Combat extends extraFunctions{
             keyPressedItemMenu(e);
         } else if(state == CombatState.lootScreen) {
             keyPressedLootScreen(e);
+        }else if(state == CombatState.playerDeath){
+            if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+                System.exit(1);
+            }
         }
     }
 
