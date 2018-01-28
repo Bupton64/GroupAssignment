@@ -11,8 +11,25 @@ public class npc_plains_E9_byField extends  NPC {
         setMapPosX(100);
         setMapPosY(450);
 
+        spriteDown = new Image[3];
+        spriteUp = new Image[3];
+        spriteRight = new Image[3];
+        spriteLeft = new Image[3];
+
         initDialogue();
         loadDialogue = true;
+    }
+
+    @Override
+    public void loadImages(){
+        super.loadImages();
+        //Load Images here
+        for(int i =0; i < 3;i++){
+            spriteDown[i] = subImage(spriteSheet, (52 * i), 288,52,72);
+            spriteLeft[i] = subImage(spriteSheet,(52 * i), 360,52,72);
+            spriteRight[i] = subImage(spriteSheet,(52 * i), 432,52,72);
+            spriteUp[i] = subImage(spriteSheet,(52 * i), 504,52,72);
+        }
     }
 
     @Override

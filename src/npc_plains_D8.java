@@ -11,8 +11,25 @@ public class npc_plains_D8 extends  NPC {
         setMapPosX(200);
         setMapPosY(200);
 
+        spriteDown = new Image[3];
+        spriteUp = new Image[3];
+        spriteRight = new Image[3];
+        spriteLeft = new Image[3];
+
         initDialogue();
         loadDialogue = true;
+    }
+
+    @Override
+    public void loadImages(){
+        super.loadImages();
+        //Load Images here
+        for(int i =0; i < 3;i++){
+            spriteDown[i] = subImage(spriteSheet, (52 * i), 0,52,72);
+            spriteLeft[i] = subImage(spriteSheet,(52 * i), 72,52,72);
+            spriteRight[i] = subImage(spriteSheet,(52 * i), 144,52,72);
+            spriteUp[i] = subImage(spriteSheet,(52 * i), 216,52,72);
+        }
     }
 
     @Override

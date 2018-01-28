@@ -13,8 +13,25 @@ public class npc_plains_E9_byBridge extends  NPC {
         setMapPosX(posX);
         setMapPosY(posY);
 
+        spriteDown = new Image[3];
+        spriteUp = new Image[3];
+        spriteRight = new Image[3];
+        spriteLeft = new Image[3];
+
         initDialogue();
         loadDialogue = true;
+    }
+
+    @Override
+    public void loadImages(){
+        super.loadImages();
+        //Load Images here
+        for(int i =0; i < 3;i++){
+            spriteDown[i] = subImage(spriteSheet, 312+(52 * i), 0,52,72);
+            spriteLeft[i] = subImage(spriteSheet,312+(52 * i), 72,52,72);
+            spriteRight[i] = subImage(spriteSheet,312+(52 * i), 144,52,72);
+            spriteUp[i] = subImage(spriteSheet,312+(52 * i), 216,52,72);
+        }
     }
 
     @Override
