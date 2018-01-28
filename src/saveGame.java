@@ -182,10 +182,13 @@ public class saveGame {
             temp.setMaxInventorySize(Integer.parseInt(line));
             line = br.readLine();
 
-            for(int i = 0; i <= temp.getLevel();i++){
+            int intendedLevel = temp.getLevel();
+            int intendedExp = temp.getXPTotal();
+            for(int i = 0; i <= intendedLevel;i++){
                 temp.setLevel(i);
                 temp.unlockAbility();
             }
+            temp.setXPTotal(intendedExp);
 
             while (line.charAt(0) == '#') {
                 line = br.readLine();
