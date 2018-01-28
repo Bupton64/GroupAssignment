@@ -22,7 +22,7 @@ public class monster_Wyvern extends Monster {
         setGoldMax(360);
         setCurrentHP(300);
         setMaxHP(300);
-        setLevel(6);
+        setLevel(7);
         setAlive(true);
         setName("Wyvern");
         setEnergy(0);

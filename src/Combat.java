@@ -25,10 +25,26 @@ public class Combat extends extraFunctions{
     AudioClip attackMusic;
     AudioClip coin;
     AudioClip win;
+    AudioClip miss;
+    AudioClip hit1;
+    AudioClip hit2;
+    AudioClip hit3;
+    AudioClip potion;
     private boolean stopper;
+    private boolean s1;
+    private boolean s2;
+    private boolean s3;
+    private boolean s4;
+    private boolean s5;
+
 
     public void initSound(){
         stopper = false;
+        s1 = false;
+        s2 = false;
+        s3 = false;
+        s4 = false;
+        s5 = false;
         attackMusic = loadAudio("epic.wav");
         coin = loadAudio("coin.wav");
         clicks = loadAudio("clicks.wav");
@@ -38,7 +54,12 @@ public class Combat extends extraFunctions{
         leave = loadAudio("leave.wav");
         exitClick = loadAudio("exitClick.wav");
         win = loadAudio("win.wav");
-        startAudioLoop(attackMusic);
+        miss = loadAudio("miss.wav");
+        hit1 = loadAudio("hit_1.wav");
+        hit2 = loadAudio("hit2.wav");
+        hit3 = loadAudio("hit3.wav");
+        potion = loadAudio("potion.wav");
+        startAudioLoop(attackMusic, -11);
 
     }
 
@@ -475,6 +496,11 @@ public class Combat extends extraFunctions{
 
 
     public void startPlayerTurn() {
+        s1 = false;
+        s2 = false;
+        s3 = false;
+        s4 = false;
+        s5 = false;
 
         if (!useItem){
             if (lastAbility.getType() == Ability.AbilityType.damage) {
@@ -524,7 +550,10 @@ public class Combat extends extraFunctions{
 
 
     public void useItemTurn() {
-
+        if(!s5){
+            playAudio(potion);
+            s5 = false;
+        }
         lastItemUsed.use(player);
         useItem= false;
         if(lastItemUsed.getName() == "Antidote" && player.getLastStatusEffect() == Statblock.Status.Poison){
@@ -636,11 +665,17 @@ public class Combat extends extraFunctions{
                         drawText(150, 500, "You used " + lastAbility.getName(), textFont, 20, g);
                     }
                 } else if (playerAttackActive) {
+
+
                     if (lastAbility.getType() == Ability.AbilityType.damage) {
                         if (playerNewStatusDisplay) {
                             drawText(100, 500, enemy.getName() + " has been poisoned", textFont, 20, g);
                         } else {
                             if (lastAbility.isLastHit()) {
+                                if(!s3) {
+                                    playAudio(hit1);
+                                    s3 = true;
+                                }
                                 playerTurnLog = player.getName() + " dealt " + (int) playerDamage + " with " + lastAbility.getName();
                                 if (lastAbility.isLastCrit()) {
                                     playerTurnLog = player.getName() + " crit for " + (int) playerDamage + " with " + lastAbility.getName();
@@ -653,6 +688,10 @@ public class Combat extends extraFunctions{
                                     }
                                 }
                             } else {
+                                if(!s4) {
+                                    playAudio(miss);
+                                    s4 = true;
+                                }
                                 playerTurnLog = player.getName() + " missed with " + lastAbility.getName();
                                 drawText(70, 500, "Your " + lastAbility.getName() + " misses " + enemy.getName(), textFont, 20, g);
                             }
@@ -1161,6 +1200,7 @@ public class Combat extends extraFunctions{
 
 
     public void drawEnemyTurn(Graphics2D g){
+
         changeColor(black,g);
         drawLog(g);
         changeColor(white,g);
@@ -1169,6 +1209,10 @@ public class Combat extends extraFunctions{
         }else {
             if (!enemyAttackActive) {
                 if (enemyLastAbility.isMagic()){
+                    if(!s2){
+                        playAudio(exitClick);
+                        s2 = true;
+                    }
                     drawText(130, 500, enemy.getName() + " casts " + enemyLastAbility.getName() , textFont, 20, g);
                 } else{
                     drawText(130, 500, enemy.getName() + " uses " + enemyLastAbility.getName(), textFont, 20, g);
@@ -1180,9 +1224,12 @@ public class Combat extends extraFunctions{
                         //Might have to add somthing for log
                     } else {
                         if (enemyLastAbility.isLastHit()) {
+                            if(!s1) {
+                                playAudio(hit2);
+                                s1 = true;
+                            }
                             enemyTurnLog = enemy.getName() + " dealt " + (int) enemyDamage + " with " + enemyLastAbility.getName();
                             if (enemyLastAbility.isMagic()) {
-
                                 drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage , textFont, 20, g);
 
                             } else {
@@ -1190,13 +1237,16 @@ public class Combat extends extraFunctions{
                                     enemyTurnLog = enemy.getName() + " crit for " + (int) enemyDamage + " with " + enemyLastAbility.getName();
                                     drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int) enemyDamage , textFont, 20, g);
                                 } else {
-
                                     drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage , textFont, 20, g);
                                 }
 
                             }
 
                         } else {
+                            if(!s1) {
+                                playAudio(miss);
+                                s1 = true;
+                            }
                             enemyTurnLog = enemy.getName() + " missed with " + enemyLastAbility.getName();
                             drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " misses you", textFont, 20, g);
                         }
