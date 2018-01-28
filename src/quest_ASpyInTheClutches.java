@@ -45,10 +45,11 @@ public class quest_ASpyInTheClutches extends Quest {
         if(displayReward){
             super.drawQuestReward(g);
             changeColor(white, g);
-            drawBoldText(310, 40, "Quest Reward", "Felix Titling", 18, g);
+            drawBoldText(310, 20, "Quest Reward", "Felix Titling", 18, g);
             //  changeColor(purple, g);
-            drawBoldText(330, 60, "+300 Gold", "Felix Titling", 16, g);
-            drawBoldText(330, 80, "+500 EXP", "Felix Titling", 16, g);
+            drawBoldText(330, 40, "+300 Gold", "Felix Titling", 16, g);
+            drawBoldText(330, 60, "+500 EXP", "Felix Titling", 16, g);
+            drawBoldText(330, 80, "New Items in Store", "Felix Titling", 16, g);
         }
     }
 

@@ -14,7 +14,7 @@ public class Quest extends extraFunctions {
         displayDuration = 5;
         dialogueSpriteSheet = loadImage("dialogue_Boxes.png");
         dialogueSimpleBox = subImage(dialogueSpriteSheet,20,20,470,100);
-        displayReward =false;
+        displayReward = true;
     }
 
     enum questState{preQuest, inQuest, completedQuest, extraQuest}

@@ -575,7 +575,10 @@ public class MapControl extends extraFunctions {
                 playerMan.setQuestStage(updateQuestState);
                 playerMan.changeQuest();
                 updateQuestState = 0;
-                rewardDisplay = true;
+                if(playerMan.getCurrentQuest().getState() == Quest.questState.preQuest){
+                    rewardDisplay = true;
+                }
+
 
 
 

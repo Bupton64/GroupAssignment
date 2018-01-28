@@ -410,9 +410,9 @@ public class Character extends Statblock {
 
         // Test Functions
         setGpTotal(1);
-        setQuestStage(21);
-        currentQuest = new quest_AWanderingSoul();
-        currentQuest.setDisplayReward(false);
+//        setQuestStage(23);
+//        currentQuest = new quest_AWanderingSoul();
+//        currentQuest.setDisplayReward(false);
 //        currentQuest.setState(Quest.questState.preQuest);
         setXPTotal(0); //< TESTERS
         checkLevelUp(); //< Tester

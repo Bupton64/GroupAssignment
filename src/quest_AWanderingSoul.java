@@ -43,10 +43,11 @@ public class quest_AWanderingSoul extends Quest {
         if(displayReward){
             super.drawQuestReward(g);
             changeColor(white, g);
-            drawBoldText(310, 40, "Quest Reward", "Felix Titling", 18, g);
+            drawBoldText(310, 20, "Quest Reward", "Felix Titling", 18, g);
             //  changeColor(purple, g);
-            drawBoldText(310, 60, "+200 Gold", "Felix Titling", 16, g);
-            drawBoldText(310, 80, "+1000 EXP", "Felix Titling", 16, g);
+            drawBoldText(310, 40, "+200 Gold", "Felix Titling", 16, g);
+            drawBoldText(310, 60, "+1000 EXP", "Felix Titling", 16, g);
+            drawBoldText(330, 80, "New Items in Store", "Felix Titling", 16, g);
         }
     }
 
