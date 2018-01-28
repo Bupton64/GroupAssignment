@@ -289,11 +289,8 @@ public class Menu extends extraFunctions {
             changeColor(white, g);
             drawBoldText(80,290,"Current Quest","Felix Titling",18,g);
             drawImage(buttonSprite,20,300,300,80,g);
-            if(player1.getCurrentQuest().getQuestName() == "empty"){
-                drawBoldText(140,340,player1.getCurrentQuest().getQuestName(),"Felix Titling",16,g);
-            }else{
-                drawBoldText(60,340,player1.getCurrentQuest().getQuestName(),"Felix Titling",16,g);
-            }
+            drawBoldText(60,340,player1.getCurrentQuest().getQuestName(),"Felix Titling",16,g);
+
 
             player1.getCurrentQuest().drawQuest(g);
 
@@ -874,16 +871,19 @@ public class Menu extends extraFunctions {
 
     private String loadOneQuestName;
     private String loadOneLevel;
+    private double loadOneTimer;
     private boolean loadOneDisplay;
 
 
     private String loadTwoQuestName;
     private String loadTwoLevel;
+    private double loadTwoTimer;
     private boolean loadTwoDisplay;
 
 
     private String loadThreeQuestName;
     private String loadThreeLevel;
+    private double loadThreeTimer;
     private boolean loadThreeDisplay;
 
     private boolean getSaveFiles;
@@ -904,14 +904,17 @@ public class Menu extends extraFunctions {
 
 
         loadOneQuestName = "";
+        loadOneTimer = 0.0;
         loadOneLevel = "";
         loadOneDisplay = false;
 
         loadTwoQuestName = "";
+        loadTwoTimer = 0.0;
         loadTwoLevel = "";
         loadTwoDisplay = false;
 
         loadThreeQuestName = "";
+        loadThreeTimer = 0.0;
         loadThreeLevel = "";
         loadThreeDisplay = false;
 
@@ -920,10 +923,13 @@ public class Menu extends extraFunctions {
 
     public void getSaveFiles(){
         String temp;
+        double timer;
         try (BufferedReader br = new BufferedReader(new FileReader("SaveOne.txt"))) {
             temp = br.readLine();
             if(temp == null){
             }else{
+                timer = Double.parseDouble(br.readLine());
+                loadOneTimer = timer;
                 loadOneQuestName = temp;
                 loadOneLevel = br.readLine();
                 loadOneDisplay = true;
@@ -937,6 +943,8 @@ public class Menu extends extraFunctions {
             temp = br.readLine();
             if(temp == null){
             }else{
+                timer = Double.parseDouble(br.readLine());
+                loadTwoTimer = timer;
                 loadTwoQuestName = temp;
                 loadTwoLevel = br.readLine();
                 loadTwoDisplay = true;
@@ -950,6 +958,8 @@ public class Menu extends extraFunctions {
             temp = br.readLine();
             if(temp == null){
             }else{
+                timer = Double.parseDouble(br.readLine());
+                loadThreeTimer = timer;
                 loadThreeQuestName = temp;
                 loadThreeLevel = br.readLine();
                 loadThreeDisplay = true;
@@ -986,6 +996,7 @@ public class Menu extends extraFunctions {
             changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 240, "Level " +loadOneLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 240, "Time " + (int)loadOneTimer / 60 + ":" + (int)loadOneTimer % 60, "Felix Titling", 15, g);
         }else{
             changeColor(red, g);
             drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
@@ -996,6 +1007,7 @@ public class Menu extends extraFunctions {
             changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 320, "Level " +loadTwoLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 320, "Time " + (int)loadTwoTimer / 60 + ":" + (int)loadTwoTimer % 60, "Felix Titling", 15, g);
         }else{
             changeColor(red, g);
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
@@ -1006,6 +1018,7 @@ public class Menu extends extraFunctions {
             changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 400, "Level " +loadThreeLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 400, "Time " + (int)loadThreeTimer / 60 + ":" + (int)loadThreeTimer % 60, "Felix Titling", 15, g);
         }else{
             changeColor(red, g);
             drawBoldText(392, 390, "Empty", "Felix Titling", 15, g);
@@ -1018,7 +1031,7 @@ public class Menu extends extraFunctions {
 
     ////////////////////////////////////
     ///
-    ///     Save Game
+    ///     Keybindos
     ///
     ////////////////////////////////////
 
