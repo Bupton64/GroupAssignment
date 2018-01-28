@@ -20,8 +20,8 @@ public class monster_Wolf extends Monster {
         setXPGain(150);
         setGoldMin(60);
         setGoldMax(80);
-        setCurrentHP(75);
-        setMaxHP(75);
+        setCurrentHP(90);
+        setMaxHP(90);
         setLevel(2);
         setAlive(true);
         setName("Wolf");
