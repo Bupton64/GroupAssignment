@@ -163,7 +163,7 @@ public class Collision  {
                 }
             case 55:
                 if(player.getMapPosY() >= 390){     //Haven't adjust positioning yet
-                    player.setMapPosY(320);
+                    player.setMapPosY(280);
                     player.setMapPosX(390);
                     return 2;
                 }

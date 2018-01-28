@@ -63,13 +63,12 @@ public class endCutScene extends extraFunctions{
         for(int i =0; i < 3;i++){
             WizardSpin[i] = subImage(spriteSheet,52, 288 + (72*i),52,72);
             BjarneSpin[i] = subImage(spriteSheet,52, 72*i,52,72);
-            bolts[i] = subImage(spellSpriteSheet, 350 + (i * 20), 0, 20, 100);
         }
         WizardSpin[3] = WizardSpin[2];
         WizardSpin[2] = subImage(spriteSheet,52, 504,52,72);
         BjarneSpin[3] = BjarneSpin[2];
         BjarneSpin[2] = subImage(spriteSheet,52, 216,52,72);
-        WizardBad = subImage(spriteSheet, 52, 288, 52, 72);
+        WizardBad = subImage(spriteSheet3, 520, 288, 52, 72);
         for(int i = 0; i < 4; i++) {
             for (int j = 0; j < 8; j++) {
                 smokeArray[(i*8)+j] = subImage(smokeSheet, j * 128, i * 128, 128, 128);
@@ -83,6 +82,9 @@ public class endCutScene extends extraFunctions{
                 fadeArray[(i*5) + j] = subImage(fade, j*160, i*120, 140, 100);
             }
         }
+        bolts[0] = subImage(spellSpriteSheet, 0, 0, 80, 112);
+        bolts[1] = subImage(spellSpriteSheet, 100, 0, 80, 112);
+        bolts[2] = subImage(spellSpriteSheet, 210, 0, 80, 112);
     }
 
     public void updateTimer(double dt){
@@ -94,20 +96,21 @@ public class endCutScene extends extraFunctions{
         System.out.println(timer);
         if(!change) {
             drawImage(plainsBack, 0, 0, g);
-            drawImage(Dijkstra, 400, 300, 50, 70, g);
+            drawImage(Dijkstra, 400, 350, 50, 70, g);
             drawImage(Camrath, 500, 250, 50, 70, g);
         } else {
             drawImage(bossBack, 0, 0, g);
+            drawImage(WizardBad, 400, 100, 50, 70, g);
         }
         if(timer < 1) {
             drawImage(WizardSpin[animationChange % 4], 300, 250, 50, 70, g);
-            drawImage(BjarneSpin[animationChange % 4], 400, 315, 50, 70, g);
+            drawImage(BjarneSpin[animationChange % 4], 400, 365, 50, 70, g);
         }
         if((timer > 1) && !vanish){
-            drawImage(Dijkstra, 400, 300, 50, 70, g);
+            drawImage(Dijkstra, 400, 350, 50, 70, g);
             drawImage(Camrath, 500, 250, 50, 70, g);
             drawImage(smokeArray[animationChange%34], 250, 200, g);
-            drawImage(smokeArray[animationChange%34], 350, 265, g);
+            drawImage(smokeArray[animationChange%34], 350, 315, g);
             runCount++;
             if(runCount >=20){
                 vanish = true;
@@ -179,17 +182,16 @@ public class endCutScene extends extraFunctions{
                 drawImage(fadeArray[0], 0,0,800,600,g);
             }
             if(timer > 5 && timer < 6){
-                drawImage(WizardBad, 400, 100, 50, 70, g);
-
+                //drawImage(WizardBad, 400, 100, 50, 70, g);
                 drawImage(smokeArray[animationChange%34], 250, 200, g);
-                drawImage(smokeArray[animationChange%34], 350, 265, g);
+                drawImage(smokeArray[animationChange%34], 350, 315, g);
                 drawImage(WizardSpin[animationChange % 4], 300, 250, 50, 70, g);
-                drawImage(BjarneSpin[animationChange % 4], 400, 315, 50, 70, g);
+                drawImage(BjarneSpin[animationChange % 4], 400, 365, 50, 70, g);
             }
             if(timer > 6 && timer < 15){
-                drawImage(WizardBad, 400, 100, 50, 70, g);
+                //drawImage(WizardBad, 400, 100, 50, 70, g);
                 drawImage(WizardSpin[2], 300, 250, 50, 70, g);
-                drawImage(BjarneSpin[2], 400, 315, 50, 70, g);
+                drawImage(BjarneSpin[2], 400, 365, 50, 70, g);
             }
             if(timer > 6 && timer < 9){
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
@@ -203,26 +205,37 @@ public class endCutScene extends extraFunctions{
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 changeColor(white, g);
                 drawText(110, 425, "Sevar: ", "Times New Roman", 20, g);
-                drawText(110, 450, "HA! We're ready for you now Therox! This is it, you're done!", "Times New Roman", 20, g);
-                drawText(110, 475, "", "Times New Roman", 20, g);
-                drawText(110, 500, "", "Times New Roman", 20, g);
+                drawText(110, 450, "Therox! Your time is up! Bjarne, I've been saving up my ", "Times New Roman", 20, g);
+                drawText(110, 475, "energy for this one spell, I will finish Therox but likely", "Times New Roman", 20, g);
+                drawText(110, 500, "won't make it through. Good luck friend.", "Times New Roman", 20, g);
             }
             if(timer > 12 && timer < 15){
                 //Insert fireball animation here
+                drawImage(smokeArray[animationChange%34], 350, 50, g);
+                drawImage(bolts[animationChange%3], 340,140, 70, 150,g);
+
             }
             if(timer > 15 && timer < 50){
                 drawImage(WizardBad, 400, 100, 50, 70, g);
-                drawImage(BjarneSpin[2], 400, 315, 50, 70, g);
+                drawImage(BjarneSpin[2], 400, 365, 50, 70, g);
             }
             if(timer > 15 && timer < 18){
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 changeColor(white, g);
                 drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
-                drawText(110, 450, "SEVARRRRR NOOOOOO! Therox! You did this, you'll pay!", "Times New Roman", 20, g);
+                drawText(110, 450, "SEVARRRRR NOOOOOO! What? Therox... you... you survived?", "Times New Roman", 20, g);
                 drawText(110, 475, "", "Times New Roman", 20, g);
                 drawText(110, 500, "", "Times New Roman", 20, g);
             }
-            if(timer > 18){
+            if(timer > 18 && timer < 21){
+                drawImage(dialogueBack, 90, 400, 620, 165, g);
+                changeColor(white, g);
+                drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
+                drawText(110, 450, "HA! Your little friend barely touched me, now prepare", "Times New Roman", 20, g);
+                drawText(110, 475, "to meet your end!", "Times New Roman", 20, g);
+                drawText(110, 500, "", "Times New Roman", 20, g);
+            }
+            if(timer > 21){
                 changeColor(white, g);
                 drawText(250, 450, "- Press <SPACE> to initiate battle -",  "New Roman Times", 20, g);
             }
@@ -232,7 +245,7 @@ public class endCutScene extends extraFunctions{
     public int keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            return 1;
+            return 11;
         }
         return 0;
     }
