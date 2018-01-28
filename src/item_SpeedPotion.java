@@ -15,6 +15,7 @@ public class item_SpeedPotion extends Item {
     @Override
     public void use(Character user){
         user.setSpeedBonus(user.getSpeedBonus() + getNumericValue());
+        this.setDisplayString(user.getName() + "'s speed increases!");
         super.use(user);
     }
 }

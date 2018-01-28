@@ -49,7 +49,7 @@ public class StartScreen extends extraFunctions {
         clicks2 = loadAudio("clicks2.wav");
         exitClick = loadAudio("exitClick.wav");
         introMusic = loadAudio("epic.wav");
-        startAudioLoop(introMusic);
+        startAudioLoop(introMusic, -3);
         StartBackground = subImage(paper, 0, 0, 768, 1028);
         swordSprite = subImage(sword, 0, 0, 1793, 445);
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);

@@ -316,13 +316,18 @@ public abstract class extraFunctions {
     public AudioClip loadAudio(String filename) {
         try {
             // Open File
+
             File file = new File(filename);
 
+
             // Open Audio Input Stream
+
             AudioInputStream audio = AudioSystem.getAudioInputStream(file);
+
 
             // Create Audio Clip
             AudioClip clip = new AudioClip(audio);
+
 
             // Return Audio Clip
             return clip;
@@ -360,7 +365,7 @@ public abstract class extraFunctions {
             System.out.println("Error playing Audio Clip\n");
         }
     }
-    public void startAudioLoop(AudioClip audioClip) {
+    public void startAudioLoop(AudioClip audioClip, float volume) {
         // Check audioClip for null
         if(audioClip == null) {
             // Print error message
@@ -381,6 +386,12 @@ public abstract class extraFunctions {
 
                 // Load data
                 clip.open(audioClip.getAudioFormat(), audioClip.getData(), 0, (int)audioClip.getBufferSize());
+
+                // Create Controls
+                FloatControl control = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+
+                // Set Volume
+                control.setValue(volume);
 
                 // Set Clip to Loop
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
