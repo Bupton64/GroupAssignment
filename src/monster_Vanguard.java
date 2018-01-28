@@ -12,11 +12,11 @@ public class monster_Vanguard extends Monster{
         for (int i = 0; i < 3; i++) {
             temp[i] = new Ability();
         }
-        setAttack(6);
+        setAttack(4);
         setDefense(0);
         setLuck(4);
         setSpeed(16);
-        setStrength(4);
+        setStrength(2);
         setXPGain(650);
         setGoldMin(270);
         setGoldMax(310);
