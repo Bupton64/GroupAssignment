@@ -29,9 +29,11 @@ public class endCutScene extends extraFunctions{
     boolean vanish;
     boolean change;
     double timer;
+    private boolean startBattle;
 
 
     endCutScene(){
+        startBattle = false;
         timer = 0;
         fade = loadImage("fade.png");
         smokeSheet = loadImage("smoke.png");
@@ -85,9 +87,15 @@ public class endCutScene extends extraFunctions{
         }
     }
 
-    public void updateTimer(double dt){
+    public int updateTimer(double dt){
         timer +=dt;
+        if(startBattle){
+            startBattle = false;
+            return 11;
+        }
+        return 0;
     }
+
 
     public void drawCutScene(Graphics2D g) {
         animationChange++;
@@ -232,7 +240,7 @@ public class endCutScene extends extraFunctions{
     public int keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            return 1;
+            startBattle = true;
         }
         return 0;
     }

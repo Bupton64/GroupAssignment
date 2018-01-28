@@ -1536,6 +1536,8 @@ public class Combat extends extraFunctions{
             enemy = new monster_BOSS_razuulActual();
         }else if(monsterToFight == 4){
             enemy = new monster_BOSS_razuulEmpowered();
+        }else if(monsterToFight == 5){
+            enemy = new monster_BOSS_Therox();
         }
 
 

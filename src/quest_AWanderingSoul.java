@@ -2,7 +2,7 @@
 import java.awt.*;
 
 public class quest_AWanderingSoul extends Quest {
-    boolean displayReward;
+
 
     quest_AWanderingSoul(){
 

@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class quest_ASpyInTheClutches extends Quest {
-    boolean displayReward;
+
 
     quest_ASpyInTheClutches(){
 
@@ -31,6 +31,7 @@ public class quest_ASpyInTheClutches extends Quest {
         displayTimer = 0;
         return false;
     }
+
 
     public void giveReward(Character playerMan){
         playerMan.setXPTotal(playerMan.getXPTotal() + 500);

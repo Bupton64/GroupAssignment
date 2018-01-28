@@ -120,6 +120,7 @@ public class Quest extends extraFunctions {
 
             return true;
         }
+        displayReward = false;
         return false;
 
     }

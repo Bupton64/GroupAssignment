@@ -247,7 +247,15 @@ public class AdventureMode extends GameEngine {
                 startController.updateTimer(dt);
                 break;
             case endCutScene:
-                endCutSceneController.updateTimer(dt);
+                stateChanger = endCutSceneController.updateTimer(dt);
+                if(stateChanger == 11){
+                    playerMan.setMonsterGen(5);
+                    stateChanger = 0;
+                    generateCombat =true;
+                    fadeState = true;
+                    timer = 0;
+
+                }
                 break;
             case CutScene:
                 cutScene.updateTimer(dt);
@@ -318,6 +326,10 @@ public class AdventureMode extends GameEngine {
                 break;
             case endCutScene:
                 endCutSceneController.drawCutScene(mGraphics);
+                if(fadeState){
+                    drawFade();
+
+                }
                 break;
         }
 

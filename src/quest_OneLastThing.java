@@ -2,7 +2,7 @@
 import java.awt.*;
 
 public class quest_OneLastThing extends Quest {
-    boolean displayReward;
+
 
     quest_OneLastThing(){
 

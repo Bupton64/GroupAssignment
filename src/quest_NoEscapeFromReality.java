@@ -2,7 +2,6 @@
 import java.awt.*;
 
 public class quest_NoEscapeFromReality extends Quest {
-    boolean displayReward;
 
     quest_NoEscapeFromReality(){
 

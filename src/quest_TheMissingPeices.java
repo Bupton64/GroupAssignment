@@ -5,11 +5,6 @@ public class quest_TheMissingPeices extends Quest {
 
 
 
-
-
-
-
-
     quest_TheMissingPeices(){
         collectableState = new boolean[7];
         for(int i = 0; i < 7;i++){
