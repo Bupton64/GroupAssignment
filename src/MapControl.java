@@ -366,6 +366,12 @@ public class MapControl extends extraFunctions {
                     break;
                 case 48:
                     currentMap = new plains_F9_bottomLeftHouse();
+                    if(playerMan.getQuestStage() == 13){
+                        if(!playerMan.getCollectableState(0)) {
+                            mapNpcs[0] = new npc_plains_quest4_collectable(290, 180);
+                            numOfNpc = 1;
+                        }
+                    }
                     break;
                 case 49:
                     currentMap = new plains_F9_bottomRightHouse();
@@ -376,12 +382,7 @@ public class MapControl extends extraFunctions {
                         mapNpcs[0] = new npc_plains_priest(600,350);
                         numOfNpc = 1;
                     }
-                    if(playerMan.getQuestStage() == 13){
-                        if(!playerMan.getCollectableState(0)) {
-                            mapNpcs[0] = new npc_plains_quest4_collectable(360, 160);
-                            numOfNpc = 1;
-                        }
-                    }
+
 
                     break;
                 case 51:
@@ -523,7 +524,7 @@ public class MapControl extends extraFunctions {
                 switch((int)playerMan.getCurrentMapLocation()){
                     case 51:
                     case 38:
-                    case 50:
+                    case 48:
                         playerMan.setCollectableState(0,true);
                         reloadMap = true;
                         break;
