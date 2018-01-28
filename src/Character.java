@@ -12,6 +12,15 @@ public class Character extends Statblock {
     private int maxInventorySize; //< Maximum size of the players inventory.
     private double currentMapLocation; //< Determines what map number the player is currently on
     private boolean combatActive; //< Determines whether the character is in combat.
+    private double GameTimer;
+
+    public double getGameTimer() {
+        return GameTimer;
+    }
+
+    public void setGameTimer(double gameTimer) {
+        GameTimer = gameTimer;
+    }
 
     public int getInventorySize(){
         int count=0;
@@ -330,6 +339,7 @@ public class Character extends Statblock {
 
     public void init(){
         //Quest Init - Zane
+        GameTimer = 0.0;
         setMapPosX(250);
         setMapPosY(240);
         setCurrentMapLocation(21);
@@ -400,8 +410,9 @@ public class Character extends Statblock {
 
         // Test Functions
         setGpTotal(1);
-        setQuestStage(26);
-        currentQuest = new quest_OneLastThing();
+        setQuestStage(21);
+        currentQuest = new quest_AWanderingSoul();
+        currentQuest.setDisplayReward(false);
 //        currentQuest.setState(Quest.questState.preQuest);
         setXPTotal(0); //< TESTERS
         checkLevelUp(); //< Tester

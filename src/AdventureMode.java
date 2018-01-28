@@ -213,6 +213,7 @@ public class AdventureMode extends GameEngine {
 
     @Override
     public void update(double dt) {
+        playerMan.setGameTimer(playerMan.getGameTimer() + dt);
 
         updateGameState();
         updateFade(dt);

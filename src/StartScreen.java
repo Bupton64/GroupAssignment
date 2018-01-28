@@ -190,16 +190,19 @@ public class StartScreen extends extraFunctions {
 
     private String loadOneQuestName;
     private String loadOneLevel;
+    private double loadOneTimer;
     private boolean loadOneDisplay;
 
 
     private String loadTwoQuestName;
     private String loadTwoLevel;
+    private double loadTwoTimer;
     private boolean loadTwoDisplay;
 
 
     private String loadThreeQuestName;
     private String loadThreeLevel;
+    private double loadThreeTimer;
     private boolean loadThreeDisplay;
 
 
@@ -211,26 +214,34 @@ public class StartScreen extends extraFunctions {
 
         loadOneQuestName = "";
         loadOneLevel = "";
+        loadOneTimer = 0.0;
         loadOneDisplay = false;
+
 
         loadTwoQuestName = "";
         loadTwoLevel = "";
+        loadTwoTimer = 0.0;
         loadTwoDisplay = false;
 
         loadThreeQuestName = "";
         loadThreeLevel = "";
+        loadThreeTimer = 0.0;
         loadThreeDisplay = false;
     }
 
     public void getLoadFiles(){
         String temp;
+        double timer;
         try (BufferedReader br = new BufferedReader(new FileReader("SaveOne.txt"))) {
+
             temp = br.readLine();
             if(temp == null){
 
 
             }else{
+                timer = Double.parseDouble(br.readLine());
                 loadOneQuestName = temp;
+                loadOneTimer = timer;
                 loadOneLevel = br.readLine();
                 loadOneDisplay = true;
 
@@ -240,12 +251,15 @@ public class StartScreen extends extraFunctions {
         }
 
         try (BufferedReader br = new BufferedReader(new FileReader("SaveTwo.txt"))) {
+
             temp = br.readLine();
             if(temp == null){
 
 
             }else{
+                timer = Double.parseDouble(br.readLine());
                 loadTwoQuestName = temp;
+                loadTwoTimer = timer;
                 loadTwoLevel = br.readLine();
                 loadTwoDisplay = true;
 
@@ -255,12 +269,15 @@ public class StartScreen extends extraFunctions {
         }
 
         try (BufferedReader br = new BufferedReader(new FileReader("SaveThree.txt"))) {
+
             temp = br.readLine();
             if(temp == null){
 
 
             }else{
+                timer = Double.parseDouble(br.readLine());
                 loadThreeQuestName = temp;
+                loadThreeTimer = timer;
                 loadThreeLevel = br.readLine();
                 loadThreeDisplay = true;
 
@@ -294,6 +311,7 @@ public class StartScreen extends extraFunctions {
             changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 240, "Level " +loadOneLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 240, "Time " + (int)loadOneTimer / 60 + ":" + (int)loadOneTimer % 60, "Felix Titling", 15, g);
         }else{
             changeColor(red, g);
             drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
@@ -304,6 +322,7 @@ public class StartScreen extends extraFunctions {
             changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 320, "Level " +loadTwoLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 320, "Time " + (int)loadTwoTimer / 60 + ":" + (int)loadTwoTimer % 60, "Felix Titling", 15, g);
         }else{
             changeColor(red, g);
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
@@ -314,6 +333,7 @@ public class StartScreen extends extraFunctions {
             changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
             drawBoldText(390, 400, "Level " +loadThreeLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 400, "Time " + (int)loadThreeTimer / 60 + ":" + (int)loadThreeTimer % 60, "Felix Titling", 15, g);
         }else{
             changeColor(red, g);
             drawBoldText(392, 390, "Empty", "Felix Titling", 15, g);
@@ -390,6 +410,7 @@ public class StartScreen extends extraFunctions {
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 150)&& !startup){
             playAudio(exitClick);
+            player = new Character();
             return 7;
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 230)){
