@@ -85,7 +85,7 @@ public class AdventureMode extends GameEngine {
     private int stateChanger;
     private boolean generateCombat;
 
-    private saveGame saveController;
+    saveGame saveController;
     private Menu menuController;
     private StartScreen startController;
     private MapControl mapController;
@@ -139,8 +139,8 @@ public class AdventureMode extends GameEngine {
         cutScene = new cutScene();
         endCutSceneController = new endCutScene();
 
-        stateChanger = 0;
         generateCombat = false;
+        stateChanger = 0;
         state = GameState.MainMenu;
 
         menuController = new Menu(playerMan,saveController);
@@ -228,14 +228,14 @@ public class AdventureMode extends GameEngine {
                 }
                 if(stateChanger == 9){
                     stateChanger = 0;
+                    generateCombat =true;
                     fadeState = true;
-                    generateCombat = true;
                     timer = 0;
                 }
 
                 break;
             case CombatMode:
-                combatMode = new Combat(playerMan, playerMan.getMonsterGen());
+
                 stateChanger =  combatMode.update(dt);
                 break;
             case ShopMode:
@@ -258,6 +258,7 @@ public class AdventureMode extends GameEngine {
             if(timer >= 1){
                 if(generateCombat){
                     stateChanger = 2;
+                    combatMode = new Combat(playerMan, playerMan.getMonsterGen());
                     generateCombat = false;
                 }
 
