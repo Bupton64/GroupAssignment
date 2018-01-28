@@ -17,7 +17,7 @@ public class monster_troll extends Monster {
         setLuck(0);
         setSpeed(10);
         setStrength(30);
-        setXPGain(2580);
+        setXPGain(2380);
         setGoldMin(790);
         setGoldMax(1030);
         setCurrentHP(600);
