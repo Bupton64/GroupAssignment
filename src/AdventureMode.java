@@ -153,10 +153,10 @@ public class AdventureMode extends GameEngine {
     public void update(double dt) {
 
         updateGameState();
-
+        updateFade(dt);
         switch (state){
             case TravelMode:
-                updateFade(dt);
+
                 mapController.updateNPC(dt,collisionDetector);
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);
@@ -169,14 +169,7 @@ public class AdventureMode extends GameEngine {
                     fadeState = true;
                     timer = 0;
                 }
-                if(fadeState){
-                    if(timer >= 1){
-                        stateChanger = 2;
-                        if(timer > 1.5) {
-                            fadeState = false;
-                        }
-                    }
-                }
+
                 break;
             case CombatMode:
                 stateChanger =  combatMode.update(dt);
@@ -196,6 +189,14 @@ public class AdventureMode extends GameEngine {
             case OverWorldMenu:
                 break;
 
+        }
+        if(fadeState){
+            if(timer >= 1){
+                stateChanger = 2;
+                if(timer > 1.5) {
+                    fadeState = false;
+                }
+            }
         }
     }
 
