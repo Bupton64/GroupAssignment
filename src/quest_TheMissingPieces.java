@@ -1,18 +1,18 @@
 import java.awt.*;
 
-public class quest_TheMissingPeices extends Quest {
+public class quest_TheMissingPieces extends Quest {
 
 
 
 
-    quest_TheMissingPeices(){
+    quest_TheMissingPieces(){
         collectableState = new boolean[7];
         for(int i = 0; i < 7;i++){
             collectableState[i] = false;
         }
         numOfCollectables = 0;
         totalCollectables = 7;
-        setQuestName("The Missing Peices");
+        setQuestName("The Missing Pieces");
         state = questState.preQuest;
         displayReward = true;
         displayTimer = 0;
