@@ -34,15 +34,20 @@ public class AdventureMode extends GameEngine {
     private cutScene cutScene;
     private ShopControl shopController;
     private endCutScene endCutSceneController;
+
+
+
     AudioClip backgroundMusic;
     AudioClip cutSceneMusic;
     AudioClip villageMusic;
     AudioClip menuMusic;
     AudioClip clicks;
-    float volume = 0;
-    boolean stopper = false;
-    boolean mute = false;
-    void stopMusic(){
+    private float volume;
+    private boolean stopper;
+    private boolean mute;
+
+
+   public void stopMusic(){
         stopAudioLoop(villageMusic);
         stopAudioLoop(menuMusic);
         stopAudioLoop(cutSceneMusic);
@@ -52,14 +57,14 @@ public class AdventureMode extends GameEngine {
 
 
     public void init() {
-
-
-
         cutSceneMusic = loadAudio("cutscene.wav");
         backgroundMusic = loadAudio("epic.wav");
         villageMusic = loadAudio("village.wav");
         menuMusic = loadAudio("menuMusic.wav");
         clicks = loadAudio("clicks.wav");
+        mute = false;
+        stopper = false;
+        volume = 0;
 
         setWindowSize(800, 600);
         playerMan = new Character();

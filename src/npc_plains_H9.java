@@ -64,7 +64,7 @@ public class npc_plains_H9 extends  NPC {
         listOne = d1;
 
 
-        Dialogue d2 = new Dialogue(null,true,true,"Bjarne! I've been expecting you ever since I heard you had arrived.","Let me guess, you're looking for a weapon? Unfortunately I'm lacking","materials. Could you give me 500GP so that I purchase the resources","needed?");
+        Dialogue d2 = new Dialogue(null,true,true,"Hey there, I just finished clearing all the monsters out of this area.","I've been expecting you ever since I heard you had arrived.Let me guess,"," you're looking for a weapon? Unfortunately I'm lacking materials."," Could you spare 500GP so that I can purchase the resources needed?");
         listTwo = d2;
 
         Dialogue d3 = new Dialogue(null,false,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword","");
