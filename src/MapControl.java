@@ -518,7 +518,7 @@ public class MapControl extends extraFunctions {
                 reloadMap = true;
                 mapNpcs[1].undoCollision(collisionDetector);
                 updateQuestState = 0;
-                return 2;
+                return 9;
             }else if(updateQuestState == 98){
                 switch((int)playerMan.getCurrentMapLocation()){
                     case 51:
