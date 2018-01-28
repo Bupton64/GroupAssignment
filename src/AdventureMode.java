@@ -161,10 +161,10 @@ public class AdventureMode extends GameEngine {
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
-                if(stateChanger != 2 && stateChanger != 5) {
+                if(stateChanger != 9 && stateChanger != 5) {
                     stateChanger = mapController.updateQuest(dt);
                 }
-                if(stateChanger == 2){
+                if(stateChanger == 9){
                     stateChanger = 0;
                     fadeState = true;
                     timer = 0;
@@ -172,7 +172,9 @@ public class AdventureMode extends GameEngine {
                 if(fadeState){
                     if(timer >= 1){
                         stateChanger = 2;
-                        fadeState = false;
+                        if(timer > 1.5) {
+                            fadeState = false;
+                        }
                     }
                 }
                 break;
@@ -296,7 +298,7 @@ public class AdventureMode extends GameEngine {
         if(timer > 0.8 && timer < 0.9){
             drawImage(fadeArray[8], 0,0,800,600);
         }
-        if(timer > 0.9 && timer < 1){
+        if(timer > 0.9 && timer < 1.5){
             drawImage(fadeArray[9], 0,0,800,600);
         }
     }
