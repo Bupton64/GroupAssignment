@@ -9,7 +9,7 @@ public class item_Potion extends Item {
         this.setTooltip("Restores 50 HP");
         this.setUseableOustideCombat(true);
         this.setSellPrice(10);
-        this.setBuyPrice(100);
+        this.setBuyPrice(50);
     }
 
     @Override

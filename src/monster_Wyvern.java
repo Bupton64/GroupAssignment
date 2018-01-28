@@ -18,8 +18,8 @@ public class monster_Wyvern extends Monster {
         setSpeed(30);
         setStrength(2);
         setXPGain(1280);
-        setGoldMin(240);
-        setGoldMax(360);
+        setGoldMin(370);
+        setGoldMax(460);
         setCurrentHP(300);
         setMaxHP(300);
         setLevel(7);

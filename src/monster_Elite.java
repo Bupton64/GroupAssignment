@@ -18,8 +18,8 @@ public class monster_Elite extends Monster {
         setSpeed(16);
         setStrength(8);
         setXPGain(1720);
-        setGoldMin(590);
-        setGoldMax(930);
+        setGoldMin(640);
+        setGoldMax(980);
         setCurrentHP(500);
         setMaxHP(500);
         setLevel(9);

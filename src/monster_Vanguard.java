@@ -18,8 +18,8 @@ public class monster_Vanguard extends Monster{
         setSpeed(16);
         setStrength(4);
         setXPGain(650);
-        setGoldMin(190);
-        setGoldMax(230);
+        setGoldMin(270);
+        setGoldMax(310);
         setCurrentHP(250);
         setMaxHP(250);
         setLevel(5);

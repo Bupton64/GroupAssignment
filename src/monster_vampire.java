@@ -18,8 +18,8 @@ public class monster_vampire extends Monster {
         setSpeed(35);
         setStrength(5);
         setXPGain(1970);
-        setGoldMin(740);
-        setGoldMax(960);
+        setGoldMin(800);
+        setGoldMax(1020);
         setCurrentHP(600);
         setMaxHP(600);
         setLevel(10);
