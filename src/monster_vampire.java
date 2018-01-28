@@ -22,7 +22,7 @@ public class monster_vampire extends Monster {
         setGoldMax(960);
         setCurrentHP(600);
         setMaxHP(600);
-        setLevel(11);
+        setLevel(10);
         setAlive(true);
         setName("Vampire");
         setEnergy(0);
