@@ -253,11 +253,7 @@ public class endCutScene extends extraFunctions{
     public int keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-<<<<<<< HEAD
             startBattle = true;
-=======
-            return 11;
->>>>>>> 2529d15823bf11615dddc1d6fd8b39ac47f689e8
         }
         return 0;
     }
