@@ -1659,7 +1659,7 @@ public class Combat extends extraFunctions{
             enemy = new monster_BOSS_Therox();
         }
 
-        
+
 
 
 
