@@ -103,8 +103,7 @@ public class AdventureMode extends GameEngine {
                 combatMode = new Combat(playerMan, playerMan.getMonsterGen());
                 state = GameState.CombatMode;
                stopMusic();
-                volume = -5;
-                startAudioLoop(backgroundMusic, volume);
+               stopper = false;
                 break;
             case 3:
                 state = GameState.OverWorldMenu;
