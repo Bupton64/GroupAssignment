@@ -420,7 +420,10 @@ public class StartScreen extends extraFunctions {
             playAudio(exitClick);
             state = startState.loadScreen;
         }
-
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 310)) {
+           playAudio(exitClick);
+           state = startState.credits;
+        }
         return 0;
     }
 
