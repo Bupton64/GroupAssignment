@@ -1,5 +1,6 @@
 
 
+import java.awt.*;
 import java.awt.event.*;
 
 
@@ -227,6 +228,58 @@ public class AdventureMode extends GameEngine {
                 break;
         }
 
+    }
+
+    private double timer;
+    private Image fade;
+    private Image fadeArray[];
+
+    public void fadeUpdate(double dt){
+        timer+=dt;
+    }
+
+    public void fadeInit(){
+        timer = 0;
+        fadeArray = new Image[10];
+        fade = loadImage("fade.png");
+        for(int i = 0; i < 2; i++){
+            for(int j = 0; j < 5; j++){
+                fadeArray[(i*5) + j] = subImage(fade, j*160, i*120, 140, 100);
+            }
+        }
+    }
+    
+    public void fadeDraw(){
+        if(timer > 0 && timer < 1){
+            drawImage(fadeArray[0], 0,0,800,600);
+        }
+        if(timer > 0.1 && timer < 0.2){
+            drawImage(fadeArray[1], 0,0,800,600);
+        }
+        if(timer > 0.2 && timer < 0.3){
+            drawImage(fadeArray[2], 0,0,800,600);
+        }
+        if(timer > 0.3 && timer < 0.4){
+            drawImage(fadeArray[3], 0,0,800,600);
+        }
+        if(timer > 0.4 && timer < 0.5){
+            drawImage(fadeArray[4], 0,0,800,600);
+        }
+        if(timer > 0.5 && timer < 0.6){
+            drawImage(fadeArray[5], 0,0,800,600);
+        }
+        if(timer > 0.6 && timer < 0.7){
+            drawImage(fadeArray[6], 0,0,800,600);
+        }
+        if(timer > 0.7 && timer < 0.8){
+            drawImage(fadeArray[7], 0,0,800,600);
+        }
+        if(timer > 0.8 && timer < 0.9){
+            drawImage(fadeArray[8], 0,0,800,600);
+        }
+        if(timer > 0.9 && timer < 1){
+            drawImage(fadeArray[9], 0,0,800,600);
+        }
     }
 
     ///////////////////////////////////////////
