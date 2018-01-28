@@ -6,8 +6,11 @@ public class endCutScene extends extraFunctions{
     Image spriteSheet;
     Image spriteSheet2;
     Image spriteSheet3;
+    Image spellSpriteSheet;
     Image bossBack;
     Image plainsBack;
+    Image bolts[];
+    Image lightening[];
     Image Bjarne[];
     Image BjarneSpin[];
     Image WizardSpin[];
@@ -37,6 +40,7 @@ public class endCutScene extends extraFunctions{
         spriteSheet = loadImage("chara1.png");
         spriteSheet2 = loadImage("chara3.png");
         spriteSheet3 = loadImage("chara2.png");
+        spellSpriteSheet = loadImage("spellBolt.png");
 
         Dijkstra = subImage(spriteSheet3, 520, 0,56,72);
         Camrath = subImage(spriteSheet2, 52, 288, 56, 72);
@@ -45,6 +49,8 @@ public class endCutScene extends extraFunctions{
         change = false;
         runCount = 0;
         animationChange = 0;
+        bolts = new Image[3];
+        lightening = new Image[3];
         WizardSpin = new Image[4];
         BjarneSpin = new Image[4];
         Bjarne = new Image[3];
@@ -57,6 +63,7 @@ public class endCutScene extends extraFunctions{
         for(int i =0; i < 3;i++){
             WizardSpin[i] = subImage(spriteSheet,52, 288 + (72*i),52,72);
             BjarneSpin[i] = subImage(spriteSheet,52, 72*i,52,72);
+            bolts[i] = subImage(spellSpriteSheet, 350 + (i * 20), 0, 20, 100);
         }
         WizardSpin[3] = WizardSpin[2];
         WizardSpin[2] = subImage(spriteSheet,52, 504,52,72);
