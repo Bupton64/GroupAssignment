@@ -1129,14 +1129,30 @@ public class Combat extends extraFunctions{
                         if(player.isAlive()) {
                             enemy.takeDamage((int) enemy.getLastStatusDamage());
                             pushString(statusLog,false,false);
+                        }else{
+                            fadeState = true;
+                            timer = 0;
+                            enemyEndTurn();
+                            state = CombatState.playerDeath;
+                            pushString(player.getName() + " has been killed",true,true);
                         }
 
 
                         displayEnemyOldStatus = false;
                     }
                 }else {
-                    enemyEndTurn();
+                    if(!player.isAlive()){
+                        fadeState = true;
+                        timer = 0;
+                        enemyEndTurn();
+                        state = CombatState.playerDeath;
+                        pushString(player.getName() + " has been killed",true,true);
+                    }else{
+                        enemyEndTurn();
+                    }
+
                 }
+
             }
         }
     }
@@ -1345,6 +1361,79 @@ public class Combat extends extraFunctions{
 
     }
 
+
+    /////////////////////////////////
+    ///
+    /// Fade
+    ///
+    /////////////////////////////////
+
+
+    private double timer;
+    private Image fade;
+    private Image fadeArray[];
+    private boolean fadeState;
+
+    public void updateDeath(double dt){
+
+        timer+=dt;
+    }
+
+    public void initDeath(){
+        fadeState = false;
+        timer = 0;
+        fadeArray = new Image[10];
+        fade = loadImage("fade.png");
+        for(int i = 0; i < 2; i++){
+            for(int j = 0; j < 5; j++){
+                fadeArray[(i*5) + j] = subImage(fade, j*160, i*120, 140, 100);
+            }
+        }
+    }
+
+    public void drawDeath(Graphics2D g){
+
+        if(timer > 1.1 && timer < 1.2){
+            drawImage(fadeArray[1], 0,0,800,600,g);
+        }
+        if(timer > 1.2 && timer < 1.3){
+            drawImage(fadeArray[2], 0,0,800,600,g);
+        }
+        if(timer > 1.3 && timer < 1.4){
+            drawImage(fadeArray[3], 0,0,800,600,g);
+        }
+        if(timer > 1.4 && timer < 1.5){
+            drawImage(fadeArray[4], 0,0,800,600,g);
+        }
+        if(timer > 1.5 && timer < 1.6){
+            drawImage(fadeArray[5], 0,0,800,600,g);
+        }
+        if(timer > 1.6 && timer < 1.7){
+            drawImage(fadeArray[6], 0,0,800,600,g);
+        }
+        if(timer > 1.7 && timer < 1.8){
+            drawImage(fadeArray[7], 0,0,800,600,g);
+        }
+        if(timer > 1.8 && timer < 1.9){
+            drawImage(fadeArray[8], 0,0,800,600,g);
+        }
+        if(timer > 1.9 && timer < 2.5){
+            drawImage(fadeArray[9], 0,0,800,600,g);
+        }
+        if(timer > 2.4){
+            drawImage(fadeArray[9], 0,0,800,600,g);
+            changeColor(white,g);
+            drawText(240,200,"GAME OVER!", "Times New Roman",60,g);
+            drawText(240,200,"Score: " + (player.getLevel() * player.getQuestStage()) * 100, "Times New Roman",60,g);
+            drawText(240,200,"Level: " + player.getLevel(), "Times New Roman",60,g);
+            drawText(300, 400,"EXIT[ESC]","Felix Titling",15,g);
+        }
+    }
+
+
+
+
+
     /////////////////////////////////////////
     ///
     ///  Finding an Opponent
@@ -1492,6 +1581,7 @@ public class Combat extends extraFunctions{
         initItemMenu();
         initLootScreen();
         initLog();
+        initDeath();
         backGroundImage = loadImage("backgroundsprite.png");
         charSpriteSheet = loadImage("charspritesheet.png");
         for(int i =0; i < 3;i++){
@@ -1516,9 +1606,7 @@ public class Combat extends extraFunctions{
 
 
     public int update(double dt) {
-        if(!player.isAlive()){
-            state = CombatState.playerDeath;
-        }
+
 
         updateNamePlates(dt);
         updatePlayerTurnDisplay(dt);
@@ -1526,7 +1614,6 @@ public class Combat extends extraFunctions{
         if(state == CombatState.run) {
             updateRun(dt);
         }
-
         updateEnemyTurn(dt);
         if(state == CombatState.abilityMenu) {
             updateAbilityMenu(dt);
@@ -1537,11 +1624,15 @@ public class Combat extends extraFunctions{
         if(state == CombatState.lootScreen) {
             updateLootScreen(dt);
         }
-
         updateLog(dt);
         if(!player.getCombatActive()){
             return 1;
         }
+        if(state == CombatState.playerDeath){
+            updateDeath(dt);
+
+        }
+
         return 0;
     }
 
@@ -1593,11 +1684,11 @@ public class Combat extends extraFunctions{
             drawLootScreen(g);
         }else if(state == CombatState.playerDeath){
             drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
-            changeColor(white,g);
-            drawText(240,200,"GAME OVER!", "Times New Roman",60,g);
+
             drawLog(g);
             drawPlayerNamePlate(g);
             drawEnemyNamePlate(g);
+            drawDeath(g);
         }
     }
 
