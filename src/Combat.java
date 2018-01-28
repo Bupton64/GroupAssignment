@@ -186,11 +186,11 @@ public class Combat extends extraFunctions{
 
         changeColor(purple,g);
 
-        drawSolidRectangle(107,82,(player.getXPTotal() / (player.getXPToNextLevel() /100))  ,12,g);
+        drawSolidRectangle(107,82,((double)player.getXPTotal() / ((double)player.getXPToNextLevel() /100))  ,12,g);
 
 
         changeColor(white,g);
-        drawBoldText(77,93,Integer.toString((player.getXPTotal() / (player.getXPToNextLevel() /100))) + "%",textFont, 13,g);
+        drawBoldText(77,93,Integer.toString((int)((double)player.getXPTotal() / ((double)player.getXPToNextLevel() /100))) + "%",textFont, 13,g);
 
 
 
@@ -736,7 +736,7 @@ public class Combat extends extraFunctions{
 
     public void updateAbilityMenu(double dt){
 
-        if(player.getNumOfAbilities() > 8){
+        if(player.getNumOfAbilities() > 9){
             numOfPages = 1 + ((player.getNumOfAbilities()-1) / 8);
         }
 
