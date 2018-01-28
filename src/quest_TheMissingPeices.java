@@ -2,8 +2,6 @@ import java.awt.*;
 
 public class quest_TheMissingPeices extends Quest {
 
-    boolean displayReward;
-
 
 
 
@@ -20,7 +18,7 @@ public class quest_TheMissingPeices extends Quest {
         numOfCollectables = 0;
         totalCollectables = 7;
         setQuestName("The Missing Peices");
-        state = questState.inQuest;
+        state = questState.preQuest;
         displayReward = true;
         displayTimer = 0;
         displayDuration = 5;
@@ -38,11 +36,32 @@ public class quest_TheMissingPeices extends Quest {
         return false;
     }
 
+    public void giveReward(Character playerMan){
+        playerMan.setXPTotal(playerMan.getXPTotal() + 500);
+        playerMan.setGpTotal(playerMan.getGpTotal() + 300);
+        playerMan.checkLevelUp();
+    }
+
+
+    public void drawQuestReward(Graphics2D g){
+        if(displayReward){
+            super.drawQuestReward(g);
+            changeColor(white, g);
+            drawBoldText(310, 40, "Quest Reward", "Felix Titling", 18, g);
+            //  changeColor(purple, g);
+            drawBoldText(310, 70, "+ Bronze Sword", "Felix Titling", 16, g);
+        }
+    }
+
 
 
 
 
     public void drawQuest(Graphics2D g){
+        if(getState() == questState.preQuest){
+            changeColor(white, g);
+            drawText(40, 400,"Return to Sevar", "Arial", 20, g);
+        }
         if(getState() == questState.inQuest) {
             changeColor(white, g);
             drawText(40, 400, numOfCollectables +"/7 Crystals Collected", "Arial", 20, g);

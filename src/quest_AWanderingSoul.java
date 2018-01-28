@@ -25,12 +25,29 @@ public class quest_AWanderingSoul extends Quest {
     @Override
     public boolean updateRewardDisplay(double dt) {
         if(displayReward = super.updateRewardDisplay(dt)) {
-            // 500exp
-            // 1000gold
+            // 1500exp
+            // 1500gold
             return true;
         }
         displayTimer = 0;
         return false;
+    }
+
+    public void giveReward(Character playerMan){
+        playerMan.setXPTotal(playerMan.getXPTotal() + 1500);
+        playerMan.setGpTotal(playerMan.getGpTotal() + 1500);
+        playerMan.checkLevelUp();
+    }
+
+    public void drawQuestReward(Graphics2D g){
+        if(displayReward){
+            super.drawQuestReward(g);
+            changeColor(white, g);
+            drawBoldText(310, 40, "Quest Reward", "Felix Titling", 18, g);
+            //  changeColor(purple, g);
+            drawBoldText(310, 60, "+200 Gold", "Felix Titling", 16, g);
+            drawBoldText(310, 80, "+1000 EXP", "Felix Titling", 16, g);
+        }
     }
 
     public void drawQuest(Graphics2D g){

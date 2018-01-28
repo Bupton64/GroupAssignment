@@ -22,7 +22,6 @@ public class Dialogue extends extraFunctions{
     Image dialogueSimpleBox;
     Image dialogueContinueBox;
 
-
     public Dialogue(Dialogue next,boolean hasOptions,boolean lastNode,String dialogueOne, String dialogueTwo, String dialogueThree, String dialogueFour){
         dialogueSpriteSheet = loadImage("dialogue_Boxes.png");
         dialogueSimpleBox = subImage(dialogueSpriteSheet,20,20,470,100);

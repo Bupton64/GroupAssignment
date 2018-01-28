@@ -32,6 +32,22 @@ public class quest_NoEscapeFromReality extends Quest {
         displayTimer = 0;
         return false;
     }
+    public void giveReward(Character playerMan){
+        playerMan.setXPTotal(playerMan.getXPTotal() + 1000);
+        playerMan.setGpTotal(playerMan.getGpTotal() + 200);
+        playerMan.checkLevelUp();
+    }
+
+    public void drawQuestReward(Graphics2D g){
+        if(displayReward){
+            super.drawQuestReward(g);
+            changeColor(white, g);
+            drawBoldText(310, 40, "Quest Reward", "Felix Titling", 18, g);
+            //  changeColor(purple, g);
+            drawBoldText(310, 60, "+ Mega Potion", "Felix Titling", 16, g);
+            drawBoldText(330, 80, "+500 EXP", "Felix Titling", 16, g);
+        }
+    }
 
     public void drawQuest(Graphics2D g){
         if(getState() == questState.preQuest) {

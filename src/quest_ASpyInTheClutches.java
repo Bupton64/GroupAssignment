@@ -32,6 +32,25 @@ public class quest_ASpyInTheClutches extends Quest {
         return false;
     }
 
+    public void giveReward(Character playerMan){
+        playerMan.setXPTotal(playerMan.getXPTotal() + 500);
+
+        item_megaPotion mega = new item_megaPotion();
+        playerMan.addItemToInventory(mega);
+        playerMan.checkLevelUp();
+    }
+
+    public void drawQuestReward(Graphics2D g){
+        if(displayReward){
+            super.drawQuestReward(g);
+            changeColor(white, g);
+            drawBoldText(310, 40, "Quest Reward", "Felix Titling", 18, g);
+            //  changeColor(purple, g);
+            drawBoldText(330, 60, "+300 Gold", "Felix Titling", 16, g);
+            drawBoldText(330, 80, "+500 EXP", "Felix Titling", 16, g);
+        }
+    }
+
     public void drawQuest(Graphics2D g){
         if(getState() == questState.preQuest) {
             changeColor(white, g);

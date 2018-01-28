@@ -3,13 +3,16 @@ import java.awt.*;
 public class Quest extends extraFunctions {
     //Members
 
+    Image dialogueSpriteSheet;
 
+    Image dialogueSimpleBox;
 
     Quest(){
         displayTimer = 0;
         displayDuration = 5;
-
-
+        dialogueSpriteSheet = loadImage("dialogue_Boxes.png");
+        dialogueSimpleBox = subImage(dialogueSpriteSheet,20,20,470,100);
+        displayReward =false;
     }
 
     enum questState{preQuest, inQuest, completedQuest, extraQuest}
@@ -20,7 +23,7 @@ public class Quest extends extraFunctions {
 
     double displayTimer;
     double displayDuration;
-
+    boolean displayReward;
     int numOfCollectables;
     int totalCollectables;
 
@@ -97,6 +100,14 @@ public class Quest extends extraFunctions {
     public void drawQuest(Graphics2D g){
 
     }
+
+    public void drawQuestReward(Graphics2D g){
+        if(displayReward) {
+            drawImage(dialogueSimpleBox, 300, 1, 200, 100, g);
+        }
+    }
+
+
 
 
 

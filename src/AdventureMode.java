@@ -223,6 +223,7 @@ public class AdventureMode extends GameEngine {
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
+
                 if(stateChanger != 9 && stateChanger != 5) {
                     stateChanger = mapController.updateQuest(dt);
                 }
@@ -231,6 +232,7 @@ public class AdventureMode extends GameEngine {
                     generateCombat =true;
                     fadeState = true;
                     timer = 0;
+
                 }
 
                 break;
@@ -255,6 +257,7 @@ public class AdventureMode extends GameEngine {
 
         }
         if(fadeState){
+            playerMovement.stopMovement();
             if(timer >= 1){
                 if(generateCombat){
                     stateChanger = 2;
@@ -282,7 +285,7 @@ public class AdventureMode extends GameEngine {
                 mapController.drawMap(mGraphics); //< Draw the Map
                 playerMovement.drawCharMovement(mGraphics);//<Draw Player
                 mapController.drawNPCInteraction(mGraphics);
-             //   playerMan.getCurrentQuest().drawQuest(mGraphics);
+                playerMan.getCurrentQuest().drawQuestReward(mGraphics);
                 if(fadeState){
                     drawFade();
 
@@ -365,7 +368,7 @@ public class AdventureMode extends GameEngine {
     public void keyPressed(KeyEvent e) {
         switch (state){
             case TravelMode:
-                if(!playerMan.isInConvo()) { playerMovement.keyPressed(e); }
+                if(!playerMan.isInConvo() && !fadeState) { playerMovement.keyPressed(e); }
                 mapController.keyPressed(e);
                 if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     playAudio(clicks);

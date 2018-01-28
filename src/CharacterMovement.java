@@ -249,6 +249,10 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
     public void stopMovement(){
 
+       lockDown = true;
+       lockLeft= true;
+       lockRight = true;
+       lockUp = true;
         right = false;
         left = false;
         up = false;

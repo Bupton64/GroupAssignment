@@ -856,18 +856,20 @@ public class Character extends Statblock {
                 questStage = 7;
                 break;
             case 8:
-                currentQuest.setState(Quest.questState.completedQuest);
-                item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
-                addItemToInventory(bronzeSword); //T1 Sword
+
+
+                currentQuest.giveReward(this);
+                currentQuest = new quest_TheMissingPeices();
                 questStage = 9;
                 break;
             case 9:
 
                 break;
             case 10:
-                currentQuest = new quest_TheMissingPeices();
+                currentQuest.setState(Quest.questState.inQuest);
                 break;
             case 12:
+                currentQuest.giveReward(this);
                 currentQuest = new quest_ASpyInTheClutches();
                 break;
             case 14:
@@ -877,6 +879,7 @@ public class Character extends Statblock {
                 currentQuest.setState(Quest.questState.extraQuest);
                 break;
             case 16:
+                currentQuest.giveReward(this);
                 currentQuest = new quest_NoEscapeFromReality();
                 break;
             case 18:
@@ -886,6 +889,7 @@ public class Character extends Statblock {
                 currentQuest.setState(Quest.questState.extraQuest);
                 break;
             case 21:
+                currentQuest.giveReward(this);
                 currentQuest = new quest_AWanderingSoul();
                 break;
             case 22:
@@ -895,6 +899,7 @@ public class Character extends Statblock {
                 currentQuest.setState(Quest.questState.extraQuest);
                 break;
             case 26:
+                currentQuest.giveReward(this);
                 currentQuest = new quest_OneLastThing();
                 break;
 

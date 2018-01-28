@@ -1424,8 +1424,8 @@ public class Combat extends extraFunctions{
             drawImage(fadeArray[9], 0,0,800,600,g);
             changeColor(white,g);
             drawText(240,200,"GAME OVER!", "Felix Titling",60,g);
-            drawText(240,300,"Score: " + (player.getLevel() * player.getQuestStage()) * 100, "Felix Titling",30,g);
-            drawText(240,360,"Level: " + player.getLevel(), "Felix Titling",30,g);
+            drawText(240,300,"Level : " + player.getLevel(), "Felix Titling",30,g);
+            drawText(240,360,"Score : " + (player.getLevel() * player.getQuestStage()) * 100, "Felix Titling",30,g);
             drawText(350, 450,"EXIT[ESC]","Felix Titling",15,g);
         }
     }

@@ -4,7 +4,7 @@ public class quest_TheRoadToRiches extends Quest {
 
 
 
-    boolean displayReward;
+
 
     quest_TheRoadToRiches(){
         setQuestName("The Road To Riches");
@@ -25,25 +25,41 @@ public class quest_TheRoadToRiches extends Quest {
         return false;
     }
 
+    public void giveReward(Character playerMan){
+        item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
+        playerMan.addItemToInventory(bronzeSword); //T1 Sword
+        playerMan.checkLevelUp();
+    }
+
+
+
+    public void drawQuestReward(Graphics2D g){
+        if(displayReward){
+            super.drawQuestReward(g);
+            changeColor(white, g);
+            drawBoldText(310, 40, "Quest Reward", "Felix Titling", 18, g);
+          //  changeColor(purple, g);
+            drawBoldText(340, 70, " +250 EXP", "Felix Titling", 16, g);
+        }
+
+
+
+
+    }
+
+
+
     public void drawQuest(Graphics2D g){
         if(getState() == questState.preQuest) {
             changeColor(white, g);
             drawText(40, 400, "Speak to the Blacksmith", "Arial", 20, g);
-            if(displayReward){
-                changeColor(white, g);
-                drawBoldText(230, 300, "Quest Reward:", "Arial", 20, g);
-                changeColor(purple, g);
-                drawBoldText(360, 300, " +250 EXP", "Arial", 20, g);
-            }
+
         }
         if(getState() == questState.inQuest) {
             changeColor(white, g);
             drawText(40, 400, "Go Talk to Link", "Arial", 20, g);
         }
-        if(getState() == questState.completedQuest) {
-            changeColor(white, g);
-            drawText(40, 400,"Return to Sevar", "Arial", 20, g);
-        }
+
 
     }
 
