@@ -54,7 +54,7 @@ public class StartScreen extends extraFunctions {
         swordSprite = subImage(sword, 0, 0, 1793, 445);
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);
         Logo = subImage(logo, 0, 0,518,91);
-
+        CreditsEnd = new Credits();
 
         initLoad();
 
