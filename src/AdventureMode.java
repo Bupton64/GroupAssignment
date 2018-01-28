@@ -42,6 +42,12 @@ public class AdventureMode extends GameEngine {
     float volume = 0;
     boolean stopper = false;
     boolean mute = false;
+    void stopMusic(){
+        stopAudioLoop(villageMusic);
+        stopAudioLoop(menuMusic);
+        stopAudioLoop(cutSceneMusic);
+        stopAudioLoop(backgroundMusic);
+    }
 
 
 
@@ -85,9 +91,8 @@ public class AdventureMode extends GameEngine {
                 break;
             case 1:
                 state = GameState.TravelMode;
-                stopAudioLoop(cutSceneMusic);
-                stopAudioLoop(menuMusic);
-                volume = -8;
+                stopMusic();
+                volume = -10;
                 if(!stopper) {
                     startAudioLoop(villageMusic, volume);
                     stopper = true;
@@ -97,9 +102,14 @@ public class AdventureMode extends GameEngine {
             case 2:
                 combatMode = new Combat(playerMan, playerMan.getMonsterGen());
                 state = GameState.CombatMode;
+               stopMusic();
+                volume = -5;
+                startAudioLoop(backgroundMusic, volume);
                 break;
             case 3:
                 state = GameState.OverWorldMenu;
+                stopMusic();
+                stopper = false;
                 break;
             case 4:
                 state = GameState.MainMenu;
@@ -109,13 +119,17 @@ public class AdventureMode extends GameEngine {
                 break;
             case 6:
                 state = GameState.ShopMode;
-                stopAudioLoop(villageMusic);
+                stopMusic();
+
                 stopper = false;
-                startAudioLoop(menuMusic);
+                volume = -13;
+                startAudioLoop(menuMusic, volume);
                 break;
             case 7:
                 state = GameState.CutScene;
-                startAudioLoop(cutSceneMusic);
+                stopMusic();
+                volume = +6;
+                startAudioLoop(cutSceneMusic, volume);
                 break;
 
         }
