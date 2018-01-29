@@ -1,8 +1,8 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-//condition == 1 is Sally dead
-//condition == 2 is Julian dead
+//condition == 1 is Julian dead
+//condition == 2 is Sally dead
 //condition == 3 is both dead
 
 public class finalCutscene extends extraFunctions{
@@ -152,9 +152,9 @@ public class finalCutscene extends extraFunctions{
             drawImage(villagers[8], 300, 450, g);
             drawImage(villagers[9], 500, 450, g);
             if(condition == 1){
-                drawImage(villagers[11], 500, 500, g);
-            } else if(condition == 2){
                 drawImage(villagers[10], 300, 500, g);
+            } else if(condition == 2){
+                drawImage(villagers[11], 500, 500, g);
             } else if(condition == 3){
 
             } else{
@@ -243,9 +243,9 @@ public class finalCutscene extends extraFunctions{
             drawImage(villagers[8], 300, 450, g);
             drawImage(villagers[9], 500, 450, g);
             if(condition == 1){
-                drawImage(villagers[11], 500, 500, g);
-            } else if(condition == 2){
                 drawImage(villagers[10], 300, 500, g);
+            } else if(condition == 2){
+                drawImage(villagers[11], 500, 500, g);
             } else if(condition == 3){
 
             } else{
@@ -268,9 +268,9 @@ public class finalCutscene extends extraFunctions{
             drawImage(villagers[8], 300, 450, g);
             drawImage(villagers[9], 500, 450, g);
             if(condition == 1){
-                drawImage(villagers[11], 500, 500, g);
-            } else if(condition == 2){
                 drawImage(villagers[10], 300, 500, g);
+            } else if(condition == 2){
+                drawImage(villagers[11], 500, 500, g);
             } else if(condition == 3){
 
             } else{
