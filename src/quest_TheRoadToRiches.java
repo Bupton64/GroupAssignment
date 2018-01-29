@@ -49,13 +49,12 @@ public class quest_TheRoadToRiches extends Quest {
 
 
     public void drawQuest(Graphics2D g){
+        changeColor(black, g);
         if(getState() == questState.preQuest) {
-            changeColor(white, g);
             drawText(40, 400, "Speak to the Blacksmith", "Arial", 20, g);
 
         }
         if(getState() == questState.inQuest) {
-            changeColor(white, g);
             drawText(40, 400, "Go Talk to Link", "Arial", 20, g);
         }
 
