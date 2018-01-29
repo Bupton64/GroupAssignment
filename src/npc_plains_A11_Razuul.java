@@ -110,7 +110,7 @@ public class npc_plains_A11_Razuul extends NPC{
                 if (currentDialogue.getOptionPosY() == 375) {
                     summonMonster = true;
                 }else {
-                    if (npcDeaths == 0) {
+                    if (npcDeaths == 0 || npcDeaths == 1) {
                         killnpc = true;
                         currentDialogue = listTwo;
                     }
