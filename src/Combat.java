@@ -679,15 +679,15 @@ public class Combat extends extraFunctions{
                                 playerTurnLog = player.getName() + " dealt " + (int) playerDamage + " with " + lastAbility.getName();
                                 if (lastAbility.isLastCrit()) {
                                     playerTurnLog = player.getName() + " crit for " + (int) playerDamage + " with " + lastAbility.getName();
-                                    drawBoldText(70, 500, "Your " + lastAbility.getName() + " CRITS " + enemy.getName(), textFont, 20, g);
-                                    drawBoldText(120,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
+                                    drawBoldText(120, 500, "Your " + lastAbility.getName() + " CRITS " + enemy.getName(), textFont, 20, g);
+                                    drawBoldText(140,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
                                 } else {
                                     if (lastAbility.isMagic()) {
-                                        drawText(70, 500, lastAbility.getName() + " hits " + enemy.getName() , textFont, 20, g);
-                                        drawBoldText(120,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
+                                        drawText(120, 500, lastAbility.getName() + " hits " + enemy.getName() , textFont, 20, g);
+                                        drawBoldText(140,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
                                     } else {
-                                        drawText(70, 500, lastAbility.getName() + " hits " + enemy.getName() , textFont, 20, g);
-                                        drawBoldText(120,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
+                                        drawText(120, 500, lastAbility.getName() + " hits " + enemy.getName() , textFont, 20, g);
+                                        drawBoldText(140,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
                                     }
                                 }
                             } else {
@@ -1234,17 +1234,17 @@ public class Combat extends extraFunctions{
                             }
                             enemyTurnLog = enemy.getName() + " dealt " + (int) enemyDamage + " with " + enemyLastAbility.getName();
                             if (enemyLastAbility.isMagic()) {
-                                drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName()  , textFont, 20, g);
-                                drawBoldText(120,525,  " hits you for " + (int) enemyDamage ,textFont,20,g);
+                                drawText(120, 500, enemy.getName() + "'s " + enemyLastAbility.getName()  , textFont, 20, g);
+                                drawBoldText(140,525,  " hits you for " + (int) enemyDamage ,textFont,20,g);
 
                             } else {
                                 if (enemyLastAbility.isLastCrit()) {
                                     enemyTurnLog = enemy.getName() + " crit for " + (int) enemyDamage + " with " + enemyLastAbility.getName();
-                                    drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName(), textFont, 20, g);
-                                    drawBoldText(120,525,  " Crits you for " + (int) enemyDamage ,textFont,20,g);
+                                    drawBoldText(120, 500, enemy.getName() + "'s " + enemyLastAbility.getName(), textFont, 20, g);
+                                    drawBoldText(140,525,  " Crits you for " + (int) enemyDamage ,textFont,20,g);
                                 } else {
-                                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName(), textFont, 20, g);
-                                    drawBoldText(120,525,  " hits you for " + (int) enemyDamage ,textFont,20,g);
+                                    drawText(120, 500, enemy.getName() + "'s " + enemyLastAbility.getName(), textFont, 20, g);
+                                    drawBoldText(140,525,  " hits you for " + (int) enemyDamage ,textFont,20,g);
                                 }
 
                             }
@@ -1733,7 +1733,7 @@ public class Combat extends extraFunctions{
     }
 
     public void drawEnemy(Graphics2D g) {
-        if (enemy.getName().equals("Wyvern")) {
+        if (enemy.getName().equals("Wyvern") || enemy.getName().equals("Valliard")) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-100, enemy.getCombatPosY()-100, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
         } else if(enemy.getName().equals("Priest")) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-50, enemy.getCombatPosY()-50, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
