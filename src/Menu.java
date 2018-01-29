@@ -475,7 +475,7 @@ public class Menu extends extraFunctions {
                 changeColor(purple, g);
                 drawBoldText(65, 270, "YOUR INVENTORY IS EMPTY.", "Felix Titling", 20, g);
                 changeColor(grey4, g);
-                drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 12, g);
+                drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 10, g);
             }
 
 
@@ -1158,20 +1158,22 @@ public class Menu extends extraFunctions {
             }
         } else if (invMenu) {
             if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                if (menuOption + (10 * (currentPage - 1)) != player1.getInventorySize()-1) {
-                    if(currentPage == numOfPages) {
-                        if (menuOption < numOfItemsToDisplay - ((currentPage - 1) * 10)) {
-                            playAudio(clicks);
-                            menuOption++;
+                if(player1.getInventorySize() != 0) {
+                    if (menuOption + (10 * (currentPage - 1)) != player1.getInventorySize() - 1) {
+                        if (currentPage == numOfPages) {
+                            if (menuOption < numOfItemsToDisplay - ((currentPage - 1) * 10)) {
+                                playAudio(clicks);
+                                menuOption++;
+                            } else {
+                                menuOption = 0;
+                            }
                         } else {
-                            menuOption = 0;
-                        }
-                    }else{
-                        if (menuOption < 9) {
-                            playAudio(clicks);
-                            menuOption++;
-                        } else {
-                            menuOption = 0;
+                            if (menuOption < 9) {
+                                playAudio(clicks);
+                                menuOption++;
+                            } else {
+                                menuOption = 0;
+                            }
                         }
                     }
                 }
@@ -1179,13 +1181,17 @@ public class Menu extends extraFunctions {
 
             if(e.getKeyCode() == KeyEvent.VK_UP) {
 
-
-                    if (menuOption > 0) {
-                        playAudio(clicks);
-                        menuOption--;
-                    } else {
-                        menuOption = (numOfItemsToDisplay - ((currentPage - 1) * 10));
+                if(player1.getInventorySize() != 0) {
+                    if(menuOption + (10 * (currentPage - 1)) != 0) {
+                        if (menuOption > 0) {
+                            playAudio(clicks);
+                            menuOption--;
+                        } else {
+                            menuOption = (numOfItemsToDisplay - ((currentPage - 1) * 10));
+                        }
                     }
+
+                }
 
 
             }
