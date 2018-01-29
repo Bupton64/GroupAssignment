@@ -84,6 +84,7 @@ public class AdventureMode extends GameEngine {
 
     private int stateChanger;
     private boolean generateCombat;
+    private boolean generateRest;
 
     saveGame saveController;
     private Menu menuController;
@@ -141,6 +142,7 @@ public class AdventureMode extends GameEngine {
         endCutSceneController = new endCutScene();
 
         generateCombat = false;
+        generateRest = false;
         stateChanger = 0;
         state = GameState.MainMenu;
 
@@ -231,15 +233,17 @@ public class AdventureMode extends GameEngine {
                 collisionDetector.updateCollision(playerMan, playerMovement);
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
 
-                if(stateChanger != 9 && stateChanger != 5) {
+                if(stateChanger != 9 && stateChanger != 5 && stateChanger != 10) {
                     stateChanger = mapController.updateQuest(dt);
                 }
-                if(stateChanger == 9){
+
+                if((stateChanger == 9) || (stateChanger == 10)){
+                    if(stateChanger == 9) {
+                        generateCombat = true;
+                    }
                     stateChanger = 0;
-                    generateCombat =true;
                     fadeState = true;
                     timer = 0;
-
                 }
 
                 break;

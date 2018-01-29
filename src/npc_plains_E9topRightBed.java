@@ -72,6 +72,7 @@ public class npc_plains_E9topRightBed extends  NPC {
     public int updateConvo(){
         switch (this.questStage){
             case 94:
+                questStage = 0;
                 return 94;
             default:
                 return 0;
@@ -91,7 +92,6 @@ public class npc_plains_E9topRightBed extends  NPC {
 
 
     }
-
 
 
 
