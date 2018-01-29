@@ -37,6 +37,7 @@ public class finalCutscene extends extraFunctions{
         BjarneSpin = new Image[4];
         bloodArray = new Image[6];
         fade = loadImage("fade.png");
+        fadeArray = new Image[10];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
 
