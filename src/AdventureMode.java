@@ -203,6 +203,9 @@ public class AdventureMode extends GameEngine {
                 break;
             case 8:
                 state = GameState.razuulCutscene;
+                playerMan.setMapPosX(520);
+                playerMan.setMapPosY(210);
+                playerMovement.directionFacing = CharacterMovement.Direction.left;
                 break;
         }
        stateChanger = 0;

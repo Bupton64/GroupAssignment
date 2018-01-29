@@ -1766,7 +1766,11 @@ public class Combat extends extraFunctions{
         }
         updateLog(dt);
         if(!player.getCombatActive()){
-            return 1;
+            if(enemy.getName() == "Priest"){
+                return 8;
+            }else {
+                return 1;
+            }
         }
         if(state == CombatState.playerDeath){
             updateDeath(dt);
