@@ -427,7 +427,7 @@ public class Character extends Statblock {
         item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword", 10, 0);
         addItemToInventory(rusty); // T0 Sword
         equipItem(rusty);
-        
+
         item_Potion pot = new item_Potion();
         pot.setCounter(2);
         addItemToInventory(pot);
@@ -760,7 +760,7 @@ public class Character extends Statblock {
         setStrength(getStrength() + (int)(Math.random()*2));
         setSpeed(getSpeed() + (int)(Math.random()*3));
         setLuck(getLuck() +  (int)(Math.random()*2));
-        setMaxHP((getMaxHP() + (int)(Math.random()*11))+35);
+        setMaxHP((getMaxHP() + (int)(Math.random()*11))+55);
         unlockAbility();
         setCurrentHP(this.getMaxHP());
     }

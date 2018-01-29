@@ -15,7 +15,7 @@ public class ability_Berserk extends Ability {
     }
 
     public Ability use(Statblock user){
-        int amountToGain= 5;
+        int amountToGain= 3;
         user.setStrengthBonus(user.getStrengthBonus()+amountToGain);
         int damage = (3 * user.getLevel())*(int)Math.random();
         user.takeDamage(damage);
