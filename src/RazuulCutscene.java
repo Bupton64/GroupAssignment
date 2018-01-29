@@ -19,7 +19,8 @@ public class RazuulCutscene extends extraFunctions{
     Image smokeSheet;
     Image smokeArray[];
     Image temp;
-
+    Image spritesheet3;
+    Image Bjarne;
 
 
     RazuulCutscene(){
@@ -38,6 +39,9 @@ public class RazuulCutscene extends extraFunctions{
         smokeArray = new Image[35];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
+
+        spritesheet3 = loadImage("chara1.png");
+        Bjarne = subImage(spritesheet3, 52, 72, 56, 72);
 
         for(int i = 0; i < 3; i++){
             priestDown[i] = subImage(spritesheet2,312 + (i*52), 288,52,72);
@@ -105,6 +109,40 @@ public class RazuulCutscene extends extraFunctions{
             drawText(110, 500, "church!", "Times New Roman", 20, g);
         }
         if(timer > 19){
+            changeColor(white, g);
+            drawText(260, 450, "- Press <SPACE> to continue -",  "New Roman Times", 20, g);
+        }
+    }
+    public void drawRazuulCutscene2(Graphics2D g){
+        animationChange++;
+        drawImage(background, 0, 0, g);
+        drawImage(Bjarne, 520, 210, g);
+        if(timer > 0 && timer < 2){
+            drawImage(priest[animationChange%4], 475, 200, g);
+        } else if(timer > 2 && timer < 4){
+            drawImage(priestAfter[animationChange%4], 475, 200, g);
+        }
+        if(timer > 0 && timer < 4){
+            drawImage(smokeArray[animationChange%35], 425, 150, g);
+        }
+        if(timer > 4 && timer< 7){
+            drawImage(priestAfter[0], 475, 200, g);
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Razuul:", "Times New Roman", 20, g);
+            drawText(110, 450, "HAHAHA You thought you could defeat me!? Wrong you were little ", "Times New Roman", 20, g);
+            drawText(110, 475, "man.", "Times New Roman", 20, g);
+            drawText(110, 500, "", "Times New Roman", 20, g);
+        }
+        if(timer > 7 && priestPosY <305){
+            priestPosY+=5;
+            drawImage(priestDown[animationChange%3], priestPosX, priestPosY, g);
+        }
+        if(priestPosY >=305 && timer < 13){
+            priestPosX-=5;
+            drawImage(priestLeft[animationChange%3], priestPosX, priestPosY, g);
+        }
+        if(timer > 13){
             changeColor(white, g);
             drawText(260, 450, "- Press <SPACE> to continue -",  "New Roman Times", 20, g);
         }
