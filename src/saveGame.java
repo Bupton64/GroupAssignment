@@ -50,6 +50,7 @@ public class saveGame {
             pw.println("###  Character");
             pw.println("###");
             pw.println("#######################");
+            pw.println(playerMan.getNpcDeaths());
             pw.println(playerMan.getGameTimer());
             pw.println(playerMan.getXPTotal());
             pw.println(playerMan.getXPToNextLevel());
@@ -165,6 +166,8 @@ public class saveGame {
 ////            pw.println(playerMan.getMapPosY());
 ////            pw.println(playerMan.getCurrentMapLocation());
 ////            pw.println(playerMan.getMaxInventorySize());
+            temp.setNpcDeaths(Integer.parseInt(line));
+            line = br.readLine();
             temp.setGameTimer(Double.parseDouble(line));
             line = br.readLine();
             temp.setXPTotal(Integer.parseInt(line));
