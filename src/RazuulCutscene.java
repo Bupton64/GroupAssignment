@@ -68,8 +68,6 @@ public class RazuulCutscene extends extraFunctions{
     }
 
     public void drawRazuulCutscene(Graphics2D g){
-
-        System.out.println(priestPosY);
         animationChange++;
         drawImage(background, 0, 0, g);
 
