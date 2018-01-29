@@ -1143,7 +1143,7 @@ public class Combat extends extraFunctions{
         enemyAttackActive = false;
         enemyTurnTimer = 0;
         checkCurse = true;
-
+        player.addEnergy(1);
         state = CombatState.playerTurn;
     }
 
