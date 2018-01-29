@@ -15,6 +15,7 @@ public class Credits extends extraFunctions{
         changeColor(white, g);
         if(wordsScrollingY > -955) {
             wordsScrollingY -= 2;
+//            return;
         }
         drawBoldText(330, wordsScrollingY, "Made By:", g);
         drawText(220, wordsScrollingY + 25, "Zane Lamb","Times New Roman", 25, g);
@@ -57,10 +58,8 @@ public class Credits extends extraFunctions{
         drawText(20, wordsScrollingY + 925, "- Melee sounds from remaxim (opengameart.org)","Times New Roman", 20, g);
         drawText(20, wordsScrollingY + 950, "- Weapon hits from Jute (opengameart.org)","Times New Roman", 20, g);
 
-        drawText(50, wordsScrollingY + 1150, "Thank you for playing our game!", g);
-        drawText(50, wordsScrollingY + 1250, "- Press <SPACE> to return to menu -", g);
-
-        System.out.println(wordsScrollingY);
+        drawText(115, wordsScrollingY + 1250, "Thank you for playing our game!", g);
+        drawText(70, wordsScrollingY + 1300, "- Press <SPACE> to return to menu -", g);
     }
 
     //Goblin art from Luminous Arc
@@ -82,7 +81,7 @@ public class Credits extends extraFunctions{
     public int keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            return 4;
+            return 1;
         }
         return 0;
     }
