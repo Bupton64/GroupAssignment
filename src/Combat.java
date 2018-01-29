@@ -644,7 +644,7 @@ public class Combat extends extraFunctions{
     public void drawPlayerAttack(Graphics2D g){
 
         changeColor(white,g);
-        if(playerOldStatusDisplay){
+        if(playerOldStatusDisplay && enemy.isAlive()){
             drawText(150, 500, playerStatusString, textFont, 20, g);
         }else {
             if (displayItem) {
