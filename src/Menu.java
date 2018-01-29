@@ -306,38 +306,38 @@ public class Menu extends extraFunctions {
 
             drawBoldText(3, 60, player1.getName(), "Felix Titling", 40, g);
             changeColor(red, g);
-            drawBoldText(3, 85, "HP    " + Integer.toString((int) player1.getCurrentHP()), "Felix Titling", 20, g);
+            drawBoldText(170, 45, "HP       " + Integer.toString((int) player1.getCurrentHP()), "Felix Titling", 20, g);
 
-            drawSolidRectangle(110, 72, 100 / player1.getMaxHP() * player1.getCurrentHP(), 9, g);
+            drawSolidRectangle(465, 33, 100 / player1.getMaxHP() * player1.getCurrentHP(), 9, g);
             changeColor(white, g);
-            drawRectangle(110, 72, 100, 9, 1, g);
+            drawRectangle(465, 33, 100, 9, 1, g);
 
             changeColor(green, g);
-            drawBoldText(3, 105, "EXP   " + player1.getXPTotal(), "Felix Titling", 20, g);
-            drawSolidRectangle(105 + ((player1.getXPToNextLevel() / 100)), 92, ((float) (player1.getXPTotal()) / (float) (player1.getXPToNextLevel())) * 100, 9, g);
+            drawBoldText(170, 70, "EXP     " + player1.getXPTotal(), "Felix Titling", 20, g);
+            drawSolidRectangle(465 , 55, ((float) (player1.getXPTotal()) / (float) (player1.getXPToNextLevel())) * 100, 9, g);
             changeColor(white, g);
-            drawRectangle(105 + ((player1.getXPToNextLevel() / 100)), 92, 100, 9, 1, g);
+            drawRectangle(465 , 55, 100, 9, 1, g);
             changeColor(cyan, g);
-            drawBoldText(3, 125, "LVL   " + player1.getLevel(), "Felix Titling", 20, g);
+            drawBoldText(173, 95, "LVL     " + player1.getLevel(), "Felix Titling", 20, g);
             changeColor(yellow, g);
-            drawBoldText(3, 145, "GOLD  " + player1.getGpTotal(), "Felix Titling", 15, g);
+            drawBoldText(170, 115, "GOLD  " + player1.getGpTotal(), "Felix Titling", 20, g);
 
             changeColor(white, g);
             drawBoldText(605, 50, "ATTACK : ", "Felix Titling", 17, g);
-            drawBoldText(725, 50, Integer.toString(player1.getAttack() + player1.getEquipAttackBonus()), "Felix Titling", 17, g);
+            drawBoldText(750, 50, Integer.toString(player1.getAttack() + player1.getEquipAttackBonus()), "Felix Titling", 17, g);
             drawBoldText(605, 80, "DEFENCE : ", "Felix Titling", 17, g);
-            drawBoldText(725, 80, Integer.toString(player1.getDefense() + player1.getEquipDefenseBonus()), "Felix Titling", 17, g);
+            drawBoldText(750, 80, Integer.toString(player1.getDefense() + player1.getEquipDefenseBonus()), "Felix Titling", 17, g);
             drawBoldText(605, 110, "STRENGTH : ", "Felix Titling", 17, g);
-            drawBoldText(725, 110, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 17, g);
+            drawBoldText(750, 110, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 17, g);
             drawBoldText(605, 140, "SPEED : ", "Felix Titling", 17, g);
-            drawBoldText(725, 140, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 17, g);
+            drawBoldText(750, 140, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 17, g);
             drawBoldText(605, 170, "LUCK : ", "Felix Titling", 17, g);
-            drawBoldText(725, 170, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 17, g);
+            drawBoldText(750, 170, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 17, g);
             changeColor(yellow, g);
             changeColor(white, g);
-            drawBoldText(3, 240, "TO NEXT LEVEL : ", "Felix Titling", 15, g);
+            drawBoldText(3, 220, "TO NEXT LEVEL : ", "Felix Titling", 15, g);
             changeColor(green, g);
-            drawBoldText(140, 240, player1.getXPToNextLevel() + " EXP", "Felix Titling", 15, g);
+            drawBoldText(72, 240, player1.getXPToNextLevel() + " EXP", "Felix Titling", 15, g);
             changeColor(red, g);
             drawImage(marker, 640 - 30, cursorPositionY - 15, 32, 28, g);
         }
@@ -381,7 +381,7 @@ public class Menu extends extraFunctions {
                 changeColor(grey2, g);
                 increaser = 0;
                 if (player1.getInventorySize() % 5 != 0) {
-                    totalPages = (player1.getInventorySize() / 5);
+                    totalPages = (player1.getInventorySize() / 5)+1;
                 } else {
                     totalPages = (player1.getInventorySize() / 5);
                 }
@@ -452,8 +452,6 @@ public class Menu extends extraFunctions {
                 drawBoldText(65, 270, "YOUR INVENTORY IS EMPTY.", "Felix Titling", 20, g);
                 changeColor(grey4, g);
                 drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 12, g);
-                changeColor(red, g);
-                drawLine(65, 305, 150, 305, 2, g);
 
             }
         }
@@ -1145,13 +1143,9 @@ public class Menu extends extraFunctions {
                 }
             }
             if ((e.getKeyCode() == KeyEvent.VK_TAB) || (e.getKeyCode() == KeyEvent.VK_RIGHT)) {
-                playAudio(p2);
                 nextPage = true;
-                if (pageNum == totalPages) {
-                    pageNum = 1;
-                    pos = 0;
-                    index = 0;
-                } else {
+                if (pageNum != totalPages){
+                    playAudio(p2);
                     pos += 5;
                     pageNum++;
                     index = pos;
@@ -1186,21 +1180,9 @@ public class Menu extends extraFunctions {
             }
             //Bug vvvvv
             if (e.getKeyCode() == KeyEvent.VK_LEFT){
-                playAudio(p1);
                 nextPage = true;
-                if (pageNum == 1) {
-                    pageNum = totalPages;
-                    if (player1.getInventorySize() == 50) {
-                        pos = (player1.getInventorySize() - player1.getInventorySize() % 5) - 5;
-                    } else {
-                        pos = (player1.getInventorySize() - player1.getInventorySize() % 5);
-                    }
-                    if (player1.getInventorySize() == 50) {
-                        index = (player1.getInventorySize() - player1.getInventorySize() % 5) - 1;
-                    } else {
-                        index = player1.getInventorySize() - player1.getInventorySize() % 5;
-                    }
-                } else {
+                if (pageNum > 1){
+                    playAudio(p1);
                     pos -= 5;
                     pageNum--;
                     index = pos;
@@ -1264,7 +1246,6 @@ public class Menu extends extraFunctions {
                 if (scroller3 < 235) {
                     scroller3 += 25;
                 }
-                none = false;
 
 
             }
@@ -1298,7 +1279,7 @@ public class Menu extends extraFunctions {
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && slotSelect&&isEquiblableItems) {
                 playAudio(select);
                 scroller2 = 0;
-                none = false;
+
                 itemSelect = true;
                 slotSelect = false;
                 stopper2 = true;
@@ -1307,7 +1288,6 @@ public class Menu extends extraFunctions {
                 playAudio(select);
                 String temp = player1.getInventory()[index].getSlot().name();
                 player1.equipItem(player1.getInventory()[index]);
-                none = false;
                 index = checkRightItemEquip(temp);
                 index = checkLeftItemEquip(temp);
                 itemSelect = false;
@@ -1318,7 +1298,6 @@ public class Menu extends extraFunctions {
                 if (scroller3 > 110) {
                     scroller3 -= 25;
                 }
-                none = false;
 
             }
 
