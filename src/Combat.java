@@ -1732,6 +1732,15 @@ public class Combat extends extraFunctions{
 
     }
 
+    public void drawEnemy(Graphics2D g) {
+        if (enemy.getName().equals("Wyvern")) {
+            drawImage(enemy.getSprite(), enemy.getCombatPosX()-100, enemy.getCombatPosY()-100, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
+        } else {
+            drawImage(enemy.getSprite(), enemy.getCombatPosX(), enemy.getCombatPosY(), enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
+
+        }
+    }
+
 
 
     public int update(double dt) {
@@ -1775,18 +1784,18 @@ public class Combat extends extraFunctions{
 
 
         if(state == CombatState.playerTurn){
-            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
+            drawEnemy(g);
             DrawPlayerTurn(g);
             drawImage(playerImage[0],player.getCombatPosX(),player.getCombatPosY(),112,144,g);
         }else if(state == CombatState.playerAttack){
-            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
+            drawEnemy(g);
             drawImage(playerImage[0],player.getCombatPosX(),player.getCombatPosY(),112,144,g);
             drawPlayerNamePlate(g);
             drawEnemyNamePlate(g);
             drawLog(g);
             drawPlayerAttack(g);
         }else if(state == CombatState.enemyTurn){
-            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
+            drawEnemy(g);
             drawImage(playerImage[0],player.getCombatPosX(),player.getCombatPosY(),112,144,g);
             drawLog(g);
             drawPlayerNamePlate(g);
@@ -1800,7 +1809,7 @@ public class Combat extends extraFunctions{
             drawLog(g);
             drawItemMenu(g);
         }else if(state == CombatState.run){
-            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
+            drawEnemy(g);
             drawImage(playerImage[0],player.getCombatPosX(),player.getCombatPosY(),112,144,g);
             drawPlayerNamePlate(g);
             drawEnemyNamePlate(g);
@@ -1812,7 +1821,7 @@ public class Combat extends extraFunctions{
             drawLog(g);
             drawLootScreen(g);
         }else if(state == CombatState.playerDeath){
-            drawImage(enemy.getSprite(),enemy.getCombatPosX(),enemy.getCombatPosY(),enemy.getSpriteWidth(),enemy.getSpriteHeight(),g);
+            drawEnemy(g);
 
             drawLog(g);
             drawPlayerNamePlate(g);
