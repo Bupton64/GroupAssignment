@@ -47,7 +47,7 @@ public class npc_plains_E13_Valliard extends NPC{
 
 
     public void initDialogue() {
-        Dialogue d3 = new Dialogue(null, true, true, "We have seen your defiance, and it can continue no longer!", "Prepare yourself!", "", "" );
+        Dialogue d3 = new Dialogue(null, false, true, "We have seen your defiance, and it can continue no longer!", "Prepare yourself!", "", "" );
         Dialogue d2 = new Dialogue(d3, false, false, "I am Valliard! Lieutenant of the Flame Guard! My careful study of ", "war and magic will make you cower before me!", "", "" );
         Dialogue d1 = new Dialogue(d2, false, false, "Hah! You're too late! In five minutes all of Therox's armies will pour", "into your forest, the power of the crystals shall be ours! ", "", "");
         listOne = d1;
@@ -84,9 +84,9 @@ public class npc_plains_E13_Valliard extends NPC{
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if (currentDialogue.next == null) {
-                if (currentDialogue.getOptionPosY() == 375) {
+
                     summonMonster = true;
-                }
+
             }
         }
 
