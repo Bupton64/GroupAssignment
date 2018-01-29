@@ -309,6 +309,7 @@ public class Menu extends extraFunctions {
             drawBoldText(265,367,player1.getCurrentQuest().getQuestName(),"Felix Titling",13,g);
             changeColor(black, g);
             player1.getCurrentQuest().drawQuest(g);
+            changeColor(white,g);
 
 
 

@@ -50,6 +50,7 @@ public class quest_NoEscapeFromReality extends Quest {
 
     public void drawQuest(Graphics2D g){
         changeColor(black, g);
+
         if(getState() == questState.preQuest) {
             drawText(40, 400, "Go Find the Holy Symbol", "Arial", 20, g);
 
