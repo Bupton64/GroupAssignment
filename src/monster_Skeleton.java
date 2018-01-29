@@ -33,8 +33,8 @@ public class monster_Skeleton extends Monster {
 
         Image sprite = loadImage("monster_skeleton.png");
         setSprite(sprite);
-        setSpriteWidth(200);
-        setSpriteHeight(200);
+        setSpriteWidth(150);
+        setSpriteHeight(150);
     }
 
     @Override
