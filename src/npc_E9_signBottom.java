@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class npc_E9_signBottom extends  NPC {
 
     npc_E9_signBottom(){
-        setName("Town Sign");
+        setName("Sign");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);
         setMapPosX(375);
@@ -35,7 +35,7 @@ public class npc_E9_signBottom extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"Welcome to Hurnville, a safe haven for all.","","","");
+        Dialogue d1 = new Dialogue(null,false,true,"Welcome to Sepla, a safe haven for all.","","","");
         listOne = d1;
     }
 

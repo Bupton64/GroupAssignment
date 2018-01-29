@@ -6,7 +6,7 @@ public class npc_plains_F9_signHouse extends  NPC {
 
 
     npc_plains_F9_signHouse(){
-        setName("Supermarket");
+        setName("Sign");
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);
         setMapPosX(620);
@@ -45,7 +45,7 @@ public class npc_plains_F9_signHouse extends  NPC {
 
     public void initDialogue() {
 
-        Dialogue d1 = new Dialogue(null,false,true,"Open","","","");
+        Dialogue d1 = new Dialogue(null,false,true,"Town Store.","","","");
         listOne = d1;
     }
 

@@ -72,13 +72,13 @@ public class npc_plains_E9_byBridge extends  NPC {
         Dialogue d2 = new Dialogue(null,false,true,"Have you gone to see the wizard yet?","","","");
         listTwo = d2;
 
-        Dialogue d3 = new Dialogue(null,true,true,"huh.. What happened? Why am I in the church?","weird... Race you back to Town Bjarnie? tehe.","","");
+        Dialogue d3 = new Dialogue(null,true,true,"Huh.. What happened? Why am I in the church? Weird... Race ","you back to Town Bjarnie? Tehe.","","");
         listThree = d3;
 
-        Dialogue d4 = new Dialogue(null,false,true,"Just give me a second to prepare. You can have a head start!","You'll need it loser ","","");
+        Dialogue d4 = new Dialogue(null,false,true,"Just give me a second to prepare. You can have a head start!","You'll need it loser!","","");
         listFour= d4;
 
-        Dialogue d5 = new Dialogue(null, false, true,"Well hello again Bjarne!","Thanks again for the whole saving my life thing, hehe.","Maybe after Therox is gone we could go for an ale?","");
+        Dialogue d5 = new Dialogue(null, false, true,"Well hello again Bjarne!Thanks again for the whole saving","my life thing hehe. Maybe after Therox is gone we could go for an ale?","","");
         listFive = d5;
     }
 

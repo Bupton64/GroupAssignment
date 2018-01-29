@@ -8,7 +8,7 @@ public class npc_plains_F9_byPath extends  NPC {
 
     npc_plains_F9_byPath(){
         setName("Gerald");
-        spriteSheet = loadImage("chara2.png");
+        spriteSheet = loadImage("npc1.png");
         sprite = subImage(spriteSheet,364,0,56,72);
         setMapPosX(600);
         setMapPosY(350);
