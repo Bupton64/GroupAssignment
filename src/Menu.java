@@ -428,7 +428,7 @@ public class Menu extends extraFunctions {
                 }
             }
 
-            if (player1.getInventorySize() > 0) {
+
 
 
                 changeColor(black, g);
@@ -479,7 +479,7 @@ public class Menu extends extraFunctions {
             }
 
 
-        }
+
     }
 
 
@@ -1209,41 +1209,43 @@ public class Menu extends extraFunctions {
 
 
             if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-                playAudio(exitClick);
-                playAudio(p3);
-                if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName() != null) {
-                    if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() == "bag") {
+                if(player1.getInventorySize() != 0) {
+                    playAudio(exitClick);
+                    playAudio(p3);
+                    if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName() != null) {
+                        if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() == "bag") {
 
-                        if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getCounter() == 1) {
-                            player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
-                            if (menuOption != 0) {
-                                menuOption--;
-                            } else {
-                                //  if(player1.getInventory()[menuOption + (10 * (currentPage-1)) ] == null){
-                                if (currentPage > 1) {
-                                    if(menuOption + (10 * (currentPage - 1)) == player1.getInventorySize() ){
-                                        currentPage--;
+                            if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getCounter() == 1) {
+                                player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
+                                if (menuOption != 0) {
+                                    menuOption--;
+                                } else {
+                                    //  if(player1.getInventory()[menuOption + (10 * (currentPage-1)) ] == null){
+                                    if (currentPage > 1) {
+                                        if (menuOption + (10 * (currentPage - 1)) == player1.getInventorySize()) {
+                                            currentPage--;
+                                        }
+
+
                                     }
 
+                                    //  }
 
+                                    menuOption = 0;
                                 }
-
-                                //  }
-
-                                menuOption = 0;
+                            } else {
+                                player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
                             }
-                        } else {
-                            player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
+                            stopper3 = true;
+
+
+                        } else if ((player1.getInventory()[menuOption + (10 * (currentPage - 1))].isEquippable()) && !stopper3) {
+                            equMenu = true;
+                            invMenu = false;
+
                         }
-                        stopper3 = true;
-
-
-                    } else if ((player1.getInventory()[menuOption + (10 * (currentPage - 1))].isEquippable()) && !stopper3) {
-                        equMenu = true;
-                        invMenu = false;
-
+                        stopper3 = false;
                     }
-                    stopper3 = false;
                 }
             }
 
