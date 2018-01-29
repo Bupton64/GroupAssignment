@@ -328,7 +328,7 @@ public class saveGame {
             item_Equipment rusty = new item_Equipment("Rusty Sword", 1, 0, 0, 0, 0, Item.Slot.weapon, "An old warriors sword", 10, 0);
             temp.addItemToInventory(rusty); // T0 Sword
         }else if(name.equals("Bronze Sword")){
-            item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
+            item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 1, 0, Item.Slot.weapon, "Durable and strong", 50, 300);
             temp.addItemToInventory(bronzeSword); //T1 Sword
         }else if(name.equals("Stone Axe")){
             item_Equipment stone = new item_Equipment("Stone Axe", 0, 0, 0, 0, 1, Item.Slot.weapon, "Rugged, yet effective", 300, 400);
@@ -514,7 +514,7 @@ public class saveGame {
             temp.addItemToInventory(rusty); // T0 Sword
             temp.equipItem(rusty);
         }else if(name.equals("Bronze Sword")){
-            item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
+            item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 1, 0, Item.Slot.weapon, "Durable and strong", 50, 300);
             temp.addItemToInventory(bronzeSword); // T0 Sword
             temp.equipItem(bronzeSword);
         }else if(name.equals("Stone Axe")){

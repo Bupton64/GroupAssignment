@@ -1257,7 +1257,7 @@ public class Menu extends extraFunctions {
 
             if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
                 playAudio(exitClick);
-                menuOption = 1;
+                menuOption = 0;
 
             }
 
