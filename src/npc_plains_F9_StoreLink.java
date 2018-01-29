@@ -79,17 +79,14 @@ public class npc_plains_F9_StoreLink extends  NPC {
     }
 
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+    public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){
 
         if(loadDialogue) {
             updateDialogue(questStage);
             loadDialogue = false;
         }
 
-        super.drawConvo(g, playerName,currentState, questName,questStage);
-        if(questName == "The Road To Riches") {
-
-        }
+        super.drawConvo(g,currentState, questName,questStage,npcDeaths);
 
     }
 

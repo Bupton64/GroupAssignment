@@ -40,7 +40,7 @@ public class npc_plains_priest extends  NPC {
     //////////////////////////////////////////
 
 
-
+    int npcDeaths;
     Dialogue listOne;
 
     Dialogue listTwo;
@@ -68,25 +68,30 @@ public class npc_plains_priest extends  NPC {
 
     }
 
-    public void updateDialogue(int questStage){
+    public void updateDialogue(int questStage,int npcDeaths){
         if(questStage < 15) {
             currentDialogue = listOne;
         }
         if(questStage == 15){
-
-            currentDialogue = listTwo;
+            if(npcDeaths == 0) {
+                currentDialogue = listTwo;
+            }else{
+                currentDialogue = listThree;
+            }
         }
 
     }
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
 
+
+    public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){
+        this.npcDeaths = npcDeaths;
         if(loadDialogue) {
-            updateDialogue(questStage);
+            updateDialogue(questStage,npcDeaths);
             loadDialogue = false;
         }
 
-        super.drawConvo(g, playerName,currentState, questName,questStage);
+        super.drawConvo(g,currentState, questName,questStage,npcDeaths);
     }
 
     public int updateConvo() {
@@ -111,8 +116,10 @@ public class npc_plains_priest extends  NPC {
                 if (currentDialogue.getOptionPosY() == 375) {
                     summonMonster = true;
                 }else{
-                    killnpc = true;
-                    currentDialogue = listThree;
+                    if(npcDeaths == 0) {
+                        killnpc = true;
+                        currentDialogue = listThree;
+                    }
                 }
             }
         }

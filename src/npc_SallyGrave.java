@@ -9,8 +9,8 @@ public class npc_SallyGrave extends  NPC {
         setName("Sallys' Grave:");
         spriteSheet = loadImage("grave.png");
         sprite = subImage(spriteSheet,0,0,56,72);
-        setMapPosX(620);
-        setMapPosY(220);
+        setMapPosX(170);
+        setMapPosY(170);
 
         initDialogue();
         loadDialogue = true;
@@ -55,13 +55,13 @@ public class npc_SallyGrave extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+    public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage,int npcDeaths){
 
         if(loadDialogue) {
             updateDialogue(questStage);
             loadDialogue = false;
         }
-        super.drawConvo(g, playerName,currentState, questName,questStage);
+        super.drawConvo(g,currentState, questName,questStage,npcDeaths);
     }
 
 

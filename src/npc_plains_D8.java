@@ -69,13 +69,13 @@ public class npc_plains_D8 extends  NPC {
 
     }
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+    public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){
 
         if(loadDialogue) {
             updateDialogue(currentState);
             loadDialogue = false;
         }
-        super.drawConvo(g, playerName,currentState, questName,questStage);
+        super.drawConvo(g,currentState, questName,questStage,npcDeaths);
     }
 
 

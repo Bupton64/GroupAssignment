@@ -193,7 +193,9 @@ public class MapControl extends extraFunctions {
                     break;
                 case 21:
                     currentMap = new plains_E9();
-                    mapNpcs[0] = new npc_plains_E9_byBridge(475,200);
+                    if(playerMan.getNpcDeaths() == 0 || playerMan.getNpcDeaths() == 1 ) {
+                        mapNpcs[0] = new npc_plains_E9_byBridge(475, 200);
+                    }
                     mapNpcs[1] = new npc_plains_E9_byFence();
                     mapNpcs[2] = new npc_plains_E9_byField();
                     mapNpcs[3] = new npc_E9_signBottom();
@@ -203,8 +205,10 @@ public class MapControl extends extraFunctions {
                     if(playerMan.getQuestStage() >= 16 &&  playerMan.getQuestStage() < 29) {
                         mapNpcs[0] = new npc_wizard(200, 230);
                         if(playerMan.getQuestStage() >= 22) {
-                            mapNpcs[4] = new npc_plains_E9_byBridge(475, 200);
-                            numOfNpc = 5;
+                            if(playerMan.getNpcDeaths() == 0 || playerMan.getNpcDeaths() == 1 ) {
+                                mapNpcs[4] = new npc_plains_E9_byBridge(475, 200);
+                                numOfNpc = 5;
+                            }
                         }
 
                     }
@@ -399,16 +403,25 @@ public class MapControl extends extraFunctions {
                     break;
                 case 51:
                     currentMap = new plains_A9_church();
-                    if(playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 21){
-                        mapNpcs[0] = new npc_plains_E9_byBridge(170,170);
-                        numOfNpc = 1;
+                    if(playerMan.getNpcDeaths() == 0 || playerMan.getNpcDeaths() == 1 ){
+                        if(playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 21){
+                            mapNpcs[0] = new npc_plains_E9_byBridge(170,170);
+                            numOfNpc = 1;
 
+                        }
+                    }else{
+                        mapNpcs[0] = new npc_SallyGrave();
+                        numOfNpc = 1;
                     }
+
                     if(playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 20){
                         mapNpcs[1] = new npc_plains_A11_Razuul();
 
                         numOfNpc = 2;
                     }
+
+
+
                     if (playerMan.getQuestStage() == 25) {
                         mapNpcs[0] = new npc_plains_quest6_collectable(540,130);
                         numOfNpc = 1;
@@ -514,16 +527,17 @@ public class MapControl extends extraFunctions {
 
     public void drawNPCInteraction(Graphics2D g){
         if(playerMan.isInConvo()) {
-            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName(),playerMan.getQuestStage());
+            mapNpcs[currentNpcInteraction].drawConvo(g, playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName(),playerMan.getQuestStage(),playerMan.getNpcDeaths());
         }
 
         if(sallyDie){
-            drawBleed(g,200,200);
+            drawBleed(g,150,170);
             if(playerMan.getNpcDeaths() == 1){
                 playerMan.setNpcDeaths(3);
             }else{
                 playerMan.setNpcDeaths(2);
             }
+            reloadMap =true;
 
         }
 
@@ -627,9 +641,15 @@ public class MapControl extends extraFunctions {
                 return 10;
             }else if(updateQuestState == 93){
                 if(playerMan.getCurrentQuest().getQuestName() == "A Spy In The Clutches"){
-                    julianDie = true;
+                    if(playerMan.getNpcDeaths() == 0) {
+                        julianDie = true;
+                        mapNpcs[0].undoCollision(collisionDetector);
+                    }
                 }else if(playerMan.getCurrentQuest().getQuestName() == "No Escape From Reality"){
-                    sallyDie = true;
+                    if(playerMan.getNpcDeaths() == 0 || playerMan.getNpcDeaths() == 1) {
+                        sallyDie = true;
+                        mapNpcs[0].undoCollision(collisionDetector);
+                    }
                 }
                         updateQuestState = 0;
             }else if (updateQuestState != 0) {
