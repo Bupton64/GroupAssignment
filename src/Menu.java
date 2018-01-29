@@ -1014,6 +1014,7 @@ public class Menu extends extraFunctions {
     public void drawSaveGame(Graphics2D g){
 
         changeBackgroundColor(black,g);
+        drawImage(background3, 0, 0, g);
         //drawImage(startBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
         changeColor(black, g);
         drawBoldText(330, 150, "Save Files", "Felix Titling", 30, g);
