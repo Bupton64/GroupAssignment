@@ -2,11 +2,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class npc_plains_SevarsGrave extends  NPC {
+public class npc_JulianGrave extends  NPC {
 
 
-    npc_plains_SevarsGrave(){
-        setName("Sevars' Grave:");
+    npc_JulianGrave(){
+        setName("Julians' Grave:");
         spriteSheet = loadImage("grave.png");
         sprite = subImage(spriteSheet,0,0,56,72);
         setMapPosX(620);
@@ -45,7 +45,7 @@ public class npc_plains_SevarsGrave extends  NPC {
 
     public void initDialogue() {
 
-        Dialogue d1 = new Dialogue(null,false,true,"Here lies Sevar. A once great and powerful wizard who sacrificed","himself in order to save the town.","","Rest in Peace.");
+        Dialogue d1 = new Dialogue(null,false,true,"The kindest soul to ever walk this Earth.","","","Rest in Peace.");
         listOne = d1;
     }
 
