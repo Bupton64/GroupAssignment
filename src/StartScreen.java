@@ -357,6 +357,8 @@ public class StartScreen extends extraFunctions {
             return startKeyPressed(e);
         }else if(state == startState.loadScreen){
             return loadKeyPressed(e);
+        }else if(state == startState.credits){
+            state = CreditsEnd.keyPressed(e);
         }
 
         return 0;

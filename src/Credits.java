@@ -78,12 +78,12 @@ public class Credits extends extraFunctions{
     // Dark Cultist art from Nora to Toki no Koubou: Kiri no Mori no Majo
     // Troll art from art from Nora to Toki no Koubou: Kiri no Mori no Majo
     //www.spriters-resource.com
-    public int keyPressed(KeyEvent e) {
+    public StartScreen.startState keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            return 1;
+            return StartScreen.startState.startScreen;
         }
-        return 0;
+        return StartScreen.startState.credits;
     }
 }
 
