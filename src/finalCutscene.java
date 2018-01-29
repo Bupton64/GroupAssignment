@@ -1,16 +1,25 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+//condition == 1 is Sally dead
+//condition == 2 is Julian dead
+//condition == 3 is both dead
+
 public class finalCutscene extends extraFunctions{
 
     double timer;
     int animationChange;
+    int DjikstraPosY;
     Image backgroundFight;
     Image backgroundSevar;
     Image smokeSheet;
     Image smokeArray[];
     Image spritesheet;
     Image spritesheet2;
+    Image spritesheet3;
+    Image spritesheet4;
+    Image spritesheet5;
+    Image spritesheet6;
     Image BjarneSpin[];
     Image Therox;
     Image dialogueBackSheet;
@@ -20,14 +29,18 @@ public class finalCutscene extends extraFunctions{
     Image fade;
     Image fadeArray[];
     Image temp;
+    Image villagers[];
+    Image Djikstra[];
+    Image grave;
     boolean change;
 
     finalCutscene(){
         timer = 0;
         animationChange = 0;
         change = false;
+        DjikstraPosY = 500;
         backgroundFight = loadImage("bossFight.png");
-        backgroundSevar = loadImage("bossFight.png");       //PLACEHOLDER
+        backgroundSevar = loadImage("plains_E5.png");       //PLACEHOLDER
         smokeSheet = loadImage("smoke.png");
         spritesheet = loadImage("chara1.png");
         spritesheet2 = loadImage("chara2.png");
@@ -36,13 +49,33 @@ public class finalCutscene extends extraFunctions{
         smokeArray = new Image[35];
         BjarneSpin = new Image[4];
         bloodArray = new Image[6];
+        grave = loadImage("grave.png");
         fade = loadImage("fade.png");
         fadeArray = new Image[10];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
+        //NPCS
+        villagers = new Image[12];
+        spritesheet3 = loadImage("military2.png");
+        villagers[0] = subImage(spritesheet3,52,144,56,72);      //D8
+        spritesheet4 = loadImage("chara5.png");
+        villagers[2] = subImage(spritesheet4,196,432,56,72);    //E8_byHouse
+        villagers[3] = subImage(spritesheet2,208,360,56,72);    //E8_byLake
+        villagers[10] = subImage(spritesheet4,364,144,56,72);     //E9_byBridgs
+        spritesheet5 = loadImage("chara4.png");
+        villagers[5] = subImage(spritesheet5,52,72,56,72);      //E9_byFence
+        villagers[6] = subImage(spritesheet2, 52, 432, 56, 72); //E9_byField
+        villagers[7] = subImage(spritesheet5,52,360,56,72);     //E11
+        spritesheet6 = loadImage("chara3.png");
+        villagers[11] = subImage(spritesheet2,364,360,56,72);    //F8_oldman
+        villagers[4] = subImage(spritesheet2,196,144,56,72);    //F9_byBottomHouse
+        villagers[1] = subImage(spritesheet4,52,360,56,72);    //F9_StoreBabbage
+        villagers[8] = subImage(spritesheet6,520,144,56,72);    //F9_StoreLink
+        villagers[9] = subImage(spritesheet6,52,360,56,72);    //H9
 
+        Djikstra = new Image[3];
         for(int i = 0; i < 3; i++){
-
+            Djikstra[i] = subImage(spritesheet2,468 + (52*i),216,52,72);
         }
         for(int i = 0; i < 6; i++){
             bloodArray[i] = subImage(bloodSheet, 512 * i, 0, 512, 512);
@@ -72,7 +105,7 @@ public class finalCutscene extends extraFunctions{
         timer +=dt;
     }
 
-    public void drawFinalCutsene(Graphics2D g){
+    public void drawFinalCutsene(Graphics2D g, int condition){
         animationChange++;
         if(!change){
             drawImage(backgroundFight, 0, 0, g);
@@ -81,8 +114,8 @@ public class finalCutscene extends extraFunctions{
         }
 
         if(timer > 0 && timer < 3){
-            drawImage(Therox, 350, 200, g);
-            drawImage(BjarneSpin[1], 400, 200, g);
+            drawImage(Therox, 350, 300, g);
+            drawImage(BjarneSpin[1], 400, 300, g);
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
             drawText(110, 425, "Therox:", "Times New Roman", 20, g);
@@ -91,21 +124,46 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
         if(timer > 3 && timer < 3.3){
-            drawImage(BjarneSpin[1], 400, 200, g);
-            drawImage(bloodArray[animationChange%6], 330, 200, 100, 100, g);
+            drawImage(BjarneSpin[1], 400, 300, g);
+            drawImage(bloodArray[animationChange%6], 330, 300, 100, 100, g);
         }
         if(timer > 3.3 && timer < 6){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
-            drawImage(BjarneSpin[1], 400, 200, g);
+            drawImage(BjarneSpin[1], 400, 300, g);
             drawText(110, 425, "Bjarne:", "Times New Roman", 20, g);
             drawText(110, 450, "It's... it's finally over...", "Times New Roman", 20, g);
             drawText(110, 475, "", "Times New Roman", 20, g);
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
         if(timer > 6 && timer < 10){
-            drawImage(BjarneSpin[animationChange % 4], 400, 200, g);
-            drawImage(smokeArray[animationChange % 35], 350, 150, g);
+            drawImage(BjarneSpin[animationChange % 4], 400, 300, g);
+            drawImage(smokeArray[animationChange % 35], 350, 250, g);
+        }
+        if(timer > 9 && timer < 10){
+            drawImage(villagers[0], 300, 250, g);
+            drawImage(villagers[1], 500, 250, g);
+            drawImage(villagers[2], 300, 300, g);
+            drawImage(villagers[3], 500, 300, g);
+            drawImage(villagers[4], 300, 350, g);
+            drawImage(villagers[5], 500, 350, g);
+            drawImage(villagers[6], 300, 400, g);
+            drawImage(villagers[7], 500, 400, g);
+            drawImage(villagers[8], 300, 450, g);
+            drawImage(villagers[9], 500, 450, g);
+            if(condition == 1){
+                drawImage(villagers[11], 500, 500, g);
+            } else if(condition == 2){
+                drawImage(villagers[10], 300, 500, g);
+            } else if(condition == 3){
+
+            } else{
+                drawImage(villagers[10], 300, 500, g);
+                drawImage(villagers[11], 500, 500, g);
+            }
+
+
+            drawImage(Djikstra[1], 400, 500, g);
         }
         if(timer > 7 && timer < 42){
             drawImage(fadeArray[0], 0,0,800,600,g);
@@ -171,8 +229,159 @@ public class finalCutscene extends extraFunctions{
         if(timer > 9.9 && timer < 10){
             drawImage(fadeArray[0], 0,0,800,600,g);
         }
-        if(timer > 10 && timer < 13){
-            drawImage(BjarneSpin[0], 400, 200, g);
+
+        if(timer > 10 && timer < 12){
+            DjikstraPosY-=3;
+            drawImage(villagers[0], 300, 250, g);
+            drawImage(villagers[1], 500, 250, g);
+            drawImage(villagers[2], 300, 300, g);
+            drawImage(villagers[3], 500, 300, g);
+            drawImage(villagers[4], 300, 350, g);
+            drawImage(villagers[5], 500, 350, g);
+            drawImage(villagers[6], 300, 400, g);
+            drawImage(villagers[7], 500, 400, g);
+            drawImage(villagers[8], 300, 450, g);
+            drawImage(villagers[9], 500, 450, g);
+            if(condition == 1){
+                drawImage(villagers[11], 500, 500, g);
+            } else if(condition == 2){
+                drawImage(villagers[10], 300, 500, g);
+            } else if(condition == 3){
+
+            } else{
+                drawImage(villagers[10], 300, 500, g);
+                drawImage(villagers[11], 500, 500, g);
+            }
+
+            drawImage(BjarneSpin[0], 400, 300, g);
+            drawImage(Djikstra[animationChange % 3], 400, DjikstraPosY, g);
+        }
+        if(timer > 12 && timer < 23){
+            drawImage(villagers[0], 300, 250, g);
+            drawImage(villagers[1], 500, 250, g);
+            drawImage(villagers[2], 300, 300, g);
+            drawImage(villagers[3], 500, 300, g);
+            drawImage(villagers[4], 300, 350, g);
+            drawImage(villagers[5], 500, 350, g);
+            drawImage(villagers[6], 300, 400, g);
+            drawImage(villagers[7], 500, 400, g);
+            drawImage(villagers[8], 300, 450, g);
+            drawImage(villagers[9], 500, 450, g);
+            if(condition == 1){
+                drawImage(villagers[11], 500, 500, g);
+            } else if(condition == 2){
+                drawImage(villagers[10], 300, 500, g);
+            } else if(condition == 3){
+
+            } else{
+                drawImage(villagers[10], 300, 500, g);
+                drawImage(villagers[11], 500, 500, g);
+            }
+
+            drawImage(BjarneSpin[0], 400, 300, g);
+            drawImage(Djikstra[1], 400, DjikstraPosY, g);
+        }
+        if(timer > 12 && timer < 17){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Djikstra:", "Times New Roman", 20, g);
+            drawText(110, 450, "Bjarne! You survived! That means he must be dead! HE DID IT!", "Times New Roman", 20, g);
+            drawText(110, 475, "He freed our town from the wrath of Therox! Wait... where's Sevar?", "Times New Roman", 20, g);
+            drawText(110, 500, "", "Times New Roman", 20, g);
+        }
+        if(timer > 17 && timer < 22){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Bjarne:", "Times New Roman", 20, g);
+            drawText(110, 450, "He didn't make it... he sacrificed himself casting the most powerful", "Times New Roman", 20, g);
+            drawText(110, 475, "spell I've ever seen. It was an honorable death. A hero's death.", "Times New Roman", 20, g);
+            drawText(110, 500, "", "Times New Roman", 20, g);
+        }
+        if(timer > 24){
+            drawImage(grave, 610, 145, g);
+            drawImage(BjarneSpin[2], 610, 205, g);
+        }
+        if(timer > 22 && timer < 42){
+            drawImage(fadeArray[0], 0,0,800,600,g);
+        }
+        if(timer > 22.1 && timer < 22.2){
+            drawImage(fadeArray[1], 0,0,800,600,g);
+        }
+        if(timer > 22.2 && timer < 22.3){
+            drawImage(fadeArray[2], 0,0,800,600,g);
+        }
+        if(timer > 22.3 && timer < 22.4){
+            drawImage(fadeArray[3], 0,0,800,600,g);
+        }
+        if(timer > 22.4 && timer < 22.5){
+            drawImage(fadeArray[4], 0,0,800,600,g);
+        }
+        if(timer > 22.5 && timer < 22.6){
+            drawImage(fadeArray[5], 0,0,800,600,g);
+        }
+        if(timer > 22.6 && timer < 22.7){
+            drawImage(fadeArray[6], 0,0,800,600,g);
+        }
+        if(timer > 22.7 && timer < 22.8){
+            drawImage(fadeArray[7], 0,0,800,600,g);
+        }
+        if(timer > 22.8 && timer < 22.9){
+            drawImage(fadeArray[8], 0,0,800,600,g);
+        }
+        if(timer > 22.9 && timer < 23){
+            drawImage(fadeArray[9], 0,0,800,600,g);
+        }
+        if(timer > 23 && timer < 24){
+            drawImage(fadeArray[9], 0,0,800,600,g);
+            change = true;
+        }
+        if(timer > 24 && timer < 24.1){
+            drawImage(fadeArray[9], 0,0,800,600,g);
+        }
+        if(timer > 24.1 && timer < 24.2){
+            drawImage(fadeArray[8], 0,0,800,600,g);
+        }
+        if(timer > 24.2 && timer < 24.3){
+            drawImage(fadeArray[7], 0,0,800,600,g);
+        }
+        if(timer > 24.3 && timer < 24.4){
+            drawImage(fadeArray[6], 0,0,800,600,g);
+        }
+        if(timer > 24.4 && timer < 24.5){
+            drawImage(fadeArray[5], 0,0,800,600,g);
+        }
+        if(timer > 24.5 && timer < 24.6){
+            drawImage(fadeArray[4], 0,0,800,600,g);
+        }
+        if(timer > 24.6 && timer < 24.7){
+            drawImage(fadeArray[3], 0,0,800,600,g);
+        }
+        if(timer > 24.7 && timer < 24.8){
+            drawImage(fadeArray[2], 0,0,800,600,g);
+        }
+        if(timer > 24.8 && timer < 24.9){
+            drawImage(fadeArray[1], 0,0,800,600,g);
+        }
+        if(timer > 24.9 && timer < 25){
+            drawImage(fadeArray[0], 0,0,800,600,g);
+        }
+        if(timer > 25 && timer < 34){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Bjarne:", "Times New Roman", 20, g);
+            drawText(110, 450, "I miss you more and more everyday old friend. With Therox gone", "Times New Roman", 20, g);
+            drawText(110, 475, "the town is safe with only a few straggling monsters left behind.", "Times New Roman", 20, g);
+            drawText(110, 500, "I've been training to be a wizard too. Within that final battle ", "Times New Roman", 20, g);
+            drawText(110, 525, "something entered my soul, whether it was your spirit or Therox's...", "Times New Roman", 20, g);
+        }
+        if(timer > 34 && timer < 41){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Bjarne:", "Times New Roman", 20, g);
+            drawText(110, 450, "I've only mastered a few basic spells for now but my thirst for ", "Times New Roman", 20, g);
+            drawText(110, 475, "knowledge is strong. Who knows, maybe one day I will be as powerful", "Times New Roman", 20, g);
+            drawText(110, 500, "you! Haha one day...", "Times New Roman", 20, g);
+            drawText(110, 525, "", "Times New Roman", 20, g);
         }
     }
 
