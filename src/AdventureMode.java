@@ -101,7 +101,6 @@ public class AdventureMode extends GameEngine {
     private endCutScene endCutSceneController;
     private RazuulCutscene razuulCutsceneController;
     private finalCutscene finalCutsceneController;
-    private RazuulCutsceneAlternate RazuulCutsceneAlternateController;
 
 
 
@@ -155,7 +154,6 @@ public class AdventureMode extends GameEngine {
         playerMovement = new CharacterMovement(playerMan);
         collisionDetector = new Collision();
         mapController = new MapControl(playerMan,collisionDetector);
-        RazuulCutsceneAlternateController = new RazuulCutsceneAlternate();
 
         initFade();
 
@@ -289,8 +287,6 @@ public class AdventureMode extends GameEngine {
                 razuulCutsceneController.updateTimer(dt);
             case finalCutscene:
                 finalCutsceneController.updateTimer(dt);
-            case razuulCutsceneAlternate:
-                RazuulCutsceneAlternateController.updateTimer(dt);
         }
         if(fadeState){
 
@@ -369,9 +365,6 @@ public class AdventureMode extends GameEngine {
                 break;
             case finalCutscene:
                 finalCutsceneController.drawFinalCutsene(mGraphics, 0);
-                break;
-            case razuulCutsceneAlternate:
-                RazuulCutsceneAlternateController.drawRazuulCutscene(mGraphics);
                 break;
         }
 
@@ -452,8 +445,6 @@ public class AdventureMode extends GameEngine {
                 stateChanger = razuulCutsceneController.keyPressed(e);
             case finalCutscene:
                 stateChanger = finalCutsceneController.keyPressed(e);
-            case razuulCutsceneAlternate:
-                stateChanger = RazuulCutsceneAlternateController.keyPressed(e);
         }
         if(e.getKeyCode() == KeyEvent.VK_M){
             mute = !mute;
