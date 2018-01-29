@@ -304,10 +304,10 @@ public class AdventureMode extends GameEngine {
                 }
 
                 changeColor(white);
-                drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
-                drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
-                drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
-                drawText(50, 110, Integer.toString(playerMan.getQuestStage()), "Times New Roman", 20);
+//                drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
+//                drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
+//                drawText(50, 90, Integer.toString((int) playerMan.getMapPosY() / 10), "Times New Roman", 20);
+//                drawText(50, 110, Integer.toString(playerMan.getQuestStage()), "Times New Roman", 20);
                 break;
             case CombatMode:
                 combatMode.paintComponent(mGraphics); //< Draw Combat

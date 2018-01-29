@@ -179,16 +179,16 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
         }
         if(checkStationary()) {
             if (directionFacing == Direction.right) {
-                drawImage(playerMoveRight[0], dx, dy, 50, 70,g);
+                drawImage(playerMoveRight[1], dx, dy, 50, 70,g);
 
             } else if (directionFacing == Direction.left) {
-                drawImage(playerMoveLeft[0], dx, dy, 50, 70,g);
+                drawImage(playerMoveLeft[1], dx, dy, 50, 70,g);
 
             } else if (directionFacing == Direction.up) {
-                drawImage(playerMoveUp[0], dx, dy, 50, 70,g);
+                drawImage(playerMoveUp[1], dx, dy, 50, 70,g);
 
             } else if (directionFacing == Direction.down) {
-                drawImage(playerMoveDown[0], dx, dy, 50, 70,g);
+                drawImage(playerMoveDown[1], dx, dy, 50, 70,g);
 
             }
 
