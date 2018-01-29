@@ -25,9 +25,12 @@ public class StartScreen extends extraFunctions {
     startState state = startState.startScreen;
 
     Image paper = loadImage("paper.png");
+    Image paper2 = loadImage("paper2.png");
     Image sword = loadImage("sword.png");
     Image sword2 = loadImage("sword2.png");
     Image logo = loadImage("BjournesWorld.png");
+    Image equipmentSprite = loadImage("equipmentSprite.png");
+    Image background3;
     Image StartBackground;
     Image swordSprite;
     Image swordSprite2;
@@ -51,8 +54,10 @@ public class StartScreen extends extraFunctions {
         introMusic = loadAudio("epic.wav");
         startAudioLoop(introMusic, -3);
         StartBackground = subImage(paper, 0, 0, 768, 1028);
+        StartBackground = subImage(paper2, 0, 0, 1028, 768);
         swordSprite = subImage(sword, 0, 0, 1793, 445);
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);
+        background3 = subImage(equipmentSprite, 0, 0, 800, 600);
         Logo = subImage(logo, 0, 0,518,91);
         CreditsEnd = new Credits();
 
@@ -84,6 +89,7 @@ public class StartScreen extends extraFunctions {
 
         clearBackground(800, 600, g);
         //changeBackgroundColor(black,g);
+
         changeColor(white, g);
 
         if((timer >2)&&(timer<5)) {
@@ -141,6 +147,7 @@ public class StartScreen extends extraFunctions {
         }
         if((timer >4.6)&&(timer<5)){
             clearBackground(800, 600, g);
+
         }
 
         if(timer>6){
@@ -149,12 +156,12 @@ public class StartScreen extends extraFunctions {
                     num += 1;
                 }
             }
-            drawText(100, 100, Integer.toString(num), g);
-            drawImage(Logo, 85, 100,6*num,1*num,g );
+            //drawText(100, 100, Integer.toString(num), g);
+            drawImage(Logo, 394-(num*3), 225,6*num,1*num,g );
         }
         if((num>104)&&(timer<100)) {
             changeColor(white, g);
-            drawText(220, 500, "- Press <SPACE> to begin your adventure -",  "New Roman Times", 20, g);
+            drawText(210, 500, "- Press <SPACE> to begin your adventure -",  "New Roman Times", 20, g);
 
         }
         if((timer > 100)&&intro){
@@ -165,7 +172,7 @@ public class StartScreen extends extraFunctions {
 
         if(intro == false) {
             clearBackground(800 ,600, g);
-            drawImage(StartBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
+            drawImage(background3, 0, 0, g);
             drawImage(swordSprite, 500, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
             drawImage(swordSprite2, 250, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
 
@@ -305,7 +312,9 @@ public class StartScreen extends extraFunctions {
     }
 
     public void drawLoad(Graphics2D g){
+        clearBackground(800, 600, g);
       changeBackgroundColor(black,g);
+      drawImage(background3, 0, 0, g);
     //    drawImage(StartBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
         changeColor(black, g);
         drawBoldText(330, 150, "Load Files", "Felix Titling", 30, g);
