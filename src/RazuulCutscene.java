@@ -107,7 +107,7 @@ public class RazuulCutscene extends extraFunctions{
         }
         if(timer > 17){
             changeColor(white, g);
-            drawText(250, 450, "- Press <SPACE> to initiate battle -",  "New Roman Times", 20, g);
+            drawText(260, 450, "- Press <SPACE> to continue -",  "New Roman Times", 20, g);
         }
     }
 
