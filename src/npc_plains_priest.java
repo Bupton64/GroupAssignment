@@ -45,6 +45,8 @@ public class npc_plains_priest extends  NPC {
 
     Dialogue listTwo;
 
+    Dialogue listThree;
+
 
     public void initDialogue() {
 
@@ -57,6 +59,11 @@ public class npc_plains_priest extends  NPC {
         listTwo = d2;
 
 
+        Dialogue d6 = new Dialogue(null,true,true,"Now let's go little man!","","","");
+        Dialogue d5 = new Dialogue(d6,false,false,"Oh that was too easy, Mee-oh-mi.","A good warm up!","","");
+        listThree = d5;
+
+
 
 
     }
@@ -66,6 +73,7 @@ public class npc_plains_priest extends  NPC {
             currentDialogue = listOne;
         }
         if(questStage == 15){
+
             currentDialogue = listTwo;
         }
 
@@ -104,6 +112,7 @@ public class npc_plains_priest extends  NPC {
                     summonMonster = true;
                 }else{
                     killnpc = true;
+                    currentDialogue = listThree;
                 }
             }
         }

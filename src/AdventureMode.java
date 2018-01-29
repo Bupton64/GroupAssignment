@@ -365,7 +365,11 @@ public class AdventureMode extends GameEngine {
                 }
                 break;
             case razuulCutscene:
-                razuulCutsceneController.drawRazuulCutscene(mGraphics);
+                if(playerMan.getNpcDeaths() == 0) {
+                    razuulCutsceneController.drawRazuulCutscene(mGraphics);
+                }else{
+                    razuulCutsceneController.drawRazuulCutscene2(mGraphics);
+                }
                 break;
             case finalCutscene:
                 finalCutsceneController.drawFinalCutsene(mGraphics, 0);

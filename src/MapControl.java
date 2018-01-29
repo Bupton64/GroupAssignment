@@ -274,7 +274,7 @@ public class MapControl extends extraFunctions {
                             }
                             mapNpcs[1] = new npc_plains_priest(480, 200);
                             numOfNpc = 2;
-                        
+
                     }else if(playerMan.getQuestStage() >= 16) {
                         if(playerMan.getNpcDeaths() == 0 ||playerMan.getNpcDeaths() == 2) {
                             mapNpcs[0] = new npc_plains_f8_oldman(420, 200);
