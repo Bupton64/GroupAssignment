@@ -1158,11 +1158,20 @@ public class Menu extends extraFunctions {
         } else if (invMenu) {
             if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                 if (menuOption + (10 * (currentPage - 1)) != player1.getInventorySize()-1) {
-                    if (menuOption < numOfItemsToDisplay - ((currentPage - 1) * 10)) {
-                        playAudio(clicks);
-                        menuOption++;
-                    } else {
-                        menuOption = 0;
+                    if(currentPage == numOfPages) {
+                        if (menuOption < numOfItemsToDisplay - ((currentPage - 1) * 10)) {
+                            playAudio(clicks);
+                            menuOption++;
+                        } else {
+                            menuOption = 0;
+                        }
+                    }else{
+                        if (menuOption < 9) {
+                            playAudio(clicks);
+                            menuOption++;
+                        } else {
+                            menuOption = 0;
+                        }
                     }
                 }
             }
@@ -1174,7 +1183,7 @@ public class Menu extends extraFunctions {
                         playAudio(clicks);
                         menuOption--;
                     } else {
-                        menuOption = numOfItemsToDisplay - ((currentPage - 1) * 10);
+                        menuOption = (numOfItemsToDisplay - ((currentPage - 1) * 10));
                     }
 
 
@@ -1192,7 +1201,7 @@ public class Menu extends extraFunctions {
             if(e.getKeyCode() == KeyEvent.VK_LEFT){
                 if(currentPage != 1){
                     currentPage--;
-                    menuOption = 8;
+                    menuOption = 9;
                 }
 
             }
@@ -1244,7 +1253,7 @@ public class Menu extends extraFunctions {
             }
 
 
-            
+
 
 
 
