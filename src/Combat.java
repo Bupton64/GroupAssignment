@@ -1768,10 +1768,13 @@ public class Combat extends extraFunctions{
         if(!player.getCombatActive()){
             if(enemy.getName() == "Priest"){
                 return 8;
-            }else {
+            }else if(enemy.getName() == "Therox"){
+                return 13;
+            }else{
                 return 1;
             }
         }
+
         if(state == CombatState.playerDeath){
             updateDeath(dt);
 
