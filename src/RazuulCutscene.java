@@ -5,12 +5,16 @@ public class RazuulCutscene extends extraFunctions{
 
     double timer;
     int animationChange;
+    int priestPosX;
+    int priestPosY;
     Image background;
     Image spritesheet;
     Image spritesheet2;
     Image dialogueBackSheet;
     Image dialogueBack;
     Image priest[];
+    Image priestDown[];
+    Image priestLeft[];
     Image priestAfter[];
     Image smokeSheet;
     Image smokeArray[];
@@ -19,6 +23,8 @@ public class RazuulCutscene extends extraFunctions{
 
 
     RazuulCutscene(){
+        priestPosX = 475;
+        priestPosY = 200;
         timer = 0;
         animationChange++;
         background = loadImage("priestFight.png");
@@ -27,15 +33,20 @@ public class RazuulCutscene extends extraFunctions{
         smokeSheet = loadImage("smoke.png");
         priest = new Image[4];
         priestAfter = new Image[4];
+        priestDown = new Image[4];
+        priestLeft = new Image[4];
         smokeArray = new Image[35];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
 
-
+        for(int i = 0; i < 3; i++){
+            priestDown[i] = subImage(spritesheet2,312 + (i*52), 288,52,72);
+            priestLeft[i] = subImage(spritesheet2,312 + (i*52), 360,52,72);
+        }
 
         for(int i = 0; i < 4; i++) {
-            priestAfter[i] = subImage(spritesheet,364, 288 + (72*i),52,72);
-            priest[i] = subImage(spritesheet2,364, (72*i),52,72);
+            priestAfter[i] = subImage(spritesheet2,364, 288 + (72*i),52,72);
+            priest[i] = subImage(spritesheet,364, (72*i),52,72);
             for (int j = 0; j < 8; j++) {
                 smokeArray[(i*8)+j] = subImage(smokeSheet, j * 128, i * 128, 128, 128);
             }
@@ -57,16 +68,46 @@ public class RazuulCutscene extends extraFunctions{
     }
 
     public void drawRazuulCutscene(Graphics2D g){
+        System.out.println(timer);
         animationChange++;
         drawImage(background, 0, 0, g);
-        if(timer > 0 && timer < 4){
-            drawImage(smokeArray[animationChange%35], 400, 250, g);
-        }
+
         if(timer > 0 && timer < 2){
-            drawImage(priest[animationChange%4], 450, 300, g);
+            drawImage(priest[animationChange%4], 475, 200, g);
+        } else if(timer > 2 && timer < 4){
+            drawImage(priestAfter[animationChange%4], 475, 200, g);
         }
-        if(timer > 2 && timer < 4){
-            drawImage(priest[animationChange%4], 450, 300, g);
+        if(timer > 0 && timer < 4){
+            drawImage(smokeArray[animationChange%35], 425, 150, g);
+        }
+        if(timer > 4 && timer< 7){
+            drawImage(priestAfter[0], 475, 200, g);
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Razuul:", "Times New Roman", 20, g);
+            drawText(110, 450, "HAHAHA You thought you could defeat me!? Wrong you were little ", "Times New Roman", 20, g);
+            drawText(110, 475, "man.", "Times New Roman", 20, g);
+            drawText(110, 500, "", "Times New Roman", 20, g);
+        }
+        if(timer > 7 && timer < 8){
+            priestPosY+=5;
+            drawImage(priestDown[animationChange%3], priestPosX, priestPosY, g);
+        }
+        if(timer > 8 && timer < 13){
+            priestPosX-=5;
+            drawImage(priestLeft[animationChange%3], priestPosX, priestPosY, g);
+        }
+        if(timer > 13 && timer < 17){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Julian:", "Times New Roman", 20, g);
+            drawText(110, 450, "Bjarne you- you saved me! How can I ever repay you? But the", "Times New Roman", 20, g);
+            drawText(110, 475, "priest... what was that thing!? He probably headed West to the", "Times New Roman", 20, g);
+            drawText(110, 500, "church!", "Times New Roman", 20, g);
+        }
+        if(timer > 17){
+            changeColor(white, g);
+            drawText(250, 450, "- Press <SPACE> to initiate battle -",  "New Roman Times", 20, g);
         }
     }
 

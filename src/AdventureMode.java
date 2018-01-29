@@ -79,7 +79,7 @@ public class AdventureMode extends GameEngine {
     ///
     /////////////////////////////////
 
-    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, CutScene, ShopMode, endCutScene}
+    enum GameState {TravelMode, CombatMode, OverWorldMenu, MainMenu, CutScene, ShopMode, endCutScene, razuulCutscene}
     GameState state = GameState.TravelMode;
 
     private int stateChanger;
@@ -96,6 +96,7 @@ public class AdventureMode extends GameEngine {
     private cutScene cutScene;
     private ShopControl shopController;
     private endCutScene endCutSceneController;
+    private RazuulCutscene razuulCutsceneController;
 
 
 
@@ -132,7 +133,7 @@ public class AdventureMode extends GameEngine {
         playerMan = new Character();
 
 
-
+        razuulCutsceneController = new RazuulCutscene();
         shopController = new ShopControl(playerMan);
 
         saveController = new saveGame(playerMan);
@@ -200,7 +201,9 @@ public class AdventureMode extends GameEngine {
                 volume = +6;
                 startAudioLoop(cutSceneMusic, volume);
                 break;
-
+            case 8:
+                state = GameState.razuulCutscene;
+                break;
         }
        stateChanger = 0;
 
@@ -260,10 +263,12 @@ public class AdventureMode extends GameEngine {
                 break;
             case CutScene:
                 cutScene.updateTimer(dt);
+                //razuulCutsceneController.updateTimer(dt);     //For testing
                 break;
             case OverWorldMenu:
                 break;
-
+            case razuulCutscene:
+                razuulCutsceneController.updateTimer(dt);
         }
         if(fadeState){
 
@@ -327,6 +332,7 @@ public class AdventureMode extends GameEngine {
             case CutScene:
                 changeBackgroundColor(black);
                 cutScene.drawCutScene(mGraphics);
+                //razuulCutsceneController.drawRazuulCutscene(mGraphics);       //For testing
                 break;
             case endCutScene:
                 endCutSceneController.drawCutScene(mGraphics);
@@ -334,6 +340,9 @@ public class AdventureMode extends GameEngine {
                     drawFade();
 
                 }
+                break;
+            case razuulCutscene:
+                razuulCutsceneController.drawRazuulCutscene(mGraphics);
                 break;
         }
 
@@ -410,6 +419,8 @@ public class AdventureMode extends GameEngine {
             case ShopMode:
                 stateChanger = shopController.keyPressed(e);
                 break;
+            case razuulCutscene:
+                stateChanger = razuulCutsceneController.keyPressed(e);
         }
         if(e.getKeyCode() == KeyEvent.VK_M){
             mute = !mute;
