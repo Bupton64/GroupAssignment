@@ -2,15 +2,24 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class accessoriesShop extends shop {
-
+    boolean stopper = false;
     accessoriesShop(Character playerMan){
         super(playerMan);
         setTotalPages(1);
         setMaxIndex(2);
+
     }
 
     @Override
     public void shopInit() {
+
+        clicks = loadAudio("clicks.wav");
+        p1 = loadAudio("page1.wav");
+        p2 = loadAudio("page2.wav");
+        p3 = loadAudio("page3.wav");
+        leave = loadAudio("leave.wav");
+        exitClick = loadAudio("exitClick.wav");
+        coin = loadAudio("coin.wav");
         Item[] inventory = new Item[50];
         for(int i = 0;  i < 50; i++){
             inventory[i] = new Item();
@@ -26,6 +35,7 @@ public class accessoriesShop extends shop {
     }
 
     public void updateShop(){
+
         if(getPlayer1().getQuestStage() > 21) {
             if (getMaxIndex() < 10) {
                 setTotalPages(1);
@@ -106,6 +116,10 @@ public class accessoriesShop extends shop {
             if(isPurchaseSuccess()){
                 drawBoldText(225, 280, "You bought " + getShopInventory()[getItemIndex()].getName(), "Felix Titling", 20, g) ;
                 drawBoldText( 300, 320,  "for " + Integer.toString(getShopInventory()[getItemIndex()].getBuyPrice()) + " gold","Felix Titling", 20, g);
+                if(!stopper) {
+                    playAudio(coin);
+                    stopper = true;
+                }
             }else{
                 if(getPlayer1().isInventoryFull()) {
                     drawBoldText(225, 280, "Cannot buy " + getShopInventory()[getItemIndex()].getName() + "!", "Felix Titling", 20, g) ;
@@ -122,6 +136,7 @@ public class accessoriesShop extends shop {
 
     public int keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            playAudio(clicks);
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 9) {
                     setItemIndex(getItemIndex() + 1);
@@ -129,6 +144,7 @@ public class accessoriesShop extends shop {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
+            playAudio(clicks);
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 0){
                     setItemIndex(getItemIndex() - 1);
@@ -138,6 +154,7 @@ public class accessoriesShop extends shop {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
             if(!isPurchaseAttempt()) {
                 if (getPageNum() < getTotalPages()) {
+                    playAudio(p1);
                     setPageNum(getPageNum() + 1);
                     setItemIndex(((getPageNum() - 1) * 10));
                 }
@@ -146,6 +163,7 @@ public class accessoriesShop extends shop {
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
             if(!isPurchaseAttempt()) {
                 if (getPageNum() != 1) {
+                    playAudio(p3);
                     setPageNum(getPageNum() - 1);
                     setItemIndex(((getPageNum() - 1) * 10));
                 }
@@ -158,10 +176,12 @@ public class accessoriesShop extends shop {
                 setPurchaseAttempt(false);
                 setPurchaseSuccess(false);
             }
+            stopper = false;
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
             if(!isPurchaseAttempt()){
+                playAudio(p2);
                 return 2;
             }
         }

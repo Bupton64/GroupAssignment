@@ -23,6 +23,7 @@ public abstract class extraFunctions {
     AudioClip p2;
     AudioClip p3;
     AudioClip leave;
+    AudioClip coin;
 
 
 
