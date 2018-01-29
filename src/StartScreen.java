@@ -426,6 +426,7 @@ public class StartScreen extends extraFunctions {
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 310)) {
            playAudio(exitClick);
            state = startState.credits;
+           CreditsEnd.setWordsScrollingY(600);
         }
         return 0;
     }

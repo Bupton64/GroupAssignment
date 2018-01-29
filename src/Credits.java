@@ -5,6 +5,14 @@ public class Credits extends extraFunctions{
 
     private int wordsScrollingY;
 
+    public int getWordsScrollingY() {
+        return wordsScrollingY;
+    }
+
+    public void setWordsScrollingY(int wordsScrollingY) {
+        this.wordsScrollingY = wordsScrollingY;
+    }
+
     Credits(){
         wordsScrollingY = 600;
     }
