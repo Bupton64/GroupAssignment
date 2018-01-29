@@ -1121,6 +1121,7 @@ public class Combat extends extraFunctions{
     }
 
     public void enemyCurse(){
+        enemy.setEnergy(enemy.getEnergy()-enemyLastAbility.getEnergyCost());
         enemyLastAbility.use(enemy);
         player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
         player.setLastStatusEffect(enemyLastAbility.getLastStatus());
@@ -1168,7 +1169,7 @@ public class Combat extends extraFunctions{
                 }else if(enemyStatusString != "" ) {
                     displayEnemyOldStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
-                        enemyEndTurn();
+                       // enemyEndTurn();
                         if(player.isAlive()) {
                             enemy.takeDamage((int) enemy.getLastStatusDamage());
                             pushString(statusLog,false,false);
