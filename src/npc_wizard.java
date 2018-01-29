@@ -104,7 +104,7 @@ public class npc_wizard extends  NPC {
         listEight = d15;
 
         Dialogue d17 = new Dialogue(null,true,true,"Can you go confront the priest in Town?","","","");
-        Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm... It appears this book belongs to the priest.","I fear we have a spy in our clutches Young Bjarne. You'll need to go","confront him! I recall seeing him in town earlier today. Find me in ","town once you've confronted him and hurry!");
+        Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm... It appears this book belongs to the priest.","I fear we have a spy in our clutches young Bjarne. You'll need to go","confront him! I recall seeing him in town earlier today. Find me in ","town once you've confronted him and hurry!");
         listNine = d16;
 
         Dialogue d017 = new Dialogue(null,false,true,"Go confront the priest and get to the bottom of this. There's","no time to waste!","","");
@@ -112,7 +112,7 @@ public class npc_wizard extends  NPC {
 
 
         Dialogue d20 = new Dialogue(null,true,true,"Find the symbol, I think I remember leaving it somewhere North-East.","","","");
-        Dialogue d19 = new Dialogue(d20,false,false,"To defeat him you will need a lot more than just strength.","You will need to go collect my Holy Symbol to even stand a ","chance! I think I left it somewhere North-East of town.","");
+        Dialogue d19 = new Dialogue(d20,false,false,"To defeat him you will need a lot more than just strength.","You will need to go collect my Holy Symbol to even stand a ","chance! It was stolen when my crystals were stolen but I think I can","sense it to the North-East of town.");
         Dialogue d18 = new Dialogue(d19,false,false,"Bjarne, he came through here and took Sally. He's one","of Therox's Generals Razuul, a demon from the underworld! ","","");
         listTen = d18;
 
