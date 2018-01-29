@@ -340,6 +340,7 @@ public class Character extends Statblock {
     public void init(){
         //Quest Init - Zane
         GameTimer = 0.0;
+        npcDeaths = 0;
         setMapPosX(380);
         setMapPosY(240);
         setCurrentMapLocation(45);
@@ -994,6 +995,16 @@ public class Character extends Statblock {
     ///  Boss Kill And Monsters
     ///
     //////////////////////////////
+
+    private int npcDeaths;
+
+    public int getNpcDeaths() {
+        return npcDeaths;
+    }
+
+    public void setNpcDeaths(int npcDeaths) {
+        this.npcDeaths = npcDeaths;
+    }
 
     private int monsterGen;
 

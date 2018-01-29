@@ -86,12 +86,15 @@ public class npc_plains_priest extends  NPC {
             return 99;
 
         }
+        if(killnpc){
+            return 93;
+        }
         return 0;
     }
 
     //test code
     boolean summonMonster = false;
-
+    boolean killnpc = false;
 
     public boolean keyPressed(KeyEvent e) {
 
@@ -99,6 +102,8 @@ public class npc_plains_priest extends  NPC {
             if (currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375) {
                     summonMonster = true;
+                }else{
+                    killnpc = true;
                 }
             }
         }

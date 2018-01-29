@@ -509,11 +509,18 @@ public class MapControl extends extraFunctions {
         }
 
         if(sallyDie){
-            drawBleed(g,330,300);
+            drawBleed(g,200,200);
+            if(playerMan.getNpcDeaths() == 1){
+                playerMan.setNpcDeaths(3);
+            }else{
+                playerMan.setNpcDeaths(2);
+            }
+
         }
 
         if(julianDie){
-            drawBleed(g,330,300);
+            drawBleed(g,400,200);
+            playerMan.setNpcDeaths(1);
         }
     }
 
@@ -608,7 +615,14 @@ public class MapControl extends extraFunctions {
                 playerMan.setCurrentHP(playerMan.getMaxHP());
                 updateQuestState = 0;
                 return 10;
-            }else if(updateQuestState != 0) {
+            }else if(updateQuestState == 93){
+                if(playerMan.getCurrentQuest().getQuestName() == "A Spy In The Clutches"){
+                    julianDie = true;
+                }else if(playerMan.getCurrentQuest().getQuestName() == "No Escape From Reality"){
+                    sallyDie = true;
+                }
+                        updateQuestState = 0;
+            }else if (updateQuestState != 0) {
                 playerMan.setQuestStage(updateQuestState);
                 playerMan.changeQuest();
                 updateQuestState = 0;
