@@ -36,7 +36,7 @@ public class npc_plains_E8_signTop extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"You are now leaving Hurnville. This path leads to the great ones","residence. ","","");
+        Dialogue d1 = new Dialogue(null,false,true,"You are now leaving Sepla. This path leads to the great ones","residence. ","","");
         listOne = d1;
     }
 
