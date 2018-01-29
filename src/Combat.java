@@ -1054,8 +1054,10 @@ public class Combat extends extraFunctions{
 
     public void startEnemyTurn() {
         enemyTurnSetUp = false;
-        enemy.addEnergy(1);
-
+        if(enemy.getEnergy()!= 5) {
+            enemy.addEnergy(1);
+        }
+        enemyHasSpentEnergy = false;
         enemyLastAbility = enemy.moveChoice();
         if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
             enemyMakeAttack = true;
@@ -1099,7 +1101,7 @@ public class Combat extends extraFunctions{
     public void enemyAttack(){
 
         enemyDamage = enemyLastAbility.getLastDamage();
-        enemy.addEnergy(-enemyLastAbility.getEnergyCost());
+      //  enemy.addEnergy(-enemyLastAbility.getEnergyCost());
         enemyDamage = player.takeDamage((int)enemyDamage);
 
         if(enemyLastAbility.getLastStatus() != null){
@@ -1113,14 +1115,22 @@ public class Combat extends extraFunctions{
     }
 
 
+    private boolean enemyHasSpentEnergy;
+    public void enemySpendEnergy(){
+        enemy.setEnergy(enemy.getEnergy()-enemyLastAbility.getEnergyCost());
+        enemyHasSpentEnergy = true;
+    }
+
+
     public void enemyBuff(){
         enemyLastAbility.use(enemy);
-
+      //  enemy.addEnergy(-enemyLastAbility.getEnergyCost());
         enemyMakeBuff = false;
-        enemy.setEnergy(enemy.getEnergy()-enemyLastAbility.getEnergyCost());
+
     }
 
     public void enemyCurse(){
+      //  enemy.addEnergy(-enemyLastAbility.getEnergyCost());
         enemyLastAbility.use(enemy);
         player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
         player.setLastStatusEffect(enemyLastAbility.getLastStatus());
@@ -1133,7 +1143,7 @@ public class Combat extends extraFunctions{
         enemyAttackActive = false;
         enemyTurnTimer = 0;
         checkCurse = true;
-        player.addEnergy(1);
+
         state = CombatState.playerTurn;
     }
 
@@ -1157,7 +1167,9 @@ public class Combat extends extraFunctions{
 
             }
             if(enemyTurnTimer > enemyTurnDuration){
-
+                if(!enemyHasSpentEnergy){
+                    enemySpendEnergy();
+                }
                 if(enemyLastAbility.getType() == Ability.AbilityType.damage && enemyLastAbility.getLastStatus() != null){
                     displayEnemyNewStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
@@ -1168,7 +1180,7 @@ public class Combat extends extraFunctions{
                 }else if(enemyStatusString != "" ) {
                     displayEnemyOldStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
-                        enemyEndTurn();
+                       // enemyEndTurn();
                         if(player.isAlive()) {
                             enemy.takeDamage((int) enemy.getLastStatusDamage());
                             pushString(statusLog,false,false);
@@ -1735,7 +1747,7 @@ public class Combat extends extraFunctions{
     public void drawEnemy(Graphics2D g) {
         if (enemy.getName().equals("Wyvern") || enemy.getName().equals("Valliard")) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-100, enemy.getCombatPosY()-100, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
-        } else if(enemy.getName().equals("Priest")) {
+        } else if(enemy.getName().equals("Priest") || enemy.getName().equals("Razuul")) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-50, enemy.getCombatPosY()-50, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
         }else{
             drawImage(enemy.getSprite(), enemy.getCombatPosX(), enemy.getCombatPosY(), enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);

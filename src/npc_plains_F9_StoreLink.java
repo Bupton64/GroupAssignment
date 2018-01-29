@@ -46,7 +46,7 @@ public class npc_plains_F9_StoreLink extends  NPC {
     public void initDialogue() {
 
 
-        Dialogue d1 = new Dialogue(null,true,true,"Hey thanks For helping Camrath and I.","Here take this sword as a token of appreciation! And remember  ","you are always welcome to come browse my store.","");
+        Dialogue d1 = new Dialogue(null,true,true,"Hey thanks for helping Camrath and I.","Here take this sword as a token of appreciation! And remember  ","you are always welcome to come browse my store.","");
         listOne = d1;
 
         Dialogue d2 = new Dialogue(null,true,true,"Hey Bjarne good to see you again! Care to browse my goods?","","","");
@@ -79,17 +79,14 @@ public class npc_plains_F9_StoreLink extends  NPC {
     }
 
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+    public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){
 
         if(loadDialogue) {
             updateDialogue(questStage);
             loadDialogue = false;
         }
 
-        super.drawConvo(g, playerName,currentState, questName,questStage);
-        if(questName == "The Road To Riches") {
-
-        }
+        super.drawConvo(g,currentState, questName,questStage,npcDeaths);
 
     }
 

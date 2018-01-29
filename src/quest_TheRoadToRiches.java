@@ -25,7 +25,7 @@ public class quest_TheRoadToRiches extends Quest {
     }
 
     public void giveReward(Character playerMan){
-        item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
+        item_Equipment bronzeSword = new item_Equipment("Bronze Sword", 1, 0, 0, 1, 0, Item.Slot.weapon, "Durable and strong", 50, 300);
         playerMan.addItemToInventory(bronzeSword); //T1 Sword
         playerMan.checkLevelUp();
     }
@@ -49,13 +49,12 @@ public class quest_TheRoadToRiches extends Quest {
 
 
     public void drawQuest(Graphics2D g){
+        changeColor(black, g);
         if(getState() == questState.preQuest) {
-            changeColor(white, g);
             drawText(40, 400, "Speak to the Blacksmith", "Arial", 20, g);
 
         }
         if(getState() == questState.inQuest) {
-            changeColor(white, g);
             drawText(40, 400, "Go Talk to Link", "Arial", 20, g);
         }
 

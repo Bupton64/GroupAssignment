@@ -223,7 +223,7 @@ public class NPC extends extraFunctions{
      }
 
 
-    public void drawConvo(Graphics2D g,String playerName, Quest.questState  state, String questName, int questStage) {
+    public void drawConvo(Graphics2D g, Quest.questState  state, String questName, int questStage,int npcDeaths) {
         this.questStage = questStage;
 
         currentDialogue.display(g);

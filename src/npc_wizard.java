@@ -61,6 +61,7 @@ public class npc_wizard extends  NPC {
     Dialogue listTwelve;
     Dialogue listThirteen;
     Dialogue listFourteen;
+    Dialogue listFourteen2;
     Dialogue listFifteen;
     Dialogue listSixteen;
     Dialogue listSeventeen;
@@ -131,6 +132,9 @@ public class npc_wizard extends  NPC {
         Dialogue d25 = new Dialogue(d26,false,false,"You did it! Good job! Good to see Sally back in town.","Although while you were gone...","Therox managed to find a way into Town. ","");
         listFourteen = d25;
 
+        Dialogue d025 = new Dialogue(d26,false,false,"I saw from the crystals what happened. ","Today is a day of mourning, Do not blame yourself Bjarne.","Unfortunately every second we delay, they get stronger.","");
+        listFourteen2 = d025;
+
         Dialogue d28 = new Dialogue(null,false,true,"I think Dijkstra was somewhere to the West.","","","");
         listFifteen = d28;
 
@@ -184,7 +188,7 @@ public class npc_wizard extends  NPC {
 
     }
 
-    public void updateDialogue(int currentStage,String questName){
+    public void updateDialogue(int npcDeaths){
 
         switch(questStage){
             case 0:
@@ -235,7 +239,12 @@ public class npc_wizard extends  NPC {
                 currentDialogue = listThirteen;
                 break;
             case 22:
-                currentDialogue = listFourteen;
+                if(npcDeaths == 0 || npcDeaths == 1){
+                    currentDialogue = listFourteen;
+                }else{
+                    currentDialogue = listFourteen2;
+                }
+
                 break;
             case 24:
             case 25:
@@ -260,14 +269,14 @@ public class npc_wizard extends  NPC {
 
 
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName, int questStage){
+    public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){
         this.questStage = questStage;
 
         if(loadDialogue) {
-            updateDialogue(questStage,questName);
+            updateDialogue(npcDeaths);
             loadDialogue = false;
         }
-        super.drawConvo(g, playerName,currentState, questName,questStage);
+        super.drawConvo(g,currentState, questName,questStage,npcDeaths);
 
 
         if(questName == "A Wizards Problem") {

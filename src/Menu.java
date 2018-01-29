@@ -309,6 +309,7 @@ public class Menu extends extraFunctions {
             drawBoldText(265,367,player1.getCurrentQuest().getQuestName(),"Felix Titling",13,g);
             changeColor(black, g);
             player1.getCurrentQuest().drawQuest(g);
+            changeColor(white,g);
 
 
 
@@ -428,7 +429,7 @@ public class Menu extends extraFunctions {
                 }
             }
 
-            if (player1.getInventorySize() > 0) {
+
 
 
                 changeColor(black, g);
@@ -475,11 +476,11 @@ public class Menu extends extraFunctions {
                 changeColor(purple, g);
                 drawBoldText(65, 270, "YOUR INVENTORY IS EMPTY.", "Felix Titling", 20, g);
                 changeColor(grey4, g);
-                drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 12, g);
+                drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 10, g);
             }
 
 
-        }
+
     }
 
 
@@ -1158,20 +1159,22 @@ public class Menu extends extraFunctions {
             }
         } else if (invMenu) {
             if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                if (menuOption + (10 * (currentPage - 1)) != player1.getInventorySize()-1) {
-                    if(currentPage == numOfPages) {
-                        if (menuOption < numOfItemsToDisplay - ((currentPage - 1) * 10)) {
-                            playAudio(clicks);
-                            menuOption++;
+                if(player1.getInventorySize() != 0) {
+                    if (menuOption + (10 * (currentPage - 1)) != player1.getInventorySize() - 1) {
+                        if (currentPage == numOfPages) {
+                            if (menuOption < numOfItemsToDisplay - ((currentPage - 1) * 10)) {
+                                playAudio(clicks);
+                                menuOption++;
+                            } else {
+                                menuOption = 0;
+                            }
                         } else {
-                            menuOption = 0;
-                        }
-                    }else{
-                        if (menuOption < 9) {
-                            playAudio(clicks);
-                            menuOption++;
-                        } else {
-                            menuOption = 0;
+                            if (menuOption < 9) {
+                                playAudio(clicks);
+                                menuOption++;
+                            } else {
+                                menuOption = 0;
+                            }
                         }
                     }
                 }
@@ -1179,13 +1182,17 @@ public class Menu extends extraFunctions {
 
             if(e.getKeyCode() == KeyEvent.VK_UP) {
 
-
-                    if (menuOption > 0) {
-                        playAudio(clicks);
-                        menuOption--;
-                    } else {
-                        menuOption = (numOfItemsToDisplay - ((currentPage - 1) * 10));
+                if(player1.getInventorySize() != 0) {
+                    if(menuOption + (10 * (currentPage - 1)) != 0) {
+                        if (menuOption > 0) {
+                            playAudio(clicks);
+                            menuOption--;
+                        } else {
+                            menuOption = (numOfItemsToDisplay - ((currentPage - 1) * 10));
+                        }
                     }
+
+                }
 
 
             }
@@ -1209,47 +1216,49 @@ public class Menu extends extraFunctions {
 
 
             if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-                playAudio(exitClick);
-                playAudio(p3);
-                if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName() != null) {
-                    if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() == "bag") {
+                if(player1.getInventorySize() != 0) {
+                    playAudio(exitClick);
+                    playAudio(p3);
+                    if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName() != null) {
+                        if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() == "bag") {
 
-                        if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getCounter() == 1) {
-                            player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
-                            if (menuOption != 0) {
-                                menuOption--;
-                            } else {
-                                //  if(player1.getInventory()[menuOption + (10 * (currentPage-1)) ] == null){
-                                if (currentPage > 1) {
-                                    if(menuOption + (10 * (currentPage - 1)) == player1.getInventorySize() ){
-                                        currentPage--;
+                            if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getCounter() == 1) {
+                                player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
+                                if (menuOption != 0) {
+                                    menuOption--;
+                                } else {
+                                    //  if(player1.getInventory()[menuOption + (10 * (currentPage-1)) ] == null){
+                                    if (currentPage > 1) {
+                                        if (menuOption + (10 * (currentPage - 1)) == player1.getInventorySize()) {
+                                            currentPage--;
+                                        }
+
+
                                     }
 
+                                    //  }
 
+                                    menuOption = 0;
                                 }
-
-                                //  }
-
-                                menuOption = 0;
+                            } else {
+                                player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
                             }
-                        } else {
-                            player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
+                            stopper3 = true;
+
+
+                        } else if ((player1.getInventory()[menuOption + (10 * (currentPage - 1))].isEquippable()) && !stopper3) {
+                            equMenu = true;
+                            invMenu = false;
+
                         }
-                        stopper3 = true;
-
-
-                    } else if ((player1.getInventory()[menuOption + (10 * (currentPage - 1))].isEquippable()) && !stopper3) {
-                        equMenu = true;
-                        invMenu = false;
-
+                        stopper3 = false;
                     }
-                    stopper3 = false;
                 }
             }
 
             if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
                 playAudio(exitClick);
-                menuOption = 1;
+                menuOption = 0;
 
             }
 

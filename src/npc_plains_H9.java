@@ -134,13 +134,13 @@ public class npc_plains_H9 extends  NPC {
 
     private boolean enoughGold = true;
 
-    public void drawConvo(Graphics2D g, String playerName, Quest.questState  currentState, String questName,int questStage){
+    public void drawConvo(Graphics2D g,Quest.questState  currentState, String questName,int questStage, int npcDeaths){
 
         if(loadDialogue) {
             updateDialogue(questStage);
             loadDialogue = false;
         }
-        super.drawConvo(g, playerName,currentState, questName,questStage);
+        super.drawConvo(g,currentState, questName,questStage,npcDeaths);
         if(questName == "The Road To Riches") {
             if(currentState == Quest.questState.inQuest){
                 if(currentDialogue != listThree){
