@@ -1979,12 +1979,12 @@ public class Combat extends extraFunctions{
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
 
 
-            if(menuOption == 20){
-                playAudio(clicks);
-                if(prevPageExist) {
-                    menuOption = 21;
-                }
-            }else if(menuOption == 21){
+                if(menuOption == 20){
+                    playAudio(clicks);
+                    if(prevPageExist) {
+                        menuOption = 21;
+                    }
+                }else if(menuOption == 21){
                 playAudio(clicks);
                 if(nextPageExist) {
                     menuOption = 20;

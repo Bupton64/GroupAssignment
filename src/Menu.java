@@ -13,6 +13,7 @@ public class Menu extends extraFunctions {
         this.loadController = load;
         initMenu();
         initSaveGame();
+        initInventoryMenu();
     }
 
     Character player1;
@@ -268,13 +269,27 @@ public class Menu extends extraFunctions {
 
     }
 
+    public void updateMenu(){
+        if(invMenu){
+            updateInventoryMenu();
+        }
+
+
+    }
+
     public void drawMenu(Graphics2D g){
         if(state == MenuState.CharacterMenu) {
             drawChaMenu(g);
-            drawInvMenu(g);
+            if(invMenu) {
+                drawInventoryMenu(g);
+            }
             drawEquMenu(g);
         }else if(state == MenuState.SaveMenu){
             drawSaveGame(g);
+        }else if(state == MenuState.EquipmentMenu){
+            drawEquMenu(g);
+        }else if(state == MenuState.InventoryMenu){
+           // drawInvMenu(g);
         }
     }
 
@@ -343,120 +358,133 @@ public class Menu extends extraFunctions {
         }
     }
 
-    public void drawInvMenu(Graphics2D g) {
-        if (invMenu) {
-            if (player1.getInventorySize() > 0) {
-                if ((scroller < 100) && (index == player1.getInventorySize() - 1)) {
-                    if (pageNum == 1) {
-                        pos++;
-                        index = pos;
-                    }
-                    scroller = 380;
-                    //totalPages--;
-                } else if ((scroller < 100) && (index == player1.getInventorySize() - 2)) {
-                    scroller = 100;
-                    index++;
+    int numOfPages;
+    int currentPage;
+    int numOfItemsToDisplay;
+    int inventoryMenuPointerPosY;
+    int menuOption;
 
-                } else if ((scroller < 100) && (index == 0)) {
-                    index = 0;
-                    pos = 0;
-                } else if (scroller < 100) {
-                    scroller = 100;
-                    index++;
-                }
-                if (pos == player1.getInventorySize()) {
-                    pos -= 5;
-                    index = pos;
-                }
-                scroller2 = 0;
-                clearBackground(800, 600, g);
-                drawImage(Book, 0, 0, 800, 600, g);
-                if (nextPage == true) {
-                    scroller = 100;
-                }
-                //drawImage(leftArrow , 300,scroller, g );
-                drawLine(70, scroller + 40, 250, scroller + 40, 2, g);
-                changeColor(purple, g);
-                drawBoldText(420, 550, "Inventory : " + player1.getInventorySize() + "/" + player1.getMaxInventorySize(), "Felix Titling", 18, g);
-                changeColor(grey2, g);
-                increaser = 0;
-                if (player1.getInventorySize() % 5 != 0) {
-                    totalPages = (player1.getInventorySize() / 5)+1;
-                } else {
-                    totalPages = (player1.getInventorySize() / 5);
-                }
-                drawBoldText(640, 550, "Page: " + Integer.toString(pageNum) + "/" + Integer.toString(totalPages), "Felix Titling", 20, g);
-                int dis = 5;
-                if ((pos + 5) > player1.getInventorySize()) {
-                    dis = player1.getInventorySize() - pos;
-                }
-                changeColor(red, g);
-                //drawBoldText(200, 200, Integer.toString(pos), g);
-                //drawBoldText(200, 250, Integer.toString(dis), g);
-                changeColor(grey2, g);
-                for (int i = pos; i < pos + dis; i++) {
-                    drawBoldText(65, 130 + (increaser * 70), player1.getInventory()[i].getName(), "Felix Titling", 20, g);
+    public void initInventoryMenu(){
+
+        numOfPages = 0;
+        currentPage = 1;
+        numOfItemsToDisplay = 0;
+        menuOption = 0;
+        inventoryMenuPointerPosY = 120;
+    }
+
+
+    public void updateInventoryMenu(){
+
+
+        if(menuOption >= 0 && menuOption <= 9){
+
+            inventoryMenuPointerPosY = 140 + (40 * (menuOption));
+        }
+
+
+
+
+        if (player1.getInventorySize() % 10 != 0) {
+            numOfPages = (player1.getInventorySize() / 10)+1;
+        } else {
+            numOfPages = (player1.getInventorySize() / 10);
+        }
+
+
+
+        if(currentPage < numOfPages){
+            numOfItemsToDisplay = 9 *currentPage;
+        }else{
+            numOfItemsToDisplay = player1.getMaxInventorySize()-1;
+
+        }
+
+
+    }
+
+    public void drawInventoryMenu(Graphics2D g) {
+        clearBackground(800,600,g);
+        changeBackgroundColor(black,g);
+        drawImage(Book, 0, 0, 800, 600, g);
+
+
+        if (player1.getInventorySize() != 0) {
+
+
+            drawLine(70, inventoryMenuPointerPosY, 250, inventoryMenuPointerPosY, 2, g);
+            changeColor(purple, g);
+            drawBoldText(420, 550, "Inventory : " + player1.getInventorySize() + "/" + player1.getMaxInventorySize(), "Felix Titling", 18, g);
+            drawBoldText(640, 550, "Page: " + Integer.toString(currentPage) + "/" + Integer.toString(numOfPages), "Felix Titling", 20, g);
+            changeColor(grey2, g);
+            int j = 0;
+            for (int i = ((currentPage - 1) * 10); i < (currentPage * 10); i++) {
+                if (i < player1.getInventorySize()) {
+                    drawBoldText(65, 130 + (j * 40), player1.getInventory()[i].getName(), "Felix Titling", 20, g);
                     if (player1.getInventory()[i].getCounter() != 0) {
-                        drawBoldText(300, 130 + (increaser * 70), " X " + Integer.toString(player1.getInventory()[i].getCounter()), "Felix Titling", 20, g);
+                        drawBoldText(300, 130 + (j * 40), " X " + Integer.toString(player1.getInventory()[i].getCounter()), "Felix Titling", 20, g);
                     }
-                    increaser++;
+                    j++;
                 }
-                // drawSolidRectangle(175, 530, 250, 45, g);
-                //drawImage(scrollBackground, 164, 525, 264, 60, g);
+            }
+
+            if (player1.getInventorySize() > 0) {
 
 
-                changeColor(purple, g);
-                if (player1.getInventory()[index].getName() != null) {
-                    drawBoldText(420, 65, player1.getInventory()[index].getName(), "Felix Titling", 20, g);
+                changeColor(black, g);
+                if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot() == Item.Slot.bag) {
+                    drawBoldText(420, 65, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName(), "Felix Titling", 20, g);
                     drawLine(420, 70, 620, 70, 2, g);
+
                     changeColor(black, g);
-                    if (player1.getInventory()[index].isEquippable()) {
-                        drawBoldText(420, 100, "ATK", "Felix Titling", 15, g);
-                        drawBoldText(420, 100 + 30, "DEF", "Felix Titling", 15, g);
-                        drawBoldText(420, 100 + 60, "STR", "Felix Titling", 15, g);
-                        drawBoldText(420, 100 + 90, "SPD", "Felix Titling", 15, g);
-                        drawBoldText(420, 100 + 120, "LUK", "Felix Titling", 15, g);
-                        drawBoldText(690, 100, Integer.toString(player1.getInventory()[index].getAttack()), "Felix Titling", 18, g);
-                        drawBoldText(690, 100 + 30, Integer.toString(player1.getInventory()[index].getDefense()), "Felix Titling", 18, g);
-                        drawBoldText(690, 100 + 60, Integer.toString(player1.getInventory()[index].getStrength()), "Felix Titling", 18, g);
-                        drawBoldText(690, 100 + 90, Integer.toString(player1.getInventory()[index].getSpeed()), "Felix Titling", 18, g);
-                        drawBoldText(690, 100 + 120, Integer.toString(player1.getInventory()[index].getLuck()), "Felix Titling", 18, g);
-
-
-                        drawBoldText(420, 300, player1.getInventory()[index].getTooltip() + ".", "Felix Titling", 17, g);
-
-                        changeColor(purple, g);
-                        drawBoldText(420, 260, player1.getInventory()[index].getSlot().name() + " ITEM", "Felix Titling", 20, g);
-                    } else {
-                        drawBoldText(420, 150, player1.getInventory()[index].getTooltip() + ".", "Felix Titling", 17, g);
-
-                        changeColor(purple, g);
-                        drawBoldText(420, 100, player1.getInventory()[index].getSlot().name() + " ITEM", "Felix Titling", 20, g);
-
-                    }
 
                     changeColor(purple, g);
-                    drawBoldText(65, 70, "INVENTORY", "Felix Titling", 40, g);
-                    drawBoldText(70, 545, "BACK [ESC]", "Felix Titling", 15, g);
-                    // drawBoldText(400, 100, Integer.toString(scroller), g);
-                    // drawBoldText(400, 200, Integer.toString(player1.getInventorySize()%5), g);
+                    drawBoldText(420, 100, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() + " ITEM", "Felix Titling", 20, g);
+                    changeColor(black, g);
+                    drawBoldText(420, 130, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getTooltip() + ".", "Felix Titling", 17, g);
+                } else {
+                    drawBoldText(420, 65, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName(), "Felix Titling", 20, g);
+                    drawLine(420, 70, 620, 70, 2, g);
+
+                    changeColor(black, g);
+                    drawBoldText(420, 100, "ATK", "Felix Titling", 15, g);
+                    drawBoldText(420, 100 + 30, "DEF", "Felix Titling", 15, g);
+                    drawBoldText(420, 100 + 60, "STR", "Felix Titling", 15, g);
+                    drawBoldText(420, 100 + 90, "SPD", "Felix Titling", 15, g);
+                    drawBoldText(420, 100 + 120, "LUK", "Felix Titling", 15, g);
+
+                    drawBoldText(690, 100, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getAttack()), "Felix Titling", 18, g);
+                    drawBoldText(690, 100 + 30, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getDefense()), "Felix Titling", 18, g);
+                    drawBoldText(690, 100 + 60, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getStrength()), "Felix Titling", 18, g);
+                    drawBoldText(690, 100 + 90, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSpeed()), "Felix Titling", 18, g);
+                    drawBoldText(690, 100 + 120, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getLuck()), "Felix Titling", 18, g);
+
+                    changeColor(purple, g);
+                    drawBoldText(420, 260, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() + " ITEM", "Felix Titling", 20, g);
+                    changeColor(black, g);
+                    drawBoldText(420, 300, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getTooltip() + ".", "Felix Titling", 17, g);
                 }
-                nextPage = false;
-                if (pageNum > totalPages) {
-                    pageNum = totalPages;
-                }
-            }else{
-                clearBackground(800, 600, g);
-                drawImage(Book, 0, 0, 800, 600, g);
+
+
+                changeColor(purple, g);
+                drawBoldText(65, 70, "INVENTORY", "Felix Titling", 40, g);
+                drawBoldText(70, 545, "BACK [ESC]", "Felix Titling", 15, g);
+
+
+            } else {
                 changeColor(purple, g);
                 drawBoldText(65, 270, "YOUR INVENTORY IS EMPTY.", "Felix Titling", 20, g);
                 changeColor(grey4, g);
                 drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 12, g);
-
             }
-        }
 
+
+        }
     }
+
+
+
+
 
     public void drawEquMenu(Graphics2D g) {
         if (equMenu) {
@@ -1129,66 +1157,94 @@ public class Menu extends extraFunctions {
             }
         } else if (invMenu) {
             if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                playAudio(clicks);
-                if ((index < player1.getInventorySize() - 1) && scroller < 360) {
-                    scroller += 70;
-                    index++;
+                if (menuOption + (10 * (currentPage - 1)) != player1.getInventorySize()-1) {
+                    if (menuOption < numOfItemsToDisplay - ((currentPage - 1) * 10)) {
+                        playAudio(clicks);
+                        menuOption++;
+                    } else {
+                        menuOption = 0;
+                    }
                 }
             }
-            if ((e.getKeyCode() == KeyEvent.VK_UP) && scroller > 100) {
-                playAudio(clicks);
-                if (index > 0) {
-                    scroller -= 70;
-                    index--;
-                }
-            }
-            if ((e.getKeyCode() == KeyEvent.VK_TAB) || (e.getKeyCode() == KeyEvent.VK_RIGHT)) {
-                nextPage = true;
-                if (pageNum != totalPages){
-                    playAudio(p2);
-                    pos += 5;
-                    pageNum++;
-                    index = pos;
-                }
 
-            }
-            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                playAudio(p3);
-                if (player1.getInventory()[index].getSlot().name() == "bag") {
-                    if (player1.getInventory()[index].getName() != null) {
-                        if (player1.getInventory()[index].getCounter() == 1) {
-                            player1.getInventory()[index].use(player1);
-                            if(index != 0) {
-                                index--;
-                                scroller -= 70;
-                            }else{
-                                index = 0;
-                            }
-                        } else {
-                            player1.getInventory()[index].use(player1);
-                        }
-                        stopper3 = true;
+            if(e.getKeyCode() == KeyEvent.VK_UP) {
+
+
+                    if (menuOption > 0) {
+                        playAudio(clicks);
+                        menuOption--;
+                    } else {
+                        menuOption = numOfItemsToDisplay - ((currentPage - 1) * 10);
                     }
 
-                }
-                if ((player1.getInventory()[index].isEquippable() == true) && !stopper3) {
-                    equMenu = true;
-                    invMenu = false;
 
-                }
-                stopper3 = false;
             }
-            //Bug vvvvv
-            if (e.getKeyCode() == KeyEvent.VK_LEFT){
-                nextPage = true;
-                if (pageNum > 1){
-                    playAudio(p1);
-                    pos -= 5;
-                    pageNum--;
-                    index = pos;
+
+
+            if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+                if(currentPage < numOfPages){
+                    currentPage++;
+                    menuOption = 0;
                 }
 
             }
+
+            if(e.getKeyCode() == KeyEvent.VK_LEFT){
+                if(currentPage != 1){
+                    currentPage--;
+                    menuOption = 8;
+                }
+
+            }
+
+
+            if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+                playAudio(exitClick);
+                playAudio(p3);
+                if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName() != null) {
+                    if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() == "bag") {
+
+                        if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getCounter() == 1) {
+                            player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
+                            if (menuOption != 0) {
+                                menuOption--;
+                            } else {
+                                //  if(player1.getInventory()[menuOption + (10 * (currentPage-1)) ] == null){
+                                if (currentPage > 1) {
+                                    if(menuOption + (10 * (currentPage - 1)) == player1.getInventorySize() ){
+                                        currentPage--;
+                                    }
+
+
+                                }
+
+                                //  }
+
+                                menuOption = 0;
+                            }
+                        } else {
+                            player1.getInventory()[menuOption + (10 * (currentPage - 1))].use(player1);
+                        }
+                        stopper3 = true;
+
+
+                    } else if ((player1.getInventory()[menuOption + (10 * (currentPage - 1))].isEquippable()) && !stopper3) {
+                        equMenu = true;
+                        invMenu = false;
+
+                    }
+                    stopper3 = false;
+                }
+            }
+
+            if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+                playAudio(exitClick);
+                menuOption = 1;
+
+            }
+
+
+            
 
 
 
@@ -1301,9 +1357,9 @@ public class Menu extends extraFunctions {
 
             }
 
-            if ((e.getKeyCode() == KeyEvent.VK_X) && slotSelect) {
-                player1.unequipItem(player1.getEquippedItems()[index2]);
-            }
+//            if ((e.getKeyCode() == KeyEvent.VK_X) && slotSelect) {
+//                player1.unequipItem(player1.getEquippedItems()[index2]);
+//            }
 
 
         }

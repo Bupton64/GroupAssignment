@@ -278,6 +278,7 @@ public class AdventureMode extends GameEngine {
                 finalCutsceneController.updateTimer(dt);        //For testing
                 break;
             case OverWorldMenu:
+                menuController.updateMenu();
                 break;
             case razuulCutscene:
                 razuulCutsceneController.updateTimer(dt);
