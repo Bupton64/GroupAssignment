@@ -266,12 +266,21 @@ public class MapControl extends extraFunctions {
 
                     if(playerMan.getQuestStage() == 15) {
 
-                        mapNpcs[0] = new npc_plains_f8_oldman(420,200);
-                        mapNpcs[1] = new npc_plains_priest(480,200);
-                        numOfNpc = 2;
-                    }else if(playerMan.getQuestStage() >= 16) {
-                        mapNpcs[0] = new npc_plains_f8_oldman(420,200);
 
+                            if(playerMan.getNpcDeaths() == 0 ) {
+                                mapNpcs[0] = new npc_plains_f8_oldman(420, 200);
+                            }else{
+                                mapNpcs[0] = new npc_JulianGrave();
+                            }
+                            mapNpcs[1] = new npc_plains_priest(480, 200);
+                            numOfNpc = 2;
+                        
+                    }else if(playerMan.getQuestStage() >= 16) {
+                        if(playerMan.getNpcDeaths() == 0 ||playerMan.getNpcDeaths() == 2) {
+                            mapNpcs[0] = new npc_plains_f8_oldman(420, 200);
+                        }else{
+                            mapNpcs[0] = new npc_JulianGrave();
+                        }
                         numOfNpc = 1;
                     }
 
@@ -521,6 +530,7 @@ public class MapControl extends extraFunctions {
         if(julianDie){
             drawBleed(g,400,200);
             playerMan.setNpcDeaths(1);
+            reloadMap = true;
         }
     }
 
