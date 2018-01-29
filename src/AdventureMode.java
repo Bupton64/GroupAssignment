@@ -73,6 +73,8 @@ public class AdventureMode extends GameEngine {
     }
 
 
+
+
     //////////////////////////////////
     ///
     /// Game
@@ -210,7 +212,7 @@ public class AdventureMode extends GameEngine {
                 playerMan.setMapPosY(210);
                 playerMovement.directionFacing = CharacterMovement.Direction.left;
                 break;
-            case 9:
+            case 13:
                 state = GameState.finalCutscene;
                 break;
         }

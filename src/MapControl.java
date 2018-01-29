@@ -13,7 +13,7 @@ public class MapControl extends extraFunctions {
         mapNpcs = new NPC[10];
         numOfNpc = 0;
         clicks = loadAudio("clicks.wav");
-
+        initBleed();
         initNPC();
     }
 
@@ -485,12 +485,41 @@ public class MapControl extends extraFunctions {
             mapNpcs[i].updateNpcMovement(dt,collisionDetector);
         }
 
+        if(sallyDie){
+            updateBleedTimer(dt);
+            if(bloodTimer > 0.3){
+                sallyDie = false;
+                bloodTimer = 0;
+            }
+        }
 
+        if(julianDie){
+            updateBleedTimer(dt);
+            if(bloodTimer > 0.3){
+                julianDie = false;
+                bloodTimer = 0;
+            }
+        }
 
     }
 
+    public void drawNPCInteraction(Graphics2D g){
+        if(playerMan.isInConvo()) {
+            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName(),playerMan.getQuestStage());
+        }
+
+        if(sallyDie){
+            drawBleed(g,330,300);
+        }
+
+        if(julianDie){
+            drawBleed(g,330,300);
+        }
+    }
 
 
+    public boolean julianDie;
+    public boolean sallyDie;
 
 
     public int updateQuest(double dt){
@@ -602,12 +631,35 @@ public class MapControl extends extraFunctions {
     }
 
 
+    Image bloodSheet;
+    Image bloodArray[];
+    int animationChange= 0;
+    double bloodTimer;
+    public void initBleed(){
+        bloodSheet = loadImage("bloodSprite.png");
+        bloodArray = new Image[6];
+        for(int i = 0; i < 6; i++){
+            bloodArray[i] = subImage(bloodSheet, 512 * i, 0, 512, 512);
+        }
+        bloodTimer = 0;
 
-    public void drawNPCInteraction(Graphics2D g){
-        if(playerMan.isInConvo()) {
-            mapNpcs[currentNpcInteraction].drawConvo(g,playerMan.getName(), playerMan.getCurrentQuestState(),playerMan.getCurrentQuestName(),playerMan.getQuestStage());
+    }
+
+
+    public void updateBleedTimer(double dt){
+        bloodTimer += dt;
+    }
+
+    public void drawBleed(Graphics2D g, int posX, int posY) {
+        if(bloodTimer >0&&bloodTimer< 0.3){
+            animationChange++;
+            drawImage(bloodArray[animationChange % 6], posX, posY, 100, 100,g);
         }
     }
+
+
+
+
 
 
 
