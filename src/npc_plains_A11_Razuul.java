@@ -62,7 +62,7 @@ public class npc_plains_A11_Razuul extends NPC{
     public void initDialogue() {
 //        Dialogue d3 = new Dialogue(null, true, true, "We have seen your defiance, and it can continue no longer!", "Prepare yourself!", "", "" );
 //        Dialogue d2 = new Dialogue(d3, false, false, "I am Valliard! Lieutenant of the Flame Guard! My careful study of ", "war and magic will make you cower before me!", "", "" );
-        Dialogue d1 = new Dialogue(d2, false, false, "What a surprise it is to see you here little man! Wanted another", "crack at taking down the mighty Razuul did you? Well", "come and get it!", "");
+        Dialogue d1 = new Dialogue(null, false, false, "What a surprise it is to see you here little man! Wanted another", "crack at taking down the mighty Razuul did you? Well", "come and get it!", "");
         listOne = d1;
     }
 
