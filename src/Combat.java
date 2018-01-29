@@ -1735,7 +1735,9 @@ public class Combat extends extraFunctions{
     public void drawEnemy(Graphics2D g) {
         if (enemy.getName().equals("Wyvern")) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-100, enemy.getCombatPosY()-100, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
-        } else {
+        } else if(enemy.getName().equals("Priest")) {
+            drawImage(enemy.getSprite(), enemy.getCombatPosX()-50, enemy.getCombatPosY()-50, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
+        }else{
             drawImage(enemy.getSprite(), enemy.getCombatPosX(), enemy.getCombatPosY(), enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
 
         }

@@ -65,7 +65,7 @@ public class npc_plains_priest extends  NPC {
         if(questStage < 15) {
             currentDialogue = listOne;
         }
-        if(questStage == 16){
+        if(questStage == 15){
             currentDialogue = listTwo;
         }
 

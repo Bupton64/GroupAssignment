@@ -104,7 +104,7 @@ public class npc_wizard extends  NPC {
         listEight = d15;
 
         Dialogue d17 = new Dialogue(null,true,true,"Can you go confront the priest in Town?","","","");
-        Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm... It appears this book belongs to the priest.","I fear we have a spy in our clutches Young Bjarne. You'll need to go","confront him! I recall seeing him in town earlier today. Find me in ","town once you've confronted him and hurry! This situation seems to be dire!");
+        Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm... It appears this book belongs to the priest.","I fear we have a spy in our clutches Young Bjarne. You'll need to go","confront him! I recall seeing him in town earlier today. Find me in ","town once you've confronted him and hurry!");
         listNine = d16;
 
         Dialogue d017 = new Dialogue(null,false,true,"Go confront the priest and get to the bottom of this. There's","no time to waste!","","");
