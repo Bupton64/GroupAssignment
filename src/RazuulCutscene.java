@@ -22,13 +22,15 @@ public class RazuulCutscene extends extraFunctions{
     Image temp;
     Image spritesheet3;
     Image Bjarne;
+    Image grave;
 
 
     RazuulCutscene(){
         priestPosX = 475;
         priestPosY = 200;
         timer = 0;
-        animationChange++;
+        animationChange = 0;
+        grave = loadImage("grave.png");
         background = loadImage("priestFight.png");
         backgroundAlternate = loadImage("plains_F8.png");
         spritesheet = loadImage("chara2.png");
@@ -119,6 +121,7 @@ public class RazuulCutscene extends extraFunctions{
         animationChange++;
         drawImage(backgroundAlternate, 0, 0, g);
         drawImage(Bjarne, 520, 210, g);
+        drawImage(grave, 420, 200, g);
         if(timer > 0 && timer < 2){
             drawImage(priest[animationChange%4], 475, 200, g);
         } else if(timer > 2 && timer < 4){
