@@ -68,7 +68,8 @@ public class RazuulCutscene extends extraFunctions{
     }
 
     public void drawRazuulCutscene(Graphics2D g){
-        System.out.println(timer);
+
+        System.out.println(priestPosY);
         animationChange++;
         drawImage(background, 0, 0, g);
 
@@ -89,15 +90,15 @@ public class RazuulCutscene extends extraFunctions{
             drawText(110, 475, "man.", "Times New Roman", 20, g);
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
-        if(timer > 7 && timer < 8){
+        if(timer > 7 && priestPosY <305){
             priestPosY+=5;
             drawImage(priestDown[animationChange%3], priestPosX, priestPosY, g);
         }
-        if(timer > 8 && timer < 13){
+        if(priestPosY >=305 && timer < 13){
             priestPosX-=5;
             drawImage(priestLeft[animationChange%3], priestPosX, priestPosY, g);
         }
-        if(timer > 13 && timer < 17){
+        if(timer > 13 && timer < 19){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
             drawText(110, 425, "Julian:", "Times New Roman", 20, g);
@@ -105,7 +106,7 @@ public class RazuulCutscene extends extraFunctions{
             drawText(110, 475, "priest... what was that thing!? He probably headed West to the", "Times New Roman", 20, g);
             drawText(110, 500, "church!", "Times New Roman", 20, g);
         }
-        if(timer > 17){
+        if(timer > 19){
             changeColor(white, g);
             drawText(260, 450, "- Press <SPACE> to continue -",  "New Roman Times", 20, g);
         }
