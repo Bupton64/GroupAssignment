@@ -428,6 +428,26 @@ public class Character extends Statblock {
         addItemToInventory(rusty); // T0 Sword
         equipItem(rusty);
 
+        item_Equipment ragged = new item_Equipment("Ragged Cap", 0, 0, 0, 0, 0, Item.Slot.head, "Stitched leather", 10, 0);
+        addItemToInventory(ragged);
+        equipItem(ragged);
+
+        item_Equipment clothShoes = new item_Equipment("Cloth Shoes", 0, 0, 0, 0, 0, Item.Slot.feet, "A comfy pair of wraps", 10, 0);
+        addItemToInventory(clothShoes);
+        equipItem(clothShoes); // T0 Boots
+
+        item_Equipment robe = new item_Equipment("Traveller's Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
+        addItemToInventory(robe);
+        equipItem(robe); // T0 Chest
+
+        item_Equipment armguard = new item_Equipment("Arm Guard", 0, 0, 0, 0, 0, Item.Slot.offhand, "Protects forearms", 10, 0);
+        addItemToInventory(armguard);
+        equipItem(armguard);
+
+        item_Equipment necklace = new item_Equipment("Necklace", 0, 0, 0, 0, 0, Item.Slot.accessory, "A family heirloom", 100, 0);
+        addItemToInventory(armguard);
+        equipItem(armguard);
+
         item_Potion pot = new item_Potion();
         pot.setCounter(2);
         addItemToInventory(pot);
