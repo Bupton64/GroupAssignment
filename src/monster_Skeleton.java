@@ -63,7 +63,11 @@ public class monster_Skeleton extends Monster {
             }
         } else{
             if(this.getEnergy() > 4){
-                return abilities[2].use(this); //< Sacrament
+                if(num > 40) {
+                    return abilities[2].use(this); //< Sacrament
+                } else {
+                    return abilities[0].use(this); //< Skeletal Fist
+                }
             } else if (this.getEnergy() > 1){
                 if(num > 70){
                     return abilities[1].use(this); //< Withering Touch
