@@ -441,6 +441,12 @@ public class saveGame {
         }else if(name.equals("Hide Bracers")){
             item_Equipment hide = new item_Equipment("Hide Bracers", 0, 2, 0, 0, 0, Item.Slot.accessory, "Forearm guard", 1900, 3800);
             temp.addItemToInventory(hide); // After 2nd unlock
+        }else if(name.equals("Arm Guard")) {
+            item_Equipment armguard = new item_Equipment("Arm Guard", 0, 0, 0, 0, 0, Item.Slot.offhand, "Protects forearms", 10, 0);
+            temp.addItemToInventory(armguard);
+        }else if(name.equals("Necklace")) {
+            item_Equipment necklace = new item_Equipment("Necklace", 0, 0, 0, 0, 0, Item.Slot.accessory, "A family heirloom", 100, 0);
+            temp.addItemToInventory(necklace);
         }else if(name.equals("Speed Potion")){
             item_SpeedPotion speed = new item_SpeedPotion();
             if(stack > 1){
@@ -660,8 +666,19 @@ public class saveGame {
             item_Equipment hide = new item_Equipment("Hide Bracers", 0, 2, 0, 0, 0, Item.Slot.accessory, "Forearm guard", 1900, 3800);
             temp.addItemToInventory(hide);
             temp.equipItem(hide);
+        }else if(name.equals("Arm Guard")) {
+            item_Equipment armguard = new item_Equipment("Arm Guard", 0, 0, 0, 0, 0, Item.Slot.offhand, "Protects forearms", 10, 0);
+            temp.addItemToInventory(armguard);
+            temp.equipItem(armguard);
+        }else if(name.equals("Necklace")) {
+            item_Equipment necklace = new item_Equipment("Necklace", 0, 0, 0, 0, 0, Item.Slot.accessory, "A family heirloom", 100, 0);
+            temp.addItemToInventory(necklace);
+            temp.equipItem(necklace);
         }
+
     }
+
+    
 
 
 

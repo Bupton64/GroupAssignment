@@ -445,8 +445,8 @@ public class Character extends Statblock {
         equipItem(armguard);
 
         item_Equipment necklace = new item_Equipment("Necklace", 0, 0, 0, 0, 0, Item.Slot.accessory, "A family heirloom", 100, 0);
-        addItemToInventory(armguard);
-        equipItem(armguard);
+        addItemToInventory(necklace);
+        equipItem(necklace);
 
         item_Potion pot = new item_Potion();
         pot.setCounter(2);
