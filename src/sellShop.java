@@ -35,6 +35,7 @@ public class sellShop extends shop {
         p3 = loadAudio("page3.wav");
         leave = loadAudio("leave.wav");
         exitClick = loadAudio("exitClick.wav");
+        coin = loadAudio("coin.wav");
     }
 
     public void updateShop(){
@@ -161,6 +162,7 @@ public class sellShop extends shop {
             changeColor(white, g);
             drawBoldText(225, 280, "You sold " + getLastSoldName(), "Felix Titling", 20, g) ;
             drawBoldText( 300, 320,  "for " + getLastSoldPrice() + " gold","Felix Titling", 20, g);
+            drawBoldText(310, 380, "Press [Space] to close", "Felix Titling", 10, g);
         }
 
     }
@@ -207,10 +209,9 @@ public class sellShop extends shop {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-            playAudio(clicks);
-
             if (!isSaleMade()) {
                     if(getPlayer1().getInventorySize() != 0) {
+                        playAudio(coin);
                         this.sellItem(getItemIndex());
                         if (getPageNum() == getTotalPages()) {
                             if (getMaxIndex() % 10 == 0) {

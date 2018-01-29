@@ -309,7 +309,7 @@ public class AdventureMode extends GameEngine {
     @Override
     public void paintComponent() {
         clearBackground(800, 600);
-        changeBackgroundColor(white);
+        changeBackgroundColor(black);
 
         switch (state){
             case TravelMode:

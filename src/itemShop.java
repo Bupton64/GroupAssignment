@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class itemShop extends shop {
-
+    boolean stopper = false;
     itemShop(Character playerMan){
         super(playerMan);
         setTotalPages(1);
@@ -11,6 +11,13 @@ public class itemShop extends shop {
 
     @Override
     public void shopInit() {
+        clicks = loadAudio("clicks.wav");
+        p1 = loadAudio("page1.wav");
+        p2 = loadAudio("page2.wav");
+        p3 = loadAudio("page3.wav");
+        leave = loadAudio("leave.wav");
+        exitClick = loadAudio("exitClick.wav");
+        coin = loadAudio("coin.wav");
         Item[] inventory = new Item[50];
         for(int i = 0;  i < 50; i++){
             inventory[i] = new Item();
@@ -99,6 +106,10 @@ public class itemShop extends shop {
             drawImage(getDialougeBox(),100, 200, 600, 200, g);
             changeColor(white, g);
             if(isPurchaseSuccess()){
+                if(!stopper) {
+                    playAudio(coin);
+                    stopper = true;
+                }
                 drawBoldText(225, 280, "You bought " + getShopInventory()[getItemIndex()].getName(), "Felix Titling", 20, g) ;
                 drawBoldText( 300, 320,  "for " + Integer.toString(getShopInventory()[getItemIndex()].getBuyPrice()) + " gold","Felix Titling", 20, g);
             }else{
@@ -117,6 +128,7 @@ public class itemShop extends shop {
 
     public int keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            playAudio(clicks);
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 9) {
                     setItemIndex(getItemIndex() + 1);
@@ -124,6 +136,7 @@ public class itemShop extends shop {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
+            playAudio(clicks);
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 0){
                     setItemIndex(getItemIndex() - 1);
@@ -131,6 +144,7 @@ public class itemShop extends shop {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+            playAudio(p1);
             if(!isPurchaseAttempt()) {
                 if (getPageNum() < getTotalPages()) {
                     setPageNum(getPageNum() + 1);
@@ -139,6 +153,7 @@ public class itemShop extends shop {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
+            playAudio(p3);
             if(!isPurchaseAttempt()) {
                 if (getPageNum() != 1) {
                     setPageNum(getPageNum() - 1);
@@ -153,10 +168,12 @@ public class itemShop extends shop {
                 setPurchaseAttempt(false);
                 setPurchaseSuccess(false);
             }
+            stopper = false;
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
             if(!isPurchaseAttempt()){
+                playAudio(p2);
                 return 2;
             }
         }

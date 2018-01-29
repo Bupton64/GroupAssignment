@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class armorShop extends shop {
-
+     boolean stopper  =false;
     armorShop(Character playerMan){
         super(playerMan);
         setTotalPages(1);
@@ -11,6 +11,13 @@ public class armorShop extends shop {
 
     @Override
     public void shopInit() {
+        clicks = loadAudio("clicks.wav");
+        p1 = loadAudio("page1.wav");
+        p2 = loadAudio("page2.wav");
+        p3 = loadAudio("page3.wav");
+        leave = loadAudio("leave.wav");
+        exitClick = loadAudio("exitClick.wav");
+        coin = loadAudio("coin.wav");
         Item[] inventory = new Item[50];
         for(int i = 0;  i < 50; i++){
             inventory[i] = new Item();
@@ -123,6 +130,10 @@ public class armorShop extends shop {
             //drawSolidRectangle(100, 200, 600, 200, g);
             changeColor(white, g);
             if(isPurchaseSuccess()){
+                if(!stopper) {
+                    playAudio(coin);
+                    stopper = true;
+                }
                 drawBoldText(225, 280, "You bought " + getShopInventory()[getItemIndex()].getName(), "Felix Titling", 20, g) ;
                 drawBoldText( 300, 320,  "for " + Integer.toString(getShopInventory()[getItemIndex()].getBuyPrice()) + " gold","Felix Titling", 20, g);
             }else{
@@ -141,6 +152,7 @@ public class armorShop extends shop {
 
     public int keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            playAudio(clicks);
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 9) {
                     setItemIndex(getItemIndex() + 1);
@@ -148,6 +160,7 @@ public class armorShop extends shop {
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
+            playAudio(clicks);
             if(!isPurchaseAttempt()) {
                 if ((getItemIndex()% 10) != 0){
                     setItemIndex(getItemIndex() - 1);
@@ -157,6 +170,7 @@ public class armorShop extends shop {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
             if(!isPurchaseAttempt()) {
                 if (getPageNum() < getTotalPages()) {
+                    playAudio(p1);
                     setPageNum(getPageNum() + 1);
                     setItemIndex(((getPageNum() - 1) * 10));
                 }
@@ -165,6 +179,7 @@ public class armorShop extends shop {
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
             if(!isPurchaseAttempt()) {
                 if (getPageNum() != 1) {
+                    playAudio(p2);
                     setPageNum(getPageNum() - 1);
                     setItemIndex(((getPageNum() - 1) * 10));
                 }
@@ -177,10 +192,12 @@ public class armorShop extends shop {
                 setPurchaseAttempt(false);
                 setPurchaseSuccess(false);
             }
+            stopper = false;
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
             if(!isPurchaseAttempt()){
+                playAudio(p3);
                 return 2;
             }
         }

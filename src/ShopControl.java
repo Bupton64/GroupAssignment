@@ -290,9 +290,7 @@ public class ShopControl extends extraFunctions {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            playAudio(exitClick);
-
-
+            playAudio(leave);
             return 1;
         }
         return 0;
