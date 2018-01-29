@@ -8,7 +8,7 @@ public class npc_plains_E9topRightBed extends  NPC {
         setName("Bed");
         spriteSheet = loadImage("chara2.png");
         sprite = subImage(spriteSheet, 0, 0, 1, 1);
-        setMapPosX(540);
+        setMapPosX(520);
         setMapPosY(175);
 
 
@@ -18,9 +18,15 @@ public class npc_plains_E9topRightBed extends  NPC {
 
 
     @Override
-    public void setUpCollision(Collision collisionDetector, Map map) {
-        collisionDetector.addBoxCollision(((int) getMapPosX() / 10 - 2), ((int) getMapPosY() / 10 - 5), ((int) getWidth() / 10 - 2), ((int) getHeight() / 10 - 2), map.isFlicker());
+    public void setUpCollision(Collision collisionDetector,Map map){
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 1),((int)getMapPosY()/10 - 4),((int)getWidth()/10-4),((int)getHeight()/10 - 3),map.isFlicker());
     }
+
+    @Override
+    public void undoCollision(Collision collisionDetector){
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 1),((int)getMapPosY()/10 - 4),((int)getWidth()/10-4),((int)getHeight()/10 - 3),false);
+    }
+
 
     /////////////////////////////////////////
     ///

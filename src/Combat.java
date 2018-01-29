@@ -315,7 +315,7 @@ public class Combat extends extraFunctions{
     }
 
     public void drawLog(Graphics2D g){
-        drawImage(menuBackGroundSprite,0,400,800,200,g);
+        drawImage(menuBackGroundSprite,0,400,820,200,g);
         drawImage(logImage,465,415,315,175,g);
         for(int i = 0; i <= numOfLogs;i++){
             if(logColours[i]){
@@ -679,12 +679,15 @@ public class Combat extends extraFunctions{
                                 playerTurnLog = player.getName() + " dealt " + (int) playerDamage + " with " + lastAbility.getName();
                                 if (lastAbility.isLastCrit()) {
                                     playerTurnLog = player.getName() + " crit for " + (int) playerDamage + " with " + lastAbility.getName();
-                                    drawBoldText(70, 500, "Your " + lastAbility.getName() + " CRITS " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
+                                    drawBoldText(70, 500, "Your " + lastAbility.getName() + " CRITS " + enemy.getName(), textFont, 20, g);
+                                    drawBoldText(120,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
                                 } else {
                                     if (lastAbility.isMagic()) {
-                                        drawText(70, 500, lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
+                                        drawText(70, 500, lastAbility.getName() + " hits " + enemy.getName() , textFont, 20, g);
+                                        drawBoldText(120,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
                                     } else {
-                                        drawText(70, 500, lastAbility.getName() + " hits " + enemy.getName() + " for " + (int) playerDamage + " damage", textFont, 20, g);
+                                        drawText(70, 500, lastAbility.getName() + " hits " + enemy.getName() , textFont, 20, g);
+                                        drawBoldText(120,525,  " for " + (int) playerDamage + " damage",textFont,20,g);
                                     }
                                 }
                             } else {
@@ -1231,14 +1234,17 @@ public class Combat extends extraFunctions{
                             }
                             enemyTurnLog = enemy.getName() + " dealt " + (int) enemyDamage + " with " + enemyLastAbility.getName();
                             if (enemyLastAbility.isMagic()) {
-                                drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage , textFont, 20, g);
+                                drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName()  , textFont, 20, g);
+                                drawBoldText(120,525,  " hits you for " + (int) enemyDamage ,textFont,20,g);
 
                             } else {
                                 if (enemyLastAbility.isLastCrit()) {
                                     enemyTurnLog = enemy.getName() + " crit for " + (int) enemyDamage + " with " + enemyLastAbility.getName();
-                                    drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " CRITS you for " + (int) enemyDamage , textFont, 20, g);
+                                    drawBoldText(25, 500, enemy.getName() + "'s " + enemyLastAbility.getName(), textFont, 20, g);
+                                    drawBoldText(120,525,  " Crits you for " + (int) enemyDamage ,textFont,20,g);
                                 } else {
-                                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName() + " hits you for " + (int) enemyDamage , textFont, 20, g);
+                                    drawText(70, 500, enemy.getName() + "'s " + enemyLastAbility.getName(), textFont, 20, g);
+                                    drawBoldText(120,525,  " hits you for " + (int) enemyDamage ,textFont,20,g);
                                 }
 
                             }
