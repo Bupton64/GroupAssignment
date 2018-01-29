@@ -8,6 +8,7 @@ public class RazuulCutscene extends extraFunctions{
     int priestPosX;
     int priestPosY;
     Image background;
+    Image backgroundAlternate;
     Image spritesheet;
     Image spritesheet2;
     Image dialogueBackSheet;
@@ -29,6 +30,7 @@ public class RazuulCutscene extends extraFunctions{
         timer = 0;
         animationChange++;
         background = loadImage("priestFight.png");
+        backgroundAlternate = loadImage("plains_F8.png");
         spritesheet = loadImage("chara2.png");
         spritesheet2 = loadImage("chara5.png");
         smokeSheet = loadImage("smoke.png");
@@ -115,7 +117,7 @@ public class RazuulCutscene extends extraFunctions{
     }
     public void drawRazuulCutscene2(Graphics2D g){
         animationChange++;
-        drawImage(background, 0, 0, g);
+        drawImage(backgroundAlternate, 0, 0, g);
         drawImage(Bjarne, 520, 210, g);
         if(timer > 0 && timer < 2){
             drawImage(priest[animationChange%4], 475, 200, g);
