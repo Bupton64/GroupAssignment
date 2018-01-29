@@ -24,7 +24,7 @@ public class weaponShop extends shop {
         for(int i = 0;  i < 50; i++){
             inventory[i] = new Item();
         }
-        inventory[0] = new item_Equipment("Bronze Sword", 1, 0, 0, 0, 1, Item.Slot.weapon, "Durable and strong", 50, 300);
+        inventory[0] = new item_Equipment("Bronze Sword", 1, 0, 0, 1, 0, Item.Slot.weapon, "Durable and strong", 50, 300);
         inventory[1] = new item_Equipment("Stone Axe", 0, 0, 0, 0, 1, Item.Slot.weapon, "Rugged, yet effective", 300, 400);
         inventory[2] = new item_Equipment("Monks Staff", 1, 0, 0, 2, 0, Item.Slot.weapon, "A light wooden staff", 300, 1000);
         inventory[3] = new item_Equipment("Guardsmans Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);

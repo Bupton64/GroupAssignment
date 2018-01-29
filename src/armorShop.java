@@ -23,7 +23,7 @@ public class armorShop extends shop {
             inventory[i] = new Item();
         }
         inventory[0] = new item_Equipment("Worn Buckler", 0, 1, 0, 0, 0, Item.Slot.offhand, "A small buckler", 20, 200);
-        inventory[1] = new item_Equipment("Leather Boots", 0, 1, 0, 2, 0, Item.Slot.feet, "Sturdy walking boots", 10, 210);
+        inventory[1] = new item_Equipment("Leather Boots", 0, 1, 0, 1, 0, Item.Slot.feet, "Sturdy walking boots", 10, 210);
         inventory[2] = new item_Equipment("Shiv", 1, 0, 0, 1, 0, Item.Slot.offhand, "A twisted edge", 40, 290);
         inventory[3] =  new item_Equipment("Skull Cap", 0, 1, 0, 0, 0, Item.Slot.head, "Can deflect blows", 40, 290);
         inventory[4] = new item_Equipment("Leather Jack", 0, 1, 0, 1, 0, Item.Slot.chest, "Provides basic protection", 50, 300);
