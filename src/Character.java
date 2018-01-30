@@ -846,9 +846,9 @@ public class Character extends Statblock {
                 currentQuest.setState(Quest.questState.completedQuest);
             }else if(questStage == 13){
                 currentQuest.setState(Quest.questState.inQuest);
-            }else if(questStage == 17){
+            }else if(questStage == 19){
                 currentQuest.setState(Quest.questState.inQuest);
-            }else if(questStage == 23){
+            }else if(questStage == 25){
                 currentQuest.setState(Quest.questState.completedQuest);
             }
             setQuestStage(getQuestStage() + 1);

@@ -423,7 +423,7 @@ public class MapControl extends extraFunctions {
 
 
                     if (playerMan.getQuestStage() == 25) {
-                        mapNpcs[0] = new npc_plains_quest6_collectable(540,130);
+                        mapNpcs[1] = new npc_plains_quest6_collectable(540,130);
                         numOfNpc = 1;
                     }
                     break;
@@ -596,9 +596,6 @@ public class MapControl extends extraFunctions {
                     case 38:
                     case 48:
                         playerMan.setCollectableState(0,true);
-                        if(playerMan.getQuestStage() == 19){
-                            playerMan.getCurrentQuest().setState(Quest.questState.inQuest);
-                        }
                         reloadMap = true;
                         break;
                     case 14:
