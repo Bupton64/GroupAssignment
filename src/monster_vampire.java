@@ -27,15 +27,15 @@ public class monster_vampire extends Monster {
         setName("Vampire");
         setEnergy(0);
         setUpAbilityNumberI(temp, 0, "Fang", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 1, "Swooping Strike", 0, 10, 0, 0, 0, false, 2, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 1, "Swoop", 0, 10, 0, 0, 0, false, 2, "", true, Ability.AbilityType.damage, "");
         temp[2] = new ability_monster_lifeCoil();
         temp[2].setName("Vampiric Bite");
         this.setAbilities(temp);
 
         Image sprite = loadImage("monster_vampire.png");
         setSprite(sprite);
-        setSpriteWidth(200);
-        setSpriteHeight(200);
+        setSpriteWidth(250);
+        setSpriteHeight(250);
     }
 
     @Override

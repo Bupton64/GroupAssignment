@@ -233,6 +233,7 @@ public class Ability {
        setStrengthBonus(user.getStrengthBonus()+user.getStrength()+user.getEquipStrengthBonus());
        setSpeedBonus(user.getSpeedBonus() + user.getSpeed() + user.getEquipSpeedBonus());
        setLuckBonus(user.getLuckBonus()+user.getLuck()+user.getEquipLuckBonus());
+        System.out.println(user.getName() + " Used ability");
        lastDamage=attackLoop(user);
        //user.setEnergy(user.getEnergy()-energyCost);
        lastAttack=name;
@@ -259,7 +260,9 @@ public class Ability {
         if((user.getLastStatusDuration() > 0) && (user.getLastStatusEffect() == Statblock.Status.Blind)){
             hitChance-=10;
         }
+        System.out.println(user.getName() + " Hitchance: " + hitChance);
         double successCounter=Math.random()*user.getLevel()*5;
+        System.out.println(user.getName() + " Success: " + successCounter);
         if (hitChance>successCounter){
             lastHit=true;
             return true;

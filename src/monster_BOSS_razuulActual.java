@@ -66,7 +66,7 @@ public class monster_BOSS_razuulActual extends Monster {
                     return abilities[3]; //< Use Lich's Power (Cost 4)
                 } else if (num > 55){
                     return abilities[2]; //< Use Lich's Breath (Cost 2)
-                } else if (num > 45){
+                } else if (num > 35){
                     return abilities[1]; //< Use Lich's Life (Cost 3)
                 } else {
                     return abilities[0]; //< Use Lich's Touch (Cost -1)
@@ -74,7 +74,7 @@ public class monster_BOSS_razuulActual extends Monster {
             } else if (this.getEnergy() > 2){
                 if(num > 60){
                     return abilities[2]; //< Use Lich's Breath (Cost 2)
-                } else if (num > 50){
+                } else if (num > 40){
                     return abilities[1]; //< Use Lich's Life (Cost 3)
                 } else {
                     return abilities[0]; //< Use Lich's Touch (Cost -1)
@@ -114,17 +114,17 @@ public class monster_BOSS_razuulActual extends Monster {
             if(this.getEnergy() > 4){
                 return abilities[4]; //< Use Undeath (Cost 5)
             } else if (this.getEnergy() > 3){
-                if (num > 20){
+                if (num > 30){
                     return abilities[0]; //< Use Lich's Touch (Cost -1)
-                } else if (num > 10){
+                } else if (num > 20){
                     return abilities[2]; //< Use Lich's Breath (Cost 2)
                 } else {
                     return abilities[1]; //< Use Lich's Life (Cost 3)
                 }
             } else if (this.getEnergy() > 2){
-                if (num > 19){
+                if (num > 29){
                     return abilities[0]; //< Use Lich's Touch (Cost -1)
-                } else if (num > 10){
+                } else if (num > 20){
                     return abilities[2]; //< Use Lich's Breath (Cost 2)
                 } else {
                     return abilities[1]; //< Use Lich's Life (Cost 3)
