@@ -14,6 +14,9 @@ public class Combat extends extraFunctions{
     CombatState state;
 
     int menuOption;
+    boolean stopper2 = false;
+    AudioClip gameover;
+
 
     String textFont = "arial";
 
@@ -45,6 +48,7 @@ public class Combat extends extraFunctions{
         s3 = false;
         s4 = false;
         s5 = false;
+        gameover = loadAudio("gameover.wav");
         attackMusic = loadAudio("epic.wav");
         coin = loadAudio("coin.wav");
         clicks = loadAudio("clicks.wav");
@@ -1450,6 +1454,7 @@ public class Combat extends extraFunctions{
     }
 
     public void initDeath(){
+
         fadeState = false;
         timer = 0;
         fadeArray = new Image[10];
@@ -1462,7 +1467,7 @@ public class Combat extends extraFunctions{
     }
 
     public void drawDeath(Graphics2D g){
-
+        stopAudioLoop(attackMusic);
         if(timer > 1.1 && timer < 1.2){
             drawImage(fadeArray[1], 0,0,800,600,g);
         }
@@ -1491,6 +1496,10 @@ public class Combat extends extraFunctions{
             drawImage(fadeArray[9], 0,0,800,600,g);
         }
         if(timer > 2.4){
+            if(!stopper2){
+                playAudio(gameover);
+                stopper2 = true;
+            }
             drawImage(fadeArray[9], 0,0,800,600,g);
             changeColor(white,g);
             drawText(240,200,"GAME OVER!", "Felix Titling",60,g);
@@ -1498,6 +1507,7 @@ public class Combat extends extraFunctions{
             drawText(240,360,"Score : " + (player.getLevel() * player.getQuestStage()) * 100, "Felix Titling",30,g);
             drawText(350, 450,"EXIT[ESC]","Felix Titling",15,g);
         }
+
     }
 
 
