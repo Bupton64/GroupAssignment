@@ -137,10 +137,10 @@ public class endCutScene extends extraFunctions{
 
         }
         if(dt < 6) {
-            drawImage(WizardSpin[animationChange % 4], 300, 250, 50, 70, g);
-            drawImage(BjarneSpin[animationChange % 4], 400, 365, 50, 70, g);
-            drawImage(smokeArray[animationChange%34], 250, 200, g);
-            drawImage(smokeArray[animationChange%34], 350, 315, g);
+            drawImage(WizardSpin[getAnimationFrame(timer, 0.16, 4)], 300, 250, 50, 70, g);
+            drawImage(BjarneSpin[getAnimationFrame(timer, 0.16, 4)], 400, 365, 50, 70, g);
+            drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 250, 200, g);
+            drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 350, 315, g);
         }
         if(dt >= 2 && dt < 5) {
             if (!hit) {
@@ -235,7 +235,7 @@ public class endCutScene extends extraFunctions{
         }
         if(dt >= 17 && dt < 19){
             //Insert fireball animation here
-            drawImage(smokeArray[animationChange%34], 350, 50, g);
+            drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 350, 50, g);
             drawImage(bolts[animationChange%3], 340,140, 70, 150,g);
         }
         if(dt >= 19){
