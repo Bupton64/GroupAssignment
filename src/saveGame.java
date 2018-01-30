@@ -339,29 +339,29 @@ public class saveGame {
         }else if(name.equals("Rough Axe")){
             item_Equipment rough = new item_Equipment("Rough Axe", 0, 0, 0, 0, 2, Item.Slot.weapon, "A violent edge and little else", 3300, 1200);
             temp.addItemToInventory(rough); //T2 Axe
-        }else if(name.equals("Guardsman's Spear")){
-            item_Equipment spear = new item_Equipment("Guardsman's Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);
+        }else if(name.equals("Guardsmans Spear")){
+            item_Equipment spear = new item_Equipment("Guardsmans Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);
             temp.addItemToInventory(spear); //T2 Spear
         }else if(name.equals("Iron Sword")){
             item_Equipment ironSword = new item_Equipment("Iron Sword", 4, 0, 0, 0, 2, Item.Slot.weapon, "A well forged sword", 600, 2300);
             temp.addItemToInventory(ironSword); //T3 Sword
-        }else if(name.equals("Trickster's Spear")){
-            item_Equipment trickspear = new item_Equipment("Trickster's Spear", 2, 0, 3, 0, 0, Item.Slot.weapon, "Expertly balanced spear", 590, 2250);
+        }else if(name.equals("Tricksters Spear")){
+            item_Equipment trickspear = new item_Equipment("Tricksters Spear", 2, 0, 3, 0, 0, Item.Slot.weapon, "Expertly balanced spear", 590, 2250);
             temp.addItemToInventory(trickspear); //T3 Spear
-        }else if(name.equals("Acolyte's Staff")){
-            item_Equipment acolyte = new item_Equipment("Acolyte's Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
+        }else if(name.equals("Acolytes Staff")){
+            item_Equipment acolyte = new item_Equipment("Acolytes Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
             temp.addItemToInventory(acolyte); //T3 Staff
         }else if(name.equals("Steel Sword")){
             item_Equipment steelSword = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "Grace and power combined", 1300, 4500);
             temp.addItemToInventory(steelSword); //T4 Sword
-        }else if(name.equals("Gladiator's Axe")){
-            item_Equipment gladiator = new item_Equipment("Gladiator's Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
+        }else if(name.equals("Gladiators Axe")){
+            item_Equipment gladiator = new item_Equipment("Gladiators Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
             temp.addItemToInventory(gladiator); //T4 Axe
-        }else if(name.equals("Jester's Staff")){
-            item_Equipment jester = new item_Equipment("Jester's Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
+        }else if(name.equals("Jesters Staff")){
+            item_Equipment jester = new item_Equipment("Jesters Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
             temp.addItemToInventory(jester); //T4 Staff
-        }else if(name.equals("Emperor's Word")){
-            item_Equipment emperor = new item_Equipment("Emperor's Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
+        }else if(name.equals("Emperors Word")){
+            item_Equipment emperor = new item_Equipment("Emperors Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
             temp.addItemToInventory(emperor); //T4 Spear
         }else if(name.equals("Valkyrie")){
             item_Equipment valkyrie = new item_Equipment("Valkyrie", 10, 10, 4, 0, 8, Item.Slot.weapon, "A legend made reality", 0, 0);
@@ -390,8 +390,8 @@ public class saveGame {
         }else if(name.equals("Wooden Shield")){
             item_Equipment shield = new item_Equipment("Wooden Shield", 0, 2, 0, 0, 0, Item.Slot.offhand, "A lightweight shield", 120, 600);
             temp.addItemToInventory(shield);
-        }else if(name.equals("Assassin's Dagger")){
-            item_Equipment assassin = new item_Equipment("Assassin's Dagger", 3, 0, 0, 1, 0, Item.Slot.offhand, "Keen and silent", 40, 2050);
+        }else if(name.equals("Assassins Dagger")){
+            item_Equipment assassin = new item_Equipment("Assassins Dagger", 3, 0, 0, 1, 0, Item.Slot.offhand, "Keen and silent", 40, 2050);
             temp.addItemToInventory(assassin);
         }else if(name.equals("Steel Shield")){
             item_Equipment steelShield = new item_Equipment("Steel Shield", 0, 4, 1, 0, 0, Item.Slot.offhand, "An elite's shield", 1200, 2800);
@@ -411,8 +411,8 @@ public class saveGame {
         }else if(name.equals("Full Plate Boots")){
             item_Equipment full = new item_Equipment("Full Plate Boots", 0, 4, 0, 0, 0, Item.Slot.feet, "Made for knights", 1090, 3040);
             temp.addItemToInventory(full); // T4 Boots
-        }else if(name.equals("Traveller's Robe")){
-            item_Equipment robe = new item_Equipment("Traveller's Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
+        }else if(name.equals("Travellers Robe")){
+            item_Equipment robe = new item_Equipment("Travellers Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
             temp. addItemToInventory(robe);
         }else if(name.equals("Leather Jack")){
             item_Equipment leatherJack = new item_Equipment("Leather Jack", 0, 1, 0, 1, 0, Item.Slot.chest, "Provides basic protection", 50, 300);
@@ -521,44 +521,44 @@ public class saveGame {
             item_Equipment stone = new item_Equipment("Stone Axe", 0, 0, 0, 0, 1, Item.Slot.weapon, "Rugged, yet effective", 300, 400);
             temp.addItemToInventory(stone); // T0 Sword
             temp.equipItem(stone);
-        }else if(name.equals("Monk's Staff")){
-            item_Equipment monksStaff = new item_Equipment("Monk's Staff", 1, 0, 0, 2, 0, Item.Slot.weapon, "A light wooden staff", 300, 1000);
+        }else if(name.equals("Monks Staff")){
+            item_Equipment monksStaff = new item_Equipment("Monks Staff", 1, 0, 0, 2, 0, Item.Slot.weapon, "A light wooden staff", 300, 1000);
             temp.addItemToInventory(monksStaff); // T0 Sword
             temp.equipItem(monksStaff);
         }else if(name.equals("Rough Axe")){
             item_Equipment rough = new item_Equipment("Rough Axe", 0, 0, 0, 0, 2, Item.Slot.weapon, "A violent edge and little else", 3300, 1200);
             temp.addItemToInventory(rough); // T0 Sword
             temp.equipItem(rough);
-        }else if(name.equals("Guardsman's Spear")){
-            item_Equipment spear = new item_Equipment("Guardsman's Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);
+        }else if(name.equals("Guardsmans Spear")){
+            item_Equipment spear = new item_Equipment("Guardsmans Spear", 1, 0, 1, 0, 0, Item.Slot.weapon, "A military issue spear", 290, 1100);
             temp.addItemToInventory(spear); // T0 Sword
             temp.equipItem(spear);
         }else if(name.equals("Iron Sword")){
             item_Equipment ironSword = new item_Equipment("Iron Sword", 4, 0, 0, 0, 2, Item.Slot.weapon, "A well forged sword", 600, 2300);
             temp.addItemToInventory(ironSword); // T0 Sword
             temp.equipItem(ironSword);
-        }else if(name.equals("Trickster's Spear")){
-            item_Equipment trickspear = new item_Equipment("Trickster's Spear", 2, 0, 3, 0, 0, Item.Slot.weapon, "Expertly balanced spear", 590, 2250);
+        }else if(name.equals("Tricksters Spear")){
+            item_Equipment trickspear = new item_Equipment("Tricksters Spear", 2, 0, 3, 0, 0, Item.Slot.weapon, "Expertly balanced spear", 590, 2250);
             temp.addItemToInventory(trickspear); // T0 Sword
             temp.equipItem(trickspear);
-        }else if(name.equals("Acolyte's Staff")){
-            item_Equipment acolyte = new item_Equipment("Acolyte's Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
+        }else if(name.equals("Acolytes Staff")){
+            item_Equipment acolyte = new item_Equipment("Acolytes Staff", 2, 0, 0, 5, 0, Item.Slot.weapon, "Crafted from enchanted willow", 620, 2090);
             temp.addItemToInventory(acolyte); // T0 Sword
             temp.equipItem(acolyte);
         }else if(name.equals("Steel Sword")){
             item_Equipment steelSword = new item_Equipment("Steel Sword", 8, 0, 0, 0, 4, Item.Slot.weapon, "Grace and power combined", 1300, 4500);
             temp.addItemToInventory(steelSword); // T0 Sword
             temp.equipItem(steelSword);
-        }else if(name.equals("Gladiator's Axe")){
-            item_Equipment gladiator = new item_Equipment("Gladiator's Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
+        }else if(name.equals("Gladiators Axe")){
+            item_Equipment gladiator = new item_Equipment("Gladiators Axe", 8, 0, 0, 0, 8, Item.Slot.weapon, "Keen edged and lethal", 1450, 5200);
             temp.addItemToInventory(gladiator); // T0 Sword
             temp.equipItem(gladiator);
-        }else if(name.equals("Jester's Staff")){
-            item_Equipment jester = new item_Equipment("Jester's Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
+        }else if(name.equals("Jesters Staff")){
+            item_Equipment jester = new item_Equipment("Jesters Staff", 4, 0, 0, 10, 0, Item.Slot.weapon, "Lighter than air itself", 1250, 4800);
             temp.addItemToInventory(jester); // T0 Sword
             temp.equipItem(jester);
-        }else if(name.equals("Emperor's Word")){
-            item_Equipment emperor = new item_Equipment("Emperor's Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
+        }else if(name.equals("Emperors Word")){
+            item_Equipment emperor = new item_Equipment("Emperors Word", 4, 0, 6, 0, 0, Item.Slot.weapon, "His voice pierces hearts", 1400, 4950);
             temp.addItemToInventory(emperor); // T0 Sword
             temp.equipItem(emperor);
         }else if(name.equals("Valkyrie")){
@@ -597,8 +597,8 @@ public class saveGame {
             item_Equipment shield = new item_Equipment("Wooden Shield", 0, 2, 0, 0, 0, Item.Slot.offhand, "A lightweight shield", 120, 600);
             temp.addItemToInventory(shield);
             temp.equipItem(shield);
-        }else if(name.equals("Assassin's Dagger")){
-            item_Equipment assassin = new item_Equipment("Assassin's Dagger", 3, 0, 0, 1, 0, Item.Slot.offhand, "Keen and silent", 40, 2050);
+        }else if(name.equals("Assassins Dagger")){
+            item_Equipment assassin = new item_Equipment("Assassins Dagger", 3, 0, 0, 1, 0, Item.Slot.offhand, "Keen and silent", 40, 2050);
             temp.addItemToInventory(assassin);
             temp.equipItem(assassin);
         }else if(name.equals("Steel Shield")){
@@ -625,8 +625,8 @@ public class saveGame {
             item_Equipment full = new item_Equipment("Full Plate Boots", 0, 4, 0, 0, 0, Item.Slot.feet, "Made for knights", 1090, 3040);
             temp.addItemToInventory(full);
             temp.equipItem(full);
-        }else if(name.equals("Traveller's Robe")){
-            item_Equipment robe = new item_Equipment("Traveller's Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
+        }else if(name.equals("Travellers Robe")){
+            item_Equipment robe = new item_Equipment("Travellers Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
             temp.addItemToInventory(robe);
             temp.equipItem(robe);
         }else if(name.equals("Leather Jack")){
