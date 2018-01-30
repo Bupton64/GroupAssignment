@@ -24,7 +24,7 @@ public class quest_blankQuest extends Quest {
 
         if(getState() == questState.completedQuest) {
             changeColor(black, g);
-            drawText(40, 430, "Speak to some villagers", "Arial", 20, g);
+            drawText(40, 460, "Speak to some villagers", "Arial", 20, g);
         }
 
 
