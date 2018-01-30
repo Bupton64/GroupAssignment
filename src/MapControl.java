@@ -567,7 +567,6 @@ public class MapControl extends extraFunctions {
                     playerMan.setValliardAlive(false);
                 } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches") {
                     playerMan.setMonsterGen(2);
-                    playerMan.setQuestStage(16);
                     playerMan.changeQuest();
                 } else if (playerMan.getQuestStage() == 20){
                     playerMan.setMonsterGen(3);

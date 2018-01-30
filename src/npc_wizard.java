@@ -104,7 +104,7 @@ public class npc_wizard extends  NPC {
         Dialogue d15 = new Dialogue(null,false,true,"How goes your search? I think the houses in town might ","have some clues.","","");
         listEight = d15;
 
-        Dialogue d17 = new Dialogue(null,true,true,"Can you go confront the priest in Town?","","","");
+        Dialogue d17 = new Dialogue(null,true,true,"Can you go confront the priest in town?","","","");
         Dialogue d16 = new Dialogue(d17,false,false,"Hmmmm... It appears this book belongs to the priest.","I fear we have a spy in our clutches young Bjarne. You'll need to go","confront him! I recall seeing him in town earlier today. Find me in ","town once you've confronted him and hurry!");
         listNine = d16;
 
@@ -129,7 +129,7 @@ public class npc_wizard extends  NPC {
 
         Dialogue d27 = new Dialogue(null,true,true,"Will you go find Dijkstra?","","","");
         Dialogue d26 = new Dialogue(d27,false,false,"Our only hope is a wanderer West of town, his name is Dijkstra.","He was a great warrior who fought with logic and vigor.","Please go find him and ask for his help!","");
-        Dialogue d25 = new Dialogue(d26,false,false,"You did it! Good job! Good to see Sally back in town.","Although while you were gone...","Therox managed to find a way into Town. ","");
+        Dialogue d25 = new Dialogue(d26,false,false,"You did it! Good job! Good to see Sally back in town.","Although while you were gone...","Therox managed to find a way into town. ","");
         listFourteen = d25;
 
         Dialogue d025 = new Dialogue(d26,false,false,"I saw from the crystals what happened. ","Today is a day of mourning, Do not blame yourself Bjarne.","Unfortunately every second we delay, they get stronger.","");
@@ -145,7 +145,7 @@ public class npc_wizard extends  NPC {
         Dialogue d31 = new Dialogue(null,false,true,"I'll meet you at my house when you are ready.","","","");
         listSeventeen = d31;
 
-        Dialogue d32 = new Dialogue(null,false,true,"Hello Bjarne, Make sure you are ready and stocked up before we Go.","Once we are there, we cannot turn back","Try Grinding Mobs for Some levels to get an advantage!","");
+        Dialogue d32 = new Dialogue(null,false,true,"Bjarne, make sure you have stocked up on supplies before we go.","Once we're there, there will be no turning back! It will ","definately be worth visiting the town shop before we go!","");
         listEightteen = d32;
 
     }
