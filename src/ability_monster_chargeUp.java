@@ -8,7 +8,7 @@ public class ability_monster_chargeUp extends Ability {
         this.setLuck(0);
         this.setStrength(0);
         this.setMagic(true);
-        this.setEnergyCost(-1);
+        this.setEnergyCost(0);
         this.setActive(true);
         this.setType(AbilityType.buff);
         this.setDisplayString("The Giant is gaining energy!");
