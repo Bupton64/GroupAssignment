@@ -32,9 +32,9 @@ public class monster_BOSS_Therox extends Monster {
         setSpriteHeight(200);
 
         // NEEDS ABILITIES
-        setUpAbilityNumberI(temp, 0, "Hatred", 0, 0, 0, 0, 0, true, -1, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 1, "Pain", 2, 2, 2, 2, 2, true, 3, "", true, Ability.AbilityType.damage, "");
-        setUpAbilityNumberI(temp, 2, "Destruction", 4, 4, 4, 4, 4, true, 5, "", true, Ability.AbilityType.damage, "" );
+        setUpAbilityNumberI(temp, 0, "Hatred", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 1, "Pain", 2, 4, 2, 2, 4, false, 3, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 2, "Destruction", 4, 10, 4, 4, 10, false, 5, "", true, Ability.AbilityType.damage, "" );
         temp[3] = new ability_monster_ferocity();
         temp[4] = new ability_monster_guard();
         temp[5] = new ability_monster_rage();
