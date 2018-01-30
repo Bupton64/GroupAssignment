@@ -333,8 +333,8 @@ public class saveGame {
         }else if(name.equals("Stone Axe")){
             item_Equipment stone = new item_Equipment("Stone Axe", 0, 0, 0, 0, 1, Item.Slot.weapon, "Rugged, yet effective", 300, 400);
             temp.addItemToInventory(stone); //T1 Axe
-        }else if(name.equals("Monk's Staff")){
-            item_Equipment monksStaff = new item_Equipment("Monk's Staff", 1, 0, 0, 2, 0, Item.Slot.weapon, "A light wooden staff", 300, 1000);
+        }else if(name.equals("Monks Staff")){
+            item_Equipment monksStaff = new item_Equipment("Monks Staff", 1, 0, 0, 2, 0, Item.Slot.weapon, "A light wooden staff", 300, 1000);
             temp.addItemToInventory(monksStaff); //T2 Staff
         }else if(name.equals("Rough Axe")){
             item_Equipment rough = new item_Equipment("Rough Axe", 0, 0, 0, 0, 2, Item.Slot.weapon, "A violent edge and little else", 3300, 1200);

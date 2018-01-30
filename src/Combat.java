@@ -944,6 +944,13 @@ public class Combat extends extraFunctions{
             }
         }
 
+        if(player.getInventorySize() == 0){
+            changeColor(purple, g);
+            drawBoldText(70, 270, "YOUR INVENTORY IS EMPTY.", "Felix Titling", 20, g);
+            changeColor(grey4, g);
+            drawBoldText(70, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 10, g);
+        }
+
 
 
           drawBoldText(110,535,"Back[ESC]","Felix titling",14,g);

@@ -63,7 +63,7 @@ public class plains_E5_wizards extends  Map {
         //Seat
         collisionPoints.addBoxCollision(18,14,4,2,flicker);
         //Bed
-        collisionPoints.addBoxCollision(52,14,4,3,flicker);
+        collisionPoints.addBoxCollision(52,14,3,3,flicker);
         //Boxes
         collisionPoints.addBoxCollision(55,26,7,7,flicker);
     }
