@@ -23,7 +23,8 @@ public class StartScreen extends extraFunctions {
 
     enum startState {startScreen, loadScreen, credits}
     startState state = startState.startScreen;
-
+    Image buttonSprite;
+   Image buttonSpriteSheet = loadImage("buttons.png");
     Image paper = loadImage("paper.png");
     Image paper2 = loadImage("paper2.png");
     Image sword = loadImage("sword.png");
@@ -62,6 +63,7 @@ public class StartScreen extends extraFunctions {
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);
         background3 = subImage(equipmentSprite, 0, 0, 800, 600);
         Logo = subImage(logo, 0, 0,518,91);
+        buttonSprite = subImage(buttonSpriteSheet,30,70,180,80);
         CreditsEnd = new Credits();
 
         initLoad();
@@ -174,20 +176,26 @@ public class StartScreen extends extraFunctions {
         //drawBoldText(100, 100, Double.toString(timer), g);
 
         if(intro == false) {
+
             stopAudioLoop(credits);
             clearBackground(800 ,600, g);
             drawImage(background3, 0, 0, g);
             drawImage(logo, 130, 80, g);
-            drawImage(swordSprite, 520-(cursorPositionY/10)*2, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
-            drawImage(swordSprite2, 167+(cursorPositionY/10)*2, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
+            drawImage(buttonSprite, 275, 197, 225, 60, g);
+            drawImage(buttonSprite, 275, 197+80, 225, 60, g);
+            drawImage(buttonSprite, 275, 197+160, 225, 60, g);
+            drawImage(buttonSprite, 275, 197+230, 225, 60, g);
+
+            drawImage(swordSprite, 520, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
+            drawImage(swordSprite2, 167, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
 
             changeColor(black, g);
 
-            changeColor(red, g);
+            changeColor(white, g);
             drawBoldText(328, 230, "New Game", "Felix Titling", 20, g);
             drawBoldText(322, 230 + 80, "Load game", "Felix Titling", 20, g);
             drawBoldText(340, 230 + 160, "Credits", "Felix Titling", 20, g);
-            drawBoldText(365, 230 + 240, "Exit", "Felix Titling", 20, g);
+            drawBoldText(365, 230 + 230, "Exit", "Felix Titling", 20, g);
             startup = false;
         }
 
