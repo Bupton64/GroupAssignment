@@ -779,7 +779,7 @@ public class Character extends Statblock {
         setLevel(getLevel() + 1);
         setAttack(getAttack() + (int)(Math.random()*3));
         setStrength(getStrength() + (int)(Math.random()*2));
-        setSpeed(getSpeed() + (int)(Math.random()*3));
+        setSpeed((getSpeed() + (int)(Math.random()*3)) +1);
         setLuck(getLuck() +  (int)(Math.random()*2));
         setMaxHP((getMaxHP() + (int)(Math.random()*11))+55);
         unlockAbility();
