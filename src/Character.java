@@ -841,6 +841,8 @@ public class Character extends Statblock {
 
     public void setCollectableNum(int num) {
         currentQuest.setNumOfCollectables(num);
+        System.out.println(currentQuest.getTotalCollectables());
+        System.out.println(currentQuest.getNumOfCollectables());
         if (currentQuest.getNumOfCollectables() == currentQuest.getTotalCollectables()) {
             if(questStage == 10) {
                 currentQuest.setState(Quest.questState.completedQuest);
