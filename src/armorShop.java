@@ -107,6 +107,47 @@ public class armorShop extends shop {
         drawBoldText(690, 100 + 90, Integer.toString(getShopInventory()[getItemIndex()].getSpeed()), "Felix Titling", 18, g);
         drawBoldText(690, 100 + 120, Integer.toString(getShopInventory()[getItemIndex()].getLuck()), "Felix Titling", 18, g);
 
+        // Display Item Difference
+        for(int i=0; i < getPlayer1().getEquipmentSize(); i++){
+            if(getShopInventory()[getItemIndex()].getSlot() == getPlayer1().getEquippedItems()[i].getSlot()){
+                if(getShopInventory()[getItemIndex()].getAttack() > getPlayer1().getEquippedItems()[i].getAttack()){
+                    changeColor(green2, g);
+                    drawBoldText(700, 100, " +" + Integer.toString(getShopInventory()[getItemIndex()].getAttack() - getPlayer1().getEquippedItems()[i].getAttack()), "Felix Titling", 18, g);
+                } else if (getShopInventory()[getItemIndex()].getAttack() < getPlayer1().getEquippedItems()[i].getAttack()){
+                    changeColor(red, g);
+                    drawBoldText(700, 100, " -" + Integer.toString(Math.abs(getShopInventory()[getItemIndex()].getAttack() - getPlayer1().getEquippedItems()[i].getAttack())), "Felix Titling", 18, g);
+                }
+                if(getShopInventory()[getItemIndex()].getDefense() > getPlayer1().getEquippedItems()[i].getDefense()){
+                    changeColor(green2, g);
+                    drawBoldText(700, 130, " +" + Integer.toString(getShopInventory()[getItemIndex()].getDefense() - getPlayer1().getEquippedItems()[i].getDefense()), "Felix Titling", 18, g);
+                } else if (getShopInventory()[getItemIndex()].getDefense() < getPlayer1().getEquippedItems()[i].getDefense()){
+                    changeColor(red, g);
+                    drawBoldText(700, 130, " -" + Integer.toString(Math.abs(getShopInventory()[getItemIndex()].getDefense() - getPlayer1().getEquippedItems()[i].getDefense())), "Felix Titling", 18, g);
+                }
+                if(getShopInventory()[getItemIndex()].getStrength() > getPlayer1().getEquippedItems()[i].getStrength()){
+                    changeColor(green2, g);
+                    drawBoldText(700, 160, " +" + Integer.toString(getShopInventory()[getItemIndex()].getStrength() - getPlayer1().getEquippedItems()[i].getStrength()), "Felix Titling", 18, g);
+                } else if (getShopInventory()[getItemIndex()].getStrength() < getPlayer1().getEquippedItems()[i].getStrength()){
+                    changeColor(red, g);
+                    drawBoldText(700, 160, " -" + Integer.toString(Math.abs(getShopInventory()[getItemIndex()].getStrength() - getPlayer1().getEquippedItems()[i].getStrength())), "Felix Titling", 18, g);
+                }
+                if(getShopInventory()[getItemIndex()].getSpeed() > getPlayer1().getEquippedItems()[i].getSpeed()){
+                    changeColor(green2, g);
+                    drawBoldText(700, 190, " +" + Integer.toString(getShopInventory()[getItemIndex()].getSpeed() - getPlayer1().getEquippedItems()[i].getSpeed()), "Felix Titling", 18, g);
+                } else if (getShopInventory()[getItemIndex()].getSpeed() < getPlayer1().getEquippedItems()[i].getSpeed()){
+                    changeColor(red, g);
+                    drawBoldText(700, 190, " -" + Integer.toString(Math.abs(getShopInventory()[getItemIndex()].getSpeed() - getPlayer1().getEquippedItems()[i].getSpeed())), "Felix Titling", 18, g);
+                }
+                if(getShopInventory()[getItemIndex()].getLuck() > getPlayer1().getEquippedItems()[i].getLuck()){
+                    changeColor(green2, g);
+                    drawBoldText(700, 220, " +" + Integer.toString(getShopInventory()[getItemIndex()].getLuck() - getPlayer1().getEquippedItems()[i].getLuck()), "Felix Titling", 18, g);
+                } else if (getShopInventory()[getItemIndex()].getLuck() < getPlayer1().getEquippedItems()[i].getLuck()){
+                    changeColor(red, g);
+                    drawBoldText(700, 220, " -" + Integer.toString(Math.abs(getShopInventory()[getItemIndex()].getLuck() - getPlayer1().getEquippedItems()[i].getLuck())), "Felix Titling", 18, g);
+                }
+            }
+        }
+
         changeColor(purple, g);
         drawBoldText(420, 260, getShopInventory()[getItemIndex()].getSlot().name() + " ITEM", "Felix Titling", 20, g);
         changeColor(black, g);

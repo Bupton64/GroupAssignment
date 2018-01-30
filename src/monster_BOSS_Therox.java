@@ -10,11 +10,11 @@ public class monster_BOSS_Therox extends Monster {
         for(int i=0; i<8; i++){
             temp[i]=new Ability();
         }
-        setAttack(35);
+        setAttack(30);
         setDefense(10);
         setLuck(3);
         setSpeed(23);
-        setStrength(25);
+        setStrength(20);
         setXPGain(10000);
         setGoldMin(0);
         setGoldMax(0);
@@ -26,7 +26,7 @@ public class monster_BOSS_Therox extends Monster {
         setEnergy(0);
 
         Image sprite = loadImage("monster_BOSS_therox.png");
-        sprite = subImage(sprite, 0, 150, 100, 150);
+        sprite = subImage(sprite, 0, 80, 70, 80);
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);

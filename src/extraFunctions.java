@@ -41,6 +41,7 @@ public abstract class extraFunctions {
     Color grey4 = new Color(100, 100, 100);
     Color grey5 = new Color(150, 150, 150);
     Color grey6 = new Color(200, 200, 200);
+    Color green2 = new Color(11, 160, 24);
 
 
 

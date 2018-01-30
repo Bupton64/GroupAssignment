@@ -9,7 +9,7 @@ public class ability_toxicity extends Ability {
         this.setStrength(0);
         this.setMagic(false);
         this.setEnergyCost(3);
-        this.setActive(true);
+        this.setActive(false);
         this.setType(AbilityType.curse);
         this.setDisplayString("");
     }
