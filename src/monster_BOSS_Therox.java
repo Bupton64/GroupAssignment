@@ -10,15 +10,15 @@ public class monster_BOSS_Therox extends Monster {
         for(int i=0; i<8; i++){
             temp[i]=new Ability();
         }
-        setAttack(25);
+        setAttack(35);
         setDefense(10);
         setLuck(3);
         setSpeed(23);
-        setStrength(10);
+        setStrength(25);
         setXPGain(10000);
         setGoldMin(0);
         setGoldMax(0);
-        setCurrentHP(2000);
+        setCurrentHP(2500);
         setMaxHP(10000);
         setLevel(15);
         setAlive(true);
@@ -61,7 +61,7 @@ public class monster_BOSS_Therox extends Monster {
         // return abilities[5].use(this); //< Use Rage (Cost 1)
         // return abilities[6].use(this); //< Use Grace (Cost 1)
         // return abilities[7].use(this); //< Use Fortune (Cost 1)
-        if(this.getCurrentHP() > 1200){
+        if(this.getCurrentHP() > 1800){
             if(this.getEnergy() > 4){
                 if(num > 20){
                     return abilities[2]; //< Use Destruction (Cost 5)
@@ -111,7 +111,7 @@ public class monster_BOSS_Therox extends Monster {
             } else {
                 return abilities[0]; //< Use Hatred (Cost -1)
             }
-        } else if(this.getCurrentHP() > 400){
+        } else if(this.getCurrentHP() > 1200){
             if(this.getEnergy() > 4){
                 if(num > 80){
                     return abilities[2]; //< Use Destruction (Cost 5)
