@@ -33,8 +33,19 @@ public class finalCutscene extends extraFunctions{
     Image Djikstra[];
     Image grave;
     boolean change;
+    long currentTime;
+    long initialTime;
+    long elapsedTime;
+    double interval;
+    double dt;
+    double extra;
+    double fadeTemp;
+    boolean hit;
+    boolean hit2;
 
     finalCutscene(){
+        hit = false;
+        hit2 = false;
         timer = 0;
         animationChange = 0;
         change = false;
@@ -106,6 +117,19 @@ public class finalCutscene extends extraFunctions{
     }
 
     public void drawFinalCutsene(Graphics2D g, int condition){
+        if(animationChange == 0){
+            initialTime = getTime();
+        }
+        interval = 1000.0/40;
+        dt = interval / 1000.0;
+        currentTime = getTime();
+        elapsedTime = currentTime - initialTime;
+        if(interval > elapsedTime){
+            extra = interval - elapsedTime;
+            sleep(extra);
+        } else if(elapsedTime > interval){
+            dt = elapsedTime/1000;
+        }
         animationChange++;
         if(!change){
             drawImage(backgroundFight, 0, 0, g);
@@ -113,7 +137,7 @@ public class finalCutscene extends extraFunctions{
             drawImage(backgroundSevar, 0, 0, g);
         }
 
-        if(timer > 0 && timer < 3){
+        if(dt <= 3){
             drawImage(Therox, 350, 300, g);
             drawImage(BjarneSpin[1], 400, 300, g);
             drawImage(dialogueBack, 90, 400, 620, 165, g);
@@ -123,11 +147,11 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 475, "", "Times New Roman", 20, g);
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
-        if(timer > 3 && timer < 3.3){
+        if(dt > 3 && dt <= 4){
             drawImage(BjarneSpin[1], 400, 300, g);
             drawImage(bloodArray[animationChange%6], 330, 300, 100, 100, g);
         }
-        if(timer > 3.3 && timer < 6){
+        if(dt > 4 && dt <= 6){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
             drawImage(BjarneSpin[1], 400, 300, g);
@@ -136,11 +160,11 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 475, "", "Times New Roman", 20, g);
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
-        if(timer > 6 && timer < 10){
+        if(dt > 6 && dt <= 10){
             drawImage(BjarneSpin[animationChange % 4], 400, 300, g);
             drawImage(smokeArray[animationChange % 35], 350, 250, g);
         }
-        if(timer > 9 && timer < 10){
+        if(dt > 9 && dt <= 10){
             drawImage(villagers[0], 300, 250, g);
             drawImage(villagers[1], 500, 250, g);
             drawImage(villagers[2], 300, 300, g);
@@ -165,73 +189,81 @@ public class finalCutscene extends extraFunctions{
 
             drawImage(Djikstra[1], 400, 500, g);
         }
-        if(timer > 7 && timer < 42){
-            drawImage(fadeArray[0], 0,0,800,600,g);
-        }
-        if(timer > 7.1 && timer < 7.2){
-            drawImage(fadeArray[1], 0,0,800,600,g);
-        }
-        if(timer > 7.2 && timer < 7.3){
-            drawImage(fadeArray[2], 0,0,800,600,g);
-        }
-        if(timer > 7.3 && timer < 7.4){
-            drawImage(fadeArray[3], 0,0,800,600,g);
-        }
-        if(timer > 7.4 && timer < 7.5){
-            drawImage(fadeArray[4], 0,0,800,600,g);
-        }
-        if(timer > 7.5 && timer < 7.6){
-            drawImage(fadeArray[5], 0,0,800,600,g);
-        }
-        if(timer > 7.6 && timer < 7.7){
-            drawImage(fadeArray[6], 0,0,800,600,g);
-        }
-        if(timer > 7.7 && timer < 7.8){
-            drawImage(fadeArray[7], 0,0,800,600,g);
-        }
-        if(timer > 7.8 && timer < 7.9){
-            drawImage(fadeArray[8], 0,0,800,600,g);
-        }
-        if(timer > 7.9 && timer < 8){
-            drawImage(fadeArray[9], 0,0,800,600,g);
-        }
-        if(timer > 8 && timer < 9){
-            drawImage(fadeArray[9], 0,0,800,600,g);
-            change = true;
-        }
-        if(timer > 9 && timer < 9.1){
-            drawImage(fadeArray[9], 0,0,800,600,g);
-        }
-        if(timer > 9.1 && timer < 9.2){
-            drawImage(fadeArray[8], 0,0,800,600,g);
-        }
-        if(timer > 9.2 && timer < 9.3){
-            drawImage(fadeArray[7], 0,0,800,600,g);
-        }
-        if(timer > 9.3 && timer < 9.4){
-            drawImage(fadeArray[6], 0,0,800,600,g);
-        }
-        if(timer > 9.4 && timer < 9.5){
-            drawImage(fadeArray[5], 0,0,800,600,g);
-        }
-        if(timer > 9.5 && timer < 9.6){
-            drawImage(fadeArray[4], 0,0,800,600,g);
-        }
-        if(timer > 9.6 && timer < 9.7){
-            drawImage(fadeArray[3], 0,0,800,600,g);
-        }
-        if(timer > 9.7 && timer < 9.8){
-            drawImage(fadeArray[2], 0,0,800,600,g);
-        }
-        if(timer > 9.8 && timer < 9.9){
-            drawImage(fadeArray[1], 0,0,800,600,g);
-        }
-        if(timer > 9.9 && timer < 10){
-            drawImage(fadeArray[0], 0,0,800,600,g);
+        fadeTemp = dt;
+        if(dt > 7 && dt < 11) {
+            if(!hit){
+                timer = 7;
+                hit = !hit;
+            }
+            if (timer > 7 && timer < 42) {
+                drawImage(fadeArray[0], 0, 0, 800, 600, g);
+            }
+            if (timer > 7.1 && timer < 7.2) {
+                drawImage(fadeArray[1], 0, 0, 800, 600, g);
+            }
+            if (timer > 7.2 && timer < 7.3) {
+                drawImage(fadeArray[2], 0, 0, 800, 600, g);
+            }
+            if (timer > 7.3 && timer < 7.4) {
+                drawImage(fadeArray[3], 0, 0, 800, 600, g);
+
+            }
+            if (timer > 7.4 && timer < 7.5) {
+                drawImage(fadeArray[4], 0, 0, 800, 600, g);
+            }
+            if (timer > 7.5 && timer < 7.6) {
+                drawImage(fadeArray[5], 0, 0, 800, 600, g);
+            }
+            if (timer > 7.6 && timer< 7.7) {
+                drawImage(fadeArray[6], 0, 0, 800, 600, g);
+            }
+            if (timer > 7.7 && timer < 7.8) {
+                drawImage(fadeArray[7], 0, 0, 800, 600, g);
+            }
+            if (timer > 7.8 && timer < 7.9) {
+                drawImage(fadeArray[8], 0, 0, 800, 600, g);
+            }
+            if (timer > 7.9 && timer < 8) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
+            }
+            if (timer > 8 && timer < 9) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
+                change = true;
+            }
+            if (timer > 9 && timer < 9.1) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.1 && timer < 9.2) {
+                drawImage(fadeArray[8], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.2 && timer < 9.3) {
+                drawImage(fadeArray[7], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.3 && timer < 9.4) {
+                drawImage(fadeArray[6], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.4 && timer < 9.5) {
+                drawImage(fadeArray[5], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.5 && timer < 9.6) {
+                drawImage(fadeArray[4], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.6 && timer < 9.7) {
+                drawImage(fadeArray[3], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.7 && timer < 9.8) {
+                drawImage(fadeArray[2], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.8 && timer < 9.9) {
+                drawImage(fadeArray[1], 0, 0, 800, 600, g);
+            }
+            if (timer > 9.9 && timer < 10) {
+                drawImage(fadeArray[0], 0, 0, 800, 600, g);
+            }
         }
 
-        if(timer > 10 && timer < 12){
-            DjikstraPosY-=3;
+        if(dt >= 11 && dt < 13){
+            DjikstraPosY-=2;
             drawImage(villagers[0], 300, 250, g);
             drawImage(villagers[1], 500, 250, g);
             drawImage(villagers[2], 300, 300, g);
@@ -256,7 +288,7 @@ public class finalCutscene extends extraFunctions{
             drawImage(BjarneSpin[0], 400, 300, g);
             drawImage(Djikstra[animationChange % 3], 400, DjikstraPosY, g);
         }
-        if(timer > 12 && timer < 23){
+        if(dt >= 13 && dt < 26){
             drawImage(villagers[0], 300, 250, g);
             drawImage(villagers[1], 500, 250, g);
             drawImage(villagers[2], 300, 300, g);
@@ -281,7 +313,7 @@ public class finalCutscene extends extraFunctions{
             drawImage(BjarneSpin[0], 400, 300, g);
             drawImage(Djikstra[1], 400, DjikstraPosY, g);
         }
-        if(timer > 12 && timer < 17){
+        if(dt >= 13 && dt < 19){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
             drawText(110, 425, "Djikstra:", "Times New Roman", 20, g);
@@ -289,7 +321,7 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 475, "He freed our town from the wrath of Therox! Wait... where's Sevar?", "Times New Roman", 20, g);
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
-        if(timer > 17 && timer < 22){
+        if(dt >= 19 && dt < 25){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
             drawText(110, 425, "Bjarne:", "Times New Roman", 20, g);
@@ -297,75 +329,81 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 475, "spell I've ever seen. It was an honorable death. A hero's death.", "Times New Roman", 20, g);
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
-        if(timer > 24){
+        if(dt >= 26){
             drawImage(grave, 610, 145, g);
             drawImage(BjarneSpin[2], 610, 205, g);
         }
-        if(timer > 22 && timer < 42){
-            drawImage(fadeArray[0], 0,0,800,600,g);
+        if(dt >=25 && dt < 28) {
+            if(!hit2){
+                timer = 22;
+                hit2 = !hit2;
+            }
+            if (timer > 22 && timer < 42) {
+                drawImage(fadeArray[0], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.1 && timer < 22.2) {
+                drawImage(fadeArray[1], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.2 && timer < 22.3) {
+                drawImage(fadeArray[2], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.3 && timer < 22.4) {
+                drawImage(fadeArray[3], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.4 && timer < 22.5) {
+                drawImage(fadeArray[4], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.5 && timer < 22.6) {
+                drawImage(fadeArray[5], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.6 && timer < 22.7) {
+                drawImage(fadeArray[6], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.7 && timer < 22.8) {
+                drawImage(fadeArray[7], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.8 && timer < 22.9) {
+                drawImage(fadeArray[8], 0, 0, 800, 600, g);
+            }
+            if (timer > 22.9 && timer < 23) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
+            }
+            if (timer > 23 && timer < 24) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
+                change = true;
+            }
+            if (timer > 24 && timer < 24.1) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.1 && timer < 24.2) {
+                drawImage(fadeArray[8], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.2 && timer < 24.3) {
+                drawImage(fadeArray[7], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.3 && timer < 24.4) {
+                drawImage(fadeArray[6], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.4 && timer < 24.5) {
+                drawImage(fadeArray[5], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.5 && timer < 24.6) {
+                drawImage(fadeArray[4], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.6 && timer < 24.7) {
+                drawImage(fadeArray[3], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.7 && timer < 24.8) {
+                drawImage(fadeArray[2], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.8 && timer < 24.9) {
+                drawImage(fadeArray[1], 0, 0, 800, 600, g);
+            }
+            if (timer > 24.9 && timer < 25) {
+                drawImage(fadeArray[0], 0, 0, 800, 600, g);
+            }
         }
-        if(timer > 22.1 && timer < 22.2){
-            drawImage(fadeArray[1], 0,0,800,600,g);
-        }
-        if(timer > 22.2 && timer < 22.3){
-            drawImage(fadeArray[2], 0,0,800,600,g);
-        }
-        if(timer > 22.3 && timer < 22.4){
-            drawImage(fadeArray[3], 0,0,800,600,g);
-        }
-        if(timer > 22.4 && timer < 22.5){
-            drawImage(fadeArray[4], 0,0,800,600,g);
-        }
-        if(timer > 22.5 && timer < 22.6){
-            drawImage(fadeArray[5], 0,0,800,600,g);
-        }
-        if(timer > 22.6 && timer < 22.7){
-            drawImage(fadeArray[6], 0,0,800,600,g);
-        }
-        if(timer > 22.7 && timer < 22.8){
-            drawImage(fadeArray[7], 0,0,800,600,g);
-        }
-        if(timer > 22.8 && timer < 22.9){
-            drawImage(fadeArray[8], 0,0,800,600,g);
-        }
-        if(timer > 22.9 && timer < 23){
-            drawImage(fadeArray[9], 0,0,800,600,g);
-        }
-        if(timer > 23 && timer < 24){
-            drawImage(fadeArray[9], 0,0,800,600,g);
-            change = true;
-        }
-        if(timer > 24 && timer < 24.1){
-            drawImage(fadeArray[9], 0,0,800,600,g);
-        }
-        if(timer > 24.1 && timer < 24.2){
-            drawImage(fadeArray[8], 0,0,800,600,g);
-        }
-        if(timer > 24.2 && timer < 24.3){
-            drawImage(fadeArray[7], 0,0,800,600,g);
-        }
-        if(timer > 24.3 && timer < 24.4){
-            drawImage(fadeArray[6], 0,0,800,600,g);
-        }
-        if(timer > 24.4 && timer < 24.5){
-            drawImage(fadeArray[5], 0,0,800,600,g);
-        }
-        if(timer > 24.5 && timer < 24.6){
-            drawImage(fadeArray[4], 0,0,800,600,g);
-        }
-        if(timer > 24.6 && timer < 24.7){
-            drawImage(fadeArray[3], 0,0,800,600,g);
-        }
-        if(timer > 24.7 && timer < 24.8){
-            drawImage(fadeArray[2], 0,0,800,600,g);
-        }
-        if(timer > 24.8 && timer < 24.9){
-            drawImage(fadeArray[1], 0,0,800,600,g);
-        }
-        if(timer > 24.9 && timer < 25){
-            drawImage(fadeArray[0], 0,0,800,600,g);
-        }
-        if(timer > 25 && timer < 34){
+        if(dt >= 28 && dt < 38){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
             drawText(110, 425, "Bjarne:", "Times New Roman", 20, g);
@@ -374,7 +412,7 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 500, "I've been training to be a wizard too. Within that final battle ", "Times New Roman", 20, g);
             drawText(110, 525, "something entered my soul, whether it was your spirit or Therox's...", "Times New Roman", 20, g);
         }
-        if(timer > 34 && timer < 41){
+        if(dt >= 37 && dt < 45){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
             drawText(110, 425, "Bjarne:", "Times New Roman", 20, g);
@@ -382,6 +420,10 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 475, "knowledge is strong. Who knows, maybe one day I will be as powerful", "Times New Roman", 20, g);
             drawText(110, 500, "you! Haha one day...", "Times New Roman", 20, g);
             drawText(110, 525, "", "Times New Roman", 20, g);
+        }
+        if(dt >= 45){
+            changeColor(white, g);
+            drawText(260, 450, "- Press <SPACE> to continue -",  "New Roman Times", 20, g);
         }
     }
 

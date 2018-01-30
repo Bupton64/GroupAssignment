@@ -12,11 +12,11 @@ public class monster_Elite extends Monster {
         for (int i = 0; i < 3; i++) {
             temp[i] = new Ability();
         }
-        setAttack(15);
+        setAttack(11);
         setDefense(0);
         setLuck(10);
-        setSpeed(20);
-        setStrength(8);
+        setSpeed(17);
+        setStrength(10);
         setXPGain(1720);
         setGoldMin(640);
         setGoldMax(980);
