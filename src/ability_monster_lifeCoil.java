@@ -10,7 +10,7 @@ public class ability_monster_lifeCoil extends Ability{
         this.setEnergyCost(3);
         this.setToolTip("");
         this.setActive(true);
-        this.setType(AbilityType.buff);
+        this.setType(AbilityType.damage);
     }
 
     public Ability use(Statblock user){
