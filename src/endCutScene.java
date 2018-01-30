@@ -30,9 +30,17 @@ public class endCutScene extends extraFunctions{
     boolean change;
     double timer;
     private boolean startBattle;
+    long currentTime;
+    long initialTime;
+    long elapsedTime;
+    double interval;
+    double dt;
+    double extra;
+    boolean hit;
 
 
     endCutScene(){
+        hit = false;
         startBattle = false;
         timer = 0;
         fade = loadImage("fade.png");
@@ -100,6 +108,19 @@ public class endCutScene extends extraFunctions{
 
 
     public void drawCutScene(Graphics2D g) {
+        if(animationChange == 0){
+            initialTime = getTime();
+        }
+        interval = 1000.0/40;
+        dt = interval / 1000.0;
+        currentTime = getTime();
+        elapsedTime = currentTime - initialTime;
+        if(interval > elapsedTime){
+            extra = interval - elapsedTime;
+            sleep(extra);
+        } else if(elapsedTime > interval){
+            dt = elapsedTime/1000;
+        }
         animationChange++;
         if(!change) {
             drawImage(plainsBack, 0, 0, g);
@@ -109,144 +130,139 @@ public class endCutScene extends extraFunctions{
             drawImage(bossBack, 0, 0, g);
             drawImage(WizardBad, 400, 100, 50, 70, g);
         }
-        if(timer < 1) {
-            drawImage(WizardSpin[animationChange % 4], 300, 250, 50, 70, g);
-            drawImage(BjarneSpin[animationChange % 4], 400, 365, 50, 70, g);
-        }
-        if((timer > 1) && !vanish){
+
+        if((dt >= 1) && dt < 2){
             drawImage(Dijkstra, 400, 350, 50, 70, g);
             drawImage(Camrath, 500, 250, 50, 70, g);
+
+        }
+        if(dt < 6) {
+            drawImage(WizardSpin[animationChange % 4], 300, 250, 50, 70, g);
+            drawImage(BjarneSpin[animationChange % 4], 400, 365, 50, 70, g);
             drawImage(smokeArray[animationChange%34], 250, 200, g);
             drawImage(smokeArray[animationChange%34], 350, 315, g);
-            runCount++;
-            if(runCount >=20){
-                vanish = true;
-            }
         }
-        if(timer > 2 && vanish){
-            if(timer > 2 && timer < 42){
-                drawImage(fadeArray[0], 0,0,800,600,g);
+        if(dt >= 2 && dt < 5) {
+            if (!hit) {
+                timer = 2;
+                hit = !hit;
             }
-            if(timer > 2.1 && timer < 2.2){
-                drawImage(fadeArray[1], 0,0,800,600,g);
+            if (timer > 2 && timer < 42) {
+                drawImage(fadeArray[0], 0, 0, 800, 600, g);
             }
-            if(timer > 2.2 && timer < 2.3){
-                drawImage(fadeArray[2], 0,0,800,600,g);
+            if (timer > 2.1 && timer < 2.2) {
+                drawImage(fadeArray[1], 0, 0, 800, 600, g);
             }
-            if(timer > 2.3 && timer < 2.4){
-                drawImage(fadeArray[3], 0,0,800,600,g);
+            if (timer > 2.2 && timer < 2.3) {
+                drawImage(fadeArray[2], 0, 0, 800, 600, g);
             }
-            if(timer > 2.4 && timer < 2.5){
-                drawImage(fadeArray[4], 0,0,800,600,g);
+            if (timer > 2.3 && timer < 2.4) {
+                drawImage(fadeArray[3], 0, 0, 800, 600, g);
             }
-            if(timer > 2.5 && timer < 2.6){
-                drawImage(fadeArray[5], 0,0,800,600,g);
+            if (timer > 2.4 && timer < 2.5) {
+                drawImage(fadeArray[4], 0, 0, 800, 600, g);
             }
-            if(timer > 2.6 && timer < 2.7){
-                drawImage(fadeArray[6], 0,0,800,600,g);
+            if (timer > 2.5 && timer < 2.6) {
+                drawImage(fadeArray[5], 0, 0, 800, 600, g);
             }
-            if(timer > 2.7 && timer < 2.8){
-                drawImage(fadeArray[7], 0,0,800,600,g);
+            if (timer > 2.6 && timer < 2.7) {
+                drawImage(fadeArray[6], 0, 0, 800, 600, g);
             }
-            if(timer > 2.8 && timer < 2.9){
-                drawImage(fadeArray[8], 0,0,800,600,g);
+            if (timer > 2.7 && timer < 2.8) {
+                drawImage(fadeArray[7], 0, 0, 800, 600, g);
             }
-            if(timer > 2.9 && timer < 3){
-                drawImage(fadeArray[9], 0,0,800,600,g);
+            if (timer > 2.8 && timer < 2.9) {
+                drawImage(fadeArray[8], 0, 0, 800, 600, g);
             }
-            if(timer > 3 && timer < 4){
-                drawImage(fadeArray[9], 0,0,800,600,g);
+            if (timer > 2.9 && timer < 3) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
+            }
+            if (timer > 3 && timer < 4) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
                 change = true;
             }
-            if(timer > 4 && timer < 4.1){
-                drawImage(fadeArray[9], 0,0,800,600,g);
+            if (timer > 4 && timer < 4.1) {
+                drawImage(fadeArray[9], 0, 0, 800, 600, g);
             }
-            if(timer > 4.1 && timer < 4.2){
-                drawImage(fadeArray[8], 0,0,800,600,g);
+            if (timer > 4.1 && timer < 4.2) {
+                drawImage(fadeArray[8], 0, 0, 800, 600, g);
             }
-            if(timer > 4.2 && timer < 4.3){
-                drawImage(fadeArray[7], 0,0,800,600,g);
+            if (timer > 4.2 && timer < 4.3) {
+                drawImage(fadeArray[7], 0, 0, 800, 600, g);
             }
-            if(timer > 4.3 && timer < 4.4){
-                drawImage(fadeArray[6], 0,0,800,600,g);
+            if (timer > 4.3 && timer < 4.4) {
+                drawImage(fadeArray[6], 0, 0, 800, 600, g);
             }
-            if(timer > 4.4 && timer < 4.5){
-                drawImage(fadeArray[5], 0,0,800,600,g);
+            if (timer > 4.4 && timer < 4.5) {
+                drawImage(fadeArray[5], 0, 0, 800, 600, g);
             }
-            if(timer > 4.5 && timer < 4.6){
-                drawImage(fadeArray[4], 0,0,800,600,g);
+            if (timer > 4.5 && timer < 4.6) {
+                drawImage(fadeArray[4], 0, 0, 800, 600, g);
             }
-            if(timer > 4.6 && timer < 4.7){
-                drawImage(fadeArray[3], 0,0,800,600,g);
+            if (timer > 4.6 && timer < 4.7) {
+                drawImage(fadeArray[3], 0, 0, 800, 600, g);
             }
-            if(timer > 4.7 && timer < 4.8){
-                drawImage(fadeArray[2], 0,0,800,600,g);
+            if (timer > 4.7 && timer < 4.8) {
+                drawImage(fadeArray[2], 0, 0, 800, 600, g);
             }
-            if(timer > 4.8 && timer < 4.9){
-                drawImage(fadeArray[1], 0,0,800,600,g);
+            if (timer > 4.8 && timer < 4.9) {
+                drawImage(fadeArray[1], 0, 0, 800, 600, g);
             }
-            if(timer > 4.9 && timer < 5){
-                drawImage(fadeArray[0], 0,0,800,600,g);
-            }
-            if(timer > 5 && timer < 6){
-                //drawImage(WizardBad, 400, 100, 50, 70, g);
-                drawImage(smokeArray[animationChange%34], 250, 200, g);
-                drawImage(smokeArray[animationChange%34], 350, 315, g);
-                drawImage(WizardSpin[animationChange % 4], 300, 250, 50, 70, g);
-                drawImage(BjarneSpin[animationChange % 4], 400, 365, 50, 70, g);
-            }
-            if(timer > 6 && timer < 15){
-                //drawImage(WizardBad, 400, 100, 50, 70, g);
-                drawImage(WizardSpin[2], 300, 250, 50, 70, g);
-                drawImage(BjarneSpin[2], 400, 365, 50, 70, g);
-            }
-            if(timer > 6 && timer < 9){
-                drawImage(dialogueBack, 90, 400, 620, 165, g);
-                changeColor(white, g);
-                drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
-                drawText(110, 450, "WHAT!? How on earth- Nevermind that, you made a grave mistake ", "Times New Roman", 20, g);
-                drawText(110, 475, "coming here!", "Times New Roman", 20, g);
-                drawText(110, 500, "", "Times New Roman", 20, g);
-            }
-            if(timer > 9 && timer < 12){
-                drawImage(dialogueBack, 90, 400, 620, 165, g);
-                changeColor(white, g);
-                drawText(110, 425, "Sevar: ", "Times New Roman", 20, g);
-                drawText(110, 450, "Therox! Your time is up! Bjarne, I've been saving up my ", "Times New Roman", 20, g);
-                drawText(110, 475, "energy for this one spell, I will finish Therox but likely", "Times New Roman", 20, g);
-                drawText(110, 500, "won't make it through. Good luck friend.", "Times New Roman", 20, g);
-            }
-            if(timer > 12 && timer < 15){
-                //Insert fireball animation here
-                drawImage(smokeArray[animationChange%34], 350, 50, g);
-                drawImage(bolts[animationChange%3], 340,140, 70, 150,g);
-
-            }
-            if(timer > 15 && timer < 50){
-                drawImage(WizardBad, 400, 100, 50, 70, g);
-                drawImage(BjarneSpin[2], 400, 365, 50, 70, g);
-            }
-            if(timer > 15 && timer < 18){
-                drawImage(dialogueBack, 90, 400, 620, 165, g);
-                changeColor(white, g);
-                drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
-                drawText(110, 450, "SEVARRRRR NOOOOOO! What? Therox... you... you survived?", "Times New Roman", 20, g);
-                drawText(110, 475, "", "Times New Roman", 20, g);
-                drawText(110, 500, "", "Times New Roman", 20, g);
-            }
-            if(timer > 18 && timer < 21){
-                drawImage(dialogueBack, 90, 400, 620, 165, g);
-                changeColor(white, g);
-                drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
-                drawText(110, 450, "HA! Your little friend barely touched me, now prepare", "Times New Roman", 20, g);
-                drawText(110, 475, "to meet your end!", "Times New Roman", 20, g);
-                drawText(110, 500, "", "Times New Roman", 20, g);
-            }
-            if(timer > 21){
-                changeColor(white, g);
-                drawText(250, 450, "- Press <SPACE> to initiate battle -",  "New Roman Times", 20, g);
+            if (timer > 4.9 && timer < 5) {
+                drawImage(fadeArray[0], 0, 0, 800, 600, g);
             }
         }
+        if(dt > 5 && dt < 19){
+            //drawImage(WizardBad, 400, 100, 50, 70, g);
+            drawImage(WizardSpin[2], 300, 250, 50, 70, g);
+            drawImage(BjarneSpin[2], 400, 365, 50, 70, g);
+        }
+        if(dt >= 6 && dt < 11){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
+            drawText(110, 450, "WHAT!? How on earth- Nevermind that, you made a grave mistake ", "Times New Roman", 20, g);
+            drawText(110, 475, "coming here!", "Times New Roman", 20, g);
+            drawText(110, 500, "", "Times New Roman", 20, g);
+        }
+        if(dt >= 11 && dt < 17){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Sevar: ", "Times New Roman", 20, g);
+            drawText(110, 450, "Therox! Your time is up! Bjarne, I've been saving up my energy for", "Times New Roman", 20, g);
+            drawText(110, 475, "this one spell, I will finish Therox but likely won't make it through.", "Times New Roman", 20, g);
+            drawText(110, 500, "Good luck friend.", "Times New Roman", 20, g);
+        }
+        if(dt >= 17 && dt < 19){
+            //Insert fireball animation here
+            drawImage(smokeArray[animationChange%34], 350, 50, g);
+            drawImage(bolts[animationChange%3], 340,140, 70, 150,g);
+        }
+        if(dt >= 19){
+            drawImage(WizardBad, 400, 100, 50, 70, g);
+            drawImage(BjarneSpin[2], 400, 365, 50, 70, g);
+        }
+        if(dt >= 20 && dt < 25){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
+            drawText(110, 450, "SEVARRRRR NOOOOOO! What? Therox... you... you survived?", "Times New Roman", 20, g);
+            drawText(110, 475, "", "Times New Roman", 20, g);
+            drawText(110, 500, "", "Times New Roman", 20, g);
+        }
+        if(dt >= 25 && dt < 30){
+            drawImage(dialogueBack, 90, 400, 620, 165, g);
+            changeColor(white, g);
+            drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
+            drawText(110, 450, "HA! Your little friend barely touched me, now prepare to meet your ", "Times New Roman", 20, g);
+            drawText(110, 475, "end!", "Times New Roman", 20, g);
+            drawText(110, 500, "", "Times New Roman", 20, g);
+        }
+        if(dt >= 30){
+            changeColor(white, g);
+            drawText(250, 450, "- Press <SPACE> to initiate battle -",  "New Roman Times", 20, g);
+        }
+
     }
 
     public int keyPressed(KeyEvent e) {

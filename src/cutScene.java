@@ -44,9 +44,10 @@ public class cutScene extends extraFunctions {
     int runCount;
     long currentTime;
     long initialTime;
-
-    enum introState {text, animation}
-    introState state;
+    long elapsedTime;
+    double interval;
+    double dt;
+    double extra;
 
     /*
      * Loads all required images
@@ -64,7 +65,6 @@ public class cutScene extends extraFunctions {
         vanish = false;
         start = false;
         runCount = 0;
-        state = introState.text;
         smokeSheet = loadImage("smoke.png");
         spriteSheetBjarne = loadImage("chara1.png");
         spriteSheet = loadImage("scaredRunning.png");
@@ -132,7 +132,21 @@ public class cutScene extends extraFunctions {
      * Draws the whole cutscene
      */
     public void drawCutScene(Graphics2D g){
-        if(state == introState.text) {
+        if(flameChange == 0){
+            initialTime = getTime();
+        }
+        interval = 1000.0/40;
+        dt = interval / 1000.0;
+        currentTime = getTime();
+        elapsedTime = currentTime - initialTime;
+        if(interval > elapsedTime){
+            extra = interval - elapsedTime;
+            sleep(extra);
+        } else if(elapsedTime > interval){
+            dt = elapsedTime/1000;
+        }
+        flameChange++;
+        if(dt < 8) {
             clearBackground(800, 600, g);
             changeBackgroundColor(black, g);
             changeColor(white, g);
@@ -218,12 +232,9 @@ public class cutScene extends extraFunctions {
             }
             if ((timer > 7.5) && (timer < 8)) {
                 clearBackground(800, 600, g);
-                state = introState.animation;
             }
         }
-        if(state == introState.animation){
-            flameChange++;
-
+        if(dt >=8){
             if(flameChange % 3 == 0){
                 back = !back;
             }
@@ -235,7 +246,8 @@ public class cutScene extends extraFunctions {
             if(start){
                drawImage(startScreen, 0, 0, g);
             }
-            if((posY + 200 + runSpeed) <450) {
+            if(/*(posY + 200 + runSpeed) <450*/dt >= 8 && dt < 14) {
+
                 runSpeed+=2;
                 drawImage(spriteDown[flameChange % 3], posX + 857, posY + 1000 + runSpeed, g);
                 drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
@@ -260,7 +272,7 @@ public class cutScene extends extraFunctions {
                 drawImage(wizardDown[flameChange % 3], wizardPosX, wizardPosY, g);
                 timePast = timer + 5;
             }
-            if((posY >= 0) && (wizardPosY >= 50)){
+            if((posY >= 0) && (wizardPosY >= 50) && dt >= 19 && dt < 24){
                 if(timePast > timer) {
                     wizardPosY += 1;
                     changeColor(white, g);
@@ -271,22 +283,17 @@ public class cutScene extends extraFunctions {
                     drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
                 }
             }
-            if((timePast < timer) && (posY>=0) && (timer < 30)){
+            if((posY>=0) && dt >= 24 && dt < 25){
                 drawImage(wizardSpin[flameChange % 4], wizardPosX, 50, g);
-            }
-            if((timer > 30) && !vanish){
                 drawImage(smokeArray[flameChange%34], 80, 0, g);
-                runCount++;
-                if(runCount >=20){
-                    vanish = true;
-                }
             }
-            if((timer > 32) && vanish && (BjarnePosX < 50)){
-                BjarnePosX+=3;
+            if((dt >= 25) && (BjarnePosX < 52)){
+                BjarnePosX+=4;
                 drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
             }
-            if((BjarnePosX >= 50) && timer < 40){
-                if(timer < 37) {
+            if((dt < 25) && (dt < 30)){
+                System.out.println(dt);
+                if(dt < 27) {
                     BjarnePosX += 4;
                     drawImage(bjarneRight[flameChange % 3], BjarnePosX, BjarnePosY, g);
                 } else{
