@@ -1,3 +1,5 @@
+
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
@@ -237,7 +239,7 @@ public class cutScene extends extraFunctions {
             }
         }
         if(dt >=8){
-            if(flameChange % 3 == 0){
+            if(flameChange % 4 == 0){
                 back = !back;
             }
             if(back && !start){
@@ -248,24 +250,24 @@ public class cutScene extends extraFunctions {
             if(start){
                drawImage(startScreen, 0, 0, g);
             }
-            if(/*(posY + 200 + runSpeed) <450*/dt >= 8 && dt < 14) {
-
+            if(dt >= 8 && dt < 13) {
+                runSpeedLeft += 1;
                 runSpeed+=2;
-                drawImage(spriteDown[flameChange % 3], posX + 857, posY + 1000 + runSpeed, g);
-                drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
+                drawImage(spriteDown[getAnimationFrame(timer, 0.16, 3)], posX + 857, posY + 1000 + runSpeed, g);
+                drawImage(spriteDown2[getAnimationFrame(timer, 0.16, 3)], posX + 1020, posY + 200 + runSpeed, g);
+                drawImage(spriteDown3[getAnimationFrame(timer, 0.16, 3)], posX + 1200 + runSpeedLeft, posY + 180 + runSpeed, g);
                 height = runSpeed;
             }
-            if(render) {
-                System.out.println(dt);
+            if(dt >= 13 && dt < 18) {
                 runSpeed2 += 1;
-                runSpeedLeft += 1;
-                drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + height, g);
-                drawImage(spriteDown3[flameChange % 3], posX + 1200 + runSpeedLeft, posY + 180 + runSpeed, g);
+
+                drawImage(spriteDown2[getAnimationFrame(timer, 0.16, 3)], posX + 1020, posY + 200 + height, g);
                 //Need if condition to break loop
-                if((posY + 200 + height) > 800){
-                    render = false;
-                }
             }
+//            if(dt >=11 && dt < 13){
+//                drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + height, g);
+//                drawImage(spriteDown3[flameChange % 3], posX + 1200 + runSpeedLeft, posY + 180 + runSpeed, g);
+//            }
             if(posY < 0) {
                 posX+=2;
                 posY+=2;
@@ -280,46 +282,45 @@ public class cutScene extends extraFunctions {
 
                 timePast = timer + 5;
             }
-            if((posY >= 0) && (wizardPosY >= 50) && dt >= 20 && dt < 26){
-                if(timePast > timer) {
-                    wizardPosY += 1;
-                    changeColor(white, g);
-                    drawImage(wizardDown[1], wizardPosX, 50, g);
-                    drawImage(dialogueBack, 90, 400, 620, 165, g);
-                    drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
-                    drawText(110, 450, "MWA HA HA HA! There's no stopping me now! Once I gain control", "Times New Roman", 20, g);
-                    drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
-                }
+            if(dt >= 20 && dt < 26){
+                wizardPosY += 1;
+                changeColor(white, g);
+                drawImage(wizardDown[1], wizardPosX, 50, g);
+                drawImage(dialogueBack, 90, 400, 620, 165, g);
+                drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
+                drawText(110, 450, "MWA HA HA HA! There's no stopping me now! Once I gain control", "Times New Roman", 20, g);
+                drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
             }
-            if((posY>=0) && dt >= 25 && dt < 27){
+            if(dt >= 26 && dt < 27){
                 drawImage(wizardSpin[getAnimationFrame(timer, 0.16, 4)], wizardPosX, 50, g);
                 drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 80, 0, g);
             }
-            if((dt >= 27) && (BjarnePosX < 50) && dt < 30){
+            if((dt >= 27) && dt < 29){
                 BjarnePosX+=4;
-                drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
+                drawImage(bjarneRight[getAnimationFrame(timer, 0.16, 3)], BjarnePosX, BjarnePosY, g);
             }
-            if(dt < 34 && BjarnePosX >=50){
+            if(dt <= 35 && dt > 26){
                 changeColor(white, g);
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
-                drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY FOR", "Times New Roman", 20, g);
-                drawText(110, 475, "THIS! I'll travel East to the town of Sepla to warn them. They need to ", "Times New Roman", 20, g);
-                drawText(110, 500, "be prepared.", "Times New Roman", 20, g);
+                drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY ", "Times New Roman", 20, g);
+                drawText(110, 475, "FOR THIS! I'll travel East to the town of Sepla to warn. They need to ", "Times New Roman", 20, g);
+                drawText(110, 500, "them be prepared.", "Times New Roman", 20, g);
             }
-            if(/*(dt > 25) &&*/ (dt < 30) && BjarnePosX >=50){
+            if((dt < 31) && dt >=29){
+                System.out.println(dt);
                 BjarnePosX += 4;
-                drawImage(bjarneRight[flameChange % 3], BjarnePosX, BjarnePosY, g);
+                drawImage(bjarneRight[getAnimationFrame(timer, 0.16, 3)], BjarnePosX, BjarnePosY, g);
             }
-            if(dt >=30 && dt < 32) {
+            if(dt >=31 && dt < 32) {
                 BjarnePosX -= 4;
-                drawImage(bjarneLeft[flameChange % 3], BjarnePosX, BjarnePosY, g);
+                drawImage(bjarneLeft[getAnimationFrame(timer, 0.16, 3)], BjarnePosX, BjarnePosY, g);
             }
-            if((dt >= 32) &&  dt < 35){
+            if((dt >= 32) &&  dt < 36){
                 BjarnePosX+=4;
-                drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
+                drawImage(bjarneRight[getAnimationFrame(timer, 0.16, 3)], BjarnePosX, BjarnePosY, g);
             }
-            if(dt >= 34){
+            if(dt >= 35){
                 if(!hit){
                     timer = 40;
                     hit = !hit;

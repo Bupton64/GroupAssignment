@@ -36,7 +36,7 @@ public class Credits extends extraFunctions{
         drawText(20, wordsScrollingY + 150, "- Wolf art from Naruto Ninja Council 3","Times New Roman", 20, g);
         drawText(20, wordsScrollingY + 175, "- Witch art from Lunar Legend","Times New Roman", 20, g);
         drawText(20, wordsScrollingY + 200, "- Wyvern art from Fire Emblem: Mystery of the Emblem","Times New Roman", 20, g);
-        drawText(20, wordsScrollingY + 225, "- Skeleton art form Castlevania: Bloodlines","Times New Roman", 20, g);
+        drawText(20, wordsScrollingY + 225, "- Skeleton art from Castlevania: Bloodlines","Times New Roman", 20, g);
         drawText(20, wordsScrollingY + 250, "- Giant art from Final Fantasy: Record Keeper","Times New Roman", 20, g);
         drawText(20, wordsScrollingY + 275, "- Vanguard art from Shining Force CD","Times New Roman", 20, g);
         drawText(20, wordsScrollingY + 300, "- Valliard art from Tales of Eternia","Times New Roman", 20, g);

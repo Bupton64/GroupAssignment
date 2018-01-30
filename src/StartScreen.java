@@ -29,13 +29,13 @@ public class StartScreen extends extraFunctions {
     Image paper2 = loadImage("paper2.png");
     Image sword = loadImage("sword.png");
     Image sword2 = loadImage("sword2.png");
-    Image logo = loadImage("BjournesWorld.png");
+    Image Logo = loadImage("BjournesWorld.png");
     Image equipmentSprite = loadImage("equipmentSprite.png");
     Image background3;
     Image StartBackground;
     Image swordSprite;
     Image swordSprite2;
-    Image Logo;
+    //Image Logo;
     int cursorPositionY = 230;
     int num = 0;
     double timer =0;
@@ -62,7 +62,7 @@ public class StartScreen extends extraFunctions {
         swordSprite = subImage(sword, 0, 0, 1793, 445);
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);
         background3 = subImage(equipmentSprite, 0, 0, 800, 600);
-        Logo = subImage(logo, 0, 0,518,91);
+        //Logo = subImage(logo, 0, 0,518,91);
         buttonSprite = subImage(buttonSpriteSheet,30,70,180,80);
         CreditsEnd = new Credits();
 
@@ -180,7 +180,7 @@ public class StartScreen extends extraFunctions {
             stopAudioLoop(credits);
             clearBackground(800 ,600, g);
             drawImage(background3, 0, 0, g);
-            drawImage(logo, 130, 80, g);
+            drawImage(Logo, 130, 80, g);
             drawImage(buttonSprite, 275, 197, 225, 60, g);
             drawImage(buttonSprite, 275, 197+80, 225, 60, g);
             drawImage(buttonSprite, 275, 197+160, 225, 60, g);
