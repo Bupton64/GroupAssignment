@@ -26,7 +26,7 @@ public class monster_Wyvern extends Monster {
         setAlive(true);
         setName("Wyvern");
         setEnergy(0);
-        setUpAbilityNumberI(temp, 0, "Swooping Claw", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 0, "Claw", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
         setUpAbilityNumberI(temp, 1, "Razor Bite", 0, 10, 0, 0, 0, false, 2, "", true, Ability.AbilityType.damage, "");
         setUpAbilityNumberI(temp, 2, "Body Slam", 0, 10, 0, 0, 4, false, 4, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
@@ -55,24 +55,24 @@ public class monster_Wyvern extends Monster {
         if(this.getCurrentHP() > this.getMaxHP()*0.8){
             if(this.getEnergy() > 1){
                 if(num > 30){
-                    return abilities[1].use(this); //< Razor Bite
+                    return abilities[1]; //< Razor Bite
                 } else {
-                    return abilities[0].use(this); //< Swooping Claw
+                    return abilities[0]; //< Swooping Claw
                 }
             } else{
-                return abilities[0].use(this); //< Swooping Claw
+                return abilities[0]; //< Swooping Claw
             }
         } else if(this.getCurrentHP() > this.getMaxHP() * 0.3){
             if(num > 70){
-                return abilities[1].use(this); //< Razor Bite
+                return abilities[1]; //< Razor Bite
             } else {
-                return abilities[0].use(this); //< Swooping Claw
+                return abilities[0]; //< Swooping Claw
             }
         } else{
             if(this.getEnergy() > 3){
-                return abilities[2].use(this); //< Body Slam
+                return abilities[2]; //< Body Slam
             } else{
-                return abilities[0].use(this); //< Swooping Claw
+                return abilities[0]; //< Swooping Claw
             }
         }
     }

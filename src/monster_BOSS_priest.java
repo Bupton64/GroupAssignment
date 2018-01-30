@@ -49,9 +49,9 @@ public class monster_BOSS_priest extends Monster {
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
         if(this.getEnergy() > 2){
-            return abilities[1].use(this);
+            return abilities[1];
         } else{
-            return abilities[0].use(this);
+            return abilities[0];
         }
     }
 

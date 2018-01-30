@@ -45,36 +45,36 @@ public class monster_Goblin extends Monster {
         if(getCurrentHP()>getMaxHP()*0.4){
             if(getEnergy()>2){
                 if(num>70){
-                    return abilities[2].use(this);
+                    return abilities[2];
                 } else if (num>35){
-                    return abilities[1].use(this);
+                    return abilities[1];
                 } else {
-                    return abilities[0].use(this);
+                    return abilities[0];
                 }
             } else if(getEnergy()>0){
                 if(num>60){
-                    return abilities[1].use(this);
+                    return abilities[1];
                 } else{
-                    return abilities[0].use(this);
+                    return abilities[0];
                 }
             } else{
-                return abilities[0].use(this);
+                return abilities[0];
             }
         } else{
             if(getEnergy()>2){
                 if(num>40){
-                    return abilities[2].use(this);
+                    return abilities[2];
                 } else {
-                    return abilities[1].use(this);
+                    return abilities[1];
                 }
             } else if(getEnergy()>0){
                 if(num>20){
-                    return abilities[1].use(this);
+                    return abilities[1];
                 } else{
-                    return abilities[0].use(this);
+                    return abilities[0];
                 }
             } else{
-                return abilities[0].use(this);
+                return abilities[0];
             }
         }
     }

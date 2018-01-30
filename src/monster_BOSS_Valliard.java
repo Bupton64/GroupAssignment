@@ -53,60 +53,60 @@ public class monster_BOSS_Valliard extends Monster {
         if(this.getCurrentHP() > this.getMaxHP()*0.7){
             if(this.getEnergy() > 2){
                 if(num > 60){
-                    return abilities[3].use(this);
+                    return abilities[3];
                 } else if (num >20){
-                    return abilities[4].use(this);
+                    return abilities[4];
                 } else if (num > 5){
-                    return abilities[2].use(this);
+                    return abilities[2];
                 } else {
-                    return abilities[0].use(this);
+                    return abilities[0];
                 }
             } else if (this.getEnergy() > 1){
                 if (num > 20){
-                    return abilities[2].use(this);
+                    return abilities[2];
                 } else {
-                    return abilities[0].use(this);
+                    return abilities[0];
                 }
             } else {
-                return abilities[0].use(this);
+                return abilities[0];
             }
         } else if (this.getCurrentHP() > this.getMaxHP()*0.4){
             if(this.getEnergy() > 3){
                 if(num > 30){
-                    return abilities[1].use(this);
+                    return abilities[1];
                 } else if (num >20){
-                    return abilities[4].use(this);
+                    return abilities[4];
                 } else if (num > 10){
-                    return abilities[2].use(this);
+                    return abilities[2];
                 } else {
-                    return abilities[0].use(this);
+                    return abilities[0];
                 }
             } else if(this.getEnergy() > 2){
                 if (num > 60){
-                    return abilities[4].use(this);
+                    return abilities[4];
                 } else if (num > 30){
-                    return abilities[2].use(this);
+                    return abilities[2];
                 } else {
-                    return abilities[0].use(this);
+                    return abilities[0];
                 }
             } else if (this.getEnergy() > 1){
                 if (num > 30){
-                    return abilities[2].use(this);
+                    return abilities[2];
                 } else {
-                    return abilities[0].use(this);
+                    return abilities[0];
                 }
             } else {
-                return abilities[0].use(this);
+                return abilities[0];
             }
         } else{
             if(this.getEnergy() > 3){
-                return abilities[1].use(this);
+                return abilities[1];
             } else if(this.getEnergy() > 2){
-                return abilities[4].use(this);
+                return abilities[4];
             } else if (this.getEnergy() > 1){
-                return abilities[2].use(this);
+                return abilities[2];
             } else {
-                return abilities[0].use(this);
+                return abilities[0];
             }
         }
 

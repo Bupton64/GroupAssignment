@@ -55,24 +55,24 @@ public class monster_vampire extends Monster {
         if(this.getCurrentHP() > this.getMaxHP()*0.8){
             if(this.getEnergy() > 1){
                 if(num > 30){
-                    return abilities[1].use(this); //< Swooping Strike
+                    return abilities[1]; //< Swooping Strike
                 } else {
-                    return abilities[0].use(this); //< Fang
+                    return abilities[0]; //< Fang
                 }
             } else{
-                return abilities[0].use(this); //< Fang
+                return abilities[0]; //< Fang
             }
         } else if(this.getCurrentHP() > this.getMaxHP() * 0.3){
             if(num > 70){
-                return abilities[1].use(this); //< Swooping Strike
+                return abilities[1]; //< Swooping Strike
             } else {
-                return abilities[0].use(this); //< Fang
+                return abilities[0]; //< Fang
             }
         } else{
             if(this.getEnergy() > 3){
-                return abilities[2].use(this); //< Vampiric Bite
+                return abilities[2]; //< Vampiric Bite
             } else{
-                return abilities[0].use(this); //< Fang
+                return abilities[0]; //< Fang
             }
         }
     }

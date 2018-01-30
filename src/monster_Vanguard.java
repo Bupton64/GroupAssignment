@@ -53,28 +53,28 @@ public class monster_Vanguard extends Monster{
         if(this.getCurrentHP() > this.getMaxHP()*0.6){
             if(this.getEnergy() > 1){
                 if(num > 70){
-                    return abilities[1].use(this); //< Cleave
+                    return abilities[1]; //< Cleave
                 } else {
-                    return abilities[0].use(this); //< Two Handed Smash
+                    return abilities[0]; //< Two Handed Smash
                 }
             } else {
-                return abilities[0].use(this); //< Two Handed Smash
+                return abilities[0]; //< Two Handed Smash
             }
         } else{
             if(this.getEnergy() > 4){
                 if(num > 40){
-                    return abilities[2].use(this); //< Whirling Axes
+                    return abilities[2]; //< Whirling Axes
                 } else {
-                    return abilities[1].use(this); //< Cleave
+                    return abilities[1]; //< Cleave
                 }
             } else if (this.getEnergy() > 1) {
                 if(num > 40) {
-                    return abilities[1].use(this); //< Cleave
+                    return abilities[1]; //< Cleave
                 } else{
-                    return abilities[0].use(this); //< Two Handed Smash
+                    return abilities[0]; //< Two Handed Smash
                 }
             } else {
-                return abilities[0].use(this); //< Two Handed Smash
+                return abilities[0]; //< Two Handed Smash
             }
         }
     }

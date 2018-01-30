@@ -54,28 +54,28 @@ public class monster_Skeleton extends Monster {
         if(this.getCurrentHP() > this.getMaxHP() *0.6){
             if (this.getEnergy() > 1){
                 if(num > 80){
-                    return abilities[1].use(this); //< Withering Touch
+                    return abilities[1]; //< Withering Touch
                 } else {
-                    return abilities[0].use(this); //< Skeletal Fist
+                    return abilities[0]; //< Skeletal Fist
                 }
             } else{
-                return abilities[0].use(this); //< Skeletal Fist
+                return abilities[0]; //< Skeletal Fist
             }
         } else{
             if(this.getEnergy() > 4){
                 if(num > 40) {
-                    return abilities[2].use(this); //< Sacrament
+                    return abilities[2]; //< Sacrament
                 } else {
-                    return abilities[0].use(this); //< Skeletal Fist
+                    return abilities[0]; //< Skeletal Fist
                 }
             } else if (this.getEnergy() > 1){
                 if(num > 70){
-                    return abilities[1].use(this); //< Withering Touch
+                    return abilities[1]; //< Withering Touch
                 } else {
-                    return abilities[0].use(this); //< Skeletal Fist
+                    return abilities[0]; //< Skeletal Fist
                 }
             } else {
-                return abilities[0].use(this); //< Skeletal Fist
+                return abilities[0]; //< Skeletal Fist
             }
         }
 

@@ -15,7 +15,7 @@ public class monster_darkCultist extends Monster {
         setAttack(20);
         setDefense(6);
         setLuck(4);
-        setSpeed(14);
+        setSpeed(10);
         setStrength(12);
         setXPGain(2790);
         setGoldMin(1020);
@@ -54,24 +54,24 @@ public class monster_darkCultist extends Monster {
         if(this.getCurrentHP() > this.getMaxHP() *0.6){
             if (this.getEnergy() > 1){
                 if(num > 80){
-                    return abilities[1].use(this); //< Plague
+                    return abilities[1]; //< Plague
                 } else {
-                    return abilities[0].use(this); //< Mind Assault
+                    return abilities[0]; //< Mind Assault
                 }
             } else{
-                return abilities[0].use(this); //< Mind Assault
+                return abilities[0]; //< Mind Assault
             }
         } else{
             if(this.getEnergy() > 4){
-                return abilities[2].use(this); //< Sacrament
+                return abilities[2]; //< Sacrament
             } else if (this.getEnergy() > 1){
                 if(num > 70){
-                    return abilities[1].use(this); //< Plague
+                    return abilities[1]; //< Plague
                 } else {
-                    return abilities[0].use(this); //< Mind Assault
+                    return abilities[0]; //< Mind Assault
                 }
             } else {
-                return abilities[0].use(this); //< Mind Assault
+                return abilities[0]; //< Mind Assault
             }
         }
 
