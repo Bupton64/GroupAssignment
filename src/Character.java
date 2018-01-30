@@ -437,7 +437,7 @@ public class Character extends Statblock {
         addItemToInventory(clothShoes);
         equipItem(clothShoes); // T0 Boots
 
-        item_Equipment robe = new item_Equipment("Traveller's Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
+        item_Equipment robe = new item_Equipment("Travellers Robe", 0, 0, 0, 0, 0, Item.Slot.chest, "For long journeys", 10, 0);
         addItemToInventory(robe);
         equipItem(robe); // T0 Chest
 
