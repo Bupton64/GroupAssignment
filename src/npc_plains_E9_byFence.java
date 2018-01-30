@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class npc_plains_E9_byFence extends  NPC {
 
     npc_plains_E9_byFence(){
-        setName("Talon");
+        setName("Edgar");
         spriteSheet = loadImage("chara4.png");
         sprite = subImage(spriteSheet,52,0,56,72);
         setMapPosX(550);
@@ -16,21 +16,12 @@ public class npc_plains_E9_byFence extends  NPC {
         spriteRight = new Image[3];
         spriteLeft = new Image[3];
 
+        loadImages();
+        initPath();
         initDialogue();
         loadDialogue = true;
     }
 
-    @Override
-    public void loadImages(){
-        super.loadImages();
-        //Load Images here
-        for(int i =0; i < 3;i++){
-            spriteDown[i] = subImage(spriteSheet, (52 * i), 0,52,72);
-            spriteLeft[i] = subImage(spriteSheet,(52 * i), 72,52,72);
-            spriteRight[i] = subImage(spriteSheet,(52 * i), 144,52,72);
-            spriteUp[i] = subImage(spriteSheet,(52 * i), 216,52,72);
-        }
-    }
 
     @Override
     public void setUpCollision(Collision collisionDetector,Map map){
@@ -44,8 +35,52 @@ public class npc_plains_E9_byFence extends  NPC {
     ///
     //////////////////////////////////////////
 
+    public void initPath() {
+        setMapPosX(550);
+        setMapPosY(450);
+        setMoveTimer(0);
+        setMoveDelay(0.2);
+        numOfLocations = 2;
+        currentLocation= 0;
+
+        Location = new NpcLocation[2];
+        for(int i = 0; i < numOfLocations;i++){
+            Location[i] = new NpcLocation();
+        }
+        Location[0].setUp(0,550,450, "left",180,1,60);
+        Location[1].setUp(1,370,450,"right",180,0,60);
+
+    }
+
+
+    @Override
+    public void loadImages(){
+        super.loadImages();
+        //Load Images here
+        for(int i =0; i < 3;i++){
+            spriteDown[i] = subImage(spriteSheet, (52 * i), 0,52,72);
+            spriteLeft[i] = subImage(spriteSheet,(52 * i), 72,52,72);
+            spriteRight[i] = subImage(spriteSheet,(52 * i), 144,52,72);
+            spriteUp[i] = subImage(spriteSheet,(52 * i), 216,52,72);
+        }
+
+        walkDuration = 0.32;
+    }
+
+
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
+        setMoveTimer(getMoveTimer() + dt);
+
+        if(getMoveTimer() > getMoveDelay()){
+            collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
+
+            if(startMovement(dt)){
+                currentLocation = Location[currentLocation].getNextLocation();
+            }
+
+            collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
+        }
 
     }
 
