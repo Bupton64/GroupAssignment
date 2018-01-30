@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Credits extends extraFunctions{
-
+    AudioClip credits;
     private int wordsScrollingY;
 
     public int getWordsScrollingY() {
@@ -14,6 +14,7 @@ public class Credits extends extraFunctions{
     }
 
     Credits(){
+
         wordsScrollingY = 600;
     }
 

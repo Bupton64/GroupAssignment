@@ -789,10 +789,6 @@ public class Menu extends extraFunctions {
                     drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
                     //drawBoldText(300, 300, Boolean.toString(none), g);
-                    changeColor(white, g);
-                    drawSolidRectangle(20, 280, 265, 300, g);
-                changeColor(black, g);
-
                 if (itemSelect) {
                         if (none == false) {
                             stats("head", g);
@@ -884,7 +880,6 @@ public class Menu extends extraFunctions {
             stopper2 = false;
         }
         changeColor(red, g);
-        drawBoldText(50, 290,"head = " + Boolean.toString(isHead), "Arial", 12, g);
     }
 
 
@@ -1021,10 +1016,10 @@ public class Menu extends extraFunctions {
         changeBackgroundColor(black,g);
         drawImage(background3, 0, 0, g);
         //drawImage(startBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
-        changeColor(black, g);
-        drawBoldText(330, 150, "Save Files", "Felix Titling", 30, g);
+        changeColor(purple, g);
+        drawBoldText(290, 120, "Save Files", "Felix Titling", 35, g);
         changeColor(red, g);
-        drawBoldText(280, 150 + 80, "Save_1", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 80, "Save_1", "Felix Titling", 20, g);
         if(loadOneDisplay) {
             changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
@@ -1035,7 +1030,7 @@ public class Menu extends extraFunctions {
             drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
-        drawBoldText(280, 150 + 160, "Save_2", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 160, "Save_2", "Felix Titling", 20, g);
         if(loadTwoDisplay) {
             changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
@@ -1046,7 +1041,7 @@ public class Menu extends extraFunctions {
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
-        drawBoldText(280, 150 + 240, "Save_3", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 240, "Save_3", "Felix Titling", 20, g);
         if(loadThreeDisplay) {
             changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
@@ -1058,8 +1053,8 @@ public class Menu extends extraFunctions {
         }
 
 
-        drawImage(swordSprite, 600, menuPointerPosY - 20, 89, 22, g);
-        drawImage(swordSprite2, 150, menuPointerPosY - 20, 89, 22, g);
+        drawImage(swordSprite, 620, menuPointerPosY - 20, 89, 22, g);
+        drawImage(swordSprite2, 100, menuPointerPosY - 20, 89, 22, g);
     }
 
     ////////////////////////////////////
