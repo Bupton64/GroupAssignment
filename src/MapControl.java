@@ -423,8 +423,13 @@ public class MapControl extends extraFunctions {
 
 
                     if (playerMan.getQuestStage() == 25) {
-                        mapNpcs[0] = new npc_plains_quest6_collectable(540,130);
-                        numOfNpc = 1;
+                        if(playerMan.getNpcDeaths() == 0  || playerMan.getNpcDeaths() == 1) {
+                            mapNpcs[0] = new npc_plains_quest6_collectable(540, 130);
+                            numOfNpc = 1;
+                        }else{
+                            mapNpcs[1] = new npc_plains_quest6_collectable(540, 130);
+                            numOfNpc = 2 ;
+                        }
                     }
                     break;
                 case 52:
