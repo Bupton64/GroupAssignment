@@ -9,7 +9,7 @@ public class item_elixir extends Item {
         this.setTooltip("Fully rejuvenates a user");
         this.setUseableOustideCombat(true);
         this.setSellPrice(90);
-        this.setBuyPrice(1040);
+        this.setBuyPrice(5000);
     }
 
     @Override

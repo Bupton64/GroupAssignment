@@ -26,7 +26,7 @@ public class itemShop extends shop {
         inventory[1] = new item_Antidote();
         inventory[2] = new item_SpeedPotion();
         inventory[3] = new item_Eyedrops();
-        inventory[4] = new item_scrollOfKnowledge();
+        inventory[4] = new item_wisdomStone();
         inventory[5] = new item_soulStone();
         inventory[6] = new item_HealingSalve();
         inventory[7] = new item_megaPotion();

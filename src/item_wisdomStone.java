@@ -1,11 +1,11 @@
-public class item_scrollOfKnowledge extends Item {
+public class item_wisdomStone extends Item {
 
-    public item_scrollOfKnowledge() {
+    public item_wisdomStone() {
         this.setNumericValue(100);
         this.setEquippable(false);
         this.setSlot(Slot.bag);
         this.setCounter(1);
-        this.setName("Scroll of Knowledge");
+        this.setName("Wisdom Stone");
         this.setTooltip("Gives 100 EXP");
         this.setUseableOustideCombat(true);
         this.setSellPrice(50);
