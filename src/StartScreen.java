@@ -35,7 +35,7 @@ public class StartScreen extends extraFunctions {
     Image swordSprite;
     Image swordSprite2;
     Image Logo;
-    int cursorPositionY = 150;
+    int cursorPositionY = 230;
     int num = 0;
     double timer =0;
     boolean startup = true;
@@ -174,18 +174,20 @@ public class StartScreen extends extraFunctions {
         //drawBoldText(100, 100, Double.toString(timer), g);
 
         if(intro == false) {
+            stopAudioLoop(credits);
             clearBackground(800 ,600, g);
             drawImage(background3, 0, 0, g);
-            drawImage(swordSprite, 500, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
-            drawImage(swordSprite2, 250, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
+            drawImage(logo, 130, 80, g);
+            drawImage(swordSprite, 520-(cursorPositionY/10)*2, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
+            drawImage(swordSprite2, 167+(cursorPositionY/10)*2, cursorPositionY - 20, 1793 / 20, 445 / 20, g);
 
             changeColor(black, g);
 
             changeColor(red, g);
-            drawBoldText(358, 150, "New Game", "Felix Titling", 20, g);
-            drawBoldText(352, 150 + 80, "Load game", "Felix Titling", 20, g);
-            drawBoldText(370, 150 + 160, "Credits", "Felix Titling", 20, g);
-            drawBoldText(395, 150 + 240, "Exit", "Felix Titling", 20, g);
+            drawBoldText(328, 230, "New Game", "Felix Titling", 20, g);
+            drawBoldText(322, 230 + 80, "Load game", "Felix Titling", 20, g);
+            drawBoldText(340, 230 + 160, "Credits", "Felix Titling", 20, g);
+            drawBoldText(365, 230 + 240, "Exit", "Felix Titling", 20, g);
             startup = false;
         }
 
@@ -417,32 +419,32 @@ public class StartScreen extends extraFunctions {
             stopAudioLoop(introMusic);
             intro = false;
         }
-        if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
+        if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 470) {
             playAudio(clicks);
 
             cursorPositionY += 80;
         }
-        if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 150) {
+        if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 230) {
             cursorPositionY -= 80;
 
             playAudio(clicks);
 
         }
-        if (((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 390)) {
+        if (((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 470)) {
             System.exit(23);
         }
-        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 150)&& !startup){
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 230)&& !startup){
             playAudio(exitClick);
             player = new Character();
             return 7;
         }
-        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 230)){
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 310)){
             playAudio(p2);
             state = startState.loadScreen;
         }
-        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 310)) {
+        if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 390)) {
            playAudio(exitClick);
-            startAudioLoop(credits, +2);
+            startAudioLoop(credits, +5);
            state = startState.credits;
            CreditsEnd.setWordsScrollingY(600);
         }
