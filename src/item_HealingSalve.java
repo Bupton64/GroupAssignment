@@ -1,12 +1,12 @@
 public class item_HealingSalve extends Item {
 
     public item_HealingSalve(){
-        this.setNumericValue(100);
+        this.setNumericValue(200);
         this.setEquippable(false);
         this.setSlot(Slot.bag);
         this.setCounter(1);
         this.setName("Healing Salve");
-        this.setTooltip("Restores 100 HP");
+        this.setTooltip("Restores 200 HP");
         this.setUseableOustideCombat(true);
         this.setSellPrice(90);
         this.setBuyPrice(300);
