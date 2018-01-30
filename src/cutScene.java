@@ -291,7 +291,7 @@ public class cutScene extends extraFunctions {
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
                 drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY FOR", "Times New Roman", 20, g);
-                drawText(110, 475, "THIS! I'll travel East to the town of ______ to warn them. They need to ", "Times New Roman", 20, g);
+                drawText(110, 475, "THIS! I'll travel East to the town of Sepla to warn them. They need to ", "Times New Roman", 20, g);
                 drawText(110, 500, "be prepared.", "Times New Roman", 20, g);
             }
             if(timer > 40){
