@@ -214,8 +214,7 @@ public class AdventureMode extends GameEngine {
             case 13:
                 state = GameState.finalCutscene;
                 break;
-            case 14:
-                state = GameState.razuulCutsceneAlternate;
+
         }
        stateChanger = 0;
 
@@ -285,8 +284,10 @@ public class AdventureMode extends GameEngine {
                 break;
             case razuulCutscene:
                 razuulCutsceneController.updateTimer(dt);
+                break;
             case finalCutscene:
                 finalCutsceneController.updateTimer(dt);
+                break;
         }
         if(fadeState){
 
@@ -301,7 +302,6 @@ public class AdventureMode extends GameEngine {
                 }
 
                 if(timer > 1.5) {
-
                     fadeState = false;
                 }
             }
@@ -447,8 +447,10 @@ public class AdventureMode extends GameEngine {
                 break;
             case razuulCutscene:
                 stateChanger = razuulCutsceneController.keyPressed(e);
+                break;
             case finalCutscene:
                 stateChanger = finalCutsceneController.keyPressed(e);
+                break;
         }
         if(e.getKeyCode() == KeyEvent.VK_M){
             mute = !mute;

@@ -256,7 +256,7 @@ public class Combat extends extraFunctions{
 
         //replace circle with portrait later
         changeColor(white,g);
-        drawText(600,23,enemy.getName(),textFont,20,g);
+        drawText(580,23,enemy.getName(),textFont,20,g);
         drawBoldText(600,47,Integer.toString((int)enemy.getCurrentHP()) + "/" + Integer.toString((int)enemy.getMaxHP()),textFont, 15,g);
 
 

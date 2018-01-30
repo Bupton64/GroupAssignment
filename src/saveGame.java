@@ -439,7 +439,7 @@ public class saveGame {
             item_Equipment leatherBrace = new item_Equipment("Leather Bracers", 0, 1, 0, 1, 0, Item.Slot.accessory, "Extra protection", 450, 4000);
             temp.addItemToInventory(leatherBrace);
         }else if(name.equals("Steel Gauntlets")){
-            item_Equipment steelGaunt = new item_Equipment("Steel Gauntlets", 0, 0, 2, 0, 0, Item.Slot.accessory, "Strong, edged plating", 1700, 4500);
+            item_Equipment steelGaunt = new item_Equipment("Steel Gauntlets", 0, 0, 2, 0, 2, Item.Slot.accessory, "Strong, edged plating", 1700, 4500);
             temp.addItemToInventory(steelGaunt); // After 2nd unlock
         }else if(name.equals("Hide Bracers")){
             item_Equipment hide = new item_Equipment("Hide Bracers", 0, 2, 0, 0, 0, Item.Slot.accessory, "Forearm guard", 1900, 3800);
@@ -662,7 +662,7 @@ public class saveGame {
             temp.addItemToInventory(leatherBrace);
             temp.equipItem(leatherBrace);
         }else if(name.equals("Steel Gauntlets")){
-            item_Equipment steelGaunt = new item_Equipment("Steel Gauntlets", 0, 0, 2, 0, 0, Item.Slot.accessory, "Strong, edged plating", 1700, 4500);
+            item_Equipment steelGaunt = new item_Equipment("Steel Gauntlets", 0, 0, 2, 0, 2, Item.Slot.accessory, "Strong, edged plating", 1700, 4500);
             temp.addItemToInventory(steelGaunt);
             temp.equipItem(steelGaunt);
         }else if(name.equals("Hide Bracers")){
