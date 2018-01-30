@@ -1679,11 +1679,36 @@ public class Combat extends extraFunctions{
         }
 
 
+    }
 
 
+    public void drawEnemy(Graphics2D g) {
+        if (enemy.getName().equals("Wyvern") ) {
+            drawImage(enemy.getSprite(), enemy.getCombatPosX()-100, enemy.getCombatPosY()-100, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
+        } else if(enemy.getName().equals("Priest") || enemy.getName().equals("Razuul")|| enemy.getName().equals("Valliard")) {
+            drawImage(enemy.getSprite(), enemy.getCombatPosX()-50, enemy.getCombatPosY()-50, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
+        }else{
+            drawImage(enemy.getSprite(), enemy.getCombatPosX(), enemy.getCombatPosY(), enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
+
+        }
+    }
 
 
-
+    public int updateStageAfterBoss(){
+        if(enemy.getName() == "Priest"){
+            player.setQuestStage(16);
+            return 8;
+        }else if(enemy.getName() == "Therox"){
+            player.setQuestStage(player.getQuestStage() + 1);
+            return 13;
+        }else if(enemy.getName() == "Razuul") {
+            if(player.getQuestStage() == 20) {
+                player.setQuestStage(21);
+            }
+            return 1;
+        } else{
+            return 1;
+        }
 
     }
 
@@ -1745,16 +1770,7 @@ public class Combat extends extraFunctions{
 
     }
 
-    public void drawEnemy(Graphics2D g) {
-        if (enemy.getName().equals("Wyvern") ) {
-            drawImage(enemy.getSprite(), enemy.getCombatPosX()-100, enemy.getCombatPosY()-100, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
-        } else if(enemy.getName().equals("Priest") || enemy.getName().equals("Razuul")|| enemy.getName().equals("Valliard")) {
-            drawImage(enemy.getSprite(), enemy.getCombatPosX()-50, enemy.getCombatPosY()-50, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
-        }else{
-            drawImage(enemy.getSprite(), enemy.getCombatPosX(), enemy.getCombatPosY(), enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
 
-        }
-    }
 
 
 
@@ -1779,13 +1795,8 @@ public class Combat extends extraFunctions{
         }
         updateLog(dt);
         if(!player.getCombatActive()){
-            if(enemy.getName() == "Priest"){
-                return 8;
-            }else if(enemy.getName() == "Therox"){
-                return 13;
-            }else{
-                return 1;
-            }
+           return updateStageAfterBoss();
+
         }
 
         if(state == CombatState.playerDeath){
