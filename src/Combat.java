@@ -979,7 +979,7 @@ public class Combat extends extraFunctions{
 
                 makeEscape = true;
 
-                if(enemy.getName() == "Valliard" ){
+                if(enemy.getName() == "Valliard" ||enemy.getName() == "Priest" || enemy.getName() == "Razuul" || enemy.getName() == "Therox"){
                     makeEscape = false;
                 }
             }
@@ -1058,9 +1058,7 @@ public class Combat extends extraFunctions{
             enemy.addEnergy(1);
         }
         enemyHasSpentEnergy = false;
-        System.out.println(enemy.getEnergy());
         enemyLastAbility = enemy.moveChoice();
-        System.out.println(enemy.getEnergy());
         if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
             enemyMakeAttack = true;
         } else if (enemyLastAbility.getType() == Ability.AbilityType.buff) {
@@ -1748,9 +1746,9 @@ public class Combat extends extraFunctions{
     }
 
     public void drawEnemy(Graphics2D g) {
-        if (enemy.getName().equals("Wyvern") || enemy.getName().equals("Valliard")) {
+        if (enemy.getName().equals("Wyvern") ) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-100, enemy.getCombatPosY()-100, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
-        } else if(enemy.getName().equals("Priest") || enemy.getName().equals("Razuul")) {
+        } else if(enemy.getName().equals("Priest") || enemy.getName().equals("Razuul")|| enemy.getName().equals("Valliard")) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-50, enemy.getCombatPosY()-50, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
         }else{
             drawImage(enemy.getSprite(), enemy.getCombatPosX(), enemy.getCombatPosY(), enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);

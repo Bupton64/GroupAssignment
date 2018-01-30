@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 public class AdventureMode extends GameEngine {
     public static void main(String[] args) {
-        createGame(new AdventureMode(), 30);
+        createGame(new AdventureMode(), 40);
     }
 
 

@@ -65,7 +65,7 @@ public class npc_plains_A11_Razuul extends NPC{
         Dialogue d1 = new Dialogue(null, true, true, "What a surprise it is to see you here little man! Wanted another", "crack at taking down the mighty Razuul did you? Well come", "and get it!", "");
         listOne = d1;
 
-        Dialogue d3 = new Dialogue(null, true, true, "*You lose your shit and charge at Razuul*", "", "", "");
+        Dialogue d3 = new Dialogue(null, false, true, "*You lose your shit and charge at Razuul*", "", "", "");
         Dialogue d2 = new Dialogue(d3, false, false, "Oooh she was delicious! Maybe after im finished with you, I'll go ", "pay that town another visit!", "", "");
         listTwo = d2;
     }
@@ -106,16 +106,22 @@ public class npc_plains_A11_Razuul extends NPC{
     public boolean keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+
             if (currentDialogue.next == null) {
-                if (currentDialogue.getOptionPosY() == 375) {
-                    summonMonster = true;
-                }else {
-                    if (npcDeaths == 0 || npcDeaths == 1) {
+                if (npcDeaths == 0 || npcDeaths == 1) {
+                    if (currentDialogue.getOptionPosY() == 375) {
+                        summonMonster = true;
+                    } else {
+
                         killnpc = true;
                         currentDialogue = listTwo;
+
                     }
+                }else{
+                    summonMonster = true;
                 }
             }
+
         }
 
         return super.keyPressed(e);
