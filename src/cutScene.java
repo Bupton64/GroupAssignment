@@ -252,7 +252,7 @@ public class cutScene extends extraFunctions {
 
                 runSpeed+=2;
                 drawImage(spriteDown[flameChange % 3], posX + 857, posY + 1000 + runSpeed, g);
-                //drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
+                drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
                 height = runSpeed;
             }
             if(render) {

@@ -129,7 +129,7 @@ public class npc_wizard extends  NPC {
 
         Dialogue d27 = new Dialogue(null,true,true,"Will you go find Dijkstra?","","","");
         Dialogue d26 = new Dialogue(d27,false,false,"Our only hope is a wanderer West of town, his name is Dijkstra.","He was a great warrior who fought with logic and vigor.","Please go find him and ask for his help!","");
-        Dialogue d25 = new Dialogue(d26,false,false,"You did it! Good job! Good to see Sally back in town.","Although while you were gone...","Therox managed to find a way into town. ","");
+        Dialogue d25 = new Dialogue(d26,false,false,"You did it! Good job! Good to see Sally back in town.","I can sense Therox getting closer and growing stronger. I'm afraid","if we don't do something soon, it may be too late...","");
         listFourteen = d25;
 
         Dialogue d025 = new Dialogue(d26,false,false,"I saw from the crystals what happened. ","Today is a day of mourning, Do not blame yourself Bjarne.","Unfortunately every second we delay, they get stronger.","");

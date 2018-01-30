@@ -2,14 +2,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class npc_plains_SevarsGrave extends  NPC {
+public class npc_plains_SevarsWifeGrave extends  NPC {
 
 
-    npc_plains_SevarsGrave(){
-        setName("Grave:");
-        spriteSheet = loadImage("grave.png");
-        sprite = subImage(spriteSheet,0,0,56,72);
-        setMapPosX(620);
+    npc_plains_SevarsWifeGrave(){
+        setName("Grave");
+        spriteSheet = loadImage("NPCwithoutSprite.png");
+        sprite = subImage(spriteSheet,0,0,1,1);
+        setMapPosX(570);
         setMapPosY(220);
 
         initDialogue();
@@ -45,7 +45,7 @@ public class npc_plains_SevarsGrave extends  NPC {
 
     public void initDialogue() {
 
-        Dialogue d1 = new Dialogue(null,false,true,"Here lies Sevar. A once great and powerful wizard who sacrificed","himself in order to save the town.","","Rest in Peace.");
+        Dialogue d1 = new Dialogue(null,false,true,"Here rests Sevars' beloved wife.","","","");
         listOne = d1;
     }
 
