@@ -54,17 +54,17 @@ public class quest_AWanderingSoul extends Quest {
     public void drawQuest(Graphics2D g){
         changeColor(black, g);
         if(getState() == questState.preQuest) {
-            drawText(40, 400, "Find Dijkstra", "Arial", 20, g);
+            drawText(40, 460, "Find Dijkstra", "Arial", 20, g);
 
         }
         if(getState() == questState.inQuest){
-            drawText(40, 400, "Find the painting in the church", "Arial", 20, g);
+            drawText(40, 460, "Find the painting in the church", "Arial", 20, g);
         }
         if(getState() == questState.completedQuest){
-            drawText(40, 400, "Go to Camrath", "Arial", 20, g);
+            drawText(40, 460, "Go to Camrath", "Arial", 20, g);
         }
         if(getState() == questState.extraQuest){
-            drawText(40, 400, "Return to Sevar", "Arial", 20, g);
+            drawText(40, 460, "Return to Sevar", "Arial", 20, g);
         }
     }
 }

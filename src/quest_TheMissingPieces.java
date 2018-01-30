@@ -55,14 +55,14 @@ public class quest_TheMissingPieces extends Quest {
     public void drawQuest(Graphics2D g){
         changeColor(black, g);
         if(getState() == questState.preQuest){
-            drawText(40, 400,"Return to Sevar", "Arial", 20, g);
+            drawText(40, 460,"Return to Sevar", "Arial", 20, g);
         }
         if(getState() == questState.inQuest) {
-            drawText(40, 400, numOfCollectables +"/7 Crystals Collected", "Arial", 20, g);
+            drawText(40, 460, numOfCollectables +"/7 Crystals Collected", "Arial", 20, g);
 
         }
         if(getState() == questState.completedQuest){
-            drawText(40, 400, "Return to Sevar", "Arial", 20, g);
+            drawText(40, 460, "Return to Sevar", "Arial", 20, g);
         }
 
     }

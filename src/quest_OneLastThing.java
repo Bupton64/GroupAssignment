@@ -40,17 +40,17 @@ public class quest_OneLastThing extends Quest {
     public void drawQuest(Graphics2D g){
         changeColor(black, g);
         if(getState() == questState.preQuest) {
-            drawText(40, 400, "Head to Sevars House", "Arial", 20, g);
+            drawText(40, 460, "Head to Sevars House", "Arial", 20, g);
 
         }
         if(getState() == questState.inQuest){
-            drawText(40, 400, "End Therox", "Arial", 20, g);
+            drawText(40, 460, "End Therox", "Arial", 20, g);
         }
         if(getState() == questState.completedQuest){
-            drawText(40, 400, "Go to Camrath", "Arial", 20, g);
+            drawText(40, 460, "Go to Camrath", "Arial", 20, g);
         }
         if(getState() == questState.extraQuest){
-            drawText(40, 400, "Return to Sevar", "Arial", 20, g);
+            drawText(40, 460, "Return to Sevar", "Arial", 20, g);
         }
     }
 }
