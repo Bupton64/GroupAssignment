@@ -271,9 +271,12 @@ public class cutScene extends extraFunctions {
             }
             if(dt >=18 && dt < 20){
                 if(wizardPosY <= 50) {
+                    drawImage(wizardDown[flameChange % 3], wizardPosX, wizardPosY, g);
                     wizardPosY += 2;
+                } else{
+                    drawImage(wizardDown[1], wizardPosX, 50, g);
                 }
-                drawImage(wizardDown[flameChange % 3], wizardPosX, wizardPosY, g);
+
                 timePast = timer + 5;
             }
             if((posY >= 0) && (wizardPosY >= 50) && dt >= 20 && dt < 24){
