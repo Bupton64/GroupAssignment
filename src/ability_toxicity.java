@@ -16,20 +16,20 @@ public class ability_toxicity extends Ability {
 
     @Override
     public Ability use(Statblock user){
-        Ability toxic = new ability_toxicity();
+        //Ability toxic = new ability_toxicity();
         int poisonChance = (int)(Math.random()*100);
-        toxic.setLastStatus(null);
-        toxic.setLastStatusDuration(0);
+        setLastStatus(null);
+        setLastStatusDuration(0);
         if (poisonChance > 30) {
-            toxic.setLastStatus(Statblock.Status.Poison);
-            toxic.setLastStatusDuration(4);
+            setLastStatus(Statblock.Status.Poison);
+            setLastStatusDuration(4);
             int rand = (int) (Math.random() * 8);
-            toxic.setDamageOverTime(rand + user.getLevel() * 3);
+            setDamageOverTime(rand + user.getLevel() * 3);
             this.setDisplayString("Your foe's blood boils!");
         } else{
             this.setDisplayString("Nothing happened!");
         }
-        return toxic;
+        return this;
     }
 
 }

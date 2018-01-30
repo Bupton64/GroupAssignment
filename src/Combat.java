@@ -506,6 +506,7 @@ public class Combat extends extraFunctions{
         s4 = false;
         s5 = false;
 
+        System.out.println("0");
         if (!useItem){
             if (lastAbility.getType() == Ability.AbilityType.damage) {
                 castBasicAttack = true;
@@ -513,6 +514,7 @@ public class Combat extends extraFunctions{
                 castBuff = true;
             } else if (lastAbility.getType() == Ability.AbilityType.curse) {
                 castCurse = true;
+                System.out.println("3");
             }
         }
 
@@ -545,10 +547,17 @@ public class Combat extends extraFunctions{
     }
 
     public void castCurseSpell(){
+        System.out.println("1'");
         lastAbility.use(player);
-        enemy.setLastStatusDuration(lastAbility.getLastStatusDuration());
-        enemy.setLastStatusEffect(lastAbility.getLastStatus());
-        enemy.setLastStatusDamage(lastAbility.getDamageOverTime());
+        if(lastAbility.getLastStatus() == Statblock.Status.Poison){
+            System.out.println("2");
+            enemy.setLastStatusDuration(lastAbility.getLastStatusDuration());
+            enemy.setLastStatusEffect(lastAbility.getLastStatus());
+            enemy.setLastStatusDamage(lastAbility.getDamageOverTime());
+            statusLog = enemy.getName() + " was poisoned";
+
+        }
+        player.setEnergy(player.getEnergy()-lastAbility.getEnergyCost());
         castCurse = false;
     }
 
@@ -1197,6 +1206,8 @@ public class Combat extends extraFunctions{
                        // enemyEndTurn();
                         if(player.isAlive()) {
                             enemy.takeDamage((int) enemy.getLastStatusDamage());
+
+                            enemyEndTurn();
                             pushString(statusLog,false,false);
                         }else{
                             fadeState = true;
