@@ -54,9 +54,9 @@ public class monster_giant extends Monster {
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
         if(this.getEnergy() == 5){
-            return abilities[1].use(this); //< Use Hammer Down
+            return abilities[1]; //< Use Hammer Down
         } else{
-            return abilities[0].use(this); //< Use Charge Up
+            return abilities[0]; //< Use Charge Up
         }
     }
 

@@ -54,32 +54,32 @@ public class monster_Witch extends Monster {
         if(getCurrentHP()>getMaxHP()*0.5){
             if(getEnergy()>1){
                 if(num>70){
-                    return abilities[1].use(this); //< Use Snowblast
+                    return abilities[1]; //< Use Snowblast
                 } else if(num>50){
-                    return abilities[3].use(this); //< Use Blinding Light
+                    return abilities[3]; //< Use Blinding Light
                 } else {
-                    return abilities[0].use(this); //< Use Freezing Ray
+                    return abilities[0]; //< Use Freezing Ray
                 }
             }  else{
-                return abilities[0].use(this); //< Use Freezing Ray
+                return abilities[0]; //< Use Freezing Ray
             }
         } else{
             if(getEnergy()>4){
                 if(num>30) {
-                    return abilities[2].use(this); //< Use Ice Storm
+                    return abilities[2]; //< Use Ice Storm
                 } else if ( num > 10) {
-                    return abilities[3].use(this); //< Use Blinding Light
+                    return abilities[3]; //< Use Blinding Light
                 } else {
-                    return abilities[0].use(this); //< Use Freezing Ray
+                    return abilities[0]; //< Use Freezing Ray
                 }
             } else if(getEnergy()>1){
                 if(num>50){
-                    return abilities[1].use(this); //< Use Snowblast
+                    return abilities[1]; //< Use Snowblast
                 } else{
-                    return abilities[0].use(this); //< Use Freezing Ray
+                    return abilities[0]; //< Use Freezing Ray
                 }
             } else{
-                return abilities[0].use(this); //< Use Freezing Ray
+                return abilities[0]; //< Use Freezing Ray
             }
         }
     }

@@ -22,7 +22,7 @@ public class monster_BOSS_razuulEmpowered extends Monster {
         setMaxHP(1200);
         setLevel(15);
         setAlive(true);
-        setName("Razuul Empowered");
+        setName("Razuul");
         setEnergy(0);
 
         Image sprite = loadImage("monster_lich.png");
@@ -63,80 +63,80 @@ public class monster_BOSS_razuulEmpowered extends Monster {
         if(this. getCurrentHP() > this.getMaxHP() *0.8){
             if(this.getEnergy() > 3){
                 if(num > 90){
-                    return abilities[3].use(this); //< Use Lich's Power (Cost 4)
+                    return abilities[3]; //< Use Lich's Power (Cost 4)
                 } else if (num > 55){
-                    return abilities[2].use(this); //< Use Lich's Breath (Cost 2)
-                } else if (num > 20){
-                    return abilities[1].use(this); //< Use Lich's Life (Cost 3)
+                    return abilities[2]; //< Use Lich's Breath (Cost 2)
+                } else if (num > 45){
+                    return abilities[1]; //< Use Lich's Life (Cost 3)
                 } else {
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0]; //< Use Lich's Touch (Cost -1)
                 }
             } else if (this.getEnergy() > 2){
                 if(num > 60){
-                    return abilities[2].use(this); //< Use Lich's Breath (Cost 2)
-                } else if (num > 20){
-                    return abilities[1].use(this); //< Use Lich's Life (Cost 3)
+                    return abilities[2]; //< Use Lich's Breath (Cost 2)
+                } else if (num > 50){
+                    return abilities[1]; //< Use Lich's Life (Cost 3)
                 } else {
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0]; //< Use Lich's Touch (Cost -1)
                 }
             } else if (this.getEnergy() > 1){
                 if(num > 50){
-                    return abilities[2].use(this); //< Use Lich's Breath (Cost 2)
+                    return abilities[2]; //< Use Lich's Breath (Cost 2)
                 } else {
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0]; //< Use Lich's Touch (Cost -1)
                 }
             } else {
-                return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                return abilities[0]; //< Use Lich's Touch (Cost -1)
             }
         } else if (this.getCurrentHP() > this.getMaxHP() * 0.4){ //Between 40-80% Uses best available ability or builds energy
             if (this.getEnergy() > 3){
                 if(num >40) {
-                    return abilities[3].use(this); //< Use Lich's Power (Cost 4)
+                    return abilities[3]; //< Use Lich's Power (Cost 4)
                 } else {
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0]; //< Use Lich's Touch (Cost -1)
                 }
             } else if (this.getEnergy() > 2){
-                if(num > 20) {
-                    return abilities[1].use(this); //< Use Lich's Life (Cost 3)
+                if(num > 70) {
+                    return abilities[1]; //< Use Lich's Life (Cost 3)
                 } else {
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0]; //< Use Lich's Touch (Cost -1)
                 }
             } else if (this.getEnergy() > 1){
                 if(num > 21){
-                    return abilities[2].use(this); //< Use Lich's Breath (Cost 2)
+                    return abilities[2]; //< Use Lich's Breath (Cost 2)
                 } else {
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0];//< Use Lich's Touch (Cost -1)
                 }
             } else {
-                return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                return abilities[0]; //< Use Lich's Touch (Cost -1)
             }
         } else {
             if(this.getEnergy() > 4){
                 return abilities[4].use(this); //< Use Undeath (Cost 5)
             } else if (this.getEnergy() > 3){
                 if (num > 20){
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0]; //< Use Lich's Touch (Cost -1)
                 } else if (num > 10){
-                    return abilities[2].use(this); //< Use Lich's Breath (Cost 2)
+                    return abilities[2]; //< Use Lich's Breath (Cost 2)
                 } else {
-                    return abilities[1].use(this); //< Use Lich's Life (Cost 3)
+                    return abilities[1]; //< Use Lich's Life (Cost 3)
                 }
             } else if (this.getEnergy() > 2){
                 if (num > 19){
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0];//< Use Lich's Touch (Cost -1)
                 } else if (num > 10){
-                    return abilities[2].use(this); //< Use Lich's Breath (Cost 2)
+                    return abilities[2]; //< Use Lich's Breath (Cost 2)
                 } else {
-                    return abilities[1].use(this); //< Use Lich's Life (Cost 3)
+                    return abilities[1]; //< Use Lich's Life (Cost 3)
                 }
             } else if (this.getEnergy() > 1){
                 if (num > 20){
-                    return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                    return abilities[0]; //< Use Lich's Touch (Cost -1)
                 } else{
-                    return abilities[2].use(this); //< Use Lich's Breath (Cost 2)
+                    return abilities[2]; //< Use Lich's Breath (Cost 2)
                 }
             } else {
-                return abilities[0].use(this); //< Use Lich's Touch (Cost -1)
+                return abilities[0]; //< Use Lich's Touch (Cost -1)
             }
         }
 

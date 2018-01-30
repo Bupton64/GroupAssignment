@@ -51,9 +51,9 @@ public class monster_troll extends Monster {
         int num =(int)(Math.random()*100);
         Ability [] abilities = this.getAbilities();
         if(this.getEnergy() == 5){
-            return abilities[1].use(this); //< Use Axe Smash
+            return abilities[1]; //< Use Axe Smash
         } else{
-            return abilities[0].use(this); //< Use Enrage
+            return abilities[0]; //< Use Enrage
         }
     }
 

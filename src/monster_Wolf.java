@@ -52,62 +52,62 @@ public class monster_Wolf extends Monster {
         if(this.getCurrentHP()>0.8*this.getMaxHP()){//< If greater than 80% hp
             if(this.getEnergy()>=4){
                 if(num>90){
-                    return abilities[2].use(this); //< Use Rend
+                    return abilities[2]; //< Use Rend
                 } else if (num>70){
-                    return abilities[1].use(this); //< Use Roar
+                    return abilities[1]; //< Use Roar
                 } else if(num>50){
-                    return abilities[3].use(this); //< Use Rabid Fang
+                    return abilities[3]; //< Use Rabid Fang
                 } else{
-                    return abilities[0].use(this); //< Use Basic
+                    return abilities[0]; //< Use Basic
                 }
             } else if(this.getEnergy()>=2){
                 if(num>80){
-                    return abilities[1].use(this); //< Use Roar
+                    return abilities[1]; //< Use Roar
                 } else if(num >50){
-                    return abilities[3].use(this); //< Use Rabid Fang
+                    return abilities[3]; //< Use Rabid Fang
                 } else{
-                    return abilities[0].use(this); //< Use Basic
+                    return abilities[0]; //< Use Basic
                 }
             } else{
-                return abilities[0].use(this); //< Use Basic
+                return abilities[0]; //< Use Basic
             }
         } else if(this.getCurrentHP()>0.3*this.getMaxHP()){//< If greater than 30% hp
             if(this.getEnergy()>=4){
                 if(num>70){
-                    return abilities[2].use(this); //< Use Rend
+                    return abilities[2]; //< Use Rend
                 } else if (num>50){
-                    return abilities[1].use(this); //< Use Roar
+                    return abilities[1]; //< Use Roar
                 } else if(num>30){
-                    return abilities[3].use(this); //< Use Rabid Fang
+                    return abilities[3]; //< Use Rabid Fang
                 } else{
-                    return abilities[0].use(this); //< Use Basic
+                    return abilities[0]; //< Use Basic
                 }
             } else if(this.getEnergy()>=2){
                 if(num>70){
-                    return abilities[1].use(this); //< Use Roar
+                    return abilities[1]; //< Use Roar
                 } else{
-                    return abilities[0].use(this); //< Use Basic
+                    return abilities[0]; //< Use Basic
                 }
             } else{
-                return abilities[0].use(this); //< Use Basic
+                return abilities[0]; //< Use Basic
             }
         } else{
             if(this.getEnergy()>=4){
                 if(num>40){
-                    return abilities[2].use(this); //< Use Rend
+                    return abilities[2]; //< Use Rend
                 } else if (num>30){
-                    return abilities[3].use(this); //< Use Rabid Fang
+                    return abilities[3]; //< Use Rabid Fang
                 } else{
-                    return abilities[0].use(this); //< Use Basic
+                    return abilities[0]; //< Use Basic
                 }
             } else if(this.getEnergy()>=2){
                 if(num>90){
-                    return abilities[3].use(this); //< Use Rabid Fang
+                    return abilities[3]; //< Use Rabid Fang
                 } else{
-                    return abilities[0].use(this); //< Use Basic
+                    return abilities[0]; //< Use Basic
                 }
             } else{
-                return abilities[0].use(this); //< Use Basic
+                return abilities[0]; //< Use Basic
             }
         }
     }

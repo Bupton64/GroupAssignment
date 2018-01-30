@@ -12,10 +12,10 @@ public class monster_Elite extends Monster {
         for (int i = 0; i < 3; i++) {
             temp[i] = new Ability();
         }
-        setAttack(12);
+        setAttack(15);
         setDefense(0);
         setLuck(10);
-        setSpeed(16);
+        setSpeed(20);
         setStrength(8);
         setXPGain(1720);
         setGoldMin(640);
@@ -53,28 +53,28 @@ public class monster_Elite extends Monster {
         if(this.getCurrentHP() > this.getMaxHP()*0.6){
             if(this.getEnergy() > 1){
                 if(num > 70){
-                    return abilities[1].use(this); //< Faint Strike
+                    return abilities[1]; //< Faint Strike
                 } else {
-                    return abilities[0].use(this); //< Slice
+                    return abilities[0]; //< Slice
                 }
             } else {
-                return abilities[0].use(this); //< Slice
+                return abilities[0]; //< Slice
             }
         } else{
             if(this.getEnergy() > 4){
                 if(num > 40){
-                    return abilities[2].use(this); //< Flurry
+                    return abilities[2]; //< Flurry
                 } else {
-                    return abilities[1].use(this); //< Faint Strike
+                    return abilities[1]; //< Faint Strike
                 }
             } else if (this.getEnergy() > 1) {
                 if(num > 40) {
-                    return abilities[1].use(this); //< Faint Strike
+                    return abilities[1]; //< Faint Strike
                 } else{
-                    return abilities[0].use(this); //< Slice
+                    return abilities[0]; //< Slice
                 }
             } else {
-                return abilities[0].use(this); //< Slice
+                return abilities[0]; //< Slice
             }
         }
     }
