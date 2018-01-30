@@ -248,24 +248,24 @@ public class cutScene extends extraFunctions {
             if(start){
                drawImage(startScreen, 0, 0, g);
             }
-            if(/*(posY + 200 + runSpeed) <450*/dt >= 8 && dt < 14) {
-
+            if(dt >= 8 && dt < 13) {
+                runSpeedLeft += 1;
                 runSpeed+=2;
                 drawImage(spriteDown[flameChange % 3], posX + 857, posY + 1000 + runSpeed, g);
                 drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
+                drawImage(spriteDown3[flameChange % 3], posX + 1200 + runSpeedLeft, posY + 180 + runSpeed, g);
                 height = runSpeed;
             }
-            if(render) {
-                System.out.println(dt);
+            if(dt >= 13 && dt < 18) {
                 runSpeed2 += 1;
-                runSpeedLeft += 1;
+
                 drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + height, g);
-                drawImage(spriteDown3[flameChange % 3], posX + 1200 + runSpeedLeft, posY + 180 + runSpeed, g);
                 //Need if condition to break loop
-                if((posY + 200 + height) > 800){
-                    render = false;
-                }
             }
+//            if(dt >=11 && dt < 13){
+//                drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + height, g);
+//                drawImage(spriteDown3[flameChange % 3], posX + 1200 + runSpeedLeft, posY + 180 + runSpeed, g);
+//            }
             if(posY < 0) {
                 posX+=2;
                 posY+=2;
