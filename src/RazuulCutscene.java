@@ -23,9 +23,12 @@ public class RazuulCutscene extends extraFunctions{
     Image spritesheet3;
     Image Bjarne;
     Image grave;
+    long currentTime;
+    long initialTime;
 
 
     RazuulCutscene(){
+        initialTime = getTime();
         priestPosX = 475;
         priestPosY = 200;
         timer = 0;
@@ -70,6 +73,11 @@ public class RazuulCutscene extends extraFunctions{
         smokeArray[34] = subImage(smokeSheet, 256, 512, 128,128);
 
     }
+
+    public long getTime(){
+        return System.currentTimeMillis();
+    }
+
 
     public void updateTimer(double dt){
         timer +=dt;
@@ -119,12 +127,13 @@ public class RazuulCutscene extends extraFunctions{
     }
     public void drawRazuulCutscene2(Graphics2D g){
         animationChange++;
+        currentTime = getTime();
         drawImage(backgroundAlternate, 0, 0, g);
         drawImage(Bjarne, 520, 210, g);
         drawImage(grave, 420, 200, g);
-        if(timer > 0 && timer < 2){
+        if(currentTime - initialTime < 2){
             drawImage(priest[animationChange%4], 475, 200, g);
-        } else if(timer > 2 && timer < 4){
+        } else if((currentTime - initialTime) > 2 && (currentTime - initialTime) < 4){
             drawImage(priestAfter[animationChange%4], 475, 200, g);
         }
         if(timer > 0 && timer < 4){

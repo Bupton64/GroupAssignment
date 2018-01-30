@@ -42,7 +42,8 @@ public class cutScene extends extraFunctions {
     int BjarnePosX;
     int BjarnePosY;
     int runCount;
-
+    long currentTime;
+    long initialTime;
 
     enum introState {text, animation}
     introState state;
@@ -51,6 +52,7 @@ public class cutScene extends extraFunctions {
      * Loads all required images
      */
     cutScene(){
+        initialTime = getTime();
         background = loadImage("intro_cutscene.png");
         backgroundAlt = loadImage("intro_cutscene2.png");
         fade = loadImage("fade.png");
@@ -120,6 +122,10 @@ public class cutScene extends extraFunctions {
      */
     public void updateTimer(double dt){
         timer +=dt;
+    }
+
+    public long getTime(){
+        return System.currentTimeMillis();
     }
 
     /*
