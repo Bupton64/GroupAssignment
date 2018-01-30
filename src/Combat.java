@@ -1058,9 +1058,7 @@ public class Combat extends extraFunctions{
             enemy.addEnergy(1);
         }
         enemyHasSpentEnergy = false;
-        System.out.println(enemy.getEnergy());
         enemyLastAbility = enemy.moveChoice();
-        System.out.println(enemy.getEnergy());
         if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
             enemyMakeAttack = true;
         } else if (enemyLastAbility.getType() == Ability.AbilityType.buff) {
