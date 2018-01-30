@@ -568,12 +568,16 @@ public class MapControl extends extraFunctions {
                 } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches") {
                     playerMan.setMonsterGen(2);
                     playerMan.changeQuest();
-                } else if (playerMan.getQuestStage() == 20){
-                    playerMan.setMonsterGen(3);
-                    playerMan.setQuestStage(21);
+                } else if (playerMan.getQuestStage() == 18){
+                    playerMan.setMonsterGen(4);
+                    if(playerMan.getNpcDeaths() == 2 || playerMan.getNpcDeaths() == 3) {
+                        playerMan.setQuestStage(22);
+                    }else {
+                        playerMan.setQuestStage(21);
+                    }
                     playerMan.changeQuest();
                 }else if (playerMan.getCurrentQuestName() == "No Escape From Reality") {
-                    playerMan.setMonsterGen(4);
+                    playerMan.setMonsterGen(3);
                     if(playerMan.getNpcDeaths() == 2 || playerMan.getNpcDeaths() == 3) {
                         playerMan.setQuestStage(22);
                     }else {
@@ -592,6 +596,9 @@ public class MapControl extends extraFunctions {
                     case 38:
                     case 48:
                         playerMan.setCollectableState(0,true);
+                        if(playerMan.getQuestStage() == 19){
+                            playerMan.getCurrentQuest().setState(Quest.questState.inQuest);
+                        }
                         reloadMap = true;
                         break;
                     case 14:
