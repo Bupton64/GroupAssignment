@@ -1058,7 +1058,9 @@ public class Combat extends extraFunctions{
             enemy.addEnergy(1);
         }
         enemyHasSpentEnergy = false;
+        System.out.println(enemy.getEnergy());
         enemyLastAbility = enemy.moveChoice();
+        System.out.println(enemy.getEnergy());
         if (enemyLastAbility.getType() == Ability.AbilityType.damage) {
             enemyMakeAttack = true;
         } else if (enemyLastAbility.getType() == Ability.AbilityType.buff) {
@@ -1155,6 +1157,9 @@ public class Combat extends extraFunctions{
             enemyTurnTimer += dt;
             if(enemyTurnTimer > enemyTurnDelay){
                 enemyAttackActive = true;
+                if(!enemyHasSpentEnergy){
+                    enemySpendEnergy();
+                }
                 if(enemyMakeAttack){
                     enemyAttack();
                 }
@@ -1167,9 +1172,7 @@ public class Combat extends extraFunctions{
 
             }
             if(enemyTurnTimer > enemyTurnDuration){
-                if(!enemyHasSpentEnergy){
-                    enemySpendEnergy();
-                }
+
                 if(enemyLastAbility.getType() == Ability.AbilityType.damage && enemyLastAbility.getLastStatus() != null){
                     displayEnemyNewStatus = true;
                     if(enemyTurnTimer > enemyTurnExtraDelay){
