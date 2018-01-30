@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class NPC extends extraFunctions{
 
@@ -8,6 +9,10 @@ public class NPC extends extraFunctions{
         clicks2 = loadAudio("clicks2.wav");
         this.height = 70;
         this.width = 50;
+        this.lookDirection = 0;
+        this.hit = false;
+        this.check = 0;
+        this.timer = 40;
     }
 
     private String name; //< Name of the object
@@ -141,7 +146,32 @@ public class NPC extends extraFunctions{
         npcRight = false;
     }
 
-
+    int lookDirection;
+    double timer;
+    Image turnArray[];
+    boolean hit;
+    int check;
+    public void turn(){
+        if(!hit){
+            loadImages();
+            hit = !hit;
+        }
+        check++;
+        if(check == timer){
+            timer = ThreadLocalRandom.current().nextInt(40, 80);
+            lookDirection = ThreadLocalRandom.current().nextInt(0, 3);
+            check = 0;
+        }
+        if(lookDirection == 0){
+            sprite = turnArray[0];
+        } else if(lookDirection == 1){
+            sprite = turnArray[1];
+        } else if(lookDirection == 2){
+            sprite = turnArray[2];
+        } else if(lookDirection == 3){
+            sprite = turnArray[3];
+        }
+    }
 
 
 
