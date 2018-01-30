@@ -7,7 +7,7 @@ public class npc_plains_F9_signHouse extends  NPC {
 
     npc_plains_F9_signHouse(){
         setName("Sign");
-        spriteSheet = loadImage("chara5.png");
+        spriteSheet = loadImage("NPCwithoutSprite.png");
         sprite = subImage(spriteSheet,50,0,1,1);
         setMapPosX(620);
         setMapPosY(220);
