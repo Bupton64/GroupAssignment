@@ -43,7 +43,7 @@ public class monster_Witch extends Monster {
         Item newItem = new Item();
         int num =(int)(Math.random()*100);
         if(num >90){
-            newItem = new item_scrollOfKnowledge();
+            newItem = new item_wisdomStone();
         }
         return newItem;
     }

@@ -498,8 +498,8 @@ public class saveGame {
                 pot.setCounter(stack);
             }
             temp.addItemToInventory(pot);
-        }else if(name.equals("Scroll of Knowledge")){
-            item_scrollOfKnowledge scroll = new item_scrollOfKnowledge();
+        }else if(name.equals("Wisdom Stone")){
+            item_wisdomStone scroll = new item_wisdomStone();
             if(stack > 1){
                 scroll.setCounter(stack);
             }
