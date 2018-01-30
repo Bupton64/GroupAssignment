@@ -240,7 +240,9 @@ public class AdventureMode extends GameEngine {
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
 
                 if(stateChanger != 9 && stateChanger != 5 && stateChanger != 10) {
+                    System.out.println(stateChanger);
                     stateChanger = mapController.updateQuest(dt);
+                    System.out.println(stateChanger);
                 }
 
                 if((stateChanger == 9) || (stateChanger == 10)){
@@ -286,7 +288,7 @@ public class AdventureMode extends GameEngine {
                 razuulCutsceneController.updateTimer(dt);
                 break;
             case finalCutscene:
-                finalCutsceneController.updateTimer(dt);
+               stateChanger = finalCutsceneController.updateTimer(dt);
                 break;
         }
         if(fadeState){
@@ -449,7 +451,7 @@ public class AdventureMode extends GameEngine {
                 stateChanger = razuulCutsceneController.keyPressed(e);
                 break;
             case finalCutscene:
-                stateChanger = finalCutsceneController.keyPressed(e);
+                finalCutsceneController.keyPressed(e);
                 break;
         }
         if(e.getKeyCode() == KeyEvent.VK_M){

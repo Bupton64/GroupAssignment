@@ -112,8 +112,15 @@ public class finalCutscene extends extraFunctions{
         }
     }
 
-    public void updateTimer(double dt){
+    public int updateTimer(double dt){
         timer +=dt;
+
+        if(returntogame){
+
+            returntogame = false;
+            return 1;
+        }
+        return  0;
     }
 
     public void drawFinalCutsene(Graphics2D g, int condition){
@@ -425,12 +432,16 @@ public class finalCutscene extends extraFunctions{
             changeColor(white, g);
             drawText(260, 450, "- Press <SPACE> to continue -",  "New Roman Times", 20, g);
         }
+
+
     }
+
+    boolean returntogame = false;
 
     public int keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            return 1;
+            returntogame = true;
         }
         return 0;
     }

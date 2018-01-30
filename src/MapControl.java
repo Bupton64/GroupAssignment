@@ -170,7 +170,7 @@ public class MapControl extends extraFunctions {
                         mapNpcs[0] = new npc_wizard(400, 250);
                         numOfNpc = 1;
                     }
-                    if(playerMan.getQuestStage() == 30){
+                    if(playerMan.getQuestStage() == 29){
                         mapNpcs[0] = new npc_plains_Dijkstra(400,350);
                         mapNpcs[1] = new npc_wizard(300, 250);
                         mapNpcs[2] = new npc_plains_H9(playerMan.getGpTotal());
@@ -648,6 +648,7 @@ public class MapControl extends extraFunctions {
                 return 6;
             }else if(updateQuestState == 95){
                 updateQuestState = 0;
+                playerMan.setQuestStage(32);
                 return 5;
             }else if(updateQuestState == 94){
                 playerMan.setCurrentHP(playerMan.getMaxHP());

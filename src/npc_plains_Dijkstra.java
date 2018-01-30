@@ -95,10 +95,9 @@ public class npc_plains_Dijkstra extends  NPC {
                 case 26:
                 case 27:
                 case 28:
-                case 29:
                     currentDialogue = listThree;
                     break;
-                case 30:
+                case 29:
                     currentDialogue = listFour;
                     break;
             }
