@@ -71,7 +71,6 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
    }
 
     public void initCharMovement(){
-         inGameMusic = loadAudio("inGame.wav");
 
         lockRight = false;
         lockLeft = false;
