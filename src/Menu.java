@@ -37,6 +37,9 @@ public class Menu extends extraFunctions {
     Image paper2 = loadImage("paper2.png");
     Image book = loadImage("open.png");
     Image Book;
+
+    Image dialogueSpriteSheet;
+    Image dialogueSimpleBox;
     private int cursorPositionY = 440;
     private boolean invMenu = false;
     private boolean equMenu = false;
@@ -57,17 +60,14 @@ public class Menu extends extraFunctions {
     boolean isAccessory = false;
     boolean none = false;
     int scroller = 100;
-    boolean nextPage = false;
-    int bar = 0;
-    int increaser = 0;
     int pos = 0;
     int pageNum = 1;
-    int totalPages = 0;
     int scroller2 = 0;
     int scroller3 = 110;
     boolean slotSelect = true;
     boolean itemSelect = false;
     boolean stopper3 = false;
+    boolean stopper4 = false;
 
     int firstHead = 0;
     int firstWeapon = 0;
@@ -86,7 +86,9 @@ public class Menu extends extraFunctions {
     boolean stopper = false;
     boolean stopper2 = false;
     boolean isEquiblableItems = false;
+    boolean usedItem = false;
     String name;
+    String itemName;
     boolean selectCheck(String check){
         if((player1.getEquippedItems()[index2].getSlot().name() == check)&&(player1.getInventory()[index].getSlot().name() == check)){
             return true;
@@ -253,6 +255,8 @@ public class Menu extends extraFunctions {
     public void initMenu() {
         buttonSpriteSheet = loadImage("buttons.png");
         buttonSprite = subImage(buttonSpriteSheet,30,70,180,80);
+        dialogueSpriteSheet = loadImage("dialogue_Boxes.png");
+        dialogueSimpleBox = subImage(dialogueSpriteSheet,20,20,470,100);
         clicks = loadAudio("clicks.wav");
         clicks2 = loadAudio("clicks2.wav");
         exitClick = loadAudio("exitClick.wav");
@@ -485,7 +489,26 @@ public class Menu extends extraFunctions {
                 changeColor(grey4, g);
                 drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 10, g);
             }
+            if(usedItem) {
+                drawImage(dialogueSimpleBox, 200, 200, 400, 150, g);
+                changeColor(white, g);
+                drawBoldText(280, 250, "You used" , "Felix Titling", 20, g);
+                changeColor(cyan, g);
+                drawBoldText(400, 250, itemName, "Felix Titling", 20, g);
+                changeColor(white, g);
+                drawBoldText(320, 320, "Press <space> to continue....", "Felix Titling", 9, g);
+                changeColor(green ,g);
+                if ((itemName == "Potion") || (itemName == "Mega Potion") || (itemName == "Elixir") || (itemName == "Healing Salve")) {
+                    if (player1.getCurrentHP() == player1.getMaxHP()) {
+                        drawBoldText(335, 290, "Your HP is full. ", "Felix Titling", 13, g);
+                    } else {
 
+                        drawBoldText(235, 290, "Your current HP has increased to " + (int)player1.getCurrentHP(), "Felix Titling", 13, g);
+
+                    }
+
+                }
+            }
 
 
     }
@@ -1214,7 +1237,8 @@ public class Menu extends extraFunctions {
             }
 
 
-            if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(!usedItem)) {
+                itemName = player1.getInventory()[menuOption].getName();
                 if(player1.getInventorySize() != 0) {
                     playAudio(exitClick);
                     playAudio(p3);
@@ -1251,10 +1275,17 @@ public class Menu extends extraFunctions {
 
                         }
                         stopper3 = false;
+                        stopper4 = false;
                     }
                 }
+                usedItem = true;
             }
 
+            if((e.getKeyCode() == KeyEvent.VK_SPACE)&&invMenu&&(usedItem)&&stopper4){
+                usedItem = false;
+                itemName = null;
+            }
+            stopper4 = true;
             if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
                 playAudio(leave);
                 menuOption = 0;
@@ -1417,6 +1448,7 @@ public class Menu extends extraFunctions {
 
 
         }
+
 
     }
 
