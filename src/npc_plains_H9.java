@@ -106,7 +106,7 @@ public class npc_plains_H9 extends  NPC {
             currentDialogue = listFive;
         }else if(questStage == 27){
             currentDialogue = listSeven;
-        }else if(questStage == 29) {
+        }else if(questStage == 30) {
             currentDialogue = listNine;
         }
     }
