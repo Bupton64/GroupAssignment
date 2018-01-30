@@ -144,18 +144,20 @@ public class itemShop extends shop {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
-            playAudio(p1);
+
             if(!isPurchaseAttempt()) {
                 if (getPageNum() < getTotalPages()) {
+                    playAudio(p1);
                     setPageNum(getPageNum() + 1);
                     setItemIndex(((getPageNum() - 1) * 10));
                 }
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
-            playAudio(p3);
+
             if(!isPurchaseAttempt()) {
                 if (getPageNum() != 1) {
+                    playAudio(p3);
                     setPageNum(getPageNum() - 1);
                     setItemIndex(((getPageNum() - 1) * 10));
                 }
