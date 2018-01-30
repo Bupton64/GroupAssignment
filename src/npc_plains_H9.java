@@ -60,34 +60,34 @@ public class npc_plains_H9 extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"Leave me be. I am busy....","","","");
+        Dialogue d1 = new Dialogue(null,false,true,"Leave me be. I am busy.","","","");
         listOne = d1;
 
 
         Dialogue d02 = new Dialogue(null,true,true,"Could you spare 500GP so that I can purchase the resources needed?","","","");
-        Dialogue d2 = new Dialogue(d02,false,false,"Hey there, I just finished clearing all the monsters out of this area.","I've been expecting you ever since I heard you had arrived." ,"Let me guess, you're looking for a weapon? "," Unfortunately I'm lacking materials.");
+        Dialogue d2 = new Dialogue(d02,false,false,"Hey there, I just finished clearing all the monsters out of this area.","I've been expecting you ever since I heard you had arrived. Let me" ,"guess, you're looking for a weapon? Unfortunately I'm lacking materials.","");
         listTwo = d2;
 
-        Dialogue d3 = new Dialogue(null,false,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword","");
+        Dialogue d3 = new Dialogue(null,false,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword.","");
         listThree = d3;
 
         Dialogue d4 = new Dialogue(null,false,true,"Hey Bjarne! Thanks again for helping me. I hope Link has been","able to help you with your quest.","","");
         listFour = d4;
 
-        Dialogue d5 = new Dialogue(null,true,true,"Good to see you again Bjarne! Ohh whats this an envelope?","What! this is from my old friend the King, where did you get this?","Come inside my house , we cant talk about this out here!","");
+        Dialogue d5 = new Dialogue(null,true,true,"Good to see you again Bjarne! Oh whats this? An envelope?","What! This is from my old friend the King, where did you get this?","Come inside my house , we can't talk about this out here!","");
         listFive = d5;
 
-        Dialogue d6 = new Dialogue(null,false,true,"I'll Meet you inside","","","");
+        Dialogue d6 = new Dialogue(null,false,true,"I'll meet you inside","","","");
         listSix = d6;
 
         Dialogue d8 = new Dialogue(null,true,true,"Look... it doesn't matter. Go tell Sevar I will start preparations.","","","");
-        Dialogue d7 = new Dialogue(d8,false,false,"Bjarne, Do you understand what you brought me?","This envelope has a message from the king telling me to gather the","materials for a location spell, You're not planning on going after Therox","are you? And where did you get this?");
+        Dialogue d7 = new Dialogue(d8,false,false,"Bjarne, do you understand what you brought me?","This envelope has a message from the king telling me to gather the","materials for a location spell. You're not planning on going after Therox","are you? Where did you even get this!?");
         listSeven = d7;
 
-        Dialogue d9 = new Dialogue(null,false,true,"Make haste Bjarne, Time is of the essence.","","","");
+        Dialogue d9 = new Dialogue(null,false,true,"Make haste Bjarne! Time is of the essence.","","","");
         listEight = d9;
 
-        Dialogue d10 = new Dialogue(null,false,true,"Good to see you again, The location spell is ready,","Talk to Dijkstra when you're ready to fight Therox.","","");
+        Dialogue d10 = new Dialogue(null,false,true,"Good to see you again, the location spell is ready.","Talk to Dijkstra when you're ready to fight Therox.","","");
         listNine = d10;
 
     }

@@ -77,7 +77,7 @@ public class npc_plains_Dijkstra extends  NPC {
         Dialogue d4 = new Dialogue(null,false,true,"The church is just west of here. Take what you find to Camrath.","","","");
         listThree = d4;
 
-        Dialogue d6 = new Dialogue(null,true,true,"Are you ready for the battle","","","");
+        Dialogue d6 = new Dialogue(null,true,true,"Are you ready for this final battle?","","","");
         Dialogue d5 = new Dialogue(d6,false,false,"Bjarne! Glad to see you made it in time. We have managed to create","a location spell that will send you, Sevar and Therox to an isolated arena","away from his army. This will be your best chance to finish him.","");
         listFour = d5;
     }

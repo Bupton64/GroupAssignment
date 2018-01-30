@@ -114,7 +114,7 @@ public class npc_wizard extends  NPC {
 
         Dialogue d20 = new Dialogue(null,true,true,"Find the symbol, I think I remember leaving it somewhere North-East.","","","");
         Dialogue d19 = new Dialogue(d20,false,false,"To defeat him you will need a lot more than just strength.","You will need to go collect my Holy Symbol to even stand a ","chance! It was stolen when my crystals were stolen but I think I can","sense it to the North-East of town.");
-        Dialogue d18 = new Dialogue(d19,false,false,"Bjarne, he came through here and took Sally. He's one","of Therox's Generals Razuul, a demon from the underworld! ","","");
+        Dialogue d18 = new Dialogue(d19,false,false,"Bjarne, he came through here and took Sally. He's one","of Therox's Generals, Razuul, a demon from the underworld! ","","");
         listTen = d18;
 
         Dialogue d21 = new Dialogue(null,false,true,"I think I remember seeing the Holy symbol East of my house.","","","");
