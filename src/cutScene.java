@@ -279,7 +279,7 @@ public class cutScene extends extraFunctions {
 
                 timePast = timer + 5;
             }
-            if((posY >= 0) && (wizardPosY >= 50) && dt >= 20 && dt < 24){
+            if((posY >= 0) && (wizardPosY >= 50) && dt >= 20 && dt < 26){
                 if(timePast > timer) {
                     wizardPosY += 1;
                     changeColor(white, g);
@@ -290,15 +290,15 @@ public class cutScene extends extraFunctions {
                     drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
                 }
             }
-            if((posY>=0) && dt >= 24 && dt < 25){
+            if((posY>=0) && dt >= 25 && dt < 27){
                 drawImage(wizardSpin[getAnimationFrame(timer, 0.16, 4)], wizardPosX, 50, g);
                 drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 80, 0, g);
             }
-            if((dt >= 25) && (BjarnePosX < 50) && dt < 27){
+            if((dt >= 27) && (BjarnePosX < 50) && dt < 30){
                 BjarnePosX+=4;
                 drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
             }
-            if(dt < 31 && BjarnePosX >=50){
+            if(dt < 32 && BjarnePosX >=50){
                 changeColor(white, g);
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
@@ -306,20 +306,20 @@ public class cutScene extends extraFunctions {
                 drawText(110, 475, "THIS! I'll travel East to the town of Sepla to warn them. They need to ", "Times New Roman", 20, g);
                 drawText(110, 500, "be prepared.", "Times New Roman", 20, g);
             }
-            if(/*(dt > 25) &&*/ (dt < 28) && BjarnePosX >=50){
+            if(/*(dt > 25) &&*/ (dt < 30) && BjarnePosX >=50){
                 BjarnePosX += 4;
                 drawImage(bjarneRight[flameChange % 3], BjarnePosX, BjarnePosY, g);
             }
-            if(dt >=28 && dt < 30) {
+            if(dt >=30 && dt < 32) {
                 BjarnePosX -= 4;
                 drawImage(bjarneLeft[flameChange % 3], BjarnePosX, BjarnePosY, g);
                 System.out.println(dt);
             }
-            if((dt >= 30) &&  dt < 32){
+            if((dt >= 32) &&  dt < 34){
                 BjarnePosX+=4;
                 drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
             }
-            if(dt >= 31){
+            if(dt >= 33){
                 if(!hit){
                     timer = 40;
                     hit = !hit;
