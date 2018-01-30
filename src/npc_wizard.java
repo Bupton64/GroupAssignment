@@ -120,8 +120,8 @@ public class npc_wizard extends  NPC {
         Dialogue d21 = new Dialogue(null,false,true,"I think I remember seeing the Holy symbol East of my house.","","","");
         listEleven = d21;
 
-        Dialogue d23 = new Dialogue(null,true,true,"Can you go West , And bring Sally back!","","","");
-        Dialogue d22 = new Dialogue(d23,false,false,"Well done getting the Holy Symbol. I've tracked the ","Demon down to his church in the West.","Be weary, he will not go down easy! Make sure you are prepared.","");
+        Dialogue d23 = new Dialogue(null,true,true,"Can you go West and bring Sally back!","","","");
+        Dialogue d22 = new Dialogue(d23,false,false,"Well done getting the Holy Symbol. I've tracked the Demon down","to his church in the West. Be weary, he will not go down","easy! Make sure you are prepared.","");
         listTwelve = d22;
 
         Dialogue d24 = new Dialogue(null,false,true,"The church is in the West. Good luck my friend.","","","");
