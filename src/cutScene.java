@@ -280,18 +280,16 @@ public class cutScene extends extraFunctions {
 
                 timePast = timer + 5;
             }
-            if((posY >= 0) && (wizardPosY >= 50) && dt >= 20 && dt < 26){
-                if(timePast > timer) {
-                    wizardPosY += 1;
-                    changeColor(white, g);
-                    drawImage(wizardDown[1], wizardPosX, 50, g);
-                    drawImage(dialogueBack, 90, 400, 620, 165, g);
-                    drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
-                    drawText(110, 450, "MWA HA HA HA! There's no stopping me now! Once I gain control", "Times New Roman", 20, g);
-                    drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
-                }
+            if(dt >= 20 && dt < 26){
+                wizardPosY += 1;
+                changeColor(white, g);
+                drawImage(wizardDown[1], wizardPosX, 50, g);
+                drawImage(dialogueBack, 90, 400, 620, 165, g);
+                drawText(110, 425, "Therox: ", "Times New Roman", 20, g);
+                drawText(110, 450, "MWA HA HA HA! There's no stopping me now! Once I gain control", "Times New Roman", 20, g);
+                drawText(110, 475, "of the Seven Crystals of the South, my power will be un-matchable!", "Times New Roman", 20, g);
             }
-            if((posY>=0) && dt >= 25 && dt < 27){
+            if(dt >= 26 && dt < 27){
                 drawImage(wizardSpin[getAnimationFrame(timer, 0.16, 4)], wizardPosX, 50, g);
                 drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 80, 0, g);
             }
