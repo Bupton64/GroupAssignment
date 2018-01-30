@@ -13,10 +13,7 @@ public class npc_plains_E9_byBridge extends  NPC {
         setMapPosX(posX);
         setMapPosY(posY);
 
-        spriteDown = new Image[3];
-        spriteUp = new Image[3];
-        spriteRight = new Image[3];
-        spriteLeft = new Image[3];
+        turnArray = new Image[3];
 
         initDialogue();
         loadDialogue = true;
@@ -27,10 +24,7 @@ public class npc_plains_E9_byBridge extends  NPC {
         super.loadImages();
         //Load Images here
         for(int i =0; i < 3;i++){
-            spriteDown[i] = subImage(spriteSheet, 312+(52 * i), 0,52,72);
-            spriteLeft[i] = subImage(spriteSheet,312+(52 * i), 72,52,72);
-            spriteRight[i] = subImage(spriteSheet,312+(52 * i), 144,52,72);
-            spriteUp[i] = subImage(spriteSheet,312+(52 * i), 216,52,72);
+            turnArray[i] = subImage(spriteSheet,364, (i * 72),56,72);
         }
     }
 
@@ -48,7 +42,9 @@ public class npc_plains_E9_byBridge extends  NPC {
 
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
-
+        if(this.questStage < 18 || this.questStage > 22){
+            turn();
+        }
     }
 
 

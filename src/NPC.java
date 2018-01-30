@@ -168,8 +168,6 @@ public class NPC extends extraFunctions{
             sprite = turnArray[1];
         } else if(lookDirection == 2){
             sprite = turnArray[2];
-        } else if(lookDirection == 3){
-            sprite = turnArray[3];
         }
     }
 

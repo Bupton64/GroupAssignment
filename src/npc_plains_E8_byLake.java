@@ -11,10 +11,7 @@ public class npc_plains_E8_byLake extends  NPC {
         setMapPosX(700);
         setMapPosY(480);
 
-        spriteDown = new Image[3];
-        spriteUp = new Image[3];
-        spriteRight = new Image[3];
-        spriteLeft = new Image[3];
+        turnArray = new Image[3];
 
         initDialogue();
         loadDialogue = true;
@@ -25,10 +22,7 @@ public class npc_plains_E8_byLake extends  NPC {
         super.loadImages();
         //Load Images here
         for(int i =0; i < 3;i++){
-            spriteDown[i] = subImage(spriteSheet, 156+(52 * i), 288,52,72);
-            spriteLeft[i] = subImage(spriteSheet,156+(52 * i), 360,52,72);
-            spriteRight[i] = subImage(spriteSheet,156+(52 * i), 432,52,72);
-            spriteUp[i] = subImage(spriteSheet,156+(52 * i), 504,52,72);
+            turnArray[i] = subImage(spriteSheet,208,288 + (i * 72),56,72);
         }
     }
 
@@ -45,7 +39,7 @@ public class npc_plains_E8_byLake extends  NPC {
 
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
-
+        turn();
     }
 
     /////////////////////////////////////////
