@@ -123,7 +123,7 @@ public class Combat extends extraFunctions{
 
 
         //Level Display
-        drawImage(LevelPortrait,80,0,30,30,g);
+        drawImage(LevelPortrait,83,0,30,30,g);
         changeColor(white,g);
         drawBoldText(91,19,Integer.toString(player.getLevel()), "felix titling",13,g);
 
@@ -211,7 +211,7 @@ public class Combat extends extraFunctions{
         }
 
         //Level Display
-        drawImage(LevelPortrait,695 ,0,30,30,g);
+        drawImage(LevelPortrait,698 ,0,30,30,g);
         changeColor(white,g);
         drawBoldText(705  ,19,Integer.toString(enemy.getLevel()), "felix titling",13,g);
 
@@ -807,14 +807,14 @@ public class Combat extends extraFunctions{
 
                 }
                 changeColor(Color.darkGray, g);
-                drawSolidCircle(230, 145 + 40 * (j - 1), 13, g);
+                drawSolidCircle(235, 145 + 40 * (j - 1), 13, g);
                 changeColor(Color.gray, g);
-                drawCircle(230, 145 + 40 * (j - 1), 13, 2, g);
+                drawCircle(235, 145 + 40 * (j - 1), 13, 2, g);
                 changeColor(black, g);
                 drawText(110, 150 + 40 * (j - 1), playerAbilities[i % (9 * currentPageNum + 1)].getName(), "Times new Roman", 20, g);
 
-                drawImage(energyFullImage, 221, 135 + 40 * (j - 1), 20, 20, g);
-                drawText(250, 150 + 40 * (j - 1), Integer.toString(playerAbilities[i % (9 * currentPageNum)].getEnergyCost()), "Times New Roman", 20, g);
+                drawImage(energyFullImage, 226, 135 + 40 * (j - 1), 20, 20, g);
+                drawText(255, 150 + 40 * (j - 1), Integer.toString(playerAbilities[i % (9 * currentPageNum)].getEnergyCost()), "Times New Roman", 20, g);
                 if (playerAbilities[i % (9 * currentPageNum)].isMagic()) {
                     drawText(310, 150 + 40 * (j - 1), "Magic", "Times new Roman", 20, g);
                 } else {
@@ -1695,9 +1695,9 @@ public class Combat extends extraFunctions{
 
 
     public void drawEnemy(Graphics2D g) {
-        if (enemy.getName().equals("Wyvern") ) {
+        if (enemy.getName().equals("Wyvern")) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-100, enemy.getCombatPosY()-100, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
-        } else if(enemy.getName().equals("Priest") || enemy.getName().equals("Razuul")|| enemy.getName().equals("Valliard") || enemy.getName().equals("Vampire") || enemy.getName().equals("Troll")) {
+        } else if(enemy.getName().equals("Priest") || enemy.getName().equals("Razuul")|| enemy.getName().equals("Valliard") || enemy.getName().equals("Vampire") || enemy.getName().equals("Troll") || enemy.getName().equals("Therox") || enemy.getName().equals("Giant") ) {
             drawImage(enemy.getSprite(), enemy.getCombatPosX()-50, enemy.getCombatPosY()-50, enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);
         }else{
             drawImage(enemy.getSprite(), enemy.getCombatPosX(), enemy.getCombatPosY(), enemy.getSpriteWidth(), enemy.getSpriteHeight(), g);

@@ -32,8 +32,8 @@ public class monster_giant extends Monster {
 
         Image sprite = loadImage("monster_giant.png");
         setSprite(sprite);
-        setSpriteWidth(200);
-        setSpriteHeight(200);
+        setSpriteWidth(300);
+        setSpriteHeight(300);
     }
 
     @Override
