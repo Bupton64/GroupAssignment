@@ -4,12 +4,12 @@ import java.awt.event.*;
 
 public class npc_plains_E9topRightBed extends  NPC {
 
-    npc_plains_E9topRightBed() {
+    npc_plains_E9topRightBed(int posX, int posY) {
         setName("Bed");
         spriteSheet = loadImage("NPCwithoutSprite.png");
         sprite = subImage(spriteSheet, 0, 0, 1, 1);
-        setMapPosX(520);
-        setMapPosY(175);
+        setMapPosX(posX);
+        setMapPosY(posY);
 
 
         initDialogue();
@@ -17,15 +17,6 @@ public class npc_plains_E9topRightBed extends  NPC {
     }
 
 
-    @Override
-    public void setUpCollision(Collision collisionDetector,Map map){
-        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 1),((int)getMapPosY()/10 - 4),((int)getWidth()/10-4),((int)getHeight()/10 - 3),map.isFlicker());
-    }
-
-    @Override
-    public void undoCollision(Collision collisionDetector){
-        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 1),((int)getMapPosY()/10 - 4),((int)getWidth()/10-4),((int)getHeight()/10 - 3),false);
-    }
 
 
     /////////////////////////////////////////

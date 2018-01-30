@@ -379,7 +379,7 @@ public class MapControl extends extraFunctions {
                     break;
                 case 45:
                     currentMap = new plains_E9_topRightHouse();
-                    mapNpcs[0] = new npc_plains_E9topRightBed();
+                    mapNpcs[0] = new npc_plains_E9topRightBed(520,175);
                     mapNpcs[1] = new npc_plains_E8topRightBook();
                     numOfNpc = 2;
                     break;
@@ -457,6 +457,8 @@ public class MapControl extends extraFunctions {
                     break;
                 case 55:
                     currentMap = new plains_E5_wizards();
+                    mapNpcs[0] = new npc_plains_E9topRightBed(530,175);
+                    numOfNpc = 1;
                     break;
             }
         }
@@ -659,6 +661,7 @@ public class MapControl extends extraFunctions {
             }else if(updateQuestState == 95){
                 updateQuestState = 0;
                 playerMan.setQuestStage(32);
+                reloadMap = true;
                 return 5;
             }else if(updateQuestState == 94){
                 playerMan.setCurrentHP(playerMan.getMaxHP());
