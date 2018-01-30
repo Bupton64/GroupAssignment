@@ -25,6 +25,7 @@ public class RazuulCutscene extends extraFunctions{
     Image grave;
     long currentTime;
     long initialTime;
+    long elapsedTime;
 
 
     RazuulCutscene(){
@@ -86,10 +87,12 @@ public class RazuulCutscene extends extraFunctions{
     public void drawRazuulCutscene(Graphics2D g){
         animationChange++;
         drawImage(background, 0, 0, g);
-
-        if(timer > 0 && timer < 2){
+        currentTime = getTime();
+        elapsedTime = currentTime - initialTime;
+        System.out.println(elapsedTime);
+        if(elapsedTime < (initialTime + 1)){
             drawImage(priest[animationChange%4], 475, 200, g);
-        } else if(timer > 2 && timer < 4){
+        } else if(elapsedTime > 2 && elapsedTime < 4){
             drawImage(priestAfter[animationChange%4], 475, 200, g);
         }
         if(timer > 0 && timer < 4){
