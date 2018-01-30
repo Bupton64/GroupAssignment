@@ -789,10 +789,6 @@ public class Menu extends extraFunctions {
                     drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
                     //drawBoldText(300, 300, Boolean.toString(none), g);
-                    changeColor(white, g);
-                    drawSolidRectangle(20, 280, 265, 300, g);
-                changeColor(black, g);
-
                 if (itemSelect) {
                         if (none == false) {
                             stats("head", g);
@@ -884,7 +880,6 @@ public class Menu extends extraFunctions {
             stopper2 = false;
         }
         changeColor(red, g);
-        drawBoldText(50, 290,"head = " + Boolean.toString(isHead), "Arial", 12, g);
     }
 
 

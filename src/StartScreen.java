@@ -44,6 +44,7 @@ public class StartScreen extends extraFunctions {
     double index2 = 11.2;
     double index3 = 11.3;
     double index4 = 11.4;
+    AudioClip credits;
 
 
 
@@ -52,6 +53,8 @@ public class StartScreen extends extraFunctions {
         clicks2 = loadAudio("clicks2.wav");
         exitClick = loadAudio("exitClick.wav");
         introMusic = loadAudio("epic.wav");
+        credits = loadAudio("credits.wav");
+        p2 = loadAudio("page2.wav");
         startAudioLoop(introMusic, -3);
         StartBackground = subImage(paper, 0, 0, 768, 1028);
         StartBackground = subImage(paper2, 0, 0, 1028, 768);
@@ -316,10 +319,10 @@ public class StartScreen extends extraFunctions {
       changeBackgroundColor(black,g);
       drawImage(background3, 0, 0, g);
     //    drawImage(StartBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
-        changeColor(black, g);
-        drawBoldText(330, 150, "Load Files", "Felix Titling", 30, g);
+        changeColor(purple, g);
+        drawBoldText(280, 120, "Load Files", "Felix Titling", 35, g);
         changeColor(red, g);
-        drawBoldText(280, 150 + 80, "Save_1", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 80, "Save_1", "Felix Titling", 20, g);
         if(loadOneDisplay) {
             changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
@@ -330,7 +333,7 @@ public class StartScreen extends extraFunctions {
             drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
-        drawBoldText(280, 150 + 160, "Save_2", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 160, "Save_2", "Felix Titling", 20, g);
         if(loadTwoDisplay) {
             changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
@@ -341,7 +344,7 @@ public class StartScreen extends extraFunctions {
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
-        drawBoldText(280, 150 + 240, "Save_3", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 240, "Save_3", "Felix Titling", 20, g);
         if(loadThreeDisplay) {
             changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
@@ -353,8 +356,8 @@ public class StartScreen extends extraFunctions {
         }
 
 
-        drawImage(swordSprite, 600, cursorPositionY - 20, 89, 22, g);
-        drawImage(swordSprite2, 150, cursorPositionY - 20, 89, 22, g);
+        drawImage(swordSprite, 620, cursorPositionY - 20, 89, 22, g);
+        drawImage(swordSprite2, 100, cursorPositionY - 20, 89, 22, g);
 
 
     }
@@ -377,6 +380,7 @@ public class StartScreen extends extraFunctions {
     public int loadKeyPressed(KeyEvent e){
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            playAudio(p2);
             state = startState.startScreen;
         }
         if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
@@ -388,14 +392,18 @@ public class StartScreen extends extraFunctions {
             playAudio(clicks);
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            playAudio(exitClick);
             if(cursorPositionY == 230 && loadOneDisplay){
                 loadController.loadGame(player,"SaveOne.txt");
                 return 1;
 
             }else if(cursorPositionY == 310 && loadTwoDisplay){
+                playAudio(exitClick);
+
                 loadController.loadGame(player,"SaveTwo.txt");
                 return 1;
             }else if(cursorPositionY == 390 && loadThreeDisplay){
+                playAudio(exitClick);
                 loadController.loadGame(player,"SaveThree.txt");
                 return 1;
             }
@@ -429,11 +437,12 @@ public class StartScreen extends extraFunctions {
             return 7;
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 230)){
-            playAudio(exitClick);
+            playAudio(p2);
             state = startState.loadScreen;
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 310)) {
            playAudio(exitClick);
+            startAudioLoop(credits, +2);
            state = startState.credits;
            CreditsEnd.setWordsScrollingY(600);
         }
