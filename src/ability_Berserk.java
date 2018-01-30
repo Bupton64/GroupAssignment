@@ -17,13 +17,14 @@ public class ability_Berserk extends Ability {
     public Ability use(Statblock user){
         int amountToGain= 3;
         user.setStrengthBonus(user.getStrengthBonus()+amountToGain);
-        int damage = (3 * user.getLevel())*(int)Math.random();
+        int damage = (6 * user.getLevel())*(int)Math.random();
+        user.setCurrentHP(user.getCurrentHP()-damage);
         user.takeDamage(damage);
         setLastHit(true);
         setLastCrit(false);
         setLastStatus(null);
         setLastStatusDuration(0);
-        setLastDamage(amountToGain);
+        setLastDamage(damage);
         return this;
     }
 
