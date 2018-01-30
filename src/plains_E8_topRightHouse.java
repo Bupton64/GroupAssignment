@@ -58,15 +58,19 @@ public class plains_E8_topRightHouse extends  Map {
         collisionPoints.addBoxCollision(2,1,74,12,flicker);
 
         //DETAIL
-        //Table
-        collisionPoints.addBoxCollision(16,19,7,6,flicker);
-        collisionPoints.addBoxCollision(18,25,3,2,flicker);
-        collisionPoints.addBoxCollision(23,21,3,3,flicker);
-        collisionPoints.addBoxCollision(14,22,3,2,flicker);
-        collisionPoints.addBoxCollision(18,18,3,2,flicker);
-        //Bed
-        collisionPoints.addBoxCollision(51,14,7,2,flicker);
-        collisionPoints.addBoxCollision(56,16,6,15,flicker);
+        collisionPoints.addBoxCollision(32,21,10,5,flicker);
+        collisionPoints.addBoxCollision(21,14,3,3,flicker);
+        collisionPoints.addBoxCollision(14,14,3,3,flicker);
+        collisionPoints.addBoxCollision(50,14,3,3,flicker);
+        collisionPoints.addBoxCollision(57 ,14,3,3,flicker);
+        collisionPoints.addBoxCollision(34 ,19,2,2,flicker);
+        collisionPoints.addBoxCollision(39 ,19,2,2,flicker);
+        collisionPoints.addBoxCollision(30 ,22,2,4,flicker);
+        collisionPoints.addBoxCollision(43 ,22,2,3,flicker);
+        collisionPoints.addBoxCollision(34 ,19,2,2,flicker);
+
+        collisionPoints.addBoxCollision(34 ,27,2,1,flicker);
+        collisionPoints.addBoxCollision(39 ,27,2,1         ,flicker);
     }
 
 

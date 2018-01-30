@@ -18,7 +18,7 @@ public class npc_plains_E8topRightBook extends  NPC {
 
     @Override
     public void setUpCollision(Collision collisionDetector,Map map){
-        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 1),((int)getMapPosY()/10 - 4),((int)getWidth()/10 - 2),((int)getHeight()/10 - 3),map.isFlicker());
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 1),((int)getMapPosY()/10 - 4),((int)getWidth()/10 - 3),((int)getHeight()/10 - 3),map.isFlicker());
     }
 
     /////////////////////////////////////////

@@ -9,7 +9,7 @@ public class npc_plains_E8_byHouse extends  NPC {
         spriteSheet = loadImage("chara5.png");
         sprite = subImage(spriteSheet,196,288,56,72);
         setMapPosX(80);
-        setMapPosY(180);
+        setMapPosY(480);
 
         initPath();
         spriteLeft = new Image[3];
@@ -37,7 +37,7 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     public void initPath() {
         setMapPosX(80);
-        setMapPosY(180);
+        setMapPosY(480);
         setMoveTimer(0);
         setMoveDelay(0.2);
         numOfLocations = 2;
@@ -47,8 +47,8 @@ public class npc_plains_E8_byHouse extends  NPC {
         for(int i = 0; i < numOfLocations;i++){
             Location[i] = new NpcLocation();
         }
-        Location[0].setUp(0,260,180, "left",180,1,60);
-        Location[1].setUp(1,80,180,"right",180,0,60);
+        Location[0].setUp(0,260,480, "left",180,1,60);
+        Location[1].setUp(1,80,480,"right",180,0,60);
 
     }
 
