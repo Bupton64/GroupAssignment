@@ -180,7 +180,7 @@ public class npc_wizard extends  NPC {
                 return 23;
             case 29:
                 currentDialogue = listSeventeen;
-                return 29;
+                return  29;
             default:
                 return 0;
 
