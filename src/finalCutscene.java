@@ -156,7 +156,7 @@ public class finalCutscene extends extraFunctions{
         }
         if(dt > 3 && dt <= 4){
             drawImage(BjarneSpin[1], 400, 300, g);
-            drawImage(bloodArray[animationChange%6], 330, 300, 100, 100, g);
+            drawImage(bloodArray[getAnimationFrame(timer, 0.32, 6)], 320, 300, 100, 100, g);
         }
         if(dt > 4 && dt <= 6){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
@@ -168,8 +168,8 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
         if(dt > 6 && dt <= 10){
-            drawImage(BjarneSpin[animationChange % 4], 400, 300, g);
-            drawImage(smokeArray[animationChange % 35], 350, 250, g);
+            drawImage(BjarneSpin[getAnimationFrame(timer, 0.16, 3)], 400, 300, g);
+            drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 360, 250, g);
         }
         if(dt > 9 && dt <= 10){
             drawImage(villagers[0], 300, 250, g);
@@ -293,7 +293,7 @@ public class finalCutscene extends extraFunctions{
             }
 
             drawImage(BjarneSpin[0], 400, 300, g);
-            drawImage(Djikstra[animationChange % 3], 400, DjikstraPosY, g);
+            drawImage(Djikstra[getAnimationFrame(timer, 0.16, 3)], 400, DjikstraPosY, g);
         }
         if(dt >= 13 && dt < 26){
             drawImage(villagers[0], 300, 250, g);
