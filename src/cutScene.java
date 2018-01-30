@@ -293,7 +293,7 @@ public class cutScene extends extraFunctions {
             }
             if(dt >= 26 && dt < 27){
                 drawImage(wizardSpin[getAnimationFrame(timer, 0.16, 4)], wizardPosX, 50, g);
-                drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 80, 0, g);
+                drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 90, 0, g);
             }
             if((dt >= 27) && dt < 29){
                 BjarnePosX+=4;

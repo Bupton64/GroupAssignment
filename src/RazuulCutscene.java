@@ -102,10 +102,10 @@ public class RazuulCutscene extends extraFunctions{
         if(dt <= 1){
             drawImage(priest[getAnimationFrame(timer, 0.04, 4)], 475, 200, g);
         } else if(dt > 1 && dt <= 2){
-            drawImage(priestAfter[animationChange%4], 475, 200, g);
+            drawImage(priestAfter[getAnimationFrame(timer, 0.16, 4)], 475, 200, g);
         }
         if(dt <= 2){
-            drawImage(smokeArray[animationChange%35], 425, 150, g);
+            drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 435, 150, g);
         }
         if(dt > 2 && dt <= 5){
             drawImage(priestAfter[0], 475, 200, g);
@@ -118,11 +118,11 @@ public class RazuulCutscene extends extraFunctions{
         }
         if(dt > 5 && priestPosY <305){
             priestPosY+=4;
-            drawImage(priestDown[animationChange%3], priestPosX, priestPosY, g);
+            drawImage(priestDown[getAnimationFrame(timer, 0.16, 3)], priestPosX, priestPosY, g);
         }
         if(priestPosY >=305 && dt <= 11){
             priestPosX-=4;
-            drawImage(priestLeft[animationChange%3], priestPosX, priestPosY, g);
+            drawImage(priestLeft[getAnimationFrame(timer, 0.16, 3)], priestPosX, priestPosY, g);
         }
         if(dt > 11 && dt <= 17){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
@@ -156,12 +156,12 @@ public class RazuulCutscene extends extraFunctions{
         drawImage(Bjarne, 520, 210, g);
         drawImage(grave, 420, 200, g);
         if(dt <= 1){
-            drawImage(priest[animationChange%4], 475, 200, g);
+            drawImage(priest[getAnimationFrame(timer, 0.16, 4)], 475, 200, g);
         } else if(dt > 1 && dt <= 2){
-            drawImage(priestAfter[animationChange%4], 475, 200, g);
+            drawImage(priestAfter[getAnimationFrame(timer, 0.16, 4)], 475, 200, g);
         }
         if(dt <= 2){
-            drawImage(smokeArray[animationChange%35], 425, 150, g);
+            drawImage(smokeArray[getAnimationFrame(timer, 0.16, 34)], 435, 150, g);
         }
         if(dt > 2 && dt <=5){
             drawImage(priestAfter[0], 475, 200, g);
@@ -174,11 +174,11 @@ public class RazuulCutscene extends extraFunctions{
         }
         if(dt > 5 && priestPosY <305){
             priestPosY+=5;
-            drawImage(priestDown[animationChange%3], priestPosX, priestPosY, g);
+            drawImage(priestDown[getAnimationFrame(timer, 0.16, 3)], priestPosX, priestPosY, g);
         }
         if(priestPosY >=305 && dt <=11){
             priestPosX-=5;
-            drawImage(priestLeft[animationChange%3], priestPosX, priestPosY, g);
+            drawImage(priestLeft[getAnimationFrame(timer, 0.16, 3)], priestPosX, priestPosY, g);
         }
         if(dt > 11){
             changeColor(white, g);

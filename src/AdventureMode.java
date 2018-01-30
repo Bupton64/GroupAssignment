@@ -278,6 +278,7 @@ public class AdventureMode extends GameEngine {
                 cutScene.updateTimer(dt);
                 //razuulCutsceneController.updateTimer(dt);     //For testing
                 //finalCutsceneController.updateTimer(dt);        //For testing
+                //endCutSceneController.updateTimer(dt);
                 break;
             case OverWorldMenu:
                 menuController.updateMenu();
@@ -350,8 +351,9 @@ public class AdventureMode extends GameEngine {
             case CutScene:
                 changeBackgroundColor(black);
                 cutScene.drawCutScene(mGraphics);
-                //razuulCutsceneController.drawRazuulCutscene(mGraphics);       //For testing
+                //razuulCutsceneController.drawRazuulCutscene2(mGraphics);       //For testing
                 //finalCutsceneController.drawFinalCutsene(mGraphics,0);            //For testing
+                //endCutSceneController.drawCutScene(mGraphics);
                 break;
             case endCutScene:
                 endCutSceneController.drawCutScene(mGraphics);
