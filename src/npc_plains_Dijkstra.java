@@ -95,9 +95,10 @@ public class npc_plains_Dijkstra extends  NPC {
                 case 26:
                 case 27:
                 case 28:
+                case 29:
                     currentDialogue = listThree;
                     break;
-                case 29:
+                case 30:
                     currentDialogue = listFour;
                     break;
             }
@@ -121,7 +122,7 @@ public class npc_plains_Dijkstra extends  NPC {
             case 25:
                 currentDialogue = listThree;
                 return 25;
-            case 30:
+            case 31:
                 return 95;
             default:
                 return 0;
@@ -146,8 +147,8 @@ public class npc_plains_Dijkstra extends  NPC {
                         case 24:
                             questStage = 25;
                             break;
-                        case 29:
-                            questStage = 30;
+                        case 30:
+                            questStage = 31;
                             break;
                     }
                 }
