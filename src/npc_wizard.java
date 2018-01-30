@@ -178,9 +178,9 @@ public class npc_wizard extends  NPC {
                 return 20;
             case 23:
                 return 23;
-            case 29:
+            case 30:
                 currentDialogue = listSeventeen;
-                return 29;
+                return 30;
             default:
                 return 0;
 

@@ -26,10 +26,12 @@ public class RazuulCutscene extends extraFunctions{
     long currentTime;
     long initialTime;
     long elapsedTime;
+    double interval;
+    double dt;
+    double extra;
 
 
     RazuulCutscene(){
-        initialTime = getTime();
         priestPosX = 475;
         priestPosY = 200;
         timer = 0;
@@ -75,17 +77,6 @@ public class RazuulCutscene extends extraFunctions{
 
     }
 
-    public long getTime(){
-        return System.currentTimeMillis();
-    }
-
-    public void sleep(double ms){
-        try{
-            Thread.sleep((long)ms);
-        } catch (Exception e){
-
-        }
-    }
 
     public void updateTimer(double dt){
         timer +=dt;
@@ -95,20 +86,19 @@ public class RazuulCutscene extends extraFunctions{
         if(animationChange == 0){
             initialTime = getTime();
         }
-        double interval = 1000.0/40;
-        double dt = interval / 1000.0;
+        interval = 1000.0/40;
+        dt = interval / 1000.0;
 
         animationChange++;
         drawImage(background, 0, 0, g);
         currentTime = getTime();
         elapsedTime = currentTime - initialTime;
         if(interval > elapsedTime){
-            double extra = interval - elapsedTime;
+            extra = interval - elapsedTime;
             sleep(extra);
         } else if(elapsedTime > interval){
             dt = elapsedTime/1000;
         }
-        System.out.println(dt);
         if(dt <= 1){
             drawImage(priest[getAnimationFrame(timer, 0.04, 4)], 475, 200, g);
         } else if(dt > 1 && dt <= 2){
@@ -127,14 +117,14 @@ public class RazuulCutscene extends extraFunctions{
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
         if(dt > 5 && priestPosY <305){
-            priestPosY+=3;
+            priestPosY+=4;
             drawImage(priestDown[animationChange%3], priestPosX, priestPosY, g);
         }
-        if(priestPosY >=305 && dt <= 12){
-            priestPosX-=3;
+        if(priestPosY >=305 && dt <= 11){
+            priestPosX-=4;
             drawImage(priestLeft[animationChange%3], priestPosX, priestPosY, g);
         }
-        if(dt > 12 && dt <= 17){
+        if(dt > 11 && dt <= 17){
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
             drawText(110, 425, "Julian:", "Times New Roman", 20, g);
@@ -148,20 +138,32 @@ public class RazuulCutscene extends extraFunctions{
         }
     }
     public void drawRazuulCutscene2(Graphics2D g){
+        if(animationChange == 0){
+            initialTime = getTime();
+        }
+        interval = 1000.0/40;
+        dt = interval / 1000.0;
         animationChange++;
         currentTime = getTime();
+        elapsedTime = currentTime - initialTime;
+        if(interval > elapsedTime){
+            extra = interval - elapsedTime;
+            sleep(extra);
+        } else if(elapsedTime > interval){
+            dt = elapsedTime/1000;
+        }
         drawImage(backgroundAlternate, 0, 0, g);
         drawImage(Bjarne, 520, 210, g);
         drawImage(grave, 420, 200, g);
-        if(currentTime - initialTime < 2){
+        if(dt <= 1){
             drawImage(priest[animationChange%4], 475, 200, g);
-        } else if((currentTime - initialTime) > 2 && (currentTime - initialTime) < 4){
+        } else if(dt > 1 && dt <= 2){
             drawImage(priestAfter[animationChange%4], 475, 200, g);
         }
-        if(timer > 0 && timer < 4){
+        if(dt <= 2){
             drawImage(smokeArray[animationChange%35], 425, 150, g);
         }
-        if(timer > 4 && timer< 7){
+        if(dt > 2 && dt <=5){
             drawImage(priestAfter[0], 475, 200, g);
             drawImage(dialogueBack, 90, 400, 620, 165, g);
             changeColor(white, g);
@@ -170,15 +172,15 @@ public class RazuulCutscene extends extraFunctions{
             drawText(110, 475, "man.", "Times New Roman", 20, g);
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
-        if(timer > 7 && priestPosY <305){
+        if(dt > 5 && priestPosY <305){
             priestPosY+=5;
             drawImage(priestDown[animationChange%3], priestPosX, priestPosY, g);
         }
-        if(priestPosY >=305 && timer < 13){
+        if(priestPosY >=305 && dt <=11){
             priestPosX-=5;
             drawImage(priestLeft[animationChange%3], priestPosX, priestPosY, g);
         }
-        if(timer > 13){
+        if(dt > 11){
             changeColor(white, g);
             drawText(260, 450, "- Press <SPACE> to continue -",  "New Roman Times", 20, g);
         }

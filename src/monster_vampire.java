@@ -29,7 +29,7 @@ public class monster_vampire extends Monster {
         setUpAbilityNumberI(temp, 0, "Fang", 0, 0, 0, 0, 0, false, -1, "", true, Ability.AbilityType.damage, "");
         setUpAbilityNumberI(temp, 1, "Swoop", 0, 10, 0, 0, 0, false, 2, "", true, Ability.AbilityType.damage, "");
         temp[2] = new ability_monster_lifeCoil();
-        //temp[2].setEnergyCost();
+        temp[2].setEnergyCost(4);
         temp[2].setName("Vampiric Bite");
         this.setAbilities(temp);
 

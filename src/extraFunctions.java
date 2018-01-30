@@ -423,4 +423,16 @@ public abstract class extraFunctions {
             clip.stop();
         }
     }
+
+    public void sleep(double ms){
+        try{
+            Thread.sleep((long)ms);
+        } catch (Exception e){
+
+        }
+    }
+
+    public long getTime(){
+        return System.currentTimeMillis();
+    }
 }
