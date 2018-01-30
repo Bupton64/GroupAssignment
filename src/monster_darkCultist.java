@@ -26,7 +26,7 @@ public class monster_darkCultist extends Monster {
         setAlive(true);
         setName("Dark Cultist");
         setEnergy(0);
-        setUpAbilityNumberI(temp, 0, "Mind Assault", 0, 0, 0, 0, 0, true, -1, "", true, Ability.AbilityType.damage, "");
+        setUpAbilityNumberI(temp, 0, "Psychic", 0, 0, 0, 0, 0, true, -1, "", true, Ability.AbilityType.damage, "");
         temp[1] =  new ability_monster_plague();
         temp[2] = new ability_monster_sacrament();
         this.setAbilities(temp);
