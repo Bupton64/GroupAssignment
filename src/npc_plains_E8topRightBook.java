@@ -44,12 +44,12 @@ public class npc_plains_E8topRightBook extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d6 = new Dialogue(null, false, true, "STATS", "Strength increases your damage", "Luck increases your ciritcal chance", "Good luck!");
-        Dialogue d5 = new Dialogue(d6, false, false, "STATS", "Attack increases your chance to hit and your damage", "Defense increases your resistance to damage", "Speed increases your chance to hit and turn order");
+        Dialogue d6 = new Dialogue(null, false, true, "STATS:", "Strength increases your damage.", "Luck increases your ciritcal chance.", "Good luck!");
+        Dialogue d5 = new Dialogue(d6, false, false, "STATS:", "Attack increases your chance to hit and your damage.", "Defense increases your resistance to damage.", "Speed increases your chance to hit and turn order.");
         Dialogue d4 = new Dialogue(d5, false, false, "Attacks come in two types, physical and magical.", "Physical attacks have a chance to miss your enemy, while magic attacks", "do not. However, only physical attacks can score a critical hit which", "doubles their damage!");
-        Dialogue d3 = new Dialogue(d4, false, false, "Hints", "- You gain abilities and stats at level up", " - Enemies will sometimes drop items", " - Save often!");
-        Dialogue d2 = new Dialogue(d3, false, false, "Town hints", "- You can sleep in the bed to regain health", "- Find the shop, there are valuable healing potions!", "- Talk to the townsfolk!");
-        Dialogue d1 = new Dialogue(d2,false,false,"Welcome to Bjarne's World!","- Use the arrow keys to move","- [SPACE] to interact","- [ESC] to go back or access the menu");
+        Dialogue d3 = new Dialogue(d4, false, false, "Hints", "- You gain abilities and stats at level up.", " - Enemies will sometimes drop items.", " - Save often!");
+        Dialogue d2 = new Dialogue(d3, false, false, "Town hints", "- You can sleep in the bed to regain health.", "- Find the shop, there are valuable healing potions!", "- Talk to the townsfolk!");
+        Dialogue d1 = new Dialogue(d2,false,false,"Welcome to Bjarne's World!","- Use the arrow keys to move.","- [SPACE] to interact.","- [ESC] to go back or access the menu.");
         listOne = d1;
     }
 
