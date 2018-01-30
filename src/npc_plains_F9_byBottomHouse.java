@@ -13,10 +13,7 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
         setMapPosX(150);
         setMapPosY(450);
 
-        spriteDown = new Image[3];
-        spriteUp = new Image[3];
-        spriteRight = new Image[3];
-        spriteLeft = new Image[3];
+        turnArray = new Image[4];
 
         initDialogue();
         loadDialogue = true;
@@ -26,11 +23,8 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
     public void loadImages(){
         super.loadImages();
         //Load Images here
-        for(int i =0; i < 3;i++){
-            spriteDown[i] = subImage(spriteSheet,156 + (52 * i), 0,52,72);
-            spriteLeft[i] = subImage(spriteSheet,156 + (52 * i), 72,52,72);
-            spriteRight[i] = subImage(spriteSheet,156 + (52 * i), 144,52,72);
-            spriteUp[i] = subImage(spriteSheet,156 + (52 * i), 216,52,72);
+        for(int i =0; i < 4;i++){
+            turnArray[i] = subImage(spriteSheet,196,0 + (i * 72),56,72);
         }
     }
 
@@ -48,7 +42,7 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
-
+        turn();
     }
 
     /////////////////////////////////////////
