@@ -309,11 +309,11 @@ public class Menu extends extraFunctions {
             drawImage(background1, 0, 0, g);
             drawImage(character, 429, 97, 144, 144, g);
             drawImage(paper, 10, 300, 514, 370, g);
-            changeColor(black, g);
-            drawBoldText(50,360,"Current Quest:","Felix Titling",18,g);
-            drawImage(buttonSprite,235,340,250,53,g);
+            changeColor(grey1, g);
+            drawBoldText(40,360,"Current Quest:","Felix Titling",20,g);
+            drawImage(buttonSprite,40,380,400,60,g);
             changeColor(cyan, g);
-            drawBoldText(265,367,player1.getCurrentQuest().getQuestName(),"Felix Titling",13,g);
+            drawBoldText(90,412,player1.getCurrentQuest().getQuestName(),"Felix Titling",13,g);
             changeColor(black, g);
             player1.getCurrentQuest().drawQuest(g);
             changeColor(white,g);
