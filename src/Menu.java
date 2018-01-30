@@ -15,7 +15,6 @@ public class Menu extends extraFunctions {
         initSaveGame();
         initInventoryMenu();
     }
-
     Character player1;
     Image buttonSpriteSheet;
     Image buttonSprite;
@@ -87,6 +86,14 @@ public class Menu extends extraFunctions {
     boolean stopper = false;
     boolean stopper2 = false;
     boolean isEquiblableItems = false;
+    String name;
+    boolean selectCheck(String check){
+        if((player1.getEquippedItems()[index2].getSlot().name() == check)&&(player1.getInventory()[index].getSlot().name() == check)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
 
@@ -610,17 +617,23 @@ public class Menu extends extraFunctions {
 
                 if (scroller3 == 110) {
                     isHead = true;
+                    name = "head";
                 } else if (scroller3 == 135) {
                     isWeapon = true;
+                    name = "weapon";
                 } else if (scroller3 == 160) {
                     isOffhand = true;
+                    name = "offhand";
                 } else if (scroller3 == 185) {
                     isChest = true;
+                    name = "chest";
                 } else if (scroller3 == 210) {
                     isFeet = true;
+                    name = "feet";
 
                 } else if (scroller3 == 235) {
                     isAccessory = true;
+                    name = "accessory";
                 }
                 none = false;
                 for (int i = 0; i < player1.getEquipmentSize(); i++) {
@@ -776,7 +789,11 @@ public class Menu extends extraFunctions {
                     drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
                     drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
                     //drawBoldText(300, 300, Boolean.toString(none), g);
-                    if (itemSelect) {
+                    changeColor(white, g);
+                    drawSolidRectangle(20, 280, 265, 300, g);
+                changeColor(black, g);
+
+                if (itemSelect) {
                         if (none == false) {
                             stats("head", g);
                             stats("weapon", g);
@@ -792,14 +809,10 @@ public class Menu extends extraFunctions {
                 if (itemSelect) {
                     changeColor(purple, g);
                     drawBoldText(295, 300, player1.getInventory()[index].getName(), "Felix Titling", 20, g);
-//                changeColor(purple, g);
-//                drawBoldText(520, 175, "INFO:", "Felix Titling", 25, g  );
                     changeColor(blue, g);
                     drawBoldText(295, 315, player1.getInventory()[index].getSlot().name() + " ITEM", "Felix Titling", 12, g);
                     changeColor(black, g);
                     drawBoldText(295, 330, player1.getInventory()[index].getTooltip() + " .", "Felix Titling", 12, g);
-//                changeColor(black, g);
-//                drawBoldText(520, 360, "STATS:", "Felix Titling", 25, g );
                     changeColor(red, g);
                     drawBoldText(480, 350, Integer.toString(player1.getInventory()[index].getAttack()), "Felix Titling", 15, g);
                     drawBoldText(480, 350 + 30, Integer.toString(player1.getInventory()[index].getDefense()), "Felix Titling", 15, g);
@@ -813,10 +826,7 @@ public class Menu extends extraFunctions {
                     drawBoldText(295, 350 + 90, "SPD", "Felix Titling", 15, g);
                     drawBoldText(295, 350 + 120, "LUK", "Felix Titling", 15, g);
                     //drawText(300 ,300, Integer.toString(scroller2), g);
-
                     changeColor(grey4, g);
-                    //drawBoldText(520, 535, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g);
-
                     if (index == player1.getInventorySize()) {
                         index = 0;
                     }
@@ -826,14 +836,10 @@ public class Menu extends extraFunctions {
                         if (player1.getEquipmentSize() > 0) {
                             changeColor(purple, g);
                             drawBoldText(295, 300, player1.getEquippedItems()[index2].getName(), "Felix Titling", 20, g);
-//                changeColor(purple, g);
-//                drawBoldText(520, 175, "INFO:", "Felix Titling", 25, g  );
                             changeColor(blue, g);
                             drawBoldText(295, 315, player1.getEquippedItems()[index2].getSlot().name() + " ITEM", "Felix Titling", 12, g);
                             changeColor(black, g);
                             drawBoldText(295, 330, player1.getEquippedItems()[index2].getTooltip() + " .", "Felix Titling", 12, g);
-//                changeColor(black, g);
-//                drawBoldText(520, 360, "STATS:", "Felix Titling", 25, g );
                             changeColor(red, g);
                             drawBoldText(480, 350, Integer.toString(player1.getEquippedItems()[index2].getAttack()), "Felix Titling", 15, g);
                             drawBoldText(480, 350 + 30, Integer.toString(player1.getEquippedItems()[index2].getDefense()), "Felix Titling", 15, g);
@@ -849,7 +855,6 @@ public class Menu extends extraFunctions {
                             //drawText(300 ,300, Integer.toString(scroller2), g);
 
                             changeColor(grey4, g);
-                            //drawBoldText(520, 535, "PRESS <SPACE> TO EQUIP ITEM.", "Felix Titling", 12, g);
 
                             if (index2 == player1.getEquipmentSize()) {
                                 index2 = 0;
@@ -878,9 +883,8 @@ public class Menu extends extraFunctions {
 
             stopper2 = false;
         }
-//        changeColor(red, g);
-//        drawBoldText(500, 500, "IS =  " + Boolean.toString(itemSelect), g );
-//        drawBoldText(500, 550, "SS =  " + Boolean.toString(slotSelect), g );
+        changeColor(red, g);
+        drawBoldText(50, 290,"head = " + Boolean.toString(isHead), "Arial", 12, g);
     }
 
 
@@ -1351,7 +1355,7 @@ public class Menu extends extraFunctions {
 
 
             }
-            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && slotSelect&&isEquiblableItems) {
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && slotSelect&&isEquiblableItems&&selectCheck(name)) {
                 playAudio(select);
                 scroller2 = 0;
 
