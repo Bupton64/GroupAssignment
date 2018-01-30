@@ -13,7 +13,7 @@ public class monster_BOSS_razuulEmpowered extends Monster {
         setAttack(40);
         setDefense(10);
         setLuck(9);
-        setSpeed(28);
+        setSpeed(38);
         setStrength(15);
         setXPGain(7500);
         setGoldMin(8500);
