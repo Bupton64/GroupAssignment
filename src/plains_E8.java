@@ -137,14 +137,8 @@ public class plains_E8 extends  Map {
         }
 
         //Graveyard
-        for(int i = 6; i <= 29; i++) {
-            collisionPoints.addSmallCollisionPoint(i, 47, flicker);
-            collisionPoints.addSmallCollisionPoint(i, 25, flicker);
-        }
-        for(int i = 25; i <= 47; i++){
-            collisionPoints.addSmallCollisionPoint(6,i,flicker);
-            collisionPoints.addSmallCollisionPoint(29,i,flicker);
-        }
+        collisionPoints.addBoxCollision(6, 24, 24, 23, flicker);
+
         //Barrell
         collisionPoints.addSmallCollisionPoint(33,17,flicker);
         collisionPoints.addSmallCollisionPoint(33,18,flicker);
