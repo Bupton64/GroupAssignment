@@ -1099,7 +1099,7 @@ public class Combat extends extraFunctions{
     }
 
     public void enemyAttack(){
-
+        enemyLastAbility.use(enemy);
         enemyDamage = enemyLastAbility.getLastDamage();
       //  enemy.addEnergy(-enemyLastAbility.getEnergyCost());
         enemyDamage = player.takeDamage((int)enemyDamage);
