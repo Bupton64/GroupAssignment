@@ -256,6 +256,7 @@ public class cutScene extends extraFunctions {
                 height = runSpeed;
             }
             if(render) {
+                System.out.println(dt);
                 runSpeed2 += 1;
                 runSpeedLeft += 1;
                 drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + height, g);
@@ -313,7 +314,6 @@ public class cutScene extends extraFunctions {
             if(dt >=30 && dt < 32) {
                 BjarnePosX -= 4;
                 drawImage(bjarneLeft[flameChange % 3], BjarnePosX, BjarnePosY, g);
-                System.out.println(dt);
             }
             if((dt >= 32) &&  dt < 35){
                 BjarnePosX+=4;

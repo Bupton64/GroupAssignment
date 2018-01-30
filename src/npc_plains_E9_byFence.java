@@ -60,7 +60,7 @@ public class npc_plains_E9_byFence extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"He's bound to come to our town... if only there was someone to protect us!","","","");
+        Dialogue d1 = new Dialogue(null,false,true,"He's bound to come to our town... if only there was someone to protect","us!","","");
         listOne = d1;
     }
 
