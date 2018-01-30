@@ -252,7 +252,7 @@ public class cutScene extends extraFunctions {
 
                 runSpeed+=2;
                 drawImage(spriteDown[flameChange % 3], posX + 857, posY + 1000 + runSpeed, g);
-                drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
+                //drawImage(spriteDown2[flameChange % 3], posX + 1020, posY + 200 + runSpeed, g);
                 height = runSpeed;
             }
             if(render) {
@@ -298,7 +298,7 @@ public class cutScene extends extraFunctions {
                 BjarnePosX+=4;
                 drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
             }
-            if(dt < 32 && BjarnePosX >=50){
+            if(dt < 34 && BjarnePosX >=50){
                 changeColor(white, g);
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
@@ -315,11 +315,11 @@ public class cutScene extends extraFunctions {
                 drawImage(bjarneLeft[flameChange % 3], BjarnePosX, BjarnePosY, g);
                 System.out.println(dt);
             }
-            if((dt >= 32) &&  dt < 34){
+            if((dt >= 32) &&  dt < 35){
                 BjarnePosX+=4;
                 drawImage(bjarneRight[flameChange%3], BjarnePosX, BjarnePosY, g);
             }
-            if(dt >= 33){
+            if(dt >= 34){
                 if(!hit){
                     timer = 40;
                     hit = !hit;
