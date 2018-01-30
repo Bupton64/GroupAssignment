@@ -664,6 +664,7 @@ public class Character extends Statblock {
         temp[12] = new ability_psiblast();
         temp[13] = new ability_heroism();
         temp[14] = new ability_ironFist();
+        temp[15] = new ability_toxicity();
         this.setAbilities(temp);
         setNumOfAbilities();
         sortAbilities();
