@@ -14,11 +14,11 @@ public class monster_BOSS_Therox extends Monster {
         setDefense(10);
         setLuck(3);
         setSpeed(23);
-        setStrength(2500);
+        setStrength(25);
         setXPGain(10000);
         setGoldMin(0);
         setGoldMax(0);
-        setCurrentHP(25);
+        setCurrentHP(2500);
         setMaxHP(10000);
         setLevel(15);
         setAlive(true);

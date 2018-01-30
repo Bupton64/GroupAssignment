@@ -253,9 +253,10 @@ public class npc_wizard extends  NPC {
                 currentDialogue = listFifteen;
                 break;
             case 28:
+            case 29:
                 currentDialogue = listSixteen;
                 break;
-            case 29:
+            case 30:
                 currentDialogue = listEightteen;
                 break;
 

@@ -1010,7 +1010,10 @@ public class Character extends Statblock {
 
     private int monsterGen;
 
+
     private boolean ValliardAlive = true;
+
+
 
     public boolean isValliardAlive() {
         return ValliardAlive;

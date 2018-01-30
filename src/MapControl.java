@@ -182,6 +182,8 @@ public class MapControl extends extraFunctions {
                     break;
                 case 19:
                     currentMap = new plains_E7();
+
+
                     break;
                 case 20:
                     currentMap = new plains_E8();
@@ -190,6 +192,7 @@ public class MapControl extends extraFunctions {
                     mapNpcs[2] = new npc_plains_E8_signTop();
                     mapNpcs[3] = new npc_plains_E8_signGrave();
                     numOfNpc = 4;
+
                     break;
                 case 21:
                     currentMap = new plains_E9();
@@ -287,6 +290,12 @@ public class MapControl extends extraFunctions {
                         }
                         numOfNpc = 1;
                     }
+                    if(playerMan.getQuestStage() > 32){
+                        mapNpcs[1] = new npc_plains_Dijkstra(400,350);
+                        mapNpcs[2] = new npc_plains_H9(playerMan.getGpTotal());
+                        numOfNpc = 3;
+                    }
+
 
                     break;
                 case 29:

@@ -66,6 +66,9 @@ public class npc_plains_Dijkstra extends  NPC {
     Dialogue listThree;
     Dialogue listFour;
 
+    Dialogue listFive;
+
+
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"If I'm honest, I'm a bit lost. There's so many monsters around here!","Thankfully I have these potions to save me!","","");
         listOne = d1;
@@ -80,6 +83,9 @@ public class npc_plains_Dijkstra extends  NPC {
         Dialogue d6 = new Dialogue(null,true,true,"Are you ready for this final battle?","","","");
         Dialogue d5 = new Dialogue(d6,false,false,"Bjarne! Glad to see you made it in time. We have managed to create","a location spell that will send you, Sevar, and Therox to an isolated arena","away from his army. This will be your best chance to finish him.","");
         listFour = d5;
+
+        Dialogue d7 = new Dialogue(null,false,true,"Bjarne welcome back to town! Thanks again for saving the town","Come See me Once you hit level 20","","");
+        listFive = d7;
     }
 
     public void updateDialogue(int questStage){
@@ -122,6 +128,7 @@ public class npc_plains_Dijkstra extends  NPC {
                 currentDialogue = listThree;
                 return 25;
             case 31:
+                questStage = 32;
                 return 95;
             default:
                 return 0;

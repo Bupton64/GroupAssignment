@@ -240,9 +240,7 @@ public class AdventureMode extends GameEngine {
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
 
                 if(stateChanger != 9 && stateChanger != 5 && stateChanger != 10) {
-                    System.out.println(stateChanger);
                     stateChanger = mapController.updateQuest(dt);
-                    System.out.println(stateChanger);
                 }
 
                 if((stateChanger == 9) || (stateChanger == 10)){

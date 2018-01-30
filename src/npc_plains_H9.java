@@ -58,6 +58,8 @@ public class npc_plains_H9 extends  NPC {
 
     Dialogue listNine;
 
+    Dialogue listTen;
+
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"Leave me be. I am busy.","","","");
@@ -89,6 +91,9 @@ public class npc_plains_H9 extends  NPC {
 
         Dialogue d10 = new Dialogue(null,false,true,"Bjarne, good to see you old friend! The time has come to take the","fight to Therox! Talk to Dijkstra when you're ready!","","");
         listNine = d10;
+
+        Dialogue d11 = new Dialogue(null,false,true,"Mee oh Mi , i love that, yeah boii","","","");
+        listTen = d11;
 
     }
 
