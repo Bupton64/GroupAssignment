@@ -1256,7 +1256,7 @@ public class Menu extends extraFunctions {
             }
 
             if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-                playAudio(exitClick);
+                playAudio(leave);
                 menuOption = 0;
 
             }
@@ -1402,8 +1402,15 @@ public class Menu extends extraFunctions {
             itemSelect = false;
             stopper = true;
         }
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE && !chaMenu && !itemSelect && !stopper) {
-            playAudio(leave);
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE && !chaMenu && !itemSelect && !stopper&&!equMenu) {
+            chaMenu = true;
+            invMenu = false;
+            equMenu = false;
+
+
+        }
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE && !chaMenu && !itemSelect && !stopper&&!invMenu) {
+            playAudio(p1);
             chaMenu = true;
             invMenu = false;
             equMenu = false;
