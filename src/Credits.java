@@ -22,7 +22,7 @@ public class Credits extends extraFunctions{
         clearBackground(800, 600, g);
         changeBackgroundColor(black, g);
         changeColor(white, g);
-        if(wordsScrollingY > -955) {
+        if(wordsScrollingY > -1005) {
             wordsScrollingY -= 2;
 //            return;
         }
@@ -66,9 +66,11 @@ public class Credits extends extraFunctions{
         drawText(20, wordsScrollingY + 900, "- Game coin  from Jojikiba","Times New Roman", 20, g);
         drawText(20, wordsScrollingY + 925, "- Melee sounds from remaxim (opengameart.org)","Times New Roman", 20, g);
         drawText(20, wordsScrollingY + 950, "- Weapon hits from Jute (opengameart.org)","Times New Roman", 20, g);
+        drawText(20, wordsScrollingY + 975, "- Epic Battle music from Jute NoCopyrightMusic HQ","Times New Roman", 20, g);
+        drawText(20, wordsScrollingY + 1000, "- Game Over effect from Aliens","Times New Roman", 20, g);
 
-        drawText(115, wordsScrollingY + 1250, "Thank you for playing our game!", g);
-        drawText(70, wordsScrollingY + 1300, "- Press <SPACE> to return to menu -", g);
+        drawText(115, wordsScrollingY + 1300, "Thank you for playing our game!", g);
+        drawText(70, wordsScrollingY + 1350, "- Press <SPACE> to return to menu -", g);
     }
 
     //Goblin art from Luminous Arc

@@ -166,16 +166,19 @@ public class MapControl extends extraFunctions {
                     break;
                 case 17:
                     currentMap = new plains_E5();
+                    mapNpcs[0] = new npc_plains_SevarsWifeGrave();
+                    numOfNpc = 1;
                     if(playerMan.getQuestStage() < 16) {
-                        mapNpcs[0] = new npc_wizard(400, 250);
-                        numOfNpc = 1;
+                        mapNpcs[1] = new npc_wizard(400, 250);
+                        numOfNpc = 2;
                     }
                     if(playerMan.getQuestStage() == 30){
-                        mapNpcs[0] = new npc_plains_Dijkstra(400,350);
-                        mapNpcs[1] = new npc_wizard(300, 250);
-                        mapNpcs[2] = new npc_plains_H9(playerMan.getGpTotal());
-                        numOfNpc = 3;
+                        mapNpcs[1] = new npc_plains_Dijkstra(400,350);
+                        mapNpcs[2] = new npc_wizard(300, 250);
+                        mapNpcs[3] = new npc_plains_H9(playerMan.getGpTotal());
+                        numOfNpc = 4;
                     }
+
                     break;
                 case 18:
                     currentMap = new plains_E6();
@@ -379,7 +382,7 @@ public class MapControl extends extraFunctions {
                     break;
                 case 45:
                     currentMap = new plains_E9_topRightHouse();
-                    mapNpcs[0] = new npc_plains_E9topRightBed();
+                    mapNpcs[0] = new npc_plains_E9topRightBed(520,175);
                     mapNpcs[1] = new npc_plains_E8topRightBook();
                     numOfNpc = 2;
                     break;
@@ -457,6 +460,8 @@ public class MapControl extends extraFunctions {
                     break;
                 case 55:
                     currentMap = new plains_E5_wizards();
+                    mapNpcs[0] = new npc_plains_E9topRightBed(530,175);
+                    numOfNpc = 1;
                     break;
             }
         }
@@ -659,6 +664,7 @@ public class MapControl extends extraFunctions {
             }else if(updateQuestState == 95){
                 updateQuestState = 0;
                 playerMan.setQuestStage(32);
+                reloadMap = true;
                 return 5;
             }else if(updateQuestState == 94){
                 playerMan.setCurrentHP(playerMan.getMaxHP());
