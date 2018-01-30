@@ -4,11 +4,11 @@ public class ability_Smash extends Ability{
         this.setSpeed(0);
         this.setAttack(2);
         this.setDefense(2);
-        this.setLuck(2);
+        this.setLuck(4);
         this.setStrength(0);
         this.setMagic(false);
         this.setEnergyCost(2);
-        this.setToolTip("A powerful shockwave gives you the edge over your opponent");
+        this.setToolTip("A powerful shockwave");
         this.setActive(false);
         this.setType(AbilityType.damage);
         this.setDisplayString(null);

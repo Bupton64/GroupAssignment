@@ -20,8 +20,8 @@ public class monster_darkCultist extends Monster {
         setXPGain(2790);
         setGoldMin(1020);
         setGoldMax(1180);
-        setCurrentHP(450);
-        setMaxHP(450);
+        setCurrentHP(650);
+        setMaxHP(650);
         setLevel(12);
         setAlive(true);
         setName("Dark Cultist");

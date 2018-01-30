@@ -39,7 +39,7 @@ public class armorShop extends shop {
 
         inventory[13] = new item_Equipment("Steel Shield", 0, 4, 1, 0, 0, Item.Slot.offhand, "An elite's shield", 1200, 2800);
         inventory[14] = new item_Equipment("Full Plate Boots", 0, 4, 0, 0, 0, Item.Slot.feet, "Made for knights", 1090, 3040);
-        inventory[15] = new item_Equipment("Great Helm", 0, 4, 0, 0, 0, Item.Slot.head, "Forged to withstand giants", 765, 3200);
+        inventory[15] = new item_Equipment("Great Helm", 0, 4, 0, 0, 0, Item.Slot.head, "Made to withstand giants", 765, 3200);
         inventory[16] = new item_Equipment("Full Platemail", 0, 8, 0, 0, 0, Item.Slot.chest, "The pinnacle of armour", 2340, 4900);
 
         setShopInventory(inventory);

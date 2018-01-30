@@ -12,11 +12,11 @@ public class monster_vampire extends Monster {
         for (int i = 0; i < 3; i++) {
             temp[i] = new Ability();
         }
-        setAttack(23);
+        setAttack(3);
         setDefense(6);
         setLuck(2);
-        setSpeed(35);
-        setStrength(5);
+        setSpeed(30);
+        setStrength(15);
         setXPGain(1970);
         setGoldMin(800);
         setGoldMax(1020);
