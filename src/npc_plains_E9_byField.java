@@ -50,17 +50,22 @@ public class npc_plains_E9_byField extends  NPC {
     //////////////////////////////////////////
 
     Dialogue listOne;
+    Dialogue listTwo;
 
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null, false, true, "We've always had monsters nearby but it was never this bad... Sevar", "the Wizard protected us well, but now Therox has turned his attention to ", "us... Well I just don't feel safe anymore.", "");
         listOne = d1;
+
+
     }
 
     public void updateDialogue(Quest.questState currentState) {
-
-        currentDialogue = listOne;
-
+        if(questStage == 33){
+            currentDialogue = listTwo;
+        } else {
+            currentDialogue = listOne;
+        }
     }
 
     public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){

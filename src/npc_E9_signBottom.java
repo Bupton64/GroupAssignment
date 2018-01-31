@@ -8,7 +8,7 @@ public class npc_E9_signBottom extends  NPC {
         setName("Sign");
         spriteSheet = loadImage("NPCwithoutSprite.png");
         sprite = subImage(spriteSheet,0,0,1,1);
-        setMapPosX(375);
+        setMapPosX(380);
         setMapPosY(495);
 
         initDialogue();

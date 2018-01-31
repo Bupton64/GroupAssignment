@@ -124,7 +124,7 @@ public class npc_plains_f8_oldman extends  NPC {
         Dialogue d3 = new Dialogue(null,false,true,"Oh my... Thank you Bjarne you saved me just in time!", "","","");
         listThree = d3;
 
-        Dialogue d4 = new Dialogue(null,false,true,"I am forever in your debt Bjarne! ", "","","");
+        Dialogue d4 = new Dialogue(null,false,true,"I am forever in your debt Bjarne! Feel free to drop by for a ", "beer whenever you're in these parts!","","");
         listFour = d4;
     }
 
@@ -134,6 +134,8 @@ public class npc_plains_f8_oldman extends  NPC {
             currentDialogue = listOne;
         }else if(questStage == 15){
             currentDialogue = listTwo;
+        }else if(questStage == 33){
+            currentDialogue = listFour;
         }else if(questStage >= 16){
             currentDialogue = listThree;
         }
