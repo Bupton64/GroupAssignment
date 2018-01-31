@@ -213,7 +213,7 @@ public class AdventureMode extends GameEngine {
                 state = GameState.razuulCutscene;
                 playerMan.setMapPosX(520);
                 playerMan.setMapPosY(210);
-                playerMovement.directionFacing = CharacterMovement.Direction.left;
+                playerMan.setDirectionFacing(Character.Direction.left);
                 break;
             case 13:
                 stopMusic();

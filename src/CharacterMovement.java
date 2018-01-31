@@ -63,12 +63,6 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
     double dx;
     double dy;
 
-    enum Direction {up,down,left,right};
-   Direction directionFacing;
-
-   public Direction getDirection(){
-       return directionFacing;
-   }
 
     public void initCharMovement(){
 
@@ -78,7 +72,7 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
         lockDown = false;
 
         charSpriteSheet = loadImage("charspritesheet.png");
-        directionFacing = Direction.down;
+        playerMan.setDirectionFacing(Character.Direction.down);
 
         playerMoveRight = new Image[3];
         playerMoveLeft = new Image[3];
@@ -160,33 +154,33 @@ public class CharacterMovement extends extraFunctions implements KeyListener {
 
     public void drawCharMovement(Graphics g) {
         if (right) {
-            directionFacing = Direction.right;
+            playerMan.setDirectionFacing(Character.Direction.right);
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveRight[j], dx, dy, 50, 70,g);
         } else if (left) {
-            directionFacing = Direction.left;
+            playerMan.setDirectionFacing(Character.Direction.left);
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveLeft[j], dx, dy, 50, 70,g);
         } else if (up) {
-            directionFacing = Direction.up;
+            playerMan.setDirectionFacing(Character.Direction.up);
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveUp[j], dx, dy, 50, 70,g);
         } else if (down) {
-            directionFacing = Direction.down;
+            playerMan.setDirectionFacing(Character.Direction.down);
             int j = getAnimationFrame(walkTimer, walkDuration, 3);
             drawImage(playerMoveDown[j], dx, dy, 50, 70,g);
         }
         if(checkStationary()) {
-            if (directionFacing == Direction.right) {
+            if (playerMan.getDirection() == Character.Direction.right) {
                 drawImage(playerMoveRight[1], dx, dy, 50, 70,g);
 
-            } else if (directionFacing == Direction.left) {
+            } else if (playerMan.getDirection() == Character.Direction.left) {
                 drawImage(playerMoveLeft[1], dx, dy, 50, 70,g);
 
-            } else if (directionFacing == Direction.up) {
+            } else if (playerMan.getDirection() == Character.Direction.up) {
                 drawImage(playerMoveUp[1], dx, dy, 50, 70,g);
 
-            } else if (directionFacing == Direction.down) {
+            } else if (playerMan.getDirection() == Character.Direction.down) {
                 drawImage(playerMoveDown[1], dx, dy, 50, 70,g);
 
             }
