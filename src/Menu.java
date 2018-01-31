@@ -1235,7 +1235,7 @@ public class Menu extends extraFunctions {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             playAudio(exitClick);
             state = MenuState.CharacterMenu;
-            menuOption = 1;
+            menuOption = 0;
         }
 
 
@@ -1358,21 +1358,28 @@ public class Menu extends extraFunctions {
 
             }
 
-            if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 420) {
+            if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 390) {
                 playAudio(clicks);
                 cursorPositionY -= 30;
 
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 380) {
+                playAudio(exitClick);
+                return 1;
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 530) {
                 System.exit(23);
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 440) {
-
+                playAudio(p2);
+                menuOption = 0;
                 state = MenuState.SpellBook;
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 410) {
+                playAudio(p2);
                 getSaveFiles = false;
                 updateSave();
+                menuOption = 0;
                 state = MenuState.SaveMenu;
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 470) {
@@ -1627,11 +1634,7 @@ public class Menu extends extraFunctions {
 
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_SPACE && getCursorPositionY() == 410 ) {
-            playAudio(exitClick);
 
-            return 1;
-        }
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE && isChaMenu()) {
             playAudio(exitClick);
             return 1;
