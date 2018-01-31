@@ -92,7 +92,7 @@ public class npc_plains_H9 extends  NPC {
         Dialogue d10 = new Dialogue(null,false,true,"Bjarne, good to see you old friend! The time has come to take the","fight to Therox! Talk to Dijkstra when you're ready!","","");
         listNine = d10;
 
-        Dialogue d11 = new Dialogue(null,false,true,"Mee oh Mi , i love that, yeah boii","","","");
+        Dialogue d11 = new Dialogue(null,false,true,"You made ","","","");
         listTen = d11;
 
     }
@@ -113,6 +113,8 @@ public class npc_plains_H9 extends  NPC {
             currentDialogue = listSeven;
         }else if(questStage == 30) {
             currentDialogue = listNine;
+        } else if(questStage == 33){
+            currentDialogue = listTen;
         }
     }
 
