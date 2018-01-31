@@ -76,7 +76,7 @@ public class npc_plains_E9_byBridge extends  NPC {
         Dialogue d5 = new Dialogue(null, false, true,"Well hello again Bjarne!Thanks again for the whole saving","my life thing hehe. Maybe after Therox is gone we could go for an ale?","","");
         listFive = d5;
 
-        Dialogue d6 = new Dialogue(null, false, true,"So Bjarne... how about that Ale? Hehe.","","","");
+        Dialogue d6 = new Dialogue(null, false, true,"So Bjarne... how about that ale? Hehe.","","","");
         listSix = d6;
     }
 

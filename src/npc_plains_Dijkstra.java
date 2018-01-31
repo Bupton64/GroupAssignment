@@ -158,7 +158,7 @@ public class npc_plains_Dijkstra extends  NPC {
                         questStage = 25;
 
                         return true;
-                    
+
                 }else{
                     return false;
                 }
