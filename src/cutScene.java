@@ -304,11 +304,10 @@ public class cutScene extends extraFunctions {
                 drawImage(dialogueBack, 90, 400, 620, 165, g);
                 drawText(110, 425, "Bjarne: ", "Times New Roman", 20, g);
                 drawText(110, 450, "HOW DARE YOU! MY HOME... MY-MY FAMILY! YOU'LL PAY ", "Times New Roman", 20, g);
-                drawText(110, 475, "FOR THIS! I'll travel East to the town of Sepla to warn. They need to ", "Times New Roman", 20, g);
-                drawText(110, 500, "them be prepared.", "Times New Roman", 20, g);
+                drawText(110, 475, "FOR THIS! I'll travel East to the town of Sepla to warn them. They  ", "Times New Roman", 20, g);
+                drawText(110, 500, "need to be prepared.", "Times New Roman", 20, g);
             }
             if((dt < 31) && dt >=29){
-                System.out.println(dt);
                 BjarnePosX += 4;
                 drawImage(bjarneRight[getAnimationFrame(timer, 0.16, 3)], BjarnePosX, BjarnePosY, g);
             }
