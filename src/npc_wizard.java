@@ -139,7 +139,7 @@ public class npc_wizard extends  NPC {
         listFifteen = d28;
 
         Dialogue d30 = new Dialogue(null,true,true,"We need to make a stand soon, take your time to get ready.","Therox will not fall easily, When you are ready meet me ","at my tower in the North.","");
-        Dialogue d29 = new Dialogue(d30,false,false,"Hmmmm I see Camrath is preparing, that means we are almost ready.","There is one last thing you must know Bjarne. Dijkstra is not just a ","wanderer, he is also the King. The last living eir of Javaniah.","");
+        Dialogue d29 = new Dialogue(d30,false,false,"Hmmmm I see Camrath is preparing, that means we are almost ready.","There is one last thing you must know Bjarne. Dijkstra is not just a ","wanderer, he is also the King. The last living heir of Javaniah.","");
         listSixteen = d29;
 
         Dialogue d31 = new Dialogue(null,false,true,"I'll meet you at my house when you are ready.","","","");

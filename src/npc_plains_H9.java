@@ -84,7 +84,7 @@ public class npc_plains_H9 extends  NPC {
         listSix = d6;
 
         Dialogue d8 = new Dialogue(null,true,true,"Look... it doesn't matter. Go tell Sevar I will start preparations.","","","");
-        Dialogue d7 = new Dialogue(d8,false,false,"Bjarne, do you understand what you brought me?","This envelope has a message from the king telling me to gather the","materials for a location spell. You're not planning on going after Therox","are you? Where did you even get this!?");
+        Dialogue d7 = new Dialogue(d8,false,false,"Bjarne, do you understand what you brought me?","This envelope has a message from the King telling me to gather the","materials for a location spell. You're not planning on going after Therox","are you? Where did you even get this!?");
         listSeven = d7;
 
         Dialogue d9 = new Dialogue(null,false,true,"Make haste Bjarne! Time is of the essence.","","","");
