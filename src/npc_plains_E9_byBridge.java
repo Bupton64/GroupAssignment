@@ -42,9 +42,7 @@ public class npc_plains_E9_byBridge extends  NPC {
 
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
-        if(this.questStage < 18 || this.questStage > 22){
-            turn();
-        }
+        turn();
     }
 
 
