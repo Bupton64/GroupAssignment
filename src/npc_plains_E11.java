@@ -18,7 +18,7 @@ public class npc_plains_E11 extends  NPC {
 
 
         loadImages();
-       
+
 
         initDialogue();
         loadDialogue = true;

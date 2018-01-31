@@ -545,7 +545,10 @@ public class MapControl extends extraFunctions {
 
     public void updateNPC(double dt,Collision collisionDetector){
         for(int i = 0; i < numOfNpc; i++) {
-            mapNpcs[i].updateNpcMovement(dt,collisionDetector);
+            if(playerMan.isInConvo() && mapNpcs[currentNpcInteraction] == mapNpcs[i]) {
+            }else{
+                mapNpcs[i].updateNpcMovement(dt, collisionDetector);
+            }
         }
 
         if(sallyDie){
