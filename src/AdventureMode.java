@@ -189,6 +189,8 @@ public class AdventureMode extends GameEngine {
                 state = GameState.MainMenu;
                 break;
             case 5:
+                stopMusic();
+                playAudio(cutSceneMusic, volume);
                 state = GameState.endCutScene;
                 break;
             case 6:
@@ -206,12 +208,16 @@ public class AdventureMode extends GameEngine {
                 startAudioLoop(cutSceneMusic, volume);
                 break;
             case 8:
+                stopMusic();
+                playAudio(cutSceneMusic, volume);
                 state = GameState.razuulCutscene;
                 playerMan.setMapPosX(520);
                 playerMan.setMapPosY(210);
                 playerMovement.directionFacing = CharacterMovement.Direction.left;
                 break;
             case 13:
+                stopMusic();
+                playAudio(backgroundMusic, volume);
                 state = GameState.finalCutscene;
                 break;
 
