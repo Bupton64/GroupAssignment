@@ -53,7 +53,7 @@ public class npc_plains_E9_byField extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null, false, true, "We've always had monsters nearby but it was never this bad... Sevar", "the Wizard protected us well, but now Therox has turned attention to ", "us... Well I just don't feel safe anymore.", "");
+        Dialogue d1 = new Dialogue(null, false, true, "We've always had monsters nearby but it was never this bad... Sevar", "the Wizard protected us well, but now Therox has turned his attention to ", "us... Well I just don't feel safe anymore.", "");
         listOne = d1;
     }
 
