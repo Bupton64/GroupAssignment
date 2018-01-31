@@ -50,6 +50,7 @@ public class saveGame {
             pw.println("###  Character");
             pw.println("###");
             pw.println("#######################");
+            pw.println(playerMan.getDirection());
             pw.println(playerMan.getNpcDeaths());
             pw.println(playerMan.getGameTimer());
             pw.println(playerMan.getXPTotal());
@@ -166,6 +167,18 @@ public class saveGame {
 ////            pw.println(playerMan.getMapPosY());
 ////            pw.println(playerMan.getCurrentMapLocation());
 ////            pw.println(playerMan.getMaxInventorySize());
+           if(line.equals("down")){
+               playerMan.setDirectionFacing(Character.Direction.down);
+           }else if(line.equals("up")){
+               playerMan.setDirectionFacing(Character.Direction.up);
+           }else if(line.equals("left")){
+               playerMan.setDirectionFacing(Character.Direction.left);
+           }else if(line.equals("right")){
+               playerMan.setDirectionFacing(Character.Direction.right);
+           }
+
+
+            line = br.readLine();
             temp.setNpcDeaths(Integer.parseInt(line));
             line = br.readLine();
             temp.setGameTimer(Double.parseDouble(line));

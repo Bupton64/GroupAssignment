@@ -56,28 +56,28 @@ public class Collision  {
             playerMovement.setLockUp(false);
         }
         if(CollidableObjects[posX][posY]){
-            if(playerMovement.getDirection() == CharacterMovement.Direction.right){
+            if(playerMan.getDirection().equals(Character.Direction.right)){
                 playerMan.setMapPosX(playerMan.getMapPosX() - 2);
                 playerMovement.setLockRight(true);
                 playerMovement.setLockLeft(true);
                 playerMovement.setLockUp(true);
                 playerMovement.setLockDown(true);
             }
-            if(playerMovement.getDirection() == CharacterMovement.Direction.left){
+            if(playerMan.getDirection().equals(Character.Direction.left)){
                 playerMan.setMapPosX(playerMan.getMapPosX() + 2);
                 playerMovement.setLockRight(true);
                 playerMovement.setLockLeft(true);
                 playerMovement.setLockUp(true);
                 playerMovement.setLockDown(true);
             }
-            if(playerMovement.getDirection() == CharacterMovement.Direction.up){
+            if(playerMan.getDirection().equals(Character.Direction.up)){
                 playerMan.setMapPosY(playerMan.getMapPosY() + 2);
                 playerMovement.setLockRight(true);
                 playerMovement.setLockLeft(true);
                 playerMovement.setLockUp(true);
                 playerMovement.setLockDown(true);
             }
-            if(playerMovement.getDirection() == CharacterMovement.Direction.down){
+            if(playerMan.getDirection().equals(Character.Direction.down)){
                 playerMan.setMapPosY(playerMan.getMapPosY() - 2);
                 playerMovement.setLockRight(true);
                 playerMovement.setLockLeft(true);

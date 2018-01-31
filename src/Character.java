@@ -823,6 +823,18 @@ public class Character extends Statblock {
 
     }
 
+    enum Direction {up,down,left,right};
+    Direction directionFacing;
+
+    public Direction getDirection(){
+        return directionFacing;
+    }
+
+    public void setDirectionFacing(Direction directionFacing) {
+        this.directionFacing = directionFacing;
+    }
+
+
     /////////////////////////////////
     ///
     ///  Quest Tool Bar
