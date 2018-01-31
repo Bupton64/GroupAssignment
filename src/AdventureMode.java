@@ -184,7 +184,6 @@ public class AdventureMode extends GameEngine {
                     startAudioLoop(villageMusic, volume);
                     stopper = true;
                 }
-
                 break;
             case 2:
                stopMusic();
@@ -206,7 +205,6 @@ public class AdventureMode extends GameEngine {
             case 6:
                 state = GameState.ShopMode;
                 stopMusic();
-
                 stopper = false;
                 volume = -13;
                 startAudioLoop(menuMusic, volume);
@@ -249,16 +247,13 @@ public class AdventureMode extends GameEngine {
         updateFade(dt);
         switch (state){
             case TravelMode:
-
                 mapController.updateNPC(dt,collisionDetector);
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
-
                 if(stateChanger != 9 && stateChanger != 5 && stateChanger != 10) {
                     stateChanger = mapController.updateQuest(dt);
                 }
-
                 if((stateChanger == 9) || (stateChanger == 10)){
                     if(stateChanger == 9) {
                         generateCombat = true;
@@ -267,12 +262,9 @@ public class AdventureMode extends GameEngine {
                     fadeState = true;
                     timer = 0;
                 }
-
                 break;
             case CombatMode:
-
                 stateChanger =  combatMode.update(dt);
-
                 break;
             case ShopMode:
                 shopController.updateShopControl(playerMan.getCurrentShopActive());
@@ -293,9 +285,6 @@ public class AdventureMode extends GameEngine {
                 break;
             case CutScene:
                 cutScene.updateTimer(dt);
-                //razuulCutsceneController.updateTimer(dt);     //For testing
-                //finalCutsceneController.updateTimer(dt);        //For testing
-                //endCutSceneController.updateTimer(dt);
                 break;
             case OverWorldMenu:
                 menuController.updateMenu();
@@ -335,7 +324,6 @@ public class AdventureMode extends GameEngine {
 
         switch (state){
             case TravelMode:
-
                 mapController.drawMap(mGraphics); //< Draw the Map
                 playerMovement.drawCharMovement(mGraphics);//<Draw Player
                 mapController.drawNPCInteraction(mGraphics);
@@ -344,7 +332,7 @@ public class AdventureMode extends GameEngine {
                     drawFade();
 
                 }
-
+                //debugging code
 //                changeColor(white);
 //                drawText(50, 70, Integer.toString((int) playerMan.getMapPosX() / 10), "Times New Roman", 20);
 //                drawText(50, 40, Integer.toString(collisionDetector.blocknum(playerMan)), "Times New Roman", 30);
@@ -369,9 +357,6 @@ public class AdventureMode extends GameEngine {
             case CutScene:
                 changeBackgroundColor(black);
                 cutScene.drawCutScene(mGraphics);
-                //razuulCutsceneController.drawRazuulCutscene2(mGraphics);       //For testing
-                //finalCutsceneController.drawFinalCutsene(mGraphics,0);            //For testing
-                //endCutSceneController.drawCutScene(mGraphics);
                 break;
             case endCutScene:
                 endCutSceneController.drawCutScene(mGraphics);
@@ -395,39 +380,6 @@ public class AdventureMode extends GameEngine {
     }
 
 
-    public void drawFadeOut(){
-        if(timer > 0 && timer < 1){
-            drawImage(fadeArray[9], 0,0,800,600);
-        }
-        if(timer > 0.1 && timer < 0.2){
-            drawImage(fadeArray[8], 0,0,800,600);
-        }
-        if(timer > 0.2 && timer < 0.3){
-            drawImage(fadeArray[7], 0,0,800,600);
-        }
-        if(timer > 0.3 && timer < 0.4){
-            drawImage(fadeArray[6], 0,0,800,600);
-        }
-        if(timer > 0.4 && timer < 0.5){
-            drawImage(fadeArray[5], 0,0,800,600);
-        }
-        if(timer > 0.5 && timer < 0.6){
-            drawImage(fadeArray[4], 0,0,800,600);
-        }
-        if(timer > 0.6 && timer < 0.7){
-            drawImage(fadeArray[3], 0,0,800,600);
-        }
-        if(timer > 0.7 && timer < 0.8){
-            drawImage(fadeArray[2], 0,0,800,600);
-        }
-        if(timer > 0.8 && timer < 0.9){
-            drawImage(fadeArray[1], 0,0,800,600);
-        }
-        if(timer > 0.9 && timer < 1.5){
-            drawImage(fadeArray[0], 0,0,800,600);
-        }
-    }
-
     ///////////////////////////////////////////
     ///
     ///   Keybinds
@@ -445,7 +397,6 @@ public class AdventureMode extends GameEngine {
                     playAudio(clicks);
                     stateChanger = 3;
                 }
-
                 break;
             case CombatMode:
                 combatMode.keyPressed(e);
