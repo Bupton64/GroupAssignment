@@ -6,7 +6,7 @@ public class npc_JulianGrave extends  NPC {
 
 
     npc_JulianGrave(){
-        setName("Julians' Grave:");
+        setName("Julians' Grave");
         spriteSheet = loadImage("grave.png");
         sprite = subImage(spriteSheet,0,0,56,72);
         setMapPosX(420);
@@ -18,7 +18,7 @@ public class npc_JulianGrave extends  NPC {
 
     @Override
     public void setUpCollision(Collision collisionDetector,Map map){
-        //collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
     /////////////////////////////////////////

@@ -6,7 +6,7 @@ public class npc_SallyGrave extends  NPC {
 
 
     npc_SallyGrave(){
-        setName("Sallys' Grave:");
+        setName("Sallys' Grave");
         spriteSheet = loadImage("grave.png");
         sprite = subImage(spriteSheet,0,0,56,72);
         setMapPosX(170);
@@ -18,7 +18,7 @@ public class npc_SallyGrave extends  NPC {
 
     @Override
     public void setUpCollision(Collision collisionDetector,Map map){
-        //collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
     }
 
     /////////////////////////////////////////
