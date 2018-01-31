@@ -1755,7 +1755,6 @@ public class Combat extends extraFunctions{
             player.getCurrentQuest().setState(Quest.questState.inQuest);
             return 13;
         }else if(enemy.getName() == "Razuul") {
-            player.setQuestStage(21);
             return 1;
         } else{
             return 1;
