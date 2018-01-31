@@ -16,7 +16,7 @@ public class ShopControl extends extraFunctions {
     ///
     ////////////////////////////////
 
-
+    Image equipmentSprite = loadImage("equipmentSprite.png");
 
     private void updateStartShop(){
         if(menuOption == 0){
@@ -30,6 +30,7 @@ public class ShopControl extends extraFunctions {
     private void drawStartShop(Graphics2D g){
         clearBackground(800, 600, g);
         changeBackgroundColor(black, g);
+        drawImage(equipmentSprite,0,0,g);
         drawImage(background, 0, 0, 800, 600, g);
         changeColor(white, g);
         drawImage(buttonSprite, 150, 250, g);
@@ -63,6 +64,7 @@ public class ShopControl extends extraFunctions {
     private void drawBuyShop(Graphics2D g){
         clearBackground(800, 600, g);
         changeBackgroundColor(black, g);
+        drawImage(equipmentSprite,0,0,g);
         drawImage(background, 0, 0, 800, 600, g);
         changeColor(white, g);
         drawImage(buttonSprite, 150, 250, g);

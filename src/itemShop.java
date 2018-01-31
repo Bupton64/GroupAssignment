@@ -8,7 +8,7 @@ public class itemShop extends shop {
         setTotalPages(1);
         setMaxIndex(4);
     }
-
+    Image equipmentSprite = loadImage("equipmentSprite.png");
     @Override
     public void shopInit() {
         clicks = loadAudio("clicks.wav");
@@ -56,6 +56,7 @@ public class itemShop extends shop {
         //< Set up background
         clearBackground(800, 600, g);
         changeBackgroundColor(black, g);
+        drawImage(equipmentSprite,0,0,g);
         drawImage(this.getShopBackground(), 0, 0, 800, 600, g);
         changeColor(black, g);
         drawBoldText(80, 60, "SALLY'S PHARMACY", "Felix Titling", 30, g);

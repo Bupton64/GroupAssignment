@@ -419,6 +419,7 @@ public class Menu extends extraFunctions {
     public void drawInventoryMenu(Graphics2D g) {
         clearBackground(800, 600, g);
         changeBackgroundColor(black, g);
+        drawImage(equipmentSprite,0,0,g);
         drawImage(Book, 0, 0, 800, 600, g);
 
 
@@ -540,7 +541,7 @@ public class Menu extends extraFunctions {
                     changeColor(cyan, g);
                     drawSolidRectangle(60, scroller3, 492, 20, g);
 
-                    System.out.println(Integer.toString(index));
+
 
                 } else if (itemSelect) {
                     changeColor(red, g);
@@ -975,7 +976,7 @@ public class Menu extends extraFunctions {
     public void drawSpellBook(Graphics2D g) {
         clearBackground(800,600,g);
         changeBackgroundColor(black,g);
-
+        drawImage(equipmentSprite,0,0,g);
         changeColor(Color.black, g);
         drawImage(spellBook, 0, 0, 800, 600, g);
 

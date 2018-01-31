@@ -9,7 +9,7 @@ public class accessoriesShop extends shop {
         setMaxIndex(2);
 
     }
-
+    Image equipmentSprite = loadImage("equipmentSprite.png");
     @Override
     public void shopInit() {
 
@@ -52,6 +52,7 @@ public class accessoriesShop extends shop {
         //< Set up background
         clearBackground(800, 600, g);
         changeBackgroundColor(black, g);
+        drawImage(equipmentSprite,0,0,g);
         drawImage(this.getShopBackground(), 0, 0, 800, 600, g);
         changeColor(black, g);
         drawBoldText(80, 60, "SALLY'S PHARMACY", "Felix Titling", 30, g);
