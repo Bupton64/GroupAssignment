@@ -438,7 +438,7 @@ public class MapControl extends extraFunctions {
                 case 51:
                     currentMap = new plains_A9_church();
                     if(playerMan.getNpcDeaths() == 0 || playerMan.getNpcDeaths() == 1 ){
-                        if(playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 21){
+                        if(playerMan.getQuestStage() >= 17 && playerMan.getQuestStage() <= 21){
                             mapNpcs[0] = new npc_plains_E9_byBridge(170,170);
                             numOfNpc = 1;
 
@@ -448,7 +448,7 @@ public class MapControl extends extraFunctions {
                         numOfNpc = 1;
                     }
 
-                    if(playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 20){
+                    if(playerMan.getQuestStage() >= 17 && playerMan.getQuestStage() <= 20){
                         mapNpcs[1] = new npc_plains_A11_Razuul();
 
                         numOfNpc = 2;
@@ -612,7 +612,7 @@ public class MapControl extends extraFunctions {
                 } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches" && playerMan.getQuestStage() == 15) {
                     playerMan.setMonsterGen(2);
                     playerMan.changeQuest();
-                } else if (playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 18){
+                } else if (playerMan.getQuestStage() >= 17 && playerMan.getQuestStage() <= 18){
                     playerMan.setMonsterGen(4);
                     if(playerMan.getNpcDeaths() == 2 || playerMan.getNpcDeaths() == 3) {
                         playerMan.setQuestStage(22);
