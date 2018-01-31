@@ -926,11 +926,14 @@ public class Menu extends extraFunctions {
         playerAbilities = player1.getAbilities();
         currentPageNum = 1;
         numOfAbilitiePages = 1;
+        menuOption = 0;
         menuSpriteSheet = loadImage("arrowhead.png");
         spellBook = loadImage("open.png");
         spellBookPointer = subImage(menuSpriteSheet, 288, 96, 48, 48);
         energyspritesheet = loadImage("bolts.png");
         energyFullImage = subImage(energyspritesheet, 0, 0, 320, 480);
+        spellBookPointerX = 70;
+        spellBookPointerY = 120;
     }
 
 

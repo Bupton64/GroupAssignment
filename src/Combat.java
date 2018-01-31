@@ -1010,11 +1010,12 @@ public class Combat extends extraFunctions{
             }
             if(escapeTimer > escapeDuration){
                 escapeTimer = 0;
-                escapeActive = false;
+
 
                 if(makeEscape){
                     stopAudioLoop(attackMusic);
                     player.setCombatActive(false);
+
                 }else {
                     enemyTurnSetUp = true;
                     state = CombatState.enemyTurn;
@@ -1039,6 +1040,9 @@ public class Combat extends extraFunctions{
                 drawText(100, 500, "You fail to escape from " + enemy.getName(), textFont, 20, g);
                 playerTurnLog = player.getName() + " failed trying to run";
             }
+        }
+        if(makeEscape){
+            escapeActive = false;
         }
     }
 
