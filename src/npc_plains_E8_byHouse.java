@@ -98,7 +98,7 @@ public class npc_plains_E8_byHouse extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"My business is ruined! I can't get any new supplies from the city","now that Sevar has boxed us in!","","");
+        Dialogue d1 = new Dialogue(null,false,true,"Curse Therox! When his forces first reached us, my brother fought","to defend Sepla! He fell, so we could live. Therox must pay!","I hope you can bring him to justice and avenge my brother.","");
         listOne = d1;
     }
 
