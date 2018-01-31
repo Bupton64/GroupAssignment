@@ -11,10 +11,7 @@ public class npc_plains_E11 extends  NPC {
         setMapPosX(400);
         setMapPosY(400);
 
-        spriteDown = new Image[3];
-        spriteUp = new Image[3];
-        spriteRight = new Image[3];
-        spriteLeft = new Image[3];
+        turnArray = new Image[4];
 
 
         loadImages();
@@ -25,6 +22,14 @@ public class npc_plains_E11 extends  NPC {
     }
 
 
+    @Override
+    public void loadImages(){
+        super.loadImages();
+        //Load Images here
+        for(int i =0; i < 3;i++){
+            turnArray[i] = subImage(spriteSheet,52,288 + (i * 72),56,72);
+        }
+    }
 
     @Override
     public void setUpCollision(Collision collisionDetector,Map map){
@@ -40,16 +45,11 @@ public class npc_plains_E11 extends  NPC {
 
 
 
+
+
     @Override
-    public void loadImages(){
-        super.loadImages();
-        //Load Images here
-        for(int i =0; i < 3;i++){
-            spriteDown[i] = subImage(spriteSheet, (52 * i), 288,52,72);
-            spriteLeft[i] = subImage(spriteSheet,(52 * i), 360,52,72);
-            spriteRight[i] = subImage(spriteSheet,(52 * i), 432,52,72);
-            spriteUp[i] = subImage(spriteSheet,(52 * i), 504,52,72);
-        }
+    public void updateNpcMovement(double dt,Collision collisionDetector){
+        turn();
     }
 
 
