@@ -55,6 +55,8 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
     Dialogue listTwo;
 
+    Dialogue listThree;
+
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"Therox's witches have been driving packs of wolves at the town. The ", "militia can't handle it, they've already lost two good men!","","");
@@ -62,12 +64,17 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
         Dialogue d2 = new Dialogue(null,false,true,"Hey Bjarne, I've noticed the priest has been visiting this house ","a lot. It seems a little suspicious.","","");
         listTwo = d2;
+
+        Dialogue d3 = new Dialogue(null,false,true,"That was incredible Bjarne! All of us here in Sepla owe you our","lives! ","","");
+        listThree = d3;
     }
 
     public void updateDialogue(int questStage){
         if(questStage < 13) {
             currentDialogue = listOne;
-        }else{
+        }else if(questStage >= 33) {
+            currentDialogue = listThree;
+        } else{
             currentDialogue = listTwo;
         }
 

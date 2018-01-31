@@ -40,7 +40,7 @@ public class quest_OneLastThing extends Quest {
     public void drawQuest(Graphics2D g){
         changeColor(black, g);
         if(getState() == questState.preQuest) {
-            drawText(40, 460, "Head to Sevars House", "Arial", 20, g);
+            drawText(40, 460, "Head to Sevars estate", "Arial", 20, g);
 
         }
         if(getState() == questState.inQuest){
