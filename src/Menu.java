@@ -13,8 +13,10 @@ public class Menu extends extraFunctions {
         this.loadController = load;
         initMenu();
         initSaveGame();
+        initSpellBook();
         initInventoryMenu();
     }
+
     Character player1;
     Image buttonSpriteSheet;
     Image buttonSprite;
@@ -89,15 +91,14 @@ public class Menu extends extraFunctions {
     boolean usedItem = false;
     String name;
     String itemName;
-    boolean selectCheck(String check){
-        if((player1.getEquippedItems()[index2].getSlot().name() == check)&&(player1.getInventory()[index].getSlot().name() == check)){
+
+    boolean selectCheck(String check) {
+        if ((player1.getEquippedItems()[index2].getSlot().name() == check) && (player1.getInventory()[index].getSlot().name() == check)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-
-
 
 
     private int checkRightItemEquip(String name) {
@@ -254,9 +255,9 @@ public class Menu extends extraFunctions {
 
     public void initMenu() {
         buttonSpriteSheet = loadImage("buttons.png");
-        buttonSprite = subImage(buttonSpriteSheet,30,70,180,80);
+        buttonSprite = subImage(buttonSpriteSheet, 30, 70, 180, 80);
         dialogueSpriteSheet = loadImage("dialogue_Boxes.png");
-        dialogueSimpleBox = subImage(dialogueSpriteSheet,20,20,470,100);
+        dialogueSimpleBox = subImage(dialogueSpriteSheet, 20, 20, 470, 100);
         clicks = loadAudio("clicks.wav");
         clicks2 = loadAudio("clicks2.wav");
         exitClick = loadAudio("exitClick.wav");
@@ -280,27 +281,31 @@ public class Menu extends extraFunctions {
 
     }
 
-    public void updateMenu(){
-        if(invMenu){
+    public void updateMenu() {
+        if (invMenu) {
             updateInventoryMenu();
         }
-
+        if(state == MenuState.SpellBook){
+            updateSpellBook();
+        }
 
     }
 
-    public void drawMenu(Graphics2D g){
-        if(state == MenuState.CharacterMenu) {
+    public void drawMenu(Graphics2D g) {
+        if (state == MenuState.CharacterMenu) {
             drawChaMenu(g);
-            if(invMenu) {
+            if (invMenu) {
                 drawInventoryMenu(g);
             }
             drawEquMenu(g);
-        }else if(state == MenuState.SaveMenu){
+        } else if (state == MenuState.SaveMenu) {
             drawSaveGame(g);
-        }else if(state == MenuState.EquipmentMenu){
+        }else if (state == MenuState.SpellBook) {
+            drawSpellBook(g);
+        } else if (state == MenuState.EquipmentMenu) {
             drawEquMenu(g);
-        }else if(state == MenuState.InventoryMenu){
-           // drawInvMenu(g);
+        } else if (state == MenuState.InventoryMenu) {
+            // drawInvMenu(g);
         }
     }
 
@@ -314,19 +319,18 @@ public class Menu extends extraFunctions {
             drawImage(character, 429, 97, 144, 144, g);
             drawImage(paper, 10, 300, 514, 370, g);
             changeColor(grey1, g);
-            drawBoldText(40,360,"Current Quest:","Felix Titling",20,g);
-            drawImage(buttonSprite,40,380,400,60,g);
+            drawBoldText(40, 360, "Current Quest:", "Felix Titling", 20, g);
+            drawImage(buttonSprite, 40, 380, 400, 60, g);
             changeColor(cyan, g);
-            drawBoldText(90,412,player1.getCurrentQuest().getQuestName(),"Felix Titling",13,g);
+            drawBoldText(90, 412, player1.getCurrentQuest().getQuestName(), "Felix Titling", 13, g);
             changeColor(black, g);
             player1.getCurrentQuest().drawQuest(g);
-            changeColor(white,g);
+            changeColor(white, g);
 
 
-
-
-            drawBoldText(650, 420, "RESUME", "Felix Titling", 20, g);
-            drawBoldText(650, 450, "Save", "Felix Titling", 20, g);
+            drawBoldText(650, 390, "RESUME", "Felix Titling", 20, g); // 420
+            drawBoldText(650, 420, "Save", "Felix Titling", 20, g); //450
+            drawBoldText(650, 450, "SpellBook", "Felix Titling", 20, g); //450
             drawBoldText(650, 480, "INVENTORY", "Felix Titling", 20, g);
             drawBoldText(650, 510, "EQUIPMENT", "Felix Titling", 20, g);
             drawBoldText(650, 540, "EXIT", "Felix Titling", 20, g);
@@ -341,9 +345,9 @@ public class Menu extends extraFunctions {
 
             changeColor(green, g);
             drawBoldText(170, 70, "EXP     " + player1.getXPTotal(), "Felix Titling", 20, g);
-            drawSolidRectangle(465 , 55, ((float) (player1.getXPTotal()) / (float) (player1.getXPToNextLevel())) * 100, 9, g);
+            drawSolidRectangle(465, 55, ((float) (player1.getXPTotal()) / (float) (player1.getXPToNextLevel())) * 100, 9, g);
             changeColor(white, g);
-            drawRectangle(465 , 55, 100, 9, 1, g);
+            drawRectangle(465, 55, 100, 9, 1, g);
             changeColor(cyan, g);
             drawBoldText(173, 95, "LVL     " + player1.getLevel(), "Felix Titling", 20, g);
             changeColor(yellow, g);
@@ -376,7 +380,7 @@ public class Menu extends extraFunctions {
     int inventoryMenuPointerPosY;
     int menuOption;
 
-    public void initInventoryMenu(){
+    public void initInventoryMenu() {
 
         numOfPages = 0;
         currentPage = 1;
@@ -386,29 +390,26 @@ public class Menu extends extraFunctions {
     }
 
 
-    public void updateInventoryMenu(){
+    public void updateInventoryMenu() {
 
 
-        if(menuOption >= 0 && menuOption <= 9){
+        if (menuOption >= 0 && menuOption <= 9) {
 
             inventoryMenuPointerPosY = 140 + (40 * (menuOption));
         }
 
 
-
-
         if (player1.getInventorySize() % 10 != 0) {
-            numOfPages = (player1.getInventorySize() / 10)+1;
+            numOfPages = (player1.getInventorySize() / 10) + 1;
         } else {
             numOfPages = (player1.getInventorySize() / 10);
         }
 
 
-
-        if(currentPage < numOfPages){
-            numOfItemsToDisplay = 9 *currentPage;
-        }else{
-            numOfItemsToDisplay = player1.getMaxInventorySize()-1;
+        if (currentPage < numOfPages) {
+            numOfItemsToDisplay = 9 * currentPage;
+        } else {
+            numOfItemsToDisplay = player1.getMaxInventorySize() - 1;
 
         }
 
@@ -416,8 +417,8 @@ public class Menu extends extraFunctions {
     }
 
     public void drawInventoryMenu(Graphics2D g) {
-        clearBackground(800,600,g);
-        changeBackgroundColor(black,g);
+        clearBackground(800, 600, g);
+        changeBackgroundColor(black, g);
         drawImage(Book, 0, 0, 800, 600, g);
 
 
@@ -441,92 +442,87 @@ public class Menu extends extraFunctions {
             }
 
 
-
+            changeColor(black, g);
+            if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot() == Item.Slot.bag) {
+                drawBoldText(420, 65, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName(), "Felix Titling", 20, g);
+                drawLine(420, 70, 620, 70, 2, g);
 
                 changeColor(black, g);
-                if (player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot() == Item.Slot.bag) {
-                    drawBoldText(420, 65, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName(), "Felix Titling", 20, g);
-                    drawLine(420, 70, 620, 70, 2, g);
-
-                    changeColor(black, g);
-
-                    changeColor(purple, g);
-                    drawBoldText(420, 100, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() + " ITEM", "Felix Titling", 20, g);
-                    changeColor(black, g);
-                    drawBoldText(420, 130, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getTooltip() + ".", "Felix Titling", 17, g);
-                } else {
-                    drawBoldText(420, 65, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName(), "Felix Titling", 20, g);
-                    drawLine(420, 70, 620, 70, 2, g);
-
-                    changeColor(black, g);
-                    drawBoldText(420, 100, "ATK", "Felix Titling", 15, g);
-                    drawBoldText(420, 100 + 30, "DEF", "Felix Titling", 15, g);
-                    drawBoldText(420, 100 + 60, "STR", "Felix Titling", 15, g);
-                    drawBoldText(420, 100 + 90, "SPD", "Felix Titling", 15, g);
-                    drawBoldText(420, 100 + 120, "LUK", "Felix Titling", 15, g);
-
-                    drawBoldText(690, 100, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getAttack()), "Felix Titling", 18, g);
-                    drawBoldText(690, 100 + 30, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getDefense()), "Felix Titling", 18, g);
-                    drawBoldText(690, 100 + 60, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getStrength()), "Felix Titling", 18, g);
-                    drawBoldText(690, 100 + 90, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSpeed()), "Felix Titling", 18, g);
-                    drawBoldText(690, 100 + 120, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getLuck()), "Felix Titling", 18, g);
-
-                    changeColor(purple, g);
-                    drawBoldText(420, 260, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() + " ITEM", "Felix Titling", 20, g);
-                    changeColor(black, g);
-                    drawBoldText(420, 300, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getTooltip() + ".", "Felix Titling", 17, g);
-                }
-
 
                 changeColor(purple, g);
-                drawBoldText(65, 70, "INVENTORY", "Felix Titling", 40, g);
-                drawBoldText(70, 545, "BACK [ESC]", "Felix Titling", 15, g);
-
-
+                drawBoldText(420, 100, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() + " ITEM", "Felix Titling", 20, g);
+                changeColor(black, g);
+                drawBoldText(420, 130, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getTooltip() + ".", "Felix Titling", 17, g);
             } else {
+                drawBoldText(420, 65, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getName(), "Felix Titling", 20, g);
+                drawLine(420, 70, 620, 70, 2, g);
+
+                changeColor(black, g);
+                drawBoldText(420, 100, "ATK", "Felix Titling", 15, g);
+                drawBoldText(420, 100 + 30, "DEF", "Felix Titling", 15, g);
+                drawBoldText(420, 100 + 60, "STR", "Felix Titling", 15, g);
+                drawBoldText(420, 100 + 90, "SPD", "Felix Titling", 15, g);
+                drawBoldText(420, 100 + 120, "LUK", "Felix Titling", 15, g);
+
+                drawBoldText(690, 100, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getAttack()), "Felix Titling", 18, g);
+                drawBoldText(690, 100 + 30, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getDefense()), "Felix Titling", 18, g);
+                drawBoldText(690, 100 + 60, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getStrength()), "Felix Titling", 18, g);
+                drawBoldText(690, 100 + 90, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSpeed()), "Felix Titling", 18, g);
+                drawBoldText(690, 100 + 120, Integer.toString(player1.getInventory()[menuOption + (10 * (currentPage - 1))].getLuck()), "Felix Titling", 18, g);
+
                 changeColor(purple, g);
-                drawBoldText(65, 270, "YOUR INVENTORY IS EMPTY.", "Felix Titling", 20, g);
-                changeColor(grey4, g);
-                drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 10, g);
+                drawBoldText(420, 260, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getSlot().name() + " ITEM", "Felix Titling", 20, g);
+                changeColor(black, g);
+                drawBoldText(420, 300, player1.getInventory()[menuOption + (10 * (currentPage - 1))].getTooltip() + ".", "Felix Titling", 17, g);
             }
-            if(usedItem) {
-                drawImage(dialogueSimpleBox, 200, 200, 400, 150, g);
-                changeColor(white, g);
-                drawBoldText(280, 250, "You used" , "Felix Titling", 20, g);
-                changeColor(cyan, g);
-                drawBoldText(400, 250, itemName, "Felix Titling", 20, g);
-                changeColor(white, g);
-                drawBoldText(320, 320, "Press <space> to continue....", "Felix Titling", 9, g);
-                changeColor(green ,g);
-                if ((itemName == "Potion") || (itemName == "Mega Potion") || (itemName == "Elixir") || (itemName == "Healing Salve")) {
-                    if (player1.getCurrentHP() == player1.getMaxHP()) {
-                        drawBoldText(335, 290, "Your HP is full. ", "Felix Titling", 13, g);
-                    } else {
 
-                        drawBoldText(235, 290, "Your current HP has increased to " + (int)player1.getCurrentHP(), "Felix Titling", 13, g);
 
-                    }
+            changeColor(purple, g);
+            drawBoldText(65, 70, "INVENTORY", "Felix Titling", 40, g);
+            drawBoldText(70, 545, "BACK [ESC]", "Felix Titling", 15, g);
+
+
+        } else {
+            changeColor(purple, g);
+            drawBoldText(65, 270, "YOUR INVENTORY IS EMPTY.", "Felix Titling", 20, g);
+            changeColor(grey4, g);
+            drawBoldText(65, 300, "FIND OR BUY ITEMS TO VIEW YOUR INVENTORY", "Felix Titling", 10, g);
+        }
+        if (usedItem) {
+            drawImage(dialogueSimpleBox, 200, 200, 400, 150, g);
+            changeColor(white, g);
+            drawBoldText(280, 250, "You used", "Felix Titling", 20, g);
+            changeColor(cyan, g);
+            drawBoldText(400, 250, itemName, "Felix Titling", 20, g);
+            changeColor(white, g);
+            drawBoldText(320, 320, "Press <space> to continue....", "Felix Titling", 9, g);
+            changeColor(green, g);
+            if ((itemName == "Potion") || (itemName == "Mega Potion") || (itemName == "Elixir") || (itemName == "Healing Salve")) {
+                if (player1.getCurrentHP() == player1.getMaxHP()) {
+                    drawBoldText(335, 290, "Your HP is full. ", "Felix Titling", 13, g);
+                } else {
+
+                    drawBoldText(235, 290, "Your current HP has increased to " + (int) player1.getCurrentHP(), "Felix Titling", 13, g);
 
                 }
+
             }
+        }
 
 
     }
 
 
-
-
-
     public void drawEquMenu(Graphics2D g) {
         if (equMenu) {
             isEquiblableItems = false;
-            for(int i =0; i<player1.getInventorySize(); i++){
-                if(player1.getInventory()[i].getSlot().name() != "bag"){
+            for (int i = 0; i < player1.getInventorySize(); i++) {
+                if (player1.getInventory()[i].getSlot().name() != "bag") {
                     isEquiblableItems = true;
-                     break;
+                    break;
                 }
             }
-            if (isEquiblableItems||player1.getEquipmentSize()>0) {
+            if (isEquiblableItems || player1.getEquipmentSize() > 0) {
                 firstHead = firstItem("head", firstHead);
                 firstWeapon = firstItem("weapon", firstWeapon);
                 firstOffhand = firstItem("offhand", firstOffhand);
@@ -664,14 +660,14 @@ public class Menu extends extraFunctions {
                         if (player1.getEquippedItems()[i].getSlot().name() == "head") {
                             index2 = i;
                             break;
-                        }else if (i == player1.getEquipmentSize() - 1) {
+                        } else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
                     } else if (isWeapon) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "weapon") {
                             index2 = i;
                             break;
-                        }else if (i == player1.getEquipmentSize() - 1) {
+                        } else if (i == player1.getEquipmentSize() - 1) {
 
                             none = true;
                         }
@@ -679,21 +675,21 @@ public class Menu extends extraFunctions {
                         if (player1.getEquippedItems()[i].getSlot().name() == "offhand") {
                             index2 = i;
                             break;
-                        }else if (i == player1.getEquipmentSize() - 1) {
+                        } else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
                     } else if (isChest) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "chest") {
                             index2 = i;
                             break;
-                        }else if (i == player1.getEquipmentSize() - 1) {
+                        } else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
                     } else if (isFeet) {
                         if (player1.getEquippedItems()[i].getSlot().name() == "feet") {
                             index2 = i;
                             break;
-                        }else if (i == player1.getEquipmentSize() - 1) {
+                        } else if (i == player1.getEquipmentSize() - 1) {
                             none = true;
                         }
                     } else if (isAccessory) {
@@ -794,35 +790,33 @@ public class Menu extends extraFunctions {
                 changeColor(white, g);
 
 
-
-                    changeColor(black, g);
-                    drawLine(50, 265, 550, 265, 2, g);
-                    drawLine(550, 100, 550, 480, 2, g);
-                    drawBoldText(60, 300, "CHARACTER:", "Felix Titling", 20, g);
-                    drawLine(60, 306, 170, 306, 2, g);
-                    drawLine(270, 330, 270, 480, 2, g);
-                    drawBoldText(60, 350, "ATK", "Felix Titling", 15, g);
-                    drawBoldText(60, 350 + 30, "DEF", "Felix Titling", 15, g);
-                    drawBoldText(60, 350 + 60, "STR", "Felix Titling", 15, g);
-                    drawBoldText(60, 350 + 90, "SPD", "Felix Titling", 15, g);
-                    drawBoldText(60, 350 + 120, "LUK", "Felix Titling", 15, g);
-                    drawBoldText(200, 350, Integer.toString(player1.getAttack() + player1.getEquipAttackBonus()), "Felix Titling", 18, g);
-                    drawBoldText(200, 350 + 30, Integer.toString(player1.getDefense() + player1.getEquipDefenseBonus()), "Felix Titling", 18, g);
-                    drawBoldText(200, 350 + 60, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 18, g);
-                    drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
-                    drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
-                    //drawBoldText(300, 300, Boolean.toString(none), g);
+                changeColor(black, g);
+                drawLine(50, 265, 550, 265, 2, g);
+                drawLine(550, 100, 550, 480, 2, g);
+                drawBoldText(60, 300, "CHARACTER:", "Felix Titling", 20, g);
+                drawLine(60, 306, 170, 306, 2, g);
+                drawLine(270, 330, 270, 480, 2, g);
+                drawBoldText(60, 350, "ATK", "Felix Titling", 15, g);
+                drawBoldText(60, 350 + 30, "DEF", "Felix Titling", 15, g);
+                drawBoldText(60, 350 + 60, "STR", "Felix Titling", 15, g);
+                drawBoldText(60, 350 + 90, "SPD", "Felix Titling", 15, g);
+                drawBoldText(60, 350 + 120, "LUK", "Felix Titling", 15, g);
+                drawBoldText(200, 350, Integer.toString(player1.getAttack() + player1.getEquipAttackBonus()), "Felix Titling", 18, g);
+                drawBoldText(200, 350 + 30, Integer.toString(player1.getDefense() + player1.getEquipDefenseBonus()), "Felix Titling", 18, g);
+                drawBoldText(200, 350 + 60, Integer.toString(player1.getStrength() + player1.getEquipStrengthBonus()), "Felix Titling", 18, g);
+                drawBoldText(200, 350 + 90, Integer.toString(player1.getSpeed() + player1.getEquipSpeedBonus()), "Felix Titling", 18, g);
+                drawBoldText(200, 350 + 120, Integer.toString(player1.getLuck() + player1.getEquipLuckBonus()), "Felix Titling", 18, g);
+                //drawBoldText(300, 300, Boolean.toString(none), g);
                 if (itemSelect) {
-                        if (none == false) {
-                            stats("head", g);
-                            stats("weapon", g);
-                            stats("offhand", g);
-                            stats("chest", g);
-                            stats("feet", g);
-                            stats("accessory", g);
-                        }
+                    if (none == false) {
+                        stats("head", g);
+                        stats("weapon", g);
+                        stats("offhand", g);
+                        stats("chest", g);
+                        stats("feet", g);
+                        stats("accessory", g);
                     }
-
+                }
 
 
                 if (itemSelect) {
@@ -885,17 +879,16 @@ public class Menu extends extraFunctions {
                     }
                     stopper = false;
                 }
-            }else{
+            } else {
                 clearBackground(800, 600, g);
                 drawImage(background3, 0, 0, g);
                 changeColor(purple, g);
-                drawBoldText(180, 240, "YOU HAVE NO ITEMS TO EQUIP, " , "Felix Titling", 25, g);
+                drawBoldText(180, 240, "YOU HAVE NO ITEMS TO EQUIP, ", "Felix Titling", 25, g);
                 drawBoldText(180, 270, "AND NOTHING EQUIPPED.", "Felix Titling", 25, g);
                 changeColor(cyan, g);
                 drawBoldText(180, 290, "FIND OR BUY ITEMS TO VIEW YOUR EQUIPMENT PAGE.", "Felix Titling", 15, g);
                 changeColor(red, g);
                 drawLine(180, 295, 283, 295, 2, g);
-
 
 
             }
@@ -905,6 +898,143 @@ public class Menu extends extraFunctions {
         changeColor(red, g);
     }
 
+    ////////////////////////////////////
+    ///
+    ///     Spell Book
+    ///
+    ////////////////////////////////////
+
+    Ability[] playerAbilities;
+
+    Image spellBook;
+    Image spellBookPointer;
+    Image menuSpriteSheet;
+    Image energyspritesheet;
+    Image energyFullImage;
+
+    double spellBookPointerX;
+    double spellBookPointerY;
+
+    int numOfAbilitiePages;
+    int currentPageNum;
+    int numOfSpellsToDisplay;
+
+    boolean nextPageExist;
+    boolean prevPageExist;
+
+    public void initSpellBook() {
+        playerAbilities = player1.getAbilities();
+        currentPageNum = 1;
+        numOfAbilitiePages = 1;
+        menuSpriteSheet = loadImage("arrowhead.png");
+        spellBook = loadImage("open.png");
+        spellBookPointer = subImage(menuSpriteSheet, 288, 96, 48, 48);
+        energyspritesheet = loadImage("bolts.png");
+        energyFullImage = subImage(energyspritesheet, 0, 0, 320, 480);
+    }
+
+
+    public void updateSpellBook() {
+
+        if (player1.getNumOfAbilities() > 9) {
+            numOfAbilitiePages = 1 + ((player1.getNumOfAbilities() - 1) / 8);
+        }
+
+
+        if (menuOption >= 1 && menuOption <= 10) {
+            spellBookPointerX = 70;
+            spellBookPointerY = 120 + (40 * (menuOption - 1));
+        }
+
+        if (menuOption == 20) {
+            spellBookPointerX = 430;
+            spellBookPointerY = 450;
+        }
+
+        if (menuOption == 21) {
+            spellBookPointerX = 430;
+            spellBookPointerY = 470;
+        }
+
+        if (nextPageExist) {
+            numOfSpellsToDisplay = 8;
+        } else {
+            numOfSpellsToDisplay = player1.getNumOfAbilities() - 1;
+
+        }
+
+    }
+
+
+    public void drawSpellBook(Graphics2D g) {
+        clearBackground(800,600,g);
+        changeBackgroundColor(black,g);
+
+        changeColor(Color.black, g);
+        drawImage(spellBook, 0, 0, 800, 600, g);
+
+
+        if (numOfAbilitiePages > currentPageNum) {
+            drawText(480, 480, "Next Page", "Times New Roman", 25, g);
+            nextPageExist = true;
+        } else {
+            nextPageExist = false;
+        }
+        if (currentPageNum > 1) {
+            drawText(480, 500, "Previous Page", "Times New Roman", 25, g);
+            prevPageExist = true;
+        } else {
+            prevPageExist = false;
+        }
+
+        drawText(100, 100, "Abilities", "Times new roman", 30, g);
+        drawText(530, 100, "ToolTip", "Times new roman", 30, g);
+
+
+        int j = 1;
+        for (int i = 1 + (8 * (currentPageNum - 1)); i <= numOfSpellsToDisplay; i++) {
+            while (!playerAbilities[i].isActive()) {
+                i++;
+
+            }
+            changeColor(Color.darkGray, g);
+            drawSolidCircle(235, 145 + 40 * (j - 1), 13, g);
+            changeColor(Color.gray, g);
+            drawCircle(235, 145 + 40 * (j - 1), 13, 2, g);
+            changeColor(black, g);
+            drawText(110, 150 + 40 * (j - 1), playerAbilities[i % (9 * currentPageNum + 1)].getName(), "Times new Roman", 20, g);
+
+            drawImage(energyFullImage, 226, 135 + 40 * (j - 1), 20, 20, g);
+            drawText(255, 150 + 40 * (j - 1), Integer.toString(playerAbilities[i % (9 * currentPageNum)].getEnergyCost()), "Times New Roman", 20, g);
+            if (playerAbilities[i % (9 * currentPageNum)].isMagic()) {
+                drawText(310, 150 + 40 * (j - 1), "Magic", "Times new Roman", 20, g);
+            } else {
+                drawText(310, 150 + 40 * (j - 1), "Physical", "Times new Roman", 20, g);
+            }
+            if (menuOption == j) {
+                drawText(460, 140, playerAbilities[i % (9 * currentPageNum)].getToolTip(), "Times New Roman", 20, g);
+            }
+
+            j++;
+
+        }
+
+
+        if (menuOption == 20) {
+            drawText(460, 140, "Next Page", "Times New Roman", 20, g);
+        }
+        if (menuOption == 21) {
+            drawText(460, 140, "Previous Page", "Times New Roman", 20, g);
+        }
+
+
+        drawBoldText(110, 535, "Back[ESC]", "Felix titling", 14, g);
+
+
+        drawImage(spellBookPointer, spellBookPointerX, spellBookPointerY, 40, 40, g);
+
+
+    }
 
 
     ////////////////////////////////////
@@ -938,11 +1068,11 @@ public class Menu extends extraFunctions {
 
     private boolean getSaveFiles;
 
-  //  private int menuPointerPosX;
+    //  private int menuPointerPosX;
     private int menuPointerPosY;
 
 
-    public void initSaveGame(){
+    public void initSaveGame() {
         Image paper = loadImage("paper.png");
         Image sword = loadImage("sword.png");
         Image sword2 = loadImage("sword2.png");
@@ -971,13 +1101,13 @@ public class Menu extends extraFunctions {
         menuPointerPosY = 230;
     }
 
-    public void getSaveFiles(){
+    public void getSaveFiles() {
         String temp;
         double timer;
         try (BufferedReader br = new BufferedReader(new FileReader("SaveOne.txt"))) {
             temp = br.readLine();
-            if(temp == null){
-            }else{
+            if (temp == null) {
+            } else {
                 timer = Double.parseDouble(br.readLine());
                 loadOneTimer = timer;
                 loadOneQuestName = temp;
@@ -991,8 +1121,8 @@ public class Menu extends extraFunctions {
 
         try (BufferedReader br = new BufferedReader(new FileReader("SaveTwo.txt"))) {
             temp = br.readLine();
-            if(temp == null){
-            }else{
+            if (temp == null) {
+            } else {
                 timer = Double.parseDouble(br.readLine());
                 loadTwoTimer = timer;
                 loadTwoQuestName = temp;
@@ -1006,8 +1136,8 @@ public class Menu extends extraFunctions {
 
         try (BufferedReader br = new BufferedReader(new FileReader("SaveThree.txt"))) {
             temp = br.readLine();
-            if(temp == null){
-            }else{
+            if (temp == null) {
+            } else {
                 timer = Double.parseDouble(br.readLine());
                 loadThreeTimer = timer;
                 loadThreeQuestName = temp;
@@ -1020,11 +1150,10 @@ public class Menu extends extraFunctions {
         }
 
 
-
     }
 
-    public void updateSave(){
-        if(!getSaveFiles){
+    public void updateSave() {
+        if (!getSaveFiles) {
             getSaveFiles();
             getSaveFiles = true;
         }
@@ -1034,43 +1163,43 @@ public class Menu extends extraFunctions {
     }
 
 
-    public void drawSaveGame(Graphics2D g){
+    public void drawSaveGame(Graphics2D g) {
 
-        changeBackgroundColor(black,g);
+        changeBackgroundColor(black, g);
         drawImage(background3, 0, 0, g);
         //drawImage(startBackground, 210, 10, 350 * 1.2, 500 * 1.2, g);
         changeColor(purple, g);
         drawBoldText(290, 120, "Save Files", "Felix Titling", 35, g);
         changeColor(red, g);
         drawBoldText(200, 150 + 80, "Save_1", "Felix Titling", 20, g);
-        if(loadOneDisplay) {
+        if (loadOneDisplay) {
             changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
-            drawBoldText(390, 240, "Level " +loadOneLevel, "Felix Titling", 15, g);
-            drawBoldText(470, 240, "Time " + (int)loadOneTimer / 60 + ":" + (int)loadOneTimer % 60, "Felix Titling", 15, g);
-        }else{
+            drawBoldText(390, 240, "Level " + loadOneLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 240, "Time " + (int) loadOneTimer / 60 + ":" + (int) loadOneTimer % 60, "Felix Titling", 15, g);
+        } else {
             changeColor(red, g);
             drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
         drawBoldText(200, 150 + 160, "Save_2", "Felix Titling", 20, g);
-        if(loadTwoDisplay) {
+        if (loadTwoDisplay) {
             changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
-            drawBoldText(390, 320, "Level " +loadTwoLevel, "Felix Titling", 15, g);
-            drawBoldText(470, 320, "Time " + (int)loadTwoTimer / 60 + ":" + (int)loadTwoTimer % 60, "Felix Titling", 15, g);
-        }else{
+            drawBoldText(390, 320, "Level " + loadTwoLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 320, "Time " + (int) loadTwoTimer / 60 + ":" + (int) loadTwoTimer % 60, "Felix Titling", 15, g);
+        } else {
             changeColor(red, g);
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
         drawBoldText(200, 150 + 240, "Save_3", "Felix Titling", 20, g);
-        if(loadThreeDisplay) {
+        if (loadThreeDisplay) {
             changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
-            drawBoldText(390, 400, "Level " +loadThreeLevel, "Felix Titling", 15, g);
-            drawBoldText(470, 400, "Time " + (int)loadThreeTimer / 60 + ":" + (int)loadThreeTimer % 60, "Felix Titling", 15, g);
-        }else{
+            drawBoldText(390, 400, "Level " + loadThreeLevel, "Felix Titling", 15, g);
+            drawBoldText(470, 400, "Time " + (int) loadThreeTimer / 60 + ":" + (int) loadThreeTimer % 60, "Felix Titling", 15, g);
+        } else {
             changeColor(red, g);
             drawBoldText(392, 390, "Empty", "Felix Titling", 15, g);
         }
@@ -1086,17 +1215,97 @@ public class Menu extends extraFunctions {
     ///
     ////////////////////////////////////
 
-    enum MenuState {CharacterMenu, SaveMenu, EquipmentMenu, InventoryMenu}
+    enum MenuState {CharacterMenu, SaveMenu, EquipmentMenu, InventoryMenu, SpellBook}
+
     MenuState state = MenuState.CharacterMenu;
 
-    public int keyPressed(KeyEvent e){
-        if(state == MenuState.CharacterMenu){
+    public int keyPressed(KeyEvent e) {
+        if (state == MenuState.CharacterMenu) {
             return characterKeyPressed(e);
-        }else if(state == MenuState.SaveMenu){
+        } else if (state == MenuState.SaveMenu) {
             return saveKeyPressed(e);
+        } else if (state == MenuState.SpellBook) {
+            spellBookKeyPressed(e);
         }
         return 0;
     }
+
+    public int spellBookKeyPressed(KeyEvent e) {
+
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            playAudio(exitClick);
+            state = MenuState.CharacterMenu;
+            menuOption = 1;
+        }
+
+
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            if (menuOption == 20) {
+                playAudio(clicks);
+                if (prevPageExist) {
+                    menuOption = 21;
+                }
+            } else if (menuOption == 21) {
+                playAudio(clicks);
+                if (nextPageExist) {
+                    menuOption = 20;
+                }
+            } else if (menuOption < numOfSpellsToDisplay - ((currentPageNum - 1) * 8)) {
+                playAudio(clicks);
+                menuOption++;
+            } else {
+                menuOption = 1;
+            }
+
+        }
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+
+            if (menuOption == 20) {
+                playAudio(clicks);
+                if (prevPageExist) {
+                    menuOption = 21;
+                }
+            } else if (menuOption == 21) {
+                playAudio(clicks);
+                if (nextPageExist) {
+                    menuOption = 20;
+                }
+            } else if (menuOption > 1) {
+                playAudio(clicks);
+                menuOption--;
+            } else {
+                menuOption = numOfSpellsToDisplay - ((currentPageNum - 1) * 8);
+            }
+
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
+            if (menuOption != 20 && menuOption != 21) {
+                playAudio(p2);
+                lastMenuOption = menuOption;
+                if (prevPageExist) {
+                    menuOption = 21;
+                }
+                if (nextPageExist) {
+                    menuOption = 20;
+                }
+            }
+        }
+
+
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+
+            if (menuOption == 20 || menuOption == 21) {
+                playAudio(p1);
+                menuOption = lastMenuOption;
+            }
+            lastMenuOption = 0;
+        }
+
+        return 0;
+    }
+    private int lastMenuOption;
 
     public int saveKeyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
@@ -1148,6 +1357,7 @@ public class Menu extends extraFunctions {
                 cursorPositionY += 30;
 
             }
+
             if ((e.getKeyCode() == KeyEvent.VK_UP) && cursorPositionY > 420) {
                 playAudio(clicks);
                 cursorPositionY -= 30;
@@ -1157,6 +1367,10 @@ public class Menu extends extraFunctions {
                 System.exit(23);
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 440) {
+
+                state = MenuState.SpellBook;
+            }
+            if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 410) {
                 getSaveFiles = false;
                 updateSave();
                 state = MenuState.SaveMenu;
