@@ -807,7 +807,7 @@ public class Combat extends extraFunctions{
 
 
         int j = 1;
-            for (int i = 1 + (8 * (currentPageNum-1)); i <= numOfSpellsToDisplay; i++) {
+            for (int i = 1 + (8 * (currentPageNum-1)); i <= numOfSpellsToDisplay && j < 9; i++) {
                 while (!playerAbilities[i].isActive()) {
                     i++;
 
