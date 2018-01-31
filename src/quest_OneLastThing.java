@@ -44,11 +44,8 @@ public class quest_OneLastThing extends Quest {
 
         }
         if(getState() == questState.inQuest){
-            drawText(40, 460, "Speak to Camrath at level 15", "Arial", 20, g);
-
-        }
-        if(getState() == questState.completedQuest){
             drawText(40, 460, "You defeated Therox and saved Sepla", "Arial", 20, g);
+
         }
 
     }

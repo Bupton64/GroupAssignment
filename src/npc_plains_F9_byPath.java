@@ -40,15 +40,17 @@ public class npc_plains_F9_byPath extends  NPC {
         setMapPosY(350);
         setMoveTimer(0);
         setMoveDelay(0.2);
-        numOfLocations = 2;
+        numOfLocations = 4;
         currentLocation= 0;
 
-        Location = new NpcLocation[2];
+        Location = new NpcLocation[4];
         for(int i = 0; i < numOfLocations;i++){
             Location[i] = new NpcLocation();
         }
-        Location[0].setUp(0,600,450, "left",180,1,60);
-        Location[1].setUp(1,420,450,"right",180,0,60);
+        Location[0].setUp(0,600,450, "left",170,1,60);
+        Location[1].setUp(1,600,150, "up",300,2,60);
+        Location[2].setUp(2,600,450, "down",300,3,60);
+        Location[3].setUp(3,430,450,"right",170,0,60);
 
 
         walkDuration = 0.32;
