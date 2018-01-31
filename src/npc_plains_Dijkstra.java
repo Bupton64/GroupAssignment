@@ -75,7 +75,7 @@ public class npc_plains_Dijkstra extends  NPC {
 
         Dialogue d4 = new Dialogue(null,false,true,"The church is just west of here. Take what you find to Camrath.","","","");
         listThree = d4;
-        
+
         Dialogue d3 = new Dialogue(d4,true,true,"Go search the picture frame in the church and then visit Camrath","the Blacksmith.","","");
         Dialogue d2 = new Dialogue(d3,false,false,"Hello Adventurer, I know why you are here... I can get you to Therox,","although it will not be easy... I hid something in the church many years","ago. Go to the church and search behind the picture frame.","");
         listTwo = d2;
@@ -158,7 +158,7 @@ public class npc_plains_Dijkstra extends  NPC {
                         questStage = 25;
 
                         return true;
-                    }
+                    
                 }else{
                     return false;
                 }
