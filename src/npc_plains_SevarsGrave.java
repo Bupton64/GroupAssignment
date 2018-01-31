@@ -7,8 +7,7 @@ public class npc_plains_SevarsGrave extends  NPC {
 
     npc_plains_SevarsGrave(){
         setName("Grave:");
-        spriteSheet = loadImage("grave.png");
-        sprite = subImage(spriteSheet,0,0,56,72);
+        sprite = loadImage("grave.png");
         setMapPosX(610);
         setMapPosY(145);
 

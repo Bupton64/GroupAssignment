@@ -93,16 +93,23 @@ public class npc_plains_F9_byPath extends  NPC {
 
 
     Dialogue listOne;
+    Dialogue listTwo;
 
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"If you follow this path upwards, you'll find the Wizards hut... Be Careful","though, you're all alone outside of town.","","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"If you follow this path upwards, you'll find the Wizards hut... Be Careful","though, you're all alone outside of town.","","");
+        listTwo = d2;
     }
 
     public void updateDialogue(Quest.questState  currentState){
-
-        currentDialogue = listOne;
+        if(questStage == 33){
+            currentDialogue = listTwo;
+        } else {
+            currentDialogue = listOne;
+        }
 
     }
 

@@ -112,6 +112,8 @@ public class npc_plains_f8_oldman extends  NPC {
 
     Dialogue listThree;
 
+    Dialogue listFour;
+
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"I'm Julian, the oldest NPC... uh I mean villager in this Town.","","","");
         listOne = d1;
@@ -121,6 +123,9 @@ public class npc_plains_f8_oldman extends  NPC {
 
         Dialogue d3 = new Dialogue(null,false,true,"Oh my... Thank you Bjarne you saved me just in time!", "","","");
         listThree = d3;
+
+        Dialogue d4 = new Dialogue(null,false,true,"I am forever in your debt Bjarne!", "","","");
+        listFour = d4;
     }
 
     public void updateDialogue(int questStage){
