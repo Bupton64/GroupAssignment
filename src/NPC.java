@@ -13,6 +13,7 @@ public class NPC extends extraFunctions{
         this.hit = false;
         this.check = 0;
         this.timer = 40;
+        currentDialogue = new Dialogue(null,false,false,"","","","");
     }
 
     private String name; //< Name of the object
