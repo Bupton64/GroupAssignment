@@ -391,6 +391,7 @@ public class StartScreen extends extraFunctions {
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
             playAudio(p2);
+            cursorPositionY = 310;
             state = startState.startScreen;
         }
         if ((e.getKeyCode() == KeyEvent.VK_DOWN) && cursorPositionY < 390) {
