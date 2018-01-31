@@ -1262,7 +1262,7 @@ public class Menu extends extraFunctions {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            playAudio(p2);
+
             if(nextPageExist){
                 playAudio(p2);
                 menuOption = 1;
@@ -1273,7 +1273,7 @@ public class Menu extends extraFunctions {
 
 
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            playAudio(p2);
+
 //
             if(prevPageExist){
                 playAudio(p1);
