@@ -84,7 +84,13 @@ public class MapControl extends extraFunctions {
                 }
 
             }
+            //final fight case - yes i know its ugly
+            if(playerMan.getQuestStage() == 33){
+                mapNpcs[1].undoCollision(collisionDetector);
+                mapNpcs[2].undoCollision(collisionDetector);
+                mapNpcs[3].undoCollision(collisionDetector);
 
+            }
             for (int i = 0; i < numOfNpc; i++) {
                 mapNpcs[i] = new npc_empty();
             }
@@ -168,6 +174,7 @@ public class MapControl extends extraFunctions {
                     currentMap = new plains_E5();
                     mapNpcs[0] = new npc_plains_SevarsWifeGrave();
                     numOfNpc = 1;
+
                     if(playerMan.getQuestStage() == 33) {
                         mapNpcs[1] = new npc_plains_SevarsGrave();
                         numOfNpc = 2;
@@ -182,6 +189,7 @@ public class MapControl extends extraFunctions {
                         mapNpcs[3] = new npc_plains_H9(playerMan.getGpTotal());
                         numOfNpc = 4;
                     }
+
 
                     break;
                 case 18:

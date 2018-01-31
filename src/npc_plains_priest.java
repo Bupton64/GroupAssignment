@@ -97,10 +97,12 @@ public class npc_plains_priest extends  NPC {
 
     public int updateConvo() {
         if (summonMonster) {
+            summonMonster =false;
             return 99;
 
         }
         if(killnpc){
+            killnpc = false;
             return 93;
         }
         return 0;
@@ -115,22 +117,19 @@ public class npc_plains_priest extends  NPC {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 
 
-            if (currentDialogue.next == null) {
+            if (currentDialogue.next == null && questStage == 15) {
 
 
-                if(npcDeaths == 0) {
+                if(npcDeaths == 0 ) {
                     if (currentDialogue.getOptionPosY() == 375) {
                         summonMonster = true;
                     } else {
-                        if(questStage > 14) {
-                            killnpc = true;
-                            currentDialogue = listThree;
-                        }
+                        killnpc = true;
+                        currentDialogue = listThree;
+                        return false;
                     }
                 }else{
-                    if(questStage > 14) {
-                        summonMonster = true;
-                    }
+                    summonMonster = true;
                 }
             }
         }

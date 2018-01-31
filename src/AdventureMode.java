@@ -262,6 +262,7 @@ public class AdventureMode extends GameEngine {
             case CombatMode:
 
                 stateChanger =  combatMode.update(dt);
+
                 break;
             case ShopMode:
                 shopController.updateShopControl(playerMan.getCurrentShopActive());
