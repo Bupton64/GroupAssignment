@@ -79,13 +79,13 @@ public class plains_H9 extends Map {
         collisionPoints.addBoxCollision(35,11,5,6,flicker);
 
         //House
-        collisionPoints.addBoxCollision(50,7,11,14,flicker);
-        collisionPoints.addBoxCollision(50,5,10,1,flicker);
-        collisionPoints.addBoxCollision(51,3,9,1,flicker);
-        collisionPoints.addBoxCollision(52,3,7,1,flicker);
-        collisionPoints.addBoxCollision(53,2,5,1,flicker);
-        collisionPoints.addBoxCollision(54,1,3,1,flicker);
-        collisionPoints.addBoxCollision(55,2,1,1,flicker);
+        collisionPoints.addBoxCollision(49,7,11,14,flicker);
+        collisionPoints.addBoxCollision(49,5,10,1,flicker);
+        collisionPoints.addBoxCollision(50,3,9,1,flicker);
+        collisionPoints.addBoxCollision(51,3,7,1,flicker);
+        collisionPoints.addBoxCollision(52,2,5,1,flicker);
+        collisionPoints.addBoxCollision(53,1,3,1,flicker);
+        collisionPoints.addBoxCollision(54,2,1,1,flicker);
         collisionPoints.addSmallCollisionPoint(49,19,flicker);
 
     }
