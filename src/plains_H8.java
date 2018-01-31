@@ -28,6 +28,12 @@ public class plains_H8 extends Map {
             case 2:
                 //going down
                 player.setCurrentMapLocation(39);
+                if(player.getMapPosX() > 400 && player.getMapPosX() < 480){
+                    player.setMapPosX(400);
+                }
+                if(player.getMapPosX() > 530 && player.getMapPosX() < 590){
+                    player.setMapPosX(590);
+                }
                 flicker = false;
                 return true;
             case 3:
