@@ -609,7 +609,7 @@ public class MapControl extends extraFunctions {
                 if (playerMan.getCurrentQuestName() == "The Missing Pieces") {
                     playerMan.setMonsterGen(1);
                     playerMan.setValliardAlive(false);
-                } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches") {
+                } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches" && playerMan.getQuestStage() == 15) {
                     playerMan.setMonsterGen(2);
                     playerMan.changeQuest();
                 } else if (playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 18){
