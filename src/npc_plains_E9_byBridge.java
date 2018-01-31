@@ -60,6 +60,7 @@ public class npc_plains_E9_byBridge extends  NPC {
     Dialogue listThree;
     Dialogue listFour;
     Dialogue listFive;
+    Dialogue listSix;
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,true,true,"You must be Bjarne right? I'm so sorry to hear what happened to your","town. Hopefully the Wizard in the North will be able to help you!","","");
@@ -76,6 +77,9 @@ public class npc_plains_E9_byBridge extends  NPC {
 
         Dialogue d5 = new Dialogue(null, false, true,"Well hello again Bjarne!Thanks again for the whole saving","my life thing hehe. Maybe after Therox is gone we could go for an ale?","","");
         listFive = d5;
+
+        Dialogue d6 = new Dialogue(null, false, true,"So Bjarne... how about that Ale? Hehe.","","","");
+        listSix = d6;
     }
 
 
@@ -106,7 +110,9 @@ public class npc_plains_E9_byBridge extends  NPC {
             currentDialogue = listFour;
         } else if (currentStage < 21) {
             currentDialogue = listTwo;
-        }else if(currentStage > 22){
+        } else if(currentStage == 33) {
+            currentDialogue = listSix;
+        } else if(currentStage > 22){
             currentDialogue = listFive;
         }
     }

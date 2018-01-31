@@ -96,16 +96,22 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     Dialogue listOne;
 
+    Dialogue listTwo;
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"Curse Therox! When his forces first reached us, my brother fought","to defend Sepla! He fell, so we could live. Therox must pay!","I hope you can bring him to justice and avenge my brother.","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"I can't even begin to express how thankful I am! My brother no","longer died in vain!","","");
+        listTwo = d2;
     }
 
     public void updateDialogue(Quest.questState  currentState){
-
-        currentDialogue = listOne;
-
+        if(questStage == 33){
+            currentDialogue = listTwo;
+        } else {
+            currentDialogue = listOne;
+        }
     }
 
     public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){

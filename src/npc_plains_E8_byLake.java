@@ -50,16 +50,22 @@ public class npc_plains_E8_byLake extends  NPC {
 
     Dialogue listOne;
 
+    Dialogue listTwo;
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"You're going out of town? Be careful, if a monster stores a lot of energy ","in a fight they might release a powerful attack!","","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"It won't be long until the forest is completely gone! Everything will be","just like before.","","");
+        listTwo = d2;
     }
 
     public void updateDialogue(Quest.questState  currentState){
-
-        currentDialogue = listOne;
-
+        if(questStage == 33){
+            currentDialogue = listTwo;
+        } else {
+            currentDialogue = listOne;
+        }
     }
 
     public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){
