@@ -11,7 +11,7 @@ public class npc_plains_E9_byField extends  NPC {
         setMapPosX(100);
         setMapPosY(450);
 
-        turnArray = new Image[4];
+        turnArray = new Image[3];
 
         initDialogue();
         loadDialogue = true;
@@ -21,7 +21,7 @@ public class npc_plains_E9_byField extends  NPC {
     public void loadImages(){
         super.loadImages();
         //Load Images here
-        for(int i =0; i < 4;i++){
+        for(int i =0; i < 3;i++){
             turnArray[i] = subImage(spriteSheet, 52, 288 + (i*72), 56, 72);
         }
     }
