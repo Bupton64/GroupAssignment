@@ -36,7 +36,7 @@ public class npc_plains_E9_byFence extends  NPC {
     //////////////////////////////////////////
 
     public void initPath() {
-        setMapPosX(480);
+        setMapPosX(460);
         setMapPosY(450);
         setMoveTimer(0);
         setMoveDelay(0.2);
@@ -47,12 +47,12 @@ public class npc_plains_E9_byFence extends  NPC {
         for(int i = 0; i < numOfLocations;i++){
             Location[i] = new NpcLocation();
         }
-        Location[0].setUp(0,480,450, "left",100,1,60);
-        Location[1].setUp(1,380,450,"right",100,2,60);
-        Location[2].setUp(2,380,350,"up",100,3,60);
-        Location[3].setUp(3,180,350,"left",200,4,60);
-        Location[4].setUp(4,180,450,"down",100,5,60);
-        Location[5].setUp(5,380,450,"right",200,0,60);
+        Location[0].setUp(0,460,450, "left",100,1,60);
+        Location[1].setUp(1,360,450,"right",100,2,60);
+        Location[2].setUp(2,360,350,"up",100,3,60);
+        Location[3].setUp(3,160,350,"left",200,4,60);
+        Location[4].setUp(4,160,450,"down",100,5,60);
+        Location[5].setUp(5,360,450,"right",200,0,60);
 
        // Location[4].setUp(4,380,450,"right",100,0,60);
 
