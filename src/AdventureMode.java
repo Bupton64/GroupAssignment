@@ -304,6 +304,7 @@ public class AdventureMode extends GameEngine {
 
                 if(timer > 1.5) {
                     fadeState = false;
+                    mapController.setReloadMap(true);
                 }
             }
         }
