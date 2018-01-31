@@ -177,10 +177,10 @@ public class AdventureMode extends GameEngine {
 
                 break;
             case 2:
-
-                state = GameState.CombatMode;
                stopMusic();
                stopper = false;
+               stopAudioLoop(cutSceneMusic);
+                state = GameState.CombatMode;
                 break;
             case 3:
                 state = GameState.OverWorldMenu;
@@ -190,7 +190,7 @@ public class AdventureMode extends GameEngine {
                 break;
             case 5:
                 stopMusic();
-                playAudio(cutSceneMusic, volume);
+                startAudioLoop(cutSceneMusic, volume);
                 state = GameState.endCutScene;
                 break;
             case 6:
@@ -217,7 +217,7 @@ public class AdventureMode extends GameEngine {
                 break;
             case 13:
                 stopMusic();
-                playAudio(backgroundMusic, volume);
+                startAudioLoop(cutSceneMusic, volume);
                 state = GameState.finalCutscene;
                 break;
 

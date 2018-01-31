@@ -57,16 +57,23 @@ public class npc_plains_E11 extends  NPC {
 
     Dialogue listOne;
 
+    Dialogue listTwo;
+
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"Be careful venturing below... anyone who's gone up against such strength...","well let's just say it never ended well...","","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"There are less monsters out here these days. The forest is receding and ","Sepla is returning to its former glory!","","");
+        listTwo = d2;
     }
 
     public void updateDialogue(Quest.questState  currentState){
-
-        currentDialogue = listOne;
-
+        if(questStage == 33){
+            currentDialogue = listTwo;
+        } else {
+            currentDialogue = listOne;
+        }
     }
 
     public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){

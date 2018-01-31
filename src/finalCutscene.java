@@ -42,6 +42,7 @@ public class finalCutscene extends extraFunctions{
     double fadeTemp;
     boolean hit;
     boolean hit2;
+    Image graveDrawn;
 
     finalCutscene(){
         hit = false;
@@ -61,6 +62,7 @@ public class finalCutscene extends extraFunctions{
         BjarneSpin = new Image[4];
         bloodArray = new Image[6];
         grave = loadImage("grave.png");
+        graveDrawn = subImage(grave, 0, 0, 56, 72);
         fade = loadImage("fade.png");
         fadeArray = new Image[10];
         dialogueBackSheet = loadImage("dialogue_boxes.png");
@@ -337,7 +339,7 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 500, "", "Times New Roman", 20, g);
         }
         if(dt >= 26){
-            drawImage(grave, 610, 145, g);
+            drawImage(graveDrawn, 610, 145, 56, 72, g);
             drawImage(BjarneSpin[2], 610, 205, g);
         }
         if(dt >=25 && dt < 28) {
@@ -425,7 +427,7 @@ public class finalCutscene extends extraFunctions{
             drawText(110, 425, "Bjarne:", "Times New Roman", 20, g);
             drawText(110, 450, "I've only mastered a few basic spells for now but my thirst for ", "Times New Roman", 20, g);
             drawText(110, 475, "knowledge is strong. Who knows, maybe one day I will be as powerful", "Times New Roman", 20, g);
-            drawText(110, 500, "you! Haha one day...", "Times New Roman", 20, g);
+            drawText(110, 500, "as you! Haha one day...", "Times New Roman", 20, g);
             drawText(110, 525, "", "Times New Roman", 20, g);
         }
         if(dt >= 45){

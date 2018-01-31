@@ -97,10 +97,10 @@ public class npc_plains_F9_byPath extends  NPC {
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"If you follow this path upwards, you'll find the Wizards hut... Be Careful","though, you're all alone outside of town.","","");
+        Dialogue d1 = new Dialogue(null,false,true,"If you follow this path upwards, you'll find the Wizards hut... Be careful","though, you're all alone outside of town.","","");
         listOne = d1;
 
-        Dialogue d2 = new Dialogue(null,false,true,"If you follow this path upwards, you'll find the Wizards hut... Be Careful","though, you're all alone outside of town.","","");
+        Dialogue d2 = new Dialogue(null,false,true,"That was incredible! I'm starting a petition to erect a statue in your ","honor!","","");
         listTwo = d2;
     }
 
