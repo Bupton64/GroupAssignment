@@ -1165,8 +1165,14 @@ public class Combat extends extraFunctions{
         enemyAttackActive = false;
         enemyTurnTimer = 0;
         checkCurse = true;
-        player.addEnergy(1);
-        state = CombatState.playerTurn;
+
+        if(enemy.isAlive()){
+            player.addEnergy(1);
+            state = CombatState.playerTurn;
+        }else{
+            state = CombatState.lootScreen;
+        }
+
     }
 
 
@@ -1206,9 +1212,13 @@ public class Combat extends extraFunctions{
                        // enemyEndTurn();
                         if(player.isAlive()) {
                             enemy.takeDamage((int) enemy.getLastStatusDamage());
-
-                            enemyEndTurn();
                             pushString(statusLog,false,false);
+                            enemyEndTurn();
+
+                            if(!enemy.isAlive()){
+
+
+                            }
                         }else{
                             fadeState = true;
                             timer = 0;
