@@ -89,11 +89,11 @@ public class itemShop extends shop {
         changeColor(black, g);
         drawBoldText(420, 130, getShopInventory()[getItemIndex()].getTooltip() + ".", "Felix Titling", 17, g);
         changeColor(purple, g);
-        drawBoldText(420, 450, "Bjarne's Gold:", "Felix Titling", 20, g );
-        drawBoldText(420, 500, "PRICE:", "Felix Titling", 20, g );
+        drawBoldText(420, 500, "Bjarne's Gold:", "Felix Titling", 20, g );
+        drawBoldText(420, 350, "PRICE:", "Felix Titling", 20, g );
         changeColor(black, g);
-        drawBoldText(670, 450, Integer.toString(getPlayer1().getGpTotal()), "Felix Titling", 20, g);
-        drawBoldText(670, 500, Integer.toString(getShopInventory()[getItemIndex()].getBuyPrice()), "Felix Titling", 20, g);
+        drawBoldText(670, 500, Integer.toString(getPlayer1().getGpTotal()), "Felix Titling", 20, g);
+        drawBoldText(670, 350, Integer.toString(getShopInventory()[getItemIndex()].getBuyPrice()), "Felix Titling", 20, g);
 
         // Draw extras
         drawBoldText(420, 530, "BUY ITEM [SPACE]", "Felix Titling", 15, g);
