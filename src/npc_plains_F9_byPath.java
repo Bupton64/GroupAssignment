@@ -48,8 +48,8 @@ public class npc_plains_F9_byPath extends  NPC {
             Location[i] = new NpcLocation();
         }
         Location[0].setUp(0,600,450, "left",170,1,60);
-        Location[1].setUp(1,600,150, "up",300,2,60);
-        Location[2].setUp(2,600,450, "down",300,3,60);
+        Location[1].setUp(1,600,220, "up",230,2,60);
+        Location[2].setUp(2,600,450, "down",230,3,60);
         Location[3].setUp(3,430,450,"right",170,0,60);
 
 
