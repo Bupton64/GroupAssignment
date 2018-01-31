@@ -526,8 +526,8 @@ public class Combat extends extraFunctions{
             lastAbility.use(player);
             playerDamage = lastAbility.getLastDamage();
             playerDamage = enemy.takeDamage((int)playerDamage);
-            if(player.getCurrentHP() < 0){
-                player.setCurrentHP(0);
+            if(enemy.getCurrentHP() < 0){
+                enemy.setCurrentHP(0);
             }
             castBasicAttack = false;
             player.setEnergy(player.getEnergy()-lastAbility.getEnergyCost());
@@ -1129,8 +1129,8 @@ public class Combat extends extraFunctions{
         enemyDamage = enemyLastAbility.getLastDamage();
       //  enemy.addEnergy(-enemyLastAbility.getEnergyCost());
         enemyDamage = player.takeDamage((int)enemyDamage);
-        if(enemy.getCurrentHP() < 0){
-            enemy.setCurrentHP(0);
+        if(player.getCurrentHP() < 0){
+            player.setCurrentHP(0);
         }
 
         if(enemyLastAbility.getLastStatus() != null){
