@@ -115,6 +115,7 @@ public class npc_plains_A11_Razuul extends NPC{
 
                         killnpc = true;
                         currentDialogue = listTwo;
+                        return false;
 
                     }
                 }else{

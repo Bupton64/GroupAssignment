@@ -50,7 +50,7 @@ public class npc_plains_quest4_collectable extends NPC{
 
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,true,true,"Take Infiltrators Diary?","","","");
+        Dialogue d1 = new Dialogue(null,true,true,"Take Infiltrators diary?","","","");
         listOne = d1;
     }
 

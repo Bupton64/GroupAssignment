@@ -123,7 +123,7 @@ public class MapControl extends extraFunctions {
                 case 5:
                     currentMap = new plains_C8();
                     if(playerMan.getQuestStage() < 29) {
-                        mapNpcs[0] = new npc_plains_Dijkstra(400,300);
+                        mapNpcs[0] = new npc_plains_Dijkstra(420,300);
                         numOfNpc = 1;
                     }
                     break;

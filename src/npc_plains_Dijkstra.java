@@ -73,7 +73,7 @@ public class npc_plains_Dijkstra extends  NPC {
         Dialogue d1 = new Dialogue(null,false,true,"If I'm honest, I'm a bit lost. There's so many monsters around here!","Thankfully I have these potions to save me!","","");
         listOne = d1;
 
-        Dialogue d3 = new Dialogue(null,true,true,"Go Search the picture frame in the church and then visit Camrath","the blacksmith.","","");
+        Dialogue d3 = new Dialogue(null,true,true,"Go search the picture frame in the church and then visit Camrath","the Blacksmith.","","");
         Dialogue d2 = new Dialogue(d3,false,false,"Hello Adventurer, I know why you are here... I can get you to Therox,","although it will not be easy... I hid something in the church many years","ago. Go to the church and search behind the picture frame.","");
         listTwo = d2;
 

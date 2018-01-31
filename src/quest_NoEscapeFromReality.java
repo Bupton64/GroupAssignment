@@ -59,7 +59,7 @@ public class quest_NoEscapeFromReality extends Quest {
             drawText(40, 460, "Return to Sevar", "Arial", 20, g);
         }
         if(getState() == questState.completedQuest){
-            drawText(40, 460, "Head to the church", "Arial", 20, g);
+            drawText(40, 460, "Head to the church and find Sally", "Arial", 20, g);
         }
         if(getState() == questState.extraQuest){
             drawText(40, 460, "Head back to town", "Arial", 20, g);
