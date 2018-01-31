@@ -695,12 +695,12 @@ public class MapControl extends extraFunctions {
                 updateQuestState = 0;
                 return 10;
             }else if(updateQuestState == 93){
-                if(playerMan.getCurrentQuest().getQuestName() == "A Spy In The Clutches"){
+                if(playerMan.getCurrentQuest().getQuestName() == "A Spy In The Clutches" && playerMan.getQuestStage() == 15){
                     if(playerMan.getNpcDeaths() == 0) {
                         julianDie = true;
                         mapNpcs[0].undoCollision(collisionDetector);
                     }
-                }else if(playerMan.getCurrentQuest().getQuestName() == "No Escape From Reality"){
+                }else{
                     if(playerMan.getNpcDeaths() == 0 || playerMan.getNpcDeaths() == 1) {
                         sallyDie = true;
                         mapNpcs[0].undoCollision(collisionDetector);

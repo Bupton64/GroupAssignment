@@ -226,9 +226,11 @@ public class npc_wizard extends  NPC {
             case 14:
                 currentDialogue = listNine;
                 break;
+            case 15:
             case 16:
                 currentDialogue = listTen;
                 break;
+            case 17:
             case 18:
                 currentDialogue = listEleven;
                 break;
@@ -236,8 +238,10 @@ public class npc_wizard extends  NPC {
                 currentDialogue = listTwelve;
                 break;
             case 20:
+            case 21:
                 currentDialogue = listThirteen;
                 break;
+
             case 22:
                 if(npcDeaths == 0 || npcDeaths == 1){
                     currentDialogue = listFourteen;
@@ -246,6 +250,7 @@ public class npc_wizard extends  NPC {
                 }
 
                 break;
+            case 23:
             case 24:
             case 25:
             case 26:
