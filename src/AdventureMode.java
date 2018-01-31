@@ -184,6 +184,7 @@ public class AdventureMode extends GameEngine {
                     startAudioLoop(villageMusic, volume);
                     stopper = true;
                 }
+
                 break;
             case 2:
                stopMusic();
@@ -205,6 +206,7 @@ public class AdventureMode extends GameEngine {
             case 6:
                 state = GameState.ShopMode;
                 stopMusic();
+
                 stopper = false;
                 volume = -13;
                 startAudioLoop(menuMusic, volume);
@@ -247,10 +249,12 @@ public class AdventureMode extends GameEngine {
         updateFade(dt);
         switch (state){
             case TravelMode:
+
                 mapController.updateNPC(dt,collisionDetector);
                 mapController.updateMap();
                 collisionDetector.updateCollision(playerMan, playerMovement);
                 stateChanger = playerMovement.updateCharMovement(dt, playerMan);
+
                 if(stateChanger != 9 && stateChanger != 5 && stateChanger != 10) {
                     stateChanger = mapController.updateQuest(dt);
                 }
