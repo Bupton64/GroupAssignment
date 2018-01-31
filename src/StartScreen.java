@@ -448,6 +448,7 @@ public class StartScreen extends extraFunctions {
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 310)){
             playAudio(p2);
+            cursorPositionY -= 80;
             state = startState.loadScreen;
         }
         if((e.getKeyCode() == KeyEvent.VK_SPACE)&&(cursorPositionY == 390)) {
