@@ -72,7 +72,7 @@ public class npc_wizard extends  NPC {
         listZero = d0;
 
         Dialogue d4 = new Dialogue(null,true,true,"Kill 5 monsters in front of Sevars' estate.","","","");
-        Dialogue d3 = new Dialogue(d4,false,false,"His minions have made their way right to my doorstep it seems, and I","can hardly work on devising a way to beat Therox with his lackeys nipping","at my heels! If you could take up guard duty here in front of my estate,","I could begin to get some work done.");
+        Dialogue d3 = new Dialogue(d4,false,false,"His minions have made their way right to my doorstep it seems, and I","can hardly work on devising a way to beat Therox with his lackeys ","nipping at my heels! If you could take up guard duty here in front of my ","estate, I could begin to get some work done.");
         Dialogue d2 = new Dialogue(d3,false,false,"Knowing Therox was coming for my collection of spellbooks, I cast a","spell to create this forest. It was an old spell, one I had never cast" ,"before... I pushed too much power into it... and... well... it grew","too large. Now the town lies right between Therox and I.");
         Dialogue d1 = new Dialogue(d2,false,false,"Ahhhh, who are you? I don't recognise you but you don't seem the sort to","be working for Therox, that foul cretin! The town is in danger and it's","all my fault! ","");
         listOne = d1;
