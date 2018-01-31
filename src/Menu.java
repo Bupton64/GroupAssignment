@@ -42,7 +42,7 @@ public class Menu extends extraFunctions {
 
     Image dialogueSpriteSheet;
     Image dialogueSimpleBox;
-    private int cursorPositionY = 440;
+    private int cursorPositionY = 380;
     private boolean invMenu = false;
     private boolean equMenu = false;
     private boolean chaMenu = true;
@@ -176,42 +176,42 @@ public class Menu extends extraFunctions {
         for (int i = 0; i < player1.getEquipmentSize(); i++) {
             if (player1.getEquippedItems()[i].getSlot().name() == name) {
                 if (player1.getInventory()[index].getSlot().name() == name) {
-                    if (player1.getEquippedItems()[i].getAttack() <= player1.getInventory()[index].getAttack()) {
-                        changeColor(blue, g);
-                        drawBoldText(220, 350, "+" + (((player1.getInventory()[index].getAttack()) - player1.getEquippedItems()[i].getAttack())), "Felix Titling", 18, g);
-                    } else {
+                    if (player1.getEquippedItems()[i].getAttack() < player1.getInventory()[index].getAttack()) {
+                        changeColor(green2, g);
+                        drawBoldText(230, 350, "+" + (((player1.getInventory()[index].getAttack()) - player1.getEquippedItems()[i].getAttack())), "Felix Titling", 18, g);
+                    } else if(player1.getEquippedItems()[i].getAttack() > player1.getInventory()[index].getAttack()) {
                         changeColor(red, g);
-                        drawBoldText(220, 350, "-" + (((player1.getInventory()[index].getAttack()) - player1.getEquippedItems()[i].getAttack())), "Felix Titling", 18, g);
+                        drawBoldText(230, 350, "-" + (((player1.getInventory()[index].getAttack()) - player1.getEquippedItems()[i].getAttack())), "Felix Titling", 18, g);
                     }
 
-                    if (player1.getEquippedItems()[i].getDefense() <= player1.getInventory()[index].getDefense()) {
-                        changeColor(blue, g);
-                        drawBoldText(220, 350 + 30, "+" + (((player1.getInventory()[index].getDefense()) - player1.getEquippedItems()[i].getDefense())), "Felix Titling", 18, g);
-                    } else {
+                    if (player1.getEquippedItems()[i].getDefense() < player1.getInventory()[index].getDefense()) {
+                        changeColor(green2, g);
+                        drawBoldText(230, 350 + 30, "+" + (((player1.getInventory()[index].getDefense()) - player1.getEquippedItems()[i].getDefense())), "Felix Titling", 18, g);
+                    } else if(player1.getEquippedItems()[i].getDefense() > player1.getInventory()[index].getDefense()) {
                         changeColor(red, g);
-                        drawBoldText(220, 350 + 30, "-" + (((player1.getInventory()[index].getDefense()) - player1.getEquippedItems()[i].getDefense())), "Felix Titling", 18, g);
+                        drawBoldText(230, 350 + 30, "-" + (((player1.getInventory()[index].getDefense()) - player1.getEquippedItems()[i].getDefense())), "Felix Titling", 18, g);
                     }
 
-                    if (player1.getEquippedItems()[i].getStrength() <= player1.getInventory()[index].getStrength()) {
-                        changeColor(blue, g);
-                        drawBoldText(220, 350 + 60, "+" + (((player1.getInventory()[index].getStrength()) - player1.getEquippedItems()[i].getStrength())), "Felix Titling", 18, g);
-                    } else {
+                    if (player1.getEquippedItems()[i].getStrength() < player1.getInventory()[index].getStrength()) {
+                        changeColor(green2, g);
+                        drawBoldText(230, 350 + 60, "+" + (((player1.getInventory()[index].getStrength()) - player1.getEquippedItems()[i].getStrength())), "Felix Titling", 18, g);
+                    } else if(player1.getEquippedItems()[i].getStrength() > player1.getInventory()[index].getStrength()) {
                         changeColor(red, g);
-                        drawBoldText(220, 350 + 60, "-" + (((player1.getInventory()[index].getStrength()) - player1.getEquippedItems()[i].getStrength())), "Felix Titling", 18, g);
+                        drawBoldText(230, 350 + 60, "-" + (((player1.getInventory()[index].getStrength()) - player1.getEquippedItems()[i].getStrength())), "Felix Titling", 18, g);
                     }
-                    if (player1.getEquippedItems()[i].getSpeed() <= player1.getInventory()[index].getSpeed()) {
-                        changeColor(blue, g);
-                        drawBoldText(220, 350 + 90, "+" + (((player1.getInventory()[index].getSpeed()) - player1.getEquippedItems()[i].getSpeed())), "Felix Titling", 18, g);
-                    } else {
+                    if (player1.getEquippedItems()[i].getSpeed() < player1.getInventory()[index].getSpeed()) {
+                        changeColor(green2, g);
+                        drawBoldText(230, 350 + 90, "+" + (((player1.getInventory()[index].getSpeed()) - player1.getEquippedItems()[i].getSpeed())), "Felix Titling", 18, g);
+                    } else if(player1.getEquippedItems()[i].getSpeed() > player1.getInventory()[index].getSpeed()) {
                         changeColor(red, g);
-                        drawBoldText(220, 350 + 90, "-" + (((player1.getInventory()[index].getSpeed()) - player1.getEquippedItems()[i].getSpeed())), "Felix Titling", 18, g);
+                        drawBoldText(230, 350 + 90, "-" + (((player1.getInventory()[index].getSpeed()) - player1.getEquippedItems()[i].getSpeed())), "Felix Titling", 18, g);
                     }
-                    if (player1.getEquippedItems()[i].getLuck() <= player1.getInventory()[index].getLuck()) {
-                        changeColor(blue, g);
-                        drawBoldText(220, 350 + 120, "+" + (((player1.getInventory()[index].getLuck()) - player1.getEquippedItems()[i].getLuck())), "Felix Titling", 18, g);
-                    } else {
+                    if (player1.getEquippedItems()[i].getLuck() < player1.getInventory()[index].getLuck()) {
+                        changeColor(green2, g);
+                        drawBoldText(230, 350 + 120, "+" + (((player1.getInventory()[index].getLuck()) - player1.getEquippedItems()[i].getLuck())), "Felix Titling", 18, g);
+                    } else if(player1.getEquippedItems()[i].getLuck() > player1.getInventory()[index].getLuck()) {
                         changeColor(red, g);
-                        drawBoldText(220, 350 + 120, "-" + (((player1.getInventory()[index].getLuck()) - player1.getEquippedItems()[i].getLuck())), "Felix Titling", 18, g);
+                        drawBoldText(230, 350 + 120, "-" + (((player1.getInventory()[index].getLuck()) - player1.getEquippedItems()[i].getLuck())), "Felix Titling", 18, g);
                     }
 
                 }
@@ -267,7 +267,7 @@ public class Menu extends extraFunctions {
         p3 = loadAudio("page3.wav");
         leave = loadAudio("leave.wav");
         chaMenu = true;
-        cursorPositionY = 410;
+        cursorPositionY = 380;
         background1 = subImage(menuSprite, 0, 0, 800, 600);
         background2 = subImage(inventorySprite, 0, 0, 800, 600);
         background3 = subImage(equipmentSprite, 0, 0, 800, 600);
@@ -896,6 +896,9 @@ public class Menu extends extraFunctions {
             stopper2 = false;
         }
         changeColor(red, g);
+        if(equMenu||chaMenu){
+            usedItem = false;
+        }
     }
 
     ////////////////////////////////////
