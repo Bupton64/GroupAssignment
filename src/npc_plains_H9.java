@@ -92,7 +92,7 @@ public class npc_plains_H9 extends  NPC {
         Dialogue d10 = new Dialogue(null,false,true,"Bjarne, good to see you old friend! The time has come to take the","fight to Therox! Talk to Dijkstra when you're ready!","","");
         listNine = d10;
 
-        Dialogue d11 = new Dialogue(null,false,true,"Your power grows stronger each day Bjarne! This town is in safe hands.","","","");
+        Dialogue d11 = new Dialogue(null,false,true,"Bjarne, welcome back to town! Thanks again for saving us!","Come see me once you hit level 15.","","");
         listTen = d11;
 
     }
