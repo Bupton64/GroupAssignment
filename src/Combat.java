@@ -378,7 +378,7 @@ public class Combat extends extraFunctions{
 
                 player.setLastStatusDuration(player.getLastStatusDuration() - 1);
                 if (player.getLastStatusEffect() == Statblock.Status.Poison) {
-                    playerStatusString = "You take " + (int)player.getLastStatusDamage() + "  poison damage";
+                    playerStatusString = "You take " + (int)player.getLastStatusDamage() + " poison damage";
                     statusLog = player.getName()  + " poisoned for " + (int)player.getLastStatusDamage();
                 }
 
@@ -1096,7 +1096,7 @@ public class Combat extends extraFunctions{
             if (enemy.getLastStatusDuration() > 1) {
                 enemy.setLastStatusDuration(enemy.getLastStatusDuration() - 1);
                 if (enemy.getLastStatusEffect() == Statblock.Status.Poison) {
-                    enemyStatusString = enemy.getName() + " takes " + (int)enemy.getLastStatusDamage() + "  poison damage";
+                    enemyStatusString = enemy.getName() + " takes " + (int)enemy.getLastStatusDamage() + " poison damage";
                     statusLog = enemy.getName()  + " poisoned for " + (int)enemy.getLastStatusDamage();
                 }
 
