@@ -788,15 +788,14 @@ public class Combat extends extraFunctions{
 
         drawImage(spellBook,0,0,800,600,g);
 
-
+        drawText(480,500,"Page " + Integer.toString(currentPageNum) + "/" + numOfPages,"Felix titling",20,g);
         if(numOfPages > currentPageNum){
-            drawText(480,480,"Next Page","Times New Roman",25,g);
+
             nextPageExist = true;
         }else{
             nextPageExist = false;
         }
         if(currentPageNum > 1){
-            drawText(480,500,"Previous Page","Times New Roman",25,g);
             prevPageExist = true;
         }else{
             prevPageExist = false;
@@ -838,12 +837,8 @@ public class Combat extends extraFunctions{
 
 
 
-        if(menuOption == 20){
-            drawText(460,140,"Next Page","Times New Roman",20,g);
-        }
-        if(menuOption == 21){
-            drawText(460,140,"Previous Page","Times New Roman",20,g);
-        }
+
+
 
 
 
@@ -2023,23 +2018,16 @@ public class Combat extends extraFunctions{
 
     public void keyPressedAbilityMenu(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            playAudio(exitClick);
-           if(menuOption == 20) {
-                currentPageNum++;
-                menuOption = 1;
-            }else if(menuOption == 21){
-                currentPageNum--;
-                menuOption = 1;
 
-            }else {
+
                 if (player.getEnergy() >= playerAbilities[menuOption + (8 * (currentPageNum-1))].getEnergyCost()) {
                     lastAbility = playerAbilities[menuOption + (8 * (currentPageNum-1))];
                     playerTurnSetUp = true;
-
+                    playAudio(exitClick);
                     menuOption = 0;
                     state = CombatState.playerAttack;
                 }
-            }
+
         }
 
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
@@ -2052,17 +2040,7 @@ public class Combat extends extraFunctions{
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
 
 
-                if(menuOption == 20){
-                    playAudio(clicks);
-                    if(prevPageExist) {
-                        menuOption = 21;
-                    }
-                }else if(menuOption == 21){
-                playAudio(clicks);
-                if(nextPageExist) {
-                    menuOption = 20;
-                }
-            }else if(menuOption < numOfSpellsToDisplay - ((currentPageNum-1) * 8)){
+            if(menuOption < numOfSpellsToDisplay - ((currentPageNum-1) * 8)){
                 playAudio(clicks);
                 menuOption++;
             }else{
@@ -2072,17 +2050,7 @@ public class Combat extends extraFunctions{
         }
         if(e.getKeyCode() == KeyEvent.VK_UP){
 
-            if(menuOption == 20){
-                playAudio(clicks);
-                if(prevPageExist) {
-                    menuOption = 21;
-                }
-            }else if(menuOption == 21){
-                playAudio(clicks);
-                if(nextPageExist) {
-                    menuOption = 20;
-                }
-            }else if(menuOption > 1 ){
+         if(menuOption > 1 ){
                 playAudio(clicks);
                 menuOption--;
             }else{
@@ -2093,30 +2061,29 @@ public class Combat extends extraFunctions{
 
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 
-            if(menuOption != 20 && menuOption != 21) {
-                playAudio(p2);
-                lastMenuOption = menuOption;
-                if (prevPageExist) {
-                    menuOption = 21;
+                if(nextPageExist){
+                    playAudio(p2);
+                    menuOption = 1;
+                    currentPageNum++;
                 }
-                if (nextPageExist) {
-                    menuOption = 20;
-                }
-            }
+          //  }
         }
 
 
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 
-            if(menuOption == 20 || menuOption == 21){
+//
+            if(prevPageExist){
                 playAudio(p1);
-                menuOption = lastMenuOption;
+                menuOption = 1;
+                currentPageNum--;
             }
-            lastMenuOption = 0;
+
         }
 
     }
-    int lastMenuOption;
+
+
     public void keyPressedItemMenu(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(player.getBagSize() > 0) {
