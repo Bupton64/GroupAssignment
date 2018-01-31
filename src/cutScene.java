@@ -398,7 +398,7 @@ public class cutScene extends extraFunctions {
 
     public int keyPressed(KeyEvent e) {
 
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE && timer > 43) {
             return 1;
         }
         return 0;

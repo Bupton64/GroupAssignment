@@ -188,7 +188,7 @@ public class RazuulCutscene extends extraFunctions{
 
     public int keyPressed(KeyEvent e) {
 
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE && dt > 11) {
             return 1;
         }
         return 0;

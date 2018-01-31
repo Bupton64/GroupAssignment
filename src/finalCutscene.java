@@ -442,7 +442,7 @@ public class finalCutscene extends extraFunctions{
 
     public int keyPressed(KeyEvent e) {
 
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE && dt >= 45) {
             returntogame = true;
         }
         return 0;
