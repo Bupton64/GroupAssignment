@@ -508,7 +508,7 @@ public class MapControl extends extraFunctions {
     }
 
     public boolean npcCheck(Character player, NPC other){
-        if(player.getMapPosX() >= other.getMapPosX() -20 && player.getMapPosX() <= other.getMapPosX() + 30){
+        if(player.getMapPosX() >= other.getMapPosX() -30 && player.getMapPosX() <= other.getMapPosX() + 30){
             if(player.getMapPosY() >= other.getMapPosY() -50 && player.getMapPosY() <= other.getMapPosY() + 20){
                 return true;
             }
