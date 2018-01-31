@@ -7,7 +7,7 @@ public class npc_SallyGrave extends  NPC {
 
     npc_SallyGrave(){
         setName("Sallys' Grave");
-        spriteSheet = loadImage("grave.png");
+        spriteSheet = loadImage("grave2.png");
         sprite = subImage(spriteSheet,0,0,56,72);
         setMapPosX(170);
         setMapPosY(170);
