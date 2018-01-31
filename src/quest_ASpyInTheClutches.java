@@ -56,17 +56,17 @@ public class quest_ASpyInTheClutches extends Quest {
     public void drawQuest(Graphics2D g){
         changeColor(black, g);
         if(getState() == questState.preQuest) {
-            drawText(40, 460, "Search Town for Clues", "Arial", 20, g);
+            drawText(40, 460, "Search town for clues", "Arial", 20, g);
 
         }
         if(getState() == questState.inQuest){
             drawText(40, 460, "Return to Sevar", "Arial", 20, g);
         }
         if(getState() == questState.completedQuest){
-            drawText(40, 460, "Confront the priest", "Arial", 20, g);
+            drawText(40, 460, "Confront the Priest", "Arial", 20, g);
         }
         if(getState() == questState.extraQuest){
-            drawText(40, 460, "Find sevar in town", "Arial", 20, g);
+            drawText(40, 460, "Find Sevar in town", "Arial", 20, g);
         }
 
     }

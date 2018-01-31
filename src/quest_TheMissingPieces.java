@@ -58,7 +58,7 @@ public class quest_TheMissingPieces extends Quest {
             drawText(40, 460,"Return to Sevar", "Arial", 20, g);
         }
         if(getState() == questState.inQuest) {
-            drawText(40, 460, numOfCollectables +"/7 Crystals Collected", "Arial", 20, g);
+            drawText(40, 460, numOfCollectables +"/7 crystals collected", "Arial", 20, g);
 
         }
         if(getState() == questState.completedQuest){

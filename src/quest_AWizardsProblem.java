@@ -35,7 +35,7 @@ public class quest_AWizardsProblem extends Quest {
             drawText(40, 460, "Monsters killed: " + killCount + "/5", "Arial", 20, g);
         }
         if(getState() == questState.completedQuest && !questFinished) {
-            drawText(40, 460, "Return to wizard", "Arial", 20, g);
+            drawText(40, 460, "Return to the Wizard", "Arial", 20, g);
         }
 
 

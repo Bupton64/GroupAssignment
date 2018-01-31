@@ -55,7 +55,7 @@ public class quest_TheRoadToRiches extends Quest {
 
         }
         if(getState() == questState.inQuest) {
-            drawText(40, 460, "Go Talk to Link", "Arial", 20, g);
+            drawText(40, 460, "Go talk to Link", "Arial", 20, g);
         }
 
 

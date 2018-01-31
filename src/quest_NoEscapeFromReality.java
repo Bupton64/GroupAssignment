@@ -52,17 +52,17 @@ public class quest_NoEscapeFromReality extends Quest {
         changeColor(black, g);
 
         if(getState() == questState.preQuest) {
-            drawText(40, 460, "Go Find the Holy Symbol", "Arial", 20, g);
+            drawText(40, 460, "Go find the holy symbol", "Arial", 20, g);
 
         }
         if(getState() == questState.inQuest){
             drawText(40, 460, "Return to Sevar", "Arial", 20, g);
         }
         if(getState() == questState.completedQuest){
-            drawText(40, 460, "Head to the Church", "Arial", 20, g);
+            drawText(40, 460, "Head to the church", "Arial", 20, g);
         }
         if(getState() == questState.extraQuest){
-            drawText(40, 460, "Head Back to town", "Arial", 20, g);
+            drawText(40, 460, "Head back to town", "Arial", 20, g);
         }
     }
 }
