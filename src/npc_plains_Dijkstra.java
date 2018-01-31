@@ -73,12 +73,14 @@ public class npc_plains_Dijkstra extends  NPC {
         Dialogue d1 = new Dialogue(null,false,true,"If I'm honest, I'm a bit lost. There's so many monsters around here!","Thankfully I have these potions to save me!","","");
         listOne = d1;
 
-        Dialogue d3 = new Dialogue(null,true,true,"Go search the picture frame in the church and then visit Camrath","the Blacksmith.","","");
+        Dialogue d4 = new Dialogue(null,false,true,"The church is just west of here. Take what you find to Camrath.","","","");
+        listThree = d4;
+        
+        Dialogue d3 = new Dialogue(d4,true,true,"Go search the picture frame in the church and then visit Camrath","the Blacksmith.","","");
         Dialogue d2 = new Dialogue(d3,false,false,"Hello Adventurer, I know why you are here... I can get you to Therox,","although it will not be easy... I hid something in the church many years","ago. Go to the church and search behind the picture frame.","");
         listTwo = d2;
 
-        Dialogue d4 = new Dialogue(null,false,true,"The church is just west of here. Take what you find to Camrath.","","","");
-        listThree = d4;
+
 
         Dialogue d6 = new Dialogue(null,true,true,"Are you ready for this final battle?","","","");
         Dialogue d5 = new Dialogue(d6,false,false,"Bjarne! Glad to see you made it in time. We have managed to create","a location spell that will send you, Sevar, and Therox to an isolated arena","away from his army. This will be your best chance to finish him.","");
@@ -150,6 +152,19 @@ public class npc_plains_Dijkstra extends  NPC {
 
     public boolean keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+
+            if(currentDialogue.hasOptions && questStage == 24){
+                if (currentDialogue.getOptionPosY() == 375 ) {
+                        questStage = 25;
+
+                        return true;
+                    }
+                }else{
+                    return false;
+                }
+            }
+
+
             if (currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375) {
                     switch (questStage) {
