@@ -1,5 +1,15 @@
-
-
+/*
+* 159.103 - Introduction to Games Programming - Assignment 2
+*
+* Bjarne's World - A classical JRPG
+*
+* Team 9 -
+* Zane Lamb - 15160640
+* Benjamin Upton - 16463710
+* Jordan Drumm - 17044923
+* James Waddell - 16379344
+*
+*/
 import java.awt.*;
 import java.awt.event.*;
 
