@@ -197,6 +197,9 @@ public class Collision  {
     int row;
     int col;
     public void addCollisionPoint( int block,boolean flicker){
+        if(block <= 0){
+            block = 1;
+        }
         row = (block / 16) * 5;//8
         col = ((block % 16) * 5);// 6
         for(int i = row;i < (row+5);i++){
