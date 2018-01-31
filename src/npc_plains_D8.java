@@ -59,10 +59,10 @@ public class npc_plains_D8 extends  NPC {
     Dialogue listTwo;
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"It's looking good so far lads, definitely A+ worthy!","","","");
+        Dialogue d1 = new Dialogue(null,false,true,"This isn't CounterStrike!? Let's see how it goes!","","","");
         listOne = d1;
 
-        Dialogue d2 = new Dialogue(null,false,true,"","","","");
+        Dialogue d2 = new Dialogue(null,false,true,"It looks good lads, definitely A+ worthy!","","","");
         listTwo = d2;
     }
 
