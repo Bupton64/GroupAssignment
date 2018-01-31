@@ -1737,6 +1737,8 @@ public class Combat extends extraFunctions{
             player.setQuestStage(16);
             return 8;
         }else if(enemy.getName() == "Therox"){
+            player.setMapPosY(205);
+            player.setMapPosX(610);
             player.setQuestStage(player.getQuestStage() + 1);
             return 13;
         }else if(enemy.getName() == "Razuul") {
