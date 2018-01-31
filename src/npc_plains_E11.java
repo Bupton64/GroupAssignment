@@ -16,8 +16,45 @@ public class npc_plains_E11 extends  NPC {
         spriteRight = new Image[3];
         spriteLeft = new Image[3];
 
+
+        loadImages();
+        initPath();
+
         initDialogue();
         loadDialogue = true;
+    }
+
+
+
+    @Override
+    public void setUpCollision(Collision collisionDetector,Map map){
+        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
+    }
+
+
+    /////////////////////////////////////////
+    ///
+    ///  Movement
+    ///
+    //////////////////////////////////////////
+
+    public void initPath() {
+        setMapPosX(600);
+        setMapPosY(400);
+        setMoveTimer(0);
+        setMoveDelay(0.2);
+        numOfLocations = 2;
+        currentLocation= 0;
+
+        Location = new NpcLocation[2];
+        for(int i = 0; i < numOfLocations;i++){
+            Location[i] = new NpcLocation();
+        }
+        Location[0].setUp(0,600,450, "left",500,1,60);
+        Location[1].setUp(1,100,450,"right",300,0,60);
+
+
+        walkDuration = 0.32;
     }
 
     @Override
@@ -33,21 +70,21 @@ public class npc_plains_E11 extends  NPC {
     }
 
     @Override
-    public void setUpCollision(Collision collisionDetector,Map map){
-        collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),map.isFlicker());
-    }
-
-
-    /////////////////////////////////////////
-    ///
-    ///  Movement
-    ///
-    //////////////////////////////////////////
-
-    @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
+        setMoveTimer(getMoveTimer() + dt);
+
+        if(getMoveTimer() > getMoveDelay()){
+            collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),false);
+
+            if(startMovement(dt)){
+                currentLocation = Location[currentLocation].getNextLocation();
+            }
+
+            collisionDetector.addBoxCollision(((int)getMapPosX()/ 10 - 2),((int)getMapPosY()/10 - 5),((int)getWidth()/10 - 2),((int)getHeight()/10 - 2),true);
+        }
 
     }
+
 
     /////////////////////////////////////////
     ///
