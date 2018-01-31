@@ -311,7 +311,7 @@ public class MapControl extends extraFunctions {
                         numOfNpc = 1;
                     }
                     if(playerMan.getQuestStage() > 32){
-                        mapNpcs[1] = new npc_plains_Dijkstra(140,400);
+                        mapNpcs[1] = new npc_plains_Dijkstra(120,400);
                         mapNpcs[2] = new npc_plains_H9(playerMan.getGpTotal(),170,400);
                         numOfNpc = 3;
                     }
