@@ -1430,7 +1430,7 @@ public class Combat extends extraFunctions{
                 playAudio(win);
                 stopper = true;
             }
-            drawText(75, 500, "Victory, press 'Space' on chest to collect the reward", "Times New Roman", 18, g);
+            drawText(65, 500, "Victory, press 'Space' on chest to collect the reward", "Times New Roman", 18, g);
             drawImage(chestOne,580,210,130,100,g);
         }else{
             drawImage(lootScroll,270,50,300,350,g);
