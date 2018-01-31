@@ -609,7 +609,7 @@ public class MapControl extends extraFunctions {
                 } else if (playerMan.getCurrentQuestName() == "A Spy In The Clutches") {
                     playerMan.setMonsterGen(2);
                     playerMan.changeQuest();
-                } else if (playerMan.getQuestStage() == 18){
+                } else if (playerMan.getQuestStage() >= 16 && playerMan.getQuestStage() <= 18){
                     playerMan.setMonsterGen(4);
                     if(playerMan.getNpcDeaths() == 2 || playerMan.getNpcDeaths() == 3) {
                         playerMan.setQuestStage(22);

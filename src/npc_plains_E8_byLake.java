@@ -60,7 +60,7 @@ public class npc_plains_E8_byLake extends  NPC {
         listTwo = d2;
     }
 
-    public void updateDialogue(Quest.questState  currentState){
+    public void updateDialogue( int questStage){
         if(questStage == 33){
             currentDialogue = listTwo;
         } else {
@@ -71,7 +71,7 @@ public class npc_plains_E8_byLake extends  NPC {
     public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){
 
         if(loadDialogue) {
-            updateDialogue(currentState);
+            updateDialogue(questStage);
             loadDialogue = false;
         }
         super.drawConvo(g,currentState, questName,questStage,npcDeaths);

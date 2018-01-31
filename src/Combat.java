@@ -1736,6 +1736,7 @@ public class Combat extends extraFunctions{
     public int updateStageAfterBoss(){
         if(enemy.getName() == "Priest"){
             player.setQuestStage(16);
+            player.getCurrentQuest().setState(Quest.questState.extraQuest);
             return 8;
         }else if(enemy.getName() == "Therox"){
             player.setMapPosY(205);
