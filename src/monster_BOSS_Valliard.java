@@ -13,7 +13,7 @@ public class monster_BOSS_Valliard extends Monster {
         setDefense(5);
         setLuck(0);
         setSpeed(7);
-        setStrength(2);
+        setStrength(7);
         setXPGain(900);
         setGoldMin(400);
         setGoldMax(550);
