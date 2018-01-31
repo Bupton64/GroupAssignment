@@ -84,7 +84,7 @@ public class npc_plains_Dijkstra extends  NPC {
         Dialogue d5 = new Dialogue(d6,false,false,"Bjarne! Glad to see you made it in time. We have managed to create","a location spell that will send you, Sevar, and Therox to an isolated arena","away from his army. This will be your best chance to finish him.","");
         listFour = d5;
 
-        Dialogue d7 = new Dialogue(null,false,true,"Bjarne welcome back to town! Thanks again for saving the town","Come See me Once you hit level 20","","");
+        Dialogue d7 = new Dialogue(null,false,true,"Bjarne, welcome back to town! Thanks again for saving us!","Come See me Once you hit level 20","","");
         listFive = d7;
     }
 
@@ -105,6 +105,9 @@ public class npc_plains_Dijkstra extends  NPC {
                     break;
                 case 30:
                     currentDialogue = listFour;
+                    break;
+                case 33:
+                    currentDialogue = listFive;
                     break;
             }
 
