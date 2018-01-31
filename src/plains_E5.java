@@ -64,7 +64,7 @@ public class plains_E5 extends Map {
         }
         for(int i = 11;i > 7;i--){
             collisionPoints.addSmallCollisionPoint(10,i,flicker);
-        }
+        } 
         collisionPoints.addSmallCollisionPoint(11,7,flicker);
         collisionPoints.addSmallCollisionPoint(11,8,flicker);
         collisionPoints.addSmallCollisionPoint(12,7,flicker);
@@ -98,11 +98,11 @@ public class plains_E5 extends Map {
         }
 
         //House
-        for(int i = 29; i <= 50; i++){
+        for(int i = 28; i <= 50; i++){
             collisionPoints.addSmallCollisionPoint(i,23,flicker);
         }
         for(int i = 3; i <= 23; i++){
-            collisionPoints.addSmallCollisionPoint(30,i,flicker);
+            collisionPoints.addSmallCollisionPoint(29,i,flicker);
             collisionPoints.addSmallCollisionPoint(50,i,flicker);
         }
         //Rock
@@ -119,16 +119,7 @@ public class plains_E5 extends Map {
         collisionPoints.addSmallCollisionPoint(29,4,flicker);
 
         //Grave
-        collisionPoints.addSmallCollisionPoint(58,9,flicker);
-        collisionPoints.addSmallCollisionPoint(58,10,flicker);
-        for(int i = 57; i <= 59; i++){
-            collisionPoints.addSmallCollisionPoint(i,14,flicker);
-            collisionPoints.addSmallCollisionPoint(i,11,flicker);       //was 9
-        }
-        for(int i = 11; i <= 14; i++){
-            collisionPoints.addSmallCollisionPoint(59,i,flicker);
-            collisionPoints.addSmallCollisionPoint(56,i,flicker);
-        }
+        collisionPoints.addBoxCollision(56, 9, 3, 4, flicker);
     }
 
 
