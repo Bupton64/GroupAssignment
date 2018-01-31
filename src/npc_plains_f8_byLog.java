@@ -11,8 +11,19 @@ public class npc_plains_f8_byLog extends  NPC {
         setMapPosX(650);
         setMapPosY(85);
 
+        turnArray = new Image[3];
+
         initDialogue();
         loadDialogue = true;
+    }
+
+    @Override
+    public void loadImages(){
+        super.loadImages();
+        //Load Images here
+        for(int i =0; i < 3;i++){
+            turnArray[i] = subImage(spriteSheet,520,(i * 72),56,72);
+        }
     }
 
     @Override
@@ -28,8 +39,12 @@ public class npc_plains_f8_byLog extends  NPC {
 
     @Override
     public void updateNpcMovement(double dt,Collision collisionDetector){
-
+        if(this.questStage < 7){
+            turn();
+        }
     }
+
+
 
 
     /////////////////////////////////////////
