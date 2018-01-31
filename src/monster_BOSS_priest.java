@@ -24,7 +24,8 @@ public class monster_BOSS_priest extends Monster {
         setName("Priest");
         setEnergy(0);
 
-        Image sprite = loadImage("monster_priest.png");
+        Image spriteSheet = loadImage("monster_priest.png");
+        Image sprite = subImage(spriteSheet,0,0,45,45);
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);
