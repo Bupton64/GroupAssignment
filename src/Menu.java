@@ -1268,7 +1268,7 @@ public class Menu extends extraFunctions {
                             }
                             stopper3 = true;
 
-
+                            usedItem = true;
                         } else if ((player1.getInventory()[menuOption + (10 * (currentPage - 1))].isEquippable()) && !stopper3) {
                             equMenu = true;
                             invMenu = false;
@@ -1278,7 +1278,7 @@ public class Menu extends extraFunctions {
                         stopper4 = false;
                     }
                 }
-                usedItem = true;
+
             }
 
             if((e.getKeyCode() == KeyEvent.VK_SPACE)&&invMenu&&(usedItem)&&stopper4){
