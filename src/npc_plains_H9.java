@@ -6,13 +6,13 @@ public class npc_plains_H9 extends  NPC {
 
     private int gold;
 
-    npc_plains_H9(int gold){
+    npc_plains_H9(int gold,int posX, int posY){
         this.gold = gold;
         setName("Camrath");
         spriteSheet = loadImage("chara3.png");
         sprite = subImage(spriteSheet,52,288,56,72);
-        setMapPosX(500);
-        setMapPosY(250);
+        setMapPosX(posX);
+        setMapPosY(posY);
 
         initDialogue();
         loadDialogue = true;
