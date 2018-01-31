@@ -93,16 +93,23 @@ public class npc_plains_E9_byFence extends  NPC {
 
     Dialogue listOne;
 
+    Dialogue listTwo;
+
 
     public void initDialogue() {
         Dialogue d1 = new Dialogue(null,false,true,"He's bound to come to our town... if only there was someone to protect","us!","","");
         listOne = d1;
+
+        Dialogue d2 = new Dialogue(null,false,true,"Your power astounds me! I can sleep peacefully knowing you're watching","over us.","","");
+        listTwo = d2;
     }
 
     public void updateDialogue(Quest.questState  currentState){
-
-        currentDialogue = listOne;
-
+        if(questStage == 33){
+            currentDialogue = listTwo;
+        } else {
+            currentDialogue = listOne;
+        }
     }
 
     public void drawConvo(Graphics2D g, Quest.questState  currentState, String questName, int questStage, int npcDeaths){

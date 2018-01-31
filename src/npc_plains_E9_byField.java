@@ -57,7 +57,8 @@ public class npc_plains_E9_byField extends  NPC {
         Dialogue d1 = new Dialogue(null, false, true, "We've always had monsters nearby but it was never this bad... Sevar", "the Wizard protected us well, but now Therox has turned his attention to ", "us... Well I just don't feel safe anymore.", "");
         listOne = d1;
 
-
+        Dialogue d2 = new Dialogue(null, false, true, "Only the strong monsters remain but they're fading fast! Soon enough", "we'll be safer than ever!", "", "");
+        listTwo = d2;
     }
 
     public void updateDialogue(Quest.questState currentState) {
