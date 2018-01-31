@@ -371,7 +371,7 @@ public class AdventureMode extends GameEngine {
                 }
                 break;
             case finalCutscene:
-                finalCutsceneController.drawFinalCutsene(mGraphics, 0);
+                finalCutsceneController.drawFinalCutsene(mGraphics, playerMan.getNpcDeaths());
                 break;
         }
 
