@@ -671,8 +671,7 @@ public class Character extends Statblock {
     }
 
     public void initImage(){
-        Image sprite = loadImage("combatCharacter.png");
-        setSprite(sprite);
+
         setSpriteWidth(150);
         setSpriteHeight(150);
     }
