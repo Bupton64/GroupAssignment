@@ -85,10 +85,11 @@ public class MapControl extends extraFunctions {
 
             }
             //final fight case - yes i know its ugly
-            if(playerMan.getQuestStage() == 33){
+            if(playerMan.getQuestStage() == 32){
                 mapNpcs[1].undoCollision(collisionDetector);
                 mapNpcs[2].undoCollision(collisionDetector);
                 mapNpcs[3].undoCollision(collisionDetector);
+                playerMan.setQuestStage(33);
 
             }
             for (int i = 0; i < numOfNpc; i++) {
