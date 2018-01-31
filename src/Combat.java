@@ -526,6 +526,9 @@ public class Combat extends extraFunctions{
             lastAbility.use(player);
             playerDamage = lastAbility.getLastDamage();
             playerDamage = enemy.takeDamage((int)playerDamage);
+            if(player.getCurrentHP() < 0){
+                player.setCurrentHP(0);
+            }
             castBasicAttack = false;
             player.setEnergy(player.getEnergy()-lastAbility.getEnergyCost());
 
@@ -628,6 +631,9 @@ public class Combat extends extraFunctions{
                    if(playerAttackTimer > playerAttackExtraDelay){
                        if(enemy.isAlive()) {
                            player.takeDamage((int) player.getLastStatusDamage());
+                           if(player.getCurrentHP() < 0){
+                               player.setCurrentHP(0);
+                           }
                            playerEndTurn();
                            pushString(statusLog,true,false);
                        }else{
@@ -1123,6 +1129,9 @@ public class Combat extends extraFunctions{
         enemyDamage = enemyLastAbility.getLastDamage();
       //  enemy.addEnergy(-enemyLastAbility.getEnergyCost());
         enemyDamage = player.takeDamage((int)enemyDamage);
+        if(enemy.getCurrentHP() < 0){
+            enemy.setCurrentHP(0);
+        }
 
         if(enemyLastAbility.getLastStatus() != null){
             player.setLastStatusDuration(enemyLastAbility.getLastStatusDuration());
@@ -1210,6 +1219,9 @@ public class Combat extends extraFunctions{
                        // enemyEndTurn();
                         if(player.isAlive()) {
                             enemy.takeDamage((int) enemy.getLastStatusDamage());
+                            if(enemy.getCurrentHP() < 0){
+                                enemy.setCurrentHP(0);
+                            }
                             pushString(statusLog,false,false);
                             enemyEndTurn();
 

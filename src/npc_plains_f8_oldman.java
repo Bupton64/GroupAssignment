@@ -115,7 +115,7 @@ public class npc_plains_f8_oldman extends  NPC {
     Dialogue listFour;
 
     public void initDialogue() {
-        Dialogue d1 = new Dialogue(null,false,true,"I'm Julian, the oldest NPC... uh I mean villager in this Town.","","","");
+        Dialogue d1 = new Dialogue(null,false,true,"I'm Julian, the oldest NPC... uh I mean villager in Sepla.","","","");
         listOne = d1;
 
         Dialogue d2 = new Dialogue(null,false,true,"Bjarne, save yourself. This demon is too strong.","","","");
