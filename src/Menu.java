@@ -926,7 +926,7 @@ public class Menu extends extraFunctions {
         playerAbilities = player1.getAbilities();
         currentPageNum = 1;
         numOfAbilitiePages = 1;
-        menuOption = 0;
+        menuOption = 1;
         menuSpriteSheet = loadImage("arrowhead.png");
         spellBook = loadImage("open.png");
         spellBookPointer = subImage(menuSpriteSheet, 288, 96, 48, 48);
@@ -1174,7 +1174,7 @@ public class Menu extends extraFunctions {
         changeColor(purple, g);
         drawBoldText(290, 120, "Save Files", "Felix Titling", 35, g);
         changeColor(red, g);
-        drawBoldText(200, 150 + 80, "Save_1", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 80, "Save 1", "Felix Titling", 20, g);
         if (loadOneDisplay) {
             changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
@@ -1185,7 +1185,7 @@ public class Menu extends extraFunctions {
             drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
-        drawBoldText(200, 150 + 160, "Save_2", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 160, "Save 2", "Felix Titling", 20, g);
         if (loadTwoDisplay) {
             changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
@@ -1196,7 +1196,7 @@ public class Menu extends extraFunctions {
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
-        drawBoldText(200, 150 + 240, "Save_3", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 240, "Save 3", "Felix Titling", 20, g);
         if (loadThreeDisplay) {
             changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);
@@ -1375,7 +1375,7 @@ public class Menu extends extraFunctions {
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 440) {
                 playAudio(p2);
-                menuOption = 0;
+                menuOption = 1;
                 state = MenuState.SpellBook;
             }
             if ((e.getKeyCode() == KeyEvent.VK_SPACE) && cursorPositionY == 410) {

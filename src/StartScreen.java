@@ -332,7 +332,7 @@ public class StartScreen extends extraFunctions {
         changeColor(purple, g);
         drawBoldText(280, 120, "Load Files", "Felix Titling", 35, g);
         changeColor(red, g);
-        drawBoldText(200, 150 + 80, "Save_1", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 80, "Save 1", "Felix Titling", 20, g);
         if(loadOneDisplay) {
             changeColor(black, g);
             drawBoldText(390, 220, loadOneQuestName, "Felix Titling", 15, g);
@@ -343,7 +343,7 @@ public class StartScreen extends extraFunctions {
             drawBoldText(392, 230, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
-        drawBoldText(200, 150 + 160, "Save_2", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 160, "Save 2", "Felix Titling", 20, g);
         if(loadTwoDisplay) {
             changeColor(black, g);
             drawBoldText(390, 300, loadTwoQuestName, "Felix Titling", 15, g);
@@ -354,7 +354,7 @@ public class StartScreen extends extraFunctions {
             drawBoldText(392, 310, "Empty", "Felix Titling", 15, g);
         }
         changeColor(red, g);
-        drawBoldText(200, 150 + 240, "Save_3", "Felix Titling", 20, g);
+        drawBoldText(200, 150 + 240, "Save 3", "Felix Titling", 20, g);
         if(loadThreeDisplay) {
             changeColor(black, g);
             drawBoldText(390, 380, loadThreeQuestName, "Felix Titling", 15, g);

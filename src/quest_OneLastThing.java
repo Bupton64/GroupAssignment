@@ -44,13 +44,10 @@ public class quest_OneLastThing extends Quest {
 
         }
         if(getState() == questState.inQuest){
-            drawText(40, 460, "End Therox", "Arial", 20, g);
+            drawText(40, 460, "Speak to Dijkstra at level 15", "Arial", 20, g);
         }
-        if(getState() == questState.completedQuest){
-            drawText(40, 460, "Go to Camrath", "Arial", 20, g);
-        }
-        if(getState() == questState.extraQuest){
-            drawText(40, 460, "Return to Sevar", "Arial", 20, g);
-        }
+
     }
+
+
 }
