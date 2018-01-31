@@ -168,6 +168,10 @@ public class MapControl extends extraFunctions {
                     currentMap = new plains_E5();
                     mapNpcs[0] = new npc_plains_SevarsWifeGrave();
                     numOfNpc = 1;
+                    if(playerMan.getQuestStage() == 33) {
+                        mapNpcs[1] = new npc_plains_SevarsGrave();
+                        numOfNpc = 2;
+                    }
                     if(playerMan.getQuestStage() < 16) {
                         mapNpcs[1] = new npc_wizard(400, 250);
                         numOfNpc = 2;
