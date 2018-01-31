@@ -65,13 +65,14 @@ public class npc_plains_H9 extends  NPC {
         Dialogue d1 = new Dialogue(null,false,true,"Leave me be. I am busy.","","","");
         listOne = d1;
 
+        Dialogue d3 = new Dialogue(null,false,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword.","");
+        listThree = d3;
 
-        Dialogue d02 = new Dialogue(null,true,true,"Could you spare 500GP so that I can purchase the resources needed?","","","");
+        Dialogue d02 = new Dialogue(d3,true,false,"Could you spare 500GP so that I can purchase the resources needed?","","","");
         Dialogue d2 = new Dialogue(d02,false,false,"Hey there, I just finished clearing all the monsters out of this area.","I've been expecting you ever since I heard you had arrived. Let me" ,"guess, you're looking for a weapon? Unfortunately I'm lacking materials.","");
         listTwo = d2;
 
-        Dialogue d3 = new Dialogue(null,false,true,"Thank you helping me out! Please go and find Link in the town.","I have sent her to the town Store to handle merchandise.","She will help you with getting a sword.","");
-        listThree = d3;
+
 
         Dialogue d4 = new Dialogue(null,false,true,"Hey Bjarne! Thanks again for helping me. I hope Link has been","able to help you with your quest.","","");
         listFour = d4;
@@ -175,18 +176,24 @@ public class npc_plains_H9 extends  NPC {
     public boolean keyPressed(KeyEvent e) {
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(currentDialogue.hasOptions && questStage == 5){
+                if (currentDialogue.getOptionPosY() == 375 ) {
+                    if (gold >= 500) {
+                        questStage = 6;
+
+                    } else {
+                        enoughGold = false;
+                        return true;
+                    }
+                }else{
+                    return false;
+                }
+            }
+
             if(currentDialogue.next == null) {
                 if (currentDialogue.getOptionPosY() == 375 ) {
                     switch (questStage) {
-                        case 5:
-                            if(gold >= 500) {
-                                questStage = 6;
 
-                            }else{
-                                enoughGold = false;
-                                return true;
-                            }
-                            break;
                         case 26:
                             questStage = 40;
                             break;
