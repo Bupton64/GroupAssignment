@@ -6,7 +6,7 @@ public class npc_plains_f8_byLog extends  NPC {
 
     npc_plains_f8_byLog(){
         setName("Link");
-        spriteSheet = loadImage("chara3.png");
+        spriteSheet = loadImage("Image/chara3.png");
         sprite = subImage(spriteSheet,520,0,56,72);
         setMapPosX(650);
         setMapPosY(85);

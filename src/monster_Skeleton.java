@@ -31,7 +31,7 @@ public class monster_Skeleton extends Monster {
         temp[2] = new ability_monster_sacrament();
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_skeleton.png");
+        Image sprite = loadImage("Image/monster_skeleton.png");
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);

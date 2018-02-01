@@ -27,7 +27,7 @@ public class monster_Wolf extends Monster {
         setName("Wolf");
         setEnergy(0);
 
-        Image sprite = loadImage("monster_Wolf.png");
+        Image sprite = loadImage("Image/monster_Wolf.png");
         setSprite(sprite);
         setSpriteWidth(120);
         setSpriteHeight(120);

@@ -33,7 +33,7 @@ public class monster_vampire extends Monster {
         temp[2].setName("Vampiric Bite");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_vampire.png");
+        Image sprite = loadImage("Image/monster_vampire.png");
         setSprite(sprite);
         setSpriteWidth(250);
         setSpriteHeight(250);

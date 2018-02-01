@@ -8,7 +8,7 @@ public class npc_plains_F9_byBottomHouse extends  NPC {
 
     npc_plains_F9_byBottomHouse(){
         setName("Tyran");
-        spriteSheet = loadImage("chara2.png");
+        spriteSheet = loadImage("Image/chara2.png");
         sprite = subImage(spriteSheet,196,0,56,72);
         setMapPosX(150);
         setMapPosY(450);

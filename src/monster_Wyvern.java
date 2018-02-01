@@ -31,7 +31,7 @@ public class monster_Wyvern extends Monster {
         setUpAbilityNumberI(temp, 2, "Body Slam", 0, 10, 0, 0, 4, false, 4, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_wyvern.png");
+        Image sprite = loadImage("Image/monster_wyvern.png");
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);

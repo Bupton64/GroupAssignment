@@ -31,7 +31,7 @@ public class monster_Elite extends Monster {
         setUpAbilityNumberI(temp, 2, "Flurry", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_elite.png");
+        Image sprite = loadImage("Image/monster_elite.png");
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);

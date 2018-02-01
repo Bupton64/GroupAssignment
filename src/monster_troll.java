@@ -31,7 +31,7 @@ public class monster_troll extends Monster {
         setUpAbilityNumberI(temp, 1, "Axe Smash!", 0, 0, 0, 0, 0, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_troll.png");
+        Image sprite = loadImage("Image/monster_troll.png");
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);

@@ -6,7 +6,7 @@ public class npc_plains_f8_oldman extends  NPC {
 
     npc_plains_f8_oldman(int posX, int posY){
         setName("Julian");
-        spriteSheet = loadImage("chara2.png");
+        spriteSheet = loadImage("Image/chara2.png");
         sprite = subImage(spriteSheet,364,288,56,72);
 
         setMapPosX(posX);

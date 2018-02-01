@@ -6,7 +6,7 @@ public class npc_plains_E11 extends  NPC {
 
     npc_plains_E11(){
         setName("Turing");
-        spriteSheet = loadImage("chara4.png");
+        spriteSheet = loadImage("Image/chara4.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setMapPosX(400);
         setMapPosY(400);

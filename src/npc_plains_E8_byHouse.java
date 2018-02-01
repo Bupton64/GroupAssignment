@@ -6,7 +6,7 @@ public class npc_plains_E8_byHouse extends  NPC {
 
     npc_plains_E8_byHouse(){
         setName("Alyx");
-        spriteSheet = loadImage("chara5.png");
+        spriteSheet = loadImage("Image/chara5.png");
         sprite = subImage(spriteSheet,196,288,56,72);
         setMapPosX(80);
         setMapPosY(480);

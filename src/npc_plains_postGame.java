@@ -8,7 +8,7 @@ public class npc_plains_postGame extends  NPC {
 
     npc_plains_postGame(){
         setName("Callum");
-        spriteSheet = loadImage("npc1.png");
+        spriteSheet = loadImage("Image/npc1.png");
         sprite = subImage(spriteSheet,520,288,56,72);
         setMapPosX(600);
         setMapPosY(350);

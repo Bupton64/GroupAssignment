@@ -28,7 +28,7 @@ public class monster_brawler extends Monster{
         this.setAbilities(temp);
 
         //Image sprite = loadImage("monster_theroxVanguard.png");
-        Image sprite = loadImage("monster_brawler.png");
+        Image sprite = loadImage("Image/monster_brawler.png");
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);

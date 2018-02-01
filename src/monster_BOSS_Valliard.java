@@ -24,7 +24,7 @@ public class monster_BOSS_Valliard extends Monster {
         setName("Valliard");
         setEnergy(0);
 
-        Image sprite = loadImage("monster_BOSS_valliard.png"); //NEEDS IMAGE
+        Image sprite = loadImage("Image/monster_BOSS_valliard.png"); //NEEDS IMAGE
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);

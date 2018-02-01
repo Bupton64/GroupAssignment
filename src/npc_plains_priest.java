@@ -8,7 +8,7 @@ public class npc_plains_priest extends  NPC {
 
     npc_plains_priest(int posX, int posY){
         setName("Priest");
-        spriteSheet = loadImage("chara2.png");
+        spriteSheet = loadImage("Image/chara2.png");
         sprite = subImage(spriteSheet,364,0,56,72);
         setMapPosX(posX);
         setMapPosY(posY);

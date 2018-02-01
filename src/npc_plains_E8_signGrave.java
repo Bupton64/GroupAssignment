@@ -6,7 +6,7 @@ public class npc_plains_E8_signGrave extends  NPC {
 
     npc_plains_E8_signGrave(){
         setName("Sepla Graveyard");
-        spriteSheet = loadImage("chara5.png");
+        spriteSheet = loadImage("Image/chara5.png");
         sprite = subImage(spriteSheet,50,0,1,1);
         setMapPosX(255);
         setMapPosY(470);

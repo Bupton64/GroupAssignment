@@ -6,7 +6,7 @@ public class npc_plains_A11_Razuul extends NPC{
 
     npc_plains_A11_Razuul() {
         setName("Razuul");
-        spriteSheet = loadImage("chara5.png");
+        spriteSheet = loadImage("Image/chara5.png");
         sprite = subImage(spriteSheet,364,288,56,72);
         setMapPosX(320);
         setMapPosY(200);

@@ -32,7 +32,7 @@ public class monster_Witch extends Monster {
         temp[3] = new ability_monster_blindingLight();
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_Witch.png");
+        Image sprite = loadImage("Image/monster_Witch.png");
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);

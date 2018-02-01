@@ -7,7 +7,7 @@ public class npc_JulianGrave extends  NPC {
 
     npc_JulianGrave(){
         setName("Julians' Grave");
-        spriteSheet = loadImage("grave.png");
+        spriteSheet = loadImage("Image/grave.png");
         sprite = subImage(spriteSheet,0,0,56,72);
         setMapPosX(420);
         setMapPosY(200);

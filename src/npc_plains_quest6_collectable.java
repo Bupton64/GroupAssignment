@@ -6,7 +6,7 @@ public class npc_plains_quest6_collectable extends NPC{
 
     npc_plains_quest6_collectable (int posX, int posY){
         setName("Dusty Envelope");
-        spriteSheet = loadImage("crystal.png");
+        spriteSheet = loadImage("Image/crystal.png");
         sprite = subImage(spriteSheet,0,0,5,5);
         setMapPosX(posX);
         setMapPosY(posY);

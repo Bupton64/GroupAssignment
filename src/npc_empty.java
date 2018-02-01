@@ -7,7 +7,7 @@ public class npc_empty extends NPC {
         setName("");
         setMapPosX(0);
         setMapPosY(0);
-        spriteSheet = loadImage("chara2.png");
+        spriteSheet = loadImage("Image/chara2.png");
         sprite = subImage(spriteSheet,0,0,1,1);
 
     }

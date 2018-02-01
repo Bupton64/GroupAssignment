@@ -31,7 +31,7 @@ public class monster_darkCultist extends Monster {
         temp[2] = new ability_monster_sacrament();
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_darkCultist.png");
+        Image sprite = loadImage("Image/monster_darkCultist.png");
         setSprite(sprite);
         setSpriteWidth(200);
         setSpriteHeight(200);

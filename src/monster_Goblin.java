@@ -27,7 +27,7 @@ public class monster_Goblin extends Monster {
         setName("Goblin");
         setEnergy(0);
 
-        Image sprite = loadImage("chara5.png");
+        Image sprite = loadImage("Image/chara5.png");
         sprite = subImage(sprite, 520, 360, 56, 72);
         setSprite(sprite);
         setSpriteWidth(120);

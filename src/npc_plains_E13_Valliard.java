@@ -6,7 +6,7 @@ public class npc_plains_E13_Valliard extends NPC{
 
     npc_plains_E13_Valliard() {
         setName("Valliard");
-        spriteSheet = loadImage("chara4.png");
+        spriteSheet = loadImage("Image/chara4.png");
         sprite = subImage(spriteSheet,520,504,56,72);
         setMapPosX(400);
         setMapPosY(250);

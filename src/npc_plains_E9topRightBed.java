@@ -6,7 +6,7 @@ public class npc_plains_E9topRightBed extends  NPC {
 
     npc_plains_E9topRightBed(int posX, int posY) {
         setName("Bed");
-        spriteSheet = loadImage("NPCwithoutSprite.png");
+        spriteSheet = loadImage("Image/NPCwithoutSprite.png");
         sprite = subImage(spriteSheet, 0, 0, 1, 1);
         setMapPosX(posX);
         setMapPosY(posY);

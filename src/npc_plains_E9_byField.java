@@ -6,7 +6,7 @@ public class npc_plains_E9_byField extends  NPC {
 
     npc_plains_E9_byField() {
         setName("Titus");
-        spriteSheet = loadImage("chara2.png");
+        spriteSheet = loadImage("Image/chara2.png");
         sprite = subImage(spriteSheet, 52, 288, 56, 72);
         setMapPosX(100);
         setMapPosY(450);

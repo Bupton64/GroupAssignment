@@ -12,7 +12,7 @@ public class npc_wizard extends  NPC {
 
     npc_wizard(int posX, int posY){
         setName("Sevar");
-        spriteSheet = loadImage("chara1.png");
+        spriteSheet = loadImage("Image/chara1.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setMapPosX(posX);
         setMapPosY(posY);

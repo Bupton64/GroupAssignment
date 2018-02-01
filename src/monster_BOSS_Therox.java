@@ -25,7 +25,7 @@ public class monster_BOSS_Therox extends Monster {
         setName("Therox");
         setEnergy(0);
 
-        Image sprite = loadImage("monster_BOSS_therox.png");
+        Image sprite = loadImage("Image/monster_BOSS_therox.png");
         sprite = subImage(sprite, 0, 80, 70, 80);
         setSprite(sprite);
         setSpriteWidth(200);

@@ -6,7 +6,7 @@ public class npc_plains_E9_byFence extends  NPC {
 
     npc_plains_E9_byFence(){
         setName("Edgar");
-        spriteSheet = loadImage("chara4.png");
+        spriteSheet = loadImage("Image/chara4.png");
         sprite = subImage(spriteSheet,52,0,56,72);
         setMapPosX(550);
         setMapPosY(450);

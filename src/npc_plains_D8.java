@@ -6,7 +6,7 @@ public class npc_plains_D8 extends  NPC {
 
     npc_plains_D8(int posX, int posY){
         setName("Andrew");
-        spriteSheet = loadImage("military2.png");
+        spriteSheet = loadImage("Image/military2.png");
         sprite = subImage(spriteSheet,52,0,56,72);
         setMapPosX(posX);
         setMapPosY(posY);

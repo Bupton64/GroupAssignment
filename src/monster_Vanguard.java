@@ -31,7 +31,7 @@ public class monster_Vanguard extends Monster{
         setUpAbilityNumberI(temp, 2, "Whirlwind", 0, 4, 0, 5, 4, false, 5, "", true, Ability.AbilityType.damage, "");
         this.setAbilities(temp);
 
-        Image sprite = loadImage("monster_theroxVanguard.png");
+        Image sprite = loadImage("Image/monster_theroxVanguard.png");
         setSprite(sprite);
         setSpriteWidth(150);
         setSpriteHeight(150);

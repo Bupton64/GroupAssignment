@@ -8,7 +8,7 @@ public class npc_plains_E8topRightBook extends  NPC {
 
     npc_plains_E8topRightBook(){
         setName("Book");
-        sprite = loadImage("book.png");
+        sprite = loadImage("Image/book.png");
         //sprite = subImage(spriteSheet,364,0,56,72);
         setMapPosX(450);
         setMapPosY(250);

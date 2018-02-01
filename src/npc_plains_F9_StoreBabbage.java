@@ -8,7 +8,7 @@ public class npc_plains_F9_StoreBabbage extends  NPC {
 
     npc_plains_F9_StoreBabbage(){
         setName("Babbage");
-        spriteSheet = loadImage("chara5.png");
+        spriteSheet = loadImage("Image/chara5.png");
         sprite = subImage(spriteSheet,52,288,56,72);
         setMapPosX(300);
         setMapPosY(200);

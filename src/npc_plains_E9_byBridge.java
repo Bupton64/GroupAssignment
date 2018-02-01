@@ -8,7 +8,7 @@ public class npc_plains_E9_byBridge extends  NPC {
 
     npc_plains_E9_byBridge(int posX, int posY){
         setName("Sally");
-        spriteSheet = loadImage("chara5.png");
+        spriteSheet = loadImage("Image/chara5.png");
         sprite = subImage(spriteSheet,364,144,56,72);
         setMapPosX(posX);
         setMapPosY(posY);
