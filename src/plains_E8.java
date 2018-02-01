@@ -10,7 +10,7 @@ public class plains_E8 extends  Map {
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
 
-        backgroundImage = loadImage("plains_E8.png");
+        backgroundImage = loadImage("Image/plains_E8.png");
 
     }
 

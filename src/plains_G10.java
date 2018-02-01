@@ -4,7 +4,7 @@ import java.awt.event.*;
 public class plains_G10 extends  Map {
 
     plains_G10() {
-        backgroundImage= loadImage("plains_blank_variation3.png");
+        backgroundImage= loadImage("Image/plains_blank_variation3.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

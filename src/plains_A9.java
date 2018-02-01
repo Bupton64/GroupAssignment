@@ -5,7 +5,7 @@ public class plains_A9 extends  Map{
 
 
     plains_A9() {
-        backgroundImage= loadImage("plains_A9.png");
+        backgroundImage= loadImage("Image/plains_A9.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

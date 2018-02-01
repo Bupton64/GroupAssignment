@@ -5,7 +5,7 @@ public class plains_G11 extends  Map{
 
 
     plains_G11() {
-        backgroundImage= loadImage("plains_tree_funnell_BR2.png");
+        backgroundImage= loadImage("Image/plains_tree_funnell_BR2.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

@@ -6,7 +6,7 @@ public class plains_A9_church extends  Map {
 
 
     plains_A9_church() {
-        backgroundImage= loadImage("plains_A9_church.png");
+        backgroundImage= loadImage("Image/plains_A9_church.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

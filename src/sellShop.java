@@ -26,7 +26,7 @@ public class sellShop extends shop {
                 setTotalPages((playerMan.getInventorySize()/10)+1);
         }
     }
-    Image equipmentSprite = loadImage("equipmentSprite.png");
+    Image equipmentSprite = loadImage("Image/equipmentSprite.png");
     @Override
     public void shopInit() {
         clicks = loadAudio("Audio/clicks.wav");

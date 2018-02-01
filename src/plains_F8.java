@@ -5,7 +5,7 @@ public class plains_F8 extends  Map {
 
 
     plains_F8() {
-        backgroundImage= loadImage("plains_F8.png");
+        backgroundImage= loadImage("Image/plains_F8.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

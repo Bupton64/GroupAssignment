@@ -6,7 +6,7 @@ public class plains_F9_shop extends  Map {
 
 
     plains_F9_shop() {
-        backgroundImage= loadImage("plains_F9_shop.png");
+        backgroundImage= loadImage("Image/plains_F9_shop.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

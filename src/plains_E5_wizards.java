@@ -6,7 +6,7 @@ public class plains_E5_wizards extends  Map {
 
 
     plains_E5_wizards() {
-        backgroundImage= loadImage("wizardHouse.png");
+        backgroundImage= loadImage("Image/wizardHouse.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

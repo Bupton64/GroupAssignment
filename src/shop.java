@@ -26,14 +26,14 @@ abstract public class shop extends extraFunctions {
     shop(Character playerMan){this.init(playerMan); }
 
     public void init(Character playerMan){
-        this.dialougeBox = loadImage("dialogue_Boxes.png");
+        this.dialougeBox = loadImage("Image/dialogue_Boxes.png");
         this.dialougeBox = subImage(dialougeBox, 11, 11, 490, 100);
         this.player1 = playerMan;
         this.increaser = 0;
         this.totalPages = 0;
         this.pageNum = 1;
         this.shopIndex = 0;
-        this.book = loadImage("open.png");
+        this.book = loadImage("Image/open.png");
         this.shopBackground = subImage(book, 0, 0, 544, 416);
         this.scroller = 100;
         this.shopInit();

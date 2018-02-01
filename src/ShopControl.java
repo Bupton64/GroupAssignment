@@ -16,7 +16,7 @@ public class ShopControl extends extraFunctions {
     ///
     ////////////////////////////////
 
-    Image equipmentSprite = loadImage("equipmentSprite.png");
+    Image equipmentSprite = loadImage("Image/equipmentSprite.png");
 
     private void updateStartShop(){
         if(menuOption == 0){
@@ -128,11 +128,11 @@ public class ShopControl extends extraFunctions {
         menuOption = 0;
         menuPointerPosX = 200;
         menuPointerPosY = 260;
-        background = loadImage("open.png");
+        background = loadImage("Image/open.png");
         background = subImage(background, 0, 0, 544, 416);
-        buttonSprite =  loadImage("buttons.png");
+        buttonSprite =  loadImage("Image/buttons.png");
         buttonSprite = subImage(buttonSprite,30,70,180,80);
-        menuPointer = loadImage("arrowhead.png");
+        menuPointer = loadImage("Image/arrowhead.png");
         menuPointer = subImage(menuPointer,0,96,48,48);
 
         sellController = new sellShop(playerMan);

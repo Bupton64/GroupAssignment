@@ -24,13 +24,13 @@ public class StartScreen extends extraFunctions {
     enum startState {startScreen, loadScreen, credits}
     startState state = startState.startScreen;
     Image buttonSprite;
-   Image buttonSpriteSheet = loadImage("buttons.png");
-    Image paper = loadImage("paper.png");
-    Image paper2 = loadImage("paper2.png");
-    Image sword = loadImage("sword.png");
-    Image sword2 = loadImage("sword2.png");
-    Image Logo = loadImage("BjournesWorld.png");
-    Image equipmentSprite = loadImage("equipmentSprite.png");
+   Image buttonSpriteSheet = loadImage("Image/buttons.png");
+    Image paper = loadImage("Image/paper.png");
+    Image paper2 = loadImage("Image/paper2.png");
+    Image sword = loadImage("Image/sword.png");
+    Image sword2 = loadImage("Image/sword2.png");
+    Image Logo = loadImage("Image/BjournesWorld.png");
+    Image equipmentSprite = loadImage("Image/equipmentSprite.png");
     Image background3;
     Image StartBackground;
     Image swordSprite;

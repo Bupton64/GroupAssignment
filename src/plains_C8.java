@@ -5,7 +5,7 @@ public class plains_C8 extends  Map{
 
 
     plains_C8() {
-        backgroundImage= loadImage("farm.png");
+        backgroundImage= loadImage("Image/farm.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }
