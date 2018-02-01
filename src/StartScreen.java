@@ -231,9 +231,9 @@ public class StartScreen extends extraFunctions {
 
     private boolean getLoadFiles;
 
-    File SaveOne = new  File("SaveOne.txt");
-    File SaveTwo = new File("SaveTwo.txt");
-    File SaveThree = new File("SaveThree.txt");
+    File SaveOne = new  File("config/SaveOne.txt");
+    File SaveTwo = new File("config/SaveTwo.txt");
+    File SaveThree = new File("config/SaveThree.txt");
 
     public void initLoad(){
 
@@ -269,7 +269,7 @@ public class StartScreen extends extraFunctions {
     public void getLoadFiles(){
         String temp;
         double timer;
-        try (BufferedReader br = new BufferedReader(new FileReader("SaveOne.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("config/SaveOne.txt"))) {
 
             temp = br.readLine();
             if(temp == null){
@@ -287,7 +287,7 @@ public class StartScreen extends extraFunctions {
             e.printStackTrace();
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader("SaveTwo.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("config/SaveTwo.txt"))) {
 
             temp = br.readLine();
             if(temp == null){
@@ -305,7 +305,7 @@ public class StartScreen extends extraFunctions {
             e.printStackTrace();
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader("SaveThree.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("config/SaveThree.txt"))) {
 
             temp = br.readLine();
             if(temp == null){

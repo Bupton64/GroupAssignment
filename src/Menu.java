@@ -1105,7 +1105,7 @@ public class Menu extends extraFunctions {
     public void getSaveFiles() {
         String temp;
         double timer;
-        try (BufferedReader br = new BufferedReader(new FileReader("SaveOne.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("config/SaveOne.txt"))) {
             temp = br.readLine();
             if (temp == null) {
             } else {
@@ -1120,7 +1120,7 @@ public class Menu extends extraFunctions {
             e.printStackTrace();
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader("SaveTwo.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("config/SaveTwo.txt"))) {
             temp = br.readLine();
             if (temp == null) {
             } else {
@@ -1135,7 +1135,7 @@ public class Menu extends extraFunctions {
             e.printStackTrace();
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader("SaveThree.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("config/SaveThree.txt"))) {
             temp = br.readLine();
             if (temp == null) {
             } else {
@@ -1303,20 +1303,20 @@ public class Menu extends extraFunctions {
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             if(menuPointerPosY == 230 ){
                // loadController.loadGame(player,"SaveOne.txt");
-                loadController.save("SaveOne.txt");
+                loadController.save("config/SaveOne.txt");
                 getSaveFiles = false;
                 updateSave();
                 return 0;
 
             }else if(menuPointerPosY == 310 ){
               //  loadController.loadGame(player,"SaveTwo.txt");
-                 loadController.save("SaveTwo.txt");
+                 loadController.save("config/SaveTwo.txt");
                 getSaveFiles = false;
                 updateSave();
                 return 0;
             }else if(menuPointerPosY == 390 ){
             //    loadController.loadGame(player,"SaveThree.txt");
-                loadController.save("SaveThree.txt");
+                loadController.save("config/SaveThree.txt");
                 getSaveFiles = false;
                 updateSave();
                 return 0;
