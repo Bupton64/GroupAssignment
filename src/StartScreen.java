@@ -229,12 +229,25 @@ public class StartScreen extends extraFunctions {
     private double loadThreeTimer;
     private boolean loadThreeDisplay;
 
-
     private boolean getLoadFiles;
 
-    public void initLoad(){
-        getLoadFiles = false;
+    File SaveOne = new  File("SaveOne.txt");
+    File SaveTwo = new File("SaveTwo.txt");
+    File SaveThree = new File("SaveThree.txt");
 
+    public void initLoad(){
+
+
+        try{
+            SaveOne.createNewFile();
+            SaveTwo.createNewFile();
+            SaveThree.createNewFile();
+        }
+        catch(IOException e){
+       }
+
+
+        getLoadFiles = false;
 
         loadOneQuestName = "";
         loadOneLevel = "";
