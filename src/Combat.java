@@ -48,21 +48,21 @@ public class Combat extends extraFunctions{
         s3 = false;
         s4 = false;
         s5 = false;
-        gameover = loadAudio("gameover.wav");
-        attackMusic = loadAudio("epic.wav");
-        coin = loadAudio("coin.wav");
-        clicks = loadAudio("clicks.wav");
-        p1 = loadAudio("page1.wav");
-        p2 = loadAudio("page2.wav");
-        p3 = loadAudio("page3.wav");
-        leave = loadAudio("leave.wav");
-        exitClick = loadAudio("exitClick.wav");
-        win = loadAudio("win.wav");
-        miss = loadAudio("miss.wav");
-        hit1 = loadAudio("hit_1.wav");
-        hit2 = loadAudio("hit2.wav");
-        hit3 = loadAudio("hit3.wav");
-        potion = loadAudio("potion.wav");
+        gameover = loadAudio("Audio/gameover.wav");
+        attackMusic = loadAudio("Audio/epic.wav");
+        coin = loadAudio("Audio/coin.wav");
+        clicks = loadAudio("Audio/clicks.wav");
+        p1 = loadAudio("Audio/page1.wav");
+        p2 = loadAudio("Audio/page2.wav");
+        p3 = loadAudio("Audio/page3.wav");
+        leave = loadAudio("Audio/leave.wav");
+        exitClick = loadAudio("Audio/exitClick.wav");
+        win = loadAudio("Audio/win.wav");
+        miss = loadAudio("Audio/miss.wav");
+        hit1 = loadAudio("Audio/hit_1.wav");
+        hit2 = loadAudio("Audio/hit2.wav");
+        hit3 = loadAudio("Audio/hit3.wav");
+        potion = loadAudio("Audio/potion.wav");
         startAudioLoop(attackMusic, -11);
 
     }

@@ -50,12 +50,12 @@ public class StartScreen extends extraFunctions {
 
 
     public void initStart(){
-        clicks = loadAudio("clicks.wav");
-        clicks2 = loadAudio("clicks2.wav");
-        exitClick = loadAudio("exitClick.wav");
-        introMusic = loadAudio("epic.wav");
-        credits = loadAudio("credits.wav");
-        p2 = loadAudio("page2.wav");
+        clicks = loadAudio("Audio/clicks.wav");
+        clicks2 = loadAudio("Audio/clicks2.wav");
+        exitClick = loadAudio("Audio/exitClick.wav");
+        introMusic = loadAudio("Audio/epic.wav");
+        credits = loadAudio("Audio/credits.wav");
+        p2 = loadAudio("Audio/page2.wav");
         startAudioLoop(introMusic, -3);
         StartBackground = subImage(paper, 0, 0, 768, 1028);
         StartBackground = subImage(paper2, 0, 0, 1028, 768);
