@@ -418,17 +418,17 @@ public class StartScreen extends extraFunctions {
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             playAudio(exitClick);
             if(cursorPositionY == 230 && loadOneDisplay){
-                loadController.loadGame(player,"SaveOne.txt");
+                loadController.loadGame(player,"config/SaveOne.txt");
                 return 1;
 
             }else if(cursorPositionY == 310 && loadTwoDisplay){
                 playAudio(exitClick);
 
-                loadController.loadGame(player,"SaveTwo.txt");
+                loadController.loadGame(player,"config/SaveTwo.txt");
                 return 1;
             }else if(cursorPositionY == 390 && loadThreeDisplay){
                 playAudio(exitClick);
-                loadController.loadGame(player,"SaveThree.txt");
+                loadController.loadGame(player,"config/SaveThree.txt");
                 return 1;
             }
         }
