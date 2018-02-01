@@ -5,7 +5,7 @@ public class plains_bossFight extends Map {
 
 
     plains_bossFight() {
-        backgroundImage= loadImage("bossFight.png");
+        backgroundImage= loadImage("Image/bossFight.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

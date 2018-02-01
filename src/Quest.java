@@ -12,7 +12,7 @@ public class Quest extends extraFunctions {
     Quest(){
         displayTimer = 0;
         displayDuration = 5;
-        dialogueSpriteSheet = loadImage("dialogue_Boxes.png");
+        dialogueSpriteSheet = loadImage("Image/dialogue_Boxes.png");
         dialogueSimpleBox = subImage(dialogueSpriteSheet,20,20,470,100);
         displayReward = true;
     }

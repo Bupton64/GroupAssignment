@@ -10,7 +10,7 @@ public class weaponShop extends shop {
         setTotalPages(1);
         setMaxIndex(4);
     }
-    Image equipmentSprite = loadImage("equipmentSprite.png");
+    Image equipmentSprite = loadImage("Image/equipmentSprite.png");
 
     @Override
     public void shopInit() {

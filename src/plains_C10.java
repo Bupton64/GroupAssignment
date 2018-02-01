@@ -6,7 +6,7 @@ public class plains_C10 extends  Map {
 
 
     plains_C10() {
-        backgroundImage= loadImage("plains_blank_variation4.png");
+        backgroundImage= loadImage("Image/plains_blank_variation4.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

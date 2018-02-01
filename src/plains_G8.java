@@ -6,7 +6,7 @@ public class plains_G8 extends Map {
 
 
     plains_G8() {
-        backgroundImage= loadImage("plains_blank_variation1.png");
+        backgroundImage= loadImage("Image/plains_blank_variation1.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

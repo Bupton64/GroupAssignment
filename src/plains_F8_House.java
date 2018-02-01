@@ -6,7 +6,7 @@ public class plains_F8_House extends  Map {
 
 
     plains_F8_House() {
-        backgroundImage= loadImage("plains_F8_House.png");
+        backgroundImage= loadImage("Image/plains_F8_House.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

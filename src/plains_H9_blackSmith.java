@@ -6,7 +6,7 @@ public class plains_H9_blackSmith extends  Map {
 
 
     plains_H9_blackSmith() {
-        backgroundImage= loadImage("plains_H9_blackSmith.png");
+        backgroundImage= loadImage("Image/plains_H9_blackSmith.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

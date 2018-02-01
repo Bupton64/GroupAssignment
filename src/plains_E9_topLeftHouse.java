@@ -6,7 +6,7 @@ public class plains_E9_topLeftHouse extends  Map {
 
 
     plains_E9_topLeftHouse() {
-        backgroundImage= loadImage("plains_E9_topLeftHouse.png");
+        backgroundImage= loadImage("Image/plains_E9_topLeftHouse.png");
         direction = 0; //< DONT CHANGE
         flicker = true; //< DONT CHANGE
     }

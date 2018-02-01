@@ -36,18 +36,18 @@ public class RazuulCutscene extends extraFunctions{
         priestPosY = 200;
         timer = 0;
         animationChange = 0;
-        grave = loadImage("grave.png");
-        background = loadImage("priestFight.png");
-        backgroundAlternate = loadImage("plains_F8.png");
-        spritesheet = loadImage("chara2.png");
-        spritesheet2 = loadImage("chara5.png");
-        smokeSheet = loadImage("smoke.png");
+        grave = loadImage("Image/grave.png");
+        background = loadImage("Image/priestFight.png");
+        backgroundAlternate = loadImage("Image/plains_F8.png");
+        spritesheet = loadImage("Image/chara2.png");
+        spritesheet2 = loadImage("Image/chara5.png");
+        smokeSheet = loadImage("Image/smoke.png");
         priest = new Image[4];
         priestAfter = new Image[4];
         priestDown = new Image[4];
         priestLeft = new Image[4];
         smokeArray = new Image[35];
-        dialogueBackSheet = loadImage("dialogue_boxes.png");
+        dialogueBackSheet = loadImage("Image/dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
 
         spritesheet3 = loadImage("chara1.png");
