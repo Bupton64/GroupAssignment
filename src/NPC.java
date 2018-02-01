@@ -5,8 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class NPC extends extraFunctions{
 
     NPC(){
-        exitClick = loadAudio("exitClick.wav");
-        clicks2 = loadAudio("clicks2.wav");
+        exitClick = loadAudio("Audio/exitClick.wav");
+        clicks2 = loadAudio("Audio/clicks2.wav");
         this.height = 70;
         this.width = 50;
         this.lookDirection = 0;
