@@ -58,10 +58,10 @@ public class cutScene extends extraFunctions {
     cutScene(){
         hit = false;
         initialTime = getTime();
-        background = loadImage("intro_cutscene.png");
-        backgroundAlt = loadImage("intro_cutscene2.png");
-        fade = loadImage("fade.png");
-        startScreen = loadImage("townPic.png");
+        background = loadImage("Image/intro_cutscene.png");
+        backgroundAlt = loadImage("Image/intro_cutscene2.png");
+        fade = loadImage("Image/fade.png");
+        startScreen = loadImage("Image/townPic.png");
         timer = 0;
         timePast = 9999999;
         back = true;
@@ -69,11 +69,11 @@ public class cutScene extends extraFunctions {
         vanish = false;
         start = false;
         runCount = 0;
-        smokeSheet = loadImage("smoke.png");
-        spriteSheetBjarne = loadImage("chara1.png");
-        spriteSheet = loadImage("scaredRunning.png");
-        spriteSheet2 = loadImage("scaredRunning2.png");
-        spriteSheet3 = loadImage("chara2.png");
+        smokeSheet = loadImage("Image/smoke.png");
+        spriteSheetBjarne = loadImage("Image/chara1.png");
+        spriteSheet = loadImage("Image/scaredRunning.png");
+        spriteSheet2 = loadImage("Image/scaredRunning2.png");
+        spriteSheet3 = loadImage("Image/chara2.png");
         spriteDown = new Image[3];
         spriteDown2 = new Image[3];
         spriteDown3 = new Image[3];
@@ -83,7 +83,7 @@ public class cutScene extends extraFunctions {
         bjarneRight = new Image[3];
         bjarneLeft = new Image[3];
         fadeArray = new Image[10];
-        dialogueBackSheet = loadImage("dialogue_boxes.png");
+        dialogueBackSheet = loadImage("Image/dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
         posX = -800;
         posY = -600;

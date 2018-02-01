@@ -41,7 +41,7 @@ public class AdventureMode extends GameEngine {
         fadeState = false;
         timer = 0;
         fadeArray = new Image[10];
-        fade = loadImage("fade.png");
+        fade = loadImage("Image/fade.png");
         for(int i = 0; i < 2; i++){
             for(int j = 0; j < 5; j++){
                 fadeArray[(i*5) + j] = subImage(fade, j*160, i*120, 140, 100);

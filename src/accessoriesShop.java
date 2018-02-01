@@ -9,7 +9,7 @@ public class accessoriesShop extends shop {
         setMaxIndex(2);
 
     }
-    Image equipmentSprite = loadImage("equipmentSprite.png");
+    Image equipmentSprite = loadImage("Image/equipmentSprite.png");
     @Override
     public void shopInit() {
 

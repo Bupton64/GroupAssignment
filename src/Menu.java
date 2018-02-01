@@ -29,15 +29,15 @@ public class Menu extends extraFunctions {
     Image leftArrow;
     Image rightArrow;
     Image scrollBackground;
-    Image menuSprite = loadImage("menuSprite.png");
-    Image inventorySprite = loadImage("inventorySprite.png");
-    Image equipmentSprite = loadImage("equipmentSprite.png");
-    Image characterSprite = loadImage("face.png");
-    Image arrow1 = loadImage("arrowhead.png");
-    Image arrow2 = loadImage("arrowhead.png");
-    Image paper = loadImage("paper.png");
-    Image paper2 = loadImage("paper2.png");
-    Image book = loadImage("open.png");
+    Image menuSprite = loadImage("Image/menuSprite.png");
+    Image inventorySprite = loadImage("Image/inventorySprite.png");
+    Image equipmentSprite = loadImage("Image/equipmentSprite.png");
+    Image characterSprite = loadImage("Image/face.png");
+    Image arrow1 = loadImage("Image/arrowhead.png");
+    Image arrow2 = loadImage("Image/arrowhead.png");
+    Image paper = loadImage("Image/paper.png");
+    Image paper2 = loadImage("Image/paper2.png");
+    Image book = loadImage("Image/open.png");
     Image Book;
 
     Image dialogueSpriteSheet;
@@ -254,9 +254,9 @@ public class Menu extends extraFunctions {
 
 
     public void initMenu() {
-        buttonSpriteSheet = loadImage("buttons.png");
+        buttonSpriteSheet = loadImage("Image/buttons.png");
         buttonSprite = subImage(buttonSpriteSheet, 30, 70, 180, 80);
-        dialogueSpriteSheet = loadImage("dialogue_Boxes.png");
+        dialogueSpriteSheet = loadImage("Image/dialogue_Boxes.png");
         dialogueSimpleBox = subImage(dialogueSpriteSheet, 20, 20, 470, 100);
         clicks = loadAudio("clicks.wav");
         clicks2 = loadAudio("clicks2.wav");
@@ -931,10 +931,10 @@ public class Menu extends extraFunctions {
         currentPageNum = 1;
         numOfAbilitiePages = 1;
         menuOption = 1;
-        menuSpriteSheet = loadImage("arrowhead.png");
-        spellBook = loadImage("open.png");
+        menuSpriteSheet = loadImage("Image/arrowhead.png");
+        spellBook = loadImage("Image/open.png");
         spellBookPointer = subImage(menuSpriteSheet, 288, 96, 48, 48);
-        energyspritesheet = loadImage("bolts.png");
+        energyspritesheet = loadImage("Image/bolts.png");
         energyFullImage = subImage(energyspritesheet, 0, 0, 320, 480);
         spellBookPointerX = 70;
         spellBookPointerY = 120;
@@ -1074,9 +1074,9 @@ public class Menu extends extraFunctions {
 
 
     public void initSaveGame() {
-        Image paper = loadImage("paper.png");
-        Image sword = loadImage("sword.png");
-        Image sword2 = loadImage("sword2.png");
+        Image paper = loadImage("Image/paper.png");
+        Image sword = loadImage("Image/sword.png");
+        Image sword2 = loadImage("Image/sword2.png");
         startBackground = subImage(paper, 0, 0, 768, 1028);
         swordSprite = subImage(sword, 0, 0, 1793, 445);
         swordSprite2 = subImage(sword2, 0, 0, 1793, 445);

@@ -95,13 +95,13 @@ public class Combat extends extraFunctions{
 
         LevelPortrait = subImage(buttonSpriteSheet,450,155,120,120);
 
-        statusSpriteSheet = loadImage("status_effects.png");
+        statusSpriteSheet = loadImage("Image/status_effects.png");
         statusPoison = subImage(statusSpriteSheet,189,0,16,16);
         statusBlind = subImage(statusSpriteSheet,336,0,16,16);
 
-        heartImage = loadImage("heart.png");
-        energyImage = loadImage("newbolt.png");
-        energyspritesheet = loadImage("bolts.png");
+        heartImage = loadImage("Image/heart.png");
+        energyImage = loadImage("Image/newbolt.png");
+        energyspritesheet = loadImage("Image/bolts.png");
         energyFullImage = subImage(energyspritesheet,0,0,320,480);
         energyEmptyImage = subImage(energyspritesheet,320,0,320,480);
 
@@ -286,8 +286,8 @@ public class Combat extends extraFunctions{
 
     public void initLog(){
         statusLog = "";
-        logImage = loadImage("paper2.png");
-        menuBackGroundSprite = loadImage("CombatMenuImage.png");
+        logImage = loadImage("Image/paper2.png");
+        menuBackGroundSprite = loadImage("Image/CombatMenuImage.png");
         logStrings = new String[6];
         for(int i = 0;i < 6;i++){
             logStrings[i] = "";
@@ -360,12 +360,12 @@ public class Combat extends extraFunctions{
     Image buttonSprite;
 
     public void initPlayerTurnDisplay(){
-        buttonSpriteSheet = loadImage("buttons.png");
+        buttonSpriteSheet = loadImage("Image/buttons.png");
         buttonSprite = subImage(buttonSpriteSheet,30,70,180,80);
         checkCurse = false;
         menuOption = 0;
 
-        menuSpriteSheet = loadImage("arrowhead.png");
+        menuSpriteSheet = loadImage("Image/arrowhead.png");
         menuPointer = subImage(menuSpriteSheet,0,96,48,48);
 
     }
@@ -749,7 +749,7 @@ public class Combat extends extraFunctions{
     public void initAbilityMenu(){
         currentPageNum = 1;
         numOfPages = 1;
-        spellBook = loadImage("open.png");
+        spellBook = loadImage("Image/open.png");
         spellBookPointer = subImage(menuSpriteSheet,288,96,48,48);
     }
 
@@ -899,7 +899,7 @@ public class Combat extends extraFunctions{
 
     public void initItemMenu(){
         playerInventory = player.getInventory();
-        spellBook = loadImage("open.png");
+        spellBook = loadImage("Image/open.png");
         spellBookPointer = subImage(menuSpriteSheet,288,96,48,48);
 
     }
@@ -1360,9 +1360,9 @@ public class Combat extends extraFunctions{
 
     public void initLootScreen(){
 
-        lootScroll = loadImage("LootPicture.png");
+        lootScroll = loadImage("Image/LootPicture.png");
 
-        chestSpriteSheet = loadImage("chests.png");
+        chestSpriteSheet = loadImage("Image/chests.png");
         chestOne = subImage(chestSpriteSheet,0,310,80,50);
         chestTwo = subImage(chestSpriteSheet,0,526,80,50);
 
@@ -1373,7 +1373,7 @@ public class Combat extends extraFunctions{
         right = false;
         collectReward = false;
 
-        coinImage = loadImage("coin.png");
+        coinImage = loadImage("Image/coin.png");
 
 
         walkTimer = 0;
@@ -1498,7 +1498,7 @@ public class Combat extends extraFunctions{
         fadeState = false;
         timer = 0;
         fadeArray = new Image[10];
-        fade = loadImage("fade.png");
+        fade = loadImage("Image/fade.png");
         for(int i = 0; i < 2; i++){
             for(int j = 0; j < 5; j++){
                 fadeArray[(i*5) + j] = subImage(fade, j*160, i*120, 140, 100);
@@ -1799,8 +1799,8 @@ public class Combat extends extraFunctions{
         initLootScreen();
         initLog();
         initDeath();
-        backGroundImage = loadImage("backgroundsprite.png");
-        charSpriteSheet = loadImage("charspritesheet.png");
+        backGroundImage = loadImage("Image/backgroundsprite.png");
+        charSpriteSheet = loadImage("Image/charspritesheet.png");
         for(int i =0; i < 3;i++){
             playerImage[i] = subImage(charSpriteSheet,0 + (52 * i), 144,52,72);
         }

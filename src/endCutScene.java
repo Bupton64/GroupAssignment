@@ -43,14 +43,14 @@ public class endCutScene extends extraFunctions{
         hit = false;
         startBattle = false;
         timer = 0;
-        fade = loadImage("fade.png");
-        smokeSheet = loadImage("smoke.png");
-        bossBack = loadImage("bossFight.png");
-        plainsBack = loadImage("plains_E5.png");
-        spriteSheet = loadImage("chara1.png");
-        spriteSheet2 = loadImage("chara3.png");
-        spriteSheet3 = loadImage("chara2.png");
-        spellSpriteSheet = loadImage("spellBolt.png");
+        fade = loadImage("Image/fade.png");
+        smokeSheet = loadImage("Image/smoke.png");
+        bossBack = loadImage("Image/bossFight.png");
+        plainsBack = loadImage("Image/plains_E5.png");
+        spriteSheet = loadImage("Image/chara1.png");
+        spriteSheet2 = loadImage("Image/chara3.png");
+        spriteSheet3 = loadImage("Image/chara2.png");
+        spellSpriteSheet = loadImage("Image/spellBolt.png");
 
         Dijkstra = subImage(spriteSheet3, 520, 0,56,72);
         Camrath = subImage(spriteSheet2, 52, 288, 56, 72);
@@ -67,7 +67,7 @@ public class endCutScene extends extraFunctions{
         WizardGood = new Image[3];
         fadeArray = new Image[10];
         smokeArray = new Image[35];
-        dialogueBackSheet = loadImage("dialogue_boxes.png");
+        dialogueBackSheet = loadImage("Image/dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
 
         for(int i =0; i < 3;i++){

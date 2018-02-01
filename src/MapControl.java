@@ -735,7 +735,7 @@ public class MapControl extends extraFunctions {
     int animationChange= 0;
     double bloodTimer;
     public void initBleed(){
-        bloodSheet = loadImage("bloodSprite.png");
+        bloodSheet = loadImage("Image/bloodSprite.png");
         bloodArray = new Image[6];
         for(int i = 0; i < 6; i++){
             bloodArray[i] = subImage(bloodSheet, 512 * i, 0, 512, 512);
