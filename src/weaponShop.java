@@ -14,12 +14,12 @@ public class weaponShop extends shop {
 
     @Override
     public void shopInit() {
-        coin = loadAudio("coin.wav");
-        p1 = loadAudio("page1.wav");
-        p2 = loadAudio("page2.wav");
-        p3 = loadAudio("page3.wav");
-        exitClick = loadAudio("exitClick.wav");
-        clicks = loadAudio("clicks.wav");
+        coin = loadAudio("Audio/coin.wav");
+        p1 = loadAudio("Audio/page1.wav");
+        p2 = loadAudio("Audio/page2.wav");
+        p3 = loadAudio("Audio/page3.wav");
+        exitClick = loadAudio("Audio/exitClick.wav");
+        clicks = loadAudio("Audio/clicks.wav");
 
         Item[] inventory = new Item[50];
         for(int i = 0;  i < 50; i++){

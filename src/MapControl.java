@@ -12,7 +12,7 @@ public class MapControl extends extraFunctions {
         firstMap = true;
         mapNpcs = new NPC[10];
         numOfNpc = 0;
-        clicks = loadAudio("clicks.wav");
+        clicks = loadAudio("Audio/clicks.wav");
         initBleed();
         initNPC();
     }

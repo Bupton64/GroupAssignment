@@ -134,11 +134,11 @@ public class AdventureMode extends GameEngine {
 
 
     public void init() {
-        cutSceneMusic = loadAudio("cutscene.wav");
-        backgroundMusic = loadAudio("epic.wav");
-        villageMusic = loadAudio("village.wav");
-        menuMusic = loadAudio("menuMusic.wav");
-        clicks = loadAudio("clicks.wav");
+        cutSceneMusic = loadAudio("Audio/cutscene.wav");
+        backgroundMusic = loadAudio("Audio/epic.wav");
+        villageMusic = loadAudio("Audio/village.wav");
+        menuMusic = loadAudio("Audio/menuMusic.wav");
+        clicks = loadAudio("Audio/clicks.wav");
         mute = false;
         stopper = false;
         volume = 0;

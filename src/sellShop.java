@@ -29,13 +29,13 @@ public class sellShop extends shop {
     Image equipmentSprite = loadImage("equipmentSprite.png");
     @Override
     public void shopInit() {
-        clicks = loadAudio("clicks.wav");
-        p1 = loadAudio("page1.wav");
-        p2 = loadAudio("page2.wav");
-        p3 = loadAudio("page3.wav");
-        leave = loadAudio("leave.wav");
-        exitClick = loadAudio("exitClick.wav");
-        coin = loadAudio("coin.wav");
+        clicks = loadAudio("Audio/clicks.wav");
+        p1 = loadAudio("Audio/page1.wav");
+        p2 = loadAudio("Audio/page2.wav");
+        p3 = loadAudio("Audio/page3.wav");
+        leave = loadAudio("Audio/leave.wav");
+        exitClick = loadAudio("Audio/exitClick.wav");
+        coin = loadAudio("Audio/coin.wav");
     }
 
     public void updateShop(){
