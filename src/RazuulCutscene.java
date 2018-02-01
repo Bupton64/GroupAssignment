@@ -50,7 +50,7 @@ public class RazuulCutscene extends extraFunctions{
         dialogueBackSheet = loadImage("Image/dialogue_boxes.png");
         dialogueBack = subImage(dialogueBackSheet,20,20,470,100);
 
-        spritesheet3 = loadImage("chara1.png");
+        spritesheet3 = loadImage("Image/chara1.png");
         Bjarne = subImage(spritesheet3, 52, 72, 56, 72);
 
         for(int i = 0; i < 3; i++){

@@ -1,4 +1,4 @@
-public class NpcLocation {
+public class  NpcLocation {
     int locationNum;
     double locationPosX;
     double locationPosY;
